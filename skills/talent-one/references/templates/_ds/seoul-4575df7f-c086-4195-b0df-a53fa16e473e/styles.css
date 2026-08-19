@@ -1,0 +1,29 @@
+/*
+ * BH · SEOUL — Design System Connect Entry
+ *
+ * This file is the single root stylesheet for Claude Design binding.
+ * Import it once in any surface to pull in the complete BH · SEOUL token contract.
+ *
+ * What it provides (via tokens/tokens.css):
+ *   - Three-mode system on a single `data-mode` axis:
+ *       data-mode="light"      editorial, hanji ground, cheong-blue primary
+ *       data-mode="dark"       editorial dark, heuk ground, cheong-light primary
+ *       data-mode="dancheong"  colorful heritage, green temple-eave ground, orange primary
+ *   - Full --bh-* custom property namespace (semantic tokens only in product code)
+ *   - Typography primitives: .bh-display, .bh-eyebrow, .bh-body, .bh-num
+ *   - Motif classes: .bh-lattice-bissal, .bh-lattice-jeongja, .bh-dancheong-band, .bh-trigram
+ *   - Watermark lattices: .bh-lattice-chilbo/asa/cloud/su/maedeup/bosanghwa (ink-tinted, low opacity)
+ *   - Feature florals: .bh-roundel (연화문), .bh-pattern-yeonhwa — polychrome, per-mode via --r-*
+ *   - Royal seal: .bh-seal-dragon (+ --ink/--green/--red) — 용보 corner stamp / feature mark
+ *   - Layout: .bh-jogakbo asymmetric grid
+ *   - Component primitives: .bh-btn, .bh-input, .bh-link
+ *   - Motion tokens: --bh-dur-*, --bh-stagger-*, --bh-ease, --bh-ease-draw
+ *   - Reduced-motion path: prefers-reduced-motion zeroes all durations
+ *
+ * Do NOT hand-edit _ds_manifest.json or _ds_bundle.js — those are auto-generated.
+ * Do NOT inline raw hex values in component code; read --bh-* semantic tokens only.
+ * Do NOT import the per-medium .html preview cards here (they are dsCard previews, not CSS).
+ */
+
+@import "tokens/fonts.css";
+@import "tokens/tokens.css";

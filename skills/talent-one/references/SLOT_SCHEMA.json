@@ -1,0 +1,4042 @@
+{
+  "$comment": "Slot type schema for the Talent One kit. Generated from the nine templates' shipped worked examples by scripts/extract_slot_schema.py, then hand-corrected (22 slots) where the inferred type from a single example was ambiguous. Consumed by scripts/check_fill.py's --types pass: a filled artifact's slot value is checked against this file's `type`, not just checked for presence. Regenerating this file from a new example set will overwrite hand corrections; diff before committing a regeneration.",
+  "version": "1.0",
+  "types": {
+    "label": "A short name, title, or tag. Free text, but stays inside the example's word-count band.",
+    "prose_short": "A sentence or two of body copy. Voice rules apply (no em dash, no forbidden phrases).",
+    "prose_long": "A paragraph of body copy. Same voice rules; respects the density budget in FILL_SPEC S3.5.",
+    "count": "A bare number, optionally \"~\", a thousands comma, and a K/M/B suffix. Example: \"~1.7M\", \"150K\".",
+    "count_range": "Two counts joined by a hyphen or en dash. Example: \"1,800-2,400\".",
+    "currency": "A dollar figure, optionally \"~\" and a K/M suffix. Example: \"$154K\".",
+    "currency_range": "Two dollar figures joined by a hyphen or en dash, optionally with a short qualifier prefix or suffix where a slot's own word band allows it (e.g. an \"Example:\" prefix or a \"+ equity\" suffix). Example: \"$120-145K\".",
+    "percent": "A number followed by \"%\". Example: \"62%\", \"0.4%\".",
+    "ratio": "Two numbers joined by a colon. Example: \"3:1\".",
+    "duration": "A time span or relative timeframe. Example: \"2 business days\", \"D14\", \"45 min\".",
+    "date": "A month/year, bare year, or ISO date. Example: \"JUN 2025\".",
+    "pill": "One of the provenance words: Sourced, Estimate, Modeled, Internal, Derived. Never anything else.",
+    "chip": "A value from a small controlled vocabulary specific to that slot (see its note). Never invent a new chip value.",
+    "empty_cell": "A bare hyphen or en dash meaning \"no data for this cell\". Distinct from data-optional: the row stays, this one field is empty.",
+    "delta": "A before -> after transition. Both sides are required.",
+    "metric": "A single large numeric headline stat. Core must be numeric; unit varies by context (%, x multiplier, K/M count) and is not fixed to one type. Example: \"0.4%\", \"5x\"."
+  },
+  "slots": {
+    "agenda.objective": {
+      "type": "prose_short",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 19,
+        "max": 19
+      },
+      "example": "Walk sections A–C. Set the frame: tight market, real cost of vacancy, real comp. Do not negotiate anything yet."
+    },
+    "agenda.segment": {
+      "type": "label",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "Market reality briefing"
+    },
+    "agenda.time": {
+      "type": "count_range",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "0–5"
+    },
+    "analogy": {
+      "type": "prose_long",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 37,
+        "max": 37
+      },
+      "example": "It's the brainstem. Nobody tells a brainstem to keep breathing: it just does, continuously, and it never gets to crash. This software does the same for power, t"
+    },
+    "audience.item": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 6,
+        "max": 6
+      },
+      "example": "You have never sourced propulsion or mechanical engineers before"
+    },
+    "band.answer": {
+      "type": "prose_short",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 4,
+        "max": 4
+      },
+      "example": "No idea at all."
+    },
+    "band.label": {
+      "type": "label",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "Really bad"
+    },
+    "banned.term": {
+      "type": "label",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 6,
+        "max": 6
+      },
+      "example": "I hope this finds you well"
+    },
+    "bar.label": {
+      "type": "label",
+      "templates": [
+        "TK_00"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "Defense primes"
+    },
+    "bar.value": {
+      "type": "count",
+      "templates": [
+        "TK_00"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "1,240"
+    },
+    "branch.if": {
+      "type": "prose_short",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 4,
+        "max": 4
+      },
+      "example": "\"Happy where I am\""
+    },
+    "branch.then": {
+      "type": "prose_long",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 29,
+        "max": 29
+      },
+      "example": "\"Completely fair. May I send one paragraph on the scope so future-you has it on file? And if anyone comes to mind who'd want this, I take referrals seriously.\""
+    },
+    "call.script": {
+      "type": "prose_long",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 37,
+        "max": 37
+      },
+      "example": "\"Hi [[FirstName]], [Name] here. I'll be brief: your test-stand and analysis work at [[CurrentCompany]] maps closely onto what our propulsion team owns, and I'd "
+    },
+    "caution.1": {
+      "type": "prose_long",
+      "templates": [
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_06",
+        "TK_08"
+      ],
+      "words": {
+        "min": 26,
+        "max": 52
+      },
+      "example": "Naming the downside is what makes the upside credible. A pitch with no cost in it reads as a sales script, and this audience has heard hundreds of them. If it's"
+    },
+    "ch.effort": {
+      "type": "prose_short",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 5,
+        "max": 5
+      },
+      "example": "1 hr · standing ask"
+    },
+    "ch.name": {
+      "type": "label",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 6,
+        "max": 6
+      },
+      "example": "Referrals · internal team + adjacent"
+    },
+    "ch.verdict": {
+      "type": "prose_short",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 16,
+        "max": 16
+      },
+      "example": "Highest conversion in every benchmark set. Run a monthly team mining session against the target list."
+    },
+    "ch.yield": {
+      "type": "count_range",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "1–3 warm intros",
+      "review": false,
+      "note": "A count range with a trailing unit phrase, e.g. \"1-3 warm intros\". The numeric range at the front is checked; the trailing words are free.",
+      "human_reviewed": true
+    },
+    "cheat.bad": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 15,
+        "max": 15
+      },
+      "example": "\"You'd be building rockets!\" Maybe they build electric thrusters, or valves. Overclaiming the glamour reads as not having read the req."
+    },
+    "cheat.good": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 13,
+        "max": 13
+      },
+      "example": "\"You'd own subsystem software on the flight computer, from board bring-up through operations.\""
+    },
+    "comp.anchor": {
+      "type": "prose_long",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 44,
+        "max": 44
+      },
+      "example": "For a mid Propulsion Engineer at a small hardware employer, plan around base $115,000–$155,000, midpoint about $135,000, and total compensation of $125,000–$175"
+    },
+    "comp.base": {
+      "type": "currency_range",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "$120–145K"
+    },
+    "comp.high": {
+      "type": "currency",
+      "templates": [
+        "TK_02"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "174k"
+    },
+    "comp.label": {
+      "type": "label",
+      "templates": [
+        "TK_00",
+        "TK_02",
+        "TK_07"
+      ],
+      "words": {
+        "min": 2,
+        "max": 4
+      },
+      "example": "National base · posting-derived"
+    },
+    "comp.level": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 5,
+        "max": 5
+      },
+      "example": "Engineer I · 0–3 yrs"
+    },
+    "comp.low": {
+      "type": "currency",
+      "templates": [
+        "TK_02"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "105k"
+    },
+    "comp.n": {
+      "type": "prose_short",
+      "templates": [
+        "TK_02",
+        "TK_07"
+      ],
+      "words": {
+        "min": 6,
+        "max": 7
+      },
+      "example": "Skews national and junior: floor reference only"
+    },
+    "comp.note": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 7,
+        "max": 7
+      },
+      "example": "National medians run $112–130K; metro premium applied"
+    },
+    "comp.positioning": {
+      "type": "prose_long",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 48,
+        "max": 48
+      },
+      "example": "Launch operators run modest base against a maturing equity story. Big-tech programs pay large backloaded equity: openness spikes before vest cliffs. Primes pay "
+    },
+    "comp.premium": {
+      "type": "prose_long",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 33,
+        "max": 33
+      },
+      "example": "One more thing worth naming: engineers combining this domain with AI exposure are commanding 20–30% premiums in competitive metros. If the requisition drifts in"
+    },
+    "comp.range": {
+      "type": "currency_range",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 1,
+        "max": 5
+      },
+      "example": "$120–145K"
+    },
+    "comp.readout": {
+      "type": "prose_long",
+      "templates": [
+        "TK_00",
+        "TK_02"
+      ],
+      "words": {
+        "min": 23,
+        "max": 41
+      },
+      "example": "Read-out: competitive through the middle of the market, not at the top. Expect to lose the top decile on cash and win on scope, cadence, and equity upside. Say "
+    },
+    "comp.total": {
+      "type": "empty_cell",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "-"
+    },
+    "copy.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_00"
+      ],
+      "words": {
+        "min": 55,
+        "max": 55
+      },
+      "example": "Saw your write-up on cutting bring-up time on the test rig. The part about faking sensor dropout instead of waiting for hardware is exactly the argument we keep"
+    },
+    "copy.subject": {
+      "type": "prose_short",
+      "templates": [
+        "TK_00"
+      ],
+      "words": {
+        "min": 6,
+        "max": 6
+      },
+      "example": "your HIL rig talk: one question"
+    },
+    "cover.compliance": {
+      "type": "prose_short",
+      "templates": [
+        "TK_02"
+      ],
+      "words": {
+        "min": 6,
+        "max": 6
+      },
+      "example": "Reviewed for gendered + ableist language"
+    },
+    "cover.note": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01",
+        "TK_04",
+        "TK_06",
+        "TK_07",
+        "TK_08"
+      ],
+      "words": {
+        "min": 3,
+        "max": 13
+      },
+      "example": "Behind at 15 min? Cut logistics, never the spot-checks"
+    },
+    "cover.provenance": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 8,
+        "max": 8
+      },
+      "example": "Ratios reliable · absolute counts are planning numbers"
+    },
+    "crit.item": {
+      "type": "prose_short",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 8,
+        "max": 8
+      },
+      "example": "Two of three spot-checks at Good or better"
+    },
+    "crit.level": {
+      "type": "chip",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "Required",
+      "review": false,
+      "note": "controlled vocabulary: Required / Preferred / Nice-to-have. Fixed vocabulary, case-insensitive match: Required / Preferred / Nice-to-have.",
+      "human_reviewed": true,
+      "allowed": [
+        "Required",
+        "Preferred",
+        "Nice-to-have"
+      ]
+    },
+    "decision.item": {
+      "type": "prose_short",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 6,
+        "max": 6
+      },
+      "example": "Is domain heritage required or preferred?"
+    },
+    "demand.name": {
+      "type": "label",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 8,
+        "max": 8
+      },
+      "example": "Autonomy & robotics AV programs, humanoids, drones, eVTOL"
+    },
+    "demand.read": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 13,
+        "max": 13
+      },
+      "example": "Identical profile. Also your best source pool: they're competitor and supplier at once."
+    },
+    "demand.reqs": {
+      "type": "count_range",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "700–1,000"
+    },
+    "demand.velocity": {
+      "type": "chip",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "High",
+      "note": "Open chip: reused across templates for different axes, so no single fixed vocabulary applies. check_fill.py checks it is short (<=3 words), not against a list."
+    },
+    "doc.agent": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_07",
+        "TK_08"
+      ],
+      "words": {
+        "min": 3,
+        "max": 4
+      },
+      "example": "Agent · INTERVIEW LAB"
+    },
+    "doc.date": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_07",
+        "TK_08"
+      ],
+      "words": {
+        "min": 2,
+        "max": 8
+      },
+      "example": "30 min · schedule within 48h of sourcing"
+    },
+    "doc.eyebrow": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_07",
+        "TK_08"
+      ],
+      "words": {
+        "min": 5,
+        "max": 6
+      },
+      "example": "Artifact 07 · Intake & calibration"
+    },
+    "doc.thesis": {
+      "type": "prose_long",
+      "templates": [
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_07",
+        "TK_08"
+      ],
+      "words": {
+        "min": 24,
+        "max": 48
+      },
+      "example": "A search fails in the intake meeting long before it fails in the pipeline. This pack gives you a data-backed script for that first conversation: what the market"
+    },
+    "doc.title": {
+      "type": "label",
+      "templates": [
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_07",
+        "TK_08"
+      ],
+      "words": {
+        "min": 2,
+        "max": 3
+      },
+      "example": "Hiring Manager Calibration"
+    },
+    "dossier.angle": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 12,
+        "max": 12
+      },
+      "example": "Equity with room left to run, one engineer per subsystem, sustainable intensity."
+    },
+    "dossier.flag": {
+      "type": "chip",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "Trigger live",
+      "review": false,
+      "note": "controlled vocabulary: Trigger live / None negative. Fixed vocabulary, case-insensitive match: Trigger live / None negative.",
+      "human_reviewed": true,
+      "allowed": [
+        "Trigger live",
+        "None negative"
+      ]
+    },
+    "dossier.name": {
+      "type": "label",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "Tier-1 launch operator"
+    },
+    "dossier.pool": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 19,
+        "max": 19
+      },
+      "example": "The largest single concentration of flight-proven propulsion talent. Design and test orgs are the closest match to this role."
+    },
+    "dossier.trigger": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 24,
+        "max": 24
+      },
+      "example": "Reported liquidity event in preparation. Vesting math makes some engineers immovable and pushes others to bank the win and chase the next early-equity story."
+    },
+    "e1.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 81,
+        "max": 81
+      },
+      "example": "[[FirstName]], Your [[SpecificProject]] work at [[CurrentCompany]] reads like someone who debugs at the hardware line rather than above it. Here's a problem you"
+    },
+    "e1.subjA": {
+      "type": "prose_short",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 7,
+        "max": 7
+      },
+      "example": "the only wrench that reaches 22,000 miles"
+    },
+    "e1.subjB": {
+      "type": "prose_short",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 7,
+        "max": 7
+      },
+      "example": "for the engineer who already owns half the engine"
+    },
+    "e4.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 66,
+        "max": 66
+      },
+      "example": "[[FirstName]], Straight status, no games: we're making one hire on this team this cycle, the loop runs about two weeks start to finish, and the panel is made up"
+    },
+    "e4.note": {
+      "type": "prose_short",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 22,
+        "max": 22
+      },
+      "example": "Only send if literally true. Manufactured urgency is detectable and permanently expensive with this audience. If there are two openings, say two."
+    },
+    "e4.subj": {
+      "type": "label",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "timing, plainly",
+      "review": false,
+      "note": "a short subject-line fragment, 2-4 words.",
+      "human_reviewed": true
+    },
+    "edu.academic": {
+      "type": "prose_long",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 34,
+        "max": 34
+      },
+      "example": "A bachelor's in aerospace or mechanical engineering is typical, and a master's is common for design roles. Programs with strong propulsion or turbomachinery out"
+    },
+    "edu.alt": {
+      "type": "prose_long",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 26,
+        "max": 26
+      },
+      "example": "Adjacent-industry engineers. Automotive and motorsport powertrain, gas-turbine and jet-engine, and high-pressure process or chemical engineers bring combustion,"
+    },
+    "edu.hobby": {
+      "type": "prose_long",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 32,
+        "max": 32
+      },
+      "example": "Builders and defense crossovers. High-power amateur rocketry, university propulsion or Formula teams, and military or missile propulsion technicians. Someone do"
+    },
+    "email.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 73,
+        "max": 73
+      },
+      "example": "[[FirstName]], Following up with the part most people ask about first: the team. This group has run propulsion hardware from first cold-flow test through hot-fi"
+    },
+    "email.label": {
+      "type": "label",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 8,
+        "max": 8
+      },
+      "example": "E2 · day 3 · credibility + belonging"
+    },
+    "email.meta": {
+      "type": "count",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "92 words",
+      "review": false,
+      "note": "a word count, e.g. \"92 words\"; always the pattern \"<n> words\".",
+      "human_reviewed": true
+    },
+    "email.note": {
+      "type": "prose_short",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 24,
+        "max": 24
+      },
+      "example": "Every claim is externally verifiable, which is the whole point. \"Not a recruiter pitch\" is a real promise: honour it or don't write it."
+    },
+    "email.subjA": {
+      "type": "prose_short",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 5,
+        "max": 5
+      },
+      "example": "five hot-fires, zero anomalies logged"
+    },
+    "email.subjB": {
+      "type": "prose_short",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 4,
+        "max": 4
+      },
+      "example": "who you'd build with"
+    },
+    "ex.term": {
+      "type": "label",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "intern"
+    },
+    "footer.left": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_07",
+        "TK_08"
+      ],
+      "words": {
+        "min": 6,
+        "max": 7
+      },
+      "example": "Talent Kit 03 · Talent Intelligence Map"
+    },
+    "footer.right": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_07",
+        "TK_08"
+      ],
+      "words": {
+        "min": 3,
+        "max": 6
+      },
+      "example": "Estimates flagged · verify before quoting"
+    },
+    "funnel.note.1": {
+      "type": "prose_long",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 35,
+        "max": 35
+      },
+      "example": "At 60 sequenced per week, benchmark math delivers a hire in roughly six weeks of pipeline plus loop time. That lands inside the industry average and is the basi"
+    },
+    "funnel.note.2": {
+      "type": "prose_long",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 44,
+        "max": 44
+      },
+      "example": "Two levers beat the benchmark: personalisation discipline (artifact 05 targets above 30% reply on the high-touch tier) and loop speed. Panels now run substantia"
+    },
+    "gate.1": {
+      "type": "prose_long",
+      "templates": [
+        "TK_02",
+        "TK_03",
+        "TK_05",
+        "TK_06",
+        "TK_07"
+      ],
+      "words": {
+        "min": 16,
+        "max": 46
+      },
+      "example": "If the feedback SLA is not agreed in this meeting, say plainly that the timeline target becomes 70+ days, and record that in the recap. Silent slippage is what "
+    },
+    "gate.2": {
+      "type": "prose_short",
+      "templates": [
+        "TK_06"
+      ],
+      "words": {
+        "min": 21,
+        "max": 21
+      },
+      "example": "Treats the hardware team as an obstacle rather than a peer. Unfixable on a four-person team that sits next to them."
+    },
+    "gauge.note": {
+      "type": "prose_short",
+      "templates": [
+        "TK_00",
+        "TK_05"
+      ],
+      "words": {
+        "min": 8,
+        "max": 14
+      },
+      "example": "Benchmarks to beat: 82% open, 26% reply, 14% interested. High-touch tier targets above 30%."
+    },
+    "gauge.value": {
+      "type": "percent",
+      "templates": [
+        "TK_00",
+        "TK_05"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "34%"
+    },
+    "handoff.assumptions": {
+      "type": "prose_short",
+      "templates": [
+        "TK_00",
+        "TK_01",
+        "TK_02",
+        "TK_06",
+        "TK_07",
+        "TK_08"
+      ],
+      "words": {
+        "min": 8,
+        "max": 16
+      },
+      "example": "Recruiter is non-technical. No engineer present at the screen. Degree is a proxy, not a gate."
+    },
+    "handoff.blocked": {
+      "type": "prose_short",
+      "templates": [
+        "TK_00",
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_07"
+      ],
+      "words": {
+        "min": 4,
+        "max": 14
+      },
+      "example": "Verifiable proof points from the client · one real open problem from the HM"
+    },
+    "handoff.calibration": {
+      "type": "prose_long",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 32,
+        "max": 32
+      },
+      "example": "Keep propulsion design and thermofluids as must-have; combustion or electric-propulsion physics and hot-fire test stay calibrated; CAD/CFD and flight-systems fl"
+    },
+    "handoff.compliance": {
+      "type": "prose_short",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 20,
+        "max": 20
+      },
+      "example": "No banned phrases · single CTA per touch · every claim externally verifiable · SMS gated to post-reply or referral"
+    },
+    "handoff.consumers": {
+      "type": "prose_short",
+      "templates": [
+        "TK_00",
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_07"
+      ],
+      "words": {
+        "min": 8,
+        "max": 17
+      },
+      "example": "02 Job Description · 04 Sourcing Strategy · 05 Outreach Campaign · 07 HM Calibration"
+    },
+    "handoff.flags": {
+      "type": "prose_short",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 22,
+        "max": 22
+      },
+      "example": "Great or Exceptional on any spot-check → raise starting difficulty · C-primary background accepted under the willing-to-learn flex → probe learning velocity"
+    },
+    "handoff.next": {
+      "type": "prose_short",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 9,
+        "max": 9
+      },
+      "example": "Technical 1 · live coding, within 5 business days"
+    },
+    "handoff.produces": {
+      "type": "prose_short",
+      "templates": [
+        "TK_00",
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_07",
+        "TK_08"
+      ],
+      "words": {
+        "min": 7,
+        "max": 23
+      },
+      "example": "market_tight · supply_demand_3:1 · difficulty_7.5 · engageable_6-8K · comp_posture_P60-75 · geo_sequence · peripheral_pools[6] · personas[3]"
+    },
+    "handoff.tokens": {
+      "type": "prose_short",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 9,
+        "max": 9
+      },
+      "example": "[[FirstName]] · [[CurrentCompany]] · [[SpecificProject]] · [[TechSignal]] · [[MutualConnection]]"
+    },
+    "heat.label": {
+      "type": "label",
+      "templates": [
+        "TK_06"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "Propulsion system design"
+    },
+    "heat.row.label": {
+      "type": "label",
+      "templates": [
+        "TK_00"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "Embedded C++ depth"
+    },
+    "hm.item": {
+      "type": "label",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "Résumé review decision",
+      "review": false,
+      "note": "an SLA line item name.",
+      "human_reviewed": true
+    },
+    "hm.when": {
+      "type": "duration",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "2 business days",
+      "review": false,
+      "note": "a turnaround time, e.g. \"2 business days\".",
+      "human_reviewed": true
+    },
+    "hub.anchors": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 8,
+        "max": 8
+      },
+      "example": "AV programs, consumer hardware, eVTOL, local alumni network"
+    },
+    "hub.count": {
+      "type": "count",
+      "templates": [
+        "TK_00"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "~1,900"
+    },
+    "hub.housing": {
+      "type": "empty_cell",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "-"
+    },
+    "hub.name": {
+      "type": "label",
+      "templates": [
+        "TK_00",
+        "TK_03"
+      ],
+      "words": {
+        "min": 4,
+        "max": 5
+      },
+      "example": "Los Angeles · South Bay"
+    },
+    "hub.note": {
+      "type": "prose_short",
+      "templates": [
+        "TK_00"
+      ],
+      "words": {
+        "min": 8,
+        "max": 8
+      },
+      "example": "Primes plus three launch startups; densest single market."
+    },
+    "hub.ownership": {
+      "type": "percent",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "56%"
+    },
+    "hub.pool": {
+      "type": "count_range",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "1,800–2,400"
+    },
+    "hub.relo": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 4,
+        "max": 4
+      },
+      "example": "Local · no friction"
+    },
+    "hub.tax": {
+      "type": "empty_cell",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "-"
+    },
+    "insight.1": {
+      "type": "prose_long",
+      "templates": [
+        "TK_01",
+        "TK_03",
+        "TK_04",
+        "TK_08"
+      ],
+      "words": {
+        "min": 27,
+        "max": 50
+      },
+      "example": "Beyond the two-Bad-answers rule, you are not qualified to reject on technical depth from this call, and you should not try. Advance anyone who clears the spot-c"
+    },
+    "iq.extract": {
+      "type": "prose_short",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 23,
+        "max": 23
+      },
+      "example": "Extracts Concrete scope for the posting and the interview scenarios. A vague answer here predicts a vague search: push twice before moving on."
+    },
+    "iq.text": {
+      "type": "prose_short",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 23,
+        "max": 23
+      },
+      "example": "\"What does success look like in the first 90 days, and what will this person have shipped by the end of year one?\""
+    },
+    "jd.close": {
+      "type": "prose_long",
+      "templates": [
+        "TK_02"
+      ],
+      "words": {
+        "min": 31,
+        "max": 31
+      },
+      "example": "Direct space-propulsion experience is not required and is not an edge in our screen. The same problem, controlled high-energy fluid and thermal systems on fligh"
+    },
+    "jd.intro": {
+      "type": "prose_long",
+      "templates": [
+        "TK_02"
+      ],
+      "words": {
+        "min": 80,
+        "max": 80
+      },
+      "example": "We build connected hardware, and the propulsion team is small: a handful of engineers and one hardware partner. You would own a propulsion subsystem, not a slic"
+    },
+    "jd.meta": {
+      "type": "prose_short",
+      "templates": [
+        "TK_02"
+      ],
+      "words": {
+        "min": 9,
+        "max": 9
+      },
+      "example": "Hybrid, distributed · $115,000-$155,000 base + equity"
+    },
+    "jd.title": {
+      "type": "label",
+      "templates": [
+        "TK_02"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "Propulsion Engineer"
+    },
+    "kit.mark": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_07",
+        "TK_08"
+      ],
+      "words": {
+        "min": 4,
+        "max": 4
+      },
+      "example": "Talent Kit · 01"
+    },
+    "kw.note": {
+      "type": "prose_long",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 39,
+        "max": 39
+      },
+      "example": "Worth knowing: the market spreads this role across many titles (Propulsion Systems, Rocket Propulsion, Liquid or Electric Propulsion, Propulsion Test). Search a"
+    },
+    "kw.term": {
+      "type": "label",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "propulsion"
+    },
+    "kw2.term": {
+      "type": "label",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "Isp"
+    },
+    "layer.desc": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 18,
+        "max": 18
+      },
+      "example": "Mission control and operator tools. Different team, different languages (Python, web). This role defines the contract they consume."
+    },
+    "layer.name": {
+      "type": "label",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "Ground / operations"
+    },
+    "layer.owned": {
+      "type": "prose_long",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 30,
+        "max": 30
+      },
+      "example": "Propulsion system ★ core of this role The engine plus the feed system as one integrated subsystem: architecture, requirements, budgets, integration. This is whe"
+    },
+    "ledger.after": {
+      "type": "prose_short",
+      "templates": [
+        "TK_02"
+      ],
+      "words": {
+        "min": 5,
+        "max": 5
+      },
+      "example": "Propulsion design in one type, capability-based"
+    },
+    "ledger.before": {
+      "type": "prose_short",
+      "templates": [
+        "TK_02"
+      ],
+      "words": {
+        "min": 5,
+        "max": 5
+      },
+      "example": "8+ years flight-proven rocket propulsion"
+    },
+    "ledger.effect": {
+      "type": "delta",
+      "templates": [
+        "TK_02"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "120 → 640",
+      "review": false,
+      "note": "a before -> after transition, e.g. \"120 -> 640\"; the arrow is load-bearing, never omit either side.",
+      "human_reviewed": true
+    },
+    "li.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 38,
+        "max": 38
+      },
+      "example": "[[FirstName]], the [[SpecificProject]] work at [[CurrentCompany]] is the kind of propulsion depth that gets buried on a big engine team. We're building a small "
+    },
+    "li.label": {
+      "type": "label",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 5,
+        "max": 5
+      },
+      "example": "Connect note · day 10"
+    },
+    "li.meta": {
+      "type": "prose_short",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 4,
+        "max": 4
+      },
+      "example": "274 / 300 chars"
+    },
+    "li.note": {
+      "type": "prose_short",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 21,
+        "max": 21
+      },
+      "example": "\"No pitch attached\" is load-bearing. Send nothing else on this channel for at least two days, or it becomes a lie."
+    },
+    "log.field": {
+      "type": "label",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "Location",
+      "review": false,
+      "note": "a logistics field name.",
+      "human_reviewed": true
+    },
+    "log.script": {
+      "type": "prose_short",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 19,
+        "max": 19
+      },
+      "example": "\"Where are you based today, and if you're outside the metro, what would a move actually require for you?\""
+    },
+    "method.basis": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 5,
+        "max": 5
+      },
+      "example": "National occupational baseline, software developers"
+    },
+    "method.pill": {
+      "type": "pill",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 4,
+        "max": 4
+      },
+      "example": "Sourced · BLS 2024"
+    },
+    "method.stage": {
+      "type": "label",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "~1.7M developers"
+    },
+    "metric.label": {
+      "type": "label",
+      "templates": [
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_06",
+        "TK_08"
+      ],
+      "words": {
+        "min": 2,
+        "max": 3
+      },
+      "example": "Market classification"
+    },
+    "metric.value": {
+      "type": "chip",
+      "templates": [
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_06",
+        "TK_08"
+      ],
+      "words": {
+        "min": 1,
+        "max": 2
+      },
+      "example": "Tight",
+      "note": "Open chip: reused across templates for different axes, so no single fixed vocabulary applies. check_fill.py checks it is short (<=3 words), not against a list."
+    },
+    "mq.listen": {
+      "type": "prose_long",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 27,
+        "max": 27
+      },
+      "example": "Listen for Researched specifics: our vehicle class, the propulsion approach, a test they read about. \"Space is cool\" is neutral, not negative. Specifics are a s"
+    },
+    "mq.text": {
+      "type": "prose_short",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 6,
+        "max": 6
+      },
+      "example": "\"What drew you to us specifically?\""
+    },
+    "node.core": {
+      "type": "label",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "Propulsion",
+      "review": false,
+      "note": "the core-competency label on a stack diagram node.",
+      "human_reviewed": true
+    },
+    "node.desc": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 13,
+        "max": 13
+      },
+      "example": "Builds the boards this software runs on. Constant back-and-forth: drawings, bring-up, interface debugging."
+    },
+    "node.name": {
+      "type": "label",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "Structures & mechanical"
+    },
+    "node.name2": {
+      "type": "label",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 2,
+        "max": 3
+      },
+      "example": "Materials & manufacturing"
+    },
+    "nongate.1": {
+      "type": "prose_short",
+      "templates": [
+        "TK_06"
+      ],
+      "words": {
+        "min": 21,
+        "max": 21
+      },
+      "example": "No launch-prime pedigree. No master's degree. No one specific analysis package. None of these predict propulsion judgment, and every one of them shrinks an alre"
+    },
+    "northstar": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 25,
+        "max": 25
+      },
+      "example": "Build and safeguard the software brain of a machine parked 22,000 miles from the nearest keyboard: the only wrench that still reaches it after launch."
+    },
+    "note.body": {
+      "type": "prose_short",
+      "templates": [
+        "TK_00",
+        "TK_01",
+        "TK_02",
+        "TK_05"
+      ],
+      "words": {
+        "min": 11,
+        "max": 26
+      },
+      "example": "Contributor communities around open-source flight-software frameworks are now legitimate sourcing pools. These people have self-selected into exactly this probl"
+    },
+    "note.tag": {
+      "type": "label",
+      "templates": [
+        "TK_00",
+        "TK_02",
+        "TK_05"
+      ],
+      "words": {
+        "min": 1,
+        "max": 3
+      },
+      "example": "Why it works",
+      "review": false,
+      "note": "a short callout eyebrow, 2-4 words.",
+      "human_reviewed": true
+    },
+    "note.title": {
+      "type": "label",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "Demand is outrunning the pool"
+    },
+    "per.name": {
+      "type": "label",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 5,
+        "max": 5
+      },
+      "example": "Gas turbine & jet engine"
+    },
+    "per.ramp": {
+      "type": "duration",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "Weeks",
+      "review": false,
+      "note": "a ramp-time estimate, e.g. \"Weeks\" / \"2-3 months\". A bare unit word (\"Weeks\") is a valid duration on its own, not only \"N weeks\".",
+      "human_reviewed": true
+    },
+    "per.transfer": {
+      "type": "chip",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "High",
+      "note": "Open chip: reused across templates for different axes, so no single fixed vocabulary applies. check_fill.py checks it is short (<=3 words), not against a list."
+    },
+    "per.where": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 7,
+        "max": 7
+      },
+      "example": "Drone delivery, air-vehicle programs, open-source autopilot contributors"
+    },
+    "per.why": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 14,
+        "max": 14
+      },
+      "example": "Combustion, thermofluids, and rotating machinery on flight-rated hardware. Missing only the space environment."
+    },
+    "persona.message": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 14,
+        "max": 14
+      },
+      "example": "\"Own a full propulsion subsystem here, not a slice of someone else's.\""
+    },
+    "persona.name": {
+      "type": "label",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 4,
+        "max": 4
+      },
+      "example": "The escape-velocity prime engineer"
+    },
+    "persona.risk": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 10,
+        "max": 10
+      },
+      "example": "Pace shock. Probe for genuine startup appetite at the screen."
+    },
+    "persona.wants": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 11,
+        "max": 11
+      },
+      "example": "Speed, ownership, seeing hardware fly on a timeline measured in months"
+    },
+    "persona.who": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 11,
+        "max": 11
+      },
+      "example": "8–15 years at a prime. Deep fundamentals, starved of shipping velocity."
+    },
+    "phase.label": {
+      "type": "label",
+      "templates": [
+        "TK_00",
+        "TK_04"
+      ],
+      "words": {
+        "min": 1,
+        "max": 3
+      },
+      "example": "Calibration & ledger"
+    },
+    "point.label": {
+      "type": "label",
+      "templates": [
+        "TK_00",
+        "TK_03"
+      ],
+      "words": {
+        "min": 1,
+        "max": 2
+      },
+      "example": "Founder-mode hardtech"
+    },
+    "prompt.flag": {
+      "type": "prose_short",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 17,
+        "max": 17
+      },
+      "example": "Red flagSupervisory-only exposure. Cannot name what they personally wrote. Describes the team's work in first-person plural throughout."
+    },
+    "prompt.listen": {
+      "type": "prose_long",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 26,
+        "max": 26
+      },
+      "example": "Listen forNamed products, fleet sizes, and their specific piece of it. \"I owned the bootloader on the second-generation board\" is what a good answer sounds like"
+    },
+    "prompt.text": {
+      "type": "prose_short",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 20,
+        "max": 20
+      },
+      "example": "\"Walk me through your path in about three minutes, with emphasis on the hardware your software has actually shipped on.\""
+    },
+    "pullstat.claim": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03",
+        "TK_04"
+      ],
+      "words": {
+        "min": 21,
+        "max": 24
+      },
+      "example": "1.7 million becomes 6–8 thousand after five filters. Four of those five filters are choices someone made, and three of them are still negotiable."
+    },
+    "pullstat.label": {
+      "type": "label",
+      "templates": [
+        "TK_03",
+        "TK_04"
+      ],
+      "words": {
+        "min": 9,
+        "max": 9
+      },
+      "example": "Of US software developers are engageable for this role"
+    },
+    "pullstat.method": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03",
+        "TK_04"
+      ],
+      "words": {
+        "min": 4,
+        "max": 8
+      },
+      "example": "BLS baseline × documented filters · see methodology"
+    },
+    "pullstat.value": {
+      "type": "metric",
+      "templates": [
+        "TK_03",
+        "TK_04"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "0.4%",
+      "note": "The single big pull-stat number. Unit varies genuinely by artifact: TK_03 uses a percent (\"0.4%\"), TK_04 a multiplier (\"5x\"). One slot name, two legitimate formats, so this is its own type: numeric core required, unit suffix open."
+    },
+    "q.owner": {
+      "type": "prose_short",
+      "templates": [
+        "TK_06"
+      ],
+      "words": {
+        "min": 6,
+        "max": 6
+      },
+      "example": "Tech 2 · debug under uncertainty"
+    },
+    "q.strong": {
+      "type": "prose_short",
+      "templates": [
+        "TK_06"
+      ],
+      "words": {
+        "min": 24,
+        "max": 24
+      },
+      "example": "Forms a hypothesis before touching anything. Asks what changed. Orders checks by cost, not by suspicion. Says out loud what would disprove each theory."
+    },
+    "q.text": {
+      "type": "prose_short",
+      "templates": [
+        "TK_06"
+      ],
+      "words": {
+        "min": 24,
+        "max": 24
+      },
+      "example": "\"Here is a trace from a system that reboots every forty minutes under load. Walk me through what you would rule out, in order.\""
+    },
+    "q.time": {
+      "type": "duration",
+      "templates": [
+        "TK_06"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "20 min"
+    },
+    "q.weak": {
+      "type": "prose_short",
+      "templates": [
+        "TK_06"
+      ],
+      "words": {
+        "min": 22,
+        "max": 22
+      },
+      "example": "Names a likely culprit immediately and stays with it. Reaches for tools before questions. Cannot say what evidence would change their mind."
+    },
+    "rec.action": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 9,
+        "max": 9
+      },
+      "example": "Stand up the local autonomy pipeline before anything else"
+    },
+    "rec.n": {
+      "type": "count",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "1"
+    },
+    "rec.owner": {
+      "type": "label",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "Sourcer",
+      "review": false,
+      "note": "a role or team name, never a person.",
+      "human_reviewed": true
+    },
+    "rec.when": {
+      "type": "duration",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "This week",
+      "review": false,
+      "note": "a relative timeframe, e.g. \"This week\" / \"Within 30 days\".",
+      "human_reviewed": true
+    },
+    "rec.why": {
+      "type": "prose_long",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 29,
+        "max": 29
+      },
+      "example": "Highest transfer, zero relocation friction, and no competitor in the space market is messaging these people for this role. Covers roughly 60% of engageable supp"
+    },
+    "relo.readout": {
+      "type": "prose_long",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 64,
+        "max": 64
+      },
+      "example": "The southern coastal hub is your relocation market. Lowest homeownership of the set (a majority-renter population can move on a lease cycle, not a sale) plus th"
+    },
+    "relo.seq.1": {
+      "type": "label",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "1 · Local",
+      "review": false,
+      "note": "a ranked sequence entry: \"<n> . <metro name>\".",
+      "human_reviewed": true
+    },
+    "relo.seq.2": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 4,
+        "max": 4
+      },
+      "example": "2 · Southern coastal"
+    },
+    "relo.seq.3": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 4,
+        "max": 4
+      },
+      "example": "3 · Northwest, trigger-driven"
+    },
+    "relo.seq.skip": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 6,
+        "max": 6
+      },
+      "example": "Skip mountain / central / northeast"
+    },
+    "req.item": {
+      "type": "prose_short",
+      "templates": [
+        "TK_02"
+      ],
+      "words": {
+        "min": 17,
+        "max": 17
+      },
+      "example": "Propulsion system design in at least one type: liquid, solid, hybrid, or electric. You have taken a design from requirements to real hardware."
+    },
+    "req.name": {
+      "type": "label",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 8,
+        "max": 8
+      },
+      "example": "Propulsion system design (liquid, solid, hybrid, or electric)"
+    },
+    "req.rec": {
+      "type": "prose_short",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 16,
+        "max": 16
+      },
+      "example": "Hold. This is the core signal and the interview loop is built to verify it precisely."
+    },
+    "req.verdict": {
+      "type": "chip",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "Must-have",
+      "allowed": [
+        "Must-have",
+        "Calibrated",
+        "Flex",
+        "Nice-to-have",
+        "Non-negotiable"
+      ],
+      "note": "Fixed vocabulary, case-insensitive match: Must-have / Calibrated / Flex / Nice-to-have / Non-negotiable."
+    },
+    "resp.detail": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 15,
+        "max": 15
+      },
+      "example": "Chamber, injector, nozzle, and cooling, or the thruster for electric propulsion. Turn mission requirements into hardware that makes the right thrust without fai"
+    },
+    "resp.item": {
+      "type": "prose_short",
+      "templates": [
+        "TK_02"
+      ],
+      "words": {
+        "min": 18,
+        "max": 18
+      },
+      "example": "Fault detection and recovery for a full vehicle: what it senses, what it decides, what it does alone."
+    },
+    "resp.name": {
+      "type": "label",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 4,
+        "max": 4
+      },
+      "example": "Write the onboard software"
+    },
+    "role.org": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_07",
+        "TK_08"
+      ],
+      "words": {
+        "min": 6,
+        "max": 9
+      },
+      "example": "Connected-hardware company · small propulsion team, one hardware partner"
+    },
+    "role.title": {
+      "type": "label",
+      "templates": [
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_07",
+        "TK_08"
+      ],
+      "words": {
+        "min": 4,
+        "max": 4
+      },
+      "example": "Propulsion Engineer · Mid"
+    },
+    "ros.objective": {
+      "type": "prose_long",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 26,
+        "max": 26
+      },
+      "example": "\"Thirty minutes. I'll cover the role and the team, ask you a few things about what you've built, and leave time for your questions. Sound right?\""
+    },
+    "ros.segment": {
+      "type": "label",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "Open & agenda"
+    },
+    "ros.time": {
+      "type": "count_range",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "0–2"
+    },
+    "row.name": {
+      "type": "label",
+      "templates": [
+        "TK_00"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "Referral loops"
+    },
+    "s1.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_08"
+      ],
+      "words": {
+        "min": 18,
+        "max": 85
+      },
+      "example": "They write the software that runs inside the machine rather than beside it. There is no operating system to fall back on, no way to reach in and patch it once i"
+    },
+    "s1.body2": {
+      "type": "prose_long",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 55,
+        "max": 55
+      },
+      "example": "Two things follow from that, and both matter for how you talk to candidates. First, these engineers are unusually specific. Vague enthusiasm reads as a lack of "
+    },
+    "s1.title": {
+      "type": "label",
+      "templates": [
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_08"
+      ],
+      "words": {
+        "min": 2,
+        "max": 7
+      },
+      "example": "The constraint is overlap, not headcount"
+    },
+    "s10.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_01",
+        "TK_03"
+      ],
+      "words": {
+        "min": 16,
+        "max": 28
+      },
+      "example": "Left column is what to say. Right column is the version that costs you the candidate, and the reason why. Specificity is the entire game with this audience."
+    },
+    "s10.title": {
+      "type": "label",
+      "templates": [
+        "TK_01",
+        "TK_03"
+      ],
+      "words": {
+        "min": 3,
+        "max": 4
+      },
+      "example": "Credibility cheat sheet"
+    },
+    "s2.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_08"
+      ],
+      "words": {
+        "min": 18,
+        "max": 46
+      },
+      "example": "Use this to place any candidate in thirty seconds. Ask them: \"which of these layers have you lived in?\" The marked layers are this role. One layer away is an ad"
+    },
+    "s2.title": {
+      "type": "label",
+      "templates": [
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_08"
+      ],
+      "words": {
+        "min": 2,
+        "max": 7
+      },
+      "example": "Where the role sits, layer by layer"
+    },
+    "s3.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_08"
+      ],
+      "words": {
+        "min": 14,
+        "max": 44
+      },
+      "example": "The middle column is what you say to a non-engineer. The right column is why the term matters, which is what lets you ask a follow-up question instead of noddin"
+    },
+    "s3.body2": {
+      "type": "prose_long",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 36,
+        "max": 36
+      },
+      "example": "Write down their actual phrases even when you don't follow them. Those phrases are what the technical interviewer uses to calibrate their own session, and they "
+    },
+    "s3.title": {
+      "type": "label",
+      "templates": [
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_08"
+      ],
+      "words": {
+        "min": 3,
+        "max": 7
+      },
+      "example": "Technical spot-checks, with answer keys"
+    },
+    "s4.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_01",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_08"
+      ],
+      "words": {
+        "min": 18,
+        "max": 42
+      },
+      "example": "You are not assessing any of this yourself. Your job is to know which stage in the loop owns each skill, so you can tell a hiring manager where a concern will b"
+    },
+    "s4.title": {
+      "type": "label",
+      "templates": [
+        "TK_01",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_08"
+      ],
+      "words": {
+        "min": 3,
+        "max": 8
+      },
+      "example": "The bar, and how each one gets checked"
+    },
+    "s5.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_01",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_08"
+      ],
+      "words": {
+        "min": 28,
+        "max": 38
+      },
+      "example": "Pool size tells you where talent sits. Propensity tells you whether it will move: homeownership rate, housing-cost delta, state tax delta, and industry identity"
+    },
+    "s5.title": {
+      "type": "label",
+      "templates": [
+        "TK_01",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_08"
+      ],
+      "words": {
+        "min": 4,
+        "max": 8
+      },
+      "example": "Fields to fill, and the script for each"
+    },
+    "s6.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_01",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_08"
+      ],
+      "words": {
+        "min": 24,
+        "max": 34
+      },
+      "example": "A trigger is a dated event that changes someone's willingness to hear from you. Outreach inside 72 hours of a trigger converts several times better than the sam"
+    },
+    "s6.title": {
+      "type": "label",
+      "templates": [
+        "TK_01",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_08"
+      ],
+      "words": {
+        "min": 3,
+        "max": 6
+      },
+      "example": "Target companies and live triggers"
+    },
+    "s7.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_01",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_08"
+      ],
+      "words": {
+        "min": 25,
+        "max": 37
+      },
+      "example": "Tier discipline is the difference between a 26% reply rate and an 8% one. The banned list is not stylistic preference: each phrase measurably reduces reply rate"
+    },
+    "s7.title": {
+      "type": "label",
+      "templates": [
+        "TK_01",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_08"
+      ],
+      "words": {
+        "min": 3,
+        "max": 8
+      },
+      "example": "Industries solving the same problem under another name"
+    },
+    "s8.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_01",
+        "TK_03"
+      ],
+      "words": {
+        "min": 23,
+        "max": 34
+      },
+      "example": "The seed list the sourcing strings are built from. Note that the market's dominant title is not the one on your requisition. Search all the synonyms or you will"
+    },
+    "s8.title": {
+      "type": "label",
+      "templates": [
+        "TK_01",
+        "TK_03"
+      ],
+      "words": {
+        "min": 2,
+        "max": 6
+      },
+      "example": "What the market pays, by level"
+    },
+    "s9.body": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01",
+        "TK_03"
+      ],
+      "words": {
+        "min": 21,
+        "max": 22
+      },
+      "example": "Three shifts worth knowing before a hiring-manager conversation. Each one is a place where last year's assumptions are now slightly wrong."
+    },
+    "s9.title": {
+      "type": "label",
+      "templates": [
+        "TK_01",
+        "TK_03"
+      ],
+      "words": {
+        "min": 3,
+        "max": 7
+      },
+      "example": "Three people you will actually talk to"
+    },
+    "sA.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 29,
+        "max": 29
+      },
+      "example": "Lead the meeting with these. They reframe the conversation from \"find me a unicorn\" to \"let's make smart trade-offs\", which is the only frame in which this sear"
+    },
+    "sA.title": {
+      "type": "label",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 5,
+        "max": 5
+      },
+      "example": "Market reality, in four numbers"
+    },
+    "sB.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 43,
+        "max": 43
+      },
+      "example": "Salary aggregators disagree because they measure different things: base only against total pay, national against metro, all-industry against sector. Show the hi"
+    },
+    "sB.title": {
+      "type": "label",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "Compensation reality"
+    },
+    "sC.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 30,
+        "max": 30
+      },
+      "example": "Two competitor situations are creating movement right now, and one internal fact makes the pitch unusually strong. All three expire, which is the argument for m"
+    },
+    "sC.title": {
+      "type": "label",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 6,
+        "max": 6
+      },
+      "example": "Why this quarter is the window"
+    },
+    "sD.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 34,
+        "max": 34
+      },
+      "example": "Send this in advance. The order matters: market data first buys you the credibility to renegotiate requirements in the middle, and the SLA lands last because by"
+    },
+    "sD.title": {
+      "type": "label",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "Forty-five minute agenda"
+    },
+    "sE.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 33,
+        "max": 33
+      },
+      "example": "Each question exists to extract one thing you cannot source without. The note says what it extracts and what a bad answer tells you: a vague answer here reliabl"
+    },
+    "sE.title": {
+      "type": "label",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 5,
+        "max": 5
+      },
+      "example": "Ask these, in this order"
+    },
+    "sF.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 36,
+        "max": 36
+      },
+      "example": "Each documented requirement, checked against current market conditions. Bring this table to the meeting already filled in with your recommendation: it is much e"
+    },
+    "sF.title": {
+      "type": "label",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "Requirement calibration"
+    },
+    "sG.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 39,
+        "max": 39
+      },
+      "example": "Every search optimises two of three. Make the choice explicit and record it, then commit both sides in writing. Send this as the meeting recap the same day: a s"
+    },
+    "sG.title": {
+      "type": "label",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 5,
+        "max": 5
+      },
+      "example": "Trade-off lock and mutual SLA"
+    },
+    "sc.label": {
+      "type": "label",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 5,
+        "max": 5
+      },
+      "example": "Spot-check 1 · language fundamentals"
+    },
+    "sc.question": {
+      "type": "prose_short",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 8,
+        "max": 8
+      },
+      "example": "\"What is specific impulse, and what does it tell you?\""
+    },
+    "sc.tests": {
+      "type": "prose_long",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 43,
+        "max": 43
+      },
+      "example": "What it actually tests Whether they know the language deeply or use it by pattern. The word means three different things depending on where it appears, so a pre"
+    },
+    "sc.time": {
+      "type": "duration",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "3 min"
+    },
+    "score.rule.1": {
+      "type": "prose_short",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 17,
+        "max": 17
+      },
+      "example": "Two at Good or better → advance. That is the bar. Do not hold out for three."
+    },
+    "score.rule.2": {
+      "type": "prose_short",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 18,
+        "max": 18
+      },
+      "example": "One Great or Exceptional anywhere → flag it as a strong-signal note so the technical interviewer starts harder."
+    },
+    "score.rule.3": {
+      "type": "prose_short",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 24,
+        "max": 24
+      },
+      "example": "Two Bad answers → decline, regardless of how good the résumé is. This is the one place you can say no on technical grounds."
+    },
+    "sell.script": {
+      "type": "prose_long",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 127,
+        "max": 127
+      },
+      "example": "\"Quick picture of what you'd be walking into. A small propulsion team designing, building, and hot-firing our own hardware, iterating fast between tests instead"
+    },
+    "seq.day": {
+      "type": "count",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "0"
+    },
+    "seq.goal": {
+      "type": "prose_short",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 9,
+        "max": 9
+      },
+      "example": "Open a loop only this domain's problem can close"
+    },
+    "seq.psych": {
+      "type": "prose_short",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 4,
+        "max": 4
+      },
+      "example": "Curiosity gap + identity"
+    },
+    "seq.touch": {
+      "type": "prose_short",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 4,
+        "max": 4
+      },
+      "example": "Email 1 · Origin"
+    },
+    "skill.bar": {
+      "type": "chip",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "Required",
+      "review": false,
+      "note": "controlled vocabulary: Required / Preferred / Nice-to-have. Fixed vocabulary, case-insensitive match: Required / Preferred / Nice-to-have.",
+      "human_reviewed": true,
+      "allowed": [
+        "Required",
+        "Preferred",
+        "Nice-to-have"
+      ]
+    },
+    "skill.name": {
+      "type": "label",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "Propulsion system design"
+    },
+    "skill.plain": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 16,
+        "max": 16
+      },
+      "example": "Designing a liquid, solid, hybrid, or electric propulsion system, from requirements to working hardware."
+    },
+    "skill.verify": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 7,
+        "max": 7
+      },
+      "example": "Technical 1 · live coding, 60 min"
+    },
+    "sla.item": {
+      "type": "prose_short",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 4,
+        "max": 4
+      },
+      "example": "Qualified submittals per week"
+    },
+    "sla.when": {
+      "type": "count_range",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "3–5"
+    },
+    "sms.1": {
+      "type": "prose_long",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 29,
+        "max": 29
+      },
+      "example": "\"Hi [[FirstName]], [Name] here. Thanks for the reply. I can hold Thu 10am or Fri 2pm for twenty minutes with [HM first name]. Either work? I'll send the invite."
+    },
+    "sms.2": {
+      "type": "prose_long",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 27,
+        "max": 27
+      },
+      "example": "\"[[FirstName]], looking forward to 2pm today with [HM first name]. Video link is in the invite. Anything you want covered, tell me now and I'll prime him.\""
+    },
+    "soft.flag": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 6,
+        "max": 6
+      },
+      "example": "Only describes tickets somebody else scoped."
+    },
+    "soft.listen": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 13,
+        "max": 13
+      },
+      "example": "\"I owned X from bring-up through delivery.\" Names the failure they personally caught."
+    },
+    "soft.name": {
+      "type": "label",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "End-to-end ownership"
+    },
+    "soft.why": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 11,
+        "max": 11
+      },
+      "example": "Small team, wide blast radius. Requirements through design, test, and operations."
+    },
+    "src.high": {
+      "type": "currency",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "$231K"
+    },
+    "src.low": {
+      "type": "currency",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "$154K"
+    },
+    "src.mid": {
+      "type": "currency",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "$187K"
+    },
+    "src.name": {
+      "type": "label",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 7,
+        "max": 7
+      },
+      "example": "Sector total pay · this title, n=90"
+    },
+    "src.read": {
+      "type": "prose_short",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 6,
+        "max": 6
+      },
+      "example": "Best proxy for sector total-comp expectations"
+    },
+    "stage.basis": {
+      "type": "label",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "quality filter",
+      "review": false,
+      "note": "a short methodology tag, 1-3 words.",
+      "human_reviewed": true
+    },
+    "stage.filter": {
+      "type": "label",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "baseline",
+      "review": false,
+      "note": "a short filter-name tag, 1-2 words.",
+      "human_reviewed": true
+    },
+    "stage.job": {
+      "type": "prose_short",
+      "templates": [
+        "TK_06"
+      ],
+      "words": {
+        "min": 8,
+        "max": 8
+      },
+      "example": "Gate, motivation, logistics. Kill fast or advance fast."
+    },
+    "stage.label": {
+      "type": "label",
+      "templates": [
+        "TK_00",
+        "TK_03",
+        "TK_04"
+      ],
+      "words": {
+        "min": 1,
+        "max": 3
+      },
+      "example": "US software developers"
+    },
+    "stage.meta": {
+      "type": "prose_short",
+      "templates": [
+        "TK_06"
+      ],
+      "words": {
+        "min": 4,
+        "max": 4
+      },
+      "example": "30 min · recruiter"
+    },
+    "stage.n": {
+      "type": "count",
+      "templates": [
+        "TK_00",
+        "TK_03",
+        "TK_04"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "~1.7M",
+      "bar_paired": true
+    },
+    "stage.name": {
+      "type": "label",
+      "templates": [
+        "TK_06"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "Recruiter screen"
+    },
+    "stage.rate": {
+      "type": "empty_cell",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "-"
+    },
+    "stat.claim": {
+      "type": "prose_short",
+      "templates": [
+        "TK_00"
+      ],
+      "words": {
+        "min": 16,
+        "max": 16
+      },
+      "example": "Nineteen days longer than the org's software average. Every week of scope debate costs a finalist."
+    },
+    "stat.detail": {
+      "type": "prose_short",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 13,
+        "max": 13
+      },
+      "example": "Majority experience across the sector's largest employers. This is not a you problem."
+    },
+    "stat.label": {
+      "type": "label",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 5,
+        "max": 5
+      },
+      "example": "Companies struggling to hire engineers"
+    },
+    "stat.pill": {
+      "type": "pill",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "Sourced"
+    },
+    "stat.value": {
+      "type": "metric",
+      "templates": [
+        "TK_00",
+        "TK_07"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "76%",
+      "note": "The single big pull-stat number, same device as pullstat.value. Unit varies genuinely by artifact: TK_00 carries a bare count (\"58\", median days to fill), TK_07 a percent (\"76%\"). One slot name, multiple legitimate formats, so it is type metric (numeric core required, unit suffix open), not percent. extract_slot_schema.py infers percent because it types the single longest sample (\"76%\") and never sees the count; corrected by hand per that script's docstring, and it cannot emit metric anyway."
+    },
+    "step.body": {
+      "type": "prose_short",
+      "templates": [
+        "TK_06"
+      ],
+      "words": {
+        "min": 12,
+        "max": 12
+      },
+      "example": "No score, no vote. An interviewer who hasn't written cannot speak first."
+    },
+    "step.title": {
+      "type": "label",
+      "templates": [
+        "TK_06"
+      ],
+      "words": {
+        "min": 5,
+        "max": 5
+      },
+      "example": "Scores submitted, written, in advance"
+    },
+    "string.name": {
+      "type": "label",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 5,
+        "max": 5
+      },
+      "example": "A · Market sizing (broad)"
+    },
+    "string.note": {
+      "type": "prose_short",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 14,
+        "max": 14
+      },
+      "example": "Use for: pool sizing and saved-search alerts. Not for outreach: precision is too low."
+    },
+    "string.query": {
+      "type": "prose_long",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 26,
+        "max": 26
+      },
+      "example": "(\"Propulsion Engineer\" OR \"Propulsion Systems Engineer\" OR \"Rocket Propulsion Engineer\" OR \"Liquid Propulsion Engineer\" OR \"Electric Propulsion Engineer\" OR \"Pr"
+    },
+    "string.yield": {
+      "type": "prose_short",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 5,
+        "max": 5
+      },
+      "example": "25–40K national · 3–5K in-state"
+    },
+    "structural.1": {
+      "type": "prose_long",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 41,
+        "max": 41
+      },
+      "example": "76% of aerospace and defense companies report difficulty hiring engineering talent, sector attrition runs 15% annually, and 29% of the workforce is 55 or older."
+    },
+    "term.name": {
+      "type": "label",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "Specific impulse (Isp)"
+    },
+    "term.plain": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 12,
+        "max": 12
+      },
+      "example": "Software that lives inside a machine's body, not in a data centre."
+    },
+    "term.why": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 20,
+        "max": 20
+      },
+      "example": "Tight memory, real hardware, real physics. A crash has physical consequences, which is why these engineers are cautious by temperament."
+    },
+    "test.a": {
+      "type": "prose_short",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 8,
+        "max": 8
+      },
+      "example": "Curiosity: \"the only wrench that reaches 22,000 miles\""
+    },
+    "test.b": {
+      "type": "prose_short",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 8,
+        "max": 8
+      },
+      "example": "Identity frame: speaks to professional identity"
+    },
+    "test.metric": {
+      "type": "label",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "Reply rate",
+      "review": false,
+      "note": "the metric name a test measures, e.g. \"Reply rate\".",
+      "human_reviewed": true
+    },
+    "test.n": {
+      "type": "count",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "60 / arm",
+      "review": false,
+      "note": "a per-arm sample size, e.g. \"60 / arm\".",
+      "human_reviewed": true
+    },
+    "test.name": {
+      "type": "label",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "First-touch subject line"
+    },
+    "tier.body": {
+      "type": "prose_short",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 17,
+        "max": 17
+      },
+      "example": "Highest culture match. Poach on ownership scope and equity stage. Never on pace, they already have pace."
+    },
+    "tier.elements": {
+      "type": "prose_short",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 10,
+        "max": 10
+      },
+      "example": "[[FirstName]] + [[CurrentCompany]] only. Expect benchmark reply rates, no better."
+    },
+    "tier.name": {
+      "type": "label",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "Basic"
+    },
+    "tier.note": {
+      "type": "prose_short",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 23,
+        "max": 23
+      },
+      "example": "One CTA per message. One question per message. Real name sign-off: never \"the talent team\". At least one verifiable proof point per email."
+    },
+    "tier.target": {
+      "type": "label",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "volume strings",
+      "review": false,
+      "note": "a short strategy tag, 2-3 words.",
+      "human_reviewed": true
+    },
+    "tier.title": {
+      "type": "label",
+      "templates": [
+        "TK_03"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "Founder-mode hardtech"
+    },
+    "timing.label": {
+      "type": "label",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 2,
+        "max": 2
+      },
+      "example": "Send windows"
+    },
+    "timing.rule": {
+      "type": "prose_short",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 5,
+        "max": 5
+      },
+      "example": "Tuesday to Thursday, 7:00–9:30am candidate-local."
+    },
+    "timing.why": {
+      "type": "prose_short",
+      "templates": [
+        "TK_04"
+      ],
+      "words": {
+        "min": 14,
+        "max": 14
+      },
+      "example": "Engineers clear personal email before standup. Avoid Friday afternoon entirely and Monday before 10."
+    },
+    "title.term": {
+      "type": "label",
+      "templates": [
+        "TK_01"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "Propulsion Engineer"
+    },
+    "to.choice": {
+      "type": "chip",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 3,
+        "max": 3
+      },
+      "example": "Speed + Bar",
+      "review": false,
+      "note": "the two-of-three trade-off pick, e.g. \"Speed + Bar\". Open chip: reused across templates for different axes, so no single fixed vocabulary applies. check_fill.py checks it is short (<=3 words), not against a list.",
+      "human_reviewed": true
+    },
+    "to.consequence": {
+      "type": "prose_short",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 18,
+        "max": 18
+      },
+      "example": "Comp lands at the 75th percentile or above. Budget approval has to happen up front, not at offer."
+    },
+    "to.selected": {
+      "type": "prose_short",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 12,
+        "max": 12
+      },
+      "example": "Locked live in the intake meeting; recorded in the same-day recap"
+    },
+    "voice.label": {
+      "type": "label",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 7,
+        "max": 7
+      },
+      "example": "Voicemail · day 16+ · 20 seconds"
+    },
+    "voice.note": {
+      "type": "prose_long",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 30,
+        "max": 30
+      },
+      "example": "\"A two-word text saves us both the dance\" is the line that gets responses. It gives them a cheap exit, which paradoxically produces more calls than a hard ask d"
+    },
+    "voice.script": {
+      "type": "prose_long",
+      "templates": [
+        "TK_05"
+      ],
+      "words": {
+        "min": 58,
+        "max": 58
+      },
+      "example": "\"Hi [[FirstName]], this is [Name]. I've sent a couple of notes about our propulsion team. Short version: we're mid-qualification on a new stage, the seat is sti"
+    },
+    "window.body": {
+      "type": "prose_long",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 38,
+        "max": 38
+      },
+      "example": "A major competitor is reported to be preparing a liquidity event. Lockup psychology cuts both ways: some engineers hold for the payout, others bank the narrativ"
+    },
+    "window.label": {
+      "type": "label",
+      "templates": [
+        "TK_07"
+      ],
+      "words": {
+        "min": 4,
+        "max": 4
+      },
+      "example": "Window · liquidity event"
+    },
+    "wrap.item": {
+      "type": "prose_short",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 14,
+        "max": 14
+      },
+      "example": "Spot-check grades recorded, with their actual phrases quoted even where you didn't follow them."
+    }
+  },
+  "repeats": {
+    "agenda": {
+      "count": "4-8",
+      "templates": [
+        "TK_07"
+      ]
+    },
+    "annotations": {
+      "count": "2-4",
+      "templates": [
+        "TK_00",
+        "TK_02"
+      ]
+    },
+    "banned": {
+      "count": "6-16",
+      "templates": [
+        "TK_05"
+      ]
+    },
+    "bars": {
+      "count": "4-8",
+      "templates": [
+        "TK_00"
+      ]
+    },
+    "call.branches": {
+      "count": "2-5",
+      "templates": [
+        "TK_05"
+      ]
+    },
+    "channels": {
+      "count": "4-8",
+      "templates": [
+        "TK_04"
+      ]
+    },
+    "cheatsheet": {
+      "count": "3-8",
+      "templates": [
+        "TK_01"
+      ]
+    },
+    "collab.nodes": {
+      "count": "4-6",
+      "templates": [
+        "TK_01"
+      ]
+    },
+    "comp.levels": {
+      "count": "3-6",
+      "templates": [
+        "TK_03"
+      ]
+    },
+    "comp.rows": {
+      "count": "2-4",
+      "templates": [
+        "TK_00",
+        "TK_02",
+        "TK_07"
+      ]
+    },
+    "comp.sources": {
+      "count": "3-6",
+      "templates": [
+        "TK_07"
+      ]
+    },
+    "cover.audience": {
+      "count": "3-5",
+      "templates": [
+        "TK_01"
+      ]
+    },
+    "cover.decisions": {
+      "count": "3-5",
+      "templates": [
+        "TK_07"
+      ]
+    },
+    "cover.metrics": {
+      "count": "4-6",
+      "templates": [
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_06",
+        "TK_08"
+      ]
+    },
+    "criteria": {
+      "count": "4-8",
+      "templates": [
+        "TK_08"
+      ]
+    },
+    "debrief.steps": {
+      "count": "3-6",
+      "templates": [
+        "TK_06"
+      ]
+    },
+    "demand.rows": {
+      "count": "3-6",
+      "templates": [
+        "TK_03"
+      ]
+    },
+    "dossiers": {
+      "count": "3-6",
+      "templates": [
+        "TK_03"
+      ]
+    },
+    "e1.annotations": {
+      "count": "3-5",
+      "templates": [
+        "TK_05"
+      ]
+    },
+    "emails": {
+      "count": "2-5",
+      "templates": [
+        "TK_05"
+      ]
+    },
+    "fieldnotes": {
+      "count": "2-4",
+      "templates": [
+        "TK_01"
+      ]
+    },
+    "funnel.stages": {
+      "count": "4-7",
+      "templates": [
+        "TK_00",
+        "TK_03",
+        "TK_04"
+      ]
+    },
+    "glossary": {
+      "count": "8-16",
+      "templates": [
+        "TK_01"
+      ]
+    },
+    "heat.rows": {
+      "count": "4-8",
+      "templates": [
+        "TK_06"
+      ]
+    },
+    "hubs": {
+      "count": "4-8",
+      "templates": [
+        "TK_00",
+        "TK_03"
+      ]
+    },
+    "intake.questions": {
+      "count": "6-12",
+      "templates": [
+        "TK_07"
+      ]
+    },
+    "jd.requirements": {
+      "count": "3-6",
+      "templates": [
+        "TK_02"
+      ]
+    },
+    "jd.responsibilities": {
+      "count": "3-6",
+      "templates": [
+        "TK_02"
+      ]
+    },
+    "kw.exclude": {
+      "count": "4-10",
+      "templates": [
+        "TK_01"
+      ]
+    },
+    "kw.primary": {
+      "count": "5-12",
+      "templates": [
+        "TK_01"
+      ]
+    },
+    "kw.secondary": {
+      "count": "5-16",
+      "templates": [
+        "TK_01"
+      ]
+    },
+    "kw.titles": {
+      "count": "4-12",
+      "templates": [
+        "TK_01"
+      ]
+    },
+    "ledger.rows": {
+      "count": "3-8",
+      "templates": [
+        "TK_02"
+      ]
+    },
+    "linkedin": {
+      "count": "2",
+      "templates": [
+        "TK_05"
+      ]
+    },
+    "logistics": {
+      "count": "3-7",
+      "templates": [
+        "TK_08"
+      ]
+    },
+    "loop.stages": {
+      "count": "3-6",
+      "templates": [
+        "TK_06"
+      ]
+    },
+    "market.stats": {
+      "count": "3-6",
+      "templates": [
+        "TK_07"
+      ]
+    },
+    "method.rows": {
+      "count": "4-7",
+      "templates": [
+        "TK_03"
+      ]
+    },
+    "motivation": {
+      "count": "3-6",
+      "templates": [
+        "TK_08"
+      ]
+    },
+    "peripheral": {
+      "count": "4-8",
+      "templates": [
+        "TK_03"
+      ]
+    },
+    "personas": {
+      "count": "2-4",
+      "templates": [
+        "TK_03"
+      ]
+    },
+    "quadrant.points": {
+      "count": "3-6",
+      "templates": [
+        "TK_00",
+        "TK_03"
+      ]
+    },
+    "questions": {
+      "count": "2-6",
+      "templates": [
+        "TK_06"
+      ]
+    },
+    "recommendations": {
+      "count": "3-5",
+      "templates": [
+        "TK_03"
+      ]
+    },
+    "requirements": {
+      "count": "4-10",
+      "templates": [
+        "TK_07"
+      ]
+    },
+    "responsibilities": {
+      "count": "4-8",
+      "templates": [
+        "TK_01"
+      ]
+    },
+    "runofshow": {
+      "count": "5-8",
+      "templates": [
+        "TK_08"
+      ]
+    },
+    "sc.bands": {
+      "count": "4-5",
+      "templates": [
+        "TK_08"
+      ]
+    },
+    "sequence": {
+      "count": "5-10",
+      "templates": [
+        "TK_05"
+      ]
+    },
+    "skills": {
+      "count": "5-10",
+      "templates": [
+        "TK_01"
+      ]
+    },
+    "sla.hm": {
+      "count": "3-6",
+      "templates": [
+        "TK_07"
+      ]
+    },
+    "sla.recruiter": {
+      "count": "3-6",
+      "templates": [
+        "TK_07"
+      ]
+    },
+    "soft.skills": {
+      "count": "4-7",
+      "templates": [
+        "TK_01"
+      ]
+    },
+    "spotchecks": {
+      "count": "2-5",
+      "templates": [
+        "TK_08"
+      ]
+    },
+    "stack.layers": {
+      "count": "4-7",
+      "templates": [
+        "TK_01"
+      ]
+    },
+    "story.prompts": {
+      "count": "2-4",
+      "templates": [
+        "TK_08"
+      ]
+    },
+    "strings": {
+      "count": "3-8",
+      "templates": [
+        "TK_04"
+      ]
+    },
+    "table.rows": {
+      "count": "3-10",
+      "templates": [
+        "TK_00"
+      ]
+    },
+    "tests": {
+      "count": "3-8",
+      "templates": [
+        "TK_04"
+      ]
+    },
+    "tier.notes": {
+      "count": "3-5",
+      "templates": [
+        "TK_03"
+      ]
+    },
+    "tiers": {
+      "count": "2-4",
+      "templates": [
+        "TK_05"
+      ]
+    },
+    "timeline.rows": {
+      "count": "3-7",
+      "templates": [
+        "TK_00",
+        "TK_04"
+      ]
+    },
+    "timing.cards": {
+      "count": "2-4",
+      "templates": [
+        "TK_04"
+      ]
+    },
+    "timing.windows": {
+      "count": "2-4",
+      "templates": [
+        "TK_07"
+      ]
+    },
+    "tradeoffs": {
+      "count": "3",
+      "templates": [
+        "TK_07"
+      ]
+    },
+    "voice.blocks": {
+      "count": "2-4",
+      "templates": [
+        "TK_05"
+      ]
+    },
+    "wrapup": {
+      "count": "3-6",
+      "templates": [
+        "TK_08"
+      ]
+    }
+  }
+}

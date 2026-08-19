@@ -1,0 +1,918 @@
+{
+ "template": "TK_03_Talent_Map.dc.html",
+ "version": "1.0",
+ "slots": {
+  "kit.mark": {
+   "type": "prose_short",
+   "words": {
+    "min": 4,
+    "max": 4
+   },
+   "example": "Talent Kit · 03"
+  },
+  "doc.agent": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 4
+   },
+   "example": "Agent · ATLAS"
+  },
+  "doc.date": {
+   "type": "prose_short",
+   "words": {
+    "min": 2,
+    "max": 8
+   },
+   "example": "Freshness Jul 2026 · 60-day refresh"
+  },
+  "doc.eyebrow": {
+   "type": "prose_short",
+   "words": {
+    "min": 5,
+    "max": 6
+   },
+   "example": "Artifact 03 · Market intelligence"
+  },
+  "doc.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 3
+   },
+   "example": "Propulsion Talent Map"
+  },
+  "role.title": {
+   "type": "label",
+   "words": {
+    "min": 4,
+    "max": 4
+   },
+   "example": "Propulsion Engineer, mid level"
+  },
+  "role.org": {
+   "type": "prose_short",
+   "words": {
+    "min": 6,
+    "max": 9
+   },
+   "example": "Connected-hardware builder · distributed hybrid · small propulsion team"
+  },
+  "doc.thesis": {
+   "type": "prose_long",
+   "words": {
+    "min": 24,
+    "max": 48
+   },
+   "example": "Where mid-career propulsion talent actually sits, who is bidding for it, what moves it, which adjacent industries hide it, and whether it will relocate. The poo"
+  },
+  "cover.provenance": {
+   "type": "prose_short",
+   "words": {
+    "min": 8,
+    "max": 8
+   },
+   "example": "Ratios hold · treat absolute counts as planning figures"
+  },
+  "s1.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 7
+   },
+   "example": "The constraint is mid-career reach, not headcount"
+  },
+  "s1.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 18,
+    "max": 85
+   },
+   "example": "About 68,000 aerospace engineers work nationally, but the mid-career, flight-proven propulsion subset is only a few thousand, and it clusters in a handful of me"
+  },
+  "pullstat.value": {
+   "type": "metric",
+   "words": {
+    "min": 1,
+    "max": 1
+   },
+   "example": "~2%"
+  },
+  "pullstat.label": {
+   "type": "label",
+   "words": {
+    "min": 9,
+    "max": 9
+   },
+   "example": "Of US aerospace engineers are engageable for this search"
+  },
+  "pullstat.claim": {
+   "type": "prose_short",
+   "words": {
+    "min": 21,
+    "max": 24
+   },
+   "example": "68,440 aerospace engineers become roughly 1,300 after four filters. Three of those four are choices you can still reopen with the hiring manager."
+  },
+  "pullstat.method": {
+   "type": "prose_short",
+   "words": {
+    "min": 4,
+    "max": 8
+   },
+   "example": "BLS-OES baseline × documented filters · see methodology"
+  },
+  "insight.1": {
+   "type": "prose_long",
+   "words": {
+    "min": 27,
+    "max": 50
+   },
+   "example": "Adjacent-industry engineers, gas-turbine, automotive powertrain, and motorsport, close the space-environment gap in months, not years. That reframe materially w"
+  },
+  "caution.1": {
+   "type": "prose_long",
+   "words": {
+    "min": 26,
+    "max": 52
+   },
+   "example": "Propulsion talent is concentrated in a few clusters, so most hires need relocation. A distributed posting will not change that: test-stand and hot-fire work is "
+  },
+  "gate.1": {
+   "type": "prose_long",
+   "words": {
+    "min": 16,
+    "max": 46
+   },
+   "example": "Work-authorization requirements, where a role has them, are a role constraint, not a sourcing filter. Ask the identical question of every candidate, in writing,"
+  },
+  "s2.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 7
+   },
+   "example": "From national supply to reachable target"
+  },
+  "s2.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 18,
+    "max": 46
+   },
+   "example": "Each stage applies one documented filter to the stage above it. The baseline is Sourced from BLS; every stage below it is an Estimate with a stated filter. Read"
+  },
+  "s3.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 7
+   },
+   "example": "Who is bidding on the same engineers"
+  },
+  "s3.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 14,
+    "max": 44
+   },
+   "example": "Measured in competing open requisitions a qualified propulsion engineer would realistically weigh against yours, not total market headcount."
+  },
+  "structural.1": {
+   "type": "prose_long",
+   "words": {
+    "min": 41,
+    "max": 41
+   },
+   "example": "Aerospace-engineer employment is growing 6% through 2034, faster than average, and commercial space hiring has expanded across launch, constellations, and defen"
+  },
+  "s4.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 8
+   },
+   "example": "Where cadence meets flight heritage"
+  },
+  "s4.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 18,
+    "max": 42
+   },
+   "example": "Test and hot-fire cadence against flight heritage and propulsion-technology maturity. Source where your working style already exists: an engineer who has only k"
+  },
+  "s5.title": {
+   "type": "label",
+   "words": {
+    "min": 4,
+    "max": 8
+   },
+   "example": "Where propulsion talent sits, and whether it moves"
+  },
+  "s5.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 28,
+    "max": 38
+   },
+   "example": "Pool size tells you where talent sits. Response tells you whether it moves: historical relocation-acceptance for this role family, housing-cost delta, state-tax"
+  },
+  "relo.readout": {
+   "type": "prose_long",
+   "words": {
+    "min": 64,
+    "max": 64
+   },
+   "example": "Los Angeles is your anchor. It holds the largest renter-heavy pool, so many hires need no move at all, plus the deepest propulsion identity in the country. Seat"
+  },
+  "relo.seq.1": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 3
+   },
+   "example": "1 · Los Angeles"
+  },
+  "relo.seq.2": {
+   "type": "prose_short",
+   "words": {
+    "min": 4,
+    "max": 4
+   },
+   "example": "2 · Seattle"
+  },
+  "relo.seq.3": {
+   "type": "prose_short",
+   "words": {
+    "min": 4,
+    "max": 4
+   },
+   "example": "3 · Denver, Houston, DC"
+  },
+  "relo.seq.skip": {
+   "type": "prose_short",
+   "words": {
+    "min": 6,
+    "max": 6
+   },
+   "example": "Skip Huntsville / Melbourne"
+  },
+  "s6.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 6
+   },
+   "example": "Target archetypes and where they open up"
+  },
+  "s6.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 24,
+    "max": 34
+   },
+   "example": "These are archetypes, not named employers. A trigger here is a structural condition that raises willingness to move: vest cliffs, roadmap resets, or ceilings on"
+  },
+  "s7.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 8
+   },
+   "example": "Same engineering problem, different industry"
+  },
+  "s7.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 25,
+    "max": 37
+   },
+   "example": "The test is the engineering problem, not the title: high-energy fluid and thermal systems on flight-critical hardware. Competitors search by title, so these poo"
+  },
+  "s8.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 6
+   },
+   "example": "Propulsion pay, by level"
+  },
+  "s8.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 23,
+    "max": 34
+   },
+   "example": "Base working ranges modeled from BLS-OES 17-2011 (2024) percentiles, positioned market-mid for a small non-prime employer. Modeled ranges are illustrative, not "
+  },
+  "comp.positioning": {
+   "type": "prose_long",
+   "words": {
+    "min": 48,
+    "max": 48
+   },
+   "example": "A small non-prime wins on ownership, mission, and equity upside, not on cash. Launch primes and defense pay competitive base with stability appeal; adjacent ind"
+  },
+  "s9.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 7
+   },
+   "example": "Four people you will actually talk to"
+  },
+  "s9.body": {
+   "type": "prose_short",
+   "words": {
+    "min": 21,
+    "max": 22
+   },
+   "example": "Each persona needs a different opening line. The risk line is what to probe at the screen, not a reason to pass."
+  },
+  "s10.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 4
+   },
+   "example": "Three moves, in order"
+  },
+  "s10.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 16,
+    "max": 28
+   },
+   "example": "Everything above exists to justify these three. If you read nothing else, run them in this order."
+  },
+  "footer.left": {
+   "type": "prose_short",
+   "words": {
+    "min": 6,
+    "max": 7
+   },
+   "example": "Talent Kit 03 · Propulsion Talent Map"
+  },
+  "footer.right": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 6
+   },
+   "example": "Estimates flagged · verify before quoting · © 2026 Onepromptman"
+  },
+  "doc.prose0": {
+   "type": "prose_long",
+   "synthetic": true,
+   "path": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    6
+   ],
+   "example": "Hidden sections are excluded from print"
+  },
+  "doc.prose1": {
+   "type": "prose_long",
+   "synthetic": true,
+   "path": [
+    0,
+    1,
+    0,
+    1,
+    2,
+    3,
+    1,
+    0,
+    0,
+    0
+   ],
+   "example": "Flight heritage & tech maturity →"
+  },
+  "doc.prose2": {
+   "type": "prose_long",
+   "synthetic": true,
+   "path": [
+    0,
+    1,
+    0,
+    1,
+    2,
+    3,
+    1,
+    0,
+    0,
+    1,
+    1
+   ],
+   "example": "Test & hot-fire cadence → (iteration speed)"
+  },
+  "doc.prose3": {
+   "type": "prose_long",
+   "synthetic": true,
+   "path": [
+    0,
+    1,
+    0,
+    1,
+    2,
+    3,
+    1,
+    1,
+    0
+   ],
+   "example": "Marker = target archetype · ★ = Onepromptman"
+  },
+  "doc.prose4": {
+   "type": "prose_long",
+   "synthetic": true,
+   "path": [
+    0,
+    1,
+    0,
+    1,
+    2,
+    4,
+    2,
+    0
+   ],
+   "example": "How to read this, and what to do"
+  },
+  "doc.prose5": {
+   "type": "prose_long",
+   "synthetic": true,
+   "path": [
+    0,
+    1,
+    0,
+    1,
+    2,
+    4,
+    2,
+    2
+   ],
+   "example": "Historical relocation-acceptance from these metros runs low for this role family, so package alone rarely closes them. Source them for exceptional inbound only, and do not spend a sourcing block chasing relocations there"
+  },
+  "doc.prose6": {
+   "type": "prose_long",
+   "synthetic": true,
+   "path": [
+    0,
+    1,
+    0,
+    1,
+    2,
+    4,
+    2,
+    2,
+    0
+   ],
+   "example": "Huntsville and Melbourne look strong on pool and cost, and fail on propensity."
+  }
+ },
+ "repeats": {
+  "cover.metrics": {
+   "kind": "rows",
+   "count": "4-6",
+   "optional_block": false,
+   "row_slots": {
+    "metric.label": {
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 3
+     }
+    },
+    "metric.value": {
+     "type": "chip",
+     "words": {
+      "min": 1,
+      "max": 2
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 6
+  },
+  "funnel.stages": {
+   "kind": "rows",
+   "count": "4-7",
+   "optional_block": false,
+   "row_slots": {
+    "stage.label": {
+     "type": "label",
+     "words": {
+      "min": 1,
+      "max": 3
+     }
+    },
+    "stage.n": {
+     "type": "count",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "stage.filter": {
+     "type": "label",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    }
+   },
+   "bars_per_row": 1,
+   "bar_forms": [
+    "width"
+   ],
+   "example_rows": 5
+  },
+  "method.rows": {
+   "kind": "rows",
+   "count": "4-7",
+   "optional_block": false,
+   "row_slots": {
+    "method.stage": {
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 2
+     }
+    },
+    "method.basis": {
+     "type": "prose_short",
+     "words": {
+      "min": 5,
+      "max": 5
+     }
+    },
+    "method.pill": {
+     "type": "pill",
+     "words": {
+      "min": 4,
+      "max": 4
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 5
+  },
+  "demand.rows": {
+   "kind": "rows",
+   "count": "3-6",
+   "optional_block": false,
+   "row_slots": {
+    "demand.name": {
+     "type": "label",
+     "words": {
+      "min": 8,
+      "max": 8
+     }
+    },
+    "demand.reqs": {
+     "type": "count_range",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "demand.velocity": {
+     "type": "chip",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "demand.read": {
+     "type": "prose_short",
+     "words": {
+      "min": 13,
+      "max": 13
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 4
+  },
+  "quadrant.points": {
+   "kind": "points",
+   "count": "4-9",
+   "optional_block": false,
+   "label_slot": "point.label",
+   "example_rows": 7
+  },
+  "tier.notes": {
+   "kind": "rows",
+   "count": "3-5",
+   "optional_block": false,
+   "row_slots": {
+    "tier.title": {
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 2
+     }
+    },
+    "tier.body": {
+     "type": "prose_short",
+     "words": {
+      "min": 17,
+      "max": 17
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 4
+  },
+  "hubs": {
+   "kind": "rows",
+   "count": "4-8",
+   "optional_block": false,
+   "row_slots": {
+    "hub.name": {
+     "type": "label",
+     "words": {
+      "min": 4,
+      "max": 5
+     }
+    },
+    "hub.pool": {
+     "type": "count_range",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "hub.anchors": {
+     "type": "prose_short",
+     "words": {
+      "min": 8,
+      "max": 8
+     }
+    },
+    "hub.ownership": {
+     "type": "percent",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "hub.housing": {
+     "type": "empty_cell",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "hub.tax": {
+     "type": "empty_cell",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "hub.relo": {
+     "type": "prose_short",
+     "words": {
+      "min": 4,
+      "max": 4
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 7
+  },
+  "dossiers": {
+   "kind": "rows",
+   "count": "3-6",
+   "optional_block": false,
+   "row_slots": {
+    "dossier.name": {
+     "type": "label",
+     "words": {
+      "min": 3,
+      "max": 3
+     }
+    },
+    "dossier.flag": {
+     "type": "chip",
+     "words": {
+      "min": 2,
+      "max": 2
+     }
+    },
+    "dossier.trigger": {
+     "type": "prose_short",
+     "words": {
+      "min": 24,
+      "max": 24
+     }
+    },
+    "dossier.pool": {
+     "type": "prose_short",
+     "words": {
+      "min": 19,
+      "max": 19
+     }
+    },
+    "dossier.angle": {
+     "type": "prose_short",
+     "words": {
+      "min": 12,
+      "max": 12
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 4
+  },
+  "peripheral": {
+   "kind": "rows",
+   "count": "4-8",
+   "optional_block": false,
+   "row_slots": {
+    "per.name": {
+     "type": "label",
+     "words": {
+      "min": 5,
+      "max": 5
+     }
+    },
+    "per.why": {
+     "type": "prose_short",
+     "words": {
+      "min": 14,
+      "max": 14
+     }
+    },
+    "per.where": {
+     "type": "prose_short",
+     "words": {
+      "min": 7,
+      "max": 7
+     }
+    },
+    "per.transfer": {
+     "type": "chip",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "per.ramp": {
+     "type": "duration",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 7
+  },
+  "comp.levels": {
+   "kind": "rows",
+   "count": "3-6",
+   "optional_block": false,
+   "row_slots": {
+    "comp.level": {
+     "type": "prose_short",
+     "words": {
+      "min": 5,
+      "max": 5
+     }
+    },
+    "comp.base": {
+     "type": "currency_range",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "comp.total": {
+     "type": "empty_cell",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "comp.note": {
+     "type": "prose_short",
+     "words": {
+      "min": 7,
+      "max": 7
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 4
+  },
+  "personas": {
+   "kind": "rows",
+   "count": "2-4",
+   "optional_block": false,
+   "row_slots": {
+    "persona.name": {
+     "type": "label",
+     "words": {
+      "min": 4,
+      "max": 4
+     }
+    },
+    "persona.who": {
+     "type": "prose_short",
+     "words": {
+      "min": 11,
+      "max": 11
+     }
+    },
+    "persona.wants": {
+     "type": "prose_short",
+     "words": {
+      "min": 11,
+      "max": 11
+     }
+    },
+    "persona.message": {
+     "type": "prose_short",
+     "words": {
+      "min": 14,
+      "max": 14
+     }
+    },
+    "persona.risk": {
+     "type": "prose_short",
+     "words": {
+      "min": 10,
+      "max": 10
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 4
+  },
+  "recommendations": {
+   "kind": "rows",
+   "count": "3-5",
+   "optional_block": false,
+   "row_slots": {
+    "rec.n": {
+     "type": "count",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "rec.action": {
+     "type": "prose_short",
+     "words": {
+      "min": 9,
+      "max": 9
+     }
+    },
+    "rec.why": {
+     "type": "prose_long",
+     "words": {
+      "min": 29,
+      "max": 29
+     }
+    },
+    "rec.owner": {
+     "type": "label",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "rec.when": {
+     "type": "duration",
+     "words": {
+      "min": 2,
+      "max": 2
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 3
+  }
+ },
+ "standalone_bars": [],
+ "optionals": [],
+ "toggles": [
+  "method",
+  "dives",
+  "peripheral",
+  "personas",
+  "comp"
+ ],
+ "handoff_slots": [
+  "handoff.produces",
+  "handoff.consumers",
+  "handoff.calibration",
+  "handoff.blocked"
+ ]
+}

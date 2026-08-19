@@ -1,0 +1,15 @@
+/*
+ * BH · SEOUL — font layer
+ *
+ * Remote faces, matching the four families the token contract binds:
+ *   --bh-font-body    IBM Plex Sans
+ *   --bh-font-mono    IBM Plex Mono
+ *   --bh-font-noto    Noto Serif KR   (display, light + dark modes)
+ *   --bh-font-gowun   Gowun Batang    (display, dancheong mode)
+ *
+ * Imported by styles.css. Each Talent Kit template also links these faces
+ * directly in its <helmet>, so a template still renders correctly if this
+ * file is unreachable — the fallback stacks in tokens.css carry it.
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Serif+KR:wght@200..900&family=Gowun+Batang:wght@400;700&display=swap");

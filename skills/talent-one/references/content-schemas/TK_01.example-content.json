@@ -1,0 +1,454 @@
+{
+ "template": "TK_01_Educational_Brief.dc.html",
+ "slots": {
+  "kit.mark": "Talent Kit · 01",
+  "doc.agent": "Agent · SENSEI",
+  "doc.date": "Reads in ~12 min",
+  "doc.eyebrow": "Artifact 01 · Role literacy",
+  "doc.title": "Educational Brief",
+  "role.title": "Propulsion Engineer · Mid",
+  "role.org": "Connected-hardware company · small propulsion team, one hardware partner",
+  "doc.thesis": "Everything you need to talk credibly with a propulsion engineer or a hiring manager: what the role builds, where it sits in the vehicle, how to translate the jargon into plain English, and which words surface the right candidates. You will not have to look anything up mid-call.",
+  "cover.note": "Section 3 (the glossary) and Section 10 (the cheat sheet) are the two to keep open on a live call",
+  "s1.title": "What a propulsion engineer actually does all day",
+  "s1.body": "They design the engine, and the plumbing that feeds it, that turns stored energy into thrust, then they prove it on a test stand before it ever flies. Most of the week goes on buying margin against the ways an engine destroys itself: instability, burn-through, a starved feed line, an overpressure. The craft is judged on the worst run, not the best one, so caution here is a professional virtue, not timidity.",
+  "s1.body2": "Two things follow, and both change how you talk to candidates. First, they are precise: vague enthusiasm reads as not-serious. Second, they respect failure as a subject, so the fastest way to earn credibility is to ask what blew up on the stand, not what shipped.",
+  "northstar": "Design and prove the engine, and the feed system behind it, that turns stored energy into thrust, and keep it from tearing itself apart on the stand or in flight.",
+  "analogy": "It is a blowtorch the size of a car, run at the edge of blowing itself apart. The whole craft is keeping a deliberate, enormous fire stable and pointed the right way: push it too fast and it oscillates and shakes the hardware to pieces, run it too hot and the metal burns through, starve the line and it flames out. Every design choice buys margin against one of those failures.",
+  "s2.title": "Where the role sits in the vehicle, layer by layer",
+  "s2.body": "Use this to place any candidate in thirty seconds. Ask them which of these layers they have lived in. The marked layers are this role. One layer away is an adjacent hire worth pursuing; two layers away is a neighbouring discipline that only shares vocabulary.",
+  "insight.1": "The disciplines one step away, powertrain, gas turbines, motorsport, and high-pressure process fluids, often hold reachable propulsion talent the space sector alone will not surface. Sourcing only people whose title already reads \"propulsion\" is the fastest way to stall a search where the qualified pool is small and geographically concentrated.",
+  "s3.title": "Every term, translated for you",
+  "s3.body": "The middle column is what you say to a non-engineer. The right column is why the term matters, which is what lets you ask a real follow-up instead of nodding. Use one translation per call; do not lecture an engineer with their own vocabulary. Keep this glossary at definition level; never fill it with performance figures from your own program.",
+  "s4.title": "The real bar, and who checks each skill",
+  "s4.body": "You are not assessing any of this yourself. Your job is to know which stage in the loop owns each skill, so you can tell a hiring manager where a concern gets answered instead of guessing at it on the phone. Loop stages below are a common default; map them to your own.",
+  "s5.title": "What you can read on a call",
+  "s5.body": "You cannot judge their analysis. You can absolutely judge how they talk about failure, ownership, and the people who disagreed with them, which carries real predictive signal and the part hiring managers most often skip.",
+  "s6.title": "Where propulsion engineers come from",
+  "s6.body": "A degree is a proxy here, not a gate. The alternative pathways below are worth weighting alongside pedigree for hands-on propulsion work, and they are far less contested.",
+  "edu.academic": {
+   "html": "<span style=\"font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB\">Sourced</span><span style=\"font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)\">BLS-OOH / O*NET 2024, aerospace engineers</span>"
+  },
+  "edu.alt": {
+   "html": "<b>Adjacent-industry engineers.</b><span style=\"font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-warning);background:#FAF0E6;border:1px solid #E3CDB4\">Estimate</span><span style=\"font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)\">O*NET adjacency + cross-industry pools</span>"
+  },
+  "edu.hobby": "Builders and defense crossovers. High-power amateur rocketry, university propulsion or Formula teams, and military or defense propulsion technicians. Someone doing this on weekends is telling you exactly what they want to do all day.",
+  "s7.title": "Who a propulsion engineer works with",
+  "s7.body": "Use this to answer \"what's the team like?\" with specifics instead of adjectives. It doubles as a referral map: each of these functions knows people who could do this job.",
+  "s8.title": "The words that find the pool",
+  "s8.body": "The seed list the sourcing strings get built from. The market's dominant titles are not the one on your requisition, so search every synonym or you miss much of the pool.",
+  "kw.note": "Worth knowing: the market spreads this role across many titles (Propulsion Systems, Rocket Propulsion, Liquid or Electric Propulsion, Propulsion Test). Search all of them. Exclude marine and ship propulsion unless the fluid and thermal skills clearly transfer.",
+  "s9.title": "What shifted in this market lately",
+  "s9.body": "Three shifts worth knowing before a hiring-manager conversation. Each is a place where last year's assumptions are now slightly wrong.",
+  "s10.title": "The credibility cheat sheet",
+  "s10.body": "Left column is what to say. Right column is the version that costs you the candidate, and why. Specificity is the entire game with this audience.",
+  "footer.left": "Talent Kit 01 · Propulsion literacy",
+  "footer.right": "Plain-language by design · © 2026 Onepromptman",
+  "doc.prose0": "What that means day to day",
+  "doc.prose1": "Equivalent hands-on depth is explicitly fine. If someone has shipped and tested real propulsion hardware for years, the degree question is closed.",
+  "doc.prose2": "Alternative pathways that convert",
+  "doc.prose3": "Title synonyms: search all of these"
+ },
+ "repeats": {
+  "cover.audience": [
+   {
+    "audience.item": "You have never sourced propulsion or mechanical engineers before"
+   },
+   {
+    "audience.item": "You have to run the recruiter screen without an engineer in the room"
+   },
+   {
+    "audience.item": "You are about to write outreach and do not know the vocabulary"
+   },
+   {
+    "audience.item": "A hiring manager just used five terms you could not place"
+   }
+  ],
+  "responsibilities": [
+   {
+    "resp.name": "Design the engine and its parts",
+    "resp.detail": "Chamber, injector, nozzle, and cooling, or the thruster for electric propulsion. Turn mission requirements into hardware that makes the right thrust without failing."
+   },
+   {
+    "resp.name": "Own the feed system",
+    "resp.detail": "The tanks, valves, lines, and pumps that deliver propellant at the right pressure and flow. A large share of propulsion failures start here."
+   },
+   {
+    "resp.name": "Test it, for real, on a stand",
+    "resp.detail": "Hot-fire and thrust-stand campaigns: instrument the hardware, run it, reduce the data, and find where the model was wrong before flight."
+   },
+   {
+    "resp.name": "Model before cutting metal",
+    "resp.detail": "CFD, FEA, and thermal analysis in ANSYS, Siemens NX, or SolidWorks to predict flow, stress, and heat, then design margin against each."
+   },
+   {
+    "resp.name": "Work across disciplines",
+    "resp.detail": "Coordinate with structures, avionics, controls, materials, and manufacturing so the hardware, the analysis, and the build all agree."
+   }
+  ],
+  "stack.layers": [
+   {
+    "layer.name": "Vehicle / mission systems",
+    "layer.desc": "The whole rocket or spacecraft. A different team (systems, GNC) sets the thrust, mass, and mission requirements this role has to meet."
+   },
+   {
+    "layer.owned": {
+     "html": "<div style=\"padding:20px 18px;font-family:var(--bh-font-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--bh-surface)\">Propulsion system <span style=\"display:block;font-size:9.5px;letter-spacing:.14em;opacity:.8;margin-top:4px\">★ core of this role</span></div><div style=\"padding:20px 18px;background:#DCE6F2;font-size:14.5px;color:var(--bh-ink)\">The engine plus the feed system as one integrated subsystem: architecture, requirements, budgets, integration. This is where the hire spends most of their time.</div>"
+    }
+   },
+   {
+    "layer.name": "Engine / thruster design ★ must be at home here",
+    "layer.desc": "Chamber, injector, nozzle, and cooling for chemical engines, or the thruster and power processing for electric propulsion."
+   },
+   {
+    "layer.name": "Test & analysis ★ where hardware empathy shows",
+    "layer.desc": "Hot-fire and thrust-stand testing, plus CFD, FEA, and thermal models. Many of your strongest candidates come from a pure test or analysis title."
+   },
+   {
+    "layer.name": "Materials & manufacturing",
+    "layer.desc": "High-temperature alloys, additive manufacturing, machining. Built by materials and manufacturing engineers. Shares vocabulary, different discipline: not a substitute for this role."
+   }
+  ],
+  "glossary": [
+   {
+    "term.name": "Specific impulse (Isp)",
+    "term.plain": "The gas mileage of an engine: how much thrust you get for each unit of propellant burned.",
+    "term.why": "The headline efficiency number. Someone who talks Isp trade-offs unprompted is thinking like a propulsion engineer, not reciting."
+   },
+   {
+    "term.name": "Combustion instability",
+    "term.plain": "The fire inside the chamber starts oscillating and can shake an engine apart in milliseconds.",
+    "term.why": "The nightmare failure mode. Anyone who has chased it on a stand has scarce, real experience. Ask what they saw."
+   },
+   {
+    "term.name": "Hot fire (static fire)",
+    "term.plain": "Bolting the engine to the ground and running it for real, full thrust, going nowhere.",
+    "term.why": "Where theory meets reality. \"How many hot-fires have you been on the console for?\" is a high-signal question."
+   },
+   {
+    "term.name": "Thrust stand / test cell",
+    "term.plain": "The instrumented rig that holds the engine down and measures exactly what it does.",
+    "term.why": "Test experience is scarce and prized. It separates people who have designed engines from people who have only designed them on paper."
+   },
+   {
+    "term.name": "Feed system & valves",
+    "term.plain": "The plumbing, tanks, valves, lines, pumps, that delivers propellant at the right pressure and flow.",
+    "term.why": "A large share of propulsion failures are feed-system failures. This fluency transfers straight from oil, gas, and process industries."
+   },
+   {
+    "term.name": "Turbopump / turbomachinery",
+    "term.plain": "The high-speed pump that force-feeds propellant into the chamber under enormous pressure.",
+    "term.why": "One of the hardest parts to get right. Jet-engine and gas-turbine engineers transfer here directly."
+   },
+   {
+    "term.name": "Regenerative cooling",
+    "term.plain": "Running cold propellant through the chamber walls so they do not melt during the burn.",
+    "term.why": "The classic answer to burn-through. Knowing cooling schemes signals real chamber-design depth, not just analysis."
+   },
+   {
+    "term.name": "Nozzle & expansion ratio",
+    "term.plain": "The bell-shaped exit that turns hot gas into directed thrust, sized for the altitude it works at.",
+    "term.why": "A place where candidates reveal design intuition and the trade-offs they actually understand."
+   },
+   {
+    "term.name": "Propellant: liquid / solid / hybrid",
+    "term.plain": "The fuel and oxidizer the engine burns, stored as liquid, solid, or a mix of both.",
+    "term.why": "Tells you which sub-family a candidate lives in. Liquid and solid experience are close to different careers."
+   },
+   {
+    "term.name": "Electric propulsion (ion / Hall)",
+    "term.plain": "Pushing a spacecraft with electrically accelerated gas instead of combustion: tiny thrust, huge efficiency.",
+    "term.why": "A fast-growing specialty with different physics. Screen for which kind, chemical or electric, the requisition actually wants."
+   },
+   {
+    "term.name": "CFD / FEA analysis",
+    "term.plain": "Computer simulation of fluid flow (CFD) and structural stress (FEA) before any metal is cut.",
+    "term.why": "The daily design tool. Fluency in ANSYS, Siemens NX, or SolidWorks is table stakes for a design role."
+   },
+   {
+    "term.name": "Flight heritage & qualification",
+    "term.plain": "How proven a design is, from lab prototype to flown-in-space, and the testing that certifies it.",
+    "term.why": "\"Flight-proven\" is the scarce, expensive kind of experience. It separates R&D engineers from production ones."
+   }
+  ],
+  "skills": [
+   {
+    "skill.name": "Propulsion system design",
+    "skill.bar": "Required",
+    "skill.plain": "Designing a liquid, solid, hybrid, or electric propulsion system, from requirements to working hardware.",
+    "skill.verify": "Technical deep-dive · design review + portfolio"
+   },
+   {
+    "skill.name": "Thermofluids",
+    "skill.bar": "Required",
+    "skill.plain": "The core physics: thermodynamics, fluid dynamics, and heat transfer. The foundation everything else rests on.",
+    "skill.verify": "Technical screen · fundamentals"
+   },
+   {
+    "skill.name": "Combustion or EP physics",
+    "skill.bar": "Required",
+    "skill.plain": "Combustion and propellant chemistry for chemical engines, or the plasma physics behind electric propulsion.",
+    "skill.verify": "Technical deep-dive · sub-family depth"
+   },
+   {
+    "skill.name": "Propulsion test",
+    "skill.bar": "Required",
+    "skill.plain": "Hot-fire and thrust-stand work: instrumentation, running the test, and reducing the data afterward.",
+    "skill.verify": "Deep-dive + reference · console experience"
+   },
+   {
+    "skill.name": "CAD + analysis (CFD/FEA)",
+    "skill.bar": "Required",
+    "skill.plain": "Modeling flow, stress, and heat in ANSYS, Siemens NX, or SolidWorks before committing to hardware.",
+    "skill.verify": "Analysis exercise · take-home or live"
+   },
+   {
+    "skill.name": "Systems engineering on flight hardware",
+    "skill.bar": "Required",
+    "skill.plain": "Requirements, tolerances, and verification: making sure the built part meets the part on paper.",
+    "skill.verify": "Technical deep-dive · requirements walk-through"
+   },
+   {
+    "skill.name": "High-temp materials / additive",
+    "skill.bar": "Preferred",
+    "skill.plain": "High-temperature alloys and 3D-printed metal parts, increasingly common in engine hardware.",
+    "skill.verify": "Resume + reference · not a screen-out"
+   },
+   {
+    "skill.name": "Feed/valve design; MATLAB/Python",
+    "skill.bar": "Nice-to-have",
+    "skill.plain": "Valve and feed-line design, plus scripting for analysis and data reduction.",
+    "skill.verify": "You can ask this: \"which of these have you owned, and where?\""
+   }
+  ],
+  "soft.skills": [
+   {
+    "soft.name": "End-to-end ownership",
+    "soft.why": "Small team, wide blast radius: requirements through design, test, and the launch campaign.",
+    "soft.listen": "\"I owned that engine from analysis through hot-fire.\" Names the failure they personally caught.",
+    "soft.flag": "Only describes analysis someone else turned into hardware."
+   },
+   {
+    "soft.name": "Hardware empathy",
+    "soft.why": "The design meets metal, heat, and pressure. Blaming the test stand is not a debugging strategy.",
+    "soft.listen": "Stories with a stand, an instrument, a scrubbed test, a burned weekend in them.",
+    "soft.flag": "Has never left the simulation. \"The test team handles that.\""
+   },
+   {
+    "soft.name": "Productive paranoia",
+    "soft.why": "Margin and failure analysis are a temperament before they are a spreadsheet.",
+    "soft.listen": "Asks \"what happens when this fails?\" without being prompted.",
+    "soft.flag": "Happy-path thinking. Treats testing as a formality."
+   },
+   {
+    "soft.name": "Persuasion under disagreement",
+    "soft.why": "Design reviews on a small hardware team get contentious every week.",
+    "soft.listen": "Describes changing their own mind because the data said so.",
+    "soft.flag": "Every disagreement story ends with the other person being wrong."
+   },
+   {
+    "soft.name": "Teaching reflex",
+    "soft.why": "At mid level the hire is expected to raise the team's practices, not just their own output.",
+    "soft.listen": "Concrete examples of levelling up a junior engineer or a technician.",
+    "soft.flag": "Hoards context. \"It is faster if I just do it myself.\""
+   }
+  ],
+  "collab.nodes": [
+   {
+    "node.name": "Structures & mechanical",
+    "node.desc": "Designs the tanks, mounts, and structure the propulsion system bolts into. Constant back-and-forth on loads, interfaces, and packaging.",
+    "collab.nodes.prose0": "Owns high-temp alloys, additive parts, and how the hardware actually gets built. Drives what the design can and cannot do.",
+    "node.name2": "Materials & manufacturing"
+   },
+   {
+    "node.core": "Propulsion",
+    "collab.nodes.v1.prose0": "The integration point for anything that makes thrust. Touches nearly every discipline, which is why communication weight is as high as technical weight in this hire."
+   },
+   {
+    "node.name": "Avionics & controls (GNC)",
+    "node.desc": "Commands the engine and reads its sensors. Sets the thrust and timing the propulsion system has to deliver.",
+    "collab.nodes.prose0": "Runs the stand, the instrumentation, and the qualification campaign with this engineer on the console.",
+    "node.name2": "Test & quality"
+   }
+  ],
+  "kw.primary": [
+   {
+    "kw.term": "propulsion"
+   },
+   {
+    "kw.term": "rocket engine"
+   },
+   {
+    "kw.term": "liquid propulsion"
+   },
+   {
+    "kw.term": "electric propulsion"
+   },
+   {
+    "kw.term": "thermofluids"
+   },
+   {
+    "kw.term": "combustion"
+   },
+   {
+    "kw.term": "hot fire"
+   },
+   {
+    "kw.term": "thrust stand"
+   },
+   {
+    "kw.term": "feed system"
+   },
+   {
+    "kw.term": "CFD"
+   }
+  ],
+  "kw.secondary": [
+   {
+    "kw2.term": "Isp"
+   },
+   {
+    "kw2.term": "turbopump"
+   },
+   {
+    "kw2.term": "injector"
+   },
+   {
+    "kw2.term": "nozzle"
+   },
+   {
+    "kw2.term": "regenerative cooling"
+   },
+   {
+    "kw2.term": "ANSYS"
+   },
+   {
+    "kw2.term": "Siemens NX"
+   },
+   {
+    "kw2.term": "SolidWorks"
+   },
+   {
+    "kw2.term": "FEA"
+   },
+   {
+    "kw2.term": "cryogenic"
+   },
+   {
+    "kw2.term": "propellant"
+   },
+   {
+    "kw2.term": "Hall thruster"
+   },
+   {
+    "kw2.term": "valve design"
+   },
+   {
+    "kw2.term": "AS9100"
+   }
+  ],
+  "kw.titles": [
+   {
+    "title.term": "Propulsion Engineer"
+   },
+   {
+    "title.term": "Propulsion Systems Engineer"
+   },
+   {
+    "title.term": "Rocket Propulsion Engineer"
+   },
+   {
+    "title.term": "Liquid Propulsion Engineer"
+   },
+   {
+    "title.term": "Electric Propulsion Engineer"
+   },
+   {
+    "title.term": "Propulsion Design Engineer"
+   },
+   {
+    "title.term": "Propulsion Test Engineer"
+   },
+   {
+    "title.term": "Rocket Engine Engineer"
+   },
+   {
+    "title.term": "Propulsion Development Engineer"
+   }
+  ],
+  "kw.exclude": [
+   {
+    "ex.term": "sales role"
+   },
+   {
+    "ex.term": "technician only"
+   },
+   {
+    "ex.term": "marine propulsion"
+   },
+   {
+    "ex.term": "ship propulsion"
+   },
+   {
+    "ex.term": "intern-only history"
+   },
+   {
+    "ex.term": "coursework only"
+   },
+   {
+    "ex.term": "recruiter"
+   }
+  ],
+  "fieldnotes": [
+   {
+    "note.title": "Demand is outrunning the pool",
+    "note.body": {
+     "html": "<span style=\"font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-warning);background:#FAF0E6;border:1px solid #E3CDB4\">Estimate</span><span style=\"font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)\">directional, no single published source</span>"
+    }
+   },
+   {
+    "note.title": "New specialties are heating up",
+    "note.body": {
+     "html": "<span style=\"font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-warning);background:#FAF0E6;border:1px solid #E3CDB4\">Estimate</span><span style=\"font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)\">sub-field trend read, not measured</span>"
+    }
+   },
+   {
+    "note.title": "The scarcity is at mid level",
+    "note.body": {
+     "html": "<span style=\"font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB\">Sourced</span><span style=\"font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)\">BLS-OOH 2024-34</span>"
+    }
+   }
+  ],
+  "cheatsheet": [
+   {
+    "cheat.good": "\"You'd own a propulsion subsystem end to end, from analysis and design through hot-fire test.\"",
+    "cheat.bad": "\"You'd be building rockets!\" Maybe they build electric thrusters, or valves. Overclaiming the glamour reads as not having read the req."
+   },
+   {
+    "cheat.good": "\"The work is liquid-engine design in ANSYS and SolidWorks, plus thrust-stand testing on real hardware.\"",
+    "cheat.bad": "\"They use cutting-edge propulsion technology.\" Says you cannot describe the work, so the technical conversation ends here."
+   },
+   {
+    "cheat.good": "\"You'd run your own test campaigns, not hand a model to someone else to validate.\"",
+    "cheat.bad": "\"It's a high-impact role with lots of ownership.\" Abstract impact claims are the most ignored sentence in recruiting."
+   },
+   {
+    "cheat.good": "\"Small propulsion team with one hardware partner, so you see a part from analysis to fired hardware.\"",
+    "cheat.bad": "\"It's a lean team where you do a bit of everything.\" Reads as understaffed and disorganised. The specifics do the work instead."
+   },
+   {
+    "cheat.good": "\"Your combustion and thermofluids background transfers directly; the space environment is what you'd ramp on.\"",
+    "cheat.bad": "\"Great pay at a fast-growing startup.\" Every company says this, so it reads as concealment. Give the band and a real proof point."
+   }
+  ]
+ },
+ "standalone_bars": [],
+ "optionals": {},
+ "toggles": {},
+ "handoff": {
+  "produces": "primary_keywords · title_synonyms · cross_industry_pools · skill_transfer_notes · seniority_ladder · must_have_skills",
+  "consumers": "02 Job Description · 03 Talent Map · 06 Interview Plan · 08 Recruiter Screen",
+  "assumptions": "Recruiter is non-technical. No engineer at the recruiter screen. Degree is a proxy, not a gate. Most propulsion work is onsite by nature (test stands, hardware), even on a hybrid req.",
+  "blocked": "Nothing. Runs from the CALIBRATE handoff plus public data."
+ }
+}

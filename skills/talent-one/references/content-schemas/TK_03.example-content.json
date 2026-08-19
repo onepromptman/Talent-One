@@ -1,0 +1,484 @@
+{
+ "template": "TK_03_Talent_Map.dc.html",
+ "slots": {
+  "kit.mark": "Talent Kit · 03",
+  "doc.agent": "Agent · ATLAS",
+  "doc.date": "Freshness Jul 2026 · 60-day refresh",
+  "doc.eyebrow": "Artifact 03 · Market intelligence",
+  "doc.title": "Propulsion Talent Map",
+  "role.title": "Propulsion Engineer, mid level",
+  "role.org": "Connected-hardware builder · distributed hybrid · small propulsion team",
+  "doc.thesis": "Where mid-career propulsion talent actually sits, who is bidding for it, what moves it, which adjacent industries hide it, and whether it will relocate. The pool is small and clustered, so Section 05 decides your week.",
+  "cover.provenance": "Ratios hold · treat absolute counts as planning figures",
+  "s1.title": "The constraint is mid-career reach, not headcount",
+  "s1.body": "About 68,000 aerospace engineers work nationally, but the mid-career, flight-proven propulsion subset is only a few thousand, and it clusters in a handful of metros. Launch primes, funded new-space startups, and defense propulsion programs all chase the same people. You will not win this on base salary. You win on ownership scope, hot-fire cadence, and adjacent pools nobody else is fishing.",
+  "pullstat.value": "~2%",
+  "pullstat.label": "Of US aerospace engineers are engageable for this search",
+  "pullstat.claim": "68,440 aerospace engineers become roughly 1,300 after four filters. Three of those four are choices you can still reopen with the hiring manager.",
+  "pullstat.method": "BLS-OES baseline × documented filters · see methodology",
+  "insight.1": "Adjacent-industry engineers, gas-turbine, automotive powertrain, and motorsport, close the space-environment gap in months, not years. That reframe materially widens the reachable pool, and title-based searches rarely surface these people for a propulsion role.",
+  "caution.1": "Propulsion talent is concentrated in a few clusters, so most hires need relocation. A distributed posting will not change that: test-stand and hot-fire work is onsite by nature. Budget relocation now, or the search stalls on geography alone.",
+  "gate.1": "Work-authorization requirements, where a role has them, are a role constraint, not a sourcing filter. Ask the identical question of every candidate, in writing, as procedure. Never infer eligibility from a profile, a name, or a school.",
+  "s2.title": "From national supply to reachable target",
+  "s2.body": "Each stage applies one documented filter to the stage above it. The baseline is Sourced from BLS; every stage below it is an Estimate with a stated filter. Read the ratios, not the absolute counts.",
+  "s3.title": "Who is bidding on the same engineers",
+  "s3.body": "Measured in competing open requisitions a qualified propulsion engineer would realistically weigh against yours, not total market headcount.",
+  "structural.1": "Aerospace-engineer employment is growing 6% through 2034, faster than average, and commercial space hiring has expanded across launch, constellations, and defense. The shortage bites hardest at the flight-proven mid-career band, exactly the band you are hiring. Req counts are Estimates from aggregated public job-board queries; rerun at refresh. Sourced · BLS-OOH 2024-34",
+  "s4.title": "Where cadence meets flight heritage",
+  "s4.body": "Test and hot-fire cadence against flight heritage and propulsion-technology maturity. Source where your working style already exists: an engineer who has only known multi-year program cycles will read a fast-iterating team as chaos, not opportunity.",
+  "s5.title": "Where propulsion talent sits, and whether it moves",
+  "s5.body": "Pool size tells you where talent sits. Response tells you whether it moves: historical relocation-acceptance for this role family, housing-cost delta, state-tax delta, and industry identity. Propulsion talent is concentrated, so validate relocation response per metro before you spend a sourcing block. Pool figures are modeled from BLS-OES metro data; cost and tax deltas from public indices. Verify before quoting.",
+  "relo.readout": "Los Angeles is your anchor. It holds the largest renter-heavy pool, so many hires need no move at all, plus the deepest propulsion identity in the country. Seattle is the strongest relocation source next, a mobile, no-income-tax metro with an established space base. Both beat the rooted, high-ownership clusters on pool quality per dollar of relocation spend.",
+  "relo.seq.1": "1 · Los Angeles",
+  "relo.seq.2": "2 · Seattle",
+  "relo.seq.3": "3 · Denver, Houston, DC",
+  "relo.seq.skip": "Skip Huntsville / Melbourne",
+  "s6.title": "Target archetypes and where they open up",
+  "s6.body": "These are archetypes, not named employers. A trigger here is a structural condition that raises willingness to move: vest cliffs, roadmap resets, or ceilings on scope. Watch the pattern, not a dated event.",
+  "s7.title": "Same engineering problem, different industry",
+  "s7.body": "The test is the engineering problem, not the title: high-energy fluid and thermal systems on flight-critical hardware. Competitors search by title, so these pools stay under-fished. Quote each ramp gap honestly. Estimate · practitioner judgment.",
+  "s8.title": "Propulsion pay, by level",
+  "s8.body": "Base working ranges modeled from BLS-OES 17-2011 (2024) percentiles, positioned market-mid for a small non-prime employer. Modeled ranges are illustrative, not an approved band. Use these to qualify expectations at the screen, not to negotiate at offer.",
+  "comp.positioning": "A small non-prime wins on ownership, mission, and equity upside, not on cash. Launch primes and defense pay competitive base with stability appeal; adjacent industries sometimes pay more in pure cash. Position at the modeled mid band above, and qualify comp expectations at the recruiter screen, not at offer.",
+  "s9.title": "Four people you will actually talk to",
+  "s9.body": "Each persona needs a different opening line. The risk line is what to probe at the screen, not a reason to pass.",
+  "s10.title": "Three moves, in order",
+  "s10.body": "Everything above exists to justify these three. If you read nothing else, run them in this order.",
+  "footer.left": "Talent Kit 03 · Propulsion Talent Map",
+  "footer.right": "Estimates flagged · verify before quoting · © 2026 Onepromptman",
+  "doc.prose0": "Hidden sections are excluded from print",
+  "doc.prose1": "Flight heritage & tech maturity →",
+  "doc.prose2": "Test & hot-fire cadence → (iteration speed)",
+  "doc.prose3": "Marker = target archetype · ★ = Onepromptman",
+  "doc.prose4": "How to read this, and what to do",
+  "doc.prose5": "Historical relocation-acceptance from these metros runs low for this role family, so package alone rarely closes them. Source them for exceptional inbound only, and do not spend a sourcing block chasing relocations there.",
+  "doc.prose6": "Huntsville and Melbourne look strong on pool and cost, and fail on propensity."
+ },
+ "repeats": {
+  "cover.metrics": [
+   {
+    "metric.label": "Market classification",
+    "metric.value": "Tight"
+   },
+   {
+    "metric.label": "Flight-proven band (5+ yr)",
+    "metric.value": "Scarce"
+   },
+   {
+    "metric.label": "Sourcing difficulty",
+    "metric.value": "8 / 10"
+   },
+   {
+    "metric.label": "Reachable supply : demand",
+    "metric.value": "~1.5 : 1"
+   },
+   {
+    "metric.label": "Engageable pool",
+    "metric.value": "~1,300"
+   },
+   {
+    "metric.label": "Comp posture",
+    "metric.value": "P50–P60"
+   }
+  ],
+  "funnel.stages": [
+   {
+    "stage.label": "Aerospace engineers, national",
+    "stage.n": "68,440",
+    "stage.filter": "baseline",
+    "bar": 1.0
+   },
+   {
+    "stage.label": "Propulsion-focused",
+    "stage.n": "~13,700",
+    "stage.filter": "× 20%",
+    "bar": 0.2
+   },
+   {
+    "stage.label": "Flight/test proven",
+    "stage.n": "~4,800",
+    "stage.filter": "× 35%",
+    "bar": 0.07
+   },
+   {
+    "stage.label": "In reachable hubs",
+    "stage.n": "~2,600",
+    "stage.filter": "× 55%",
+    "bar": 0.038
+   },
+   {
+    "stage.label": "Engageable, small employer",
+    "stage.n": "~1,300",
+    "stage.filter": "× 50%",
+    "bar": 0.019
+   }
+  ],
+  "method.rows": [
+   {
+    "method.stage": "68,440 engineers",
+    "method.basis": "National employment, aerospace engineers 17-2011",
+    "method.pill": {
+     "pill": "Sourced",
+     "method": "BLS-OES 2024"
+    }
+   },
+   {
+    "method.stage": "~13,700 propulsion",
+    "method.basis": "Filtered to propulsion, thermofluids, combustion or electric-propulsion skills",
+    "method.pill": {
+     "pill": "Estimate"
+    }
+   },
+   {
+    "method.stage": "~4,800 mid-career",
+    "method.basis": "5+ yrs with flight-program or hot-fire test experience",
+    "method.pill": {
+     "pill": "Estimate"
+    }
+   },
+   {
+    "method.stage": "~2,600 reachable",
+    "method.basis": "In or reachable to concentrated propulsion clusters",
+    "method.pill": {
+     "pill": "Estimate"
+    }
+   },
+   {
+    "method.stage": "~1,300 engageable",
+    "method.basis": "Open to a small non-prime, minus the hard-passive segment",
+    "method.pill": {
+     "pill": "Estimate"
+    }
+   }
+  ],
+  "demand.rows": [
+   {
+    "demand.name": "New-space launch launch startups and established launch primes",
+    "demand.reqs": "600–900",
+    "demand.velocity": "High",
+    "demand.read": "Identical profile and your toughest poach. Compete on ownership scope, not prestige."
+   },
+   {
+    "demand.name": "Hypersonics & defense missile primes, defense propulsion R&D",
+    "demand.reqs": "400–600",
+    "demand.velocity": "High",
+    "demand.read": "Cleared programs, slower loops. They squeeze the same mid-career pool you need."
+   },
+   {
+    "demand.name": "Propulsion suppliers valves, feed systems, thrusters",
+    "demand.reqs": "250–400",
+    "demand.velocity": "Steady",
+    "demand.read": "Lower ceilings, deep component fluency. A realistic source pool, not a rival."
+   },
+   {
+    "demand.name": "Adjacent powertrain gas turbine, automotive, motorsport",
+    "demand.reqs": "500–800",
+    "demand.velocity": "Net exporter",
+    "demand.read": "Not bidding on your offers. Your best uncontested source pool: fish here."
+   }
+  ],
+  "quadrant.points": [
+   {
+    "label": "Onepromptman ★",
+    "x": 0.66,
+    "y": 0.46,
+    "size": 15,
+    "accent": true
+   },
+   {
+    "label": "New-space startups",
+    "x": 0.74,
+    "y": 0.3,
+    "size": 13
+   },
+   {
+    "label": "Established space",
+    "x": 0.52,
+    "y": 0.18,
+    "size": 14
+   },
+   {
+    "label": "Hypersonics & defense",
+    "x": 0.3,
+    "y": 0.22,
+    "size": 14
+   },
+   {
+    "label": "Propulsion suppliers",
+    "x": 0.44,
+    "y": 0.54,
+    "size": 11
+   },
+   {
+    "label": "Adjacent powertrain",
+    "x": 0.8,
+    "y": 0.76,
+    "size": 14
+   },
+   {
+    "label": "Legacy propulsion",
+    "x": 0.2,
+    "y": 0.66,
+    "size": 10
+   }
+  ],
+  "tier.notes": [
+   {
+    "tier.title": "Launch primes",
+    "tier.body": "Deep bench and comp-competitive. Poach only escape-velocity individuals who want subsystem ownership a large org will not give."
+   },
+   {
+    "tier.title": "New-space startups",
+    "tier.body": "Strongest match: mission-driven with an equity story. Sell smaller-team ownership and faster hot-fire cadence against big-company process."
+   },
+   {
+    "tier.title": "Propulsion suppliers",
+    "tier.body": "Valve, feed-system, and thruster specialists. Deep component fluency; sell the step up to full-system ownership and flight impact."
+   },
+   {
+    "tier.title": "Adjacent & legacy",
+    "tier.body": "Powertrain, gas-turbine, motorsport, defense. Real transfer, but screen for genuine space-cadence appetite and ramp on the vacuum environment."
+   }
+  ],
+  "hubs": [
+   {
+    "hub.name": "Los Angeles / Long Beach primary cluster",
+    "hub.pool": "2,000–2,800",
+    "hub.anchors": "Launch startups, established space, propulsion suppliers, defense",
+    "hub.ownership": "High",
+    "hub.housing": "-",
+    "hub.tax": "-",
+    "hub.relo": "Anchor · in-cluster"
+   },
+   {
+    "hub.name": "Seattle renter-heavy, mobile",
+    "hub.pool": "1,000–1,500",
+    "hub.anchors": "Constellation programs, launch, big-tech space, aerospace primes",
+    "hub.ownership": "Med-high",
+    "hub.housing": "−10–15%",
+    "hub.tax": "−13% (no income tax)",
+    "hub.relo": "Med-high"
+   },
+   {
+    "hub.name": "Denver / Boulder",
+    "hub.pool": "900–1,300",
+    "hub.anchors": "Smallsat manufacturers, launch startups, defense space",
+    "hub.ownership": "Med",
+    "hub.housing": "−25–30%",
+    "hub.tax": "−9%",
+    "hub.relo": "Med"
+   },
+   {
+    "hub.name": "Houston",
+    "hub.pool": "800–1,200",
+    "hub.anchors": "Human spaceflight programs, energy, defense propulsion",
+    "hub.ownership": "Med",
+    "hub.housing": "−45–50%",
+    "hub.tax": "−13% (no income tax)",
+    "hub.relo": "Med"
+   },
+   {
+    "hub.name": "Washington DC / N. Virginia",
+    "hub.pool": "700–1,000",
+    "hub.anchors": "Defense primes, missile propulsion, space startups, agencies",
+    "hub.ownership": "Med",
+    "hub.housing": "−15–20%",
+    "hub.tax": "−8%",
+    "hub.relo": "Med · defense"
+   },
+   {
+    "hub.name": "Huntsville, AL",
+    "hub.pool": "800–1,200",
+    "hub.anchors": "Rocket City primes, propulsion test, defense, agencies",
+    "hub.ownership": "Low",
+    "hub.housing": "−55–60%",
+    "hub.tax": "−8%",
+    "hub.relo": "Med-low · skip"
+   },
+   {
+    "hub.name": "Cape Canaveral / Melbourne",
+    "hub.pool": "600–900",
+    "hub.anchors": "Launch operators, prime space divisions, defense",
+    "hub.ownership": "Low",
+    "hub.housing": "−50–55%",
+    "hub.tax": "−13% (no income tax)",
+    "hub.relo": "Med-low · skip"
+   }
+  ],
+  "dossiers": [
+   {
+    "dossier.name": "Large launch primes",
+    "dossier.flag": "None negative",
+    "dossier.trigger": "Post-liquidity and vest-cliff windows recur at scaled players. Some engineers bank the win and chase the next early-equity story; others turn immovable.",
+    "dossier.pool": "The largest single concentration of flight-proven propulsion talent. Design and test orgs are the closest match to this role.",
+    "dossier.angle": "Own a full subsystem, not a slice, on a faster hot-fire loop."
+   },
+   {
+    "dossier.name": "Funded new-space startups",
+    "dossier.flag": "None negative",
+    "dossier.trigger": "Funding cycles and roadmap resets create openness 12 to 18 months post-raise. Mission-driven engineers will weigh a smaller-team ownership pitch.",
+    "dossier.pool": "Mission-motivated mid-career propulsion engineers, already receptive to an equity story and more ownership than a large org gives.",
+    "dossier.angle": "On a small team, the subsystem you design is the one that flies."
+   },
+   {
+    "dossier.name": "Propulsion suppliers",
+    "dossier.flag": "None negative",
+    "dossier.trigger": "Component and subsystem suppliers cap out on system-level scope. Strong engineers plateau and start looking for full-system ownership.",
+    "dossier.pool": "Deep valve, feed-system, and thruster specialists. Component fluency that is ready for a system-level step up.",
+    "dossier.angle": "Move from one component to owning a full propulsion subsystem."
+   },
+   {
+    "dossier.name": "Adjacent powertrain pools",
+    "dossier.flag": "None negative",
+    "dossier.trigger": "Gas-turbine, automotive, and motorsport engineers hit ceilings on mission and impact. A step into space propulsion is the pull.",
+    "dossier.pool": "Combustion and thermofluids depth from turbines, powertrain, and motorsport. Ramp is on the vacuum and space environment.",
+    "dossier.angle": "Your thermofluids and combustion skills transfer directly, plus a mission."
+   }
+  ],
+  "peripheral": [
+   {
+    "per.name": "Gas turbine & jet engine",
+    "per.why": "Combustion, thermofluids, and rotating machinery on flight-rated hardware. Missing only the space environment.",
+    "per.where": "Turbine and jet-engine makers, APU and turbomachinery suppliers",
+    "per.transfer": "High",
+    "per.ramp": "Weeks"
+   },
+   {
+    "per.name": "Automotive powertrain & turbo",
+    "per.why": "Combustion, heat transfer, and high-pressure fluid systems, plus a fast production cadence.",
+    "per.where": "Powertrain OEMs, turbocharger and IC-engine suppliers, EV thermal",
+    "per.transfer": "High",
+    "per.ramp": "1–2 months"
+   },
+   {
+    "per.name": "Motorsport powertrain",
+    "per.why": "Combustion and thermofluids under extreme performance, with a rapid-iteration, test-driven mindset.",
+    "per.where": "Racing series teams, motorsport engine builders, performance shops",
+    "per.transfer": "High",
+    "per.ramp": "Weeks"
+   },
+   {
+    "per.name": "Defense & missile propulsion",
+    "per.why": "Direct propulsion and energetics experience on flight-critical hardware. Ramp is on commercial cadence.",
+    "per.where": "Missile and defense propulsion units, tactical systems, R&D labs",
+    "per.transfer": "High",
+    "per.ramp": "1–2 months"
+   },
+   {
+    "per.name": "Chemical, process & oil-gas",
+    "per.why": "High-pressure fluid systems, feed lines, and valve design. Medium transfer, strong on plumbing.",
+    "per.where": "Process and chemical engineering, oil-and-gas systems, cryogenic plants",
+    "per.transfer": "Medium",
+    "per.ramp": "2–3 months"
+   },
+   {
+    "per.name": "Power generation & nuclear thermal",
+    "per.why": "Thermodynamics and heat transfer at scale. Medium transfer, learns the propulsion specifics.",
+    "per.where": "Power plants, nuclear thermal programs, turbine controls",
+    "per.transfer": "Medium",
+    "per.ramp": "2–3 months"
+   },
+   {
+    "per.name": "HVAC & cryogenics",
+    "per.why": "Thermofluids and cryogenic handling, directly relevant to cryogenic propellants. Medium transfer.",
+    "per.where": "Cryogenics firms, industrial gas, HVAC and refrigeration systems",
+    "per.transfer": "Medium",
+    "per.ramp": "2–3 months"
+   }
+  ],
+  "comp.levels": [
+   {
+    "comp.level": "Early-career · 0–3 yrs",
+    "comp.base": "$95–115K",
+    "comp.total": "-",
+    "comp.note": "Around BLS-OES P25 $105K, below the anchor"
+   },
+   {
+    "comp.level": "Mid · 4–8 yrs",
+    "comp.base": "$115–155K",
+    "comp.total": "~$135K mid",
+    "comp.note": "The anchor: BLS-OES P25–P75, aggregator blend"
+   },
+   {
+    "comp.level": "Senior · 8–12 yrs",
+    "comp.base": "$150–190K",
+    "comp.total": "P75 ~$174K",
+    "comp.note": "Toward BLS-OES P75 $174K; equity carries the delta"
+   },
+   {
+    "comp.level": "Staff+ · 12+ yrs",
+    "comp.base": "$185K+",
+    "comp.total": "P90 ~$206K",
+    "comp.note": "P90 $206K; contested by primes and adjacent industries"
+   }
+  ],
+  "personas": [
+   {
+    "persona.name": "The flight-proven builder",
+    "persona.who": "Mid engineer, 4 to 6 years on real flight or test programs.",
+    "persona.wants": "Ownership and shipping hardware, a full subsystem rather than a slice",
+    "persona.message": "\"Own a full propulsion subsystem here, not a slice of someone else's.\"",
+    "persona.risk": "May expect big-team resources. Probe for scrappiness on a small team."
+   },
+   {
+    "persona.name": "The adjacent-industry crossover",
+    "persona.who": "Powertrain, gas-turbine, or motorsport engineer eyeing a move into space.",
+    "persona.wants": "A mission and a real step up in impact over their current field",
+    "persona.message": "\"Your thermofluids and combustion transfer directly, and here they serve a mission.\"",
+    "persona.risk": "Ramp on the space and vacuum environment. Screen for adaptability."
+   },
+   {
+    "persona.name": "The test-and-analysis specialist",
+    "persona.who": "Propulsion test or CFD/thermal analyst who wants design ownership.",
+    "persona.wants": "Growth from analysis into hands-on design ownership",
+    "persona.message": "\"Design-and-test ownership here, not analysis handed off to someone else.\"",
+    "persona.risk": "Unproven hands-on design depth. Probe for real build experience."
+   },
+   {
+    "persona.name": "The early-career high-slope",
+    "persona.who": "Two to three years, strong fundamentals, steep growth trajectory.",
+    "persona.wants": "Learning speed and scope beyond the years of experience",
+    "persona.message": "\"Outsized responsibility early, on a team small enough to see everything.\"",
+    "persona.risk": "Mentorship load on a small team. Weigh the ramp cost honestly."
+   }
+  ],
+  "recommendations": [
+   {
+    "rec.n": "1",
+    "rec.action": "Open the local Los Angeles pipeline first",
+    "rec.why": "The largest renter-heavy pool with the deepest propulsion identity, so most hires need no move. No small non-prime is contesting these people, so yield is high for the least relocation spend.",
+    "rec.owner": "Sourcer",
+    "rec.when": "This week"
+   },
+   {
+    "rec.n": "2",
+    "rec.action": "Build the adjacent-industry crossover pipeline in parallel",
+    "rec.why": "Gas-turbine, automotive, and motorsport engineers materially widen the reachable pool; title-based searches rarely surface them. Quote the ramp gap to the hiring manager up front, do not hide it.",
+    "rec.owner": "Sourcer",
+    "rec.when": "Week 1, ongoing"
+   },
+   {
+    "rec.n": "3",
+    "rec.action": "Confirm the mid band and relocation budget with the hiring manager",
+    "rec.why": "Propulsion talent is concentrated, so relocation is unavoidable outside Los Angeles. Lock the mid band and a relocation package now, or the search stalls on geography no matter how good sourcing is.",
+    "rec.owner": "Recruiter",
+    "rec.when": "Before outreach"
+   }
+  ]
+ },
+ "standalone_bars": [],
+ "optionals": {},
+ "toggles": {
+  "method": true,
+  "dives": true,
+  "peripheral": true,
+  "personas": true,
+  "comp": true
+ },
+ "handoff": {
+  "produces": "market · funnel · comp_guidance · tier1_targets[] · peripheral[] · geo_sequence[] · personas[] · market_urgency · comp_messaging · pain_point_angles[] · cross_industry_pools[] · skill_transfer_notes[]",
+  "consumers": "02 Job Description · 04 Sourcing Strategy · 05 Outreach Campaign",
+  "calibration": "Keep propulsion design and thermofluids as must-have; combustion or electric-propulsion physics and hot-fire test stay calibrated; CAD/CFD and flight-systems flex. No eligibility gate: constraints are empty. Mirror the dominant title, Propulsion Engineer, in body copy.",
+  "blocked": "Nothing"
+ }
+}

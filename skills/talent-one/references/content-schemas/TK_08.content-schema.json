@@ -1,0 +1,499 @@
+{
+ "template": "TK_08_Recruiter_Screen.dc.html",
+ "version": "1.0",
+ "slots": {
+  "kit.mark": {
+   "type": "prose_short",
+   "words": {
+    "min": 4,
+    "max": 4
+   },
+   "example": "Talent Kit · 08"
+  },
+  "doc.agent": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 4
+   },
+   "example": "Agent · RECRUITER SCREEN"
+  },
+  "doc.date": {
+   "type": "prose_short",
+   "words": {
+    "min": 2,
+    "max": 8
+   },
+   "example": "30 min · run within 48 hours of first contact"
+  },
+  "doc.eyebrow": {
+   "type": "prose_short",
+   "words": {
+    "min": 5,
+    "max": 6
+   },
+   "example": "Artifact 08 · Run the call"
+  },
+  "doc.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 3
+   },
+   "example": "Recruiter Screen Guide"
+  },
+  "role.title": {
+   "type": "label",
+   "words": {
+    "min": 4,
+    "max": 4
+   },
+   "example": "Propulsion Engineer · Mid level"
+  },
+  "role.org": {
+   "type": "prose_short",
+   "words": {
+    "min": 6,
+    "max": 9
+   },
+   "example": "Onepromptman · non-technical recruiter, no engineer present"
+  },
+  "doc.thesis": {
+   "type": "prose_long",
+   "words": {
+    "min": 24,
+    "max": 48
+   },
+   "example": "A script you can run cold, including three calibrated propulsion spot-checks with graded answer keys. You do not need to understand propulsion: match what they "
+  },
+  "cover.note": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 13
+   },
+   "example": "Behind at the half? Cut logistics, protect the spot-checks"
+  },
+  "s1.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 7
+   },
+   "example": "Thirty minutes, fully scripted"
+  },
+  "s1.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 18,
+    "max": 85
+   },
+   "example": "Bold text is said out loud; everything else is for you. The first two minutes set the agenda, and that is what earns you permission to interrupt later, so do no"
+  },
+  "s2.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 7
+   },
+   "example": "Story and hardware walkthrough"
+  },
+  "s2.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 18,
+    "max": 46
+   },
+   "example": "Two prompts, then stay quiet. You are listening for whether they can name what they personally designed, analyzed, or tested, and whether they understand what b"
+  },
+  "s3.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 7
+   },
+   "example": "Propulsion spot-checks, with answer keys"
+  },
+  "s3.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 14,
+    "max": 44
+   },
+   "example": "Three questions with graded keys. Read the question exactly as written, then match what you hear against the five bands. You are not judging whether the answer "
+  },
+  "s3.body2": {
+   "type": "prose_long",
+   "words": {
+    "min": 36,
+    "max": 36
+   },
+   "example": "Write down their actual phrases even when you don't follow them. Those phrases are what the propulsion interviewer uses to calibrate their own session, and they"
+  },
+  "score.rule.1": {
+   "type": "prose_short",
+   "words": {
+    "min": 17,
+    "max": 17
+   },
+   "example": "Two at Good or better → advance. That is the bar; do not hold out for three strong answers."
+  },
+  "score.rule.2": {
+   "type": "prose_short",
+   "words": {
+    "min": 18,
+    "max": 18
+   },
+   "example": "One Great or Exceptional, the other two mixed → hold for hiring-manager review instead of forcing the call."
+  },
+  "score.rule.3": {
+   "type": "prose_short",
+   "words": {
+    "min": 24,
+    "max": 24
+   },
+   "example": "Two Bad answers → decline, regardless of the résumé. This is the one place you can say no on technical grounds."
+  },
+  "s4.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 8
+   },
+   "example": "Motivation and honest fit"
+  },
+  "s4.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 18,
+    "max": 42
+   },
+   "example": "Four questions. Surface every deal-breaker now rather than at offer stage, and capture their own words for the hiring manager: paraphrasing loses the thing that"
+  },
+  "s5.title": {
+   "type": "label",
+   "words": {
+    "min": 4,
+    "max": 8
+   },
+   "example": "Fields to capture, and how to ask"
+  },
+  "s5.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 28,
+    "max": 38
+   },
+   "example": "Ask these in one run so none of them feels loaded. Each has a private-notes field attached. If a field is empty at the end of the call, the screen isn't finishe"
+  },
+  "s6.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 6
+   },
+   "example": "The sixty-second pitch"
+  },
+  "s6.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 24,
+    "max": 34
+   },
+   "example": "Learn this, don't read it. The shape matters: facts first, then the constraint that makes the work interesting, then the honest cost, then a specific next step "
+  },
+  "sell.script": {
+   "type": "prose_long",
+   "words": {
+    "min": 127,
+    "max": 127
+   },
+   "html": true,
+   "example": "\"Quick picture of what you'd be walking into. A small propulsion team designing, building, and hot-firing our own hardware, iterating fast between tests instead"
+  },
+  "sell.date": {
+   "type": "label",
+   "example": "[Date]"
+  },
+  "caution.1": {
+   "type": "prose_long",
+   "words": {
+    "min": 26,
+    "max": 52
+   },
+   "example": "Before you score, check your own read. The affinity trap (over-crediting someone who reminds you of a past hire) and the halo or horn effect (letting one strong"
+  },
+  "s7.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 8
+   },
+   "example": "The call: advance, hold, or decline"
+  },
+  "s7.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 25,
+    "max": 37
+   },
+   "example": "Write it up the same day. Anything past four lines is you dodging the call, and the hiring manager reads only the first two anyway."
+  },
+  "insight.1": {
+   "type": "prose_long",
+   "words": {
+    "min": 27,
+    "max": 50
+   },
+   "example": "Beyond the two-Bad-answers rule, you are not qualified to reject on propulsion depth from this call, and you should not try. Advance anyone who clears the spot-"
+  },
+  "footer.left": {
+   "type": "prose_short",
+   "words": {
+    "min": 6,
+    "max": 7
+   },
+   "example": "Talent Kit 08 · Propulsion Engineer screen · © 2026 Onepromptman"
+  },
+  "footer.right": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 6
+   },
+   "example": "Bold text is said out loud"
+  }
+ },
+ "repeats": {
+  "cover.metrics": {
+   "kind": "rows",
+   "count": "4-7",
+   "optional_block": false,
+   "row_slots": {
+    "metric.label": {
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 3
+     }
+    },
+    "metric.value": {
+     "type": "chip",
+     "words": {
+      "min": 1,
+      "max": 2
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 6
+  },
+  "runofshow": {
+   "kind": "rows",
+   "count": "5-8",
+   "optional_block": false,
+   "row_slots": {
+    "ros.time": {
+     "type": "count_range",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "ros.segment": {
+     "type": "label",
+     "words": {
+      "min": 3,
+      "max": 3
+     }
+    },
+    "ros.objective": {
+     "type": "prose_long",
+     "words": {
+      "min": 26,
+      "max": 26
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 6
+  },
+  "story.prompts": {
+   "kind": "rows",
+   "count": "2-4",
+   "optional_block": false,
+   "row_slots": {
+    "prompt.text": {
+     "type": "prose_short",
+     "words": {
+      "min": 20,
+      "max": 20
+     }
+    },
+    "prompt.listen": {
+     "type": "prose_long",
+     "words": {
+      "min": 26,
+      "max": 26
+     }
+    },
+    "prompt.flag": {
+     "type": "prose_short",
+     "words": {
+      "min": 17,
+      "max": 17
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 2
+  },
+  "spotchecks": {
+   "kind": "rows",
+   "count": "2-5",
+   "optional_block": false,
+   "row_slots": {
+    "sc.label": {
+     "type": "label",
+     "words": {
+      "min": 5,
+      "max": 5
+     }
+    },
+    "sc.time": {
+     "type": "duration",
+     "words": {
+      "min": 2,
+      "max": 2
+     }
+    },
+    "sc.question": {
+     "type": "prose_short",
+     "words": {
+      "min": 8,
+      "max": 8
+     }
+    },
+    "sc.tests": {
+     "type": "prose_long",
+     "words": {
+      "min": 43,
+      "max": 43
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "nested": {
+    "sc.bands": {
+     "count": "4-5",
+     "row_slots": {
+      "band.label": {
+       "type": "label"
+      },
+      "band.answer": {
+       "type": "prose_short"
+      }
+     }
+    }
+   },
+   "example_rows": 3
+  },
+  "motivation": {
+   "kind": "rows",
+   "count": "3-6",
+   "optional_block": false,
+   "row_slots": {
+    "mq.text": {
+     "type": "prose_short",
+     "words": {
+      "min": 6,
+      "max": 6
+     }
+    },
+    "mq.listen": {
+     "type": "prose_long",
+     "words": {
+      "min": 27,
+      "max": 27
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 4
+  },
+  "logistics": {
+   "kind": "rows",
+   "count": "3-7",
+   "optional_block": false,
+   "row_slots": {
+    "log.field": {
+     "type": "label",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "log.script": {
+     "type": "prose_short",
+     "words": {
+      "min": 19,
+      "max": 19
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 5
+  },
+  "criteria": {
+   "kind": "rows",
+   "count": "4-8",
+   "optional_block": false,
+   "row_slots": {
+    "crit.item": {
+     "type": "prose_short",
+     "words": {
+      "min": 8,
+      "max": 8
+     }
+    },
+    "crit.level": {
+     "type": "chip",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 6
+  },
+  "wrapup": {
+   "kind": "rows",
+   "count": "3-6",
+   "optional_block": false,
+   "row_slots": {
+    "wrap.item": {
+     "type": "prose_short",
+     "words": {
+      "min": 14,
+      "max": 14
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 6
+  }
+ },
+ "standalone_bars": [],
+ "optionals": [
+  {
+   "id": "optional_1",
+   "slots": {},
+   "repeats": [],
+   "handoff_block": true,
+   "context": "Handoff → scheduling & technical interviewer Internal · optional: delete before sharing outside the "
+  }
+ ],
+ "toggles": [],
+ "handoff_slots": []
+}

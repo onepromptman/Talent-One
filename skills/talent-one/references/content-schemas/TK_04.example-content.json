@@ -1,0 +1,281 @@
+{
+ "template": "TK_04_Sourcing_Strategy.dc.html",
+ "slots": {
+  "kit.mark": "Talent Kit · 04",
+  "doc.agent": "Agent · HUNTER",
+  "doc.date": "Inputs · 02 · 03 · 07",
+  "doc.eyebrow": "Artifact 04 · Execution plan",
+  "doc.title": "Sourcing Strategy",
+  "role.title": "Propulsion Engineer · Mid-Level",
+  "role.org": "Target: source ahead of a scarce, concentrated pool",
+  "doc.thesis": "Copy-paste boolean strings for a scarce, concentrated propulsion pool, channel mix ranked by yield, timing discipline, and the pipeline math behind a 4% outreach-to-screen rate, so the recruiter sees the volume cost before committing a calendar.",
+  "cover.note": "Two slow weeks and the concentrated pool dries up",
+  "s1.title": "Outbound carries a scarce specialist pool",
+  "s1.body": "This propulsion search is scarce and concentrated before any filtering happens. Inbound alone will not clear a mid-career hire out of a pool this small. Everything here assumes the recruiter builds pipeline directly, in flight programs and in the adjacent industries solving the same combustion and thermofluids problem under a different name.",
+  "pullstat.value": "5×",
+  "pullstat.label": "More likely to land the job than an inbound applicant",
+  "pullstat.claim": "Sourced candidates convert at about 2% application-to-hire versus roughly 0.4% for inbound applicants, and clear the initial screen far more often: about 44% versus 6%.",
+  "pullstat.method": "Recruiting funnel benchmark · public industry benchmark, name the report and year when you fill this",
+  "s2.title": "Search strings for a concentrated pool",
+  "s2.body": "Copy-paste ready, filters and all. Each card states expected volume and the pool it deliberately misses, because naming the blind spot tells the recruiter which string to run next and which one only sizes the market. Volume estimates are order-of-magnitude reads from platform result counts, not a census.",
+  "s3.title": "Channel mix, ranked by yield",
+  "s3.body": "Ranked by yield per hour, not by volume. Watch the trend column more than the count: a channel in decline gets maintained, never scaled, in a pool this concentrated.",
+  "s4.title": "Timing discipline for a scarce pool",
+  "s4.body": "The same message sent at the right moment in someone's year performs several times better. In a pool this small, timing is the cheapest lever available and the easiest one to waste.",
+  "s5.title": "Six weeks, both sides committed",
+  "s5.body": "The hiring manager's commitments live on this chart too, not just the recruiter's. A slipped debrief slips the whole search, and this document says so before it happens, not after.",
+  "s6.title": "What one hire costs in a thin pool",
+  "s6.body": "Built on the loaded benchmark file for a specialized, concentrated pool with no house data yet. Treat these as the floor, never below them: that is how a search runs out of pipeline by week four.",
+  "funnel.note.1": "Working backward from one hire: 2 offers at an 82% offer-to-accept rate, 8 onsites at 25% onsite-to-offer, 22 screens at 37% screen-to-onsite. Every rate comes from the benchmark file: this team carries no house data yet for this pool.",
+  "funnel.note.2": "The volume cost of a concentrated pool: those 22 screens need 550 contacts at the realistic 4% drought rate for this search, not the 367 a general 6% software-recruiting benchmark would predict. Budget the calendar for 550, not 367.",
+  "caution.1": "This pool is small and geographically concentrated: burning it with generic, mass-blasted outreach costs more than a slow start does. Personalize every touch to the specific hardware problem, and track re-contact carefully so the same names are not hit twice within a quarter.",
+  "s7.title": "A/B tests for a thin, technical pool",
+  "s7.body": "Run one test at a time, report weekly, keep the winner. This turns a scarce search into a repeatable capability instead of a one-off scramble, and it is the section most teams skip. This matrix names the frame to test and the metric to decide on; the deployed copy variants live in artifact 05.",
+  "insight.1": "Sample sizes here stay small: this pool does not support statistical elegance. Look for the difference between 10% and 25% reply, not a p-value. Kill any test that has not produced a decision within three weeks; a stalled test just burns pipeline.",
+  "footer.left": "OPM-04 · Propulsion Sourcing Strategy",
+  "footer.right": "Cadence is the deliverable · © 2026 Onepromptman"
+ },
+ "repeats": {
+  "cover.metrics": [
+   {
+    "metric.label": "Candidate profiles reviewed",
+    "metric.value": "40"
+   },
+   {
+    "metric.label": "Candidates sequenced",
+    "metric.value": "25"
+   },
+   {
+    "metric.label": "Screens booked",
+    "metric.value": "2–3"
+   },
+   {
+    "metric.label": "Sourcing hours protected",
+    "metric.value": "8–10"
+   },
+   {
+    "metric.label": "Trigger response SLA",
+    "metric.value": "72 hrs"
+   }
+  ],
+  "strings": [
+   {
+    "string.name": "A · BASIC (broad pool)",
+    "string.yield": "Est. ~2,500 national · ~450 in target metros",
+    "string.query": "(\"Propulsion Engineer\" OR \"Propulsion Systems Engineer\" OR \"Rocket Propulsion Engineer\" OR \"Liquid Propulsion Engineer\" OR \"Electric Propulsion Engineer\" OR \"Propulsion Test Engineer\") AND (propulsion OR \"rocket engine\" OR thruster OR \"hot-fire\")",
+    "string.note": "Use for: pool sizing and saved-search alerts, not outreach: precision is too low, and the OR-chain pulls in space-enthusiast and hobbyist noise that inflates the count.",
+    "strings.prose0": "US and Canada · 3+ years total experience"
+   },
+   {
+    "string.name": "B · INTERMEDIATE (core weekly block)",
+    "string.yield": "Est. ~80-120 against target archetypes",
+    "string.query": "(\"Propulsion Engineer\" OR \"Propulsion Systems Engineer\" OR \"Rocket Propulsion Engineer\" OR \"Propulsion Test Engineer\") AND (thermofluids OR combustion OR \"hot-fire\" OR \"thrust stand\") AND ([TARGET_CO_1] OR [TARGET_CO_2] OR [TARGET_CO_3] OR [TARGET_CO_4]) NOT (intern OR recruiter OR \"talent acquisition\")",
+    "string.note": "Use for: the core weekly sourcing block. Pair with a live trigger from artifact 03: same string, very different reply rate.",
+    "strings.prose0": "current or most recent employer is a Tier S/A or Tier A/B archetype target · LA, Denver, or Houston metro"
+   },
+   {
+    "string.name": "C · ADVANCED (passive, senior)",
+    "string.yield": "Est. ~15-25 nationally",
+    "string.query": "(Senior OR Staff OR Principal OR Lead) AND (\"Propulsion Engineer\" OR \"Propulsion Systems Engineer\") AND (\"hot-fire\" OR \"thrust stand\" OR \"feed system\" OR propellant OR CFD) NOT (\"open to work\" OR recruiter OR hiring)",
+    "string.note": "Use for: researched, personalized outreach only. A templated message wastes the list, and the blind spot is a result set small enough that over-fishing it burns the pool for a quarter.",
+    "strings.prose0": "8+ years · the \"open to work\" exclusion is deliberate: it reaches true passives"
+   },
+   {
+    "string.name": "D · Peripheral pools: run this one",
+    "string.yield": "Highest hit rate per hour",
+    "string.query": "(\"Powertrain Engineer\" OR \"Combustion Engineer\" OR \"Turbine Engineer\" OR \"Propulsion Engineer\") AND (thermofluids OR combustion OR \"high-pressure fluid systems\") AND (automotive OR \"gas turbine\" OR motorsport OR \"chemical process\" OR \"missile propulsion\") NOT (sales OR intern OR \"test technician\")",
+    "string.note": "Do this: tag every result in the ATS as PERIPHERAL and note the transfer strength (near-direct, strong, or medium) from artifact 03 so cross-industry conversion becomes measurable.",
+    "strings.prose0": "the thermofluids and combustion vocabulary is the real skill proxy, and excluding sales and technician titles keeps the list to engineers who can ramp onto flight hardware."
+   },
+   {
+    "string.name": "E · X-ray & community",
+    "string.yield": "Slow burn, high signal",
+    "string.query": "site:linkedin.com/in (\"propulsion engineer\" OR \"propulsion systems\") \"hot-fire\" (\"thrust stand\" OR \"feed system\") (\"[METRO_1]\" OR \"[METRO_2]\") -recruiter site:github.com (\"liquid rocket\" OR \"hybrid rocket\" OR [OSS_FRAMEWORK_1]) (\"CFD\" OR \"combustion model\") followers:>15 site:github.com (rocketry OR \"propulsion team\") university \"thrust stand\" location:\"[METRO_1]\" ([CONFERENCE_1] OR [CONFERENCE_2] OR \"AIAA Propulsion and Energy\") speaker 2025 2026 propulsion",
+    "string.note": "open-source propulsion projects and university rocket-team contributors are self-selected talent who chose this problem unpaid. A propulsion conference speaker list is usually the single densest watering hole available, and almost nobody works it. Manual review only: no automated retrieval, no bulk export. Each platform's terms govern; check them before you run these.",
+    "strings.prose0": "Why bother:"
+   }
+  ],
+  "channels": [
+   {
+    "ch.name": "Referrals · internal team + adjacent industries",
+    "ch.effort": "1 hr · standing ask",
+    "ch.yield": "1-2 warm intros",
+    "ch.verdict": "Highest conversion of any channel in this pool. Run a monthly team mining pass against the target archetypes."
+   },
+   {
+    "ch.name": "Direct search · strings B-D",
+    "ch.effort": "Core · 6-8 hrs",
+    "ch.yield": "20-30 sequenced",
+    "ch.verdict": "The engine of this search. Refresh saved searches every Monday morning."
+   },
+   {
+    "ch.name": "Email sequences",
+    "ch.effort": "Automated",
+    "ch.yield": "18% reply · 9% interested",
+    "ch.verdict": "Benchmark file, adjusted down from the general email benchmark for a passive, specialized audience: 68% open, 18% reply, 9% interested. Personalization to the specific hardware problem is the whole delta. Every automated send must carry a one-click opt-out and a postal address."
+   },
+   {
+    "ch.name": "Community · propulsion conferences, university teams",
+    "ch.effort": "2 hrs",
+    "ch.yield": "3-6 high-fit adds",
+    "ch.verdict": "Slow burn and compounding. These candidates convert at high-touch rates because the technical opener writes itself."
+   },
+   {
+    "ch.name": "Rediscovery · past finalists + adjacent-industry contacts",
+    "ch.effort": "1 hr",
+    "ch.yield": "2-4 re-engages",
+    "ch.verdict": "Cheapest pipeline this team owns. People who reached a final loop for an adjacent role are already vetted on the fundamentals."
+   },
+   {
+    "ch.name": "Job-board inbound",
+    "ch.effort": "30 min daily",
+    "ch.yield": "Supplement only",
+    "ch.verdict": "0.4% application-to-hire in a pool this concentrated. Screen fast and promise nothing, but run the same rubric here as everywhere else; do not shortcut it."
+   }
+  ],
+  "timing.cards": [
+   {
+    "timing.label": "Send-window rule",
+    "timing.rule": "Tuesday to Thursday, 7:00-9:00am candidate-local.",
+    "timing.why": "Engineers check personal email before the test cell or shop floor gets loud. Avoid Friday afternoon entirely and Monday before 10."
+   },
+   {
+    "timing.label": "Trigger response SLA",
+    "timing.rule": "72 hours from event to first personalized touch.",
+    "timing.why": "Program cancellation, layoff notice, test anomaly, funding milestone. The trigger-tuned variant lives in artifact 05: the only variable left is reaction time."
+   },
+   {
+    "timing.label": "Vest-cycle and relocation timing",
+    "timing.rule": "Target 4-8 weeks before a vesting cliff. Avoid the two weeks after.",
+    "timing.why": "The weeks before a vesting decision are when people are most actively weighing options. Pair with the geography read in artifact 03: relocation willingness varies sharply by metro and local housing market; check the geography read in artifact 03 before assuming."
+   }
+  ],
+  "timeline.rows": [
+   {
+    "phase.label": "Calibration & pool ledger",
+    "bar": [
+     0.0,
+     0.16
+    ]
+   },
+   {
+    "phase.label": "Sprint 1 · core sourcing (B, C)",
+    "bar": [
+     0.16,
+     0.5
+    ]
+   },
+   {
+    "phase.label": "Sprint 2 · peripheral & community (D, E)",
+    "bar": [
+     0.33,
+     0.66
+    ]
+   },
+   {
+    "phase.label": "Screens running",
+    "bar": [
+     0.25,
+     0.83
+    ]
+   },
+   {
+    "phase.label": "HM · debriefs within 24h",
+    "bar": [
+     0.33,
+     1.0
+    ]
+   },
+   {
+    "phase.label": "Offer window",
+    "bar": [
+     0.66,
+     1.0
+    ]
+   }
+  ],
+  "funnel.stages": [
+   {
+    "stage.label": "Contacts",
+    "stage.n": "~550",
+    "stage.rate": "-",
+    "stage.basis": "benchmark floor",
+    "bar": 1.0
+   },
+   {
+    "stage.label": "Screens",
+    "stage.n": "22",
+    "stage.rate": "4%",
+    "stage.basis": "Benchmark · drought rate",
+    "bar": 0.04
+   },
+   {
+    "stage.label": "Onsites",
+    "stage.n": "8",
+    "stage.rate": "37%",
+    "stage.basis": "Benchmark · screen rate",
+    "bar": 0.0145
+   },
+   {
+    "stage.label": "Offers",
+    "stage.n": "2",
+    "stage.rate": "25%",
+    "stage.basis": "Benchmark · onsite rate",
+    "bar": 0.0036
+   },
+   {
+    "stage.label": "Hire",
+    "stage.n": "1",
+    "stage.rate": "82%",
+    "stage.basis": "Benchmark · offer rate",
+    "bar": 0.0018
+   }
+  ],
+  "tests": [
+   {
+    "test.name": "Opening subject line",
+    "test.a": "Curiosity frame: opens a technical loop",
+    "test.b": "Identity frame: speaks to professional identity",
+    "test.n": "50 / arm",
+    "test.metric": "Reply rate"
+   },
+   {
+    "test.name": "First-touch call to action",
+    "test.a": "Soft ask: low-commitment framing",
+    "test.b": "Direct ask: a named time, explicit call",
+    "test.n": "50 / arm",
+    "test.metric": "Positive reply"
+   },
+   {
+    "test.name": "Value proposition · touch 3",
+    "test.a": "Ownership-led: full subsystem, not a slice",
+    "test.b": "Stage-led: scope and ownership available at this stage",
+    "test.n": "45 / arm",
+    "test.metric": "Meeting booked"
+   },
+   {
+    "test.name": "Persona routing",
+    "test.a": "Persona-matched copy to the adjacent-industry pool",
+    "test.b": "Generic copy to the same pool",
+    "test.n": "30 / arm",
+    "test.metric": "Reply rate"
+   },
+   {
+    "test.name": "Send window",
+    "test.a": "Tuesday 7:30am local",
+    "test.b": "Thursday 4:00pm local",
+    "test.n": "40 / arm",
+    "test.metric": "Open + reply"
+   }
+  ]
+ },
+ "standalone_bars": [],
+ "optionals": {},
+ "toggles": {},
+ "handoff": {
+  "produces": "personas · search_strings · channel_mix · pipeline_math · target_companies",
+  "consumers": "05 Outreach Campaign · weekly pipeline review",
+  "tokens": "[[FirstName]] · [[CurrentCompany]] · [[SpecificProject]] · [[TestSignal]]",
+  "blocked": "HM commitment to 24-hour debriefs · target-company list confirmation (archetypes only, no names on file)"
+ }
+}

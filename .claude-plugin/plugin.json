@@ -1,0 +1,19 @@
+{
+  "name": "talent-one",
+  "version": "1.0.3",
+  "description": "A per-role Context Pack plus eleven coordinated TA expert agents (eight document specialists plus relay, scout, and QA gate) that turn one role brief into a full eight-document hiring package: educational brief, calibration brief, JD, talent map, sourcing playbook, outreach campaign, interview plan, and screen guide, rendered deterministically as polished branded HTML documents with sourced market data. One research pass, parallel artifact agents, fast update-in-place.",
+  "author": {
+    "name": "Onepromptman"
+  },
+  "homepage": "https://github.com/onepromptman",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "keywords": [
+    "recruiting",
+    "talent-acquisition",
+    "hiring",
+    "sourcing",
+    "job-description",
+    "interview",
+    "outreach"
+  ]
+}

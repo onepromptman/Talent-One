@@ -1,0 +1,747 @@
+{
+ "template": "TK_01_Educational_Brief.dc.html",
+ "version": "1.0",
+ "slots": {
+  "kit.mark": {
+   "type": "prose_short",
+   "words": {
+    "min": 4,
+    "max": 4
+   },
+   "example": "Talent Kit · 01"
+  },
+  "doc.agent": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 4
+   },
+   "example": "Agent · SENSEI"
+  },
+  "doc.date": {
+   "type": "prose_short",
+   "words": {
+    "min": 2,
+    "max": 8
+   },
+   "example": "Reads in ~12 min"
+  },
+  "doc.eyebrow": {
+   "type": "prose_short",
+   "words": {
+    "min": 5,
+    "max": 6
+   },
+   "example": "Artifact 01 · Role literacy"
+  },
+  "doc.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 3
+   },
+   "example": "Educational Brief"
+  },
+  "role.title": {
+   "type": "label",
+   "words": {
+    "min": 4,
+    "max": 4
+   },
+   "example": "Propulsion Engineer · Mid"
+  },
+  "role.org": {
+   "type": "prose_short",
+   "words": {
+    "min": 6,
+    "max": 9
+   },
+   "example": "Connected-hardware company · small propulsion team, one hardware partner"
+  },
+  "doc.thesis": {
+   "type": "prose_long",
+   "words": {
+    "min": 24,
+    "max": 48
+   },
+   "example": "Everything you need to talk credibly with a propulsion engineer or a hiring manager: what the role builds, where it sits in the vehicle, how to translate the ja"
+  },
+  "cover.note": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 13
+   },
+   "example": "Section 3 (the glossary) and Section 10 (the cheat sheet) are the two to keep open on a live call"
+  },
+  "s1.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 7
+   },
+   "example": "What a propulsion engineer actually does all day"
+  },
+  "s1.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 18,
+    "max": 85
+   },
+   "example": "They design the engine, and the plumbing that feeds it, that turns stored energy into thrust, then they prove it on a test stand before it ever flies. Most of t"
+  },
+  "s1.body2": {
+   "type": "prose_long",
+   "words": {
+    "min": 55,
+    "max": 55
+   },
+   "example": "Two things follow, and both change how you talk to candidates. First, they are precise: vague enthusiasm reads as not-serious. Second, they respect failure as a"
+  },
+  "northstar": {
+   "type": "prose_short",
+   "words": {
+    "min": 25,
+    "max": 25
+   },
+   "example": "Design and prove the engine, and the feed system behind it, that turns stored energy into thrust, and keep it from tearing itself apart on the stand or in fligh"
+  },
+  "analogy": {
+   "type": "prose_long",
+   "words": {
+    "min": 37,
+    "max": 37
+   },
+   "example": "It is a blowtorch the size of a car, run at the edge of blowing itself apart. The whole craft is keeping a deliberate, enormous fire stable and pointed the righ"
+  },
+  "s2.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 7
+   },
+   "example": "Where the role sits in the vehicle, layer by layer"
+  },
+  "s2.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 18,
+    "max": 46
+   },
+   "example": "Use this to place any candidate in thirty seconds. Ask them which of these layers they have lived in. The marked layers are this role. One layer away is an adja"
+  },
+  "insight.1": {
+   "type": "prose_long",
+   "words": {
+    "min": 27,
+    "max": 50
+   },
+   "example": "The disciplines one step away, powertrain, gas turbines, motorsport, and high-pressure process fluids, often hold reachable propulsion talent the space sector a"
+  },
+  "s3.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 7
+   },
+   "example": "Every term, translated for you"
+  },
+  "s3.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 14,
+    "max": 44
+   },
+   "example": "The middle column is what you say to a non-engineer. The right column is why the term matters, which is what lets you ask a real follow-up instead of nodding. U"
+  },
+  "s4.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 8
+   },
+   "example": "The real bar, and who checks each skill"
+  },
+  "s4.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 18,
+    "max": 42
+   },
+   "example": "You are not assessing any of this yourself. Your job is to know which stage in the loop owns each skill, so you can tell a hiring manager where a concern gets a"
+  },
+  "s5.title": {
+   "type": "label",
+   "words": {
+    "min": 4,
+    "max": 8
+   },
+   "example": "What you can read on a call"
+  },
+  "s5.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 28,
+    "max": 38
+   },
+   "example": "You cannot judge their analysis. You can absolutely judge how they talk about failure, ownership, and the people who disagreed with them, which carries real pre"
+  },
+  "s6.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 6
+   },
+   "example": "Where propulsion engineers come from"
+  },
+  "s6.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 24,
+    "max": 34
+   },
+   "example": "A degree is a proxy here, not a gate. The alternative pathways below are worth weighting alongside pedigree for hands-on propulsion work, and they are far less "
+  },
+  "edu.academic": {
+   "type": "prose_long",
+   "words": {
+    "min": 34,
+    "max": 34
+   },
+   "html": true,
+   "example": "A bachelor's in aerospace or mechanical engineering is typical, and a master's is common for design roles. Coursework or project work in propulsion or turbomach"
+  },
+  "edu.alt": {
+   "type": "prose_long",
+   "words": {
+    "min": 26,
+    "max": 26
+   },
+   "html": true,
+   "example": "Adjacent-industry engineers. Automotive and motorsport powertrain, gas-turbine and jet-engine, and high-pressure process or chemical engineers bring combustion,"
+  },
+  "edu.hobby": {
+   "type": "prose_long",
+   "words": {
+    "min": 32,
+    "max": 32
+   },
+   "example": "Builders and defense crossovers. High-power amateur rocketry, university propulsion or Formula teams, and military or defense propulsion technicians. Someone do"
+  },
+  "s7.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 8
+   },
+   "example": "Who a propulsion engineer works with"
+  },
+  "s7.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 25,
+    "max": 37
+   },
+   "example": "Use this to answer \"what's the team like?\" with specifics instead of adjectives. It doubles as a referral map: each of these functions knows people who could do"
+  },
+  "s8.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 6
+   },
+   "example": "The words that find the pool"
+  },
+  "s8.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 23,
+    "max": 34
+   },
+   "example": "The seed list the sourcing strings get built from. The market's dominant titles are not the one on your requisition, so search every synonym or you miss much of"
+  },
+  "kw.note": {
+   "type": "prose_long",
+   "words": {
+    "min": 39,
+    "max": 39
+   },
+   "example": "Worth knowing: the market spreads this role across many titles (Propulsion Systems, Rocket Propulsion, Liquid or Electric Propulsion, Propulsion Test). Search a"
+  },
+  "s9.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 7
+   },
+   "example": "What shifted in this market lately"
+  },
+  "s9.body": {
+   "type": "prose_short",
+   "words": {
+    "min": 21,
+    "max": 22
+   },
+   "example": "Three shifts worth knowing before a hiring-manager conversation. Each is a place where last year's assumptions are now slightly wrong."
+  },
+  "s10.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 4
+   },
+   "example": "The credibility cheat sheet"
+  },
+  "s10.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 16,
+    "max": 28
+   },
+   "example": "Left column is what to say. Right column is the version that costs you the candidate, and why. Specificity is the entire game with this audience."
+  },
+  "footer.left": {
+   "type": "prose_short",
+   "words": {
+    "min": 6,
+    "max": 7
+   },
+   "example": "Talent Kit 01 · Propulsion literacy"
+  },
+  "footer.right": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 6
+   },
+   "example": "Plain-language by design · © 2026 Onepromptman"
+  },
+  "doc.prose0": {
+   "type": "prose_long",
+   "synthetic": true,
+   "path": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    2,
+    0,
+    0,
+    0,
+    1
+   ],
+   "example": "What that means day to day"
+  },
+  "doc.prose1": {
+   "type": "prose_long",
+   "synthetic": true,
+   "path": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    5,
+    1,
+    0,
+    2
+   ],
+   "example": "Equivalent hands-on depth is explicitly fine. If someone has shipped and tested real propulsion hardware for years, the degree question is closed."
+  },
+  "doc.prose2": {
+   "type": "prose_long",
+   "synthetic": true,
+   "path": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    5,
+    1,
+    1,
+    0
+   ],
+   "example": "Alternative pathways that convert"
+  },
+  "doc.prose3": {
+   "type": "prose_long",
+   "synthetic": true,
+   "path": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    7,
+    1,
+    1,
+    0
+   ],
+   "example": "Title synonyms: search all of these"
+  }
+ },
+ "repeats": {
+  "cover.audience": {
+   "kind": "rows",
+   "count": "3-5",
+   "optional_block": false,
+   "row_slots": {
+    "audience.item": {
+     "type": "prose_short",
+     "words": {
+      "min": 6,
+      "max": 6
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 4
+  },
+  "responsibilities": {
+   "kind": "rows",
+   "count": "4-8",
+   "optional_block": false,
+   "row_slots": {
+    "resp.name": {
+     "type": "label",
+     "words": {
+      "min": 4,
+      "max": 4
+     }
+    },
+    "resp.detail": {
+     "type": "prose_short",
+     "words": {
+      "min": 15,
+      "max": 15
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 5
+  },
+  "stack.layers": {
+   "kind": "rows",
+   "count": "4-7",
+   "optional_block": false,
+   "row_slots": {
+    "layer.name": {
+     "type": "label",
+     "words": {
+      "min": 3,
+      "max": 3
+     }
+    },
+    "layer.desc": {
+     "type": "prose_short",
+     "words": {
+      "min": 18,
+      "max": 18
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 5,
+   "row_variants": [
+    {
+     "position": 1,
+     "row_slots": {
+      "layer.owned": {
+       "type": "prose_long"
+      }
+     },
+     "bars_per_row": 0,
+     "nested": []
+    }
+   ]
+  },
+  "glossary": {
+   "kind": "rows",
+   "count": "8-16",
+   "optional_block": false,
+   "row_slots": {
+    "term.name": {
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 2
+     }
+    },
+    "term.plain": {
+     "type": "prose_short",
+     "words": {
+      "min": 12,
+      "max": 12
+     }
+    },
+    "term.why": {
+     "type": "prose_short",
+     "words": {
+      "min": 20,
+      "max": 20
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 12
+  },
+  "skills": {
+   "kind": "rows",
+   "count": "5-10",
+   "optional_block": false,
+   "row_slots": {
+    "skill.name": {
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 2
+     }
+    },
+    "skill.bar": {
+     "type": "chip",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "skill.plain": {
+     "type": "prose_short",
+     "words": {
+      "min": 16,
+      "max": 16
+     }
+    },
+    "skill.verify": {
+     "type": "prose_short",
+     "words": {
+      "min": 7,
+      "max": 7
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 8
+  },
+  "soft.skills": {
+   "kind": "rows",
+   "count": "4-7",
+   "optional_block": false,
+   "row_slots": {
+    "soft.name": {
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 2
+     }
+    },
+    "soft.why": {
+     "type": "prose_short",
+     "words": {
+      "min": 11,
+      "max": 11
+     }
+    },
+    "soft.listen": {
+     "type": "prose_short",
+     "words": {
+      "min": 13,
+      "max": 13
+     }
+    },
+    "soft.flag": {
+     "type": "prose_short",
+     "words": {
+      "min": 6,
+      "max": 6
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 5
+  },
+  "collab.nodes": {
+   "kind": "rows",
+   "count": "3-6",
+   "optional_block": false,
+   "row_slots": {
+    "node.name": {
+     "type": "label",
+     "words": {
+      "min": 3,
+      "max": 3
+     }
+    },
+    "node.desc": {
+     "type": "prose_short",
+     "words": {
+      "min": 13,
+      "max": 13
+     }
+    },
+    "node.name2": {
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 3
+     }
+    },
+    "collab.nodes.prose0": {
+     "type": "prose_long",
+     "synthetic": true,
+     "path": [
+      1,
+      1
+     ],
+     "example": "Owns high-temp alloys, additive parts, and how the hardware actually gets built. Drives what the design can and cannot do."
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 3,
+   "row_variants": [
+    {
+     "position": 1,
+     "row_slots": {
+      "node.core": {
+       "type": "label"
+      },
+      "collab.nodes.v1.prose0": {
+       "type": "prose_long",
+       "synthetic": true,
+       "path": [
+        1
+       ],
+       "example": "The integration point for anything that makes thrust. Touches nearly every discipline, which is why communication weight is as high as technical weight in this hire."
+      }
+     },
+     "bars_per_row": 0,
+     "nested": []
+    }
+   ]
+  },
+  "kw.primary": {
+   "kind": "rows",
+   "count": "5-12",
+   "optional_block": false,
+   "row_slots": {
+    "kw.term": {
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 2
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 10
+  },
+  "kw.secondary": {
+   "kind": "rows",
+   "count": "5-16",
+   "optional_block": false,
+   "row_slots": {
+    "kw2.term": {
+     "type": "label",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 14
+  },
+  "kw.titles": {
+   "kind": "rows",
+   "count": "4-12",
+   "optional_block": false,
+   "row_slots": {
+    "title.term": {
+     "type": "label",
+     "words": {
+      "min": 3,
+      "max": 3
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 9
+  },
+  "kw.exclude": {
+   "kind": "rows",
+   "count": "4-10",
+   "optional_block": false,
+   "row_slots": {
+    "ex.term": {
+     "type": "label",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 7
+  },
+  "fieldnotes": {
+   "kind": "rows",
+   "count": "2-4",
+   "optional_block": false,
+   "row_slots": {
+    "note.title": {
+     "type": "label",
+     "words": {
+      "min": 3,
+      "max": 3
+     }
+    },
+    "note.body": {
+     "type": "prose_short",
+     "words": {
+      "min": 11,
+      "max": 26
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 3
+  },
+  "cheatsheet": {
+   "kind": "rows",
+   "count": "3-8",
+   "optional_block": false,
+   "row_slots": {
+    "cheat.good": {
+     "type": "prose_short",
+     "words": {
+      "min": 13,
+      "max": 13
+     }
+    },
+    "cheat.bad": {
+     "type": "prose_short",
+     "words": {
+      "min": 15,
+      "max": 15
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 5
+  }
+ },
+ "standalone_bars": [],
+ "optionals": [
+  {
+   "id": "optional_1",
+   "slots": {},
+   "repeats": [],
+   "handoff_block": true,
+   "context": "Handoff → next artifact Internal · optional: delete before sharing outside the search team Producesp"
+  }
+ ],
+ "toggles": [],
+ "handoff_slots": []
+}

@@ -1,0 +1,228 @@
+{
+ "template": "TK_06_Interview_Plan.dc.html",
+ "slots": {
+  "kit.mark": "Talent Kit · 06",
+  "doc.agent": "Agent · INTERVIEW LAB",
+  "doc.date": "Generated 2026-07-29",
+  "doc.eyebrow": "Artifact 06 · Loop design",
+  "doc.title": "Interview Plan",
+  "role.title": "Propulsion Engineer",
+  "role.org": "Five stages · 4h 15m candidate · 5h 30m panel",
+  "doc.thesis": "Each competency has exactly one owner. If two interviewers grade the same thing, a stage is wasted, and the debrief stalls on whatever nobody owned.",
+  "cover.note": "No take-home. On purpose.",
+  "s1.title": "Five stages, cheapest cut first",
+  "s1.body": "Ordered so the cheapest cut comes first. Nobody spends four hours on a thrust-stand problem to fail on something the thirty-minute screen would have surfaced.",
+  "s2.title": "Every competency gets one owner",
+  "s2.body": "Read down a column and you have one interviewer's brief. Read across a row and you have the evidence you will actually hold at debrief. The outlined cell is owned by nobody.",
+  "caution.1": "High-temperature materials and additive manufacturing sits on the scorecard but no stage owns it, so it will surface as unexamined doubt at debrief. Either assign it to the Tech 2 deep-dive with a written bar, or take it off the scorecard.",
+  "s3.title": "Questions with the bar written down",
+  "s3.body": "A question with no written bar is a vibe check. Each card says what a four sounds like and what a two sounds like, so two interviewers score the same answer the same way.",
+  "s4.title": "The debrief, and the two hard-noes",
+  "s4.body": "Scores are written before the room opens. The order exists to stop the most senior or the loudest voice from anchoring everyone else.",
+  "gate.1": "Cannot reason about a propulsion system as one coupled thermal, fluid, and structural problem. After two stages of prompting they still size a component in isolation. On a small team shipping flight hardware, that is the expensive miss.",
+  "gate.2": "Treats the hardware partner as an obstacle rather than a peer, and cannot name a test result that once changed their mind. Unworkable on a team this small.",
+  "nongate.1": "No launch-prime pedigree. No master's degree. No one specific analysis package. None of these predict propulsion judgment, and every one of them shrinks an already small pool.",
+  "footer.left": "Talent Kit 06 · Propulsion Interview Plan",
+  "footer.right": "One owner per competency · © 2026 Onepromptman",
+  "doc.prose0": "Primary owner: writes the score"
+ },
+ "repeats": {
+  "cover.metrics": [
+   {
+    "metric.label": "Candidate hours",
+    "metric.value": "4.25"
+   },
+   {
+    "metric.label": "Interviewer hours",
+    "metric.value": "5.5"
+   },
+   {
+    "metric.label": "Screen → offer target",
+    "metric.value": "~21 days (est.)"
+   },
+   {
+    "metric.label": "Debrief SLA",
+    "metric.value": "24 hours"
+   }
+  ],
+  "loop.stages": [
+   {
+    "stage.meta": "30 min · recruiter",
+    "stage.name": "Recruiter screen",
+    "stage.job": "Motivation, comp expectations, logistics. Advance fast or pass fast."
+   },
+   {
+    "stage.meta": "45 min · HM",
+    "stage.name": "Hiring manager",
+    "stage.job": "Scope fit and ownership appetite. Sells the mission as hard as it screens."
+   },
+   {
+    "stage.meta": "60 min · propulsion eng",
+    "stage.name": "Technical screen",
+    "stage.job": "Thermofluids and analysis against a real problem. The can-they-do-it filter."
+   },
+   {
+    "stage.meta": "75 min · 2 eng",
+    "stage.name": "Technical deep-dive",
+    "stage.job": "Design depth, a thrust-stand anomaly, and the numbers. Highest-signal stage."
+   },
+   {
+    "stage.meta": "45 min · cross-team",
+    "stage.name": "Systems & values",
+    "stage.job": "How they work with the hardware partner when the data disagrees."
+   }
+  ],
+  "heat.rows": {
+   "columns": [
+    "Screen",
+    "HM",
+    "Tech 1",
+    "Tech 2",
+    "Sys · values"
+   ],
+   "rows": [
+    {
+     "label": "Propulsion system design",
+     "cells": [
+      "none",
+      "touch",
+      "secondary",
+      "primary",
+      "none"
+     ]
+    },
+    {
+     "label": "Thermofluids: thermo, fluids, heat",
+     "cells": [
+      "none",
+      "none",
+      "primary",
+      "secondary",
+      "none"
+     ]
+    },
+    {
+     "label": "Combustion, propellant, or EP physics",
+     "cells": [
+      "none",
+      "none",
+      "touch",
+      "primary",
+      "none"
+     ]
+    },
+    {
+     "label": "Propulsion test and thrust-stand data",
+     "cells": [
+      "none",
+      "none",
+      "touch",
+      "primary",
+      "none"
+     ]
+    },
+    {
+     "label": "CAD and analysis: CFD, FEA, thermal",
+     "cells": [
+      "none",
+      "none",
+      "primary",
+      "secondary",
+      "none"
+     ]
+    },
+    {
+     "label": "Systems engineering and ownership",
+     "cells": [
+      "none",
+      "primary",
+      "none",
+      "touch",
+      "secondary"
+     ]
+    },
+    {
+     "label": "Works with the hardware partner",
+     "cells": [
+      "touch",
+      "touch",
+      "none",
+      "none",
+      "primary"
+     ]
+    },
+    {
+     "label": "High-temp materials and additive",
+     "cells": [
+      "none",
+      "none",
+      "none",
+      "gap",
+      "none"
+     ]
+    }
+   ]
+  },
+  "questions": [
+   {
+    "q.owner": "Tech 2 · propulsion test anomaly",
+    "q.time": "20 min",
+    "q.text": "\"A hot-fire reads eight percent low on thrust, but chamber pressure looks nominal. Walk me through what you rule out, in order.\"",
+    "q.strong": "Separates measurement from physics: checks load-cell calibration and stand alignment before touching the engine. Asks what changed since the last good run. Names what would disprove each theory.",
+    "q.weak": "Blames the injector at once and redesigns it. Trusts the thrust number without checking the stand or the sensors. Cannot say what evidence would change their mind."
+   },
+   {
+    "q.owner": "Tech 2 · feed-system design tradeoff",
+    "q.time": "25 min",
+    "q.text": "\"Design a feed system that still delivers rated flow if one valve sticks shut. What do you cut to ship it in a week, and why is that cut safe?\"",
+    "q.strong": "Names the failure mode first, offers two real architectures with a stated tradeoff, and says exactly what they cut under the week and why it stays safe for this failure.",
+    "q.weak": "Proposes one architecture with no fallback, cannot say what actually fails for the vehicle when the valve sticks, and needs the interviewer to name the tradeoff first."
+   },
+   {
+    "q.owner": "HM · ownership on a small team",
+    "q.time": "15 min",
+    "q.text": "\"Tell me about a propulsion problem you owned end to end that nobody assigned you. What made it worth the effort, and what did it cost?\"",
+    "q.strong": "A specific gap they caught before anyone flagged it, the real cost of ignoring it, the actual sequence of what they did, and who they had to convince.",
+    "q.weak": "Describes assigned test or analysis work as if it were initiative. No cost named, no tradeoff, no other people in the story, and no reflection."
+   },
+   {
+    "q.owner": "Sys · works with hardware partner",
+    "q.time": "15 min",
+    "q.text": "\"Describe a time your analysis said the hardware was wrong and the partner disagreed. How did you settle it?\"",
+    "q.strong": "Built test or analysis evidence before making the claim, treats the partner as competent, and reports what happened after, including where they turned out partly wrong.",
+    "q.weak": "The story is about being right. The hardware partner is the antagonist. No evidence step, and no sign they updated when new data arrived."
+   }
+  ],
+  "debrief.steps": [
+   {
+    "step.title": "Scores written and submitted first",
+    "step.body": "No score, no vote. Whoever has not written their scorecard does not speak first."
+   },
+   {
+    "step.title": "Lowest scorer opens the room",
+    "step.body": "Inverts seniority on purpose, so concerns get air before the loudest enthusiasm anchors everyone."
+   },
+   {
+    "step.title": "Owners read one row each",
+    "step.body": "Follow the heat grid. A three on a hard senior question is not a three on an easy one."
+   },
+   {
+    "step.title": "Calibrate, do not average",
+    "step.body": "Weight for hawk-or-dove interviewers, early-round nerves, and format mismatch before comparing scores."
+   },
+   {
+    "step.title": "Decide inside the hour",
+    "step.body": "Any single one forces extended discussion. Then hire, no-hire, or one named missing check with an owner."
+   }
+  ]
+ },
+ "standalone_bars": [],
+ "optionals": {},
+ "toggles": {},
+ "handoff": {
+  "produces": "stages · competency_coverage · deal_breakers · debrief_protocol",
+  "consumers": "08 Recruiter Screen · 09 QA Gate · scorecard setup",
+  "assumptions": "Two propulsion engineers free for the deep-dive each week. No take-home. Panel is trained on the written bars.",
+  "blocked": "Owner for the high-temp materials and additive row, or removal from the scorecard"
+ }
+}

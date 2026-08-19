@@ -1,0 +1,30 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# Local runs — per-role output should never be committed
+output/
+runs/
+roles/
+*-profile.md
+talent-one-profile.md
+
+# Scratch
+*.tmp
+*.bak
+scratch/

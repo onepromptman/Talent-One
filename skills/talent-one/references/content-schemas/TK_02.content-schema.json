@@ -1,0 +1,390 @@
+{
+ "template": "TK_02_Job_Description.dc.html",
+ "version": "1.0",
+ "slots": {
+  "kit.mark": {
+   "type": "prose_short",
+   "words": {
+    "min": 4,
+    "max": 4
+   },
+   "example": "Talent Kit · 02"
+  },
+  "doc.agent": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 4
+   },
+   "example": "Agent · JD-BOT"
+  },
+  "doc.date": {
+   "type": "prose_short",
+   "words": {
+    "min": 2,
+    "max": 8
+   },
+   "example": "Generated 2026-07-29"
+  },
+  "doc.eyebrow": {
+   "type": "prose_short",
+   "words": {
+    "min": 5,
+    "max": 6
+   },
+   "example": "Artifact 02 · Posting copy"
+  },
+  "doc.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 3
+   },
+   "example": "Job Description"
+  },
+  "role.title": {
+   "type": "label",
+   "words": {
+    "min": 4,
+    "max": 4
+   },
+   "example": "Propulsion Engineer (Mid)"
+  },
+  "role.org": {
+   "type": "prose_short",
+   "words": {
+    "min": 6,
+    "max": 9
+   },
+   "example": "Onepromptman · Hybrid, distributed · Small propulsion team, one hardware partner"
+  },
+  "doc.thesis": {
+   "type": "prose_long",
+   "words": {
+    "min": 24,
+    "max": 48
+   },
+   "example": "The left column is paste-ready posting copy. The right column is why each line reads the way it does. Read the rail once, post the left side, and never look at "
+  },
+  "cover.compliance": {
+   "type": "prose_short",
+   "words": {
+    "min": 6,
+    "max": 6
+   },
+   "example": "Reviewed for EEO + gendered/ableist language"
+  },
+  "s1.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 7
+   },
+   "example": "The posting, with a why-rail"
+  },
+  "s1.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 18,
+    "max": 85
+   },
+   "example": "Copy the left column straight into the ATS. The right rail is internal reasoning and never ships to a candidate."
+  },
+  "jd.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 3
+   },
+   "example": "Propulsion Engineer"
+  },
+  "jd.meta": {
+   "type": "prose_short",
+   "words": {
+    "min": 9,
+    "max": 9
+   },
+   "example": "Hybrid, distributed; test work onsite · $115,000-$155,000 base salary + equity"
+  },
+  "jd.intro": {
+   "type": "prose_long",
+   "words": {
+    "min": 80,
+    "max": 80
+   },
+   "html": true,
+   "example": "We build connected hardware, and the propulsion team is small: a handful of engineers and one hardware partner. You would own a propulsion subsystem, not a slic"
+  },
+  "jd.close": {
+   "type": "prose_long",
+   "words": {
+    "min": 31,
+    "max": 31
+   },
+   "example": "Direct space-propulsion experience is not required and is not an edge in our screen. The same problem, controlled high-energy fluid and thermal systems on fligh"
+  },
+  "jd.benefits": {
+   "type": "label",
+   "example": "Base range reflects the posted location. Compensation also includes equity, health coverage, retirement plan, and paid time off. Open until filled."
+  },
+  "jd.eeo": {
+   "type": "label",
+   "example": "We are an equal opportunity employer. All qualified applicants will be considered without regard to any characteristic protected by applicable law. If you need "
+  },
+  "s2.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 7
+   },
+   "example": "What we changed from intake"
+  },
+  "s2.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 18,
+    "max": 46
+   },
+   "example": "Every change from the hiring manager's first draft, with its pool consequence. Pool counts are Estimates off the BLS-OES 17-2011 base (BLS OEWS May 2024 nationa"
+  },
+  "caution.1": {
+   "type": "prose_long",
+   "words": {
+    "min": 26,
+    "max": 52
+   },
+   "example": "If the flight-heritage requirement is restored, the posted band no longer clears the experienced market where the shortage bites hardest, and the search reverts"
+  },
+  "gate.1": {
+   "type": "prose_long",
+   "words": {
+    "min": 16,
+    "max": 46
+   },
+   "example": "No eligibility or work-authorization line is posted. Adding one goes through counsel, not the hiring manager."
+  },
+  "s3.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 7
+   },
+   "example": "Where the base band lands"
+  },
+  "s3.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 14,
+    "max": 44
+   },
+   "example": "Published base band against the national market for the same title and a comparable stage of company. The role is distributed, so the benchmark is national, not"
+  },
+  "comp.readout": {
+   "type": "prose_long",
+   "words": {
+    "min": 23,
+    "max": 41
+   },
+   "example": "Read-out: the posted band sits inside the sourced band and reaches toward its upper half, fair for a small non-prime employer. This is an Estimate, not a survey"
+  },
+  "footer.left": {
+   "type": "prose_short",
+   "words": {
+    "min": 6,
+    "max": 7
+   },
+   "example": "Talent Kit 02 · Propulsion Engineer"
+  },
+  "footer.right": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 6
+   },
+   "example": "Rail is internal, never ships · © 2026 Onepromptman"
+  }
+ },
+ "repeats": {
+  "cover.metrics": {
+   "kind": "rows",
+   "count": "4-6",
+   "optional_block": false,
+   "row_slots": {
+    "metric.label": {
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 3
+     }
+    },
+    "metric.value": {
+     "type": "chip",
+     "words": {
+      "min": 1,
+      "max": 2
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 4
+  },
+  "jd.responsibilities": {
+   "kind": "rows",
+   "count": "3-6",
+   "optional_block": false,
+   "row_slots": {
+    "resp.item": {
+     "type": "prose_short",
+     "words": {
+      "min": 18,
+      "max": 18
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 4
+  },
+  "jd.requirements": {
+   "kind": "rows",
+   "count": "3-6",
+   "optional_block": false,
+   "row_slots": {
+    "req.item": {
+     "type": "prose_short",
+     "words": {
+      "min": 17,
+      "max": 17
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 5
+  },
+  "annotations": {
+   "kind": "rows",
+   "count": "3-6",
+   "optional_block": false,
+   "row_slots": {
+    "note.tag": {
+     "type": "label",
+     "words": {
+      "min": 1,
+      "max": 3
+     }
+    },
+    "note.body": {
+     "type": "prose_short",
+     "words": {
+      "min": 11,
+      "max": 26
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 5
+  },
+  "ledger.rows": {
+   "kind": "rows",
+   "count": "3-8",
+   "optional_block": false,
+   "row_slots": {
+    "ledger.before": {
+     "type": "prose_short",
+     "words": {
+      "min": 5,
+      "max": 5
+     }
+    },
+    "ledger.after": {
+     "type": "prose_short",
+     "words": {
+      "min": 5,
+      "max": 5
+     }
+    },
+    "ledger.effect": {
+     "type": "delta",
+     "words": {
+      "min": 3,
+      "max": 3
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 4
+  },
+  "comp.rows": {
+   "kind": "rows",
+   "count": "2-4",
+   "optional_block": false,
+   "row_slots": {
+    "comp.label": {
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 4
+     }
+    },
+    "comp.n": {
+     "type": "prose_short",
+     "words": {
+      "min": 6,
+      "max": 7
+     }
+    },
+    "comp.low": {
+     "type": "currency",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "comp.high": {
+     "type": "currency",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    }
+   },
+   "bars_per_row": 1,
+   "bar_forms": [
+    "range"
+   ],
+   "example_rows": 2,
+   "row_variants": [
+    {
+     "position": 1,
+     "row_slots": {
+      "comp.label": {
+       "type": "label"
+      },
+      "comp.n": {
+       "type": "prose_short"
+      },
+      "comp.low": {
+       "type": "currency"
+      },
+      "comp.high": {
+       "type": "currency"
+      }
+     },
+     "bars_per_row": 1,
+     "nested": []
+    }
+   ]
+  }
+ },
+ "standalone_bars": [],
+ "optionals": [
+  {
+   "id": "optional_1",
+   "slots": {},
+   "repeats": [],
+   "handoff_block": true,
+   "context": "Handoff → next artifact Internal · optional: delete before sharing outside the search team Producesm"
+  }
+ ],
+ "toggles": [],
+ "handoff_slots": []
+}

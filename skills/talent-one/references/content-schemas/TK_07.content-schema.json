@@ -1,0 +1,625 @@
+{
+ "template": "TK_07_HM_Calibration.dc.html",
+ "version": "1.0",
+ "slots": {
+  "kit.mark": {
+   "type": "prose_short",
+   "words": {
+    "min": 4,
+    "max": 4
+   },
+   "example": "Talent Kit · 07"
+  },
+  "doc.agent": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 4
+   },
+   "example": "Agent · CALIBRATE"
+  },
+  "doc.date": {
+   "type": "prose_short",
+   "words": {
+    "min": 2,
+    "max": 8
+   },
+   "example": "2026-07-29 · before sourcing starts"
+  },
+  "doc.eyebrow": {
+   "type": "prose_short",
+   "words": {
+    "min": 5,
+    "max": 6
+   },
+   "example": "Artifact 07 · Intake & calibration"
+  },
+  "doc.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 3
+   },
+   "example": "Hiring Manager Calibration"
+  },
+  "role.title": {
+   "type": "label",
+   "words": {
+    "min": 4,
+    "max": 4
+   },
+   "example": "Propulsion Engineer (mid)"
+  },
+  "role.org": {
+   "type": "prose_short",
+   "words": {
+    "min": 6,
+    "max": 9
+   },
+   "example": "Onepromptman · 45-minute intake, both sides sign"
+  },
+  "doc.thesis": {
+   "type": "prose_long",
+   "words": {
+    "min": 24,
+    "max": 48
+   },
+   "example": "A propulsion search fails in the intake meeting long before it fails on the test stand. This pack is a data-backed script for that first conversation: what the "
+  },
+  "cover.note": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 13
+   },
+   "example": "Sourcing waits on these four decisions"
+  },
+  "sA.title": {
+   "type": "label",
+   "words": {
+    "min": 5,
+    "max": 5
+   },
+   "example": "The propulsion market, in four numbers"
+  },
+  "sA.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 29,
+    "max": 29
+   },
+   "example": "Lead the meeting with these. They reframe the conversation from \"find me a flight-proven unicorn\" to \"let us make smart trade-offs on a small, concentrated pool"
+  },
+  "sB.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 2
+   },
+   "example": "Compensation reality"
+  },
+  "sB.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 43,
+    "max": 43
+   },
+   "example": "Sources disagree because they measure different things: base only against total pay, entry-skewed postings against sector medians, government series against sel"
+  },
+  "comp.anchor": {
+   "type": "prose_long",
+   "words": {
+    "min": 44,
+    "max": 44
+   },
+   "html": true,
+   "example": "For a mid Propulsion Engineer at a small hardware employer, plan around the BLS-OES P25–P75 base range, $104,740–$174,480, midpoint $134,830, and total compensa"
+  },
+  "comp.premium": {
+   "type": "prose_long",
+   "words": {
+    "min": 33,
+    "max": 33
+   },
+   "example": "One thing worth naming: green propellant and electric propulsion are the hot specialties, and specialty demand can push candidates toward the top of any publish"
+  },
+  "sC.title": {
+   "type": "label",
+   "words": {
+    "min": 6,
+    "max": 6
+   },
+   "example": "Why the demand curve favors moving now"
+  },
+  "sC.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 30,
+    "max": 30
+   },
+   "example": "These are structural, publicly disclosed forces, not a rumored competitor event. Demand for propulsion talent is climbing across three fronts while the qualifie"
+  },
+  "sD.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 3
+   },
+   "example": "Forty-five minute agenda"
+  },
+  "sD.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 34,
+    "max": 34
+   },
+   "example": "Send this in advance. The order matters: market data first earns the credibility to recalibrate requirements in the middle, and the SLA lands last because by th"
+  },
+  "sE.title": {
+   "type": "label",
+   "words": {
+    "min": 5,
+    "max": 5
+   },
+   "example": "Ask these, in this order"
+  },
+  "sE.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 33,
+    "max": 33
+   },
+   "example": "Each question extracts one thing you cannot source without. The note says what it pulls out and what a bad answer tells you: a vague answer here reliably predic"
+  },
+  "sF.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 2
+   },
+   "example": "Requirement calibration"
+  },
+  "sF.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 36,
+    "max": 36
+   },
+   "example": "Each documented requirement, checked against a small, concentrated propulsion pool. Bring this table to the meeting already filled in with your recommendation: "
+  },
+  "sG.title": {
+   "type": "label",
+   "words": {
+    "min": 5,
+    "max": 5
+   },
+   "example": "The trade-off lock and a mutual SLA"
+  },
+  "sG.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 39,
+    "max": 39
+   },
+   "example": "Every search optimizes two of three. Make the choice explicit and record it, then commit both sides in writing. Send this as the meeting recap the same day: a p"
+  },
+  "to.selected": {
+   "type": "prose_short",
+   "words": {
+    "min": 12,
+    "max": 12
+   },
+   "example": "Locked live in the intake meeting; recorded in the same-day recap"
+  },
+  "gate.1": {
+   "type": "prose_long",
+   "words": {
+    "min": 16,
+    "max": 46
+   },
+   "example": "If the feedback SLA is not agreed in this meeting, say plainly that the time-to-fill target moves out, and record that in the recap. A scarce, mid-career propul"
+  },
+  "footer.left": {
+   "type": "prose_short",
+   "words": {
+    "min": 6,
+    "max": 7
+   },
+   "example": "Talent Kit 07 · Propulsion calibration · © 2026 Onepromptman"
+  },
+  "footer.right": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 6
+   },
+   "example": "Send as the meeting recap"
+  },
+  "doc.prose0": {
+   "type": "prose_long",
+   "synthetic": true,
+   "path": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0
+   ],
+   "example": "Working anchor: say this out loud"
+  },
+  "doc.prose1": {
+   "type": "prose_long",
+   "synthetic": true,
+   "path": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    5,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "example": "Requirement, as documented"
+  },
+  "doc.prose2": {
+   "type": "prose_long",
+   "synthetic": true,
+   "path": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    5,
+    1,
+    0,
+    0,
+    0,
+    2
+   ],
+   "example": "Market check & recommendation"
+  },
+  "doc.prose3": {
+   "type": "prose_long",
+   "synthetic": true,
+   "path": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    6,
+    1,
+    0
+   ],
+   "example": "Pick two: speed · bar · comp"
+  }
+ },
+ "repeats": {
+  "cover.decisions": {
+   "kind": "rows",
+   "count": "3-5",
+   "optional_block": false,
+   "row_slots": {
+    "decision.item": {
+     "type": "prose_short",
+     "words": {
+      "min": 6,
+      "max": 6
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 4
+  },
+  "market.stats": {
+   "kind": "rows",
+   "count": "3-6",
+   "optional_block": false,
+   "row_slots": {
+    "stat.label": {
+     "type": "label",
+     "words": {
+      "min": 5,
+      "max": 5
+     }
+    },
+    "stat.value": {
+     "type": "metric",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "stat.detail": {
+     "type": "prose_short",
+     "words": {
+      "min": 13,
+      "max": 13
+     }
+    },
+    "stat.pill": {
+     "type": "pill",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 4
+  },
+  "comp.rows": {
+   "kind": "rows",
+   "count": "3-6",
+   "optional_block": false,
+   "row_slots": {
+    "comp.label": {
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 4
+     }
+    },
+    "comp.n": {
+     "type": "prose_short",
+     "words": {
+      "min": 6,
+      "max": 7
+     }
+    },
+    "comp.range": {
+     "type": "currency_range",
+     "words": {
+      "min": 1,
+      "max": 5
+     }
+    }
+   },
+   "bars_per_row": 1,
+   "bar_forms": [
+    "range"
+   ],
+   "example_rows": 4
+  },
+  "comp.sources": {
+   "kind": "rows",
+   "count": "3-6",
+   "optional_block": false,
+   "row_slots": {
+    "src.name": {
+     "type": "label",
+     "words": {
+      "min": 7,
+      "max": 7
+     }
+    },
+    "src.low": {
+     "type": "currency",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "src.mid": {
+     "type": "currency",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "src.high": {
+     "type": "currency",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "src.read": {
+     "type": "prose_short",
+     "words": {
+      "min": 6,
+      "max": 6
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 4
+  },
+  "timing.windows": {
+   "kind": "rows",
+   "count": "2-4",
+   "optional_block": false,
+   "row_slots": {
+    "window.label": {
+     "type": "label",
+     "words": {
+      "min": 4,
+      "max": 4
+     }
+    },
+    "window.body": {
+     "type": "prose_long",
+     "words": {
+      "min": 38,
+      "max": 38
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 3
+  },
+  "agenda": {
+   "kind": "rows",
+   "count": "4-8",
+   "optional_block": false,
+   "row_slots": {
+    "agenda.time": {
+     "type": "count_range",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "agenda.segment": {
+     "type": "label",
+     "words": {
+      "min": 3,
+      "max": 3
+     }
+    },
+    "agenda.objective": {
+     "type": "prose_short",
+     "words": {
+      "min": 19,
+      "max": 19
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 6
+  },
+  "intake.questions": {
+   "kind": "rows",
+   "count": "6-12",
+   "optional_block": false,
+   "row_slots": {
+    "iq.text": {
+     "type": "prose_short",
+     "words": {
+      "min": 23,
+      "max": 23
+     }
+    },
+    "iq.extract": {
+     "type": "prose_short",
+     "words": {
+      "min": 23,
+      "max": 23
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 12
+  },
+  "requirements": {
+   "kind": "rows",
+   "count": "4-10",
+   "optional_block": false,
+   "row_slots": {
+    "req.name": {
+     "type": "label",
+     "words": {
+      "min": 8,
+      "max": 8
+     }
+    },
+    "req.verdict": {
+     "type": "chip",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "req.rec": {
+     "type": "prose_short",
+     "words": {
+      "min": 16,
+      "max": 16
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 8
+  },
+  "tradeoffs": {
+   "kind": "rows",
+   "count": "3",
+   "optional_block": false,
+   "row_slots": {
+    "to.choice": {
+     "type": "chip",
+     "words": {
+      "min": 3,
+      "max": 3
+     }
+    },
+    "to.consequence": {
+     "type": "prose_short",
+     "words": {
+      "min": 18,
+      "max": 18
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 3
+  },
+  "sla.recruiter": {
+   "kind": "rows",
+   "count": "3-6",
+   "optional_block": false,
+   "row_slots": {
+    "sla.item": {
+     "type": "prose_short",
+     "words": {
+      "min": 4,
+      "max": 4
+     }
+    },
+    "sla.when": {
+     "type": "count_range",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 5
+  },
+  "sla.hm": {
+   "kind": "rows",
+   "count": "3-6",
+   "optional_block": false,
+   "row_slots": {
+    "hm.item": {
+     "type": "label",
+     "words": {
+      "min": 3,
+      "max": 3
+     }
+    },
+    "hm.when": {
+     "type": "duration",
+     "words": {
+      "min": 3,
+      "max": 3
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 5
+  }
+ },
+ "standalone_bars": [],
+ "optionals": [
+  {
+   "id": "optional_1",
+   "slots": {},
+   "repeats": [],
+   "handoff_block": true,
+   "context": "Handoff → all downstream artifacts Internal · optional: delete before sharing outside the search tea"
+  }
+ ],
+ "toggles": [],
+ "handoff_slots": []
+}

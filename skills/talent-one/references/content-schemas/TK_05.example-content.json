@@ -1,0 +1,269 @@
+{
+ "template": "TK_05_Outreach_Campaign.dc.html",
+ "slots": {
+  "kit.mark": "Talent Kit · 05",
+  "doc.agent": "Agent · SHAKESPEARE",
+  "doc.date": "Written peer-to-peer, not pitched",
+  "doc.eyebrow": "Artifact 05 · Campaign copy",
+  "doc.title": "Multi-Channel Outreach",
+  "role.title": "Propulsion Engineer · Mid-Level",
+  "role.org": "Onepromptman · 8 touches across 21 days",
+  "doc.thesis": "Every touch is ready to send: five emails, a LinkedIn connect note, an InMail, a voicemail script, a live-call opener with branches, and two texts, all written engineer to engineer. Nothing here works unedited: the bracketed tokens are the job, not decoration.",
+  "gauge.value": "18%",
+  "gauge.note": "Benchmarks to beat: 68% open, 18% reply, 9% interested. Estimate: a public industry benchmark, name the report and year when you fill this, discounted for a scarce, specialized pool.",
+  "s1.title": "Eight touches, twenty-one days",
+  "s1.body": "Each touch does one job and stops. None repeats the argument of the one before it. If touch four is just a louder touch one, cut it. The psychology column is why this specific order works on this specific pool.",
+  "gate.1": "Text only after the candidate has replied to you directly and given you the number themselves. A referral is not consent. A cold text to a propulsion candidate burns the relationship and carries real regulatory exposure in several states.",
+  "s2.title": "Email 1 · the origin touch",
+  "s2.body": "Seventy-five to ninety words, grade seven reading level or lower. Two sentences about them, two about us, one ask. If the highlighted token cannot be filled honestly, this profile is not ready to contact.",
+  "e1.subjA": "the failure mode most reviews miss",
+  "e1.subjB": "for the engineer who already owns half the engine",
+  "e1.body": {
+   "html": "<p style=\"margin:0 0 14px\">[[FirstName]],</p><p style=\"margin:0 0 14px\"><span style=\"background:#EEF6F1;border-bottom:1px solid #BFDCCB\">Your [[SpecificProject]] work at [[CurrentCompany]]</span> reads like someone who trusts test data over intuition, which is rarer than it should be in propulsion.</p><p style=\"margin:0 0 14px\">Here's a problem worth your attention: most propulsion failures are decided on paper, months before a chamber ever sees propellant, and margins shrink every generation.</p><p style=\"margin:0 0 14px\">We build [[SystemScope]] largely in-house, on a team small enough that one engineer owns a full subsystem.</p><p style=\"margin:0 0 14px\">Worth sixty seconds to see what the propulsion team owns here? If you'd rather not hear from me, reply once and I'll close the file for good.</p><p style=\"margin:0\">[Your first name]</p>"
+  },
+  "s3.title": "Proof first, then scope",
+  "s3.body": "Two introduces the team and the checkable facts. Three describes the actual job. Every claim in both must survive scrutiny, because a propulsion engineer who has sat through a design review will check.",
+  "s4.title": "The connect note and the InMail",
+  "s4.body": "The connect note is deliberately not a pitch: it buys familiarity for the emails that follow. The InMail assumes zero context, since it is the one touch that might get read on its own.",
+  "s5.title": "Honest urgency, then the exit ramp",
+  "s5.body": "Email four ships only if every word in it is literally true. Email five drops the ask entirely, which is exactly why it outperforms the other four.",
+  "e4.subj": "where the search actually stands",
+  "e4.body": {
+   "html": "<p style=\"margin:0 0 12px\">[[FirstName]],</p><p style=\"margin:0 0 12px\">Straight status: we're filling one propulsion seat this cycle, the loop runs about two weeks start to finish, and the panel is engineers who have run hardware programs themselves.</p><p style=\"margin:0 0 12px\">We're moving candidates to scheduling this week, so the timing here is real, not a sales deadline.</p><p style=\"margin:0 0 12px\">If you've been even half-curious, this is the week where a twenty-minute call still leaves you every option open.</p><p style=\"margin:0 0 12px\">Either way, this is my second-to-last note. If you'd rather not hear from me, reply once and I'll close the file for good.</p><p style=\"margin:0\">[Your first name]</p>"
+  },
+  "e4.note": "Send this only if it is true. A fabricated deadline is easy to spot and costly to be caught in with an audience that reads specs for a living. If two seats are open, say two.",
+  "s6.title": "The phone script, and the texts that follow it",
+  "s6.body": "Reserved for the high-touch tier. A call is a costly signal for both sides, which is exactly why it moves a scarce propulsion candidate when another email will not.",
+  "s7.title": "Tier discipline and the banned list",
+  "s7.body": "Tier discipline is the difference between an 18% reply rate and a 6% one. The banned list is not a style preference: each phrase measurably drags down replies, and several signal that the sender has never touched a test stand.",
+  "tier.note": "One call to action, one question, every single time. Sign with a real name, never a team inbox. Every email carries at least one fact a candidate could verify independently.",
+  "footer.left": "OPM-05 · Propulsion Outreach Campaign",
+  "footer.right": "Send nothing you would not want forwarded · © 2026 Onepromptman",
+  "doc.prose0": "E1 · day 0 · curiosity plus identity",
+  "doc.prose1": "E4 · day 14 · must be true",
+  "doc.prose2": "E5 · day 21 · highest reply rate",
+  "doc.prose3": "Closing the file on my end: you clearly have good things going at [[CurrentCompany]].",
+  "doc.prose4": "One sentence for the archive: this is the team building the propulsion system for [[NextMilestone]], and the seat is still open.",
+  "doc.prose5": "If timing ever changes, my inbox doesn't. And if a former teammate comes to mind who'd want this, that introduction would genuinely mean something.",
+  "doc.prose6": "Go build,[Your first name]",
+  "doc.prose7": "Do not add one back in. The referral line earns more replies than the direct question ever does.",
+  "doc.prose8": "Dropping the ask is what makes it land.",
+  "doc.prose9": "Banned: automatic QA fail"
+ },
+ "repeats": {
+  "sequence": [
+   {
+    "seq.day": "0",
+    "seq.touch": "Email 1 · origin touch",
+    "seq.psych": "Curiosity plus identity hook",
+    "seq.goal": "Open a loop only a propulsion engineer can close"
+   },
+   {
+    "seq.day": "3",
+    "seq.touch": "Email 2 · social proof",
+    "seq.psych": "Credibility and belonging",
+    "seq.goal": "Show the team and the hardware track record"
+   },
+   {
+    "seq.day": "7",
+    "seq.touch": "Email 3 · vision",
+    "seq.psych": "Ownership and aspiration",
+    "seq.goal": "Name the subsystem they would own"
+   },
+   {
+    "seq.day": "10",
+    "seq.touch": "LinkedIn connect note",
+    "seq.psych": "Familiarity, low pressure",
+    "seq.goal": "Open a second channel with no ask attached"
+   },
+   {
+    "seq.day": "12",
+    "seq.touch": "InMail · if connect unanswered",
+    "seq.psych": "Standalone value restatement",
+    "seq.goal": "Reach engineers who never check email"
+   },
+   {
+    "seq.day": "14",
+    "seq.touch": "Email 4 · honest urgency",
+    "seq.psych": "Real scarcity, peer signal",
+    "seq.goal": "Put a truthful clock on the decision"
+   },
+   {
+    "seq.day": "16+",
+    "seq.touch": "Voicemail or live call",
+    "seq.psych": "Human effort signal",
+    "seq.goal": "High-touch tier only. The effort is the message."
+   },
+   {
+    "seq.day": "21",
+    "seq.touch": "Email 5 · breakup",
+    "seq.psych": "Closure and reciprocity",
+    "seq.goal": "Close with dignity. Harvest a referral. Strongest-testing line of the eight."
+   }
+  ],
+  "e1.annotations": [
+   {
+    "note.tag": "Why it works",
+    "note.body": "The first sentence carries no information about us at all. It is entirely a technical read on their public work, which lands as informed rather than flattering."
+   },
+   {
+    "note.tag": "The hook",
+    "note.body": "\"Decided on paper\" is a claim, not a compliment. Propulsion engineers argue about design margin constantly, so a bold claim invites a rebuttal, and a rebuttal is a reply."
+   },
+   {
+    "note.tag": "Must swap",
+    "note.body": "The highlighted token. Source it from a conference talk, a paper, a patent, or their own post. If they've published nothing, fall back to the propellant or test stand named on their profile. Never invent specificity."
+   },
+   {
+    "note.tag": "Never",
+    "note.body": "\"Reaching out\", \"came across your profile\", \"exciting opportunity\", or any pun on the word thrust."
+   }
+  ],
+  "emails": [
+   {
+    "email.label": "E2 · day 3 · credibility and belonging",
+    "email.meta": "89 words",
+    "email.subjA": "five hot-fires, zero anomalies logged",
+    "email.subjB": "who you'd test with",
+    "email.body": {
+     "html": "<p style=\"margin:0 0 12px\">[[FirstName]],</p><p style=\"margin:0 0 12px\">Following up with the part most people ask about first: the team.</p><p style=\"margin:0 0 12px\">This group has run propulsion hardware from first cold-flow test through hot-fire qualification, with [[SubsystemScope]] designed in-house alongside [[PartnerContext]], and [[TestCampaignFact]]. <span style=\"background:#EEF6F1;border-bottom:1px solid #BFDCCB\">[[FundingFact]]</span>, and <span style=\"background:#EEF6F1;border-bottom:1px solid #BFDCCB\">[[MilestoneFact]]</span>.</p><p style=\"margin:0 0 12px\">The propulsion team is small enough that you'd know every valve and every test anomaly personally.</p><p style=\"margin:0 0 12px\">Happy to set up twenty minutes with one of the engineers, not a recruiter pitch. Interested?</p><p style=\"margin:0\">[Your first name]</p>"
+    },
+    "email.note": "Every claim is independently checkable, which is the point. \"Not a recruiter pitch\" is a real promise: keep it or don't make it.",
+    "emails.prose0": "Both highlighted tokens. Use facts a candidate can confirm in one search: funding stage, a named test campaign, a public milestone."
+   },
+   {
+    "email.label": "E3 · day 7 · ownership and aspiration",
+    "email.meta": "104 words · A/B the lead",
+    "email.subjA": "what you'd own on this team",
+    "email.subjB": "before the paperwork stage",
+    "email.body": {
+     "html": "<p style=\"margin:0 0 12px\">[[FirstName]],</p><p style=\"margin:0 0 12px\">Last substantive note from me. Here's the actual scope:</p><p style=\"margin:0 0 12px\">You would own propulsion subsystem hardware, from initial design through flight qualification: design margin on the feed system, hot-fire test campaigns on the stand one floor away, and the failure investigations that decide whether a design flies. <span style=\"background:#EEF6F1;border-bottom:1px solid #BFDCCB\">[[NextMilestone]]</span> is in [[MilestonePhase]], and its design decisions are being made now.</p><p style=\"margin:0 0 12px\">At this stage, the scope is the argument; the equity terms come with the offer. On a team this size, your test data is the record.</p><p style=\"margin:0 0 12px\">If any of that maps to what you want next, I can get you thirty minutes with the hiring manager this week.</p><p style=\"margin:0\">[Your first name]</p>"
+    },
+    "email.note": "\"Your test data is the record\" is the strongest-testing line in the sequence for experienced candidates. It promises scope without promising a title.",
+    "emails.prose0": "Ownership-led against stage-and-equity-led. Different personas split hard on this. See the test matrix in artifact 04."
+   }
+  ],
+  "linkedin": [
+   {
+    "li.label": "Connect note · day 10",
+    "li.meta": "234 / 300 chars",
+    "li.body": "[[FirstName]], the [[SpecificProject]] work at [[CurrentCompany]] is the kind of propulsion depth that gets buried on a big engine team. We're building a small propulsion group where one person owns a full subsystem. Worth connecting?",
+    "li.note": "No pitch, no ask, no link. Send nothing else on this channel for at least two days, or the note reads as a setup."
+   },
+   {
+    "li.label": "InMail · day 12 · standalone",
+    "li.meta": "89 words",
+    "li.body": "Subjthe propulsion problem worth changing jobs for",
+    "li.note": {
+     "html": "<p style=\"margin:0 0 12px\">[[FirstName]],</p><p style=\"margin:0 0 12px\">Short version, since InMail is nobody's favorite inbox:</p><p style=\"margin:0 0 12px\">We build [[SystemScope]] mostly in-house, on a small team where one engineer owns a whole subsystem, from feed-system design through hot-fire test, instead of a slice of one.</p><p style=\"margin:0 0 12px\">Your background at [[CurrentCompany]] fits the shape of what this team needs: someone who has done the test-stand work, not just the analysis behind it. If a fifteen-minute intro is worth your time, name a day. If not, no follow-up beyond one more note.</p><p style=\"margin:0\">[Your first name]</p>"
+    }
+   }
+  ],
+  "voice.blocks": [
+   {
+    "voice.label": "Voicemail · day 16 onward · ~20 seconds",
+    "voice.script": "\"Hi [[FirstName]], this is [Name]. I've sent a couple of notes about our propulsion team. Short version: we're mid-[[ProgramPhase]] on [[ProgramName]], the seat is still open, and your test-stand work at [[CurrentCompany]] is why I keep calling. My number is [number]. If it's a no, a two-word text saves us both the dance. Thanks, [[FirstName]].\"",
+    "voice.note": "The two-word opt-out is what earns callbacks. A cheap, guilt-free exit produces more calls than a hard close does, since it removes the fear of an awkward yes."
+   },
+   {
+    "call.script": "\"Hi [[FirstName]], [Name] here. I'll be brief: your test-stand and analysis work at [[CurrentCompany]] maps closely onto what our propulsion team owns, and I'd rather ask than assume. Is a fifteen-minute intro this week worth your time?\"",
+    "call.branches": [
+     {
+      "branch.if": "\"I'm happy where I am\"",
+      "branch.then": "\"Completely fair, and I appreciate you saying so plainly. Mind if I send one paragraph on the scope for future reference? And if anyone comes to mind who'd fit, I take referrals seriously.\""
+     },
+     {
+      "branch.if": "\"What does this pay?\"",
+      "branch.then": "\"Posted range is [[BandLow]] to [[BandHigh]] base, plus equity depending on level. Worth fifteen minutes to see if the scope earns it?\""
+     },
+     {
+      "branch.if": "\"This isn't a good time\"",
+      "branch.then": "\"Understood. Does Tuesday morning or Thursday afternoon work better, or should I just close the file?\" Offering to close the file turns this into a real choice instead of a nudge."
+     }
+    ]
+   },
+   {
+    "sms.1": "\"Hey [[FirstName]], it's [Name]. Glad you're open to a call. I can hold Wed 9am or Thu 3pm for twenty minutes with [HM first name], either work for you? I'll get the invite out.\"",
+    "sms.2": "\"[[FirstName]], see you at 3 today with [HM first name]. Video link is in the invite. Anything specific you want covered, tell me now and I'll brief them.\""
+   }
+  ],
+  "tiers": [
+   {
+    "tier.name": "Baseline",
+    "tier.target": "high-volume strings",
+    "tier.elements": "Only [[FirstName]] and [[CurrentCompany]] filled in. Expect the benchmark reply rate and nothing above it."
+   },
+   {
+    "tier.name": "Targeted",
+    "tier.target": "named target list",
+    "tier.elements": "Adds [[TestSignal]]: the propellant, engine cycle, or test campaign named on their own profile. Cheap to add, clearly better."
+   },
+   {
+    "tier.name": "Full-touch",
+    "tier.target": "target >22% reply",
+    "tier.elements": "Passives, referrals, and trigger-based sends. Adds [[SpecificProject]], a hand-written opener, plus the voicemail or live call. Fifteen minutes of research per name."
+   }
+  ],
+  "banned": [
+   {
+    "banned.term": "we're hiring"
+   },
+   {
+    "banned.term": "per my last email"
+   },
+   {
+    "banned.term": "circle back"
+   },
+   {
+    "banned.term": "just following up"
+   },
+   {
+    "banned.term": "synergy"
+   },
+   {
+    "banned.term": "end-to-end"
+   },
+   {
+    "banned.term": "crushing it"
+   },
+   {
+    "banned.term": "low-hanging fruit"
+   },
+   {
+    "banned.term": "move the needle"
+   },
+   {
+    "banned.term": "wear many hats"
+   },
+   {
+    "banned.term": "dynamic team"
+   },
+   {
+    "banned.term": "I hope this finds you well"
+   },
+   {
+    "banned.term": "came across your profile"
+   },
+   {
+    "banned.term": "exciting opportunity"
+   },
+   {
+    "banned.term": "rockstar"
+   },
+   {
+    "banned.term": "perfect fit"
+   }
+  ]
+ },
+ "standalone_bars": [
+  0.18
+ ],
+ "optionals": {},
+ "toggles": {},
+ "handoff": {
+  "produces": "sequence · channels · ab_variants · banned_phrases_checked",
+  "consumers": "09 QA GATE · weekly pipeline standup",
+  "compliance": "No phrases outside the reference list · one call to action per touch · every number carries a Sourced or Estimate pill · SMS gated to reply or referral only · every automated send carries a working opt-out and postal address",
+  "blocked": "Real funding and milestone facts from Onepromptman, plus one real open technical problem from the hiring manager, to replace the bracketed tokens throughout"
+ }
+}

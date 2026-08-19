@@ -1,0 +1,259 @@
+{
+ "template": "TK_08_Recruiter_Screen.dc.html",
+ "slots": {
+  "kit.mark": "Talent Kit · 08",
+  "doc.agent": "Agent · RECRUITER SCREEN",
+  "doc.date": "30 min · run within 48 hours of first contact",
+  "doc.eyebrow": "Artifact 08 · Run the call",
+  "doc.title": "Recruiter Screen Guide",
+  "role.title": "Propulsion Engineer · Mid level",
+  "role.org": "Onepromptman · non-technical recruiter, no engineer present",
+  "doc.thesis": "A script you can run cold, including three calibrated propulsion spot-checks with graded answer keys. You do not need to understand propulsion: match what they say against the key and write down their exact phrases. That is a real, defensible signal.",
+  "cover.note": "Behind at the half? Cut logistics, protect the spot-checks",
+  "s1.title": "Thirty minutes, fully scripted",
+  "s1.body": "Bold text is said out loud; everything else is for you. The first two minutes set the agenda, and that is what earns you permission to interrupt later, so do not skip it to save time. There is no eligibility gate on this call: that time goes to the story and the spot-checks.",
+  "s2.title": "Story and hardware walkthrough",
+  "s2.body": "Two prompts, then stay quiet. You are listening for whether they can name what they personally designed, analyzed, or tested, and whether they understand what breaks when propulsion hardware fails.",
+  "s3.title": "Propulsion spot-checks, with answer keys",
+  "s3.body": "Three questions with graded keys. Read the question exactly as written, then match what you hear against the five bands. You are not judging whether the answer is right: you are locating it on a ladder an engineer calibrated.",
+  "s3.body2": "Write down their actual phrases even when you don't follow them. Those phrases are what the propulsion interviewer uses to calibrate their own session, and they are the most valuable thing you produce on this call.",
+  "score.rule.1": "Two at Good or better → advance. That is the bar; do not hold out for three strong answers.",
+  "score.rule.2": "One Great or Exceptional, the other two mixed → hold for hiring-manager review instead of forcing the call.",
+  "score.rule.3": "Two Bad answers → decline, regardless of the résumé. This is the one place you can say no on technical grounds.",
+  "s4.title": "Motivation and honest fit",
+  "s4.body": "Four questions. Surface every deal-breaker now rather than at offer stage, and capture their own words for the hiring manager: paraphrasing loses the thing that makes it useful.",
+  "s5.title": "Fields to capture, and how to ask",
+  "s5.body": "Ask these in one run so none of them feels loaded. Each has a private-notes field attached. If a field is empty at the end of the call, the screen isn't finished.",
+  "s6.title": "The sixty-second pitch",
+  "s6.body": "Learn this, don't read it. The shape matters: facts first, then the constraint that makes the work interesting, then the honest cost, then a specific next step with a date.",
+  "sell.script": {
+   "html": "<p style=\"margin:0 0 14px\">\"Quick picture of what you'd be walking into. A small propulsion team designing, building, and hot-firing our own hardware, iterating fast between tests instead of waiting on a big-company release train. <span style=\"background:#EEF6F1;border-bottom:1px solid #BFDCCB\">Small enough that one engineer owns a whole subsystem, not a slice.</span></p><p style=\"margin:0 0 14px\">And here's the part propulsion engineers care about: you follow your hardware from the whiteboard to the test stand and watch it fire. When something breaks on the stand, it's yours to understand and fix, not a ticket handed to another group.</p><p style=\"margin:0 0 14px\">The honest cost is that this is hands-on and mostly on-site near the test hardware, and test campaigns bring long days when a window is open.</p><p style=\"margin:0\">Next step is a technical deep-dive with one of our propulsion engineers. I can have you scheduled within a week, and either way you'll hear from me by <span data-slot=\"sell.date\">[Date]</span>.\"</p>"
+  },
+  "sell.date": "[Date]",
+  "caution.1": "Before you score, check your own read. The affinity trap (over-crediting someone who reminds you of a past hire) and the halo or horn effect (letting one strong or weak moment color the whole call) both hit hardest on a cold screen. Grade each spot-check against its key on its own, not against your gut feeling about the person.",
+  "s7.title": "The call: advance, hold, or decline",
+  "s7.body": "Write it up the same day. Anything past four lines is you dodging the call, and the hiring manager reads only the first two anyway.",
+  "insight.1": "Beyond the two-Bad-answers rule, you are not qualified to reject on propulsion depth from this call, and you should not try. Advance anyone who clears the spot-check bar and tells a real failure story; hold the genuinely ambiguous ones for the hiring manager. This talent pool is small, and a false negative here is invisible and expensive.",
+  "footer.left": "Talent Kit 08 · Propulsion Engineer screen · © 2026 Onepromptman",
+  "footer.right": "Bold text is said out loud"
+ },
+ "repeats": {
+  "cover.metrics": [
+   {
+    "metric.label": "Open & frame",
+    "metric.value": "2 min"
+   },
+   {
+    "metric.label": "Story walkthrough",
+    "metric.value": "6 min"
+   },
+   {
+    "metric.label": "Technical spot-checks",
+    "metric.value": "9 min"
+   },
+   {
+    "metric.label": "Motivation & fit",
+    "metric.value": "5 min"
+   },
+   {
+    "metric.label": "Logistics",
+    "metric.value": "5 min"
+   },
+   {
+    "metric.label": "Sell & close",
+    "metric.value": "3 min"
+   }
+  ],
+  "runofshow": [
+   {
+    "ros.time": "0–2",
+    "ros.segment": "Open & agenda",
+    "ros.objective": "\"Thirty minutes. I'll cover the role and the team, ask you about propulsion work you've actually done, and leave time for your questions. Sound right?\""
+   },
+   {
+    "ros.time": "2–8",
+    "ros.segment": "Story walkthrough",
+    "ros.objective": "Career arc, current scope, and the hardware their propulsion work has actually flown or hot-fired on."
+   },
+   {
+    "ros.time": "8–17",
+    "ros.segment": "Technical spot-checks",
+    "ros.objective": "Three calibrated questions, graded against the keys in section 03. The highest-value nine minutes of the call."
+   },
+   {
+    "ros.time": "17–22",
+    "ros.segment": "Motivation",
+    "ros.objective": "Why this company, what's missing today, and what would make them decline."
+   },
+   {
+    "ros.time": "22–27",
+    "ros.segment": "Logistics",
+    "ros.objective": "Timeline, competing processes and their stages, comp expectations, location and relocation reality."
+   },
+   {
+    "ros.time": "27–30",
+    "ros.segment": "Sell & next steps",
+    "ros.objective": "Deliver the sixty-second pitch, explain the loop, commit to a response date. Never \"we'll be in touch.\""
+   }
+  ],
+  "story.prompts": [
+   {
+    "prompt.text": "\"Walk me through your path in about three minutes, with emphasis on the propulsion hardware your work has actually flown or hot-fired on.\"",
+    "prompt.listen": {
+     "html": "<b style=\"font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-success)\">Listen for</b><br/>"
+    },
+    "prompt.flag": {
+     "html": "<b style=\"font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-accent)\">Red flag</b><br/>"
+    }
+   },
+   {
+    "prompt.text": "\"What's the highest-consequence propulsion component or test you've personally owned, and how did it fit into the larger system?\"",
+    "prompt.listen": {
+     "html": "<b style=\"font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-success)\">Listen for</b><br/>"
+    },
+    "prompt.flag": {
+     "html": "<b style=\"font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-accent)\">Red flag</b><br/>"
+    }
+   }
+  ],
+  "spotchecks": [
+   {
+    "sc.label": "Spot-check 1 · thermofluids fundamentals",
+    "sc.time": "3 min",
+    "sc.question": "\"What is specific impulse, and what does it tell you?\"",
+    "sc.tests": "What it actually tests Whether they understand the core efficiency metric or just recite a definition. Specific impulse is the field's most basic figure of merit, so everyone claims to know it. A precise answer separates people who use the number from people who know what drives it. Role-derived from the O*NET thermofluids baseline.",
+    "sc.bands": [
+     {
+      "band.label": "No signal",
+      "band.answer": "No idea, or confuses it with raw thrust."
+     },
+     {
+      "band.label": "Weak",
+      "band.answer": "\"It's the engine's efficiency.\" Right neighborhood, no sense of what it measures or its units."
+     },
+     {
+      "band.label": "Good",
+      "band.answer": "Thrust delivered per unit of propellant used, effectively how long a unit of propellant makes a unit of thrust, measured in seconds. Higher means less propellant for the same job. This band advances."
+     },
+     {
+      "band.label": "Great",
+      "band.answer": "Ties it to effective exhaust velocity, explains why vacuum and sea-level values differ, and names typical ranges for the propellant classes they have worked with."
+     },
+     {
+      "band.label": "Exceptional",
+      "band.answer": "Connects it to the rocket equation and mission delta-v, and to where chasing efficiency stops paying against mass or complexity. You are not expected to follow this. Write down their phrases, tick the box, tell the propulsion interviewer to raise their starting difficulty."
+     }
+    ]
+   },
+   {
+    "sc.label": "Spot-check 2 · the hot-fire tell",
+    "sc.time": "3 min",
+    "sc.question": "\"What is combustion instability, and why does it matter?\"",
+    "sc.tests": "What it actually tests This is the single best proxy for genuine hot-fire experience in a short answer. Analysts and designers can define it; people who have actually tested engines have been scared by it. If they connect it to acoustics coupling with combustion and hardware destroyed in milliseconds, they have done the real work. Role-derived from the combustion and test skills baseline."
+   },
+   {
+    "sc.label": "Spot-check 3 · the startup transient",
+    "sc.time": "3 min",
+    "sc.question": "\"Walk me through what happens from valve-open to steady-state thrust.\"",
+    "sc.tests": "What it actually tests Whether they reason about the transient, not just the steady state. Textbook performance lives at steady state; real engines are won or lost in the first few hundred milliseconds, when sequencing and ignition decide whether you get an engine or a crater. Author-generated, to reach the startup layer the fundamentals questions miss."
+   }
+  ],
+  "motivation": [
+   {
+    "mq.text": "\"What drew you to us, and to propulsion here specifically?\"",
+    "mq.listen": "Listen for Researched specifics: our hardware, the propulsion approach, a test they read about. \"Space is cool\" is neutral, not negative. Specifics are a strong buy signal."
+   },
+   {
+    "mq.text": "\"What are you optimising for in your next role that you don't have today?\"",
+    "mq.listen": "Listen for Alignment with what this role actually offers: full-subsystem ownership, hot-fire cadence, hardware proximity. Write their phrasing down verbatim and pass it to the hiring manager."
+   },
+   {
+    "mq.text": "\"What would make you decline an offer even if everything else looked right?\"",
+    "mq.listen": "Listen for Deal-breakers now, not at offer: a comp floor, relocation limits, a title need, a timing constraint. Every one you learn here is a week you don't lose later."
+   },
+   {
+    "mq.text": "\"Most propulsion work here is on-site near the test hardware. How does that land for you?\"",
+    "mq.listen": "Listen for Genuine feasibility, not politeness. Ask what a move would actually require and take the answer at face value. Do not infer from personal circumstances."
+   }
+  ],
+  "logistics": [
+   {
+    "log.field": "Location",
+    "log.script": "\"Where are you based today, and if you're outside the metro, what would a move near the test hardware actually require for you?\""
+   },
+   {
+    "log.field": "Timeline",
+    "log.script": "\"If we ran a two-week loop, does anything in your world make that timing hard?\""
+   },
+   {
+    "log.field": "Competing processes",
+    "log.script": "\"Where else are you interviewing, and at what stage? I'm asking so we can pace correctly, not to pressure you.\""
+   },
+   {
+    "log.field": "Compensation",
+    "log.script": {
+     "html": "<span style=\"font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-warning);background:#FAF0E6;border:1px solid #E3CDB4\">Estimate</span><span style=\"font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)\">Example range from the calibration brief: BLS-OES 17-2011 P25-P75 blended with propulsion aggregators 2026, small private employer</span><span style=\"display:block;margin-top:4px;color:var(--bh-muted);font-size:13.5px\">If their number is above the ceiling, say so on this call. Never let it surface at offer.</span>"
+    }
+   },
+   {
+    "log.field": "Notice period",
+    "log.script": "\"And if this went well, what does your notice period look like?\""
+   }
+  ],
+  "criteria": [
+   {
+    "crit.item": "Two of the three spot-checks graded Good or better",
+    "crit.level": "Required"
+   },
+   {
+    "crit.item": "Designed, analyzed, or tested real propulsion hardware",
+    "crit.level": "Required"
+   },
+   {
+    "crit.item": "Can name a failure they personally caused or caught",
+    "crit.level": "Required"
+   },
+   {
+    "crit.item": "Candidate confirms the on-site expectation works for them",
+    "crit.level": "Required"
+   },
+   {
+    "crit.item": "Comp expectations within the band",
+    "crit.level": "Preferred"
+   },
+   {
+    "crit.item": "Available inside 60 days",
+    "crit.level": "Nice-to-have"
+   }
+  ],
+  "wrapup": [
+   {
+    "wrap.item": "Spot-check grades logged, with their exact phrases quoted even where you couldn't follow them."
+   },
+   {
+    "wrap.item": "One-sentence failure story in their words. This is the single line the hiring manager will actually read."
+   },
+   {
+    "wrap.item": "Private notes complete: location and relocation, timeline, comp, competing processes, notice."
+   },
+   {
+    "wrap.item": "Strong-signal phrases forwarded to the propulsion interviewer so they calibrate their starting difficulty."
+   },
+   {
+    "wrap.item": "Candidate's own questions captured verbatim for the handoff; what they ask signals what they are really weighing."
+   },
+   {
+    "wrap.item": "Recommendation logged: advance, hold, or decline, each with evidence you'd defend in a debrief. \"Maybe\" is not an option on this form."
+   }
+  ]
+ },
+ "standalone_bars": [],
+ "optionals": {},
+ "toggles": {},
+ "handoff": {
+  "produces": "grades · motivators_verbatim · flags · recommendation",
+  "consumers": "QA gate (the interview-plan agent never reads this)",
+  "blocked": "Nothing",
+  "assumptions": "Recruiter is non-technical. Band ceiling is confirmed at intake and quotable. No eligibility gate: constraints ship empty for this search."
+ }
+}

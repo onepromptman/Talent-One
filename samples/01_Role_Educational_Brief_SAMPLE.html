@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>/* ============================================================================
+   BH · SEOUL — Unified Korean Design System (token spine)
+   ----------------------------------------------------------------------------
+   ONE system, THREE modes on a single axis: two clean minimal grounds (light,
+   dark) + one colorful heritage mode (dancheong). Components read SEMANTIC tokens
+   only (--bh-bg / --bh-ink / --bh-primary / --bh-accent / --bh-shadow-* /
+   --bh-radius-* / --bh-font-display ...). A mode is a block that redefines what
+   those semantics resolve to, so a surface restyles by switching ONE attribute:
+
+     <body data-mode="light">       minimal — editorial, hanji/white ground, shadows, rounded
+     <body data-mode="dark">        minimal — editorial, dark ground, shadows, rounded
+     <section data-mode="dancheong"> COLORFUL — green temple-eave ground, orange flowers,
+                                     rainbow stripe, cream ink, flat, sharp
+
+   (태극 taegeuk + 수묵 sumook removed 2026-06-23 — see the note above the dancheong block.)
+   The shadow-vs-lattice and rounded-vs-sharp differences are NOT global stances:
+   they are per-mode token values. light/dark resolve --bh-shadow-* to real
+   shadows and --bh-radius-* to 4-8px; dancheong resolves them to
+   `none` and `0`, taking depth from the changsal lattice instead.
+
+   Heritage: 오방색 obangsaek + 단청 dancheong mineral pigments + Taegukgi.
+   ============================================================================ */
+
+:root {
+  /* ==========================================================================
+     LAYER 1 — RAW PALETTE (mode-independent constants; never used by product
+     code directly, only referenced by the mode blocks below)
+     ========================================================================== */
+
+  /* ---- 오방색 obangsaek — five cardinal colors -------------------------- */
+  --bh-cheong:        #2B6CB0;  /* 청 East/Wood   — editorial interactive blue */
+  --bh-cheong-light:  #4A90D9;  /* hover / dark-mode interactive */
+  --bh-cheong-dark:   #1A3F6F;  /* premium / leadership register */
+  --bh-jeok:          #B03030;  /* 적 South/Fire  — editorial strong accent */
+  --bh-jeok-muted:    #C0484A;  /* inline badges, pips */
+  --bh-hwang:         #C8A84B;  /* 황 Center/Earth — premium highlight (sparse) */
+  --bh-hwang-light:   #E8CC80;  /* decorative warm wash */
+  --bh-baek:          #F5F2EC;  /* 백 West/Metal  — hanji near-white */
+  --bh-baek-pure:     #FFFFFF;  /* reversed text, lockups */
+  --bh-heuk:          #1A1A1F;  /* 흑 North/Water — cool near-black ink */
+  --bh-heuk-mid:      #3A3A42;  /* secondary ink, borders */
+
+  /* ---- 오간색 ogansaek — functional intermediates ----------------------- */
+  --bh-nok:           #2D7A4F;  /* success / growth   (cheong+hwang) */
+  --bh-byeok:         #3D8C8C;  /* jade-teal accent   (cheong+baek) */
+  --bh-dan:           #C06030;  /* warning / warm     (jeok+hwang) */
+  --bh-jasak:         #5C3D7A;  /* decorative depth   (heuk+jeok) */
+  --bh-yu:            #6B6B78;  /* UI neutral / disabled (baek+heuk) */
+
+  /* ---- 비색 Goryeo celadon — the quiet third neutral -------------------- */
+  --bh-bisaek:        #7FAE96;
+  --bh-bisaek-light:  #A8C9B8;
+  --bh-bisaek-dark:   #4A7A63;
+
+  /* ---- 태극기 Taegukgi flag — OFFICIAL Munsell→hex, reference only ------- */
+  --bh-flag-red:      #CD2E3A;
+  --bh-flag-blue:     #0047A0;
+  --bh-flag-black:    #000000;
+  --bh-flag-white:    #FFFFFF;
+
+  /* ---- 단청 dancheong mineral pigments ---------------------------------- *
+     RECALIBRATED 2026-06-23 directly from the reference photo
+     (polyflower.jfif — a green temple eave with orange flower bosses):
+     GREEN-dominant ground, VIVID ORANGE flowers, jade centers, cream outlines,
+     brick-red + a rainbow 머리초 meoricho stripe (blue/teal/green/orange/red/white).
+     This replaces the earlier teal/blue-led interpretation. */
+  --bh-dc-green-deep:  #233D28;  /* deep beam green — the colorful-mode GROUND */
+  --bh-dc-green:       #2C4A33;  /* raised panel green */
+  --bh-dc-noerok:      #3A6948;  /* 뇌록 celadonite — mid green field */
+  --bh-dc-yangnok:     #4E8C70;  /* 양록 malachite — flower-center jade */
+  --bh-dc-hayeop:      #66AF92;  /* 하엽 — soft light jade */
+  --bh-dc-orange:      #E87216;  /* 주황 — VIVID orange (the flower petals) */
+  --bh-dc-orange-gold: #F19526;  /* lighter orange-gold petal highlight */
+  --bh-dc-jangdan:     #AB3010;  /* 장단 minium — brick red accent */
+  --bh-dc-seokganju:   #93412F;  /* 석간주 hematite — column red-brown */
+  --bh-dc-seokhwang:   #E0A82E;  /* 석황 orpiment — gold highlight */
+  --bh-dc-samcheong:   #1B6CA8;  /* 삼청 azurite — rainbow-stripe blue */
+  --bh-dc-teal:        #2B9BA8;  /* turquoise — rainbow-stripe teal */
+  --bh-dc-hobun:       #F0E6CE;  /* 호분 calcite/shell — cream outlines + INK on green */
+  --bh-meok:           #161818;  /* 먹 carbon — ink outlines (all edges) */
+  --bh-lacquer:        #2C4A33;  /* raised field = panel green (was dark lacquer) */
+
+  /* ---- 한지 hanji + ink ramp (editorial neutral register) --------------- */
+  --bh-hanji:         #FAF6EE;
+  --bh-ink-900:       #1A1A1A;
+  --bh-ink-700:       #3A3A3A;
+  --bh-ink-500:       #6B6B6B;
+  --bh-ink-300:       #9A958A;
+  --bh-ink-line:      #D8D2C4;
+  --bh-obang-blue:    #0047A0;  /* alias kept; used in the meoricho band gradient */
+
+  /* ==========================================================================
+     LAYER 1b — TYPE / SPACE / STRUCTURE scales (mode-independent)
+     ========================================================================== */
+
+  /* Families. --bh-font-display is overridden PER MODE (heritage vs editorial). */
+  --bh-font-noto:     "Noto Serif KR", "Playfair Display", Georgia, serif;
+  --bh-font-gowun:    "Gowun Batang", "Nanum Myeongjo", Georgia, serif;
+  --bh-font-body:     "IBM Plex Sans", "IBM Plex Sans KR", "Pretendard", system-ui, sans-serif;
+  --bh-font-mono:     "IBM Plex Mono", "IBM Plex Sans KR", ui-monospace, monospace; /* KR fallback: Hangul has no mono glyph, avoids tofu */
+
+  --bh-text-xs:    0.75rem;   --bh-text-sm:   0.875rem;  --bh-text-base: 1rem;
+  --bh-text-lg:    1.125rem;  --bh-text-xl:   1.25rem;   --bh-text-2xl:  1.5rem;
+  --bh-text-3xl:   1.875rem;  --bh-text-4xl:  2.25rem;   --bh-text-5xl:  3rem;
+  --bh-text-6xl:   3.75rem;
+  --bh-display:    clamp(3.5rem, 9vw, 9rem); /* @kind font */ /* fluid statement display */
+  --bh-display-sm: clamp(2.25rem, 5vw, 4rem); /* @kind font */
+
+  --bh-leading-tight: 1.25;  --bh-leading-snug: 1.375;
+  --bh-leading-normal: 1.6;  --bh-leading-relaxed: 1.75;
+  --bh-leading-display: 0.98;
+  --bh-tracking-tight: -0.025em;  --bh-tracking-normal: 0;  --bh-tracking-wide: 0.05em;
+  --bh-tracking-eyebrow: 0.18em;
+
+  --bh-space-1: 0.25rem;  --bh-space-2: 0.5rem;  --bh-space-3: 0.75rem;
+  --bh-space-4: 1rem;     --bh-space-5: 1.5rem;  --bh-space-6: 2rem;
+  --bh-space-7: 3rem;     --bh-space-8: 4rem;    --bh-space-9: 6rem;
+  --bh-space-10: 8rem;
+  --bh-measure: 66ch;
+  --bh-container: 1200px;
+  --bh-hairline: 1px;
+  --bh-bar: 3px;                       /* trigram / accent bar weight */
+  --bh-seam: 2px;                      /* jogakbo structural seam */
+  --bh-grid-jogakbo-5: 2fr 1fr 3fr 1fr 2fr; /* @kind other */
+  --bh-grid-jogakbo-7: 1fr 2fr 1fr 3fr 1fr 2fr 1fr; /* @kind other */
+  --bh-pattern-opacity: 0.08; /* @kind other */
+
+  /* Motion — one behavior: Y-translate on reveal. */
+  --bh-ease:     cubic-bezier(0.2, 0, 0, 1); /* @kind other */
+  --bh-dur-fast: 120ms; /* @kind other */
+  --bh-dur-base: 200ms; /* @kind other */
+  --bh-dur-slow: 320ms; /* @kind other */
+  --bh-dur-reveal: 520ms; /* @kind other */
+
+  /* Choreography durations (animation-owned; clip-wipe + bloom reveals only).
+     Added Phase S 2026-06-25 — see 00-master-build-order §S.3. */
+  --bh-dur-intro:  1200ms; /* @kind other */  /* hero entrance / lattice settle */
+  --bh-dur-bloom:   900ms; /* @kind other */  /* polyflower sector reveal */
+  --bh-dur-draw:   1400ms; /* @kind other */  /* band + roundel clip wipe */
+  --bh-stagger-tight:  60ms; /* @kind other */ /* petal sectors, trigram bars */
+  --bh-stagger-base:   80ms; /* @kind other */ /* word-cascade — the ONLY word-cascade value */
+  --bh-stagger-loose: 140ms; /* @kind other */ /* brand-reveal headline only */
+  --bh-ease-draw: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */ /* Material ease-in-out — clip-wipe reveals ONLY, never UI-state */
+
+  /* Slides-only lattice projection opacities. */
+  --bh-pattern-opacity-projection: 0.10; /* @kind other */
+  --bh-pattern-opacity-quote:      0.12; /* @kind other */
+
+  /* ==========================================================================
+     LAYER 2 — SEMANTIC DEFAULTS (= the "light" mode). Product code reads ONLY
+     these. Every mode block below redefines this same set.
+     ========================================================================== */
+  --bh-bg:            var(--bh-baek);     /* page canvas */
+  --bh-surface:       var(--bh-baek-pure);/* raised surface / card fill */
+  --bh-ink:           var(--bh-heuk);     /* body text */
+  --bh-ink-dim:       var(--bh-heuk-mid); /* secondary text */
+  --bh-border:        #E2DCD0;            /* hairline */
+  --bh-line:          #E2DCD0;            /* alias of border for divider rules */
+  --bh-lattice-line:  #C2BAA8;            /* changsal lattice geometry */
+  --bh-primary:       var(--bh-cheong);   /* THE one interactive color */
+  --bh-primary-hover: var(--bh-cheong-light);
+  --bh-accent:        var(--bh-jeok);     /* THE one scarce strong accent ("flag") */
+  --bh-highlight:     var(--bh-hwang);    /* premium highlight, <1% */
+  --bh-success:       var(--bh-nok);
+  --bh-warning:       var(--bh-dan);
+  --bh-danger:        var(--bh-jeok);
+  --bh-muted:         var(--bh-yu);
+
+  /* Interaction-state tokens (prototype-owned). Added Phase S 2026-06-25.
+     --bh-state-selected is ALWAYS paired with a 3px hobun/primary bar — tint
+     alone is not a WCAG cue. Defaults = light mode. */
+  --bh-state-selected: #EAF1F9;
+  --bh-state-pressed:  rgba(26,26,31,0.10);
+  --bh-overlay-scrim:  rgba(26,26,31,0.55);
+
+  --bh-font-display:  var(--bh-font-noto);/* editorial heritage face */
+
+  /* Elevation + radius are TOKENS, not stances. light/dark = real; flat modes = none/0. */
+  --bh-shadow-1: 0 1px 2px rgba(26,26,31,0.06);
+  --bh-shadow-2: 0 2px 8px rgba(26,26,31,0.08);
+  --bh-shadow-3: 0 8px 24px rgba(26,26,31,0.10);
+  --bh-radius-none: 0;
+  --bh-radius-sm:   2px;
+  --bh-radius-md:   4px;
+  --bh-radius-lg:   8px;
+  --bh-radius-full: 9999px;
+  --bh-radius-interactive: var(--bh-radius-md);  /* default interactive corner */
+}
+
+/* ============================================================================
+   LAYER 3 — MODES (single axis: data-mode). Exactly one active per surface.
+   ============================================================================ */
+
+/* ---- light (editorial, default) — kept identical to legacy BH·SEOUL light --- */
+[data-mode="light"] {
+  --bh-bg: var(--bh-baek);  --bh-surface: var(--bh-baek-pure);
+  --bh-ink: var(--bh-heuk); --bh-ink-dim: var(--bh-heuk-mid);
+  --bh-border: #E2DCD0;     --bh-line: #E2DCD0;  --bh-lattice-line: #C2BAA8;
+  --bh-primary: var(--bh-cheong);  --bh-primary-hover: var(--bh-cheong-light);
+  --bh-accent: var(--bh-jeok);     --bh-highlight: var(--bh-hwang);
+  --bh-font-display: var(--bh-font-noto);
+  --bh-shadow-1: 0 1px 2px rgba(26,26,31,0.06);
+  --bh-shadow-2: 0 2px 8px rgba(26,26,31,0.08);
+  --bh-shadow-3: 0 8px 24px rgba(26,26,31,0.10);
+  --bh-radius-interactive: var(--bh-radius-md);
+  --bh-state-selected: #EAF1F9;  --bh-state-pressed: rgba(26,26,31,0.10);
+  --bh-overlay-scrim: rgba(26,26,31,0.55);
+  /* 연화문 roundel tuning — taegukgi flag red + flag blue, restrained for editorial */
+  --r-frame:#0047A0; --r-ring:#0047A0; --r-field:#FFFFFF; --r-leaf:#2D7A4F;
+  --r-petal:#CD2E3A; --r-petalHi:#E0555E; --r-petalDot:#FFFFFF; --r-inner:#0047A0;
+  --r-innerHi:#2B6CB0; --r-bossRing:#2D7A4F; --r-boss:#0047A0; --r-pip:#CD2E3A;
+  --r-line:#FFFFFF; --r-edge:#1A1A1F;
+}
+
+/* ---- dark (editorial) — kept identical to legacy BH·SEOUL dark -------------- */
+[data-mode="dark"] {
+  --bh-bg: var(--bh-heuk);  --bh-surface: #23232B;
+  --bh-ink: var(--bh-baek); --bh-ink-dim: #B8B4AB;
+  --bh-border: #2E2E36;     --bh-line: #2E2E36;  --bh-lattice-line: #45454F;
+  --bh-primary: var(--bh-cheong-light);  --bh-primary-hover: #6BA8E5;
+  --bh-accent: var(--bh-jeok-muted);     --bh-highlight: var(--bh-hwang);
+  --bh-font-display: var(--bh-font-noto);
+  --bh-shadow-1: 0 1px 2px rgba(0,0,0,0.40);
+  --bh-shadow-2: 0 2px 8px rgba(0,0,0,0.45);
+  --bh-shadow-3: 0 8px 24px rgba(0,0,0,0.55);
+  --bh-radius-interactive: var(--bh-radius-md);
+  --bh-state-selected: #2A3340;  --bh-state-pressed: rgba(255,255,255,0.12);
+  --bh-overlay-scrim: rgba(0,0,0,0.66);
+  /* 연화문 roundel tuning — bright luminous brights on near-black */
+  --r-frame:#F4A02A; --r-ring:#1F8A6B; --r-field:#101014; --r-leaf:#3FD08A;
+  --r-petal:#FF5A2C; --r-petalHi:#FFC042; --r-petalDot:#FFF3D6; --r-inner:#37B0FF;
+  --r-innerHi:#7FE0E8; --r-bossRing:#3FD08A; --r-boss:#FFD23F; --r-pip:#FF3B2F;
+  --r-line:#FFF3D6; --r-edge:#000000;
+}
+
+/* ---- (태극 taegeuk + 수묵 sumook REMOVED 2026-06-23) ----------------------- *
+   The system is now THREE modes: light / dark / dancheong (colorful).
+   - taegeuk read near-identical to light → folded into light.
+   - sumook (the short-lived "bright daylight polychrome") is retired; the single
+     colorful register is now dancheong, rebuilt from the reference photo.
+   Any stray data-mode="taegeuk"/"sumook" falls back to :root (= light). ------- */
+
+/* ---- 단청 dancheong (THE colorful mode) — green temple eave, orange flowers -- *
+   REBUILT 2026-06-23 from polyflower.jfif: a GREEN beam ground, VIVID ORANGE
+   flower bosses with jade centers + cream outlines, brick-red accents, and a
+   rainbow 머리초 meoricho stripe. Cream ink on green reads cleanly; orange is THE
+   interactive color; brick-red is the scarce flag. Flat + sharp (heritage). */
+[data-mode="dancheong"] {
+  --bh-bg: var(--bh-dc-green-deep);   --bh-surface: var(--bh-dc-green);
+  --bh-ink: var(--bh-dc-hobun);       --bh-ink-dim: #BFCBB0;   /* cream + muted sage */
+  --bh-border: #3C5A42;  --bh-line: #3C5A42;  --bh-lattice-line: #4A6B51;
+  --bh-primary: var(--bh-dc-orange);       --bh-primary-hover: var(--bh-dc-orange-gold);
+  --bh-accent: var(--bh-dc-jangdan);       --bh-highlight: var(--bh-dc-seokhwang);
+  --bh-muted: #A9BFA8;                      /* readable sage — AA on the green ground */
+  /* Feedback hues hardened FOR the green ground (recompute, never quote).
+     Backported from foundation/motion.html in Phase S 2026-06-25 — the :root
+     defaults (nok/dan/jeok) are invisible on green. */
+  --bh-success: #66AF92;  /* 하엽 hayeop jade — ~4.58:1 on green */
+  --bh-warning: #E0A82E;  /* 석황 seokhwang gold — ~5.54:1 on green */
+  --bh-danger:  #EE7A52;  /* coral minium — ~4.26:1 readable error on green */
+  --bh-font-display: var(--bh-font-gowun);
+  --bh-shadow-1: none;  --bh-shadow-2: none;  --bh-shadow-3: none;
+  --bh-radius-interactive: var(--bh-radius-none);
+  --bh-state-selected: #3A6948;  --bh-state-pressed: rgba(240,230,206,0.16);
+  --bh-overlay-scrim: rgba(15,28,18,0.66);
+  --bh-lattice-opacity: 0.10; /* @kind other */  /* watermark lattices: a touch more on green */
+  /* 연화문 roundel tuning — native mineral polychrome (the temple register) */
+  --r-frame:#2B9BA8; --r-ring:#1F8A6B; --r-field:#0E3B2E; --r-leaf:#7CC59B;
+  --r-petal:#E0451C; --r-petalHi:#F4A02A; --r-petalDot:#F0E6CE; --r-inner:#1E78C2;
+  --r-innerHi:#37B0C0; --r-bossRing:#1F8A6B; --r-boss:#F2C230; --r-pip:#E0451C;
+  --r-line:#F0E6CE; --r-edge:#161818;
+}
+
+/* ============================================================================
+   TYPOGRAPHY primitives (read semantic tokens)
+   ============================================================================ */
+.bh-display {
+  font-family: var(--bh-font-display);
+  font-size: var(--bh-display);
+  line-height: var(--bh-leading-display);
+  letter-spacing: var(--bh-tracking-tight);
+  color: var(--bh-ink);
+  font-weight: 700;
+}
+.bh-eyebrow {
+  font-family: var(--bh-font-mono);
+  font-size: var(--bh-text-xs);
+  letter-spacing: var(--bh-tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--bh-primary);
+}
+.bh-body {
+  font-family: var(--bh-font-body);
+  font-size: var(--bh-text-base);
+  line-height: var(--bh-leading-normal);
+  color: var(--bh-ink);
+  max-width: var(--bh-measure);
+}
+.bh-num { font-family: var(--bh-font-mono); font-variant-numeric: tabular-nums; }
+
+/* Hangul: keep-all + zero negative tracking (load-bearing). */
+:lang(ko), [lang="ko"], .bh-ko { word-break: keep-all; letter-spacing: 0; }
+
+/* ============================================================================
+   MOTIF REGISTER 1 — 창살 changsal lattice (structure; depth without shadow)
+   ============================================================================ */
+.bh-lattice-bissal {
+  background-image:
+    repeating-linear-gradient( 45deg, var(--bh-lattice-line) 0 var(--bh-hairline), transparent var(--bh-hairline) 14px),
+    repeating-linear-gradient(-45deg, var(--bh-lattice-line) 0 var(--bh-hairline), transparent var(--bh-hairline) 14px);
+}
+.bh-lattice-jeongja {
+  background-image:
+    repeating-linear-gradient(0deg, var(--bh-lattice-line) 0 var(--bh-hairline), transparent var(--bh-hairline) 18px),
+    repeating-linear-gradient(90deg, var(--bh-lattice-line) 0 var(--bh-hairline), transparent var(--bh-hairline) 18px);
+}
+.bh-lattice-faint { opacity: 0.5; }
+
+/* ============================================================================
+   MOTIF REGISTER 4 — WATERMARK LATTICES (line-art tiles, per-mode ink/cream)
+   Seamless line tiles baked in two tones: ink (#222428) for light grounds,
+   cream (#F0E6CE) for dark + dancheong. Swapped on the data-mode axis and held
+   at watermark opacity. Use as a decorative layer (empty div / ::before) BEHIND
+   content — never as a foreground surface. Pairs with the feature florals below
+   (this tier whispers; that tier is the subject).
+   ============================================================================ */
+.bh-lattice-chilbo, .bh-lattice-asa, .bh-lattice-cloud,
+.bh-lattice-su, .bh-lattice-maedeup, .bh-lattice-bosanghwa {
+  background-repeat: repeat;
+  background-position: center;
+  opacity: var(--bh-lattice-opacity, 0.08);
+  pointer-events: none;
+}
+.bh-lattice-chilbo    { background-image: url(../assets/lattice-chilbo-ink.svg);    background-size: 80px; }
+.bh-lattice-asa       { background-image: url(../assets/lattice-asa-ink.svg);       background-size: 60px; }
+.bh-lattice-cloud     { background-image: url(../assets/lattice-cloud-ink.svg);     background-size: 60px; }
+.bh-lattice-su        { background-image: url(../assets/lattice-su-ink.svg);        background-size: 70px; }
+.bh-lattice-maedeup   { background-image: url(../assets/lattice-maedeup-ink.svg);   background-size: 64px; }
+.bh-lattice-bosanghwa { background-image: url(../assets/lattice-bosanghwa-ink.svg); background-size: 72px; }
+/* dark + dancheong grounds → cream linework */
+[data-mode="dark"] .bh-lattice-chilbo,     [data-mode="dancheong"] .bh-lattice-chilbo    { background-image: url(../assets/lattice-chilbo-cream.svg); }
+[data-mode="dark"] .bh-lattice-asa,        [data-mode="dancheong"] .bh-lattice-asa       { background-image: url(../assets/lattice-asa-cream.svg); }
+[data-mode="dark"] .bh-lattice-cloud,      [data-mode="dancheong"] .bh-lattice-cloud     { background-image: url(../assets/lattice-cloud-cream.svg); }
+[data-mode="dark"] .bh-lattice-su,         [data-mode="dancheong"] .bh-lattice-su        { background-image: url(../assets/lattice-su-cream.svg); }
+[data-mode="dark"] .bh-lattice-maedeup,    [data-mode="dancheong"] .bh-lattice-maedeup   { background-image: url(../assets/lattice-maedeup-cream.svg); }
+[data-mode="dark"] .bh-lattice-bosanghwa,  [data-mode="dancheong"] .bh-lattice-bosanghwa { background-image: url(../assets/lattice-bosanghwa-cream.svg); }
+
+/* ============================================================================
+   MOTIF REGISTER 5 — 연화문 FEATURE FLORALS (polychrome; the SUBJECT)
+   Roundel + floral lattice are intrinsically polychrome. As a background-image
+   they paint the dancheong palette (the SVG's baked fallbacks). To retune for
+   light/dark, INLINE the SVG instead — the per-mode --r-* vars above recolor it.
+   ============================================================================ */
+.bh-roundel {
+  aspect-ratio: 1 / 1;
+  background: url(../assets/roundel-yeonhwa.svg) center / contain no-repeat;
+}
+.bh-pattern-yeonhwa {
+  background: url(../assets/pattern-yeonhwa-lattice.svg) center / 230px repeat;
+}
+
+/* ============================================================================
+   MOTIF REGISTER 6 — 용·봉 ROYAL SEALS (tintable line-art feature marks)
+   The 용보 dragon (king) + 봉황 phoenix (queen) roundels, plus a bold folk
+   dragon. Drawn as line art, loaded as an ALPHA MASK so the ink color is set
+   by CSS — fully tintable. Set --bh-seal-color (or `color`) to retint; it
+   defaults per mode (red on light, gold on dark/dancheong). Reserve for
+   section titles / dividers / covers — never beside the floral roundel.
+       <span class="bh-seal-dragon" style="width:120px"></span>
+       <span class="bh-seal-phoenix" style="width:120px; --bh-seal-color:#0047A0"></span>
+   For flat-export contexts (PPTX screenshot mode) the baked --red / --gold
+   modifiers swap to a pre-colored image instead of the mask.
+   ============================================================================ */
+.bh-seal-dragon, .bh-seal-dragon--bold, .bh-seal-phoenix {
+  display: inline-block;
+  aspect-ratio: 1 / 1;
+  background-color: var(--bh-seal-color, var(--bh-seal-color-default, currentColor));
+  -webkit-mask-position: center; mask-position: center;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-size: contain; mask-size: contain;
+}
+.bh-seal-dragon       { -webkit-mask-image: url(../assets/seal-dragon-mask.png);      mask-image: url(../assets/seal-dragon-mask.png); }
+.bh-seal-dragon--bold { -webkit-mask-image: url(../assets/seal-dragon-bold-mask.png); mask-image: url(../assets/seal-dragon-bold-mask.png); }
+.bh-seal-phoenix      { aspect-ratio: 1929 / 1979; -webkit-mask-image: url(../assets/seal-phoenix-mask.png); mask-image: url(../assets/seal-phoenix-mask.png); }
+
+/* per-mode default tint (overridden by --bh-seal-color or inline color) */
+[data-mode="light"]     { --bh-seal-color-default: var(--bh-jeok, #C8102E); }
+[data-mode="dark"]      { --bh-seal-color-default: var(--bh-dc-seokhwang, #E8B91E); }
+[data-mode="dancheong"] { --bh-seal-color-default: var(--bh-dc-seokhwang, #E8B91E); }
+
+/* baked-color fallbacks for flat export (no mask support): drop the mask, paint an image */
+.bh-seal-dragon--red,  .bh-seal-phoenix--red  { -webkit-mask-image:none; mask-image:none; background-color:transparent; background-repeat:no-repeat; background-position:center; background-size:contain; }
+.bh-seal-dragon--gold, .bh-seal-phoenix--gold { -webkit-mask-image:none; mask-image:none; background-color:transparent; background-repeat:no-repeat; background-position:center; background-size:contain; }
+.bh-seal-dragon--red   { background-image:url(../assets/seal-dragon-red.png); }
+.bh-seal-dragon--gold  { background-image:url(../assets/seal-dragon-gold.png); }
+.bh-seal-phoenix--red  { background-image:url(../assets/seal-phoenix-red.png); }
+.bh-seal-phoenix--gold { background-image:url(../assets/seal-phoenix-gold.png); }
+
+/* ============================================================================
+   MOTIF REGISTER 2 — 단청 dancheong ornament band (rationed polychrome)
+   Even rainbow 머리초 meoricho stripe: samcheong blue / teal / yangnok green /
+   seokhwang gold / orange / jangdan brick / noerok jade — seven equal segments.
+   No color dominates the band; green ground + orange primary live in the mode
+   tokens, not here. Mineral fields separated by 호분 hobun hairlines, as in
+   real dancheong. Polychrome is bounded to this band + the roundel medallion.
+   ============================================================================ */
+.bh-dancheong-band {
+  height: 12px;
+  background: linear-gradient(90deg,
+    var(--bh-dc-samcheong)  0 14%,                var(--bh-dc-hobun) 14% calc(14% + 2px),
+    var(--bh-dc-teal)       calc(14% + 2px) 28%,  var(--bh-dc-hobun) 28% calc(28% + 2px),
+    var(--bh-dc-yangnok)    calc(28% + 2px) 42%,  var(--bh-dc-hobun) 42% calc(42% + 2px),
+    var(--bh-dc-seokhwang)  calc(42% + 2px) 56%,  var(--bh-dc-hobun) 56% calc(56% + 2px),
+    var(--bh-dc-orange)     calc(56% + 2px) 70%,  var(--bh-dc-hobun) 70% calc(70% + 2px),
+    var(--bh-dc-jangdan)    calc(70% + 2px) 84%,  var(--bh-dc-hobun) 84% calc(84% + 2px),
+    var(--bh-dc-noerok)     calc(84% + 2px) 100%);
+}
+.bh-dancheong-band--tall { height: 28px; }
+
+/* ============================================================================
+   MOTIF REGISTER 3 — 괘 trigram bars (the mark / type-as-architecture)
+   ☰ geon = 3×bar | ☷ gon = 3×bar--broken | ☵ gam = broken,solid,broken |
+   ☲ ri = solid,broken,solid
+   ============================================================================ */
+.bh-trigram { display: inline-flex; flex-direction: column; gap: 4px; width: 2.5rem; }
+.bh-trigram .bh-bar { height: var(--bh-bar); background: var(--bh-primary); }
+.bh-trigram .bh-bar--broken {
+  background: linear-gradient(90deg, var(--bh-primary) 0 42%, transparent 42% 58%, var(--bh-primary) 58% 100%);
+}
+.bh-accent-bar { border-left: var(--bh-bar) solid var(--bh-primary); padding-left: var(--bh-space-4); }
+
+/* ============================================================================
+   LAYOUT — 조각보 jogakbo asymmetric grid (one dominant field + satellites)
+   ============================================================================ */
+.bh-jogakbo {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(120px, auto);
+  gap: var(--bh-seam);
+  background: var(--bh-line);            /* seams read as stitching */
+}
+.bh-jogakbo > * { background: var(--bh-surface); padding: var(--bh-space-5); }
+.bh-jogakbo > .dominant  { grid-column: span 7; grid-row: span 2; }
+.bh-jogakbo > .satellite { grid-column: span 5; }
+.bh-jogakbo > .wide      { grid-column: span 12; }
+
+/* ============================================================================
+   COMPONENTS — read semantic tokens; elevation + radius come from the mode.
+   ============================================================================ */
+.bh-btn {
+  font-family: var(--bh-font-body);
+  font-size: var(--bh-text-sm);
+  font-weight: 500;
+  min-height: 44px;                       /* WCAG 2.5.5 */
+  padding: 0 var(--bh-space-5);
+  display: inline-flex; align-items: center; gap: var(--bh-space-2);
+  background: transparent;
+  color: var(--bh-ink);
+  border: var(--bh-hairline) solid var(--bh-ink);
+  border-radius: var(--bh-radius-interactive);
+  box-shadow: var(--bh-shadow-1);
+  cursor: pointer;
+  transition: background var(--bh-dur-fast) var(--bh-ease),
+              color var(--bh-dur-fast) var(--bh-ease),
+              box-shadow var(--bh-dur-fast) var(--bh-ease);
+}
+.bh-btn:hover { background: var(--bh-ink); color: var(--bh-bg); box-shadow: var(--bh-shadow-2); }
+.bh-btn--primary {
+  border-color: var(--bh-primary);
+  background: var(--bh-primary);
+  color: var(--bh-bg);
+}
+.bh-btn--primary:hover { filter: brightness(1.08); background: var(--bh-primary); color: var(--bh-bg); }
+
+.bh-input {                               /* 띠살 ttisal: a single bottom bar, not a box */
+  font-family: var(--bh-font-body);
+  font-size: var(--bh-text-base);
+  min-height: 44px;  width: 100%;
+  background: transparent;  color: var(--bh-ink);
+  border: 0;  border-bottom: var(--bh-bar) solid var(--bh-line);
+  border-radius: 0;  padding: var(--bh-space-1) 0;
+}
+.bh-input:focus { outline: none; border-bottom-color: var(--bh-primary); }
+
+.bh-link {
+  color: var(--bh-ink);
+  text-decoration: underline; text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px; text-decoration-color: var(--bh-line);
+}
+.bh-link:hover { text-decoration-color: var(--bh-primary); color: var(--bh-primary); }
+
+/* Focus ring — visible, primary, never removed (WCAG 2.4.7). */
+:focus-visible { outline: var(--bh-bar) solid var(--bh-primary); outline-offset: 3px; }
+
+/* ============================================================================
+   RESPONSIVE — modes/motifs do NOT change on mobile; only layout collapses.
+   ============================================================================ */
+@media (max-width: 768px) {
+  :root { --bh-display: clamp(2.75rem, 12vw, 4rem); /* @kind font */ }
+  .bh-jogakbo > * { grid-column: 1 / -1; grid-row: auto; }
+  .bh-body { max-width: 100%; }
+}
+
+/* Reduced motion: honor the OS setting. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --bh-dur-fast: 0ms; /* @kind other */
+    --bh-dur-base: 0ms; /* @kind other */
+    --bh-dur-slow: 0ms; /* @kind other */
+    --bh-dur-reveal: 0ms; /* @kind other */
+    --bh-dur-intro: 0ms; /* @kind other */
+    --bh-dur-bloom: 0ms; /* @kind other */
+    --bh-dur-draw: 0ms; /* @kind other */
+    --bh-stagger-tight: 0ms; /* @kind other */
+    --bh-stagger-base: 0ms; /* @kind other */
+    --bh-stagger-loose: 0ms; /* @kind other */
+  }
+  /* NOTE (master §5 #7): `animation: none` CANCELS — the `both` fill is lost, so any
+     mark authored opacity:0 at rest stays invisible. Every animated card MUST author
+     its COMPLETED state as the static default. Gates assert final visibility, not duration. */
+  * { animation: none !important; transition: none !important; }
+}
+
+/*
+ * BH · SEOUL — Design System Connect Entry
+ *
+ * This file is the single root stylesheet for Claude Design binding.
+ * Import it once in any surface to pull in the complete BH · SEOUL token contract.
+ *
+ * What it provides (via tokens/tokens.css):
+ *   - Three-mode system on a single `data-mode` axis:
+ *       data-mode="light"      editorial, hanji ground, cheong-blue primary
+ *       data-mode="dark"       editorial dark, heuk ground, cheong-light primary
+ *       data-mode="dancheong"  colorful heritage, green temple-eave ground, orange primary
+ *   - Full --bh-* custom property namespace (semantic tokens only in product code)
+ *   - Typography primitives: .bh-display, .bh-eyebrow, .bh-body, .bh-num
+ *   - Motif classes: .bh-lattice-bissal, .bh-lattice-jeongja, .bh-dancheong-band, .bh-trigram
+ *   - Watermark lattices: .bh-lattice-chilbo/asa/cloud/su/maedeup/bosanghwa (ink-tinted, low opacity)
+ *   - Feature florals: .bh-roundel (연화문), .bh-pattern-yeonhwa — polychrome, per-mode via --r-*
+ *   - Royal seal: .bh-seal-dragon (+ --ink/--green/--red) — 용보 corner stamp / feature mark
+ *   - Layout: .bh-jogakbo asymmetric grid
+ *   - Component primitives: .bh-btn, .bh-input, .bh-link
+ *   - Motion tokens: --bh-dur-*, --bh-stagger-*, --bh-ease, --bh-ease-draw
+ *   - Reduced-motion path: prefers-reduced-motion zeroes all durations
+ *
+ * Do NOT hand-edit _ds_manifest.json or _ds_bundle.js — those are auto-generated.
+ * Do NOT inline raw hex values in component code; read --bh-* semantic tokens only.
+ * Do NOT import the per-medium .html preview cards here (they are dsCard previews, not CSS).
+ */
+
+</style>
+
+
+
+
+<script>/* @ds-bundle: {"format":3,"namespace":"SEOUL_4575df","components":[],"sourceHashes":{},"inlinedExternals":[],"unexposedExports":[]} */
+
+(() => {
+
+const __ds_ns = (window.SEOUL_4575df = window.SEOUL_4575df || {});
+
+const __ds_scope = {};
+
+(__ds_ns.__errors = __ds_ns.__errors || []);
+
+})();
+</script>
+<style>
+  /* derived ramp tints (no token exists for these): #F0EDE6 track, #FBF9F4 rail, #EDE8DE hairline, #DCE6F2 cheong pale, #EEF6F1/#BFDCCB nok pale, #FAF0E6/#E3CDB4 dan pale, #F9EFEF/#E3C4C4 jeok pale, #C9D6E6 link rule */
+  body{margin:0;background:var(--bh-bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  a{color:var(--bh-primary);text-decoration:underline;text-underline-offset:.18em;text-decoration-color:#C9D6E6}
+  a:hover{color:var(--bh-cheong-dark);text-decoration-color:var(--bh-primary)}
+  @media print{@page{size:letter;margin:0.5in} section{break-inside:avoid}}
+</style>
+</helmet>
+<div data-mode="light" style="background:var(--bh-bg);color:var(--bh-ink);font-family:var(--bh-font-body);font-size:16px;line-height:1.6">
+<header style="border-bottom:1px solid var(--bh-border);background:var(--bh-surface)">
+<div style="max-width:1120px;margin:0 auto;padding:0 48px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--bh-border)">
+<div data-slot="kit.mark" style="font-family:var(--bh-font-mono);font-size:12px;letter-spacing:.30em;text-transform:uppercase">Talent Kit · 01</div>
+<div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted)"><span data-slot="doc.agent">Agent · SENSEI</span> <span style="color:var(--bh-lattice-line)">/</span> <span data-slot="doc.date">Reads in ~12 min</span></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 330px;gap:60px;padding:60px 0 44px;align-items:start">
+<div>
+<div data-slot="doc.eyebrow" style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.20em;text-transform:uppercase;color:var(--bh-primary);margin-bottom:18px">Artifact 01 · Role literacy</div>
+<h1 data-slot="doc.title" style="font-family:var(--bh-font-display);font-weight:700;font-size:52px;line-height:1.08;letter-spacing:-0.02em;margin:0;text-wrap:balance">Educational Brief</h1>
+<div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+<span data-slot="role.title" style="font-family:var(--bh-font-mono);font-size:13px;letter-spacing:.06em;color:var(--bh-surface);background:var(--bh-ink);padding:7px 14px">Propulsion Engineer · Mid</span>
+<span data-slot="role.org" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-muted)">Connected-hardware company · small propulsion team, one hardware partner</span>
+</div>
+<p data-slot="doc.thesis" style="margin:26px 0 0;max-width:62ch;font-size:18px;color:var(--bh-ink-dim);text-wrap:pretty">Everything you need to talk credibly with a propulsion engineer or a hiring manager: what the role builds, where it sits in the vehicle, how to translate the jargon into plain English, and which words surface the right candidates. You will not have to look anything up mid-call.</p>
+</div>
+<div style="border:1px solid var(--bh-border);background:#FBF9F4">
+<div style="padding:16px 20px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-muted)">Read this if</div>
+<div data-count="3-5" data-repeat="cover.audience"><div data-slot="audience.item" style="padding:13px 20px;border-bottom:1px solid #EDE8DE;font-size:13.5px;color:var(--bh-ink-dim)">You have never sourced propulsion or mechanical engineers before</div>
+<div data-slot="audience.item" style="padding:13px 20px;border-bottom:1px solid #EDE8DE;font-size:13.5px;color:var(--bh-ink-dim)">You have to run the recruiter screen without an engineer in the room</div>
+<div data-slot="audience.item" style="padding:13px 20px;border-bottom:1px solid #EDE8DE;font-size:13.5px;color:var(--bh-ink-dim)">You are about to write outreach and do not know the vocabulary</div>
+<div data-slot="audience.item" style="padding:13px 20px;font-size:13.5px;color:var(--bh-ink-dim)">A hiring manager just used five terms you could not place</div>
+</div>
+<div data-slot="cover.note" style="padding:12px 20px;background:#F0EDE6;border-top:1px solid var(--bh-border);font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.1em;color:var(--bh-muted);text-transform:uppercase">Section 3 (the glossary) and Section 10 (the cheat sheet) are the two to keep open on a live call</div>
+</div>
+</div>
+<div style="display:flex;height:5px">
+<div style="flex:5;background:var(--bh-primary)"></div><div style="flex:1;background:var(--bh-byeok)"></div><div style="flex:1;background:var(--bh-success)"></div><div style="flex:1;background:var(--bh-highlight)"></div><div style="flex:1;background:var(--bh-warning)"></div><div style="flex:1;background:var(--bh-accent)"></div>
+</div>
+</div>
+</header>
+<main style="max-width:1120px;margin:0 auto;padding:0 48px 88px">
+<!-- 01 · ROLE OVERVIEW -->
+<section style="padding:56px 0 0">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--bh-font-display);font-size:38px;color:var(--bh-lattice-line);line-height:1">01</div>
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-muted);margin-top:6px">The role</div>
+</div>
+<div>
+<h2 data-slot="s1.title" style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 12px">What a propulsion engineer actually does all day</h2>
+<p data-slot="s1.body" style="margin:0 0 14px;max-width:70ch;color:var(--bh-ink-dim);font-size:16.5px;text-wrap:pretty">They design the engine, and the plumbing that feeds it, that turns stored energy into thrust, then they prove it on a test stand before it ever flies. Most of the week goes on buying margin against the ways an engine destroys itself: instability, burn-through, a starved feed line, an overpressure. The craft is judged on the worst run, not the best one, so caution here is a professional virtue, not timidity.</p>
+<p data-slot="s1.body2" style="margin:0;max-width:70ch;color:var(--bh-ink-dim);font-size:16.5px;text-wrap:pretty">Two things follow, and both change how you talk to candidates. First, they are precise: vague enthusiasm reads as not-serious. Second, they respect failure as a subject, so the fastest way to earn credibility is to ask what blew up on the stand, not what shipped.</p>
+</div>
+</div>
+<div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--bh-border);border:1px solid var(--bh-border)">
+<div style="background:var(--bh-surface);padding:26px 28px">
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-primary);margin-bottom:10px">The one-sentence version</div>
+<p data-slot="northstar" style="margin:0;font-size:16.5px;color:var(--bh-ink);text-wrap:pretty">Design and prove the engine, and the feed system behind it, that turns stored energy into thrust, and keep it from tearing itself apart on the stand or in flight.</p>
+</div>
+<div style="background:var(--bh-surface);padding:26px 28px;border-top:3px solid var(--bh-success)">
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-success);margin-bottom:10px">The analogy that lands</div>
+<p data-slot="analogy" style="margin:0;font-size:16.5px;color:var(--bh-ink);text-wrap:pretty">It is a blowtorch the size of a car, run at the edge of blowing itself apart. The whole craft is keeping a deliberate, enormous fire stable and pointed the right way: push it too fast and it oscillates and shakes the hardware to pieces, run it too hot and the metal burns through, starve the line and it flames out. Every design choice buys margin against one of those failures.</p>
+</div>
+</div>
+<div style="margin-top:16px;background:var(--bh-surface);border:1px solid var(--bh-border);overflow-x:auto">
+<table style="width:100%;border-collapse:collapse;font-size:14.5px;min-width:660px">
+<thead>
+<tr>
+<th style="text-align:left;font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--bh-ink)">Core responsibility</th>
+<th style="text-align:left;font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--bh-ink)">What that means day to day</th>
+</tr>
+</thead>
+<tbody data-count="4-8" data-repeat="responsibilities"><tr>
+<td data-slot="resp.name" style="padding:14px 18px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-primary);font-weight:600;width:250px">Design the engine and its parts</td>
+<td data-slot="resp.detail" style="padding:14px 18px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Chamber, injector, nozzle, and cooling, or the thruster for electric propulsion. Turn mission requirements into hardware that makes the right thrust without failing.</td>
+</tr>
+<tr>
+<td data-slot="resp.name" style="padding:14px 18px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-primary);font-weight:600">Own the feed system</td>
+<td data-slot="resp.detail" style="padding:14px 18px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">The tanks, valves, lines, and pumps that deliver propellant at the right pressure and flow. A large share of propulsion failures start here.</td>
+</tr>
+<tr>
+<td data-slot="resp.name" style="padding:14px 18px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-primary);font-weight:600">Test it, for real, on a stand</td>
+<td data-slot="resp.detail" style="padding:14px 18px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Hot-fire and thrust-stand campaigns: instrument the hardware, run it, reduce the data, and find where the model was wrong before flight.</td>
+</tr>
+<tr>
+<td data-slot="resp.name" style="padding:14px 18px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-primary);font-weight:600">Model before cutting metal</td>
+<td data-slot="resp.detail" style="padding:14px 18px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">CFD, FEA, and thermal analysis in ANSYS, Siemens NX, or SolidWorks to predict flow, stress, and heat, then design margin against each.</td>
+</tr>
+<tr>
+<td data-slot="resp.name" style="padding:14px 18px;border-left:3px solid var(--bh-primary);font-weight:600">Work across disciplines</td>
+<td data-slot="resp.detail" style="padding:14px 18px;color:var(--bh-ink-dim)">Coordinate with structures, avionics, controls, materials, and manufacturing so the hardware, the analysis, and the build all agree.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- 02 · STACK -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--bh-border)">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--bh-font-display);font-size:38px;color:var(--bh-lattice-line);line-height:1">02</div>
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-muted);margin-top:6px">The stack</div>
+</div>
+<div>
+<h2 data-slot="s2.title" style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 12px">Where the role sits in the vehicle, layer by layer</h2>
+<p data-slot="s2.body" style="margin:0;max-width:70ch;color:var(--bh-ink-dim);font-size:16.5px;text-wrap:pretty">Use this to place any candidate in thirty seconds. Ask them which of these layers they have lived in. The marked layers are this role. One layer away is an adjacent hire worth pursuing; two layers away is a neighbouring discipline that only shares vocabulary.</p>
+</div>
+</div>
+<div style="margin-top:32px;background:var(--bh-surface);border:1px solid var(--bh-border);padding:28px 32px">
+<div data-count="4-7" data-repeat="stack.layers" style="display:grid;gap:2px"><div style="display:grid;grid-template-columns:250px 1fr;background:#F0EDE6">
+<div data-slot="layer.name" style="padding:16px 18px;font-family:var(--bh-font-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--bh-muted)">Vehicle / mission systems</div>
+<div data-slot="layer.desc" style="padding:16px 18px;background:var(--bh-surface);font-size:14px;color:var(--bh-ink-dim)">The whole rocket or spacecraft. A different team (systems, GNC) sets the thrust, mass, and mission requirements this role has to meet.</div>
+</div>
+<div data-slot="layer.owned" style="display:grid;grid-template-columns:250px 1fr;background:var(--bh-primary);outline:2px solid var(--bh-primary)"><div style="padding:20px 18px;font-family:var(--bh-font-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--bh-surface)">Propulsion system <span style="display:block;font-size:9.5px;letter-spacing:.14em;opacity:.8;margin-top:4px">★ core of this role</span></div><div style="padding:20px 18px;background:#DCE6F2;font-size:14.5px;color:var(--bh-ink)">The engine plus the feed system as one integrated subsystem: architecture, requirements, budgets, integration. This is where the hire spends most of their time.</div></div>
+<div style="display:grid;grid-template-columns:250px 1fr;background:var(--bh-primary);outline:2px solid var(--bh-primary)">
+<div data-slot="layer.name" style="padding:18px;font-family:var(--bh-font-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--bh-surface)">Engine / thruster design ★ must be at home here</div>
+<div data-slot="layer.desc" style="padding:18px;background:#DCE6F2;font-size:14.5px;color:var(--bh-ink)">Chamber, injector, nozzle, and cooling for chemical engines, or the thruster and power processing for electric propulsion.</div>
+</div>
+<div style="display:grid;grid-template-columns:250px 1fr;background:var(--bh-primary);outline:2px solid var(--bh-primary)">
+<div data-slot="layer.name" style="padding:18px;font-family:var(--bh-font-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--bh-surface)">Test &amp; analysis ★ where hardware empathy shows</div>
+<div data-slot="layer.desc" style="padding:18px;background:#DCE6F2;font-size:14.5px;color:var(--bh-ink)">Hot-fire and thrust-stand testing, plus CFD, FEA, and thermal models. Many of your strongest candidates come from a pure test or analysis title.</div>
+</div>
+<div style="display:grid;grid-template-columns:250px 1fr;background:#F0EDE6">
+<div data-slot="layer.name" style="padding:16px 18px;font-family:var(--bh-font-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--bh-muted)">Materials &amp; manufacturing</div>
+<div data-slot="layer.desc" style="padding:16px 18px;background:var(--bh-surface);font-size:14px;color:var(--bh-ink-dim)">High-temperature alloys, additive manufacturing, machining. Built by materials and manufacturing engineers. Shares vocabulary, different discipline: not a substitute for this role.</div>
+</div>
+</div>
+</div>
+<div style="margin-top:16px;background:var(--bh-surface);border:1px solid var(--bh-border);border-top:3px solid var(--bh-primary);padding:20px 24px">
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-primary);margin-bottom:8px">Insight</div>
+<p data-slot="insight.1" style="margin:0;font-size:15px;color:var(--bh-ink-dim);max-width:84ch">The disciplines one step away, powertrain, gas turbines, motorsport, and high-pressure process fluids, often hold reachable propulsion talent the space sector alone will not surface. Sourcing only people whose title already reads "propulsion" is the fastest way to stall a search where the qualified pool is small and geographically concentrated.</p>
+</div>
+</section>
+<!-- 03 · METAPHOR ENGINE -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--bh-border)">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--bh-font-display);font-size:38px;color:var(--bh-primary);line-height:1">03</div>
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-primary);margin-top:6px">Keep this open</div>
+</div>
+<div>
+<h2 data-slot="s3.title" style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 12px">Every term, translated for you</h2>
+<p data-slot="s3.body" style="margin:0;max-width:70ch;color:var(--bh-ink-dim);font-size:16.5px;text-wrap:pretty">The middle column is what you say to a non-engineer. The right column is why the term matters, which is what lets you ask a real follow-up instead of nodding. Use one translation per call; do not lecture an engineer with their own vocabulary. Keep this glossary at definition level; never fill it with performance figures from your own program.</p>
+</div>
+</div>
+<div style="margin-top:32px;background:var(--bh-surface);border:1px solid var(--bh-border);overflow-x:auto">
+<table style="width:100%;border-collapse:collapse;font-size:14px;min-width:840px">
+<thead>
+<tr>
+<th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--bh-ink)">The term</th>
+<th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--bh-ink)">In plain English</th>
+<th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--bh-ink)">Why it matters to you</th>
+</tr>
+</thead>
+<tbody data-count="8-16" data-repeat="glossary"><tr>
+<td data-slot="term.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-primary);vertical-align:top">Specific impulse (Isp)</td>
+<td data-slot="term.plain" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink);vertical-align:top">The gas mileage of an engine: how much thrust you get for each unit of propellant burned.</td>
+<td data-slot="term.why" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim);vertical-align:top">The headline efficiency number. Someone who talks Isp trade-offs unprompted is thinking like a propulsion engineer, not reciting.</td>
+</tr>
+<tr>
+<td data-slot="term.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-primary);vertical-align:top">Combustion instability</td>
+<td data-slot="term.plain" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink);vertical-align:top">The fire inside the chamber starts oscillating and can shake an engine apart in milliseconds.</td>
+<td data-slot="term.why" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim);vertical-align:top">The nightmare failure mode. Anyone who has chased it on a stand has scarce, real experience. Ask what they saw.</td>
+</tr>
+<tr>
+<td data-slot="term.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-primary);vertical-align:top">Hot fire (static fire)</td>
+<td data-slot="term.plain" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink);vertical-align:top">Bolting the engine to the ground and running it for real, full thrust, going nowhere.</td>
+<td data-slot="term.why" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim);vertical-align:top">Where theory meets reality. "How many hot-fires have you been on the console for?" is a high-signal question.</td>
+</tr>
+<tr>
+<td data-slot="term.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-primary);vertical-align:top">Thrust stand / test cell</td>
+<td data-slot="term.plain" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink);vertical-align:top">The instrumented rig that holds the engine down and measures exactly what it does.</td>
+<td data-slot="term.why" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim);vertical-align:top">Test experience is scarce and prized. It separates people who have designed engines from people who have only designed them on paper.</td>
+</tr>
+<tr>
+<td data-slot="term.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-primary);vertical-align:top">Feed system &amp; valves</td>
+<td data-slot="term.plain" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink);vertical-align:top">The plumbing, tanks, valves, lines, pumps, that delivers propellant at the right pressure and flow.</td>
+<td data-slot="term.why" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim);vertical-align:top">A large share of propulsion failures are feed-system failures. This fluency transfers straight from oil, gas, and process industries.</td>
+</tr>
+<tr>
+<td data-slot="term.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-primary);vertical-align:top">Turbopump / turbomachinery</td>
+<td data-slot="term.plain" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink);vertical-align:top">The high-speed pump that force-feeds propellant into the chamber under enormous pressure.</td>
+<td data-slot="term.why" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim);vertical-align:top">One of the hardest parts to get right. Jet-engine and gas-turbine engineers transfer here directly.</td>
+</tr>
+<tr>
+<td data-slot="term.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-primary);vertical-align:top">Regenerative cooling</td>
+<td data-slot="term.plain" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink);vertical-align:top">Running cold propellant through the chamber walls so they do not melt during the burn.</td>
+<td data-slot="term.why" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim);vertical-align:top">The classic answer to burn-through. Knowing cooling schemes signals real chamber-design depth, not just analysis.</td>
+</tr>
+<tr>
+<td data-slot="term.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-primary);vertical-align:top">Nozzle &amp; expansion ratio</td>
+<td data-slot="term.plain" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink);vertical-align:top">The bell-shaped exit that turns hot gas into directed thrust, sized for the altitude it works at.</td>
+<td data-slot="term.why" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim);vertical-align:top">A place where candidates reveal design intuition and the trade-offs they actually understand.</td>
+</tr>
+<tr>
+<td data-slot="term.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-primary);vertical-align:top">Propellant: liquid / solid / hybrid</td>
+<td data-slot="term.plain" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink);vertical-align:top">The fuel and oxidizer the engine burns, stored as liquid, solid, or a mix of both.</td>
+<td data-slot="term.why" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim);vertical-align:top">Tells you which sub-family a candidate lives in. Liquid and solid experience are close to different careers.</td>
+</tr>
+<tr>
+<td data-slot="term.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-primary);vertical-align:top">Electric propulsion (ion / Hall)</td>
+<td data-slot="term.plain" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink);vertical-align:top">Pushing a spacecraft with electrically accelerated gas instead of combustion: tiny thrust, huge efficiency.</td>
+<td data-slot="term.why" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim);vertical-align:top">A fast-growing specialty with different physics. Screen for which kind, chemical or electric, the requisition actually wants.</td>
+</tr>
+<tr>
+<td data-slot="term.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-primary);vertical-align:top">CFD / FEA analysis</td>
+<td data-slot="term.plain" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink);vertical-align:top">Computer simulation of fluid flow (CFD) and structural stress (FEA) before any metal is cut.</td>
+<td data-slot="term.why" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim);vertical-align:top">The daily design tool. Fluency in ANSYS, Siemens NX, or SolidWorks is table stakes for a design role.</td>
+</tr>
+<tr>
+<td data-slot="term.name" style="padding:13px 16px;font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-primary);vertical-align:top">Flight heritage &amp; qualification</td>
+<td data-slot="term.plain" style="padding:13px 16px;color:var(--bh-ink);vertical-align:top">How proven a design is, from lab prototype to flown-in-space, and the testing that certifies it.</td>
+<td data-slot="term.why" style="padding:13px 16px;color:var(--bh-ink-dim);vertical-align:top">"Flight-proven" is the scarce, expensive kind of experience. It separates R&amp;D engineers from production ones.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- 04 · HARD SKILLS -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--bh-border)">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--bh-font-display);font-size:38px;color:var(--bh-lattice-line);line-height:1">04</div>
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-muted);margin-top:6px">Hard skills</div>
+</div>
+<div>
+<h2 data-slot="s4.title" style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 12px">The real bar, and who checks each skill</h2>
+<p data-slot="s4.body" style="margin:0;max-width:70ch;color:var(--bh-ink-dim);font-size:16.5px;text-wrap:pretty">You are not assessing any of this yourself. Your job is to know which stage in the loop owns each skill, so you can tell a hiring manager where a concern gets answered instead of guessing at it on the phone. Loop stages below are a common default; map them to your own.</p>
+</div>
+</div>
+<div style="margin-top:32px;background:var(--bh-surface);border:1px solid var(--bh-border);overflow-x:auto">
+<table style="width:100%;border-collapse:collapse;font-size:14px;min-width:880px">
+<thead>
+<tr>
+<th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--bh-ink)">Skill</th>
+<th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--bh-ink)">Bar</th>
+<th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--bh-ink)">Plain English</th>
+<th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--bh-ink)">Who verifies it</th>
+</tr>
+</thead>
+<tbody data-count="5-10" data-repeat="skills"><tr>
+<td data-slot="skill.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-accent);font-weight:600">Propulsion system design</td>
+<td style="padding:13px 16px;border-bottom:1px solid var(--bh-border)"><span data-slot="skill.bar" style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-accent);background:#F9EFEF;border:1px solid #E3C4C4">Required</span></td>
+<td data-slot="skill.plain" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Designing a liquid, solid, hybrid, or electric propulsion system, from requirements to working hardware.</td>
+<td data-slot="skill.verify" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Technical deep-dive · design review + portfolio</td>
+</tr>
+<tr>
+<td data-slot="skill.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-accent);font-weight:600">Thermofluids</td>
+<td style="padding:13px 16px;border-bottom:1px solid var(--bh-border)"><span data-slot="skill.bar" style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-accent);background:#F9EFEF;border:1px solid #E3C4C4">Required</span></td>
+<td data-slot="skill.plain" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">The core physics: thermodynamics, fluid dynamics, and heat transfer. The foundation everything else rests on.</td>
+<td data-slot="skill.verify" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Technical screen · fundamentals</td>
+</tr>
+<tr>
+<td data-slot="skill.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-accent);font-weight:600">Combustion or EP physics</td>
+<td style="padding:13px 16px;border-bottom:1px solid var(--bh-border)"><span data-slot="skill.bar" style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-accent);background:#F9EFEF;border:1px solid #E3C4C4">Required</span></td>
+<td data-slot="skill.plain" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Combustion and propellant chemistry for chemical engines, or the plasma physics behind electric propulsion.</td>
+<td data-slot="skill.verify" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Technical deep-dive · sub-family depth</td>
+</tr>
+<tr>
+<td data-slot="skill.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-accent);font-weight:600">Propulsion test</td>
+<td style="padding:13px 16px;border-bottom:1px solid var(--bh-border)"><span data-slot="skill.bar" style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-accent);background:#F9EFEF;border:1px solid #E3C4C4">Required</span></td>
+<td data-slot="skill.plain" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Hot-fire and thrust-stand work: instrumentation, running the test, and reducing the data afterward.</td>
+<td data-slot="skill.verify" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Deep-dive + reference · console experience</td>
+</tr>
+<tr>
+<td data-slot="skill.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-accent);font-weight:600">CAD + analysis (CFD/FEA)</td>
+<td style="padding:13px 16px;border-bottom:1px solid var(--bh-border)"><span data-slot="skill.bar" style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-accent);background:#F9EFEF;border:1px solid #E3C4C4">Required</span></td>
+<td data-slot="skill.plain" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Modeling flow, stress, and heat in ANSYS, Siemens NX, or SolidWorks before committing to hardware.</td>
+<td data-slot="skill.verify" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Analysis exercise · take-home or live</td>
+</tr>
+<tr>
+<td data-slot="skill.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-accent);font-weight:600">Systems engineering on flight hardware</td>
+<td style="padding:13px 16px;border-bottom:1px solid var(--bh-border)"><span data-slot="skill.bar" style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-accent);background:#F9EFEF;border:1px solid #E3C4C4">Required</span></td>
+<td data-slot="skill.plain" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Requirements, tolerances, and verification: making sure the built part meets the part on paper.</td>
+<td data-slot="skill.verify" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Technical deep-dive · requirements walk-through</td>
+</tr>
+<tr>
+<td data-slot="skill.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-highlight);font-weight:600">High-temp materials / additive</td>
+<td style="padding:13px 16px;border-bottom:1px solid var(--bh-border)"><span data-slot="skill.bar" style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-highlight);background:#FAF0E6;border:1px solid #E3CDB4">Preferred</span></td>
+<td data-slot="skill.plain" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">High-temperature alloys and 3D-printed metal parts, increasingly common in engine hardware.</td>
+<td data-slot="skill.verify" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Resume + reference · not a screen-out</td>
+</tr>
+<tr>
+<td data-slot="skill.name" style="padding:13px 16px;border-left:3px solid var(--bh-success);font-weight:600">Feed/valve design; MATLAB/Python</td>
+<td style="padding:13px 16px"><span data-slot="skill.bar" style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB">Nice-to-have</span></td>
+<td data-slot="skill.plain" style="padding:13px 16px;color:var(--bh-ink-dim)">Valve and feed-line design, plus scripting for analysis and data reduction.</td>
+<td data-slot="skill.verify" style="padding:13px 16px;color:var(--bh-ink-dim)">You can ask this: "which of these have you owned, and where?"</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- 05 · SOFT SKILLS -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--bh-border)">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--bh-font-display);font-size:38px;color:var(--bh-lattice-line);line-height:1">05</div>
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-muted);margin-top:6px">Signal</div>
+</div>
+<div>
+<h2 data-slot="s5.title" style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 12px">What you can read on a call</h2>
+<p data-slot="s5.body" style="margin:0;max-width:70ch;color:var(--bh-ink-dim);font-size:16.5px;text-wrap:pretty">You cannot judge their analysis. You can absolutely judge how they talk about failure, ownership, and the people who disagreed with them, which carries real predictive signal and the part hiring managers most often skip.</p>
+</div>
+</div>
+<div style="margin-top:32px;background:var(--bh-surface);border:1px solid var(--bh-border);overflow-x:auto">
+<table style="width:100%;border-collapse:collapse;font-size:14px;min-width:880px">
+<thead>
+<tr>
+<th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--bh-ink)">Trait</th>
+<th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--bh-ink)">Why it matters here</th>
+<th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--bh-ink)">Listen for</th>
+<th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--bh-ink)">Red flag</th>
+</tr>
+</thead>
+<tbody data-count="4-7" data-repeat="soft.skills"><tr>
+<td data-slot="soft.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-primary);font-weight:600">End-to-end ownership</td>
+<td data-slot="soft.why" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Small team, wide blast radius: requirements through design, test, and the launch campaign.</td>
+<td data-slot="soft.listen" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">"I owned that engine from analysis through hot-fire." Names the failure they personally caught.</td>
+<td data-slot="soft.flag" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Only describes analysis someone else turned into hardware.</td>
+</tr>
+<tr>
+<td data-slot="soft.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-primary);font-weight:600">Hardware empathy</td>
+<td data-slot="soft.why" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">The design meets metal, heat, and pressure. Blaming the test stand is not a debugging strategy.</td>
+<td data-slot="soft.listen" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Stories with a stand, an instrument, a scrubbed test, a burned weekend in them.</td>
+<td data-slot="soft.flag" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Has never left the simulation. "The test team handles that."</td>
+</tr>
+<tr>
+<td data-slot="soft.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-primary);font-weight:600">Productive paranoia</td>
+<td data-slot="soft.why" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Margin and failure analysis are a temperament before they are a spreadsheet.</td>
+<td data-slot="soft.listen" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Asks "what happens when this fails?" without being prompted.</td>
+<td data-slot="soft.flag" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Happy-path thinking. Treats testing as a formality.</td>
+</tr>
+<tr>
+<td data-slot="soft.name" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-primary);font-weight:600">Persuasion under disagreement</td>
+<td data-slot="soft.why" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Design reviews on a small hardware team get contentious every week.</td>
+<td data-slot="soft.listen" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Describes changing their own mind because the data said so.</td>
+<td data-slot="soft.flag" style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Every disagreement story ends with the other person being wrong.</td>
+</tr>
+<tr>
+<td data-slot="soft.name" style="padding:13px 16px;border-left:3px solid var(--bh-primary);font-weight:600">Teaching reflex</td>
+<td data-slot="soft.why" style="padding:13px 16px;color:var(--bh-ink-dim)">At mid level the hire is expected to raise the team's practices, not just their own output.</td>
+<td data-slot="soft.listen" style="padding:13px 16px;color:var(--bh-ink-dim)">Concrete examples of levelling up a junior engineer or a technician.</td>
+<td data-slot="soft.flag" style="padding:13px 16px;color:var(--bh-ink-dim)">Hoards context. "It is faster if I just do it myself."</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- 06 · PATHWAYS -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--bh-border)">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--bh-font-display);font-size:38px;color:var(--bh-lattice-line);line-height:1">06</div>
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-muted);margin-top:6px">Pathways</div>
+</div>
+<div>
+<h2 data-slot="s6.title" style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 12px">Where propulsion engineers come from</h2>
+<p data-slot="s6.body" style="margin:0;max-width:70ch;color:var(--bh-ink-dim);font-size:16.5px;text-wrap:pretty">A degree is a proxy here, not a gate. The alternative pathways below are worth weighting alongside pedigree for hands-on propulsion work, and they are far less contested.</p>
+</div>
+</div>
+<div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--bh-border);border:1px solid var(--bh-border)">
+<div style="background:var(--bh-surface);padding:26px 28px">
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-muted);margin-bottom:12px">Typical academic signal</div>
+<p data-slot="edu.academic" style="margin:0 0 12px;font-size:15px;color:var(--bh-ink-dim)"><span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB">Sourced</span><span style="font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)">BLS-OOH / O*NET 2024, aerospace engineers</span></p>
+<p style="margin:0;font-size:15px;color:var(--bh-ink-dim)">Equivalent hands-on depth is explicitly fine. If someone has shipped and tested real propulsion hardware for years, the degree question is closed.</p>
+</div>
+<div style="background:var(--bh-surface);padding:26px 28px;border-top:3px solid var(--bh-success)">
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-success);margin-bottom:12px">Alternative pathways that convert</div>
+<p data-slot="edu.alt" style="margin:0 0 12px;font-size:15px;color:var(--bh-ink-dim)"><b>Adjacent-industry engineers.</b><span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-warning);background:#FAF0E6;border:1px solid #E3CDB4">Estimate</span><span style="font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)">O*NET adjacency + cross-industry pools</span></p>
+<p data-slot="edu.hobby" style="margin:0;font-size:15px;color:var(--bh-ink-dim)">Builders and defense crossovers. High-power amateur rocketry, university propulsion or Formula teams, and military or defense propulsion technicians. Someone doing this on weekends is telling you exactly what they want to do all day.</p>
+</div>
+</div>
+</section>
+<!-- 07 · COLLABORATION MAP -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--bh-border)">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--bh-font-display);font-size:38px;color:var(--bh-lattice-line);line-height:1">07</div>
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-muted);margin-top:6px">The team</div>
+</div>
+<div>
+<h2 data-slot="s7.title" style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 12px">Who a propulsion engineer works with</h2>
+<p data-slot="s7.body" style="margin:0;max-width:70ch;color:var(--bh-ink-dim);font-size:16.5px;text-wrap:pretty">Use this to answer "what's the team like?" with specifics instead of adjectives. It doubles as a referral map: each of these functions knows people who could do this job.</p>
+</div>
+</div>
+<div data-count="3-6" data-repeat="collab.nodes" style="margin-top:32px;display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:16px;align-items:stretch"><div style="display:grid;gap:16px">
+<div style="background:var(--bh-surface);border:1px solid var(--bh-border);padding:18px 20px">
+<div data-slot="node.name" style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--bh-primary);margin-bottom:6px">Structures &amp; mechanical</div>
+<div data-slot="node.desc" style="font-size:14px;color:var(--bh-ink-dim)">Designs the tanks, mounts, and structure the propulsion system bolts into. Constant back-and-forth on loads, interfaces, and packaging.</div>
+</div>
+<div style="background:var(--bh-surface);border:1px solid var(--bh-border);padding:18px 20px">
+<div data-slot="node.name2" style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--bh-primary);margin-bottom:6px">Materials &amp; manufacturing</div>
+<div style="font-size:14px;color:var(--bh-ink-dim)">Owns high-temp alloys, additive parts, and how the hardware actually gets built. Drives what the design can and cannot do.</div>
+</div>
+</div>
+<div style="background:var(--bh-primary);color:var(--bh-surface);padding:26px 24px;display:flex;flex-direction:column;justify-content:center;text-align:center">
+<div data-slot="node.core" style="font-family:var(--bh-font-display);font-size:22px;margin-bottom:8px">Propulsion</div>
+<div style="font-size:14px;opacity:.9">The integration point for anything that makes thrust. Touches nearly every discipline, which is why communication weight is as high as technical weight in this hire.</div>
+</div>
+<div style="display:grid;gap:16px">
+<div style="background:var(--bh-surface);border:1px solid var(--bh-border);padding:18px 20px">
+<div data-slot="node.name" style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--bh-primary);margin-bottom:6px">Avionics &amp; controls (GNC)</div>
+<div data-slot="node.desc" style="font-size:14px;color:var(--bh-ink-dim)">Commands the engine and reads its sensors. Sets the thrust and timing the propulsion system has to deliver.</div>
+</div>
+<div style="background:var(--bh-surface);border:1px solid var(--bh-border);padding:18px 20px">
+<div data-slot="node.name2" style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--bh-primary);margin-bottom:6px">Test &amp; quality</div>
+<div style="font-size:14px;color:var(--bh-ink-dim)">Runs the stand, the instrumentation, and the qualification campaign with this engineer on the console.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 08 · KEYWORDS -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--bh-border)">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--bh-font-display);font-size:38px;color:var(--bh-lattice-line);line-height:1">08</div>
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-muted);margin-top:6px">Vocabulary</div>
+</div>
+<div>
+<h2 data-slot="s8.title" style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 12px">The words that find the pool</h2>
+<p data-slot="s8.body" style="margin:0;max-width:70ch;color:var(--bh-ink-dim);font-size:16.5px;text-wrap:pretty">The seed list the sourcing strings get built from. The market's dominant titles are not the one on your requisition, so search every synonym or you miss much of the pool.</p>
+</div>
+</div>
+<div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--bh-border);border:1px solid var(--bh-border)">
+<div style="background:var(--bh-surface);padding:26px 28px">
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-success);margin-bottom:12px">Primary: must match one</div>
+<div data-count="5-12" data-repeat="kw.primary" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px"><span data-slot="kw.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">propulsion</span>
+<span data-slot="kw.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">rocket engine</span>
+<span data-slot="kw.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">liquid propulsion</span>
+<span data-slot="kw.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">electric propulsion</span>
+<span data-slot="kw.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">thermofluids</span>
+<span data-slot="kw.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">combustion</span>
+<span data-slot="kw.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">hot fire</span>
+<span data-slot="kw.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">thrust stand</span>
+<span data-slot="kw.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">feed system</span>
+<span data-slot="kw.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">CFD</span>
+</div>
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-muted);margin-bottom:12px">Depth signals</div>
+<div data-count="5-16" data-repeat="kw.secondary" style="display:flex;flex-wrap:wrap;gap:8px"><span data-slot="kw2.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-ink);background:#F0EDE6;border:1px solid var(--bh-border);padding:5px 10px">Isp</span>
+<span data-slot="kw2.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-ink);background:#F0EDE6;border:1px solid var(--bh-border);padding:5px 10px">turbopump</span>
+<span data-slot="kw2.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-ink);background:#F0EDE6;border:1px solid var(--bh-border);padding:5px 10px">injector</span>
+<span data-slot="kw2.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-ink);background:#F0EDE6;border:1px solid var(--bh-border);padding:5px 10px">nozzle</span>
+<span data-slot="kw2.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-ink);background:#F0EDE6;border:1px solid var(--bh-border);padding:5px 10px">regenerative cooling</span>
+<span data-slot="kw2.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-ink);background:#F0EDE6;border:1px solid var(--bh-border);padding:5px 10px">ANSYS</span>
+<span data-slot="kw2.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-ink);background:#F0EDE6;border:1px solid var(--bh-border);padding:5px 10px">Siemens NX</span>
+<span data-slot="kw2.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-ink);background:#F0EDE6;border:1px solid var(--bh-border);padding:5px 10px">SolidWorks</span>
+<span data-slot="kw2.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-ink);background:#F0EDE6;border:1px solid var(--bh-border);padding:5px 10px">FEA</span>
+<span data-slot="kw2.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-ink);background:#F0EDE6;border:1px solid var(--bh-border);padding:5px 10px">cryogenic</span>
+<span data-slot="kw2.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-ink);background:#F0EDE6;border:1px solid var(--bh-border);padding:5px 10px">propellant</span>
+<span data-slot="kw2.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-ink);background:#F0EDE6;border:1px solid var(--bh-border);padding:5px 10px">Hall thruster</span>
+<span data-slot="kw2.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-ink);background:#F0EDE6;border:1px solid var(--bh-border);padding:5px 10px">valve design</span>
+<span data-slot="kw2.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-ink);background:#F0EDE6;border:1px solid var(--bh-border);padding:5px 10px">AS9100</span>
+</div>
+</div>
+<div style="background:var(--bh-surface);padding:26px 28px">
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-primary);margin-bottom:12px">Title synonyms: search all of these</div>
+<div data-count="4-12" data-repeat="kw.titles" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px"><span data-slot="title.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-primary);background:#DCE6F2;border:1px solid #C9D6E6;padding:5px 10px">Propulsion Engineer</span>
+<span data-slot="title.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-primary);background:#DCE6F2;border:1px solid #C9D6E6;padding:5px 10px">Propulsion Systems Engineer</span>
+<span data-slot="title.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-primary);background:#DCE6F2;border:1px solid #C9D6E6;padding:5px 10px">Rocket Propulsion Engineer</span>
+<span data-slot="title.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-primary);background:#DCE6F2;border:1px solid #C9D6E6;padding:5px 10px">Liquid Propulsion Engineer</span>
+<span data-slot="title.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-primary);background:#DCE6F2;border:1px solid #C9D6E6;padding:5px 10px">Electric Propulsion Engineer</span>
+<span data-slot="title.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-primary);background:#DCE6F2;border:1px solid #C9D6E6;padding:5px 10px">Propulsion Design Engineer</span>
+<span data-slot="title.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-primary);background:#DCE6F2;border:1px solid #C9D6E6;padding:5px 10px">Propulsion Test Engineer</span>
+<span data-slot="title.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-primary);background:#DCE6F2;border:1px solid #C9D6E6;padding:5px 10px">Rocket Engine Engineer</span>
+<span data-slot="title.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-primary);background:#DCE6F2;border:1px solid #C9D6E6;padding:5px 10px">Propulsion Development Engineer</span>
+</div>
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-accent);margin-bottom:12px">Exclude</div>
+<div data-count="4-10" data-repeat="kw.exclude" style="display:flex;flex-wrap:wrap;gap:8px"><span data-slot="ex.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">sales role</span>
+<span data-slot="ex.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">technician only</span>
+<span data-slot="ex.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">marine propulsion</span>
+<span data-slot="ex.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">ship propulsion</span>
+<span data-slot="ex.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">intern-only history</span>
+<span data-slot="ex.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">coursework only</span>
+<span data-slot="ex.term" style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">recruiter</span>
+</div>
+<div data-slot="kw.note" style="margin-top:22px;padding-top:16px;border-top:1px solid var(--bh-border);font-size:14px;color:var(--bh-ink-dim)">Worth knowing: the market spreads this role across many titles (Propulsion Systems, Rocket Propulsion, Liquid or Electric Propulsion, Propulsion Test). Search all of them. Exclude marine and ship propulsion unless the fluid and thermal skills clearly transfer.</div>
+</div>
+</div>
+</section>
+<!-- 09 · FIELD NOTES -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--bh-border)">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--bh-font-display);font-size:38px;color:var(--bh-lattice-line);line-height:1">09</div>
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-muted);margin-top:6px">Field notes</div>
+</div>
+<div>
+<h2 data-slot="s9.title" style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 12px">What shifted in this market lately</h2>
+<p data-slot="s9.body" style="margin:0;max-width:70ch;color:var(--bh-ink-dim);font-size:16.5px;text-wrap:pretty">Three shifts worth knowing before a hiring-manager conversation. Each is a place where last year's assumptions are now slightly wrong.</p>
+</div>
+</div>
+<div data-count="2-4" data-repeat="fieldnotes" style="margin-top:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--bh-border);border:1px solid var(--bh-border)"><div style="background:var(--bh-surface);padding:24px 26px">
+<div data-slot="note.title" style="font-size:16px;font-weight:600;margin-bottom:8px">Demand is outrunning the pool</div>
+<p data-slot="note.body" style="margin:0;font-size:14px;color:var(--bh-ink-dim)"><span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-warning);background:#FAF0E6;border:1px solid #E3CDB4">Estimate</span><span style="font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)">directional, no single published source</span></p>
+</div>
+<div style="background:var(--bh-surface);padding:24px 26px">
+<div data-slot="note.title" style="font-size:16px;font-weight:600;margin-bottom:8px">New specialties are heating up</div>
+<p data-slot="note.body" style="margin:0;font-size:14px;color:var(--bh-ink-dim)"><span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-warning);background:#FAF0E6;border:1px solid #E3CDB4">Estimate</span><span style="font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)">sub-field trend read, not measured</span></p>
+</div>
+<div style="background:var(--bh-surface);padding:24px 26px">
+<div data-slot="note.title" style="font-size:16px;font-weight:600;margin-bottom:8px">The scarcity is at mid level</div>
+<p data-slot="note.body" style="margin:0;font-size:14px;color:var(--bh-ink-dim)"><span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB">Sourced</span><span style="font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)">BLS-OOH 2024-34</span></p>
+</div>
+</div>
+</section>
+<!-- 10 · CHEAT SHEET -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--bh-border)">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--bh-font-display);font-size:38px;color:var(--bh-primary);line-height:1">10</div>
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-primary);margin-top:6px">Keep this open</div>
+</div>
+<div>
+<h2 data-slot="s10.title" style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 12px">The credibility cheat sheet</h2>
+<p data-slot="s10.body" style="margin:0;max-width:70ch;color:var(--bh-ink-dim);font-size:16.5px;text-wrap:pretty">Left column is what to say. Right column is the version that costs you the candidate, and why. Specificity is the entire game with this audience.</p>
+</div>
+</div>
+<div style="margin-top:32px;background:var(--bh-surface);border:1px solid var(--bh-border);overflow-x:auto">
+<table style="width:100%;border-collapse:collapse;font-size:14.5px;min-width:720px">
+<thead>
+<tr>
+<th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-success);font-weight:500;padding:13px 18px;border-bottom:1px solid var(--bh-ink);width:50%">Say this</th>
+<th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-accent);font-weight:500;padding:13px 18px;border-bottom:1px solid var(--bh-ink)">Not this</th>
+</tr>
+</thead>
+<tbody data-count="3-8" data-repeat="cheatsheet"><tr>
+<td data-slot="cheat.good" style="padding:14px 18px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-success);color:var(--bh-ink)">"You'd own a propulsion subsystem end to end, from analysis and design through hot-fire test."</td>
+<td data-slot="cheat.bad" style="padding:14px 18px;border-bottom:1px solid var(--bh-border);color:var(--bh-muted)">"You'd be building rockets!" Maybe they build electric thrusters, or valves. Overclaiming the glamour reads as not having read the req.</td>
+</tr>
+<tr>
+<td data-slot="cheat.good" style="padding:14px 18px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-success);color:var(--bh-ink)">"The work is liquid-engine design in ANSYS and SolidWorks, plus thrust-stand testing on real hardware."</td>
+<td data-slot="cheat.bad" style="padding:14px 18px;border-bottom:1px solid var(--bh-border);color:var(--bh-muted)">"They use cutting-edge propulsion technology." Says you cannot describe the work, so the technical conversation ends here.</td>
+</tr>
+<tr>
+<td data-slot="cheat.good" style="padding:14px 18px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-success);color:var(--bh-ink)">"You'd run your own test campaigns, not hand a model to someone else to validate."</td>
+<td data-slot="cheat.bad" style="padding:14px 18px;border-bottom:1px solid var(--bh-border);color:var(--bh-muted)">"It's a high-impact role with lots of ownership." Abstract impact claims are the most ignored sentence in recruiting.</td>
+</tr>
+<tr>
+<td data-slot="cheat.good" style="padding:14px 18px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-success);color:var(--bh-ink)">"Small propulsion team with one hardware partner, so you see a part from analysis to fired hardware."</td>
+<td data-slot="cheat.bad" style="padding:14px 18px;border-bottom:1px solid var(--bh-border);color:var(--bh-muted)">"It's a lean team where you do a bit of everything." Reads as understaffed and disorganised. The specifics do the work instead.</td>
+</tr>
+<tr>
+<td data-slot="cheat.good" style="padding:14px 18px;border-left:3px solid var(--bh-success);color:var(--bh-ink)">"Your combustion and thermofluids background transfers directly; the space environment is what you'd ramp on."</td>
+<td data-slot="cheat.bad" style="padding:14px 18px;color:var(--bh-muted)">"Great pay at a fast-growing startup." Every company says this, so it reads as concealment. Give the band and a real proof point.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- HANDOFF -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--bh-border)">
+<div data-optional="" style="background:var(--bh-ink);color:var(--bh-bg);padding:30px 34px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:18px">
+<div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:var(--bh-bisaek)">Handoff → next artifact</div>
+<div style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--bh-ink-300)">Internal · optional: delete before sharing outside the search team</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;font-family:var(--bh-font-mono);font-size:13px;line-height:1.9">
+<div><div style="color:var(--bh-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Produces</div><div data-slot="handoff.produces">primary_keywords · title_synonyms · cross_industry_pools · skill_transfer_notes · seniority_ladder · must_have_skills</div></div>
+<div><div style="color:var(--bh-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Consumed by</div><div data-slot="handoff.consumers">02 Job Description · 03 Talent Map · 06 Interview Plan · 08 Recruiter Screen</div></div>
+<div><div style="color:var(--bh-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Assumptions</div><div data-slot="handoff.assumptions">Recruiter is non-technical. No engineer at the recruiter screen. Degree is a proxy, not a gate. Most propulsion work is onsite by nature (test stands, hardware), even on a hybrid req.</div></div>
+<div><div style="color:var(--bh-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Blocked on</div><div data-slot="handoff.blocked" style="color:var(--bh-hwang-light)">Nothing. Runs from the CALIBRATE handoff plus public data.</div></div>
+</div>
+</div>
+</section>
+<footer style="margin-top:56px;padding-top:20px;border-top:1px solid var(--bh-border);display:flex;justify-content:space-between;font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--bh-ink-300)">
+<span data-slot="footer.left">Talent Kit 01 · Propulsion literacy</span><span data-slot="footer.right">Plain-language by design · © 2026 Onepromptman</span>
+</footer>
+</main>
+</div>
+</x-dc>
+<script data-dc-script="" data-props='{"$preview":{"width":1180,"height":900}}' type="text/x-dc"></script>
+</body>
+</html>

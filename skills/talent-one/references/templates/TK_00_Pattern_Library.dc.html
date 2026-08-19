@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<!-- ============ PATTERN LIBRARY -- NOT RENDERED ============
+     TK_00 is the canonical source template: authors copy patterns out of
+     it into real artifact templates. The render pipeline never renders
+     this file directly (no content-schema / example-content; confirmed
+     out of the render path) -- but every pattern below still ships as
+     production markup, so it must be born safe. All numeric chart
+     furniture (axis ticks, funnel conversion rates, comp figures, and
+     any other value that could vary row to row) carries a data-slot,
+     exactly as a real template would; anything genuinely fixed across
+     copies is genericized to a non-numeric placeholder instead of a
+     dead literal. Copying a pattern out of here does not, by itself,
+     make a template safe: after pasting a pattern into a real template,
+     run `python3 scripts/render.py lint-template --template <path>` and
+     confirm it reports CLEAN before that template ships. -->
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/seoul-4575df7f-c086-4195-b0df-a53fa16e473e/tokens/tokens.css">
+<link rel="stylesheet" href="_ds/seoul-4575df7f-c086-4195-b0df-a53fa16e473e/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="_ds/seoul-4575df7f-c086-4195-b0df-a53fa16e473e/_ds_bundle.js"></script>
+<style>
+  /* derived ramp tints (no token exists for these): #F0EDE6 track, #FBF9F4 rail, #EDE8DE hairline, #DCE6F2/#7FA5CC/#3D6FA8/#5C82AF/#8AA3C4 cheong ramp, #F7FAFC quadrant wash, #EEF6F1/#BFDCCB nok pale, #FAF0E6/#E3CDB4 dan pale, #F9EFEF/#E3C4C4/#F6E4E4 jeok pale, #C9D6E6 link rule */
+  body{margin:0;background:var(--bh-bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  a{color:var(--bh-primary);text-decoration:underline;text-underline-offset:.18em;text-decoration-color:#C9D6E6}
+  a:hover{color:var(--bh-cheong-dark);text-decoration-color:var(--bh-primary)}
+</style>
+</helmet>
+
+<div data-mode="light" style="background:var(--bh-bg);color:var(--bh-ink);font-family:var(--bh-font-body);font-size:16px;line-height:1.6">
+
+<header style="max-width:1120px;margin:0 auto;padding:0 48px">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--bh-border)">
+    <div style="font-family:var(--bh-font-mono);font-size:12px;letter-spacing:.30em;text-transform:uppercase;color:var(--bh-ink)">Talent&nbsp;Kit <span style="color:var(--bh-accent)">·</span> 00</div>
+    <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted)">Pattern library <span style="color:var(--bh-lattice-line)">/</span> v1.0</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 300px;gap:56px;padding:64px 0 40px;align-items:end">
+    <div>
+      <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.20em;text-transform:uppercase;color:var(--bh-primary);margin-bottom:20px">The visual language</div>
+      <h1 style="font-family:var(--bh-font-display);font-weight:700;font-size:56px;line-height:1.06;letter-spacing:-0.02em;margin:0;color:var(--bh-ink);text-wrap:balance">Eight artifacts,<br>one grammar.</h1>
+      <p style="margin:24px 0 0;max-width:60ch;font-size:17px;color:var(--bh-ink-dim);text-wrap:pretty">Every block an agent can emit, in one place. Each pattern carries a <em>use&nbsp;when</em> rule: the point is restraint, not decoration. A page that uses three of these well beats a page that uses ten. All figures in this library are example data.</p>
+    </div>
+    <div style="border-left:1px solid var(--bh-border);padding-left:24px">
+      <div style="display:grid;gap:14px">
+        <div><div style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-ink-300);margin-bottom:3px">Ground</div><div style="font-size:14px;font-weight:600">Hanji baek <span style="font-family:var(--bh-font-mono);color:var(--bh-muted);font-weight:400">--bh-bg · #F5F2EC</span></div></div>
+        <div><div style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-ink-300);margin-bottom:3px">Lead</div><div style="font-size:14px;font-weight:600">Cheong <span style="font-family:var(--bh-font-mono);color:var(--bh-muted);font-weight:400">--bh-primary · #2B6CB0</span></div></div>
+        <div><div style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-ink-300);margin-bottom:3px">Flag (scarce)</div><div style="font-size:14px;font-weight:600">Jeok <span style="font-family:var(--bh-font-mono);color:var(--bh-muted);font-weight:400">--bh-accent · #B03030</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;gap:0;height:6px;margin-bottom:8px">
+    <div style="flex:5;background:var(--bh-primary)"></div><div style="flex:1;background:var(--bh-byeok)"></div><div style="flex:1;background:var(--bh-success)"></div><div style="flex:1;background:var(--bh-highlight)"></div><div style="flex:1;background:var(--bh-warning)"></div><div style="flex:1;background:var(--bh-accent)"></div>
+  </div>
+</header>
+
+<main style="max-width:1120px;margin:0 auto;padding:0 48px 96px">
+
+  <!-- ============ A · SLOT CONTRACT ============ -->
+  <section style="padding:56px 0;border-top:1px solid var(--bh-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--bh-font-display);font-size:40px;color:var(--bh-lattice-line);line-height:1">A</div>
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-muted);margin-top:6px">For the agent</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 10px;color:var(--bh-ink)">The slot contract</h2>
+        <p style="margin:0 0 24px;max-width:66ch;color:var(--bh-ink-dim);text-wrap:pretty">Templates ship <strong>already filled</strong> with a worked example, so they never look broken and an agent can see the intended shape and length of every field. Filling is a replace-in-place operation against <code style="font-family:var(--bh-font-mono);font-size:13px;background:var(--bh-surface);border:1px solid var(--bh-border);padding:1px 5px">data-slot</code> attributes.</p>
+
+        <div style="display:grid;gap:2px;background:var(--bh-border);border:1px solid var(--bh-border)">
+          <div style="display:grid;grid-template-columns:230px 1fr;gap:2px;background:var(--bh-border)">
+            <div style="background:var(--bh-surface);padding:14px 16px;font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-primary)">data-slot="role.title"</div>
+            <div style="background:var(--bh-surface);padding:14px 16px;font-size:14px;color:var(--bh-ink-dim)">Replace this element's <b>text only</b>. Keep every attribute and every wrapper.</div>
+          </div>
+          <div style="display:grid;grid-template-columns:230px 1fr;gap:2px;background:var(--bh-border)">
+            <div style="background:var(--bh-surface);padding:14px 16px;font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-primary)">data-repeat="orgs"</div>
+            <div style="background:var(--bh-surface);padding:14px 16px;font-size:14px;color:var(--bh-ink-dim)">Container. Duplicate or delete its <b>first child</b> as the row pattern. Row count is up to the agent. The range in <code style="font-family:var(--bh-font-mono);font-size:12px">data-count</code> is guidance.</div>
+          </div>
+          <div style="display:grid;grid-template-columns:230px 1fr;gap:2px;background:var(--bh-border)">
+            <div style="background:var(--bh-surface);padding:14px 16px;font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-primary)">data-bar="0.62"</div>
+            <div style="background:var(--bh-surface);padding:14px 16px;font-size:14px;color:var(--bh-ink-dim)">Geometry slot. Set the number <b>and</b> the matching inline <code style="font-family:var(--bh-font-mono);font-size:12px">width</code>/<code style="font-family:var(--bh-font-mono);font-size:12px">left</code> percentage on the same element.</div>
+          </div>
+          <div style="display:grid;grid-template-columns:230px 1fr;gap:2px;background:var(--bh-border)">
+            <div style="background:var(--bh-surface);padding:14px 16px;font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-accent)">data-optional</div>
+            <div style="background:var(--bh-surface);padding:14px 16px;font-size:14px;color:var(--bh-ink-dim)">Delete the whole block if the search has no data for it. <b>Never</b> fill it with hedging prose.</div>
+          </div>
+          <div style="display:grid;grid-template-columns:230px 1fr;gap:2px;background:var(--bh-border)">
+            <div style="background:var(--bh-surface);padding:14px 16px;font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-muted)">data-cite="sourced|estimate"</div>
+            <div style="background:var(--bh-surface);padding:14px 16px;font-size:14px;color:var(--bh-ink-dim)">Provenance. Every number in a talent artifact is one or the other, and the pill next to it must agree.</div>
+          </div>
+        </div>
+
+        <div style="margin-top:22px;border-left:3px solid var(--bh-accent);background:var(--bh-surface);padding:16px 20px">
+          <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-accent);margin-bottom:6px">Hard rule</div>
+          <p style="margin:0;font-size:15px;color:var(--bh-ink-dim)">An agent may delete blocks and repeat rows. It may not invent new blocks, new colors, or new font sizes. If the data doesn't fit a pattern here, it goes in prose.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ B · TYPE & DENSITY ============ -->
+  <section style="padding:56px 0;border-top:1px solid var(--bh-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--bh-font-display);font-size:40px;color:var(--bh-lattice-line);line-height:1">B</div>
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-muted);margin-top:6px">Rhythm</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 10px;color:var(--bh-ink)">Type &amp; density budget</h2>
+        <p style="margin:0 0 24px;max-width:66ch;color:var(--bh-ink-dim);text-wrap:pretty">Three faces, no exceptions. Serif carries the argument, sans carries the detail, mono carries the machine: labels, numbers, provenance, code.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--bh-border);border:1px solid var(--bh-border);margin-bottom:26px">
+          <div style="background:var(--bh-surface);padding:20px">
+            <div style="font-family:var(--bh-font-display);font-size:34px;color:var(--bh-ink);line-height:1.1">Noto Serif KR</div>
+            <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-ink-300);margin-top:12px">Display · h1 h2 · pull-stats</div>
+          </div>
+          <div style="background:var(--bh-surface);padding:20px">
+            <div style="font-size:26px;font-weight:500;color:var(--bh-ink);line-height:1.2">IBM Plex Sans</div>
+            <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-ink-300);margin-top:16px">Body · tables · UI</div>
+          </div>
+          <div style="background:var(--bh-surface);padding:20px">
+            <div style="font-family:var(--bh-font-mono);font-size:22px;color:var(--bh-ink);line-height:1.2">IBM Plex Mono</div>
+            <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-ink-300);margin-top:19px">Eyebrows · numerals · booleans</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--bh-border);border:1px solid var(--bh-border)">
+          <div style="background:var(--bh-surface);padding:16px 18px"><div style="font-family:var(--bh-font-display);font-size:30px;color:var(--bh-primary);line-height:1">≤2</div><div style="font-size:13px;color:var(--bh-muted);margin-top:6px">pull-stat bands per artifact</div></div>
+          <div style="background:var(--bh-surface);padding:16px 18px"><div style="font-family:var(--bh-font-display);font-size:30px;color:var(--bh-primary);line-height:1">1</div><div style="font-size:13px;color:var(--bh-muted);margin-top:6px">signature diagram per artifact</div></div>
+          <div style="background:var(--bh-surface);padding:16px 18px"><div style="font-family:var(--bh-font-display);font-size:30px;color:var(--bh-primary);line-height:1">≤80</div><div style="font-size:13px;color:var(--bh-muted);margin-top:6px">words per prose block</div></div>
+          <div style="background:var(--bh-surface);padding:16px 18px"><div style="font-family:var(--bh-font-display);font-size:30px;color:var(--bh-primary);line-height:1">3</div><div style="font-size:13px;color:var(--bh-muted);margin-top:6px">accent colors max on a page</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ C · DEVICES ============ -->
+  <section style="padding:56px 0 0;border-top:1px solid var(--bh-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--bh-font-display);font-size:40px;color:var(--bh-lattice-line);line-height:1">C</div>
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-muted);margin-top:6px">The devices</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 10px;color:var(--bh-ink)">Thirteen blocks</h2>
+        <p style="margin:0;max-width:66ch;color:var(--bh-ink-dim);text-wrap:pretty">Each one below is production markup. Copy the block, swap the slots, delete what the search doesn't support.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 pull-stat band -->
+  <section style="margin-top:44px;border-top:2px solid var(--bh-ink);padding-top:14px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px">
+      <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-ink)">01 · Pull-stat band</div>
+      <div style="font-size:13.5px;color:var(--bh-muted)"><b style="color:var(--bh-accent);font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase">Use when</b> &nbsp;one number reframes the whole search. Max two per artifact.</div>
+    </div>
+    <div style="background:var(--bh-surface);border:1px solid var(--bh-border);border-left:4px solid var(--bh-primary);display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;padding:32px 36px">
+      <div style="font-family:var(--bh-font-display);font-size:92px;line-height:.86;color:var(--bh-primary);font-variant-numeric:tabular-nums" data-slot="stat.value">58</div>
+      <div>
+        <div style="font-family:var(--bh-font-mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-ink-300);margin-bottom:8px">Median days to fill · this role family</div>
+        <div style="font-size:19px;color:var(--bh-ink);max-width:52ch;text-wrap:pretty" data-slot="stat.claim">Nineteen days longer than the org's software average. Scope debate is the largest single contributor.</div>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-primary);background:#DCE6F2;border:1px solid #C9D6E6">Internal</span><span style="font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)">Internal ATS, trailing 4 quarters</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 ranked bars -->
+  <section style="margin-top:52px;border-top:2px solid var(--bh-ink);padding-top:14px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px">
+      <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-ink)">02 · Ranked bars</div>
+      <div style="font-size:13.5px;color:var(--bh-muted)"><b style="color:var(--bh-accent);font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase">Use when</b> &nbsp;order is the message. 4–8 rows; never a bar per row of a table.</div>
+    </div>
+    <div style="background:var(--bh-surface);border:1px solid var(--bh-border);padding:26px 30px">
+      <div style="display:grid;gap:11px" data-repeat="bars" data-count="4-8">
+        <div style="display:grid;grid-template-columns:210px 1fr 58px;gap:14px;align-items:center">
+          <div style="font-size:14px;color:var(--bh-ink);text-align:right" data-slot="bar.label">Defense primes</div>
+          <div style="height:22px;background:#F0EDE6;position:relative"><div data-bar="0.86" style="position:absolute;inset:0 auto 0 0;width:86%;background:var(--bh-primary)"></div></div>
+          <div style="font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-ink);font-variant-numeric:tabular-nums" data-slot="bar.value">1,240</div>
+        </div>
+        <div style="display:grid;grid-template-columns:210px 1fr 58px;gap:14px;align-items:center">
+          <div style="font-size:14px;color:var(--bh-ink);text-align:right">New-space operators</div>
+          <div style="height:22px;background:#F0EDE6;position:relative"><div data-bar="0.61" style="position:absolute;inset:0 auto 0 0;width:61%;background:var(--bh-primary)"></div></div>
+          <div style="font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-ink)">880</div>
+        </div>
+        <div style="display:grid;grid-template-columns:210px 1fr 58px;gap:14px;align-items:center">
+          <div style="font-size:14px;color:var(--bh-ink);text-align:right">Automotive autonomy</div>
+          <div style="height:22px;background:#F0EDE6;position:relative"><div data-bar="0.38" style="position:absolute;inset:0 auto 0 0;width:38%;background:var(--bh-byeok)"></div></div>
+          <div style="font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-ink)">545</div>
+        </div>
+        <div style="display:grid;grid-template-columns:210px 1fr 58px;gap:14px;align-items:center">
+          <div style="font-size:14px;color:var(--bh-ink);text-align:right">Medical devices</div>
+          <div style="height:22px;background:#F0EDE6;position:relative"><div data-bar="0.19" style="position:absolute;inset:0 auto 0 0;width:19%;background:var(--bh-byeok)"></div></div>
+          <div style="font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-ink)">270</div>
+        </div>
+      </div>
+      <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--bh-border);display:flex;gap:20px;align-items:center;font-family:var(--bh-font-mono);font-size:10.5px;color:var(--bh-muted)"><span style="display:flex;gap:7px;align-items:center"><span style="width:12px;height:12px;background:var(--bh-primary);display:inline-block"></span>Core pool</span><span style="display:flex;gap:7px;align-items:center"><span style="width:12px;height:12px;background:var(--bh-byeok);display:inline-block"></span>Adjacent pool</span></div>
+    </div>
+  </section>
+
+  <!-- 03 funnel -->
+  <section style="margin-top:52px;border-top:2px solid var(--bh-ink);padding-top:14px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px">
+      <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-ink)">03 · Conversion funnel</div>
+      <div style="font-size:13.5px;color:var(--bh-muted)"><b style="color:var(--bh-accent);font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase">Use when</b> &nbsp;stage math drives the plan. One per kit (sourcing or interview, not both).</div>
+    </div>
+    <div style="background:var(--bh-surface);border:1px solid var(--bh-border);padding:30px 34px">
+      <div style="display:grid;gap:6px" data-repeat="funnel.stages" data-count="4-7">
+        <div style="display:grid;grid-template-columns:170px 1fr 92px;gap:16px;align-items:center">
+          <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--bh-muted);text-align:right" data-slot="stage.label">Sourced</div>
+          <div data-bar="1.0" style="width:100%;height:44px;background:var(--bh-primary);display:flex;align-items:center;padding-left:16px;color:var(--bh-surface);font-family:var(--bh-font-mono);font-size:15px" data-slot="stage.n">420</div>
+          <div style="font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-ink-300)" data-slot="stage.rate">-</div>
+        </div>
+        <div style="display:grid;grid-template-columns:170px 1fr 92px;gap:16px;align-items:center">
+          <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--bh-muted);text-align:right">Replied</div>
+          <div data-bar="0.29" style="width:29%;height:44px;background:#3D6FA8;display:flex;align-items:center;padding-left:16px;color:var(--bh-surface);font-family:var(--bh-font-mono);font-size:15px">122</div>
+          <div style="font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-success)">29%</div>
+        </div>
+        <div style="display:grid;grid-template-columns:170px 1fr 92px;gap:16px;align-items:center">
+          <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--bh-muted);text-align:right">Screened</div>
+          <div data-bar="0.14" style="width:14%;height:44px;background:#5C82AF;display:flex;align-items:center;padding-left:16px;color:var(--bh-surface);font-family:var(--bh-font-mono);font-size:15px">58</div>
+          <div style="font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)">48%</div>
+        </div>
+        <div style="display:grid;grid-template-columns:170px 1fr 92px;gap:16px;align-items:center">
+          <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--bh-muted);text-align:right">Onsite</div>
+          <div data-bar="0.045" style="width:9%;height:44px;background:#8AA3C4;display:flex;align-items:center;padding-left:16px;color:var(--bh-surface);font-family:var(--bh-font-mono);font-size:15px">19</div>
+          <div style="font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-warning)">33%</div>
+        </div>
+        <div style="display:grid;grid-template-columns:170px 1fr 92px;gap:16px;align-items:center">
+          <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--bh-muted);text-align:right">Offer · accept</div>
+          <div data-bar="0.007" style="width:6%;height:44px;background:var(--bh-accent);display:flex;align-items:center;padding-left:16px;color:var(--bh-surface);font-family:var(--bh-font-mono);font-size:15px">3</div>
+          <div style="font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)">67%</div>
+        </div>
+      </div>
+      <p style="margin:20px 0 0;font-size:14px;color:var(--bh-muted);max-width:70ch">Bar width is proportional to top-of-funnel; the right column is stage-to-stage conversion. Flag any stage below plan in <span style="color:var(--bh-warning);font-weight:600">dan</span>.</p>
+    </div>
+  </section>
+
+  <!-- 04 quadrant + 05 gauge -->
+  <section style="margin-top:52px;border-top:2px solid var(--bh-ink);padding-top:14px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px">
+      <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-ink)">04 · Quadrant map &nbsp;&nbsp;05 · Gauge</div>
+      <div style="font-size:13.5px;color:var(--bh-muted)"><b style="color:var(--bh-accent);font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase">Use when</b> &nbsp;two axes beat a table / a single rate needs a face.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1.55fr 1fr;gap:2px;background:var(--bh-border);border:1px solid var(--bh-border)">
+      <div style="background:var(--bh-surface);padding:26px 28px">
+        <div style="display:grid;grid-template-columns:22px 1fr;gap:12px">
+          <div style="writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-ink-300);text-align:center">Difficulty to win →</div>
+          <div>
+            <div style="position:relative;aspect-ratio:1.35/1;border-left:1px solid var(--bh-lattice-line);border-bottom:1px solid var(--bh-lattice-line);background-image:linear-gradient(90deg,var(--bh-border) 0 1px,transparent 1px),linear-gradient(0deg,var(--bh-border) 0 1px,transparent 1px);background-size:50% 50%;background-position:center">
+              <div data-repeat="quadrant.points" data-count="3-6" style="position:absolute;inset:0">
+                <div style="position:absolute;left:70%;top:22%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:8px"><span style="width:14px;height:14px;background:var(--bh-accent);border-radius:50%;flex:none"></span><span style="font-size:13px;font-weight:600;color:var(--bh-ink);white-space:nowrap" data-slot="point.label">Primes</span></div>
+                <div style="position:absolute;left:34%;top:38%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:8px"><span style="width:14px;height:14px;background:var(--bh-primary);border-radius:50%;flex:none"></span><span style="font-size:13px;font-weight:600;color:var(--bh-ink);white-space:nowrap">New space</span></div>
+                <div style="position:absolute;left:58%;top:72%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:8px"><span style="width:14px;height:14px;background:var(--bh-byeok);border-radius:50%;flex:none"></span><span style="font-size:13px;font-weight:600;color:var(--bh-ink);white-space:nowrap">Autonomy</span></div>
+                <div style="position:absolute;left:20%;top:82%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:8px"><span style="width:14px;height:14px;background:var(--bh-success);border-radius:50%;flex:none"></span><span style="font-size:13px;font-weight:600;color:var(--bh-ink);white-space:nowrap">Med device</span></div>
+              </div>
+              <div style="position:absolute;right:8px;top:8px;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--bh-lattice-line)">Deep · hard</div>
+              <div style="position:absolute;left:8px;bottom:8px;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--bh-lattice-line)">Thin · easy</div>
+            </div>
+            <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-ink-300);text-align:center;margin-top:10px">Pool depth →</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:var(--bh-surface);padding:26px 28px;display:flex;flex-direction:column;justify-content:center;align-items:center">
+        <div style="position:relative;width:170px;height:170px;border-radius:50%;background:conic-gradient(var(--bh-primary) 0 34%,#F0EDE6 34% 100%)" data-bar="0.34">
+          <div style="position:absolute;inset:22px;background:var(--bh-surface);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <div style="font-family:var(--bh-font-display);font-size:40px;line-height:1;color:var(--bh-ink)" data-slot="gauge.value">34%</div>
+            <div style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-ink-300);margin-top:6px">Reply rate</div>
+          </div>
+        </div>
+        <div style="margin-top:18px;font-size:14px;color:var(--bh-ink-dim);text-align:center;max-width:26ch" data-slot="gauge.note">Benchmark for a peer-written first touch, per your own baseline.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 comp plot -->
+  <section style="margin-top:52px;border-top:2px solid var(--bh-ink);padding-top:14px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px">
+      <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-ink)">06 · Comp range plot</div>
+      <div style="font-size:13.5px;color:var(--bh-muted)"><b style="color:var(--bh-accent);font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase">Use when</b> &nbsp;the band has to be defended to a hiring manager.</div>
+    </div>
+    <div style="background:var(--bh-surface);border:1px solid var(--bh-border);padding:32px 34px 24px">
+      <div style="display:grid;gap:26px" data-repeat="comp.rows" data-count="2-4">
+        <div style="display:grid;grid-template-columns:130px 1fr;gap:20px;align-items:center">
+          <div><div style="font-size:14px;font-weight:600;color:var(--bh-ink)" data-slot="comp.label">Market P25–P75</div><div style="font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)">illustrative data</div></div>
+          <div style="position:relative;height:42px">
+            <div style="position:absolute;left:0;right:0;top:20px;height:1px;background:var(--bh-border)"></div>
+            <div data-bar="0.28,0.74" style="position:absolute;left:28%;width:46%;top:12px;height:18px;background:#DCE6F2;border-left:2px solid var(--bh-primary);border-right:2px solid var(--bh-primary)">
+              <div style="position:absolute;left:0;top:22px;transform:translateX(-50%);font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted);white-space:nowrap"><span data-slot="comp.low">105k</span> <span style="font-family:var(--bh-font-body);font-size:10.5px">low end</span></div>
+              <div style="position:absolute;right:0;top:22px;transform:translateX(50%);font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted);white-space:nowrap"><span data-slot="comp.high">174k</span> <span style="font-family:var(--bh-font-body);font-size:10.5px">high end</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:130px 1fr;gap:20px;align-items:center">
+          <div><div style="font-size:14px;font-weight:600;color:var(--bh-ink)">Approved band</div><div style="font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-accent)">below median</div></div>
+          <div style="position:relative;height:42px">
+            <div style="position:absolute;left:0;right:0;top:20px;height:1px;background:var(--bh-border)"></div>
+            <div data-bar="0.18,0.52" style="position:absolute;left:18%;width:34%;top:12px;height:18px;background:#F6E4E4;border-left:2px solid var(--bh-accent);border-right:2px solid var(--bh-accent)">
+              <div style="position:absolute;left:0;top:22px;transform:translateX(-50%);font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-accent);white-space:nowrap"><span data-slot="comp.low">90k</span> <span style="font-family:var(--bh-font-body);font-size:10.5px">low end</span></div>
+              <div style="position:absolute;right:0;top:22px;transform:translateX(50%);font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-accent);white-space:nowrap"><span data-slot="comp.high">128k</span> <span style="font-family:var(--bh-font-body);font-size:10.5px">high end</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="margin:22px 0 0;padding-top:16px;border-top:1px solid var(--bh-border);font-size:14.5px;color:var(--bh-ink-dim);max-width:74ch" data-slot="comp.readout"><b>Read-out:</b> the band tops out at market P42 (illustrative). Expect to lose the top decile on cash and win on mission, equity, and scope.</p>
+    </div>
+  </section>
+
+  <!-- 07 heat grid -->
+  <section style="margin-top:52px;border-top:2px solid var(--bh-ink);padding-top:14px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px">
+      <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-ink)">07 · Coverage heat grid</div>
+      <div style="font-size:13.5px;color:var(--bh-muted)"><b style="color:var(--bh-accent);font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase">Use when</b> &nbsp;you must prove no competency is double-covered or orphaned.</div>
+    </div>
+    <div style="background:var(--bh-surface);border:1px solid var(--bh-border);padding:26px 30px;overflow-x:auto">
+      <div style="display:grid;grid-template-columns:200px repeat(5,1fr);gap:2px;min-width:640px">
+        <div></div>
+        <div style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--bh-muted);padding:0 0 8px 4px">Screen</div>
+        <div style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--bh-muted);padding:0 0 8px 4px">Tech 1</div>
+        <div style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--bh-muted);padding:0 0 8px 4px">Tech 2</div>
+        <div style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--bh-muted);padding:0 0 8px 4px">Sys design</div>
+        <div style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--bh-muted);padding:0 0 8px 4px">Values</div>
+
+        <div style="font-size:13.5px;color:var(--bh-ink);padding:10px 8px 10px 0;text-align:right" data-slot="heat.row.label">Embedded C++ depth</div>
+        <div data-bar="0.3" style="background:#DCE6F2;min-height:38px"></div><div data-bar="1" style="background:var(--bh-primary);min-height:38px"></div><div data-bar="0.65" style="background:#7FA5CC;min-height:38px"></div><div style="background:#F0EDE6;min-height:38px"></div><div style="background:#F0EDE6;min-height:38px"></div>
+
+        <div style="font-size:13.5px;color:var(--bh-ink);padding:10px 8px 10px 0;text-align:right">Hardware-in-loop debug</div>
+        <div style="background:#F0EDE6;min-height:38px"></div><div data-bar="0.65" style="background:#7FA5CC;min-height:38px"></div><div data-bar="1" style="background:var(--bh-primary);min-height:38px"></div><div data-bar="0.3" style="background:#DCE6F2;min-height:38px"></div><div style="background:#F0EDE6;min-height:38px"></div>
+
+        <div style="font-size:13.5px;color:var(--bh-ink);padding:10px 8px 10px 0;text-align:right">Ambiguity &amp; ownership</div>
+        <div data-bar="0.65" style="background:#7FA5CC;min-height:38px"></div><div style="background:#F0EDE6;min-height:38px"></div><div data-bar="0.3" style="background:#DCE6F2;min-height:38px"></div><div data-bar="0.65" style="background:#7FA5CC;min-height:38px"></div><div data-bar="1" style="background:var(--bh-primary);min-height:38px"></div>
+
+        <div style="font-size:13.5px;color:var(--bh-accent);padding:10px 8px 10px 0;text-align:right">Flight hardware experience</div>
+        <div style="background:#F0EDE6;min-height:38px"></div><div style="background:#F0EDE6;min-height:38px"></div><div data-bar="0.3" style="background:#DCE6F2;min-height:38px"></div><div style="background:#F0EDE6;min-height:38px"></div><div style="background:#F0EDE6;min-height:38px;outline:2px solid var(--bh-accent);outline-offset:-2px"></div>
+      </div>
+      <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--bh-border);display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-family:var(--bh-font-mono);font-size:10.5px;color:var(--bh-muted)">
+        <span style="display:flex;gap:7px;align-items:center"><span style="width:12px;height:12px;background:var(--bh-primary)"></span>Primary owner</span>
+        <span style="display:flex;gap:7px;align-items:center"><span style="width:12px;height:12px;background:#7FA5CC"></span>Secondary</span>
+        <span style="display:flex;gap:7px;align-items:center"><span style="width:12px;height:12px;background:#DCE6F2"></span>Touch</span>
+        <span style="display:flex;gap:7px;align-items:center;color:var(--bh-accent)"><span style="width:12px;height:12px;background:#F0EDE6;outline:2px solid var(--bh-accent);outline-offset:-2px"></span>Gap: assign or drop</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 timeline -->
+  <section style="margin-top:52px;border-top:2px solid var(--bh-ink);padding-top:14px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px">
+      <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-ink)">08 · Cadence timeline</div>
+      <div style="font-size:13.5px;color:var(--bh-muted)"><b style="color:var(--bh-accent);font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase">Use when</b> &nbsp;the plan has dated commitments both sides sign up to.</div>
+    </div>
+    <div style="background:var(--bh-surface);border:1px solid var(--bh-border);padding:28px 32px">
+      <div style="display:grid;grid-template-columns:150px 1fr;gap:16px;margin-bottom:10px">
+        <div></div>
+        <div style="display:grid;grid-template-columns:repeat(6,1fr);font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--bh-ink-300);border-bottom:1px solid var(--bh-border);padding-bottom:6px">
+          <div>Wk 1</div><div>Wk 2</div><div>Wk 3</div><div>Wk 4</div><div>Wk 5</div><div>Wk 6</div>
+        </div>
+      </div>
+      <div style="display:grid;gap:8px" data-repeat="timeline.rows" data-count="3-7">
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center">
+          <div style="font-size:13.5px;color:var(--bh-ink);text-align:right" data-slot="phase.label">Calibration</div>
+          <div style="position:relative;height:26px;background:linear-gradient(90deg,#F0EDE6 0 1px,transparent 1px);background-size:16.66% 100%"><div data-bar="0,0.16" style="position:absolute;left:0;width:16%;top:4px;bottom:4px;background:var(--bh-ink)"></div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center">
+          <div style="font-size:13.5px;color:var(--bh-ink);text-align:right">Sourcing sprint 1</div>
+          <div style="position:relative;height:26px;background:linear-gradient(90deg,#F0EDE6 0 1px,transparent 1px);background-size:16.66% 100%"><div data-bar="0.16,0.50" style="position:absolute;left:16%;width:34%;top:4px;bottom:4px;background:var(--bh-primary)"></div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center">
+          <div style="font-size:13.5px;color:var(--bh-ink);text-align:right">Loop &amp; debrief</div>
+          <div style="position:relative;height:26px;background:linear-gradient(90deg,#F0EDE6 0 1px,transparent 1px);background-size:16.66% 100%"><div data-bar="0.33,0.83" style="position:absolute;left:33%;width:50%;top:4px;bottom:4px;background:var(--bh-byeok)"></div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center">
+          <div style="font-size:13.5px;color:var(--bh-accent);text-align:right">Offer window</div>
+          <div style="position:relative;height:26px;background:linear-gradient(90deg,#F0EDE6 0 1px,transparent 1px);background-size:16.66% 100%"><div data-bar="0.66,1" style="position:absolute;left:66%;width:34%;top:4px;bottom:4px;background:var(--bh-accent)"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 geo -->
+  <section style="margin-top:52px;border-top:2px solid var(--bh-ink);padding-top:14px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px">
+      <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-ink)">09 · Hub list</div>
+      <div style="font-size:13.5px;color:var(--bh-muted)"><b style="color:var(--bh-accent);font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase">Use when</b> &nbsp;geography changes the strategy. Bubble = pool size, bar = relocation friction.</div>
+    </div>
+    <div style="background:var(--bh-surface);border:1px solid var(--bh-border)">
+      <div data-repeat="hubs" data-count="4-8">
+        <div style="display:grid;grid-template-columns:64px 1fr 190px 120px;gap:18px;align-items:center;padding:16px 26px;border-bottom:1px solid var(--bh-border)">
+          <div style="display:flex;justify-content:center"><span data-bar="0.9" style="width:34px;height:34px;border-radius:50%;background:var(--bh-primary);opacity:.85"></span></div>
+          <div><div style="font-size:15px;font-weight:600;color:var(--bh-ink)" data-slot="hub.name">Los Angeles · South Bay</div><div style="font-size:13px;color:var(--bh-muted)" data-slot="hub.note">Primes plus three launch startups; densest single market.</div></div>
+          <div><div style="height:8px;background:#F0EDE6;position:relative"><div data-bar="0.25" style="position:absolute;inset:0 auto 0 0;width:25%;background:var(--bh-success)"></div></div><div style="font-family:var(--bh-font-mono);font-size:10px;color:var(--bh-muted);margin-top:5px">Low friction</div></div>
+          <div style="font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-ink);text-align:right" data-slot="hub.count">~1,900</div>
+        </div>
+        <div style="display:grid;grid-template-columns:64px 1fr 190px 120px;gap:18px;align-items:center;padding:16px 26px;border-bottom:1px solid var(--bh-border)">
+          <div style="display:flex;justify-content:center"><span data-bar="0.6" style="width:24px;height:24px;border-radius:50%;background:var(--bh-primary);opacity:.85"></span></div>
+          <div><div style="font-size:15px;font-weight:600;color:var(--bh-ink)">Denver · Boulder</div><div style="font-size:13px;color:var(--bh-muted)">Deep GNC and ground-segment bench, lower comp expectations.</div></div>
+          <div><div style="height:8px;background:#F0EDE6;position:relative"><div data-bar="0.5" style="position:absolute;inset:0 auto 0 0;width:50%;background:var(--bh-highlight)"></div></div><div style="font-family:var(--bh-font-mono);font-size:10px;color:var(--bh-muted);margin-top:5px">Medium friction</div></div>
+          <div style="font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-ink);text-align:right">~740</div>
+        </div>
+        <div style="display:grid;grid-template-columns:64px 1fr 190px 120px;gap:18px;align-items:center;padding:16px 26px">
+          <div style="display:flex;justify-content:center"><span data-bar="0.35" style="width:16px;height:16px;border-radius:50%;background:var(--bh-primary);opacity:.85"></span></div>
+          <div><div style="font-size:15px;font-weight:600;color:var(--bh-ink)">Huntsville</div><div style="font-size:13px;color:var(--bh-muted)">Cleared talent; hardest to relocate out of.</div></div>
+          <div><div style="height:8px;background:#F0EDE6;position:relative"><div data-bar="0.85" style="position:absolute;inset:0 auto 0 0;width:85%;background:var(--bh-accent)"></div></div><div style="font-family:var(--bh-font-mono);font-size:10px;color:var(--bh-muted);margin-top:5px">High friction</div></div>
+          <div style="font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-ink);text-align:right">~410</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 annotated table -->
+  <section style="margin-top:52px;border-top:2px solid var(--bh-ink);padding-top:14px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px">
+      <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-ink)">10 · Annotated table</div>
+      <div style="font-size:13.5px;color:var(--bh-muted)"><b style="color:var(--bh-accent);font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase">Use when</b> &nbsp;it is genuinely tabular. Row accent bar carries the verdict.</div>
+    </div>
+    <div style="background:var(--bh-surface);border:1px solid var(--bh-border);overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:600px">
+        <thead>
+          <tr>
+            <th style="text-align:left;font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--bh-ink)">Channel</th>
+            <th style="text-align:left;font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--bh-ink)">Volume</th>
+            <th style="text-align:left;font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--bh-ink)">Trend</th>
+            <th style="text-align:left;font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--bh-ink)">Verdict</th>
+          </tr>
+        </thead>
+        <tbody data-repeat="table.rows" data-count="3-10">
+          <tr>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-success);font-weight:600;color:var(--bh-ink)" data-slot="row.name">Referral loops</td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono);color:var(--bh-ink)">18</td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--bh-border)"><svg viewBox="0 0 70 20" style="width:70px;height:20px;display:block" preserveAspectRatio="none" data-slot="row.spark"><polyline points="0,16 14,13 28,14 42,8 56,6 70,2" fill="none" style="stroke:var(--bh-success)" stroke-width="1.6"></polyline></svg></td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Highest yield per hour. Protect the time.</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-highlight);font-weight:600;color:var(--bh-ink)">LinkedIn InMail</td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono);color:var(--bh-ink)">210</td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--bh-border)"><svg viewBox="0 0 70 20" style="width:70px;height:20px;display:block" preserveAspectRatio="none"><polyline points="0,6 14,7 28,9 42,10 56,13 70,14" fill="none" style="stroke:var(--bh-highlight)" stroke-width="1.6"></polyline></svg></td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Decaying. Keep, but stop scaling it.</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 18px;border-left:3px solid var(--bh-accent);font-weight:600;color:var(--bh-ink)">Job-board inbound</td>
+            <td style="padding:14px 18px;font-family:var(--bh-font-mono);color:var(--bh-ink)">640</td>
+            <td style="padding:14px 18px"><svg viewBox="0 0 70 20" style="width:70px;height:20px;display:block" preserveAspectRatio="none"><polyline points="0,4 14,9 28,7 42,14 56,15 70,17" fill="none" style="stroke:var(--bh-accent)" stroke-width="1.6"></polyline></svg></td>
+            <td style="padding:14px 18px;color:var(--bh-ink-dim)">Volume without signal. Screen async only.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 11 annotation rail -->
+  <section style="margin-top:52px;border-top:2px solid var(--bh-ink);padding-top:14px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px">
+      <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-ink)">11 · Annotation rail</div>
+      <div style="font-size:13.5px;color:var(--bh-muted)"><b style="color:var(--bh-accent);font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase">Use when</b> &nbsp;copy must ship verbatim but needs coaching. Replaces inline parentheticals.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 280px;gap:0;background:var(--bh-surface);border:1px solid var(--bh-border)">
+      <div style="padding:28px 32px;border-right:1px solid var(--bh-border)">
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-ink-300);margin-bottom:14px">Email 1 · day 0</div>
+        <p style="margin:0 0 12px;font-size:15.5px;color:var(--bh-ink)"><b>Subject:</b> <span data-slot="copy.subject">your hot-fire campaign talk: one question</span></p>
+        <div style="font-size:15.5px;color:var(--bh-ink-dim);line-height:1.7" data-slot="copy.body">
+          <p style="margin:0 0 12px">Saw your write-up on shortening test-stand turnaround. The part about instrumenting for the worst run instead of the best one is exactly the argument we keep losing internally.</p>
+          <p style="margin:0 0 12px">We're a small propulsion team on a single thruster line, hot-firing every month. Same problem, smaller team, more rope.</p>
+          <p style="margin:0">Worth twenty minutes?</p>
+        </div>
+      </div>
+      <div style="padding:28px 24px;background:#FBF9F4;display:grid;gap:20px;align-content:start" data-repeat="annotations" data-count="2-4">
+        <div style="border-left:2px solid var(--bh-primary);padding-left:14px">
+          <div style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-primary);margin-bottom:5px" data-slot="note.tag">Why it works</div>
+          <div style="font-size:13.5px;color:var(--bh-ink-dim)" data-slot="note.body">Opens on their artifact, not our req. No adjectives about us.</div>
+        </div>
+        <div style="border-left:2px solid var(--bh-warning);padding-left:14px">
+          <div style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-warning);margin-bottom:5px">Swap this</div>
+          <div style="font-size:13.5px;color:var(--bh-ink-dim)">Replace the rig detail with whatever they actually published. If nothing, do not send this template.</div>
+        </div>
+        <div style="border-left:2px solid var(--bh-muted);padding-left:14px">
+          <div style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);margin-bottom:5px">Never</div>
+          <div style="font-size:13.5px;color:var(--bh-ink-dim)">"Rockstar", "unicorn", "exciting opportunity", any mention of a rocket ship.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 callouts -->
+  <section style="margin-top:52px;border-top:2px solid var(--bh-ink);padding-top:14px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px">
+      <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-ink)">12 · Callouts</div>
+      <div style="font-size:13.5px;color:var(--bh-muted)">Three only. Insight (cheong) · Caution (dan) · Gate (jeok). Nothing else gets a colored border.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+      <div style="background:var(--bh-surface);border:1px solid var(--bh-border);border-top:3px solid var(--bh-primary);padding:20px 22px">
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-primary);margin-bottom:8px">Insight</div>
+        <p style="margin:0;font-size:14.5px;color:var(--bh-ink-dim)">A non-obvious read the recruiter can repeat in a hiring-manager meeting.</p>
+      </div>
+      <div style="background:var(--bh-surface);border:1px solid var(--bh-border);border-top:3px solid var(--bh-warning);padding:20px 22px">
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-warning);margin-bottom:8px">Caution</div>
+        <p style="margin:0;font-size:14.5px;color:var(--bh-ink-dim)">A known way this search fails. Always paired with the countermeasure.</p>
+      </div>
+      <div style="background:var(--bh-surface);border:1px solid var(--bh-border);border-top:3px solid var(--bh-accent);padding:20px 22px">
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-accent);margin-bottom:8px">Gate</div>
+        <p style="margin:0;font-size:14.5px;color:var(--bh-ink-dim)">Binary. Eligibility, licensure, clearance. Word with counsel; ask in writing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 handoff -->
+  <section style="margin-top:52px;border-top:2px solid var(--bh-ink);padding-top:14px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px">
+      <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-ink)">13 · Handoff block</div>
+      <div style="font-size:13.5px;color:var(--bh-muted)">Last block of every artifact. What the next agent receives, machine-readable.</div>
+    </div>
+    <div style="background:var(--bh-ink);color:var(--bh-bg);padding:28px 32px">
+      <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:var(--bh-bisaek);margin-bottom:16px">Handoff → next artifact</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;font-family:var(--bh-font-mono);font-size:13px;line-height:1.9">
+        <div><div style="color:var(--bh-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Produces</div><div data-slot="handoff.produces">role_family · pool_size · difficulty_score · comp_band</div></div>
+        <div><div style="color:var(--bh-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Consumed by</div><div data-slot="handoff.consumers">04 Sourcing · 05 Outreach · 07 Calibration</div></div>
+        <div><div style="color:var(--bh-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Assumptions</div><div data-slot="handoff.assumptions">Band is approved. Location is flexible within 2 hubs.</div></div>
+        <div><div style="color:var(--bh-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Blocked on</div><div style="color:var(--bh-hwang-light)" data-slot="handoff.blocked">HM confirmation of whether a clearance is genuinely required</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ D · THE EIGHT ============ -->
+  <section style="padding:64px 0 0;margin-top:60px;border-top:1px solid var(--bh-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--bh-font-display);font-size:40px;color:var(--bh-lattice-line);line-height:1">D</div>
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-muted);margin-top:6px">Assignment</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 10px;color:var(--bh-ink)">One signature device each</h2>
+        <p style="margin:0 0 26px;max-width:66ch;color:var(--bh-ink-dim);text-wrap:pretty">Spread the devices so no two artifacts look alike and none is a slideshow of charts. This is the allocation.</p>
+        <div style="display:grid;gap:2px;background:var(--bh-border);border:1px solid var(--bh-border)">
+          <div style="display:grid;grid-template-columns:34px 1fr 1.1fr 1fr;gap:2px;background:var(--bh-border)">
+            <div style="background:#FBF9F4;padding:11px 12px;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--bh-muted)">#</div>
+            <div style="background:#FBF9F4;padding:11px 14px;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--bh-muted)">Artifact</div>
+            <div style="background:#FBF9F4;padding:11px 14px;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--bh-muted)">Signature device</div>
+            <div style="background:#FBF9F4;padding:11px 14px;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--bh-muted)">Supporting</div>
+          </div>
+          <div style="display:grid;grid-template-columns:34px 1fr 1.1fr 1fr;gap:2px;background:var(--bh-border)"><div style="background:var(--bh-surface);padding:13px 12px;font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-primary)">01</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:14px;font-weight:600">Educational Brief</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:14px;color:var(--bh-ink-dim)">System / stack diagram</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:13.5px;color:var(--bh-muted)">Glossary chips, callouts</div></div>
+          <div style="display:grid;grid-template-columns:34px 1fr 1.1fr 1fr;gap:2px;background:var(--bh-border)"><div style="background:var(--bh-surface);padding:13px 12px;font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-primary)">02</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:14px;font-weight:600">Job Description</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:14px;color:var(--bh-ink-dim)">Annotation rail on the posting</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:13.5px;color:var(--bh-muted)">Comp plot, gates</div></div>
+          <div style="display:grid;grid-template-columns:34px 1fr 1.1fr 1fr;gap:2px;background:var(--bh-border)"><div style="background:var(--bh-surface);padding:13px 12px;font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-primary)">03</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:14px;font-weight:600">Talent Map</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:14px;color:var(--bh-ink-dim)">Quadrant + hub list</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:13.5px;color:var(--bh-muted)">Ranked bars, pull-stat</div></div>
+          <div style="display:grid;grid-template-columns:34px 1fr 1.1fr 1fr;gap:2px;background:var(--bh-border)"><div style="background:var(--bh-surface);padding:13px 12px;font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-primary)">04</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:14px;font-weight:600">Sourcing Strategy</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:14px;color:var(--bh-ink-dim)">Cadence timeline</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:13.5px;color:var(--bh-muted)">Boolean blocks, channel table</div></div>
+          <div style="display:grid;grid-template-columns:34px 1fr 1.1fr 1fr;gap:2px;background:var(--bh-border)"><div style="background:var(--bh-surface);padding:13px 12px;font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-primary)">05</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:14px;font-weight:600">Outreach Campaign</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:14px;color:var(--bh-ink-dim)">Annotation rail ×N</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:13.5px;color:var(--bh-muted)">Gauge, sequence strip</div></div>
+          <div style="display:grid;grid-template-columns:34px 1fr 1.1fr 1fr;gap:2px;background:var(--bh-border)"><div style="background:var(--bh-surface);padding:13px 12px;font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-primary)">06</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:14px;font-weight:600">Interview Plan</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:14px;color:var(--bh-ink-dim)">Coverage heat grid</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:13.5px;color:var(--bh-muted)">Loop strip, scoring cards</div></div>
+          <div style="display:grid;grid-template-columns:34px 1fr 1.1fr 1fr;gap:2px;background:var(--bh-border)"><div style="background:var(--bh-surface);padding:13px 12px;font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-primary)">07</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:14px;font-weight:600">HM Calibration</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:14px;color:var(--bh-ink-dim)">Comp range plot</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:13.5px;color:var(--bh-muted)">Trade-off sliders, SLA table</div></div>
+          <div style="display:grid;grid-template-columns:34px 1fr 1.1fr 1fr;gap:2px;background:var(--bh-border)"><div style="background:var(--bh-surface);padding:13px 12px;font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-primary)">08</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:14px;font-weight:600">Recruiter Screen</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:14px;color:var(--bh-ink-dim)">Timed script spine</div><div style="background:var(--bh-surface);padding:13px 14px;font-size:13.5px;color:var(--bh-muted)">Answer-key cards, gates</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="margin-top:72px;padding-top:20px;border-top:1px solid var(--bh-border);display:flex;justify-content:space-between;font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--bh-ink-300)">
+    <span>Talent Kit · Pattern Library</span><span>Onepromptman · SEOUL light · © 2026 Onepromptman</span>
+  </footer>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:900}}"></script>
+</body>
+</html>

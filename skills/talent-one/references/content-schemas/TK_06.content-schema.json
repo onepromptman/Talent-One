@@ -1,0 +1,363 @@
+{
+ "template": "TK_06_Interview_Plan.dc.html",
+ "version": "1.0",
+ "slots": {
+  "kit.mark": {
+   "type": "prose_short",
+   "words": {
+    "min": 4,
+    "max": 4
+   },
+   "example": "Talent Kit · 06"
+  },
+  "doc.agent": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 4
+   },
+   "example": "Agent · INTERVIEW LAB"
+  },
+  "doc.date": {
+   "type": "prose_short",
+   "words": {
+    "min": 2,
+    "max": 8
+   },
+   "example": "Generated 2026-07-29"
+  },
+  "doc.eyebrow": {
+   "type": "prose_short",
+   "words": {
+    "min": 5,
+    "max": 6
+   },
+   "example": "Artifact 06 · Loop design"
+  },
+  "doc.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 3
+   },
+   "example": "Interview Plan"
+  },
+  "role.title": {
+   "type": "label",
+   "words": {
+    "min": 4,
+    "max": 4
+   },
+   "example": "Propulsion Engineer"
+  },
+  "role.org": {
+   "type": "prose_short",
+   "words": {
+    "min": 6,
+    "max": 9
+   },
+   "example": "Five stages · 4h 15m candidate · 5h 30m panel"
+  },
+  "doc.thesis": {
+   "type": "prose_long",
+   "words": {
+    "min": 24,
+    "max": 48
+   },
+   "example": "Each competency has exactly one owner. If two interviewers grade the same thing, a stage is wasted, and the debrief stalls on whatever nobody owned."
+  },
+  "cover.note": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 13
+   },
+   "example": "No take-home. On purpose."
+  },
+  "s1.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 7
+   },
+   "example": "Five stages, cheapest cut first"
+  },
+  "s1.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 18,
+    "max": 85
+   },
+   "example": "Ordered so the cheapest cut comes first. Nobody spends four hours on a thrust-stand problem to fail on something the thirty-minute screen would have surfaced."
+  },
+  "s2.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 7
+   },
+   "example": "Every competency gets one owner"
+  },
+  "s2.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 18,
+    "max": 46
+   },
+   "example": "Read down a column and you have one interviewer's brief. Read across a row and you have the evidence you will actually hold at debrief. The outlined cell is own"
+  },
+  "caution.1": {
+   "type": "prose_long",
+   "words": {
+    "min": 26,
+    "max": 52
+   },
+   "example": "High-temperature materials and additive manufacturing sits on the scorecard but no stage owns it, so it will surface as unexamined doubt at debrief. Either assi"
+  },
+  "s3.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 7
+   },
+   "example": "Questions with the bar written down"
+  },
+  "s3.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 14,
+    "max": 44
+   },
+   "example": "A question with no written bar is a vibe check. Each card says what a four sounds like and what a two sounds like, so two interviewers score the same answer the"
+  },
+  "s4.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 8
+   },
+   "example": "The debrief, and the two hard-noes"
+  },
+  "s4.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 18,
+    "max": 42
+   },
+   "example": "Scores are written before the room opens. The order exists to stop the most senior or the loudest voice from anchoring everyone else."
+  },
+  "gate.1": {
+   "type": "prose_long",
+   "words": {
+    "min": 16,
+    "max": 46
+   },
+   "example": "Cannot reason about a propulsion system as one coupled thermal, fluid, and structural problem. After two stages of prompting they still size a component in isol"
+  },
+  "gate.2": {
+   "type": "prose_short",
+   "words": {
+    "min": 21,
+    "max": 21
+   },
+   "example": "Treats the hardware partner as an obstacle rather than a peer, and cannot name a test result that once changed their mind. Unworkable on a team this small."
+  },
+  "nongate.1": {
+   "type": "prose_short",
+   "words": {
+    "min": 21,
+    "max": 21
+   },
+   "example": "No launch-prime pedigree. No master's degree. No one specific analysis package. None of these predict propulsion judgment, and every one of them shrinks an alre"
+  },
+  "footer.left": {
+   "type": "prose_short",
+   "words": {
+    "min": 6,
+    "max": 7
+   },
+   "example": "Talent Kit 06 · Propulsion Interview Plan"
+  },
+  "footer.right": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 6
+   },
+   "example": "One owner per competency · © 2026 Onepromptman"
+  },
+  "doc.prose0": {
+   "type": "prose_long",
+   "synthetic": true,
+   "path": [
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0
+   ],
+   "example": "Primary owner: writes the score"
+  }
+ },
+ "repeats": {
+  "cover.metrics": {
+   "kind": "rows",
+   "count": "4-6",
+   "optional_block": false,
+   "row_slots": {
+    "metric.label": {
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 3
+     }
+    },
+    "metric.value": {
+     "type": "chip",
+     "words": {
+      "min": 1,
+      "max": 2
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 4
+  },
+  "loop.stages": {
+   "kind": "rows",
+   "count": "3-6",
+   "optional_block": false,
+   "row_slots": {
+    "stage.meta": {
+     "type": "prose_short",
+     "words": {
+      "min": 4,
+      "max": 4
+     }
+    },
+    "stage.name": {
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 2
+     }
+    },
+    "stage.job": {
+     "type": "prose_short",
+     "words": {
+      "min": 8,
+      "max": 8
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 5
+  },
+  "heat.rows": {
+   "kind": "grid",
+   "cols": 6,
+   "count": "4-8",
+   "optional_block": false,
+   "data_cols": 5,
+   "header_examples": [
+    "Screen",
+    "HM",
+    "Tech 1",
+    "Tech 2",
+    "Sys · values"
+   ],
+   "cell_vocab": [
+    "gap",
+    "none",
+    "primary",
+    "secondary",
+    "touch"
+   ],
+   "label_slot": "heat.label",
+   "example_rows": 8
+  },
+  "questions": {
+   "kind": "rows",
+   "count": "2-6",
+   "optional_block": false,
+   "row_slots": {
+    "q.owner": {
+     "type": "prose_short",
+     "words": {
+      "min": 6,
+      "max": 6
+     }
+    },
+    "q.time": {
+     "type": "duration",
+     "words": {
+      "min": 2,
+      "max": 2
+     }
+    },
+    "q.text": {
+     "type": "prose_short",
+     "words": {
+      "min": 24,
+      "max": 24
+     }
+    },
+    "q.strong": {
+     "type": "prose_short",
+     "words": {
+      "min": 24,
+      "max": 24
+     }
+    },
+    "q.weak": {
+     "type": "prose_short",
+     "words": {
+      "min": 22,
+      "max": 22
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 4
+  },
+  "debrief.steps": {
+   "kind": "rows",
+   "count": "3-6",
+   "optional_block": false,
+   "row_slots": {
+    "step.title": {
+     "type": "label",
+     "words": {
+      "min": 5,
+      "max": 5
+     }
+    },
+    "step.body": {
+     "type": "prose_short",
+     "words": {
+      "min": 12,
+      "max": 12
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 5
+  }
+ },
+ "standalone_bars": [],
+ "optionals": [
+  {
+   "id": "optional_1",
+   "slots": {},
+   "repeats": [],
+   "handoff_block": true,
+   "context": "Handoff → next artifact Internal · optional: delete before sharing outside the search team Producess"
+  }
+ ],
+ "toggles": [],
+ "handoff_slots": []
+}

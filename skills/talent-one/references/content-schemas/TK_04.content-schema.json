@@ -1,0 +1,523 @@
+{
+ "template": "TK_04_Sourcing_Strategy.dc.html",
+ "version": "1.0",
+ "slots": {
+  "kit.mark": {
+   "type": "prose_short",
+   "words": {
+    "min": 4,
+    "max": 4
+   },
+   "example": "Talent Kit · 04"
+  },
+  "doc.agent": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 4
+   },
+   "example": "Agent · HUNTER"
+  },
+  "doc.date": {
+   "type": "prose_short",
+   "words": {
+    "min": 2,
+    "max": 8
+   },
+   "example": "Inputs · 02 · 03 · 07"
+  },
+  "doc.eyebrow": {
+   "type": "prose_short",
+   "words": {
+    "min": 5,
+    "max": 6
+   },
+   "example": "Artifact 04 · Execution plan"
+  },
+  "doc.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 3
+   },
+   "example": "Sourcing Strategy"
+  },
+  "role.title": {
+   "type": "label",
+   "words": {
+    "min": 4,
+    "max": 4
+   },
+   "example": "Propulsion Engineer · Mid-Level"
+  },
+  "role.org": {
+   "type": "prose_short",
+   "words": {
+    "min": 6,
+    "max": 9
+   },
+   "example": "Target: source ahead of a scarce, concentrated pool"
+  },
+  "doc.thesis": {
+   "type": "prose_long",
+   "words": {
+    "min": 24,
+    "max": 48
+   },
+   "example": "Copy-paste boolean strings for a scarce, concentrated propulsion pool, channel mix ranked by yield, timing discipline, and the pipeline math behind a 4% outreac"
+  },
+  "cover.note": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 13
+   },
+   "example": "Two slow weeks and the concentrated pool dries up"
+  },
+  "s1.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 7
+   },
+   "example": "Outbound carries a scarce specialist pool"
+  },
+  "s1.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 18,
+    "max": 85
+   },
+   "example": "This propulsion search is scarce and concentrated before any filtering happens. Inbound alone will not clear a mid-career hire out of a pool this small. Everyth"
+  },
+  "pullstat.value": {
+   "type": "metric",
+   "words": {
+    "min": 1,
+    "max": 1
+   },
+   "example": "5×"
+  },
+  "pullstat.label": {
+   "type": "label",
+   "words": {
+    "min": 9,
+    "max": 9
+   },
+   "example": "More likely to land the job than an inbound applicant"
+  },
+  "pullstat.claim": {
+   "type": "prose_short",
+   "words": {
+    "min": 21,
+    "max": 24
+   },
+   "example": "Sourced candidates convert at about 2% application-to-hire versus roughly 0.4% for inbound applicants, and clear the initial screen far more often: about 44% ve"
+  },
+  "pullstat.method": {
+   "type": "prose_short",
+   "words": {
+    "min": 4,
+    "max": 8
+   },
+   "example": "Recruiting funnel benchmark · public industry benchmark, name the report and year when you fill this"
+  },
+  "s2.title": {
+   "type": "label",
+   "words": {
+    "min": 2,
+    "max": 7
+   },
+   "example": "Search strings for a concentrated pool"
+  },
+  "s2.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 18,
+    "max": 46
+   },
+   "example": "Copy-paste ready, filters and all. Each card states expected volume and the pool it deliberately misses, because naming the blind spot tells the recruiter which"
+  },
+  "s3.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 7
+   },
+   "example": "Channel mix, ranked by yield"
+  },
+  "s3.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 14,
+    "max": 44
+   },
+   "example": "Ranked by yield per hour, not by volume. Watch the trend column more than the count: a channel in decline gets maintained, never scaled, in a pool this concentr"
+  },
+  "s4.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 8
+   },
+   "example": "Timing discipline for a scarce pool"
+  },
+  "s4.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 18,
+    "max": 42
+   },
+   "example": "The same message sent at the right moment in someone's year performs several times better. In a pool this small, timing is the cheapest lever available and the "
+  },
+  "s5.title": {
+   "type": "label",
+   "words": {
+    "min": 4,
+    "max": 8
+   },
+   "example": "Six weeks, both sides committed"
+  },
+  "s5.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 28,
+    "max": 38
+   },
+   "example": "The hiring manager's commitments live on this chart too, not just the recruiter's. A slipped debrief slips the whole search, and this document says so before it"
+  },
+  "s6.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 6
+   },
+   "example": "What one hire costs in a thin pool"
+  },
+  "s6.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 24,
+    "max": 34
+   },
+   "example": "Built on the loaded benchmark file for a specialized, concentrated pool with no house data yet. Treat these as the floor, never below them: that is how a search"
+  },
+  "funnel.note.1": {
+   "type": "prose_long",
+   "words": {
+    "min": 35,
+    "max": 35
+   },
+   "example": "Working backward from one hire: 2 offers at an 82% offer-to-accept rate, 8 onsites at 25% onsite-to-offer, 22 screens at 37% screen-to-onsite. Every rate comes "
+  },
+  "funnel.note.2": {
+   "type": "prose_long",
+   "words": {
+    "min": 44,
+    "max": 44
+   },
+   "example": "The volume cost of a concentrated pool: those 22 screens need 550 contacts at the realistic 4% drought rate for this search, not the 367 a general 6% software-r"
+  },
+  "caution.1": {
+   "type": "prose_long",
+   "words": {
+    "min": 26,
+    "max": 52
+   },
+   "example": "This pool is small and geographically concentrated: burning it with generic, mass-blasted outreach costs more than a slow start does. Personalize every touch to"
+  },
+  "s7.title": {
+   "type": "label",
+   "words": {
+    "min": 3,
+    "max": 8
+   },
+   "example": "A/B tests for a thin, technical pool"
+  },
+  "s7.body": {
+   "type": "prose_long",
+   "words": {
+    "min": 25,
+    "max": 37
+   },
+   "example": "Run one test at a time, report weekly, keep the winner. This turns a scarce search into a repeatable capability instead of a one-off scramble, and it is the sec"
+  },
+  "insight.1": {
+   "type": "prose_long",
+   "words": {
+    "min": 27,
+    "max": 50
+   },
+   "example": "Sample sizes here stay small: this pool does not support statistical elegance. Look for the difference between 10% and 25% reply, not a p-value. Kill any test t"
+  },
+  "footer.left": {
+   "type": "prose_short",
+   "words": {
+    "min": 6,
+    "max": 7
+   },
+   "example": "OPM-04 · Propulsion Sourcing Strategy"
+  },
+  "footer.right": {
+   "type": "prose_short",
+   "words": {
+    "min": 3,
+    "max": 6
+   },
+   "example": "Cadence is the deliverable · © 2026 Onepromptman"
+  }
+ },
+ "repeats": {
+  "cover.metrics": {
+   "kind": "rows",
+   "count": "4-6",
+   "optional_block": false,
+   "row_slots": {
+    "metric.label": {
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 3
+     }
+    },
+    "metric.value": {
+     "type": "chip",
+     "words": {
+      "min": 1,
+      "max": 2
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 5
+  },
+  "strings": {
+   "kind": "rows",
+   "count": "3-8",
+   "optional_block": false,
+   "row_slots": {
+    "string.name": {
+     "type": "label",
+     "words": {
+      "min": 5,
+      "max": 5
+     }
+    },
+    "string.yield": {
+     "type": "prose_short",
+     "words": {
+      "min": 5,
+      "max": 5
+     }
+    },
+    "string.query": {
+     "type": "prose_long",
+     "words": {
+      "min": 26,
+      "max": 26
+     }
+    },
+    "string.note": {
+     "type": "prose_short",
+     "words": {
+      "min": 14,
+      "max": 14
+     }
+    },
+    "strings.prose0": {
+     "type": "prose_long",
+     "synthetic": true,
+     "path": [
+      2,
+      0
+     ],
+     "example": "the thermofluids and combustion vocabulary is the real skill proxy, and excluding sales and technician titles keeps the list to engineers who can ramp onto flight hardware."
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 5
+  },
+  "channels": {
+   "kind": "rows",
+   "count": "4-8",
+   "optional_block": false,
+   "row_slots": {
+    "ch.name": {
+     "type": "label",
+     "words": {
+      "min": 6,
+      "max": 6
+     }
+    },
+    "ch.effort": {
+     "type": "prose_short",
+     "words": {
+      "min": 5,
+      "max": 5
+     }
+    },
+    "ch.yield": {
+     "type": "count_range",
+     "words": {
+      "min": 3,
+      "max": 3
+     }
+    },
+    "ch.verdict": {
+     "type": "prose_short",
+     "words": {
+      "min": 16,
+      "max": 16
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 6
+  },
+  "timing.cards": {
+   "kind": "rows",
+   "count": "2-4",
+   "optional_block": false,
+   "row_slots": {
+    "timing.label": {
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 2
+     }
+    },
+    "timing.rule": {
+     "type": "prose_short",
+     "words": {
+      "min": 5,
+      "max": 5
+     }
+    },
+    "timing.why": {
+     "type": "prose_short",
+     "words": {
+      "min": 14,
+      "max": 14
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 3
+  },
+  "timeline.rows": {
+   "kind": "rows",
+   "count": "4-8",
+   "optional_block": false,
+   "row_slots": {
+    "phase.label": {
+     "type": "label",
+     "words": {
+      "min": 1,
+      "max": 3
+     }
+    }
+   },
+   "bars_per_row": 1,
+   "bar_forms": [
+    "range"
+   ],
+   "example_rows": 6
+  },
+  "funnel.stages": {
+   "kind": "rows",
+   "count": "4-8",
+   "optional_block": false,
+   "row_slots": {
+    "stage.label": {
+     "type": "label",
+     "words": {
+      "min": 1,
+      "max": 3
+     }
+    },
+    "stage.n": {
+     "type": "count",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "stage.rate": {
+     "type": "empty_cell",
+     "words": {
+      "min": 1,
+      "max": 1
+     }
+    },
+    "stage.basis": {
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 2
+     }
+    }
+   },
+   "bars_per_row": 1,
+   "bar_forms": [
+    "width"
+   ],
+   "example_rows": 5
+  },
+  "tests": {
+   "kind": "rows",
+   "count": "3-8",
+   "optional_block": false,
+   "row_slots": {
+    "test.name": {
+     "type": "label",
+     "words": {
+      "min": 3,
+      "max": 3
+     }
+    },
+    "test.a": {
+     "type": "prose_short",
+     "words": {
+      "min": 8,
+      "max": 8
+     }
+    },
+    "test.b": {
+     "type": "prose_short",
+     "words": {
+      "min": 8,
+      "max": 8
+     }
+    },
+    "test.n": {
+     "type": "count",
+     "words": {
+      "min": 3,
+      "max": 3
+     }
+    },
+    "test.metric": {
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 2
+     }
+    }
+   },
+   "bars_per_row": 0,
+   "example_rows": 5
+  }
+ },
+ "standalone_bars": [],
+ "optionals": [
+  {
+   "id": "optional_1",
+   "slots": {},
+   "repeats": [],
+   "handoff_block": true,
+   "context": "Handoff → next artifact Internal · optional: delete before sharing outside the search team Producesp"
+  }
+ ],
+ "toggles": [],
+ "handoff_slots": []
+}

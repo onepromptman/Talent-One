@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/seoul-4575df7f-c086-4195-b0df-a53fa16e473e/tokens/tokens.css">
+<link rel="stylesheet" href="_ds/seoul-4575df7f-c086-4195-b0df-a53fa16e473e/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="_ds/seoul-4575df7f-c086-4195-b0df-a53fa16e473e/_ds_bundle.js"></script>
+<style>
+  /* derived ramp tints (no token exists for these): #F0EDE6 track, #FBF9F4 rail, #EDE8DE hairline, #DCE6F2 cheong pale, #F6E4E4 jeok pale, #EEF6F1/#BFDCCB nok pale, #FAF0E6/#E3CDB4 dan pale, #F9EFEF/#E3C4C4 jeok pale, #C9D6E6 link rule */
+  body{margin:0;background:var(--bh-bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  a{color:var(--bh-primary);text-decoration:underline;text-underline-offset:.18em;text-decoration-color:#C9D6E6}
+  a:hover{color:var(--bh-cheong-dark);text-decoration-color:var(--bh-primary)}
+  @media print{@page{size:letter;margin:0.5in} section{break-inside:avoid}}
+</style>
+</helmet>
+
+<div data-mode="light" style="background:var(--bh-bg);color:var(--bh-ink);font-family:var(--bh-font-body);font-size:16px;line-height:1.6">
+
+<header style="border-bottom:1px solid var(--bh-border);background:var(--bh-surface)">
+  <div style="max-width:1120px;margin:0 auto;padding:0 48px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--bh-border)">
+      <div style="font-family:var(--bh-font-mono);font-size:12px;letter-spacing:.30em;text-transform:uppercase" data-slot="kit.mark">Talent&nbsp;Kit <span style="color:var(--bh-accent)">·</span> 07</div>
+      <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted)"><span data-slot="doc.agent">Agent · CALIBRATE</span> <span style="color:var(--bh-lattice-line)">/</span> <span data-slot="doc.date">2026-07-29 · before sourcing starts</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 330px;gap:60px;padding:60px 0 44px;align-items:start">
+      <div>
+        <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.20em;text-transform:uppercase;color:var(--bh-primary);margin-bottom:18px" data-slot="doc.eyebrow">Artifact 07 · Intake &amp; calibration</div>
+        <h1 style="font-family:var(--bh-font-display);font-weight:700;font-size:52px;line-height:1.08;letter-spacing:-0.02em;margin:0;text-wrap:balance" data-slot="doc.title">Hiring Manager Calibration</h1>
+        <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+          <span style="font-family:var(--bh-font-mono);font-size:13px;letter-spacing:.06em;color:var(--bh-surface);background:var(--bh-ink);padding:7px 14px" data-slot="role.title">Propulsion Engineer (mid)</span>
+          <span style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-muted)" data-slot="role.org">Onepromptman · 45-minute intake, both sides sign</span>
+        </div>
+        <p style="margin:26px 0 0;max-width:62ch;font-size:18px;color:var(--bh-ink-dim);text-wrap:pretty" data-slot="doc.thesis">A propulsion search fails in the intake meeting long before it fails on the test stand. This pack is a data-backed script for that first conversation: what the market looks like, what the role actually costs, how long it actually takes, and which requirements survive contact with a small, concentrated talent pool.</p>
+      </div>
+      <div style="border:1px solid var(--bh-border);background:#FBF9F4">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-muted)">Must land today</div>
+        <div data-repeat="cover.decisions" data-count="3-5">
+          <div style="display:flex;gap:12px;padding:13px 20px;border-bottom:1px solid #EDE8DE"><span style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-accent)">01</span><span style="font-size:13.5px;color:var(--bh-ink-dim)" data-slot="decision.item">Is a specific propulsion type required, or is core propulsion plus thermofluids enough?</span></div>
+          <div style="display:flex;gap:12px;padding:13px 20px;border-bottom:1px solid #EDE8DE"><span style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-accent)">02</span><span style="font-size:13.5px;color:var(--bh-ink-dim)">Speed, bar, comp: which two?</span></div>
+          <div style="display:flex;gap:12px;padding:13px 20px;border-bottom:1px solid #EDE8DE"><span style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-accent)">03</span><span style="font-size:13.5px;color:var(--bh-ink-dim)">Approved band confirmed against the section B market range</span></div>
+          <div style="display:flex;gap:12px;padding:13px 20px"><span style="font-family:var(--bh-font-mono);font-size:12px;color:var(--bh-muted)">-</span><span style="font-size:13.5px;color:var(--bh-ink-dim)">Feedback SLA and named onsite panel</span></div>
+        </div>
+        <div style="padding:12px 20px;background:#F0EDE6;border-top:1px solid var(--bh-border);font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.1em;color:var(--bh-muted);text-transform:uppercase" data-slot="cover.note">Sourcing waits on these four decisions</div>
+      </div>
+    </div>
+    <div style="display:flex;height:5px">
+      <div style="flex:5;background:var(--bh-primary)"></div><div style="flex:1;background:var(--bh-byeok)"></div><div style="flex:1;background:var(--bh-success)"></div><div style="flex:1;background:var(--bh-highlight)"></div><div style="flex:1;background:var(--bh-warning)"></div><div style="flex:1;background:var(--bh-accent)"></div>
+    </div>
+  </div>
+</header>
+
+<main style="max-width:1120px;margin:0 auto;padding:0 48px 88px">
+
+  <!-- A · MARKET REALITY -->
+  <section style="padding:56px 0 0">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--bh-font-display);font-size:38px;color:var(--bh-lattice-line);line-height:1">A</div>
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-muted);margin-top:6px">Open with this</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="sA.title">The propulsion market, in four numbers</h2>
+        <p style="margin:0;max-width:70ch;color:var(--bh-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="sA.body">Lead the meeting with these. They reframe the conversation from "find me a flight-proven unicorn" to "let us make smart trade-offs on a small, concentrated pool", which is the only frame in which this propulsion search succeeds.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--bh-border);border:1px solid var(--bh-border)" data-repeat="market.stats" data-count="3-6">
+      <div style="background:var(--bh-surface);padding:22px 20px;border-top:3px solid var(--bh-primary)">
+        <div style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-ink-300);margin-bottom:10px" data-slot="stat.label">Aerospace engineers employed nationally</div>
+        <div style="font-family:var(--bh-font-display);font-size:38px;line-height:1;color:var(--bh-primary)" data-slot="stat.value">68,440</div>
+        <div style="font-size:13px;color:var(--bh-ink-dim);margin-top:10px" data-slot="stat.detail">The whole occupation. The flight-proven propulsion subset is a fraction of it: read this as scarce, not just tight. BLS-OES 2024.</div>
+        <div style="margin-top:10px"><span style="font-family:var(--bh-font-mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB" data-slot="stat.pill">Sourced</span></div>
+      </div>
+      <div style="background:var(--bh-surface);padding:22px 20px;border-top:3px solid var(--bh-warning)">
+        <div style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-ink-300);margin-bottom:10px">Projected employment growth, 2024&ndash;2034</div>
+        <div style="font-family:var(--bh-font-display);font-size:38px;line-height:1;color:var(--bh-warning)">+6%</div>
+        <div style="font-size:13px;color:var(--bh-ink-dim);margin-top:10px">Faster than the all-occupation average. Demand rises while the qualified pool grows slowly. BLS-OOH 2024&ndash;34.</div>
+        <div style="margin-top:10px"><span style="font-family:var(--bh-font-mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB">Sourced</span></div>
+      </div>
+      <div style="background:var(--bh-surface);padding:22px 20px;border-top:3px solid var(--bh-accent)">
+        <div style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-ink-300);margin-bottom:10px">National median base, this occupation</div>
+        <div style="font-family:var(--bh-font-display);font-size:38px;line-height:1;color:var(--bh-accent)">$134,830</div>
+        <div style="font-size:13px;color:var(--bh-ink-dim);margin-top:10px">The occupation midpoint. A mid, flight-proven propulsion hire benchmarks above this, toward the P75. BLS-OES 2024.</div>
+        <div style="margin-top:10px"><span style="font-family:var(--bh-font-mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB">Sourced</span></div>
+      </div>
+      <div style="background:var(--bh-surface);padding:22px 20px;border-top:3px solid var(--bh-byeok)">
+        <div style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-ink-300);margin-bottom:10px">Where the shortage bites hardest</div>
+        <div style="font-family:var(--bh-font-display);font-size:38px;line-height:1;color:var(--bh-byeok)">5&ndash;15<span style="font-size:16px"> yrs</span></div>
+        <div style="font-size:13px;color:var(--bh-ink-dim);margin-top:10px">Mid-career engineers with real flight-program experience. This is exactly the band this search targets. Directional; no public series.</div>
+        <div style="margin-top:10px"><span style="font-family:var(--bh-font-mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--bh-warning);background:#FAF0E6;border:1px solid #E3CDB4">Estimate</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B · COMP -->
+  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--bh-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--bh-font-display);font-size:38px;color:var(--bh-primary);line-height:1">B</div>
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-primary);margin-top:6px">The whole meeting</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="sB.title">Compensation reality</h2>
+        <p style="margin:0;max-width:70ch;color:var(--bh-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="sB.body">Sources disagree because they measure different things: base only against total pay, entry-skewed postings against sector medians, government series against self-report. Show the hiring manager the spread first, then anchor on the working target. Doing it in that order is what makes the anchor credible.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;background:var(--bh-surface);border:1px solid var(--bh-border);padding:36px 40px 28px">
+      <div style="display:grid;gap:30px" data-repeat="comp.rows" data-count="3-6">
+        <div style="display:grid;grid-template-columns:190px 1fr;gap:22px;align-items:center">
+          <div><div style="font-size:14.5px;font-weight:600" data-slot="comp.label">Rocket propulsion · entry floor</div><div style="font-size:12px;color:var(--bh-muted)" data-slot="comp.n">Entry-skewed self-report: floor reference only, never quote</div></div>
+          <div style="position:relative;height:36px">
+            <div style="position:absolute;left:0;right:0;top:16px;height:1px;background:var(--bh-border)"></div>
+            <div data-bar="0.26,0.33" style="position:absolute;left:26%;width:7%;top:8px;height:16px;background:#F0EDE6;border-left:2px solid var(--bh-muted);border-right:2px solid var(--bh-muted)"><div style="position:absolute;left:100%;top:1px;font-family:var(--bh-font-mono);font-size:11.5px;color:var(--bh-muted);padding-left:8px;white-space:nowrap" data-slot="comp.range">$66–83K</div></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:190px 1fr;gap:22px;align-items:center">
+          <div><div style="font-size:14.5px;font-weight:600">National base · BLS-OES P25–P75</div><div style="font-size:12px;color:var(--bh-muted)">Official base band; P90 reaches $205,850</div></div>
+          <div style="position:relative;height:36px">
+            <div style="position:absolute;left:0;right:0;top:16px;height:1px;background:var(--bh-border)"></div>
+            <div data-bar="0.42,0.70" style="position:absolute;left:42%;width:28%;top:8px;height:16px;background:#F0EDE6;border-left:2px solid var(--bh-muted);border-right:2px solid var(--bh-muted)"><div style="position:absolute;left:100%;top:1px;font-family:var(--bh-font-mono);font-size:11.5px;color:var(--bh-muted);padding-left:8px;white-space:nowrap">range label</div></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:190px 1fr;gap:22px;align-items:center">
+          <div><div style="font-size:14.5px;font-weight:600">Propulsion total pay · P25–P75</div><div style="font-size:12px;color:var(--bh-muted)">Best proxy for what candidates expect</div></div>
+          <div style="position:relative;height:42px">
+            <div style="position:absolute;left:0;right:0;top:18px;height:1px;background:var(--bh-border)"></div>
+            <div data-bar="0.45,0.69" style="position:absolute;left:45%;width:24%;top:10px;height:16px;background:#DCE6F2;border-left:2px solid var(--bh-primary);border-right:2px solid var(--bh-primary)"><div style="position:absolute;left:100%;top:1px;font-family:var(--bh-font-mono);font-size:11.5px;color:var(--bh-primary);padding-left:8px;white-space:nowrap">range label</div></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:190px 1fr;gap:22px;align-items:center">
+          <div><div style="font-size:14.5px;font-weight:600;color:var(--bh-success)">Working target · set at intake</div><div style="font-size:12px;color:var(--bh-success)">mid, small hardware employer, base + equity</div></div>
+          <div style="position:relative;height:36px">
+            <div style="position:absolute;left:0;right:0;top:16px;height:1px;background:var(--bh-border)"></div>
+            <div data-bar="0.46,0.62" style="position:absolute;left:46%;width:16%;top:6px;height:20px;background:#EEF6F1;border-left:3px solid var(--bh-success);border-right:3px solid var(--bh-success)"><div style="position:absolute;left:100%;top:3px;font-family:var(--bh-font-mono);font-size:11.5px;color:var(--bh-success);padding-left:8px;white-space:nowrap">range label</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:26px;padding-top:20px;border-top:1px solid var(--bh-border);border-left:3px solid var(--bh-primary);padding-left:18px">
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-primary);margin-bottom:8px">Working anchor: say this out loud</div>
+        <p style="margin:0 0 10px;font-size:15.5px;color:var(--bh-ink-dim);max-width:82ch" data-slot="comp.anchor">For a mid Propulsion Engineer at a small hardware employer, plan around <b>the BLS-OES P25&ndash;P75 base range, $104,740&ndash;$174,480, midpoint $134,830</b>, and total compensation above base once equity is counted, which no public series measures. Confirm the approved band <em>before</em> the first screen, not after a candidate asks. <span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-warning);background:#FAF0E6;border:1px solid #E3CDB4">Estimate</span> <span style="font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)">BLS-OES 17-2011 P25&ndash;P75 blended with the propulsion aggregator typical</span></p>
+        <p style="margin:0;font-size:15px;color:var(--bh-ink-dim);max-width:82ch" data-slot="comp.premium">One thing worth naming: green propellant and electric propulsion are the hot specialties, and specialty demand can push candidates toward the top of any published range. Revisit the range if the requisition drifts (directional).</p>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;background:var(--bh-surface);border:1px solid var(--bh-border);overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:13.5px;min-width:780px">
+        <thead>
+          <tr>
+            <th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:12px 16px;border-bottom:1px solid var(--bh-ink)">Source &amp; scope</th>
+            <th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:12px 16px;border-bottom:1px solid var(--bh-ink)">Low</th>
+            <th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:12px 16px;border-bottom:1px solid var(--bh-ink)">Typical</th>
+            <th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:12px 16px;border-bottom:1px solid var(--bh-ink)">High</th>
+            <th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:12px 16px;border-bottom:1px solid var(--bh-ink)">How to read it</th>
+          </tr>
+        </thead>
+        <tbody data-repeat="comp.sources" data-count="3-6">
+          <tr>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-primary);font-weight:600" data-slot="src.name">BLS-OES 17-2011 · national base 2024</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono)" data-slot="src.low">$104,740</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono);font-weight:600" data-slot="src.mid">$134,830</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono)" data-slot="src.high">$174,480</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)" data-slot="src.read">Official base baseline; P90 reaches $205,850. Sourced · BLS-OES 2024.</td>
+          </tr>
+          <tr>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-primary);font-weight:600">Salary.com · Propulsion Engineer, total 2026</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono)">$112K</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono);font-weight:600">$138K</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono)">$172K</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Total-pay proxy; best read on candidate expectations. Sourced · aggregator 2026 (T3).</td>
+          </tr>
+          <tr>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-muted);font-weight:600">Indeed / 6figr · Propulsion Engineer 2026</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono)">$97K</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono);font-weight:600">$135K</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--bh-border);font-family:var(--bh-font-mono)">$292K</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Very wide self-report; brackets a range, never sets one. Sourced · aggregator 2026 (T3).</td>
+          </tr>
+          <tr>
+            <td style="padding:12px 16px;border-left:3px solid var(--bh-muted);font-weight:600">ZipRecruiter · rocket propulsion 2026</td>
+            <td style="padding:12px 16px;font-family:var(--bh-font-mono)">$66K</td>
+            <td style="padding:12px 16px;font-family:var(--bh-font-mono);font-weight:600">$83K</td>
+            <td style="padding:12px 16px;font-family:var(--bh-font-mono)">$103K</td>
+            <td style="padding:12px 16px;color:var(--bh-ink-dim)">Entry-skewed floor reference; never quote. Sourced · aggregator 2026 (T3).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- C · TIMING -->
+  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--bh-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--bh-font-display);font-size:38px;color:var(--bh-lattice-line);line-height:1">C</div>
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-muted);margin-top:6px">Timing</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="sC.title">Why the demand curve favors moving now</h2>
+        <p style="margin:0;max-width:70ch;color:var(--bh-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="sC.body">These are structural, publicly disclosed forces, not a rumored competitor event. Demand for propulsion talent is climbing across three fronts while the qualified pool stays small, which is the whole argument for moving fast on the SLA.</p>
+      </div>
+    </div>
+    <div style="margin-top:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--bh-border);border:1px solid var(--bh-border)" data-repeat="timing.windows" data-count="2-4">
+      <div style="background:var(--bh-surface);padding:24px 26px;border-top:3px solid var(--bh-accent)">
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-accent);margin-bottom:10px" data-slot="window.label">Window · New Space launch demand</div>
+        <p style="margin:0;font-size:14.5px;color:var(--bh-ink-dim)" data-slot="window.body">Commercial space has added tens of thousands of jobs across launch, constellations, and defense. Demand for propulsion engineers is outpacing a pool that grows slowly, so every credible candidate is being courted by several employers at once (industry 2025-26).</p>
+      </div>
+      <div style="background:var(--bh-surface);padding:24px 26px;border-top:3px solid var(--bh-warning)">
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-warning);margin-bottom:10px">Window · new propulsion frontiers</div>
+        <p style="margin:0;font-size:14.5px;color:var(--bh-ink-dim)">Hypersonics, long-endurance drones, and nuclear space propulsion are pulling on the same talent, while green propellant and electric propulsion are the hot specialties. New programs open faster than schools graduate propulsion engineers (industry 2026).</p>
+      </div>
+      <div style="background:var(--bh-surface);padding:24px 26px;border-top:3px solid var(--bh-success)">
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-success);margin-bottom:10px">Your edge · mid-career shortage</div>
+        <p style="margin:0;font-size:14.5px;color:var(--bh-ink-dim)">The scarcity concentrates at 5-15 years with real flight-program experience, which is exactly the band this search targets. A small team offering hands-on hardware ownership is a genuine differentiator for that engineer. Move while that pitch is fresh (industry 2025).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- D · AGENDA -->
+  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--bh-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--bh-font-display);font-size:38px;color:var(--bh-lattice-line);line-height:1">D</div>
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-muted);margin-top:6px">Run the meeting</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="sD.title">Forty-five minute agenda</h2>
+        <p style="margin:0;max-width:70ch;color:var(--bh-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="sD.body">Send this in advance. The order matters: market data first earns the credibility to recalibrate requirements in the middle, and the SLA lands last because by then it reads as reasonable rather than presumptuous.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;background:var(--bh-surface);border:1px solid var(--bh-border)" data-repeat="agenda" data-count="4-8">
+      <div style="display:grid;grid-template-columns:86px 220px 1fr;border-bottom:1px solid var(--bh-border)">
+        <div style="padding:18px 0 18px 20px;font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-primary)" data-slot="agenda.time">0–5</div>
+        <div style="padding:18px 16px;font-weight:600" data-slot="agenda.segment">Market reality briefing</div>
+        <div style="padding:18px 20px;color:var(--bh-ink-dim);font-size:14.5px" data-slot="agenda.objective">Walk sections A to C: a small occupation, scarcity at mid-career, and the real comp band. Set the frame, do not negotiate yet.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:86px 220px 1fr;border-bottom:1px solid var(--bh-border)">
+        <div style="padding:18px 0 18px 20px;font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-primary)">5–15</div>
+        <div style="padding:18px 16px;font-weight:600">Success definition</div>
+        <div style="padding:18px 20px;color:var(--bh-ink-dim);font-size:14.5px">Extract what this hire must have delivered by day 90 and day 365: which hardware, which tests, which analysis. Write it verbatim; it becomes the posting and the interview scenarios.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:86px 220px 1fr;border-bottom:1px solid var(--bh-border)">
+        <div style="padding:18px 0 18px 20px;font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-primary)">15–25</div>
+        <div style="padding:18px 16px;font-weight:600">Requirement calibration</div>
+        <div style="padding:18px 20px;color:var(--bh-ink-dim);font-size:14.5px">Run section F line by line. Each requirement gets a verdict: must-have day one, calibrated, flexible, or nice-to-have.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:86px 220px 1fr;border-bottom:1px solid var(--bh-border)">
+        <div style="padding:18px 0 18px 20px;font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-accent)">25–32</div>
+        <div style="padding:18px 16px;font-weight:600">Trade-off lock</div>
+        <div style="padding:18px 20px;color:var(--bh-ink-dim);font-size:14.5px">Speed, bar, comp: pick two. Force the priority call now, not at offer stage when it costs a finalist.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:86px 220px 1fr;border-bottom:1px solid var(--bh-border)">
+        <div style="padding:18px 0 18px 20px;font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-primary)">32–40</div>
+        <div style="padding:18px 16px;font-weight:600">Pitch extraction</div>
+        <div style="padding:18px 20px;color:var(--bh-ink-dim);font-size:14.5px">Capture the hiring manager's own words on the hardest propulsion problem and why the role matters. Outreach reuses this verbatim; it beats recruiter-written copy every time.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:86px 220px 1fr">
+        <div style="padding:18px 0 18px 20px;font-family:var(--bh-font-mono);font-size:13px;color:var(--bh-accent)">40–45</div>
+        <div style="padding:18px 16px;font-weight:600">SLA sign-off</div>
+        <div style="padding:18px 20px;color:var(--bh-ink-dim);font-size:14.5px">Lock feedback turnaround, panel availability, and the approved band. Section G. Send the recap the same day.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- E · QUESTION BANK -->
+  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--bh-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--bh-font-display);font-size:38px;color:var(--bh-lattice-line);line-height:1">E</div>
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-muted);margin-top:6px">Question bank</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="sE.title">Ask these, in this order</h2>
+        <p style="margin:0;max-width:70ch;color:var(--bh-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="sE.body">Each question extracts one thing you cannot source without. The note says what it pulls out and what a bad answer tells you: a vague answer here reliably predicts a vague propulsion search.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:16px" data-repeat="intake.questions" data-count="6-12">
+      <div style="background:var(--bh-surface);border:1px solid var(--bh-border);border-left:3px solid var(--bh-primary);padding:20px 24px">
+        <div style="font-size:15.5px;font-weight:600;margin-bottom:8px;text-wrap:pretty" data-slot="iq.text">"What does success look like in the first 90 days, and what will this engineer have designed, analyzed, or tested by the end of year one?"</div>
+        <div style="font-size:13.5px;color:var(--bh-ink-dim)" data-slot="iq.extract"><b style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-primary)">Extracts</b> &nbsp;Concrete scope for the posting and the interview scenarios: which hardware, which tests, which analysis. A vague answer here predicts a vague search, so push twice before moving on.</div>
+      </div>
+      <div style="background:var(--bh-surface);border:1px solid var(--bh-border);border-left:3px solid var(--bh-primary);padding:20px 24px">
+        <div style="font-size:15.5px;font-weight:600;margin-bottom:8px;text-wrap:pretty">"Which component or subsystem will they own outright on day one: feed system, thrust chamber, test stand? Who owns it today?"</div>
+        <div style="font-size:13.5px;color:var(--bh-ink-dim)"><b style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-primary)">Extracts</b> &nbsp;Ownership scope, plus whether this is a backfill or growth seat. Candidates ask this on the first call, so you need the answer before they do.</div>
+      </div>
+      <div style="background:var(--bh-surface);border:1px solid var(--bh-border);border-left:3px solid var(--bh-primary);padding:20px 24px">
+        <div style="font-size:15.5px;font-weight:600;margin-bottom:8px;text-wrap:pretty">"Who was your last great propulsion hire, and what specifically made them exceptional in their first six months?"</div>
+        <div style="font-size:13.5px;color:var(--bh-ink-dim)"><b style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-primary)">Extracts</b> &nbsp;The real bar, in behavioral terms. Converts "strong engineer" into observable evidence you can screen for.</div>
+      </div>
+      <div style="background:var(--bh-surface);border:1px solid var(--bh-border);border-left:3px solid var(--bh-primary);padding:20px 24px">
+        <div style="font-size:15.5px;font-weight:600;margin-bottom:8px;text-wrap:pretty">"Walk me through the team: who do they report to, how do they work with external suppliers, will this role ever have direct reports?"</div>
+        <div style="font-size:13.5px;color:var(--bh-ink-dim)"><b style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-primary)">Extracts</b> &nbsp;Structure for the posting and the candidate FAQ. Also surfaces the supplier-coordination load before a candidate discovers it at onsite.</div>
+      </div>
+      <div style="background:var(--bh-surface);border:1px solid var(--bh-border);border-left:3px solid var(--bh-success);padding:20px 24px">
+        <div style="font-size:15.5px;font-weight:600;margin-bottom:8px;text-wrap:pretty">"What is the hardest propulsion problem the team is staring at this quarter: combustion instability, thermal margin, a hot-fire anomaly?"</div>
+        <div style="font-size:13.5px;color:var(--bh-ink-dim)"><b style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-success)">Extracts</b> &nbsp;Interview deep-dive material and the single best outreach hook for experienced engineers. Get it verbatim: paraphrasing kills it.</div>
+      </div>
+      <div style="background:var(--bh-surface);border:1px solid var(--bh-border);border-left:3px solid var(--bh-warning);padding:20px 24px">
+        <div style="font-size:15.5px;font-weight:600;margin-bottom:8px;text-wrap:pretty">"A candidate is excellent in liquid propulsion but has only dabbled in electric. Screen out, or screen in and train?"</div>
+        <div style="font-size:13.5px;color:var(--bh-ink-dim)"><b style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-warning)">Extracts</b> &nbsp;Whether the propulsion-type requirement is real or inherited. Confirm the answer still holds when you present an actual candidate.</div>
+      </div>
+      <div style="background:var(--bh-surface);border:1px solid var(--bh-border);border-left:3px solid var(--bh-warning);padding:20px 24px">
+        <div style="font-size:15.5px;font-weight:600;margin-bottom:8px;text-wrap:pretty">"They have deep thermofluids and test experience from gas turbines, automotive powertrain, or motorsport, but no space heritage. Yes or no?"</div>
+        <div style="font-size:13.5px;color:var(--bh-ink-dim)"><b style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-warning)">Extracts</b> &nbsp;The adjacent-industry boundary. This one answer roughly doubles or halves the reachable pool.</div>
+      </div>
+      <div style="background:var(--bh-surface);border:1px solid var(--bh-border);border-left:3px solid var(--bh-warning);padding:20px 24px">
+        <div style="font-size:15.5px;font-weight:600;margin-bottom:8px;text-wrap:pretty">"Which requirement would you drop to close two weeks faster?"</div>
+        <div style="font-size:13.5px;color:var(--bh-ink-dim)"><b style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-warning)">Extracts</b> &nbsp;Any answer is useful. "None" means the timeline is not real, and you should say so in the room rather than discovering it in week seven.</div>
+      </div>
+      <div style="background:var(--bh-surface);border:1px solid var(--bh-border);border-left:3px solid var(--bh-accent);padding:20px 24px">
+        <div style="font-size:15.5px;font-weight:600;margin-bottom:8px;text-wrap:pretty">"What would make you pass on an otherwise technically excellent propulsion candidate?"</div>
+        <div style="font-size:13.5px;color:var(--bh-ink-dim)"><b style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-accent)">Extracts</b> &nbsp;Real disqualifiers, and often an unstated bias you can address now rather than at debrief.</div>
+      </div>
+      <div style="background:var(--bh-surface);border:1px solid var(--bh-border);border-left:3px solid var(--bh-accent);padding:20px 24px">
+        <div style="font-size:15.5px;font-weight:600;margin-bottom:8px;text-wrap:pretty">"What is the unglamorous part of this job you would rather I not mention: night test-stand shifts, supplier travel, qualification paperwork?"</div>
+        <div style="font-size:13.5px;color:var(--bh-ink-dim)"><b style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-accent)">Extracts</b> &nbsp;The cause of your late-stage dropouts. Put it in the posting instead: naming it raises reply quality and kills the offer-stage surprise.</div>
+      </div>
+      <div style="background:var(--bh-surface);border:1px solid var(--bh-border);border-left:3px solid var(--bh-success);padding:20px 24px">
+        <div style="font-size:15.5px;font-weight:600;margin-bottom:8px;text-wrap:pretty">"Give me your sixty-second pitch for this role: impact, hardest challenge, why now."</div>
+        <div style="font-size:13.5px;color:var(--bh-ink-dim)"><b style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-success)">Extracts</b> &nbsp;Authentic selling language in their voice. Record it. It goes straight into outreach and the screen close.</div>
+      </div>
+      <div style="background:var(--bh-surface);border:1px solid var(--bh-border);border-left:3px solid var(--bh-accent);padding:20px 24px">
+        <div style="font-size:15.5px;font-weight:600;margin-bottom:8px;text-wrap:pretty">"Can you commit to scorecard feedback within two business days, and a named panel this week?"</div>
+        <div style="font-size:13.5px;color:var(--bh-ink-dim)"><b style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-accent)">Extracts</b> &nbsp;The SLA. In a scarce, concentrated pool, hiring-manager latency is the single largest controllable loss factor. Ask for the commitment out loud.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- F · REQUIREMENT CALIBRATION -->
+  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--bh-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--bh-font-display);font-size:38px;color:var(--bh-lattice-line);line-height:1">F</div>
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-muted);margin-top:6px">Line by line</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="sF.title">Requirement calibration</h2>
+        <p style="margin:0;max-width:70ch;color:var(--bh-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="sF.body">Each documented requirement, checked against a small, concentrated propulsion pool. Bring this table to the meeting already filled in with your recommendation: it is far easier to get a verdict on a proposal than on an open question.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;background:var(--bh-surface);border:1px solid var(--bh-border);overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:800px">
+        <thead>
+          <tr>
+            <th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--bh-ink)">Requirement, as documented</th>
+            <th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--bh-ink)">Verdict</th>
+            <th style="text-align:left;font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--bh-ink)">Market check &amp; recommendation</th>
+          </tr>
+        </thead>
+        <tbody data-repeat="requirements" data-count="4-10">
+          <tr>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-accent);font-weight:600" data-slot="req.name">Propulsion system design (liquid, solid, hybrid, or electric)</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border)"><span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-accent);background:#F9EFEF;border:1px solid #E3C4C4;white-space:nowrap" data-slot="req.verdict">Must-have</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)" data-slot="req.rec">Hold. This is the core signal and the deep-dive is built to verify it. Defining the search around it, not one specific type, keeps the small pool open.</td>
+          </tr>
+          <tr>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-accent);font-weight:600">Thermofluids: thermodynamics, fluid dynamics, heat transfer</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border)"><span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-accent);background:#F9EFEF;border:1px solid #E3C4C4;white-space:nowrap">Must-have</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Hold. The physics under every propulsion decision, and cheap to verify at screen. No pool cost: any real candidate has it.</td>
+          </tr>
+          <tr>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-primary);font-weight:600">Combustion &amp; propellant chemistry, or electric-propulsion physics</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border)"><span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-primary);background:#DCE6F2;border:1px solid #C9D6E6;white-space:nowrap">Calibrated</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Hold, but read it as <b>either/or</b> across propulsion types. Requiring one specific chemistry narrows an already small pool sharply for little gain.</td>
+          </tr>
+          <tr>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-primary);font-weight:600">Propulsion test: hot-fire / thrust-stand, instrumentation, data reduction</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border)"><span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-primary);background:#DCE6F2;border:1px solid #C9D6E6;white-space:nowrap">Calibrated</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Hold as must-have, but accept adjacent test-rig experience: engine dyno, turbine test cells, high-pressure fluid rigs. This is where the peripheral pools open up.</td>
+          </tr>
+          <tr>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-highlight);font-weight:600">CAD plus analysis: CFD, FEA, thermal (ANSYS, NX, SolidWorks)</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border)"><span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-highlight);background:#FAF0E6;border:1px solid #E3CDB4;white-space:nowrap">Flex</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Require the analysis skill, not the named package. A strong analyst learns a new tool in weeks; screening on the specific suite cuts the funnel for no real gain.</td>
+          </tr>
+          <tr>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-highlight);font-weight:600">Systems engineering on flight hardware: requirements, tolerances, verification</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border)"><span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-highlight);background:#FAF0E6;border:1px solid #E3CDB4;white-space:nowrap">Flex</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Flight heritage specifically is scarce. Accept rigorous hardware-qualification experience from gas turbine, automotive powertrain, motorsport, or defense, and ramp on the space environment.</td>
+          </tr>
+          <tr>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border);border-left:3px solid var(--bh-success);font-weight:600">High-temperature materials / additive manufacturing</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border)"><span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB;white-space:nowrap">Nice-to-have</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--bh-border);color:var(--bh-ink-dim)">Tiebreaker only. Valuable for chamber and nozzle work, but rare enough that requiring it would empty the pool. Make sure sourcers are not hard-filtering on it.</td>
+          </tr>
+          <tr>
+            <td style="padding:13px 16px;border-left:3px solid var(--bh-success);font-weight:600">Feed-system / valve design; MATLAB or Python; AS9100 process</td>
+            <td style="padding:13px 16px"><span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB;white-space:nowrap">Nice-to-have</span></td>
+            <td style="padding:13px 16px;color:var(--bh-ink-dim)">All trainable on the job. Treat as a plus that speeds ramp, never a filter. Process fluency in particular is learned faster than propulsion physics.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- G · TRADE-OFF + SLA -->
+  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--bh-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--bh-font-display);font-size:38px;color:var(--bh-accent);line-height:1">G</div>
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-accent);margin-top:6px">Sign it</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--bh-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="sG.title">The trade-off lock and a mutual SLA</h2>
+        <p style="margin:0;max-width:70ch;color:var(--bh-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="sG.body">Every search optimizes two of three. Make the choice explicit and record it, then commit both sides in writing. Send this as the meeting recap the same day: a propulsion search that slips almost always slips on the right-hand column.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;background:var(--bh-surface);border:1px solid var(--bh-border);padding:28px 32px">
+      <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-accent);margin-bottom:18px">Pick two: speed · bar · comp</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px" data-repeat="tradeoffs" data-count="3">
+        <div style="border:1px solid var(--bh-border);border-top:3px solid var(--bh-primary);padding:20px 22px">
+          <div style="font-family:var(--bh-font-display);font-size:19px;margin-bottom:8px" data-slot="to.choice">Speed + Bar</div>
+          <div style="font-size:14px;color:var(--bh-ink-dim)" data-slot="to.consequence">Comp lands at the top of the band. Approve the ceiling up front, not at offer, or the finalist walks to a better-funded program.</div>
+        </div>
+        <div style="border:1px solid var(--bh-border);border-top:3px solid var(--bh-primary);padding:20px 22px">
+          <div style="font-family:var(--bh-font-display);font-size:19px;margin-bottom:8px">Speed + Comp</div>
+          <div style="font-size:14px;color:var(--bh-ink-dim)">The bar flexes on space heritage. Hire strong thermofluids and test talent from an adjacent industry, and commit to a real ramp plan.</div>
+        </div>
+        <div style="border:1px solid var(--bh-border);border-top:3px solid var(--bh-warning);padding:20px 22px">
+          <div style="font-family:var(--bh-font-display);font-size:19px;margin-bottom:8px">Bar + Comp</div>
+          <div style="font-size:14px;color:var(--bh-ink-dim)">Timeline extends past the market average. Each extra month of vacancy is a month of design and hot-fire work not getting done. Sometimes correct, but say it out loud.</div>
+        </div>
+      </div>
+      <div style="margin-top:20px;padding:16px 20px;background:#FBF9F4;border:1px dashed var(--bh-lattice-line);display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap">
+        <span style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted)">Recorded selection</span>
+        <span style="font-size:15px;font-weight:600" data-slot="to.selected">Locked live in the intake meeting; recorded in the same-day recap</span>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--bh-border);border:1px solid var(--bh-border)">
+      <div style="background:var(--bh-surface);padding:26px 30px">
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-primary);margin-bottom:18px">Recruiter commits</div>
+        <div style="display:grid;gap:13px" data-repeat="sla.recruiter" data-count="3-6">
+          <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding-bottom:11px;border-bottom:1px solid #EDE8DE"><span style="font-size:14.5px" data-slot="sla.item">Qualified propulsion submittals per week</span><span style="font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-primary);white-space:nowrap" data-slot="sla.when">2–3</span></div>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding-bottom:11px;border-bottom:1px solid #EDE8DE"><span style="font-size:14.5px">Calibrated slate</span><span style="font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-primary);white-space:nowrap">by week 3</span></div>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding-bottom:11px;border-bottom:1px solid #EDE8DE"><span style="font-size:14.5px">Pipeline review with funnel math</span><span style="font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-primary);white-space:nowrap">every week</span></div>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding-bottom:11px;border-bottom:1px solid #EDE8DE"><span style="font-size:14.5px">Candidate feedback delivered</span><span style="font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-primary);white-space:nowrap">48 hrs</span></div>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline"><span style="font-size:14.5px">New propulsion profiles sourced</span><span style="font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-primary);white-space:nowrap">40&ndash;60 weekly</span></div>
+        </div>
+      </div>
+      <div style="background:var(--bh-surface);padding:26px 30px">
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-warning);margin-bottom:18px">Hiring manager commits</div>
+        <div style="display:grid;gap:13px" data-repeat="sla.hm" data-count="3-6">
+          <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding-bottom:11px;border-bottom:1px solid #EDE8DE"><span style="font-size:14.5px" data-slot="hm.item">Résumé review decision</span><span style="font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-warning);white-space:nowrap" data-slot="hm.when">2 business days</span></div>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding-bottom:11px;border-bottom:1px solid #EDE8DE"><span style="font-size:14.5px">Scorecard feedback submitted</span><span style="font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-warning);white-space:nowrap">48 hrs</span></div>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding-bottom:11px;border-bottom:1px solid #EDE8DE"><span style="font-size:14.5px">Onsite panel named &amp; calendared</span><span style="font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-warning);white-space:nowrap">week 1</span></div>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding-bottom:11px;border-bottom:1px solid #EDE8DE"><span style="font-size:14.5px">Approved band confirmed</span><span style="font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-warning);white-space:nowrap">before screen 1</span></div>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline"><span style="font-size:14.5px">Offer decision after final loop</span><span style="font-family:var(--bh-font-mono);font-size:12.5px;color:var(--bh-warning);white-space:nowrap">72 hrs</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;background:var(--bh-surface);border:1px solid var(--bh-border);border-top:3px solid var(--bh-accent);padding:20px 24px">
+      <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--bh-accent);margin-bottom:8px">Gate</div>
+      <p style="margin:0;font-size:15px;color:var(--bh-ink-dim);max-width:84ch" data-slot="gate.1">If the feedback SLA is not agreed in this meeting, say plainly that the time-to-fill target moves out, and record that in the recap. A scarce, mid-career propulsion pool punishes hiring-manager latency harder than a deep one: every strong candidate has other offers in motion. Silent slippage is what turns a good search into a failed one, and it is always discovered too late to fix.</p>
+    </div>
+  </section>
+
+  <!-- HANDOFF -->
+  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--bh-border)">
+    <div style="background:var(--bh-ink);color:var(--bh-bg);padding:30px 34px" data-optional>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:18px">
+        <div style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:var(--bh-bisaek)">Handoff → all downstream artifacts</div>
+        <div style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--bh-ink-300)">Internal · optional: delete before sharing outside the search team</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;font-family:var(--bh-font-mono);font-size:13px;line-height:1.9">
+        <div><div style="color:var(--bh-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Produces</div><div data-slot="handoff.produces">requirements · comp_frame · timing_windows · tradeoff_lock · constraints · sla</div></div>
+        <div><div style="color:var(--bh-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Consumed by</div><div data-slot="handoff.consumers">01 Brief · 02 Job Description · 03 Talent Map · 04 Sourcing · 05 Outreach · 06 Interview Plan · 08 Recruiter Screen</div></div>
+        <div><div style="color:var(--bh-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Assumptions</div><div data-slot="handoff.assumptions">Comp and timing are provisional; Downstream comp and market passes run deeper and supersede on overlap. HM holds band authority. Constraints are empty: no eligibility gate.</div></div>
+        <div><div style="color:var(--bh-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Blocked on</div><div style="color:var(--bh-hwang-light)" data-slot="handoff.blocked">Trade-off lock and mutual SLA pending the intake meeting; band confirmation pending</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="margin-top:56px;padding-top:20px;border-top:1px solid var(--bh-border);display:flex;justify-content:space-between;font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--bh-ink-300)">
+    <span data-slot="footer.left">Talent Kit 07 · Propulsion calibration · © 2026 Onepromptman</span><span data-slot="footer.right">Send as the meeting recap</span>
+  </footer>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:900}}"></script>
+</body>
+</html>

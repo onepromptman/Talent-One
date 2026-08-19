@@ -1,0 +1,363 @@
+{
+ "template": "TK_07_HM_Calibration.dc.html",
+ "slots": {
+  "kit.mark": "Talent Kit · 07",
+  "doc.agent": "Agent · CALIBRATE",
+  "doc.date": "2026-07-29 · before sourcing starts",
+  "doc.eyebrow": "Artifact 07 · Intake & calibration",
+  "doc.title": "Hiring Manager Calibration",
+  "role.title": "Propulsion Engineer (mid)",
+  "role.org": "Onepromptman · 45-minute intake, both sides sign",
+  "doc.thesis": "A propulsion search fails in the intake meeting long before it fails on the test stand. This pack is a data-backed script for that first conversation: what the market looks like, what the role actually costs, how long it actually takes, and which requirements survive contact with a small, concentrated talent pool.",
+  "cover.note": "Sourcing waits on these four decisions",
+  "sA.title": "The propulsion market, in four numbers",
+  "sA.body": "Lead the meeting with these. They reframe the conversation from \"find me a flight-proven unicorn\" to \"let us make smart trade-offs on a small, concentrated pool\", which is the only frame in which this propulsion search succeeds.",
+  "sB.title": "Compensation reality",
+  "sB.body": "Sources disagree because they measure different things: base only against total pay, entry-skewed postings against sector medians, government series against self-report. Show the hiring manager the spread first, then anchor on the working target. Doing it in that order is what makes the anchor credible.",
+  "comp.anchor": {
+   "html": "<b>the BLS-OES P25–P75 base range, $104,740–$174,480, midpoint $134,830</b><em>before</em><span style=\"font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-warning);background:#FAF0E6;border:1px solid #E3CDB4\">Estimate</span><span style=\"font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)\">BLS-OES 17-2011 P25–P75 blended with the propulsion aggregator typical</span>"
+  },
+  "comp.premium": "One thing worth naming: green propellant and electric propulsion are the hot specialties, and specialty demand can push candidates toward the top of any published range. Revisit the range if the requisition drifts (directional).",
+  "sC.title": "Why the demand curve favors moving now",
+  "sC.body": "These are structural, publicly disclosed forces, not a rumored competitor event. Demand for propulsion talent is climbing across three fronts while the qualified pool stays small, which is the whole argument for moving fast on the SLA.",
+  "sD.title": "Forty-five minute agenda",
+  "sD.body": "Send this in advance. The order matters: market data first earns the credibility to recalibrate requirements in the middle, and the SLA lands last because by then it reads as reasonable rather than presumptuous.",
+  "sE.title": "Ask these, in this order",
+  "sE.body": "Each question extracts one thing you cannot source without. The note says what it pulls out and what a bad answer tells you: a vague answer here reliably predicts a vague propulsion search.",
+  "sF.title": "Requirement calibration",
+  "sF.body": "Each documented requirement, checked against a small, concentrated propulsion pool. Bring this table to the meeting already filled in with your recommendation: it is far easier to get a verdict on a proposal than on an open question.",
+  "sG.title": "The trade-off lock and a mutual SLA",
+  "sG.body": "Every search optimizes two of three. Make the choice explicit and record it, then commit both sides in writing. Send this as the meeting recap the same day: a propulsion search that slips almost always slips on the right-hand column.",
+  "to.selected": "Locked live in the intake meeting; recorded in the same-day recap",
+  "gate.1": "If the feedback SLA is not agreed in this meeting, say plainly that the time-to-fill target moves out, and record that in the recap. A scarce, mid-career propulsion pool punishes hiring-manager latency harder than a deep one: every strong candidate has other offers in motion. Silent slippage is what turns a good search into a failed one, and it is always discovered too late to fix.",
+  "footer.left": "Talent Kit 07 · Propulsion calibration · © 2026 Onepromptman",
+  "footer.right": "Send as the meeting recap",
+  "doc.prose0": "Working anchor: say this out loud",
+  "doc.prose1": "Requirement, as documented",
+  "doc.prose2": "Market check & recommendation",
+  "doc.prose3": "Pick two: speed · bar · comp"
+ },
+ "repeats": {
+  "cover.decisions": [
+   {
+    "decision.item": "Is a specific propulsion type required, or is core propulsion plus thermofluids enough?"
+   },
+   {
+    "decision.item": "Speed, bar, comp: which two?"
+   },
+   {
+    "decision.item": "Approved band confirmed against the section B market range"
+   },
+   {
+    "decision.item": "Feedback SLA and named onsite panel"
+   }
+  ],
+  "market.stats": [
+   {
+    "stat.label": "Aerospace engineers employed nationally",
+    "stat.value": "68,440",
+    "stat.detail": "The whole occupation. The flight-proven propulsion subset is a fraction of it: read this as scarce, not just tight. BLS-OES 2024.",
+    "stat.pill": {
+     "pill": "Sourced"
+    }
+   },
+   {
+    "stat.label": "Projected employment growth, 2024–2034",
+    "stat.value": "+6%",
+    "stat.detail": "Faster than the all-occupation average. Demand rises while the qualified pool grows slowly. BLS-OOH 2024–34.",
+    "stat.pill": {
+     "pill": "Sourced"
+    }
+   },
+   {
+    "stat.label": "National median base, this occupation",
+    "stat.value": "$134,830",
+    "stat.detail": "The occupation midpoint. A mid, flight-proven propulsion hire benchmarks above this, toward the P75. BLS-OES 2024.",
+    "stat.pill": {
+     "pill": "Sourced"
+    }
+   },
+   {
+    "stat.label": "Where the shortage bites hardest",
+    "stat.value": "5–15 yrs",
+    "stat.detail": "Mid-career engineers with real flight-program experience. This is exactly the band this search targets. Directional; no public series.",
+    "stat.pill": {
+     "pill": "Estimate"
+    }
+   }
+  ],
+  "comp.rows": [
+   {
+    "comp.label": "Rocket propulsion · entry floor",
+    "comp.n": "Entry-skewed self-report: floor reference only, never quote",
+    "comp.range": "$66–83K",
+    "bar": [
+     0.26,
+     0.33
+    ]
+   },
+   {
+    "comp.label": "National base · BLS-OES P25–P75",
+    "comp.n": "Official base band; P90 reaches $205,850",
+    "comp.range": "$105–174K",
+    "bar": [
+     0.42,
+     0.7
+    ]
+   },
+   {
+    "comp.label": "Propulsion total pay · P25–P75",
+    "comp.n": "Best proxy for what candidates expect",
+    "comp.range": "$112–172K",
+    "bar": [
+     0.45,
+     0.69
+    ]
+   },
+   {
+    "comp.label": "Working target · set at intake",
+    "comp.n": "mid, small hardware employer, base + equity",
+    "comp.range": "Example: $115–155K + equity",
+    "bar": [
+     0.46,
+     0.62
+    ]
+   }
+  ],
+  "comp.sources": [
+   {
+    "src.name": "BLS-OES 17-2011 · national base 2024",
+    "src.low": "$104,740",
+    "src.mid": "$134,830",
+    "src.high": "$174,480",
+    "src.read": "Official base baseline; P90 reaches $205,850. Sourced · BLS-OES 2024."
+   },
+   {
+    "src.name": "Salary.com · Propulsion Engineer, total 2026",
+    "src.low": "$112K",
+    "src.mid": "$138K",
+    "src.high": "$172K",
+    "src.read": "Total-pay proxy; best read on candidate expectations. Sourced · aggregator 2026 (T3)."
+   },
+   {
+    "src.name": "Indeed / 6figr · Propulsion Engineer 2026",
+    "src.low": "$97K",
+    "src.mid": "$135K",
+    "src.high": "$292K",
+    "src.read": "Very wide self-report; brackets a range, never sets one. Sourced · aggregator 2026 (T3)."
+   },
+   {
+    "src.name": "ZipRecruiter · rocket propulsion 2026",
+    "src.low": "$66K",
+    "src.mid": "$83K",
+    "src.high": "$103K",
+    "src.read": "Entry-skewed floor reference; never quote. Sourced · aggregator 2026 (T3)."
+   }
+  ],
+  "timing.windows": [
+   {
+    "window.label": "Window · New Space launch demand",
+    "window.body": "Commercial space has added tens of thousands of jobs across launch, constellations, and defense. Demand for propulsion engineers is outpacing a pool that grows slowly, so every credible candidate is being courted by several employers at once (industry 2025-26)."
+   },
+   {
+    "window.label": "Window · new propulsion frontiers",
+    "window.body": "Hypersonics, long-endurance drones, and nuclear space propulsion are pulling on the same talent, while green propellant and electric propulsion are the hot specialties. New programs open faster than schools graduate propulsion engineers (industry 2026)."
+   },
+   {
+    "window.label": "Your edge · mid-career shortage",
+    "window.body": "The scarcity concentrates at 5-15 years with real flight-program experience, which is exactly the band this search targets. A small team offering hands-on hardware ownership is a genuine differentiator for that engineer. Move while that pitch is fresh (industry 2025)."
+   }
+  ],
+  "agenda": [
+   {
+    "agenda.time": "0–5",
+    "agenda.segment": "Market reality briefing",
+    "agenda.objective": "Walk sections A to C: a small occupation, scarcity at mid-career, and the real comp band. Set the frame, do not negotiate yet."
+   },
+   {
+    "agenda.time": "5–15",
+    "agenda.segment": "Success definition",
+    "agenda.objective": "Extract what this hire must have delivered by day 90 and day 365: which hardware, which tests, which analysis. Write it verbatim; it becomes the posting and the interview scenarios."
+   },
+   {
+    "agenda.time": "15–25",
+    "agenda.segment": "Requirement calibration",
+    "agenda.objective": "Run section F line by line. Each requirement gets a verdict: must-have day one, calibrated, flexible, or nice-to-have."
+   },
+   {
+    "agenda.time": "25–32",
+    "agenda.segment": "Trade-off lock",
+    "agenda.objective": "Speed, bar, comp: pick two. Force the priority call now, not at offer stage when it costs a finalist."
+   },
+   {
+    "agenda.time": "32–40",
+    "agenda.segment": "Pitch extraction",
+    "agenda.objective": "Capture the hiring manager's own words on the hardest propulsion problem and why the role matters. Outreach reuses this verbatim; it beats recruiter-written copy every time."
+   },
+   {
+    "agenda.time": "40–45",
+    "agenda.segment": "SLA sign-off",
+    "agenda.objective": "Lock feedback turnaround, panel availability, and the approved band. Section G. Send the recap the same day."
+   }
+  ],
+  "intake.questions": [
+   {
+    "iq.text": "\"What does success look like in the first 90 days, and what will this engineer have designed, analyzed, or tested by the end of year one?\"",
+    "iq.extract": "Extracts Concrete scope for the posting and the interview scenarios: which hardware, which tests, which analysis. A vague answer here predicts a vague search, so push twice before moving on."
+   },
+   {
+    "iq.text": "\"Which component or subsystem will they own outright on day one: feed system, thrust chamber, test stand? Who owns it today?\"",
+    "iq.extract": "Extracts Ownership scope, plus whether this is a backfill or growth seat. Candidates ask this on the first call, so you need the answer before they do."
+   },
+   {
+    "iq.text": "\"Who was your last great propulsion hire, and what specifically made them exceptional in their first six months?\"",
+    "iq.extract": "Extracts The real bar, in behavioral terms. Converts \"strong engineer\" into observable evidence you can screen for."
+   },
+   {
+    "iq.text": "\"Walk me through the team: who do they report to, how do they work with external suppliers, will this role ever have direct reports?\"",
+    "iq.extract": "Extracts Structure for the posting and the candidate FAQ. Also surfaces the supplier-coordination load before a candidate discovers it at onsite."
+   },
+   {
+    "iq.text": "\"What is the hardest propulsion problem the team is staring at this quarter: combustion instability, thermal margin, a hot-fire anomaly?\"",
+    "iq.extract": "Extracts Interview deep-dive material and the single best outreach hook for experienced engineers. Get it verbatim: paraphrasing kills it."
+   },
+   {
+    "iq.text": "\"A candidate is excellent in liquid propulsion but has only dabbled in electric. Screen out, or screen in and train?\"",
+    "iq.extract": "Extracts Whether the propulsion-type requirement is real or inherited. Confirm the answer still holds when you present an actual candidate."
+   },
+   {
+    "iq.text": "\"They have deep thermofluids and test experience from gas turbines, automotive powertrain, or motorsport, but no space heritage. Yes or no?\"",
+    "iq.extract": "Extracts The adjacent-industry boundary. This one answer roughly doubles or halves the reachable pool."
+   },
+   {
+    "iq.text": "\"Which requirement would you drop to close two weeks faster?\"",
+    "iq.extract": "Extracts Any answer is useful. \"None\" means the timeline is not real, and you should say so in the room rather than discovering it in week seven."
+   },
+   {
+    "iq.text": "\"What would make you pass on an otherwise technically excellent propulsion candidate?\"",
+    "iq.extract": "Extracts Real disqualifiers, and often an unstated bias you can address now rather than at debrief."
+   },
+   {
+    "iq.text": "\"What is the unglamorous part of this job you would rather I not mention: night test-stand shifts, supplier travel, qualification paperwork?\"",
+    "iq.extract": "Extracts The cause of your late-stage dropouts. Put it in the posting instead: naming it raises reply quality and kills the offer-stage surprise."
+   },
+   {
+    "iq.text": "\"Give me your sixty-second pitch for this role: impact, hardest challenge, why now.\"",
+    "iq.extract": "Extracts Authentic selling language in their voice. Record it. It goes straight into outreach and the screen close."
+   },
+   {
+    "iq.text": "\"Can you commit to scorecard feedback within two business days, and a named panel this week?\"",
+    "iq.extract": "Extracts The SLA. In a scarce, concentrated pool, hiring-manager latency is the single largest controllable loss factor. Ask for the commitment out loud."
+   }
+  ],
+  "requirements": [
+   {
+    "req.name": "Propulsion system design (liquid, solid, hybrid, or electric)",
+    "req.verdict": "Must-have",
+    "req.rec": "Hold. This is the core signal and the deep-dive is built to verify it. Defining the search around it, not one specific type, keeps the small pool open."
+   },
+   {
+    "req.name": "Thermofluids: thermodynamics, fluid dynamics, heat transfer",
+    "req.verdict": "Must-have",
+    "req.rec": "Hold. The physics under every propulsion decision, and cheap to verify at screen. No pool cost: any real candidate has it."
+   },
+   {
+    "req.name": "Combustion & propellant chemistry, or electric-propulsion physics",
+    "req.verdict": "Calibrated",
+    "req.rec": "Hold, but read it as either/or across propulsion types. Requiring one specific chemistry narrows an already small pool sharply for little gain."
+   },
+   {
+    "req.name": "Propulsion test: hot-fire / thrust-stand, instrumentation, data reduction",
+    "req.verdict": "Calibrated",
+    "req.rec": "Hold as must-have, but accept adjacent test-rig experience: engine dyno, turbine test cells, high-pressure fluid rigs. This is where the peripheral pools open up."
+   },
+   {
+    "req.name": "CAD plus analysis: CFD, FEA, thermal (ANSYS, NX, SolidWorks)",
+    "req.verdict": "Flex",
+    "req.rec": "Require the analysis skill, not the named package. A strong analyst learns a new tool in weeks; screening on the specific suite cuts the funnel for no real gain."
+   },
+   {
+    "req.name": "Systems engineering on flight hardware: requirements, tolerances, verification",
+    "req.verdict": "Flex",
+    "req.rec": "Flight heritage specifically is scarce. Accept rigorous hardware-qualification experience from gas turbine, automotive powertrain, motorsport, or defense, and ramp on the space environment."
+   },
+   {
+    "req.name": "High-temperature materials / additive manufacturing",
+    "req.verdict": "Nice-to-have",
+    "req.rec": "Tiebreaker only. Valuable for chamber and nozzle work, but rare enough that requiring it would empty the pool. Make sure sourcers are not hard-filtering on it."
+   },
+   {
+    "req.name": "Feed-system / valve design; MATLAB or Python; AS9100 process",
+    "req.verdict": "Nice-to-have",
+    "req.rec": "All trainable on the job. Treat as a plus that speeds ramp, never a filter. Process fluency in particular is learned faster than propulsion physics."
+   }
+  ],
+  "tradeoffs": [
+   {
+    "to.choice": "Speed + Bar",
+    "to.consequence": "Comp lands at the top of the band. Approve the ceiling up front, not at offer, or the finalist walks to a better-funded program."
+   },
+   {
+    "to.choice": "Speed + Comp",
+    "to.consequence": "The bar flexes on space heritage. Hire strong thermofluids and test talent from an adjacent industry, and commit to a real ramp plan."
+   },
+   {
+    "to.choice": "Bar + Comp",
+    "to.consequence": "Timeline extends past the market average. Each extra month of vacancy is a month of design and hot-fire work not getting done. Sometimes correct, but say it out loud."
+   }
+  ],
+  "sla.recruiter": [
+   {
+    "sla.item": "Qualified propulsion submittals per week",
+    "sla.when": "2–3"
+   },
+   {
+    "sla.item": "Calibrated slate",
+    "sla.when": "by week 3"
+   },
+   {
+    "sla.item": "Pipeline review with funnel math",
+    "sla.when": "every week"
+   },
+   {
+    "sla.item": "Candidate feedback delivered",
+    "sla.when": "48 hrs"
+   },
+   {
+    "sla.item": "New propulsion profiles sourced",
+    "sla.when": "40–60 weekly"
+   }
+  ],
+  "sla.hm": [
+   {
+    "hm.item": "Résumé review decision",
+    "hm.when": "2 business days"
+   },
+   {
+    "hm.item": "Scorecard feedback submitted",
+    "hm.when": "48 hrs"
+   },
+   {
+    "hm.item": "Onsite panel named & calendared",
+    "hm.when": "week 1"
+   },
+   {
+    "hm.item": "Approved band confirmed",
+    "hm.when": "before screen 1"
+   },
+   {
+    "hm.item": "Offer decision after final loop",
+    "hm.when": "72 hrs"
+   }
+  ]
+ },
+ "standalone_bars": [],
+ "optionals": {},
+ "toggles": {},
+ "handoff": {
+  "produces": "requirements · comp_frame · timing_windows · tradeoff_lock · constraints · sla",
+  "consumers": "01 Brief · 02 Job Description · 03 Talent Map · 04 Sourcing · 05 Outreach · 06 Interview Plan · 08 Recruiter Screen",
+  "assumptions": "Comp and timing are provisional; Downstream comp and market passes run deeper and supersede on overlap. HM holds band authority. Constraints are empty: no eligibility gate.",
+  "blocked": "Trade-off lock and mutual SLA pending the intake meeting; band confirmation pending"
+ }
+}
