@@ -125,6 +125,7 @@ dist/               packaged .plugin build
 
 - [Quickstart (PDF)](docs/TalentOne_Quickstart.pdf) — 3 pages: what it is, how it works, setup
 - [One-pager (PDF)](docs/TalentOne_OnePager.pdf)
+- [Install guide](docs/INSTALL.md) — per-surface steps for Claude Code and Cowork
 - [Release notes 1.0.3](docs/RELEASE_NOTES_1.0.3.md) · [Changelog](CHANGELOG.md)
 - [Connectors](CONNECTORS.md)
 
