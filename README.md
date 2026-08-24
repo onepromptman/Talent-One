@@ -94,6 +94,14 @@ Eight real documents from one `Propulsion Engineer` run (a fictional company, pu
 
 > Previews are screenshots. Each links to the full self-contained HTML — open it in a browser for the live document (GitHub shows `.html` as source, so use the raw/download view or clone the repo).
 
+<p align="center">
+  <a href="https://github.com/onepromptman/Talent-One/raw/main/dist/talent-one-1.0.3.plugin">
+    <img src="assets/download-button.png" alt="Download the Talent One plugin, then drop it into Cowork or Claude Code" width="680">
+  </a>
+</p>
+
+<p align="center"><sub>Downloads <code>talent-one-1.0.3.plugin</code> · then in Cowork or Claude Code: add it as a plugin and run <code>set up talent one</code></sub></p>
+
 ## How it works
 
 One research pass per role builds a **Context Pack** (a shared research summary for the role): market classification, one canonical comp range, requirements, keywords, personas, channels, targets, and timing, each value tagged with where it came from.
