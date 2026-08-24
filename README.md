@@ -12,7 +12,7 @@ by [Onepromptman](https://github.com/onepromptman) · © 2026
 
 </div>
 
-![Talent One — eight artifacts, one grammar. One role brief in, a full eight-document hiring kit out.](assets/hero.png)
+![Talent One — one role brief in, a full hiring package out. Eleven agents, eight recruiter-ready documents.](assets/hero.png)
 
 ---
 
