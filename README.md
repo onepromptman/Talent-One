@@ -12,6 +12,8 @@ by [Onepromptman](https://github.com/onepromptman) · © 2026
 
 </div>
 
+![Talent One — one role brief in, eight recruiter-ready documents out](assets/hero.png)
+
 ---
 
 > ### ⚠️ Where it runs
@@ -67,7 +69,30 @@ Then just ask, in plain words:
 
 Every artifact is a polished, self-contained HTML document — zero network requests, opens anywhere. Every number carries a provenance pill: **Sourced**, **Estimate**, or **Internal**. Nothing is fabricated; gaps are labeled, never filled with filler.
 
-> The samples above are GitHub-rendered as source. To see them properly, clone the repo (or download the zip) and open the files in a browser.
+### Sample gallery
+
+Eight real documents from one `Propulsion Engineer` run (a fictional company, public labor-market data). Click any preview to open the full interactive HTML.
+
+<table>
+<tr>
+<td width="50%"><a href="samples/01_Role_Educational_Brief_SAMPLE.html"><img src="assets/samples/01.png" alt="Role educational brief"></a><br><sub><b>01 · Role educational brief</b> — Sensei</sub></td>
+<td width="50%"><a href="samples/02_Job_Description_SAMPLE.html"><img src="assets/samples/02.png" alt="Job description with annotation rail"></a><br><sub><b>02 · Job description + annotation rail</b> — JD-Bot</sub></td>
+</tr>
+<tr>
+<td width="50%"><a href="samples/03_Talent_Intelligence_Map_SAMPLE.html"><img src="assets/samples/03.png" alt="Talent intelligence map"></a><br><sub><b>03 · Talent intelligence map</b> — Atlas</sub></td>
+<td width="50%"><a href="samples/04_Sourcing_Playbook_SAMPLE.html"><img src="assets/samples/04.png" alt="Sourcing playbook"></a><br><sub><b>04 · Sourcing playbook</b> — Hunter</sub></td>
+</tr>
+<tr>
+<td width="50%"><a href="samples/05_Outreach_Campaign_SAMPLE.html"><img src="assets/samples/05.png" alt="Multi-channel outreach campaign"></a><br><sub><b>05 · Multi-channel outreach campaign</b> — Shakespeare</sub></td>
+<td width="50%"><a href="samples/06_Interview_Plan_SAMPLE.html"><img src="assets/samples/06.png" alt="Interview plan with graded rubrics"></a><br><sub><b>06 · Interview plan + graded rubrics</b> — Interview Lab</sub></td>
+</tr>
+<tr>
+<td width="50%"><a href="samples/07_HM_Calibration_Brief_SAMPLE.html"><img src="assets/samples/07.png" alt="Hiring-manager calibration brief"></a><br><sub><b>07 · Hiring-manager calibration brief</b> — Calibrate</sub></td>
+<td width="50%"><a href="samples/08_Recruiter_Screen_Script_SAMPLE.html"><img src="assets/samples/08.png" alt="Recruiter screen script"></a><br><sub><b>08 · Recruiter screen script</b> — Recruiter Screen</sub></td>
+</tr>
+</table>
+
+> Previews are screenshots. Each links to the full self-contained HTML — open it in a browser for the live document (GitHub shows `.html` as source, so use the raw/download view or clone the repo).
 
 ## How it works
 
