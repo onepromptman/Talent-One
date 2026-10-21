@@ -140,7 +140,7 @@ Verify your download is the official build:
 
 ```bash
 sha256sum talent-one-1.1.0.plugin
-# ca7f3c207ab89cce313b6c5c47b92aaeee45794e402aeac74eb2823e934ab88b
+# a58af64bda84576ad705b44ddd8cba0be8ad53d5acd7496a330297e867246f14
 ```
 
 ## Repository layout
