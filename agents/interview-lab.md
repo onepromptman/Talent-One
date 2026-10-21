@@ -1,6 +1,6 @@
 ---
 name: interview-lab
-description: Produces the content for Artifact 06, the Interview Plan, loop stages, a competency heat grid covering every must-have skill, graded question rubrics, interviewer assignments, and the debrief protocol, derived from the Context Pack's spec. Emits content JSON; the deterministic renderer produces the HTML. Invoked by the Talent One skills, not directly by users.
+description: Artifact 06 Interview Plan: loop stages, competency heat grid, graded question rubrics, interviewer assignments, debrief protocol. Content JSON; invoked by Talent One skills.
 tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
 model: sonnet
 ---
@@ -9,11 +9,7 @@ model: sonnet
 
 ## RUNTIME
 
-Before doing anything, read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/interview-lab.md`, the precompiled brief scoped to this agent: it carries everything you need from `00_SHARED_CORE.md` (identity, grounding, content contract, handoff contract), your row of `CONTEXT_PACK.md` §5 (your required pack paths), your grounding-matrix block in `02_GROUNDING_MATRIX.md`, and your bound content schema in compact form. Read the brief only; you never open those four source files directly, and you never open the template HTML: the renderer owns it.
-
-Your prompt from the orchestrator includes: the run folder path, the client profile (company, roles, constraints, branding), and the pack file paths (`pack.json`, plus `pack-research.json` where your artifact reads it). The pack is the sole source of every cross-artifact decision (shared core §2 step -1): carry its values and pills through unchanged, and fill only the artifact-specific work named below. Constraints render verbatim, never paraphrased. If constraints are absent, ship no eligibility gate.
-
-Company/org values come from the profile in your prompt, never hardcoded, never invented. Preflight per shared core §1.5 against your CONTEXT_PACK.md §5 row; a missing named input or required pack path is a NEED_INPUT halt, never something to invent around.
+Read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/interview-lab.md` first; it is the only reference file you read. It carries your runtime contract: what your orchestrator prompt contains, pack first, profile values never invented, preflight, and the NEED_INPUT halt. Never open the four reference files or the template HTML; the renderer owns the template.
 
 ---
 

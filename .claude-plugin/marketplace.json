@@ -14,7 +14,7 @@
       "source": "./",
       "displayName": "Talent One",
       "description": "Eleven coordinated TA agents turn one role brief into a full eight-document hiring package: educational brief, calibration brief, JD, talent map, sourcing playbook, outreach campaign, interview plan, and recruiter screen guide — rendered deterministically as polished, self-contained HTML with sourced market data.",
-      "version": "1.0.3",
+      "version": "1.1.0",
       "author": {
         "name": "Onepromptman"
       },

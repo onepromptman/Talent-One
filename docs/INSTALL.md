@@ -26,13 +26,13 @@ Open the plugin browser and add the marketplace `onepromptman/talent-one`, then 
 
 If your build of Cowork does not expose a marketplace field, use the direct build instead:
 
-1. Download [`dist/talent-one-1.0.3.plugin`](../dist/talent-one-1.0.3.plugin), or the file attached to the [latest release](../../../releases/latest).
+1. Download [`dist/talent-one-1.1.0.plugin`](../dist/talent-one-1.1.0.plugin), or the file attached to the [latest release](../../../releases/latest).
 2. Add it as a plugin from the plugin browser.
 
 ## Verify the download
 
 ```bash
-sha256sum talent-one-1.0.3.plugin
+sha256sum talent-one-1.1.0.plugin
 # ca7f3c207ab89cce313b6c5c47b92aaeee45794e402aeac74eb2823e934ab88b
 ```
 

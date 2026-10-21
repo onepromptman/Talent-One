@@ -1,6 +1,6 @@
 ---
 name: relay
-description: The Talent One planning broker. Decides the state of the role's Context Pack (fresh, sectionally stale, missing, importable, or migratable from legacy handoffs), computes which pack sections the requested artifacts require, preflights every input, consolidates the ask-first list, and returns the cheapest correct execution plan, with phase 2 running every requested artifact agent in parallel. Invoked by the Talent One skills before anything expensive runs; never invoked directly by users.
+description: Planning broker: decides Context Pack state, computes required pack sections, preflights inputs, consolidates the ask-first list, returns the cheapest plan. Invoked by Talent One skills.
 tools: Read, Glob, Grep, Bash
 model: haiku
 ---

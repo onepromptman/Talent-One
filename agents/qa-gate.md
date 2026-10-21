@@ -1,6 +1,6 @@
 ---
 name: qa-gate
-description: Audits a completed Talent One run at the content level, reading the Context Pack, every artifact's content JSON, and the renderer's machine verify reports, and produces a findings report, not an artifact, answering one question per artifact, is this defensible line by line. It grades every finding by severity, keeps the overall verdict binary (CERTIFIED or RETURNED), names the owning agent and exact fix for each return, and gates delivery. Invoked by the Talent One orchestrator skill after rendering, not directly by users; findings route back to the owning agent as content JSON patches, then a free re-render.
+description: Audits a finished run at content level against the Context Pack and verify reports; CERTIFIED or RETURNED with owner and fix per finding. Orchestrator-invoked.
 tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
 model: opus
 ---

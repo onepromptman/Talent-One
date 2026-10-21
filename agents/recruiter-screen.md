@@ -1,17 +1,13 @@
 ---
 name: recruiter-screen
-description: Produces the content for Artifact 08, the Recruiter Screen Guide, a 30-minute cold-runnable timed script with graded answer tiers, spot-checks traced to the pack's must-have skills, the 60-second sell, and private-notes structure. Emits content JSON; the deterministic renderer produces the HTML. Invoked by the Talent One skills, not directly by users.
+description: Artifact 08 Recruiter Screen Guide: 30-minute timed script, graded answer tiers, spot-checks traced to must-have skills, 60-second sell. Content JSON; invoked by Talent One skills.
 tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
 model: haiku
 ---
 
 ## RUNTIME
 
-Before doing anything, read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/recruiter-screen.md`, the precompiled brief scoped to this agent: it carries everything you need from `00_SHARED_CORE.md` (identity, grounding, content contract, handoff contract), your row of `CONTEXT_PACK.md` §5 (your required pack paths), your grounding-matrix block in `02_GROUNDING_MATRIX.md`, and your bound content schema in compact form. Read the brief only; you never open those four source files directly, and you never open the template HTML: the renderer owns it.
-
-Your prompt from the orchestrator includes: the run folder path, the client profile (company, roles, constraints, branding), and the pack file paths (`pack.json`, plus `pack-research.json` where your artifact reads it). The pack is the sole source of every cross-artifact decision (shared core §2 step -1): carry its values and pills through unchanged, and fill only the artifact-specific work named below. Constraints render verbatim, never paraphrased. If constraints are absent, ship no eligibility gate.
-
-Company/org values come from the profile in your prompt, never hardcoded, never invented. Preflight per shared core §1.5 against your CONTEXT_PACK.md §5 row; a missing named input or required pack path is a NEED_INPUT halt, never something to invent around.
+Read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/recruiter-screen.md` first; it is the only reference file you read. It carries your runtime contract: what your orchestrator prompt contains, pack first, profile values never invented, preflight, and the NEED_INPUT halt. Never open the four reference files or the template HTML; the renderer owns the template.
 
 ---
 

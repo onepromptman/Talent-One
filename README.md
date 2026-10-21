@@ -4,7 +4,7 @@
 
 **Download the plugin, drop it into Cowork or Claude Code, and go.** Eleven talent-acquisition agents turn one role brief into a full eight-document hiring kit.
 
-[![Version](https://img.shields.io/badge/version-1.0.3-black)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.1.0-black)](CHANGELOG.md)
 [![Runs in](https://img.shields.io/badge/runs%20in-Claude%20Code%20%7C%20Cowork-orange)](#where-it-runs)
 [![License](https://img.shields.io/badge/license-source--available-blue)](LICENSE.md)
 
@@ -33,7 +33,7 @@ by [Onepromptman](https://github.com/onepromptman) · © 2026
 /plugin install talent-one@onepromptman
 ```
 
-**Option B — download the build:** grab [`dist/talent-one-1.0.3.plugin`](dist/talent-one-1.0.3.plugin) (or the file attached to the [latest release](../../releases/latest)) and add it as a plugin in Claude Code or Cowork.
+**Option B — download the build:** grab [`dist/talent-one-1.1.0.plugin`](dist/talent-one-1.1.0.plugin) (or the file attached to the [latest release](../../releases/latest)) and add it as a plugin in Claude Code or Cowork.
 
 Then, once:
 
@@ -95,12 +95,12 @@ Eight real documents from one `Propulsion Engineer` run (a fictional company, pu
 > Previews are screenshots. Each links to the full self-contained HTML — open it in a browser for the live document (GitHub shows `.html` as source, so use the raw/download view or clone the repo).
 
 <p align="center">
-  <a href="https://github.com/onepromptman/Talent-One/raw/main/dist/talent-one-1.0.3.plugin">
+  <a href="https://github.com/onepromptman/Talent-One/raw/main/dist/talent-one-1.1.0.plugin">
     <img src="assets/download-button.png" alt="Download the Talent One plugin, then drop it into Cowork or Claude Code" width="680">
   </a>
 </p>
 
-<p align="center"><sub>Downloads <code>talent-one-1.0.3.plugin</code> · then in Cowork or Claude Code: add it as a plugin and run <code>set up talent one</code></sub></p>
+<p align="center"><sub>Downloads <code>talent-one-1.1.0.plugin</code> · then in Cowork or Claude Code: add it as a plugin and run <code>set up talent one</code></sub></p>
 
 ## How it works
 
@@ -139,7 +139,7 @@ The plugin is plain text: prompts, templates, and two small scripts that only ru
 Verify your download is the official build:
 
 ```bash
-sha256sum talent-one-1.0.3.plugin
+sha256sum talent-one-1.1.0.plugin
 # ca7f3c207ab89cce313b6c5c47b92aaeee45794e402aeac74eb2823e934ab88b
 ```
 
@@ -159,7 +159,7 @@ dist/               packaged .plugin build
 - [Quickstart (PDF)](docs/TalentOne_Quickstart.pdf) — 3 pages: what it is, how it works, setup
 - [One-pager (PDF)](docs/TalentOne_OnePager.pdf)
 - [Install guide](docs/INSTALL.md) — per-surface steps for Claude Code and Cowork
-- [Release notes 1.0.3](docs/RELEASE_NOTES_1.0.3.md) · [Changelog](CHANGELOG.md)
+- [Release notes 1.1.0](docs/RELEASE_NOTES_1.1.0.md) · [1.0.3](docs/RELEASE_NOTES_1.0.3.md) · [Changelog](CHANGELOG.md)
 - [Connectors](CONNECTORS.md)
 
 ## License
