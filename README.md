@@ -128,20 +128,19 @@ Anything you already hold — a JD, intake notes, comp data, a brain dump — sh
 
 Works with **zero connections**, using public data: BLS, O\*NET, Census, DOL disclosure data, levels.fyi, live web search. That is a fully supported path, not a degraded mode.
 
-Connecting your ATS or document store upgrades specific agents — see [CONNECTORS.md](CONNECTORS.md).
+Four connectors ship inside the plugin, none required: **Exa** (web research, keyless by default), **Bright Data** (search results, bot-protected pages, LinkedIn company and job-listing data), and the official **Greenhouse** and **Ashby** MCP servers (sign in once, read-only, pipelines as counts, never candidates). Your own document store or ATS connector works the same way. See [CONNECTORS.md](CONNECTORS.md).
 
 Constraints (work authorization, clearance, licensure) are recruiter-written, rendered verbatim, and never invented. An empty constraints list ships no eligibility gate at all.
 
 ## Is it safe to install?
 
-The plugin is plain text: prompts, templates, and two small scripts that only run inside Claude's sandbox. No executables, nothing installs on your computer, nothing reports back to anyone. The whole source is in this repo — read it.
+The plugin is plain text: prompts, templates, three small scripts that only run inside Claude's sandbox, and a list of four optional remote connectors (see [CONNECTORS.md](CONNECTORS.md)) that do nothing until you sign in. No executables, nothing installs on your computer, nothing reports back to anyone. The whole source is in this repo — read it.
 
-Verify your download is the official build:
+Verify your download is the official build: run `sha256sum talent-one-1.1.0.plugin` and compare with the expected hash in [docs/INSTALL.md](docs/INSTALL.md) and the [changelog](CHANGELOG.md). The hash lives outside the archive because the archive contains this README.
 
-```bash
-sha256sum talent-one-1.1.0.plugin
-# a58af64bda84576ad705b44ddd8cba0be8ad53d5acd7496a330297e867246f14
-```
+## Privacy
+
+The plugin itself sends nothing anywhere: the renderer and both scripts run inside Claude's sandbox and make no network calls, and every generated document is self-contained. Research traffic goes through the web tools of the Claude surface you run it in. The four bundled connectors (Exa, Bright Data, Greenhouse, Ashby) are third-party services, each under its own privacy policy, and none receives anything until you sign in, and the plugin stores no API key; what agents may read from them, and what they may never pass on, is set out in [CONNECTORS.md](CONNECTORS.md). Your profile, role folders, and packs stay on your machine.
 
 ## Repository layout
 

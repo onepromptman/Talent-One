@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "exa": {
+      "type": "http",
+      "url": "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa"
+    },
+    "brightdata": {
+      "type": "http",
+      "url": "https://mcp.brightdata.com/mcp?tools=search_engine,search_engine_batch,scrape_as_markdown,scrape_batch,web_data_linkedin_company_profile,web_data_linkedin_job_listings"
+    },
+    "greenhouse": {
+      "type": "http",
+      "url": "https://mcp.greenhouse.io/mcp"
+    },
+    "ashby": {
+      "type": "http",
+      "url": "https://mcp.ashbyhq.com/mcp/v1"
+    }
+  }
+}

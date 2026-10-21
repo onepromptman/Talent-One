@@ -1,7 +1,7 @@
 ---
 name: recruiter-screen
 description: Artifact 08 Recruiter Screen Guide: 30-minute timed script, graded answer tiers, spot-checks traced to must-have skills, 60-second sell. Content JSON; invoked by Talent One skills.
-tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
+disallowedTools: Agent, Skill, Artifact, EnterWorktree, ExitWorktree, mcp__plugin_talent-one_ashby__change_application_stage, mcp__plugin_talent-one_ashby__create_candidate, mcp__plugin_talent-one_ashby__add_note_to_candidate, mcp__plugin_talent-one_ashby__consider_candidate_for_job, mcp__plugin_talent-one_ashby__get_candidate
 model: haiku
 ---
 
@@ -32,8 +32,9 @@ advance/hold/decline call.
 
 ## RESEARCH PLAYBOOK
 
-Per `02_GROUNDING_MATRIX.md` Part 3: if the orchestrator lists connected internal
-sources, query via their MCP tools (ToolSearch to load) for the calibrated questions and
+Per `02_GROUNDING_MATRIX.md` Part 3: if the orchestrator lists a connector, read
+`${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md`,
+load only the tools it maps (ToolSearch), and query for the calibrated questions and
 their graded tiers (`"screen questions"`, `"answer rubric"`), and for the screen-stage
 template fields, so private-notes columns mirror what the team actually fills in.
 Otherwise run the standalone public-data path from your grounding block: fully

@@ -1,7 +1,7 @@
 ---
 name: atlas
 description: Artifact 03 Talent Intelligence Map: supply funnel, demand, employer tiers, geography, comp, personas, recommendations from the Context Pack. Content JSON; invoked by Talent One skills.
-tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
+disallowedTools: Agent, Skill, Artifact, EnterWorktree, ExitWorktree, mcp__plugin_talent-one_ashby__change_application_stage, mcp__plugin_talent-one_ashby__create_candidate, mcp__plugin_talent-one_ashby__add_note_to_candidate, mcp__plugin_talent-one_ashby__consider_candidate_for_job, mcp__plugin_talent-one_ashby__get_candidate
 model: sonnet
 ---
 
@@ -32,11 +32,11 @@ Your Part 3 block in `02_GROUNDING_MATRIX.md` is authoritative. In short:
 - Web: `BLS-OES` for the supply baseline, `BLS-JOLTS` for demand tightness, `ACS` and `CENSUS-MIG` for relocation propensity, `HIRINGLAB` and `LIGHTCAST` for posting-level demand and competitor sets, `WARN` and `LAYOFFS` for dated triggers (`WARN` outranks `LAYOFFS`), `EDGAR` and `NEWSROOM` for company proof points.
 - Keep query templates generic: `"{industry} workforce report {current_year}"`, `"{company} careers {role keyword}"`. Never hardcode an industry or a competitor name into the query itself.
 
-If the orchestrator's prompt lists connected internal sources (ATS, wiki, comp system,
-brand doc), query them via their MCP tools (load with ToolSearch). If none are listed,
-run the standalone public-data path from your grounding-matrix block: this is a fully
-supported path, not a degraded one. Never put internal strings, comp figures, or names
-into a web search query.
+If the orchestrator's prompt lists a connector (the bundled ATS, Exa, and Bright Data
+servers, or the user's own ATS or document store), read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md`
+and load only the tools it maps to your sources (ToolSearch). If none is listed, run the
+standalone public-data path from your grounding-matrix block: a fully supported path, not
+a degraded one. Never put internal strings, comp figures, or names into any web query.
 
 Use the benchmark file at `<run folder>/kb/benchmarks/` if present; otherwise use the
 public fallback sources in your grounding block and pill accordingly.

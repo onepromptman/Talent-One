@@ -32,7 +32,7 @@ Look for `talent-one-profile.md` in the working folder (and `talent-one-runs/`).
 
 ## 2. Plan (relay)
 
-Create the role home and the run folder first: `talent-one-roles/<role_slug>/` with `inputs/` and `content/` beside `runs/<YYYY-MM-DD>/` (which gets its own `content/`), never overwriting existing contents. `<role_slug>` carries the client company when the profile covers more than one (`<company>-<role>`). Legacy `talent-one-runs/<date>_<role_slug>/` folders stay readable and are never rewritten. Spawn the `relay` agent with: requested artifacts, role home, run folder, profile, per-run inputs, available connectors. Relay returns the pack plan (build / sectional refresh / import / migrate / reuse, with options), the parallel phase-2 list, the preflight report, the consolidated ask-first list, and seed proposals. Put relay's ask-first list, options, and proposed seeds to the user in one message, then execute.
+Create the role home and the run folder first: `talent-one-roles/<role_slug>/` with `inputs/` and `content/` beside `runs/<YYYY-MM-DD>/` (which gets its own `content/`), never overwriting existing contents. `<role_slug>` carries the client company when the profile covers more than one (`<company>-<role>`). Legacy `talent-one-runs/<date>_<role_slug>/` folders stay readable and are never rewritten. Spawn the `relay` agent with: requested artifacts, role home, run folder, profile, per-run inputs, available connectors. The connector list is the profile's `connectors` block plus whatever ToolSearch finds live among the bundled servers (`+exa`, `+brightdata`, `+greenhouse`, `+ashby`); a server that is not connected stays off the list, and the agents' rules for using one are in `references/CONNECTOR_RUNTIME.md`. Relay returns the pack plan (build / sectional refresh / import / migrate / reuse, with options), the parallel phase-2 list, the preflight report, the consolidated ask-first list, and seed proposals. Put relay's ask-first list, options, and proposed seeds to the user in one message, then execute.
 
 ### 2.5 The ask-first gate (BLOCKING)
 
@@ -178,4 +178,6 @@ deep-research pack building) · `scripts/render.py` (render / verify /
 validate-pack / extract) · `references/templates/` (renderer-owned) ·
 `references/ADAPTATIONS.md` (authoritative deltas, items 1-31) ·
 `references/ORCHESTRATOR_SEEDING.md` and `references/ORCHESTRATOR_UPDATE_MODE.md`
-(sections 2.7 and 5 in full, loaded when that path runs).
+(sections 2.7 and 5 in full, loaded when that path runs) ·
+`references/CONNECTOR_RUNTIME.md` (bundled and user connectors: tool map, budget,
+privacy; agents read it only when a connector is listed).

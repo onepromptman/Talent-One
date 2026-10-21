@@ -40,6 +40,9 @@ it is recorded here rather than silenced.
 
 ## Findings against the kit (not caused by 1.1.0, found by this run)
 
+Items 1 and 3 below were fixed in 1.1.0 before tagging (scout's spend rule and JD-Bot's
+NEED_INPUT halt for the EEO and benefits lines); the rest stand as recorded.
+
 1. `validate-pack` budgets 12 web calls per pack but counts `web_calls_used` cumulatively, so a
    sectional refresh after a full build always fails the budget check. The honest count (16)
    was kept and the finding recorded in `pack.caveats`.
@@ -72,6 +75,12 @@ it is recorded here rather than silenced.
 | Resident every session (agent + skill descriptions) | 3,013 | 2,267 |
 | Orchestrator skill, main window | 3,422 | 3,195 |
 | One fan-out, all eleven agents | 88,913 | 82,111 |
+
+Re-measured with the shipped `context_budget.py` on the final 1.1.0 tree (after the connector
+work landed) against a clean 1.0.3 checkout, with the resident bucket now counting description text
+only (the rest of the frontmatter is loader configuration): resident 2,588 to 1,841;
+orchestrator 3,424 to 3,259; one fan-out 87,430 to 81,875. The table above is the figure recorded on the day of the
+run; the changelog carries the re-measured pair.
 
 ## QA gate verdict
 

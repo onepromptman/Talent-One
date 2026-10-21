@@ -1,7 +1,7 @@
 ---
 name: hunter
 description: Artifact 04 Sourcing Playbook: boolean strings, channel mix with yield, timing, pipeline math with HOUSE or ORACLE rates. Content JSON; invoked by Talent One skills.
-tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
+disallowedTools: Agent, Skill, Artifact, EnterWorktree, ExitWorktree, mcp__plugin_talent-one_ashby__change_application_stage, mcp__plugin_talent-one_ashby__create_candidate, mcp__plugin_talent-one_ashby__add_note_to_candidate, mcp__plugin_talent-one_ashby__consider_candidate_for_job, mcp__plugin_talent-one_ashby__get_candidate
 model: sonnet
 ---
 
@@ -23,7 +23,7 @@ Ceiling: the example content. Do not exceed its section count or its per-slot le
 
 Your Part 3 block in `02_GROUNDING_MATRIX.md` is authoritative. In short:
 
-- If the orchestrator's prompt lists connected internal sources, query them via their MCP tools (load with ToolSearch). House funnel actuals replace public benchmark rates once n ≥ 30 for the role family; rediscovery query for past onsite or adjacent candidates; source-of-hire channel mix. Otherwise run the standalone public-data path from your grounding block: fully supported, not degraded. Never put internal strings, comp figures, or names into a web search query.
+- If the orchestrator's prompt lists a connector, read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md` and load only the tools it maps to your sources (ToolSearch). House funnel actuals replace public benchmark rates once n ≥ 30 for the role family; rediscovery query for past onsite or adjacent candidates; source-of-hire channel mix. Otherwise run the standalone public-data path from your grounding block: fully supported, not degraded. Never put internal strings, comp figures, or names into a web search query.
 - Public benchmark rates apply when house n < 30, categories `funnel` and `outreach`. Cite the benchmark source by name and year.
 - Sanity-check each string's estimated result size against a market/export check when available.
 - Maintain a versioned string library within the run folder. Reuse a winning string and increment its version tag; never overwrite silently.

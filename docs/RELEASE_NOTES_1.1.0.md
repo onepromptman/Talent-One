@@ -11,12 +11,12 @@ What is new in 1.1.0 (a leaner harness, same output contract):
 
 - Every agent now loads less instruction text before it starts work. Measured
   on the shipped files with the new `scripts/context_budget.py`: one full
-  fan-out of all eleven agents dropped from 88,913 to 82,111 instruction
-  tokens, about 8 percent, with no change to the content schemas, the
+  fan-out of all eleven agents dropped from 87,430 to 81,875 instruction
+  tokens, about 6 percent, with no change to the content schemas, the
   templates, or the renderer. The eight artifact agents each read about 1,000
   fewer tokens; the per-session footprint of the plugin (agent and skill
-  descriptions resident in every session) dropped from 3,013 to 2,267 tokens,
-  about a quarter, and the orchestrator skill from 3,422 to 3,195.
+  descriptions resident in every session) dropped from 2,588 to 1,841 tokens,
+  about 29 percent, and the orchestrator skill from 3,424 to 3,259.
 - The shared rules every artifact agent reads are now a compact contract
   compiled once into its brief (`build_briefs.py`): the provenance rules, the
   content-JSON shape, and the NEED_INPUT halt contract stay verbatim; the
@@ -35,6 +35,20 @@ What is new in 1.1.0 (a leaner harness, same output contract):
 - Vocabulary fix: the sourcing playbook labels every pipeline rate HOUSE or
   ORACLE everywhere (the hunter method text said BENCHMARK in three places
   while the grounding matrix and the QA gate said ORACLE).
+- Four connectors ship inside the plugin, none required: Exa (web search and
+  page reads, keyless by default), Bright Data (search results, bot-protected
+  pages, LinkedIn company profiles and job listings), and the official
+  Greenhouse and Ashby MCP servers. All three sign in with OAuth; the plugin
+  stores no API key, and Ashby's write and candidate-record tools are denied
+  in every agent's configuration. One reference file gives every agent the
+  same tool map, budget rule and privacy rules: ATS pipelines are read as counts
+  only, no person-profile tool is bundled, and no agent ever writes to an ATS.
+  Your own document store or ATS connector works the same way. See CONNECTORS.md.
+- Fix: the agent files' tool allowlists had excluded every MCP tool, so a
+  subagent could never actually query a connected source; agents now inherit the
+  session's connectors. JD-Bot asks for the EEO and benefits lines instead of
+  deleting the slots, and scout reports each run's own web calls so a sectional
+  refresh no longer trips the budget check.
 
 How it was verified: an independent Opus review refuted the first draft of
 these cuts against the source files (four proposed cuts were withdrawn before
@@ -43,4 +57,4 @@ before testing; then one full kit run (relay, scout, all eight artifact agents,
 strict render, machine verify, QA gate) on a synthetic role at Onepromptman,
 with the results recorded in the pull request.
 
-SHA-256 of `talent-one-1.1.0.plugin`: a58af64bda84576ad705b44ddd8cba0be8ad53d5acd7496a330297e867246f14
+SHA-256 of `talent-one-1.1.0.plugin`: 04c5001730a0ef780af06ead1eb14685ecd2c5cbf98ca241c8ec2254bb2c348b

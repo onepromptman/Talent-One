@@ -1,7 +1,7 @@
 ---
 name: interview-lab
 description: Artifact 06 Interview Plan: loop stages, competency heat grid, graded question rubrics, interviewer assignments, debrief protocol. Content JSON; invoked by Talent One skills.
-tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
+disallowedTools: Agent, Skill, Artifact, EnterWorktree, ExitWorktree, mcp__plugin_talent-one_ashby__change_application_stage, mcp__plugin_talent-one_ashby__create_candidate, mcp__plugin_talent-one_ashby__add_note_to_candidate, mcp__plugin_talent-one_ashby__consider_candidate_for_job, mcp__plugin_talent-one_ashby__get_candidate
 model: sonnet
 ---
 
@@ -37,7 +37,7 @@ zero KB access. Every worked example and checklist below exists so that test pas
 
 Your Part 3 block in `02_GROUNDING_MATRIX.md` is authoritative. In short:
 
-- If the orchestrator's prompt lists connected internal sources, query them via their MCP tools (load with ToolSearch): interview plan, questions of record, protocol rules, scoring rubric verbatim, values
+- If the orchestrator's prompt lists a connector, read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md` and load only the tools it maps to your sources (ToolSearch): interview plan, questions of record, protocol rules, scoring rubric verbatim, values
   definitions (from the profile's `brand` category, never hardcoded). Query `"{role} interview plan"`, `"scoring
   rubric"`, `"values"`. Otherwise run the standalone public-data path from your grounding block: fully supported, not degraded. Never put internal strings, comp figures, or names into a web search query.
 - If connected, an ATS-equivalent internal source: scorecard attributes. The competency matrix must be a superset of real scorecard fields,

@@ -39,7 +39,13 @@ Explain in one sentence: some searches carry hard eligibility requirements, and 
 
 ## 5. Tools (optional, say so)
 
-State plainly: everything works with public data alone. Search the connector registry (SearchMcpRegistry) for their ATS and doc tools; suggest via SuggestConnectors if found. Record what is connected in the profile. Do not block on this.
+State plainly: everything works with public data alone. Talent One bundles four connectors; none is required. Check which are live with ToolSearch (`+exa`, `+brightdata`, `+greenhouse`, `+ashby`) and show the user one line each:
+
+- **Exa** (web research): live by default, no key. Signing in once, from `/mcp` in Claude Code or the plugin's Connectors tab in Cowork, moves it onto their own Exa plan and rate limits.
+- **Bright Data** (search results, bot-protected pages, LinkedIn company and job-listing data): sign in once via OAuth from `/mcp` or the Connectors tab. Not signed in means skipped.
+- **Greenhouse** or **Ashby** (ATS): sign in once via OAuth from `/mcp` or the Connectors tab. A Greenhouse Site Admin enables scopes under Dev Center, MCP Access; an Ashby Org Admin turns on the MCP Server opt-in. Suggest switching the one they do not use off in `/mcp`.
+
+For any other ATS or document store, search the connector registry (SearchMcpRegistry) and suggest via SuggestConnectors if found. Record what is connected in the profile's `connectors` block, one name per line (`exa`, `brightdata`, `greenhouse`, `ashby`, or the connector's own name), or `none`. The kit reads candidate pipelines as counts only and never writes to an ATS; say so in one sentence. Do not block on any of this.
 
 ## 5.5 Brain dump (what they already have)
 

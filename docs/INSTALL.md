@@ -33,7 +33,7 @@ If your build of Cowork does not expose a marketplace field, use the direct buil
 
 ```bash
 sha256sum talent-one-1.1.0.plugin
-# a58af64bda84576ad705b44ddd8cba0be8ad53d5acd7496a330297e867246f14
+# 04c5001730a0ef780af06ead1eb14685ecd2c5cbf98ca241c8ec2254bb2c348b
 ```
 
 The `.plugin` file is a zip. Rename it to `.zip` and look inside if you want to read every prompt before installing — it is all plain text.
@@ -61,6 +61,15 @@ Write me a JD for a staff accountant
 Build a talent map for a mechanical engineer in Denver
 Make an interview plan for a security engineer
 ```
+
+## Connectors (optional)
+
+Four remote connectors ship with the plugin: Exa, Bright Data, Greenhouse, Ashby. Nothing is required; the kit runs fully on public data.
+
+- Exa works at once, keyless. Sign in from `/mcp` (Claude Code) or the plugin's Connectors tab (Cowork) to use your own plan.
+- Bright Data, Greenhouse, and Ashby sign in with OAuth from `/mcp` (Claude Code) or the plugin's Connectors tab (Cowork); for the two ATS servers your admin enables MCP access on the vendor side first. No API key is stored in the plugin.
+
+Switch off any you do not use in `/mcp`. Details and the privacy rules: [CONNECTORS.md](../CONNECTORS.md).
 
 ## Uninstall
 

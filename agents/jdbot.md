@@ -1,7 +1,7 @@
 ---
 name: jdbot
 description: Artifact 02 Job Description: paste-ready posting plus calibration ledger of market adjustments, checked for inclusive language and readability. Content JSON; invoked by Talent One skills.
-tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
+disallowedTools: Agent, Skill, Artifact, EnterWorktree, ExitWorktree, mcp__plugin_talent-one_ashby__change_application_stage, mcp__plugin_talent-one_ashby__create_candidate, mcp__plugin_talent-one_ashby__add_note_to_candidate, mcp__plugin_talent-one_ashby__consider_candidate_for_job, mcp__plugin_talent-one_ashby__get_candidate
 model: haiku
 ---
 
@@ -31,16 +31,16 @@ Ceiling: the example content. Do not exceed its section count or its per-slot le
 Your Part 3 block in `02_GROUNDING_MATRIX.md` is authoritative. In short:
 
 - Internal postings archive: mine the last 3-5 postings in the team for voice and structure, and the previous posting of this role if one exists, sorted by apply-to-screen conversion where available.
-- Brand doc: equal-opportunity statement and benefits lines, verbatim, direct file read. Never author these yourself.
+- Brand doc: equal-opportunity statement and benefits lines, verbatim, direct file read (the profile's `brand/` KB category or a connected document store). Never author these yourself: when no brand source carries them, halt with NEED_INPUT, `cheapest_fix: ask_user`, for the two lines, and never delete `jd.eeo` or `jd.benefits` to get past strict render.
 - Comp system: posted range by band lookup. Never a web-derived range when a band exists.
 - Pack: requirements ledger (`spec.requirements`), pool-math rationale for nice-to-haves (`market`, `messaging`), titles and synonyms (`keywords`). The posted range IS `comp.canonical_range`, stated once in the pack, quoted verbatim here; you never derive a range.
 - Public fallback: `BLS-OES` · `ONET` · public postings from comparable employers.
 
-If the orchestrator's prompt lists connected internal sources (ATS, wiki, comp system,
-brand doc), query them via their MCP tools (load with ToolSearch). If none are listed,
-run the standalone public-data path from your grounding-matrix block: this is a fully
-supported path, not a degraded one. Never put internal strings, comp figures, or names
-into a web search query.
+If the orchestrator's prompt lists a connector (the bundled ATS, Exa, and Bright Data
+servers, or the user's own ATS or document store), read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md`
+and load only the tools it maps to your sources (ToolSearch). If none is listed, run the
+standalone public-data path from your grounding-matrix block: a fully supported path, not
+a degraded one. Never put internal strings, comp figures, or names into any web query.
 
 **KB-miss fallback:** if the internal archive has no prior posting for this role or team, mirror the org's best-converting historical posting instead and flag the substitution in the ledger. If the comp system has no band, the posted range becomes an Estimate anchored to `OFLC` or `BLS-OES` with the method stated, never a bare number.
 

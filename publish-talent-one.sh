@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# publish-talent-one.sh — create the GitHub repo and ship 1.0.3, start to finish.
+# publish-talent-one.sh — create the GitHub repo and ship 1.1.0, start to finish.
 #
 #   Prereqs:  gh auth login   (once, ever)
 #   Run from INSIDE the unzipped talent-one/ folder:
@@ -10,9 +10,9 @@ set -euo pipefail
 
 OWNER="onepromptman"
 REPO="talent-one"
-TAG="v1.0.3"
-PLUGIN="dist/talent-one-1.0.3.plugin"
-SHA="ca7f3c207ab89cce313b6c5c47b92aaeee45794e402aeac74eb2823e934ab88b"
+TAG="v1.1.0"
+PLUGIN="dist/talent-one-1.1.0.plugin"
+SHA="04c5001730a0ef780af06ead1eb14685ecd2c5cbf98ca241c8ec2254bb2c348b"
 
 echo "==> preflight"
 command -v gh >/dev/null || { echo "gh CLI not installed: https://cli.github.com"; exit 1; }
@@ -28,7 +28,7 @@ echo "    ok: $GOT"
 echo "==> git init + first commit"
 git init -q 2>/dev/null || true
 git add -A
-git -c user.name="Onepromptman" commit -qm "Talent One 1.0.3 — eleven-agent hiring package kit" || echo "    (nothing to commit)"
+git -c user.name="Onepromptman" commit -qm "Talent One 1.1.0 — eleven-agent hiring package kit" || echo "    (nothing to commit)"
 git branch -M main
 
 echo "==> creating github.com/$OWNER/$REPO"
@@ -50,7 +50,7 @@ echo "==> release $TAG"
 gh release create "$TAG" "$PLUGIN" \
   --repo "$OWNER/$REPO" \
   --title "Talent One $TAG" \
-  --notes-file docs/RELEASE_NOTES_1.0.3.md \
+  --notes-file docs/RELEASE_NOTES_1.1.0.md \
   --latest
 
 echo

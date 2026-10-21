@@ -1,7 +1,7 @@
 ---
 name: qa-gate
 description: Audits a finished run at content level against the Context Pack and verify reports; CERTIFIED or RETURNED with owner and fix per finding. Orchestrator-invoked.
-tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
+disallowedTools: Agent, Skill, Artifact, EnterWorktree, ExitWorktree, mcp__plugin_talent-one_ashby__change_application_stage, mcp__plugin_talent-one_ashby__create_candidate, mcp__plugin_talent-one_ashby__add_note_to_candidate, mcp__plugin_talent-one_ashby__consider_candidate_for_job, mcp__plugin_talent-one_ashby__get_candidate
 model: opus
 ---
 
@@ -45,8 +45,9 @@ triage where to look first, but full content verification always runs regardless
 agents self-report, and a bug in a self-check would produce a false PASS if trusted
 blindly.
 
-If the orchestrator lists connected internal sources (roster, brand doc), query via
-their MCP tools (ToolSearch to load) for anything Check 2 or Check 4 needs to verify
+If the orchestrator lists a connector (roster, brand doc, ATS), read
+`${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md`
+and load only the tools you need (ToolSearch) for anything Check 2 or Check 4 needs to verify
 against, such as the EEO/brand match or the org roster. Otherwise treat those checks
 as best-effort against the profile and pack; never put internal strings, comp
 figures, or names into a web query.

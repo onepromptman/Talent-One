@@ -7,22 +7,26 @@ All notable changes to Talent One. Format loosely follows [Keep a Changelog](htt
 ## [1.1.0] — 2026-10-21
 
 A leaner harness, same output contract. SHA-256 of `talent-one-1.1.0.plugin`:
-`a58af64bda84576ad705b44ddd8cba0be8ad53d5acd7496a330297e867246f14`
+`04c5001730a0ef780af06ead1eb14685ecd2c5cbf98ca241c8ec2254bb2c348b`
 
 ### Changed
 
-- **Agents load less before they work.** Measured with the new `scripts/context_budget.py` on the shipped files: one full fan-out of all eleven agents dropped from 88,913 to 82,111 instruction tokens (about 8 percent); the always-resident agent and skill descriptions from 3,013 to 2,267 tokens (about a quarter); the orchestrator skill from 3,422 to 3,195. No content schema, template, or renderer code changed.
+- **Agents load less before they work.** Measured with the new `scripts/context_budget.py` on the shipped files: one full fan-out of all eleven agents dropped from 87,430 to 81,875 instruction tokens (about 6 percent); the always-resident agent and skill descriptions from 2,588 to 1,841 tokens (about 29 percent); the orchestrator skill from 3,424 to 3,259. No content schema, template, or renderer code changed.
 - **Compact shared contract for the eight artifact agents.** `build_briefs.py` compiles the shared rules into each brief once: provenance (section 3), the content-JSON shape (section 5) and the NEED_INPUT halt contract (section 6.5) stay verbatim; preflight, grounding order, voice, constraints, handoff and self-QA are condensed to checklists that keep every auto-fail list word for word. scout and qa-gate keep the full text.
 - **Agent files point at their brief** in three sentences instead of a three-paragraph preamble; the rules that preamble carried now live once in the brief as a runtime contract. Every agent description is 25 words or fewer.
 - **Orchestrator loads seeding and update-mode procedures on demand** (`references/ORCHESTRATOR_SEEDING.md`, `references/ORCHESTRATOR_UPDATE_MODE.md`); the blocking ask-first gate stays resident.
 
 ### Fixed
 
+- **Subagents can now reach connectors at all.** Every agent file carried a `tools:` allowlist of built-in tools, which excluded every MCP tool, so the "query connected sources via their MCP tools" instructions could never run inside a subagent. The ten research-capable agents now use `disallowedTools` (no nested agents, skills, or artifacts) and inherit the session's connectors, bundled or the user's own; relay keeps its read-only list.
+- JD-Bot halts with NEED_INPUT for the EEO statement and benefits lines when no brand source carries them, instead of deleting the slots and failing strict render (QA run finding 3).
+- Scout reports a sectional refresh's own web calls, never a cumulative total, so the `validate-pack` budget check no longer fails every refresh after a full build (QA run finding 1).
 - The sourcing playbook's pipeline rates are labeled HOUSE or ORACLE everywhere; the hunter method text said BENCHMARK in three places while the grounding matrix and QA gate said ORACLE.
 
 ### Added
 
-- `scripts/context_budget.py`: reports the three context buckets and fails with `--check` when a ceiling is crossed.
+- **Four connectors ship inside the plugin** (`.mcp.json`): Exa (web search and page reads, keyless by default), Bright Data (search results, bot-protected pages, LinkedIn company profiles and job listings, scoped to six read tools, OAuth sign-in, no API key stored in the plugin), and the official Greenhouse and Ashby MCP servers (OAuth). Ashby's write and candidate-record tools are denied in every agent's configuration; Greenhouse access is bounded by the admin's scopes and the user's consent screen. None is required. `references/CONNECTOR_RUNTIME.md` gives every agent one map from source codename to tool, the budget rule (every Exa or Bright Data call counts against the 12-call pack budget) and the privacy rules (candidate pipelines as counts only, no person-profile tools, no ATS writes). See `CONNECTORS.md`.
+- `scripts/context_budget.py`: reports the three context buckets and fails with `--check` when a ceiling is crossed. Ceilings are the measured values of the shipped tree plus headroom; lower them when a cut lands, never raise them to pass.
 
 ### Process
 
