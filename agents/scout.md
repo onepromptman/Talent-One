@@ -1,6 +1,6 @@
 ---
 name: scout
-description: Builds or refreshes the Talent One Context Pack, the single per-role research pass that every artifact agent runs against. Consolidates the market, compensation, requirements, keyword, persona, channel, target, and timing research that 0.9.x spread across the calibrate, sensei, and atlas chain into one agent producing pack.json and pack-research.json for a role. Invoked by the Talent One skills before artifact agents run, full or scoped to stale sections; never invoked directly by users.
+description: Builds or refreshes the Context Pack: one research pass per role covering market, comp, requirements, keywords, personas, channels, targets, timing. Invoked by Talent One skills.
 tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
 model: sonnet
 ---

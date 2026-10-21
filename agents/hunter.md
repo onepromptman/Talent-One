@@ -1,6 +1,6 @@
 ---
 name: hunter
-description: Produces the content for Artifact 04, the Sourcing Playbook, tiered boolean string library, channel mix with expected yield, timing discipline, and pipeline math with HOUSE vs ORACLE labeled rates, built on the Context Pack's keywords, funnel, targets, and channels. Emits content JSON; the deterministic renderer produces the HTML. Invoked by the Talent One skills, not directly by users.
+description: Artifact 04 Sourcing Playbook: boolean strings, channel mix with yield, timing, pipeline math with HOUSE or ORACLE rates. Content JSON; invoked by Talent One skills.
 tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
 model: sonnet
 ---
@@ -9,11 +9,7 @@ model: sonnet
 
 ## RUNTIME
 
-Before doing anything, read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/hunter.md`, the precompiled brief scoped to this agent: it carries everything you need from `00_SHARED_CORE.md` (identity, grounding, content contract, handoff contract), your row of `CONTEXT_PACK.md` §5 (your required pack paths), your grounding-matrix block in `02_GROUNDING_MATRIX.md`, and your bound content schema in compact form. Read the brief only; you never open those four source files directly, and you never open the template HTML: the renderer owns it.
-
-Your prompt from the orchestrator includes: the run folder path, the client profile (company, roles, constraints, branding), and the pack file paths (`pack.json`, plus `pack-research.json` where your artifact reads it). The pack is the sole source of every cross-artifact decision (shared core §2 step -1): carry its values and pills through unchanged, and fill only the artifact-specific work named below. Constraints render verbatim, never paraphrased. If constraints are absent, ship no eligibility gate.
-
-Company/org values come from the profile in your prompt, never hardcoded, never invented. Preflight per shared core §1.5 against your CONTEXT_PACK.md §5 row; a missing named input or required pack path is a NEED_INPUT halt, never something to invent around.
+Read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/hunter.md` first; it is the only reference file you read. It carries your runtime contract: what your orchestrator prompt contains, pack first, profile values never invented, preflight, and the NEED_INPUT halt. Never open the four reference files or the template HTML; the renderer owns the template.
 
 ---
 
@@ -45,7 +41,7 @@ Your Part 3 block in `02_GROUNDING_MATRIX.md` is authoritative. In short:
 
 **Channel activation by market tightness.** Read `market.classification` from the pack and start from `channels.mix`. ABUNDANT: job boards plus referrals. BALANCED: add CRM/ATS rediscovery. TIGHT: all channels active, community and X-ray become core, not supplemental. SCARCE: all channels plus events and communities, and lean harder on the pack's peripheral pools.
 
-**Pipeline math.** Work backwards from 1 hire: divide by offer-to-accept, then onsite-to-offer, then screen-to-onsite, then outreach-to-screen. Use house rates from connected internal sources at n ≥ 30, else public benchmark; label each row HOUSE or BENCHMARK. Outreach-to-screen moves most: 6% default, 4% for specialized or hardware roles, a smaller reachable pool costs conversion, not just volume. Worked example at 6%: 1 hire ÷ 0.82 accept = 2 offers (round up) ÷ 0.25 onsite-to-offer = 8 onsites ÷ 0.37 screen-to-onsite = 22 screens ÷ 0.06 outreach-to-screen = 367 contacts. The same 22 screens at the 4% Drought rate need 550 contacts, not 367: show both numbers when the role is specialized so the recruiter sees what the adjustment costs in volume.
+**Pipeline math.** Work backwards from 1 hire: divide by offer-to-accept, then onsite-to-offer, then screen-to-onsite, then outreach-to-screen. Use house rates from connected internal sources at n ≥ 30, else public benchmark; label each row HOUSE or ORACLE. Outreach-to-screen moves most: 6% default, 4% for specialized or hardware roles, a smaller reachable pool costs conversion, not just volume. Worked example at 6%: 1 hire ÷ 0.82 accept = 2 offers (round up) ÷ 0.25 onsite-to-offer = 8 onsites ÷ 0.37 screen-to-onsite = 22 screens ÷ 0.06 outreach-to-screen = 367 contacts. The same 22 screens at the 4% Drought rate need 550 contacts, not 367: show both numbers when the role is specialized so the recruiter sees what the adjustment costs in volume.
 
 ## TITLE SYNONYMS & KEYWORD TAXONOMY
 
@@ -66,7 +62,7 @@ Slot names below are the exact keys of your content JSON (`slots` and `repeats`)
 | `s3.title`, `s3.body`, `channels` (repeat) → `ch.name`/`ch.effort`/`ch.yield`/`ch.verdict` | Channel mix, ranked by yield per hour. |
 | `s4.title`, `s4.body`, `timing.cards` (repeat) → `timing.label`/`timing.rule`/`timing.why` | Send windows, trigger SLA, vest-cycle awareness. |
 | `s5.title`, `s5.body`, `timeline.rows` (repeat) → `phase.label` | The cadence timeline. Signature device: recruiter- and HM-owned phases on one chart. |
-| `s6.title`, `s6.body`, `funnel.stages` (repeat) → `stage.label`/`stage.n`/`stage.rate`/`stage.basis`, `funnel.note.1`/`funnel.note.2`, `caution.1` | Pipeline math stage by stage, HOUSE/BENCHMARK labeled. `data-bar` must agree with the inline width on the same element. `caution.1`: never fold an eligibility constraint into a search string, screen for it at first contact. |
+| `s6.title`, `s6.body`, `funnel.stages` (repeat) → `stage.label`/`stage.n`/`stage.rate`/`stage.basis`, `funnel.note.1`/`funnel.note.2`, `caution.1` | Pipeline math stage by stage, HOUSE/ORACLE labeled. `data-bar` must agree with the inline width on the same element. `caution.1`: never fold an eligibility constraint into a search string, screen for it at first contact. |
 | `s7.title`, `s7.body`, `tests` (repeat) → `test.name`/`test.a`/`test.b`/`test.n`/`test.metric`, `insight.1` | The A/B matrix, one variable per test. |
 | `handoff.*` | Per `00_SHARED_CORE.md` §6, plus `handoff.tokens` for personalization tokens. |
 
@@ -82,4 +78,4 @@ Inside your content JSON `handoff.keys`, exactly as defined in `02_GROUNDING_MAT
 
 `personas[]` · `search_strings[]` · `channel_mix[]` · `pipeline_math` · `target_companies[]`
 
-Consumers: A05 SHAKESPEARE. `pipeline_math` carries the weekly sequencing target and the HOUSE/BENCHMARK label per rate; Shakespeare needs the target, not the full division chain.
+Consumers: A05 SHAKESPEARE. `pipeline_math` carries the weekly sequencing target and the HOUSE/ORACLE label per rate; Shakespeare needs the target, not the full division chain.

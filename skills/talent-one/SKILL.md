@@ -49,22 +49,10 @@ Relay returns an ask-first list and a preflight report. Both are gates, not advi
 
 ### 2.7 Seeding and importing (write it before you spawn)
 
-Seeds now write INTO the pack (`references/CONTEXT_PACK.md` §6; ADAPTATIONS item 13
-retargeted). For each seed the user accepts, read the source document yourself and
-write the pack paths it actually states, with provenance at the seed floor: a dated
-named document is Sourced citing name and date; a user assertion is an Estimate with
-method `recruiter-stated`; `market.classification`, funnel, comp guidance, and
-personas never seed from an assertion; `constraints` never seeds, it copies verbatim
-from the profile (you do this copy on every pack build). Record each seed in
-`built_from` and its limit in `caveats`. Omit what the source does not state: a
-downstream halt on an omitted path is the system working.
-
-An external deep-research file (built with `references/PACK_RESEARCH_PROMPT.md`) in
-`inputs/` imports the same way: validate with `render.py validate-pack`, fix or
-bounce HIGH findings back to the user, install as `pack.json` +
-`pack-research.json` with its provenance intact, add `external-deep-research` to
-`built_from`. Show the user one line per seeded or imported section: what landed,
-from what, and what it does not establish.
+When relay proposes seeds, or `inputs/` holds an external deep-research file, read
+`references/ORCHESTRATOR_SEEDING.md` and follow it before spawning anything. In short:
+seeds write into the pack with provenance at the seed floor, `constraints` copies verbatim
+from the profile, and an omitted path stays omitted.
 
 ## 3. Execute
 
@@ -121,7 +109,8 @@ failure. Never re-spawn it with the same prompt.
 1. Read `missing[]` and act on each `cheapest_fix`:
    - `orchestrator_writes_file`: write it, re-spawn.
    - `run_scout`: check `inputs/` first for material that seeds the missing pack
-     path (a seed the user accepts is cheaper than research); otherwise spawn scout
+     path per `references/ORCHESTRATOR_SEEDING.md` (a seed the user accepts is
+     cheaper than research); otherwise spawn scout
      scoped to the named section. Re-spawn the halted agent after.
    - `ask_user`: batch EVERY `ask_user` entry from EVERY halted agent into ONE
      AskUserQuestion pass. You hold the only channel to the user. Spend it once.
@@ -148,16 +137,10 @@ surface remaining findings to the user honestly.
 
 ## 5. Update mode (warm role)
 
-When the user asks to change or refresh an existing artifact for a role that has
-`content/` cached: no full run. (a) If the change is a pack fact (comp range, a
-requirement, a target), update the pack first, with provenance, stamping
-`freshness`; then for each affected artifact (per the CONTEXT_PACK.md §5 table),
-spawn its agent in update mode: pass the cached content JSON plus the changed pack
-paths, instruct it to regenerate ONLY the fields the change touches and return the
-full updated content. (b) If the change is purely presentational on one artifact (a
-retitle, a deleted optional), and the mapping is one content field to one slot with
-no dependent prose, patch the content JSON yourself and say so. Then re-render,
-re-verify, deliver via update_artifact. Never edit rendered HTML.
+When the user asks to change or refresh an existing artifact for a role with cached
+`content/`, read `references/ORCHESTRATOR_UPDATE_MODE.md` and follow it: no full run,
+pack facts update first with provenance, affected agents regenerate only the touched
+fields, then re-render, re-verify, deliver via update_artifact. Never edit rendered HTML.
 
 ## 6. Completion report
 
@@ -193,4 +176,6 @@ and provenance) · `references/content-schemas/` (per-artifact content schemas +
 worked example content) · `references/PACK_RESEARCH_PROMPT.md` (external
 deep-research pack building) · `scripts/render.py` (render / verify /
 validate-pack / extract) · `references/templates/` (renderer-owned) ·
-`references/ADAPTATIONS.md` (authoritative deltas, items 1-31).
+`references/ADAPTATIONS.md` (authoritative deltas, items 1-31) ·
+`references/ORCHESTRATOR_SEEDING.md` and `references/ORCHESTRATOR_UPDATE_MODE.md`
+(sections 2.7 and 5 in full, loaded when that path runs).
