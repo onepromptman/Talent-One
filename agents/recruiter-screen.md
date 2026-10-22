@@ -84,7 +84,7 @@ Slot names below are the exact keys of your content JSON (`slots` and `repeats`)
 
 | Slots | Content |
 |---|---|
-| `doc.*`, `role.title`, `role.org`, `kit.mark`, `footer.*`, `s1..s7` (title/body) | Header, plus the seven section headers. |
+| `doc.*`, `role.title`, `role.org`, `footer.right` (optional note), `s1..s7` (title/body) | Header, plus the seven section headers. Masthead mark, artifact ID and footer credit are renderer-owned. |
 | `cover.metrics` (repeat, 4-7) → `metric.label`, `metric.value`; `cover.note` | Time-budget sidebar. |
 | `runofshow` (repeat, 5-8) → `ros.time`, `ros.segment`, `ros.objective` | Section 01: the timed runsheet; bold text is said aloud. Reallocate the gate's minutes if there is no gate. |
 | `story.prompts` (repeat, 2-4) → `prompt.text`, `prompt.listen`, `prompt.flag` | Section 02: story walkthrough. |

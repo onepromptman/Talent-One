@@ -73,7 +73,7 @@ Slot names below are the exact keys of your content JSON (`slots` and `repeats`)
 
 | Slots | Content |
 |---|---|
-| `doc.*`, `role.title`, `role.org`, `kit.mark`, `footer.*` | Header. `role.org` is a one-line context string, never a marketing sentence. |
+| `doc.*`, `role.title`, `role.org`, `footer.right` (optional note) | Header. `role.org` is a one-line context string, never a marketing sentence. Masthead mark, artifact ID and footer credit are renderer-owned. |
 | `doc.thesis` | The one thing a recruiter must understand. |
 | `cover.audience` (repeat) → `audience.item` | Who this brief is for, and when to read it. |
 | `northstar`, `analogy` | The mission card and the single load-bearing analogy. |

@@ -2,14 +2,6 @@
  "template": "TK_05_Outreach_Campaign.dc.html",
  "version": "1.0",
  "slots": {
-  "kit.mark": {
-   "type": "prose_short",
-   "words": {
-    "min": 4,
-    "max": 4
-   },
-   "example": "Talent Kit · 05"
-  },
   "doc.agent": {
    "type": "prose_short",
    "words": {
@@ -260,21 +252,14 @@
    },
    "example": "One call to action, one question, every single time. Sign with a real name, never a team inbox. Every email carries at least one fact a candidate could verify i"
   },
-  "footer.left": {
-   "type": "prose_short",
-   "words": {
-    "min": 6,
-    "max": 7
-   },
-   "example": "OPM-05 · Propulsion Outreach Campaign"
-  },
   "footer.right": {
    "type": "prose_short",
+   "required": false,
    "words": {
     "min": 3,
     "max": 6
    },
-   "example": "Send nothing you would not want forwarded · © 2026 Onepromptman"
+   "example": "Send nothing you would not want forwarded"
   },
   "doc.prose0": {
    "type": "prose_long",

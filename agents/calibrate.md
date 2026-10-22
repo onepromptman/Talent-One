@@ -89,7 +89,7 @@ Slot names below are the exact keys of your content JSON (`slots` and `repeats`)
 
 | Slots | Content |
 |---|---|
-| `doc.*`, `role.title`, `role.org`, `kit.mark`, `footer.*`, `sA..sG` (title/body) | Header, plus the seven section headers A-G. |
+| `doc.*`, `role.title`, `role.org`, `footer.right` (optional note), `sA..sG` (title/body) | Header, plus the seven section headers A-G. Masthead mark, artifact ID and footer credit are renderer-owned. |
 | `cover.decisions` (repeat) → `decision.item`; `cover.note` | "Must land today" sidebar, 3-5 decisions this meeting has to close. |
 | `market.stats` (repeat, 3-6); `timing.windows` (repeat) | Section A: 4 macro stats, Sourced. Section C: 2 trigger cards plus 1 momentum card. |
 | `comp.rows`, `comp.sources` (repeat, 3-5) → `src.high` + siblings; `comp.anchor`, `comp.label`, `comp.n`, `comp.range`, `comp.premium` | Section B: band chart, source table, anchor. Signature device below. |

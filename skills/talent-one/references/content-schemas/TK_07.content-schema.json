@@ -2,14 +2,6 @@
  "template": "TK_07_HM_Calibration.dc.html",
  "version": "1.0",
  "slots": {
-  "kit.mark": {
-   "type": "prose_short",
-   "words": {
-    "min": 4,
-    "max": 4
-   },
-   "example": "Talent Kit · 07"
-  },
   "doc.agent": {
    "type": "prose_short",
    "words": {
@@ -219,16 +211,9 @@
    },
    "example": "If the feedback SLA is not agreed in this meeting, say plainly that the time-to-fill target moves out, and record that in the recap. A scarce, mid-career propul"
   },
-  "footer.left": {
-   "type": "prose_short",
-   "words": {
-    "min": 6,
-    "max": 7
-   },
-   "example": "Talent Kit 07 · Propulsion calibration · © 2026 Onepromptman"
-  },
   "footer.right": {
    "type": "prose_short",
+   "required": false,
    "words": {
     "min": 3,
     "max": 6

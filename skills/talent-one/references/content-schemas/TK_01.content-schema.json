@@ -2,14 +2,6 @@
  "template": "TK_01_Educational_Brief.dc.html",
  "version": "1.0",
  "slots": {
-  "kit.mark": {
-   "type": "prose_short",
-   "words": {
-    "min": 4,
-    "max": 4
-   },
-   "example": "Talent Kit · 01"
-  },
   "doc.agent": {
    "type": "prose_short",
    "words": {
@@ -300,21 +292,14 @@
    },
    "example": "Left column is what to say. Right column is the version that costs you the candidate, and why. Specificity is the entire game with this audience."
   },
-  "footer.left": {
-   "type": "prose_short",
-   "words": {
-    "min": 6,
-    "max": 7
-   },
-   "example": "Talent Kit 01 · Propulsion literacy"
-  },
   "footer.right": {
    "type": "prose_short",
+   "required": false,
    "words": {
     "min": 3,
     "max": 6
    },
-   "example": "Plain-language by design · © 2026 Onepromptman"
+   "example": "Plain-language by design"
   },
   "doc.prose0": {
    "type": "prose_long",

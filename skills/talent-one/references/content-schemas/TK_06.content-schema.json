@@ -2,14 +2,6 @@
  "template": "TK_06_Interview_Plan.dc.html",
  "version": "1.0",
  "slots": {
-  "kit.mark": {
-   "type": "prose_short",
-   "words": {
-    "min": 4,
-    "max": 4
-   },
-   "example": "Talent Kit · 06"
-  },
   "doc.agent": {
    "type": "prose_short",
    "words": {
@@ -170,21 +162,14 @@
    },
    "example": "No launch-prime pedigree. No master's degree. No one specific analysis package. None of these predict propulsion judgment, and every one of them shrinks an alre"
   },
-  "footer.left": {
-   "type": "prose_short",
-   "words": {
-    "min": 6,
-    "max": 7
-   },
-   "example": "Talent Kit 06 · Propulsion Interview Plan"
-  },
   "footer.right": {
    "type": "prose_short",
+   "required": false,
    "words": {
     "min": 3,
     "max": 6
    },
-   "example": "One owner per competency · © 2026 Onepromptman"
+   "example": "One owner per competency"
   },
   "doc.prose0": {
    "type": "prose_long",

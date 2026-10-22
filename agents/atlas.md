@@ -68,7 +68,7 @@ Slot names below are the exact keys of your content JSON (`slots` and `repeats`)
 
 | Slots | Content |
 |---|---|
-| `doc.*`, `kit.mark`, `role.title`, `role.org`, `footer.*` | Header. `role.org` is a one-line context string, never a marketing sentence. |
+| `doc.*`, `role.title`, `role.org`, `footer.right` (optional note) | Header. `role.org` is a one-line context string, never a marketing sentence. Masthead mark, artifact ID and footer credit are renderer-owned. |
 | `cover.metrics` (repeat) → `metric.label`, `metric.value`; `cover.provenance` | At-a-glance panel: classification, ratio, difficulty, engageable pool, posture. |
 | `s1.title`, `s1.body`, `pullstat.*`, `insight.1`, `caution.1`, `gate.1` | The read: one thesis, the single pull-stat, three callouts. `gate.1` renders only when a disqualifying constraint exists. |
 | `s2.title`, `s2.body`, `funnel.stages` (repeat), `method.rows` (repeat) → `method.stage`, `method.basis`, `method.pill` | Supply funnel: five named filters, plus the methodology table under the Methodology toggle. |

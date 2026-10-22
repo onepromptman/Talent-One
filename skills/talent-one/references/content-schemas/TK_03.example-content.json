@@ -1,7 +1,6 @@
 {
  "template": "TK_03_Talent_Map.dc.html",
  "slots": {
-  "kit.mark": "Talent Kit · 03",
   "doc.agent": "Agent · ATLAS",
   "doc.date": "Freshness Jul 2026 · 60-day refresh",
   "doc.eyebrow": "Artifact 03 · Market intelligence",
@@ -44,8 +43,7 @@
   "s9.body": "Each persona needs a different opening line. The risk line is what to probe at the screen, not a reason to pass.",
   "s10.title": "Three moves, in order",
   "s10.body": "Everything above exists to justify these three. If you read nothing else, run them in this order.",
-  "footer.left": "Talent Kit 03 · Propulsion Talent Map",
-  "footer.right": "Estimates flagged · verify before quoting · © 2026 Onepromptman",
+  "footer.right": "Estimates flagged · verify before quoting",
   "doc.prose0": "Hidden sections are excluded from print",
   "doc.prose1": "Flight heritage & tech maturity →",
   "doc.prose2": "Test & hot-fire cadence → (iteration speed)",

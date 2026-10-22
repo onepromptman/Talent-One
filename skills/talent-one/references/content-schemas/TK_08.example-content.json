@@ -1,7 +1,6 @@
 {
  "template": "TK_08_Recruiter_Screen.dc.html",
  "slots": {
-  "kit.mark": "Talent Kit · 08",
   "doc.agent": "Agent · RECRUITER SCREEN",
   "doc.date": "30 min · run within 48 hours of first contact",
   "doc.eyebrow": "Artifact 08 · Run the call",
@@ -34,7 +33,6 @@
   "s7.title": "The call: advance, hold, or decline",
   "s7.body": "Write it up the same day. Anything past four lines is you dodging the call, and the hiring manager reads only the first two anyway.",
   "insight.1": "Beyond the two-Bad-answers rule, you are not qualified to reject on propulsion depth from this call, and you should not try. Advance anyone who clears the spot-check bar and tells a real failure story; hold the genuinely ambiguous ones for the hiring manager. This talent pool is small, and a false negative here is invisible and expensive.",
-  "footer.left": "Talent Kit 08 · Propulsion Engineer screen · © 2026 Onepromptman",
   "footer.right": "Bold text is said out loud"
  },
  "repeats": {

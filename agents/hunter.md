@@ -54,7 +54,7 @@ Slot names below are the exact keys of your content JSON (`slots` and `repeats`)
 
 | Slots | Content |
 |---|---|
-| `doc.*`, `kit.mark`, `footer.*` | Header and footer chrome. |
+| `doc.*`, `footer.right` (optional note) | Header and footer note. Masthead mark, artifact ID and footer credit are renderer-owned. |
 | `role.title`, `role.org` | Posting chip and the one-line target (e.g., beat the market average time-to-hire). |
 | `doc.thesis` | The one-line frame for the whole playbook. |
 | `cover.metrics` (repeat) → `metric.label`/`metric.value`, `cover.note` | Weekly commitment strip: profiles reviewed, sequenced, screens booked, hours protected, trigger SLA. |
