@@ -2,14 +2,6 @@
  "template": "TK_03_Talent_Map.dc.html",
  "version": "1.0",
  "slots": {
-  "kit.mark": {
-   "type": "prose_short",
-   "words": {
-    "min": 4,
-    "max": 4
-   },
-   "example": "Talent Kit · 03"
-  },
   "doc.agent": {
    "type": "prose_short",
    "words": {
@@ -346,21 +338,14 @@
    },
    "example": "Everything above exists to justify these three. If you read nothing else, run them in this order."
   },
-  "footer.left": {
-   "type": "prose_short",
-   "words": {
-    "min": 6,
-    "max": 7
-   },
-   "example": "Talent Kit 03 · Propulsion Talent Map"
-  },
   "footer.right": {
    "type": "prose_short",
+   "required": false,
    "words": {
     "min": 3,
     "max": 6
    },
-   "example": "Estimates flagged · verify before quoting · © 2026 Onepromptman"
+   "example": "Estimates flagged · verify before quoting"
   },
   "doc.prose0": {
    "type": "prose_long",

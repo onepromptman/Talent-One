@@ -873,26 +873,9 @@
       },
       "example": "intern"
     },
-    "footer.left": {
-      "type": "prose_short",
-      "templates": [
-        "TK_01",
-        "TK_02",
-        "TK_03",
-        "TK_04",
-        "TK_05",
-        "TK_06",
-        "TK_07",
-        "TK_08"
-      ],
-      "words": {
-        "min": 6,
-        "max": 7
-      },
-      "example": "Talent Kit 03 · Talent Intelligence Map"
-    },
     "footer.right": {
       "type": "prose_short",
+      "required": false,
       "templates": [
         "TK_01",
         "TK_02",
@@ -907,7 +890,8 @@
         "min": 3,
         "max": 6
       },
-      "example": "Estimates flagged · verify before quoting"
+      "example": "Estimates flagged · verify before quoting",
+      "note": "Optional short document note, or omit it. kit.mark, footer.left and the footer credit are renderer-owned (render.py --prefix / --credit); never write them."
     },
     "funnel.note.1": {
       "type": "prose_long",
@@ -1336,24 +1320,6 @@
         "max": 3
       },
       "example": "Propulsion Engineer"
-    },
-    "kit.mark": {
-      "type": "prose_short",
-      "templates": [
-        "TK_01",
-        "TK_02",
-        "TK_03",
-        "TK_04",
-        "TK_05",
-        "TK_06",
-        "TK_07",
-        "TK_08"
-      ],
-      "words": {
-        "min": 4,
-        "max": 4
-      },
-      "example": "Talent Kit · 01"
     },
     "kw.note": {
       "type": "prose_long",

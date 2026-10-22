@@ -2,14 +2,6 @@
  "template": "TK_08_Recruiter_Screen.dc.html",
  "version": "1.0",
  "slots": {
-  "kit.mark": {
-   "type": "prose_short",
-   "words": {
-    "min": 4,
-    "max": 4
-   },
-   "example": "Talent Kit · 08"
-  },
   "doc.agent": {
    "type": "prose_short",
    "words": {
@@ -247,16 +239,9 @@
    },
    "example": "Beyond the two-Bad-answers rule, you are not qualified to reject on propulsion depth from this call, and you should not try. Advance anyone who clears the spot-"
   },
-  "footer.left": {
-   "type": "prose_short",
-   "words": {
-    "min": 6,
-    "max": 7
-   },
-   "example": "Talent Kit 08 · Propulsion Engineer screen · © 2026 Onepromptman"
-  },
   "footer.right": {
    "type": "prose_short",
+   "required": false,
    "words": {
     "min": 3,
     "max": 6

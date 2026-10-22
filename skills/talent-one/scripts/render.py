@@ -15,7 +15,9 @@ fills the bound template. Subcommands:
   render    --template T --schema S.json --content C.json --ds DSDIR --out OUT.html
             [--mode light|dark|dancheong] [--brand --bh-primary=#123456 ...]
             [--handoffs HANDOFFS.json --role SLUG]
+            [--prefix STR (default TK)] [--credit on|off (default on)]
             Fill the template deterministically and inline the design system.
+            Masthead mark, artifact ID and footer credit are renderer-owned.
   verify    --template T --schema S.json --doc OUT.html [--out REPORT.json]
             Machine QA: geometry agreement, surviving example text, em dashes,
             forbidden phrases, pill vocabulary, repeat counts, template
@@ -566,8 +568,11 @@ def build_schema(template_path, slot_types_path=None):
         st = json.loads(read(slot_types_path))
         types = {k: v.get("type") for k, v in st.get("slots", {}).items()}
     words = {}
+    optional = set()
     if slot_types_path:
         words = {k: v.get("words") for k, v in st.get("slots", {}).items()}
+        optional = {k for k, v in st.get("slots", {}).items()
+                    if v.get("required") is False}
 
     schema = {"template": Path(template_path).name, "version": "1.0",
               "slots": {}, "repeats": {}, "standalone_bars": [],
@@ -580,7 +585,11 @@ def build_schema(template_path, slot_types_path=None):
         if name.startswith("handoff."):
             schema["handoff_slots"].append(name)
             continue
+        if name in CHROME_SLOTS:
+            continue  # renderer-owned chrome (fill_chrome), not agent content
         entry = {"type": types.get(name, "label")}
+        if name in optional:
+            entry["required"] = False
         if words.get(name):
             entry["words"] = words[name]
         ekids = kids(el)
@@ -1422,6 +1431,71 @@ def fill_handoff(soup, content, artifact, report):
             set_text(el, str(v))
 
 
+# Renderer-owned branding chrome (1.1.2, D2). Agents used to write the
+# masthead mark and footer, so one kit shipped eight different mastheads and a
+# copied "(c) 2026 Onepromptman". The renderer now owns them, from flags:
+#   kit.mark     "Talent One · <PREFIX>-NN" (accent dot, template markup style)
+#   footer.left  "<PREFIX>-NN · <doc.title>" (just "<PREFIX>-NN" without a title)
+#   footer.right the agent's optional short note, plus CREDIT_TEXT when
+#                --credit on (exactly once; an agent-written copy is dropped)
+# CREDIT_TEXT is the one sanctioned use of the studio name (SANCTIONED_CREDIT
+# is its lower-case form, used by verify() and lint_template()).
+CHROME_SLOTS = ("kit.mark", "footer.left")
+CREDIT_SLOT = "footer.right"
+CREDIT_TEXT = "Built with Talent One by Onepromptman"
+DEFAULT_PREFIX = "TK"
+_CREDIT_RE = re.compile(r"\s*·?\s*" + re.escape(CREDIT_TEXT) + r"\s*·?\s*", re.I)
+
+
+def strip_credit(text):
+    """text with every copy of the sanctioned credit (and its separator)
+    removed: the renderer appends the credit itself, exactly once."""
+    return _CREDIT_RE.sub(" · ", text).strip(" ·")
+
+
+def artifact_number(template_path, schema=None, content=None):
+    """Two-digit artifact number: template filename TK_NN_ first, then the
+    schema's `template`, then content `artifact`; "" when none says."""
+    for src in (Path(template_path).name, (schema or {}).get("template") or ""):
+        m = re.search(r"TK_(\d{2})", src)
+        if m:
+            return m.group(1)
+    art = str((content or {}).get("artifact") or "")
+    return art if re.fullmatch(r"\d{2}", art) else ""
+
+
+def fill_chrome(soup, template_path, schema, content, prefix=DEFAULT_PREFIX,
+                credit=True):
+    nn = artifact_number(template_path, schema, content)
+    prefix = (prefix or "").strip() or DEFAULT_PREFIX
+    art_id = f"{prefix}-{nn}" if nn else prefix
+    title = (content.get("slots") or {}).get("doc.title")
+    if isinstance(title, dict) and "html" in title:
+        title = BeautifulSoup(title["html"], "html.parser").get_text()
+    title = re.sub(r"\s+", " ", title).strip() if isinstance(title, str) else ""
+
+    def top(name):
+        return [e for e in soup.find_all(attrs={"data-slot": name})
+                if not in_repeat(e) and not in_optional(e)]
+
+    for el in top("kit.mark"):
+        set_text(el, "Talent One ")
+        dot = soup.new_tag("span", style="color:var(--bh-accent)")
+        dot.string = "·"
+        el.append(dot)
+        el.append(f" {art_id}")
+    for el in top("footer.left"):
+        set_text(el, f"{art_id} · {title}" if title else art_id)
+    for el in top(CREDIT_SLOT):
+        texts = [s for s in el.find_all(string=True) if not isinstance(s, Comment)]
+        for s in texts:
+            if CREDIT_TEXT.lower() in s.lower():
+                s.replace_with(strip_credit(str(s)))
+        if credit:
+            sep = " · " if clean_text(el) else ""
+            el.append(sep + CREDIT_TEXT)
+
+
 def check_content_shape(content):
     """Structural precheck of a content JSON before any template work.
 
@@ -1474,10 +1548,19 @@ def check_content_shape(content):
     return errs
 
 
-def render(template_path, schema, content, ds_dir=None, mode=None, brand=None):
+def render(template_path, schema, content, ds_dir=None, mode=None, brand=None,
+           prefix=DEFAULT_PREFIX, credit=True):
     soup = parse_doc(template_path)
     report = {"errors": [], "warnings": [], "missing": [], "deleted": [],
               "deleted_slots": []}
+    # Renderer-owned chrome (kit.mark, footer.left) comes from --prefix and the
+    # template's artifact number, never from content. Older cached content
+    # still carries these keys: ignore them with a warning, never an error.
+    for name in CHROME_SLOTS:
+        if name in (content.get("slots") or {}):
+            report["warnings"].append(
+                f"content slot `{name}` ignored: renderer-owned chrome, set by "
+                f"--prefix/--credit, drop it from the content")
     # Computed once per render, from the freshly-parsed, still-pristine
     # template soup (before any fill below mutates it): for every slot name,
     # the data-slot names legitimately nested inside THAT slot's own element
@@ -1490,20 +1573,27 @@ def render(template_path, schema, content, ds_dir=None, mode=None, brand=None):
         if entry.get("synthetic"):
             fill_synthetic(soup, entry["path"], name, content.get("slots", {}), report)
             continue
+        if name in CHROME_SLOTS:
+            continue  # an older schema may still list it; fill_chrome owns it
         els = [e for e in soup.find_all(attrs={"data-slot": name})
                if not in_repeat(e) and not in_optional(e)]
-        if name in content.get("slots", {}):
+        optional = entry.get("required") is False
+        value = content.get("slots", {}).get(name)
+        if name in content.get("slots", {}) and not (optional and value is None):
             for el in els:
-                fill_slot_value(el, content["slots"][name], report, name,
+                fill_slot_value(el, value, report, name,
                                 nested_map.get(name, frozenset()))
         else:
             # Same safety rule as synthetic slots and handoffs: template
             # worked-example prose never survives into a rendered document.
             # Blank the element, then report (defense in depth for non-strict
-            # runs; --strict fails the render on this either way).
+            # runs; --strict fails the render on this either way). An
+            # optional slot (schema `required: false`) blanks silently: absent
+            # or null both mean "nothing to say here".
             for el in els:
                 set_text(el, "")
-            report["missing"].append(name)
+            if not optional:
+                report["missing"].append(name)
 
     for rname, info in schema.get("repeats", {}).items():
         container = soup.find(attrs={"data-repeat": rname})
@@ -1564,6 +1654,7 @@ def render(template_path, schema, content, ds_dir=None, mode=None, brand=None):
 
     apply_toggles(soup, content.get("toggles") or {}, report)
     fill_handoff(soup, content, content.get("artifact", ""), report)
+    fill_chrome(soup, template_path, schema, content, prefix, credit)
 
     root = soup.find(attrs={"data-mode": True})
     if root is not None:
@@ -1651,9 +1742,17 @@ def extract(doc_path, schema):
                 continue
             content["slots"][name] = direct_text(el)
             continue
+        if name in CHROME_SLOTS:
+            continue  # renderer-owned chrome: never content (older schemas list it)
         el = next((e for e in soup.find_all(attrs={"data-slot": name})
                    if not in_repeat(e) and not in_optional(e)), None)
         if el is None:
+            continue
+        if name == CREDIT_SLOT:
+            # The agent's optional note only; the renderer re-adds the credit.
+            note = strip_credit(clean_text(el))
+            if note:
+                content["slots"][name] = note
             continue
         ekids = kids(el)
         if entry.get("html") or len(ekids) > 1:
@@ -1825,10 +1924,13 @@ def verify(doc_path, template_path, schema, content_path=None):
     # HIGH. handoff.* slots are derived constants and are skipped. DOMAIN_MARKERS
     # / SANCTIONED_CREDIT live at module scope (near MIN_SYNTHETIC_LEN) so
     # lint_template() shares this exact scan instead of a second copy of it.
+    # The renderer-appended credit is removed before the marker scan rather
+    # than exempting the whole element, so a drifted studio credit sitting
+    # beside the sanctioned one in the same footer still flags.
     for el in doc.find_all(True):
         t = clean_text(el)
         if t and SANCTIONED_CREDIT in t.lower():
-            continue
+            t = strip_credit(t)
         if t and DOMAIN_MARKERS.search(t) and len(t) < 400:
             slot = el.get("data-slot", el.name)
             add("HIGH", "surviving example text",
@@ -1846,9 +1948,11 @@ def verify(doc_path, template_path, schema, content_path=None):
             tpl_texts.setdefault(el["data-slot"], set()).add(t)
     for el in doc.find_all(attrs={"data-slot": True}):
         name = el["data-slot"]
-        if name.startswith("handoff."):
-            continue
+        if name.startswith("handoff.") or name in CHROME_SLOTS:
+            continue  # derived constants / renderer-owned chrome
         t = clean_text(el)
+        if name == CREDIT_SLOT:
+            t = strip_credit(t)  # compare the agent's note, not the credit
         if len(t) >= 25 and t in tpl_texts.get(name, ()):
             add("MEDIUM", "identical to example (review)", f"{name}: {t[:70]}")
         # M6 (round-2, second red-team): the >= 25 floor above is a real gap
@@ -2048,6 +2152,11 @@ def main(argv=None):
     r.add_argument("--role")
     r.add_argument("--strict", action="store_true",
                    help="exit 1 when required slots are missing")
+    r.add_argument("--prefix", default=DEFAULT_PREFIX,
+                   help="artifact ID prefix for the masthead and footer "
+                        "(profile branding.prefix), rendered as <PREFIX>-NN")
+    r.add_argument("--credit", choices=("on", "off"), default="on",
+                   help="append the footer credit (profile branding.credit)")
 
     v = sub.add_parser("verify")
     v.add_argument("--template", required=True)
@@ -2100,7 +2209,8 @@ def main(argv=None):
             print(json.dumps(summary, indent=1, ensure_ascii=False))
             sys.exit(1)
         soup, report = render(args.template, schema, content,
-                              ds_dir=args.ds, mode=args.mode, brand=brand)
+                              ds_dir=args.ds, mode=args.mode, brand=brand,
+                              prefix=args.prefix, credit=args.credit == "on")
         failed = bool(report["errors"] or (args.strict and report["missing"]))
         # Atomic write: render to a temp file next to --out and only move it
         # into place when the render is clean. Writing straight to --out on a

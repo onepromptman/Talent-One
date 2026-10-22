@@ -91,7 +91,7 @@ Slot names below are the exact keys of your content JSON (`slots` and `repeats`)
 
 | Slots | Content |
 |---|---|
-| `doc.*`, `kit.mark`, `footer.*` | Header and footer chrome. |
+| `doc.*`, `footer.right` (optional note) | Header and footer note. Masthead mark, artifact ID and footer credit are renderer-owned. |
 | `role.title`, `role.org` | Posting chip and one-line context (location, work model, team). Never a marketing sentence. |
 | `doc.thesis` | The one-line frame: left column ships, right column explains why. |
 | `cover.metrics` (repeat) → `metric.label`/`metric.value` | Posting spec strip: word count, requirements listed, reading level, pay-transparency status. |

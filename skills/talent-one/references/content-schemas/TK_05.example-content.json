@@ -1,7 +1,6 @@
 {
  "template": "TK_05_Outreach_Campaign.dc.html",
  "slots": {
-  "kit.mark": "Talent Kit · 05",
   "doc.agent": "Agent · SHAKESPEARE",
   "doc.date": "Written peer-to-peer, not pitched",
   "doc.eyebrow": "Artifact 05 · Campaign copy",
@@ -37,8 +36,7 @@
   "s7.title": "Tier discipline and the banned list",
   "s7.body": "Tier discipline is the difference between an 18% reply rate and a 6% one. The banned list is not a style preference: each phrase measurably drags down replies, and several signal that the sender has never touched a test stand.",
   "tier.note": "One call to action, one question, every single time. Sign with a real name, never a team inbox. Every email carries at least one fact a candidate could verify independently.",
-  "footer.left": "OPM-05 · Propulsion Outreach Campaign",
-  "footer.right": "Send nothing you would not want forwarded · © 2026 Onepromptman",
+  "footer.right": "Send nothing you would not want forwarded",
   "doc.prose0": "E1 · day 0 · curiosity plus identity",
   "doc.prose1": "E4 · day 14 · must be true",
   "doc.prose2": "E5 · day 21 · highest reply rate",

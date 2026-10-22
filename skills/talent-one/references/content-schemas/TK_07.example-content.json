@@ -1,7 +1,6 @@
 {
  "template": "TK_07_HM_Calibration.dc.html",
  "slots": {
-  "kit.mark": "Talent Kit · 07",
   "doc.agent": "Agent · CALIBRATE",
   "doc.date": "2026-07-29 · before sourcing starts",
   "doc.eyebrow": "Artifact 07 · Intake & calibration",
@@ -30,7 +29,6 @@
   "sG.body": "Every search optimizes two of three. Make the choice explicit and record it, then commit both sides in writing. Send this as the meeting recap the same day: a propulsion search that slips almost always slips on the right-hand column.",
   "to.selected": "Locked live in the intake meeting; recorded in the same-day recap",
   "gate.1": "If the feedback SLA is not agreed in this meeting, say plainly that the time-to-fill target moves out, and record that in the recap. A scarce, mid-career propulsion pool punishes hiring-manager latency harder than a deep one: every strong candidate has other offers in motion. Silent slippage is what turns a good search into a failed one, and it is always discovered too late to fix.",
-  "footer.left": "Talent Kit 07 · Propulsion calibration · © 2026 Onepromptman",
   "footer.right": "Send as the meeting recap",
   "doc.prose0": "Working anchor: say this out loud",
   "doc.prose1": "Requirement, as documented",

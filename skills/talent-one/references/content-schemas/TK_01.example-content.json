@@ -1,7 +1,6 @@
 {
  "template": "TK_01_Educational_Brief.dc.html",
  "slots": {
-  "kit.mark": "Talent Kit · 01",
   "doc.agent": "Agent · SENSEI",
   "doc.date": "Reads in ~12 min",
   "doc.eyebrow": "Artifact 01 · Role literacy",
@@ -42,8 +41,7 @@
   "s9.body": "Three shifts worth knowing before a hiring-manager conversation. Each is a place where last year's assumptions are now slightly wrong.",
   "s10.title": "The credibility cheat sheet",
   "s10.body": "Left column is what to say. Right column is the version that costs you the candidate, and why. Specificity is the entire game with this audience.",
-  "footer.left": "Talent Kit 01 · Propulsion literacy",
-  "footer.right": "Plain-language by design · © 2026 Onepromptman",
+  "footer.right": "Plain-language by design",
   "doc.prose0": "What that means day to day",
   "doc.prose1": "Equivalent hands-on depth is explicitly fine. If someone has shipped and tested real propulsion hardware for years, the degree question is closed.",
   "doc.prose2": "Alternative pathways that convert",

@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: bde9c5893b68
+Source fingerprint: d1ba300460e9
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_02.content-schema.json
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
@@ -251,7 +251,6 @@ Format: `name (type MIN-MAX)`, word count not the full JSON or worked example pr
 Envelope (top-level keys of your content JSON, in this order): `template` ("TK_02_Job_Description.dc.html"), `artifact` ("02", the renderer keys the handoff consumers line on it), `generated` (YYYY-MM-DD), `slots`, `repeats`, `standalone_bars`, `optionals`, `toggles`, `handoff`. Never omit `artifact`.
 
 ### Top-level slots
-- kit.mark (prose_short 4-4)
 - doc.agent (prose_short 3-4)
 - doc.date (prose_short 2-8)
 - doc.eyebrow (prose_short 5-6)
@@ -275,7 +274,6 @@ Envelope (top-level keys of your content JSON, in this order): `template` ("TK_0
 - s3.title (label 3-7)
 - s3.body (prose_long 14-44)
 - comp.readout (prose_long 23-41)
-- footer.left (prose_short 6-7)
 - footer.right (prose_short 3-6)
 
 ### Repeats

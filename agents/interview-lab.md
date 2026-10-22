@@ -191,7 +191,7 @@ Slot names below are the exact keys of your content JSON (`slots` and `repeats`)
 
 | Slots | Content |
 |---|---|
-| `kit.mark`, `doc.agent`, `doc.date`, `doc.eyebrow`, `doc.title`, `role.title`, `role.org`, `footer.left`, `footer.right` | Header and footer. `role.org` is a stage-count and time-budget string ("Five stages · 4h 15m of candidate time"), never a marketing line. |
+| `doc.agent`, `doc.date`, `doc.eyebrow`, `doc.title`, `role.title`, `role.org`, `footer.right` (optional note) | Header and footer. `role.org` is a stage-count and time-budget string ("Five stages · 4h 15m of candidate time"), never a marketing line. Masthead mark, artifact ID and footer credit are renderer-owned. |
 | `doc.thesis` | The one discipline rule a recruiter must hold onto for this loop, usually the one-owner-per-competency rule or its analogue. |
 | `cover.metrics` (repeat 4-6) → `metric.label`, `metric.value`; `cover.note` | Loop budget: candidate hours, interviewer hours, screen-to-offer target (from A07's `sla`), debrief SLA. `cover.note` is a one-line discipline reminder, not filler. |
 | `s1.title`, `s1.body` → `loop.stages` (repeat 3-6) → `stage.meta`, `stage.name`, `stage.job` | The funnel and the onsite schedule in one strip, ordered cheapest disqualifier first per Competency to stage above. `stage.meta` carries duration and interviewer role; a literal name appears only after the roster check described in Interviewer names above. |
