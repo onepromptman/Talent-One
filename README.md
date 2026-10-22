@@ -4,7 +4,7 @@
 
 **Download the plugin, drop it into Cowork or Claude Code, and go.** Eleven talent-acquisition agents turn one role brief into a full eight-document hiring kit.
 
-[![Version](https://img.shields.io/badge/version-1.1.0-black)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.1.2-black)](CHANGELOG.md)
 [![Runs in](https://img.shields.io/badge/runs%20in-Claude%20Code%20%7C%20Cowork-orange)](#where-it-runs)
 [![License](https://img.shields.io/badge/license-source--available-blue)](LICENSE.md)
 
@@ -12,7 +12,7 @@ by [Onepromptman](https://github.com/onepromptman) · © 2026
 
 </div>
 
-![Talent One — one role brief in, a full hiring package out. Eleven agents, eight recruiter-ready documents.](assets/hero.png)
+![Talent One: one role brief in, a full hiring package out. Eleven agents, eight recruiter-ready documents.](assets/hero.png)
 
 ---
 
@@ -26,14 +26,14 @@ by [Onepromptman](https://github.com/onepromptman) · © 2026
 
 ## Install
 
-**Option A — marketplace (recommended, two lines):**
+**Option A: marketplace (recommended, two lines):**
 
 ```
 /plugin marketplace add onepromptman/talent-one
 /plugin install talent-one@onepromptman
 ```
 
-**Option B — download the build:** grab [`dist/talent-one-1.1.0.plugin`](dist/talent-one-1.1.0.plugin) (or the file attached to the [latest release](../../releases/latest)) and add it as a plugin in Claude Code or Cowork.
+**Option B: download the build:** grab [`dist/talent-one-1.1.2.plugin`](dist/talent-one-1.1.2.plugin) (or the file attached to the [latest release](../../releases/latest)) and add it as a plugin in Claude Code or Cowork. Older builds stay in [`dist/`](dist/) with a sha256 file beside each.
 
 Then, once:
 
@@ -47,7 +47,7 @@ Then just ask, in plain words:
 
 | You say | You get |
 | --- | --- |
-| `Run Talent One for a Senior ML Engineer` | The full eight-document kit — research and QA included, ~30 min |
+| `Run Talent One for a Senior ML Engineer` | The full eight-document kit, research and QA included, ~30 min |
 | `Write me a JD for a staff accountant` | One document, minutes |
 | `Update the comp band to $180k–$220k` | Re-rendered in about a second |
 
@@ -57,17 +57,17 @@ Then just ask, in plain words:
 | --- | --- | --- | --- |
 | 01 | Role educational brief (for non-technical recruiters) | Sensei | [view](samples/01_Role_Educational_Brief_SAMPLE.html) |
 | 02 | Job description with annotation rail | JD-Bot | [view](samples/02_Job_Description_SAMPLE.html) |
-| 03 | Talent intelligence map — supply, demand, geo, comp | Atlas | [view](samples/03_Talent_Intelligence_Map_SAMPLE.html) |
+| 03 | Talent intelligence map · supply, demand, geo, comp | Atlas | [view](samples/03_Talent_Intelligence_Map_SAMPLE.html) |
 | 04 | Sourcing playbook with tiered boolean library | Hunter | [view](samples/04_Sourcing_Playbook_SAMPLE.html) |
 | 05 | 8-touch multi-channel outreach campaign | Shakespeare | [view](samples/05_Outreach_Campaign_SAMPLE.html) |
 | 06 | Interview plan with graded rubrics | Interview Lab | [view](samples/06_Interview_Plan_SAMPLE.html) |
 | 07 | Hiring-manager calibration brief | Calibrate | [view](samples/07_HM_Calibration_Brief_SAMPLE.html) |
 | 08 | 30-minute recruiter screen script | Recruiter Screen | [view](samples/08_Recruiter_Screen_Script_SAMPLE.html) |
-| — | QA audit of the whole package | QA Gate | — |
+| - | QA audit of the whole package | QA Gate | - |
 
 **Relay** (plans the run) and **Scout** (builds the shared per-role research pack) run automatically behind every artifact above. You never invoke them directly.
 
-Every artifact is a polished, self-contained HTML document — zero network requests, opens anywhere. Every number is tagged with where it came from: **Sourced**, **Estimate**, or **Internal**. Nothing is fabricated; gaps are labeled, never filled with filler.
+Every artifact is a polished, self-contained HTML document with zero network requests, opens anywhere. Every number is tagged with where it came from: **Sourced**, **Estimate**, or **Internal**. Nothing is fabricated; gaps are labeled, never filled with filler.
 
 ### Sample gallery
 
@@ -75,32 +75,32 @@ Eight real documents from one `Propulsion Engineer` run (a fictional company, pu
 
 <table>
 <tr>
-<td width="50%"><a href="samples/01_Role_Educational_Brief_SAMPLE.html"><img src="assets/samples/01.png" alt="Role educational brief"></a><br><sub><b>01 · Role educational brief</b> — Sensei</sub></td>
-<td width="50%"><a href="samples/02_Job_Description_SAMPLE.html"><img src="assets/samples/02.png" alt="Job description with annotation rail"></a><br><sub><b>02 · Job description + annotation rail</b> — JD-Bot</sub></td>
+<td width="50%"><a href="samples/01_Role_Educational_Brief_SAMPLE.html"><img src="assets/samples/01.png" alt="Role educational brief"></a><br><sub><b>01 · Role educational brief</b> · Sensei</sub></td>
+<td width="50%"><a href="samples/02_Job_Description_SAMPLE.html"><img src="assets/samples/02.png" alt="Job description with annotation rail"></a><br><sub><b>02 · Job description + annotation rail</b> · JD-Bot</sub></td>
 </tr>
 <tr>
-<td width="50%"><a href="samples/03_Talent_Intelligence_Map_SAMPLE.html"><img src="assets/samples/03.png" alt="Talent intelligence map"></a><br><sub><b>03 · Talent intelligence map</b> — Atlas</sub></td>
-<td width="50%"><a href="samples/04_Sourcing_Playbook_SAMPLE.html"><img src="assets/samples/04.png" alt="Sourcing playbook"></a><br><sub><b>04 · Sourcing playbook</b> — Hunter</sub></td>
+<td width="50%"><a href="samples/03_Talent_Intelligence_Map_SAMPLE.html"><img src="assets/samples/03.png" alt="Talent intelligence map"></a><br><sub><b>03 · Talent intelligence map</b> · Atlas</sub></td>
+<td width="50%"><a href="samples/04_Sourcing_Playbook_SAMPLE.html"><img src="assets/samples/04.png" alt="Sourcing playbook"></a><br><sub><b>04 · Sourcing playbook</b> · Hunter</sub></td>
 </tr>
 <tr>
-<td width="50%"><a href="samples/05_Outreach_Campaign_SAMPLE.html"><img src="assets/samples/05.png" alt="Multi-channel outreach campaign"></a><br><sub><b>05 · Multi-channel outreach campaign</b> — Shakespeare</sub></td>
-<td width="50%"><a href="samples/06_Interview_Plan_SAMPLE.html"><img src="assets/samples/06.png" alt="Interview plan with graded rubrics"></a><br><sub><b>06 · Interview plan + graded rubrics</b> — Interview Lab</sub></td>
+<td width="50%"><a href="samples/05_Outreach_Campaign_SAMPLE.html"><img src="assets/samples/05.png" alt="Multi-channel outreach campaign"></a><br><sub><b>05 · Multi-channel outreach campaign</b> · Shakespeare</sub></td>
+<td width="50%"><a href="samples/06_Interview_Plan_SAMPLE.html"><img src="assets/samples/06.png" alt="Interview plan with graded rubrics"></a><br><sub><b>06 · Interview plan + graded rubrics</b> · Interview Lab</sub></td>
 </tr>
 <tr>
-<td width="50%"><a href="samples/07_HM_Calibration_Brief_SAMPLE.html"><img src="assets/samples/07.png" alt="Hiring-manager calibration brief"></a><br><sub><b>07 · Hiring-manager calibration brief</b> — Calibrate</sub></td>
-<td width="50%"><a href="samples/08_Recruiter_Screen_Script_SAMPLE.html"><img src="assets/samples/08.png" alt="Recruiter screen script"></a><br><sub><b>08 · Recruiter screen script</b> — Recruiter Screen</sub></td>
+<td width="50%"><a href="samples/07_HM_Calibration_Brief_SAMPLE.html"><img src="assets/samples/07.png" alt="Hiring-manager calibration brief"></a><br><sub><b>07 · Hiring-manager calibration brief</b> · Calibrate</sub></td>
+<td width="50%"><a href="samples/08_Recruiter_Screen_Script_SAMPLE.html"><img src="assets/samples/08.png" alt="Recruiter screen script"></a><br><sub><b>08 · Recruiter screen script</b> · Recruiter Screen</sub></td>
 </tr>
 </table>
 
-> Previews are screenshots. Each links to the full self-contained HTML — open it in a browser for the live document (GitHub shows `.html` as source, so use the raw/download view or clone the repo).
+> Previews are screenshots. Each links to the full self-contained HTML. Open it in a browser for the live document (GitHub shows `.html` as source, so use the raw/download view or clone the repo).
 
 <p align="center">
-  <a href="https://github.com/onepromptman/Talent-One/raw/main/dist/talent-one-1.1.0.plugin">
+  <a href="https://github.com/onepromptman/Talent-One/raw/main/dist/talent-one-1.1.2.plugin">
     <img src="assets/download-button.png" alt="Download the Talent One plugin, then drop it into Cowork or Claude Code" width="680">
   </a>
 </p>
 
-<p align="center"><sub>Downloads <code>talent-one-1.1.0.plugin</code> · then in Cowork or Claude Code: add it as a plugin and run <code>set up talent one</code></sub></p>
+<p align="center"><sub>Downloads <code>talent-one-1.1.2.plugin</code> · then in Cowork or Claude Code: add it as a plugin and run <code>set up talent one</code></sub></p>
 
 ## How it works
 
@@ -122,7 +122,7 @@ role brief ──▶ Relay (plan) ──▶ Scout (one research pass ──▶ C
 
 **Timing:** full kit ≈ 30 minutes cold (measured live). One artifact on a warm role: minutes. Changing a number later re-renders in seconds.
 
-Anything you already hold — a JD, intake notes, comp data, a brain dump — shortens the pack build. A paste-ready deep-research prompt (`skills/talent-one/references/PACK_RESEARCH_PROMPT.md`) lets you build the pack in any Claude chat and hand it in as a file.
+Anything you already hold (a JD, intake notes, comp data, a brain dump) shortens the pack build. If you already use deep research in another Claude chat, a paste-ready prompt (`skills/talent-one/references/PACK_RESEARCH_PROMPT.md`) builds the pack there and you hand it in as a file.
 
 ## Data and connectors
 
@@ -134,9 +134,9 @@ Constraints (work authorization, clearance, licensure) are recruiter-written, re
 
 ## Is it safe to install?
 
-The plugin is plain text: prompts, templates, three small scripts that only run inside Claude's sandbox, and a list of four optional remote connectors (see [CONNECTORS.md](CONNECTORS.md)) that do nothing until you sign in. No executables, nothing installs on your computer, nothing reports back to anyone. The whole source is in this repo — read it.
+The plugin is plain text: prompts, templates, three small scripts that only run inside Claude's sandbox, and a list of four optional remote connectors (see [CONNECTORS.md](CONNECTORS.md)) that do nothing until you sign in. No executables, nothing installs on your computer, nothing reports back to anyone. The whole source is in this repo, so read it. `bash evals/run_gate.sh` runs the acceptance gate on the kit's own worked examples.
 
-Verify your download is the official build: run `sha256sum talent-one-1.1.0.plugin` and compare with the expected hash in [docs/INSTALL.md](docs/INSTALL.md) and the [changelog](CHANGELOG.md). The hash lives outside the archive because the archive contains this README.
+Verify your download is the official build: run `sha256sum talent-one-1.1.2.plugin` and compare with the expected hash in [docs/INSTALL.md](docs/INSTALL.md) or the sha256 file beside the build in `dist/`. The hash lives outside the archive because the archive contains this README.
 
 ## Privacy
 
@@ -147,23 +147,25 @@ The plugin itself sends nothing anywhere: the renderer and the scripts run insid
 ```
 .claude-plugin/     plugin.json + marketplace.json
 agents/             the 11 agent definitions
-skills/             11 skills — the full kit plus one per artifact
+skills/             11 skills: the full kit plus one per artifact
 samples/            all 8 documents from the built-in worked example
-docs/               quickstart PDF, one-pager PDF, release notes
-dist/               packaged .plugin build
+docs/               quickstart PDF, one-pager PDF, install guide, release notes
+evals/              acceptance gate (run_gate.sh) on the kit's own worked examples
+dist/               packaged .plugin builds (1.0.3 to 1.1.2), sha256 beside each
 ```
 
 ## Docs
 
-- [Quickstart (PDF)](docs/TalentOne_Quickstart.pdf) — 3 pages: what it is, how it works, setup
+- [Quickstart (PDF)](docs/TalentOne_Quickstart.pdf) · 3 pages: what it is, how it works, setup
 - [One-pager (PDF)](docs/TalentOne_OnePager.pdf)
-- [Install guide](docs/INSTALL.md) — per-surface steps for Claude Code and Cowork
-- [Release notes 1.1.0](docs/RELEASE_NOTES_1.1.0.md) · [1.0.3](docs/RELEASE_NOTES_1.0.3.md) · [Changelog](CHANGELOG.md)
+- [Install guide](docs/INSTALL.md) · per-surface steps and the sha256 table for Claude Code and Cowork
+- [Release notes 1.1.2](docs/RELEASE_NOTES_1.1.2.md) · [Changelog](CHANGELOG.md)
+- Older builds: release notes [1.1.1](docs/RELEASE_NOTES_1.1.1.md) · [1.1.0](docs/RELEASE_NOTES_1.1.0.md) · [1.0.3](docs/RELEASE_NOTES_1.0.3.md); the builds themselves stay in [`dist/`](dist/)
 - [Connectors](CONNECTORS.md)
 
 ## License
 
-Source-available, not open source. You may install it, run it for your own org or your clients, customize it, and use or publish every artifact it generates — those are yours. You may not resell or redistribute the kit itself. Full terms in [LICENSE.md](LICENSE.md).
+Source-available, not open source. You may install it, run it for your own org or your clients, customize it, and use or publish every artifact it generates: those are yours. You may not resell or redistribute the kit itself. Full terms in [LICENSE.md](LICENSE.md).
 
 Artifacts are drafts for professional review. Nothing the kit produces is legal advice; compensation, eligibility, and compliance language must be reviewed by the people responsible for those decisions at your organization.
 
