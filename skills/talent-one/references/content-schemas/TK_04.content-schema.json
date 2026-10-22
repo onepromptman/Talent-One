@@ -322,7 +322,7 @@
       "max": 38
      },
      "role": "prose",
-     "context": "after string.query; under s2.title \"Search strings for a concentrated pool\""
+     "context": "after string.query; under s2.title"
     }
    },
    "bars_per_row": 0,

@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 2581d67b260c
+Source fingerprint: 921968b30518
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_06.content-schema.json
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
@@ -283,7 +283,7 @@ Envelope (top-level keys of your content JSON, in this order; type and empty sta
 
 ### Synthetic slots (required under --strict)
 Prose the template generator found in the worked example at this location, with no named slot; write your own text that fits the heading, never the example's. Numbered in document order; `--strict` fails on any you omit. Format: `name (MIN-MAX, role) where`; `in X rows` = a key in each row of repeat X, otherwise a key in `slots`.
-- doc.prose0 (3-7, label) under s2.title "Every competency gets one owner"
+- doc.prose0 (3-7, label) under s2.title
 
 ### Optional blocks
 - `optional_1` (handoff_block=True): Handoff → next artifact Internal · optional: delete before sharing outside the search team Producess

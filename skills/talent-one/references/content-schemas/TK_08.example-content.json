@@ -1,5 +1,6 @@
 {
  "template": "TK_08_Recruiter_Screen.dc.html",
+ "artifact": "08",
  "slots": {
   "doc.agent": "Agent · RECRUITER SCREEN",
   "doc.date": "30 min · run within 48 hours of first contact",
@@ -26,7 +27,7 @@
   "s6.title": "The sixty-second pitch",
   "s6.body": "Learn this, don't read it. The shape matters: facts first, then the constraint that makes the work interesting, then the honest cost, then a specific next step with a date.",
   "sell.script": {
-   "html": "<p style=\"margin:0 0 14px\">\"Quick picture of what you'd be walking into. A small propulsion team designing, building, and hot-firing our own hardware, iterating fast between tests instead of waiting on a big-company release train. <span style=\"background:#EEF6F1;border-bottom:1px solid #BFDCCB\">Small enough that one engineer owns a whole subsystem, not a slice.</span></p><p style=\"margin:0 0 14px\">And here's the part propulsion engineers care about: you follow your hardware from the whiteboard to the test stand and watch it fire. When something breaks on the stand, it's yours to understand and fix, not a ticket handed to another group.</p><p style=\"margin:0 0 14px\">The honest cost is that this is hands-on and mostly on-site near the test hardware, and test campaigns bring long days when a window is open.</p><p style=\"margin:0\">Next step is a technical deep-dive with one of our propulsion engineers. I can have you scheduled within a week, and either way you'll hear from me by <span data-slot=\"sell.date\">[Date]</span>.\"</p>"
+   "html": "<p>\"Quick picture of what you'd be walking into. A small propulsion team designing, building, and hot-firing our own hardware, iterating fast between tests instead of waiting on a big-company release train. <span>Small enough that one engineer owns a whole subsystem, not a slice.</span></p><p>And here's the part propulsion engineers care about: you follow your hardware from the whiteboard to the test stand and watch it fire. When something breaks on the stand, it's yours to understand and fix, not a ticket handed to another group.</p><p>The honest cost is that this is hands-on and mostly on-site near the test hardware, and test campaigns bring long days when a window is open.</p><p>Next step is a technical deep-dive with one of our propulsion engineers. I can have you scheduled within a week, and either way you'll hear from me by <span data-slot=\"sell.date\">[Date]</span>.\"</p>"
   },
   "sell.date": "[Date]",
   "caution.1": "Before you score, check your own read. The affinity trap (over-crediting someone who reminds you of a past hire) and the halo or horn effect (letting one strong or weak moment color the whole call) both hit hardest on a cold screen. Grade each spot-check against its key on its own, not against your gut feeling about the person.",

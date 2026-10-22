@@ -1019,7 +1019,7 @@
         "min": 20,
         "max": 20
       },
-      "example": "No banned phrases · single CTA per touch · every claim externally verifiable · SMS gated to post-reply or referral"
+      "example": "No banned phrases · single CTA per touch · every claim externally verifiable · SMS gated to candidate reply only"
     },
     "handoff.consumers": {
       "type": "prose_short",

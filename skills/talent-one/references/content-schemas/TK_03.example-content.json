@@ -1,5 +1,6 @@
 {
  "template": "TK_03_Talent_Map.dc.html",
+ "artifact": "03",
  "slots": {
   "doc.agent": "Agent · ATLAS",
   "doc.date": "Freshness Jul 2026 · 60-day refresh",

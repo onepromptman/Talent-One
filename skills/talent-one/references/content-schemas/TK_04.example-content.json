@@ -1,5 +1,6 @@
 {
  "template": "TK_04_Sourcing_Strategy.dc.html",
+ "artifact": "04",
  "slots": {
   "doc.agent": "Agent · HUNTER",
   "doc.date": "Inputs · 02 · 03 · 07",

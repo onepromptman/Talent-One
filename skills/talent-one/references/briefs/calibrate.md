@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: c67240ca3bfe
+Source fingerprint: de211b8fabdc
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_07.content-schema.json
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
@@ -330,10 +330,10 @@ Envelope (top-level keys of your content JSON, in this order; type and empty sta
 
 ### Synthetic slots (required under --strict)
 Prose the template generator found in the worked example at this location, with no named slot; write your own text that fits the heading, never the example's. Numbered in document order; `--strict` fails on any you omit. Format: `name (MIN-MAX, role) where`; `in X rows` = a key in each row of repeat X, otherwise a key in `slots`.
-- doc.prose0 (4-8, label) under sB.title "Compensation reality"
-- doc.prose1 (3-4, column header) under sF.title "Requirement calibration"
-- doc.prose2 (3-4, column header) after doc.prose1 "Requirement, as documented"; under sF.title "Requirement calibration"
-- doc.prose3 (3-7, label) under sG.title "The trade-off lock and a mutual SLA"
+- doc.prose0 (4-8, label) under sB.title
+- doc.prose1 (3-4, column header) under sF.title
+- doc.prose2 (3-4, column header) after doc.prose1; under sF.title
+- doc.prose3 (3-7, label) under sG.title
 
 ### Optional blocks
 - `optional_1` (handoff_block=True): Handoff → all downstream artifacts Internal · optional: delete before sharing outside the search tea

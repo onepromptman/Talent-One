@@ -388,7 +388,7 @@
     "max": 6
    },
    "role": "label",
-   "context": "under s4.title \"Where cadence meets flight heritage\""
+   "context": "under s4.title"
   },
   "doc.prose2": {
    "type": "prose_long",
@@ -412,7 +412,7 @@
     "max": 7
    },
    "role": "label",
-   "context": "after doc.prose1 \"Flight heritage & tech maturity →\"; under s4.title \"Where cadence meets flight heritage\""
+   "context": "after doc.prose1; under s4.title"
   },
   "doc.prose3": {
    "type": "prose_long",
@@ -434,7 +434,7 @@
     "max": 6
    },
    "role": "label",
-   "context": "after doc.prose2; under s4.title \"Where cadence meets flight heritage\""
+   "context": "after doc.prose2; under s4.title"
   },
   "doc.prose4": {
    "type": "prose_long",
@@ -476,7 +476,7 @@
     "max": 46
    },
    "role": "prose",
-   "context": "after doc.prose4 \"How to read this, and what to do\"; under s5.title"
+   "context": "after doc.prose4; under s5.title"
   },
   "doc.prose6": {
    "type": "prose_long",
@@ -498,7 +498,7 @@
     "max": 18
    },
    "role": "prose",
-   "context": "after doc.prose4 \"How to read this, and what to do\"; under s5.title"
+   "context": "after doc.prose4; under s5.title"
   }
  },
  "repeats": {

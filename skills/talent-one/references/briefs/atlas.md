@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 5a0ea41f6bba
+Source fingerprint: 5aaad79a288b
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_03.content-schema.json
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
@@ -277,7 +277,7 @@ tightness anywhere in the kit; no agent file may use a second one.
 
 Format: `name (type MIN-MAX)`, word count not the full JSON or worked example prose; a slot ranged 24-24 wants 24 words, not 8 and not 60. `*` = synthetic (see Synthetic slots below).
 
-Envelope (top-level keys of your content JSON, in this order; type and empty state): `template` ("TK_03_Talent_Map.dc.html"), `artifact` ("03", the renderer keys the handoff consumers line on it), `generated` ("YYYY-MM-DD"), `slots: {}` (object), `repeats: {}` (object of row lists), `standalone_bars: []` (this template has none: write []), `optionals: {}` (each value {"slots": {...}, "repeats": {...}}, or null to delete the block), `toggles: {}` (booleans), `handoff: {...}` (object, §6). Never omit `artifact`; never `{}` for `standalone_bars`; never a bare string for an optional.
+Envelope (top-level keys of your content JSON, in this order; type and empty state): `template` ("TK_03_Talent_Map.dc.html"), `artifact` ("03", the renderer keys the handoff consumers line on it), `generated` ("YYYY-MM-DD"), `slots: {}` (object), `repeats: {}` (object of row lists), `standalone_bars: []` (this template has none: write []), `optionals: {}` (this template has none: write {}), `toggles: {}` (booleans), `handoff: {...}` (object, §6). Never omit `artifact`; never `{}` for `standalone_bars`; never a bare string for an optional.
 
 ### Top-level slots
 - doc.agent (prose_short 3-4)
@@ -386,12 +386,12 @@ Envelope (top-level keys of your content JSON, in this order; type and empty sta
 ### Synthetic slots (required under --strict)
 Prose the template generator found in the worked example at this location, with no named slot; write your own text that fits the heading, never the example's. Numbered in document order; `--strict` fails on any you omit. Format: `name (MIN-MAX, role) where`; `in X rows` = a key in each row of repeat X, otherwise a key in `slots`.
 - doc.prose0 (4-8, label) under doc.title
-- doc.prose1 (3-6, label) under s4.title "Where cadence meets flight heritage"
-- doc.prose2 (3-7, label) after doc.prose1 "Flight heritage & tech maturity →"; under s4.title "Where cadence meets flight heritage"
-- doc.prose3 (3-6, label) after doc.prose2; under s4.title "Where cadence meets flight heritage"
+- doc.prose1 (3-6, label) under s4.title
+- doc.prose2 (3-7, label) after doc.prose1; under s4.title
+- doc.prose3 (3-6, label) after doc.prose2; under s4.title
 - doc.prose4 (5-11, label) under s5.title
-- doc.prose5 (20-46, prose) after doc.prose4 "How to read this, and what to do"; under s5.title
-- doc.prose6 (8-18, prose) after doc.prose4 "How to read this, and what to do"; under s5.title
+- doc.prose5 (20-46, prose) after doc.prose4; under s5.title
+- doc.prose6 (8-18, prose) after doc.prose4; under s5.title
 
 ### Toggles
 ['method', 'dives', 'peripheral', 'personas', 'comp'] (booleans selecting which sections render; choose defaults in the template's `state = {...}` logic block, never delete an `<sc-if>` wrapper to hide a section)

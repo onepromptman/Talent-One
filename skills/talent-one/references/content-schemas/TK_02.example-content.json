@@ -1,5 +1,6 @@
 {
  "template": "TK_02_Job_Description.dc.html",
+ "artifact": "02",
  "slots": {
   "doc.agent": "Agent · JD-BOT",
   "doc.date": "Generated 2026-07-29",
@@ -14,7 +15,7 @@
   "jd.title": "Propulsion Engineer",
   "jd.meta": "Hybrid, distributed; test work onsite · $115,000-$155,000 base salary + equity",
   "jd.intro": {
-   "html": "<p style=\"margin:0 0 14px\">We build connected hardware, and the propulsion team is small: a handful of engineers and one hardware partner. You would own a propulsion subsystem, not a slice of one.</p><p style=\"margin:0 0 14px\">The work is hands-on in the way propulsion always is. You will spend more time on what the hardware does on the test stand than on a clean analysis deck. Hot-fires fail, sensors lie, and someone has to find out why before the next build. That is the job, and it is also why people here stay.</p>"
+   "html": "<p>We build connected hardware, and the propulsion team is small: a handful of engineers and one hardware partner. You would own a propulsion subsystem, not a slice of one.</p><p>The work is hands-on in the way propulsion always is. You will spend more time on what the hardware does on the test stand than on a clean analysis deck. Hot-fires fail, sensors lie, and someone has to find out why before the next build. That is the job, and it is also why people here stay.</p>"
   },
   "jd.close": "Direct space-propulsion experience is not required and is not an edge in our screen. The same problem, controlled high-energy fluid and thermal systems on flight-critical hardware, shows up in gas-turbine and jet-engine work, automotive and motorsport powertrain, and high-pressure process systems. We have hired from those fields, and those engineers are among our strongest. If that is you, apply.",
   "jd.benefits": "Base range reflects the posted location. Compensation also includes equity, health coverage, retirement plan, and paid time off. Open until filled.",

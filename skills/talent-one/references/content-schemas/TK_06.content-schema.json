@@ -191,7 +191,7 @@
     "max": 7
    },
    "role": "label",
-   "context": "under s2.title \"Every competency gets one owner\""
+   "context": "under s2.title"
   }
  },
  "repeats": {

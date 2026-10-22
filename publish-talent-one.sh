@@ -21,6 +21,9 @@ TAG="v$VERSION"
 PLUGIN="dist/talent-one-$VERSION.plugin"
 NOTES="docs/RELEASE_NOTES_$VERSION.md"
 for f in "$PLUGIN" "$PLUGIN.sha256" "$NOTES"; do [ -f "$f" ] || { echo "missing: $f"; exit 1; }; done
+if grep -q "PENDING_" docs/INSTALL.md; then
+  echo "docs/INSTALL.md still contains a PENDING_ placeholder; fill it before releasing"; exit 1
+fi
 echo "    releasing $TAG"
 
 echo "==> verifying build integrity"
@@ -33,6 +36,7 @@ echo "    ok: $GOT"
 echo "==> release $TAG"
 gh release create "$TAG" "$PLUGIN" "$PLUGIN.sha256" \
   --repo "$OWNER/$REPO" \
+  --target "$(git rev-parse HEAD)" \
   --title "Talent One $TAG" \
   --notes-file "$NOTES" \
   --latest

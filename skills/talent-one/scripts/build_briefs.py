@@ -1175,7 +1175,9 @@ def envelope_line(schema, stem):
     bars = (f"LIST of {n_bars} number(s) or [start, end] pair(s), template order"
             if n_bars else "this template has none: write []")
     opts = schema.get("optionals") or []
-    if opts and all(o.get("handoff_block") for o in opts):
+    if not opts:
+        opt = "this template has none: write {}"
+    elif all(o.get("handoff_block") for o in opts):
         opt = "only the handoff block, kept and filled from `handoff`: write {}"
     else:
         opt = ('each value {"slots": {...}, "repeats": {...}}, or null to '

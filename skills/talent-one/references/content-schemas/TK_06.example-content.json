@@ -1,5 +1,6 @@
 {
  "template": "TK_06_Interview_Plan.dc.html",
+ "artifact": "06",
  "slots": {
   "doc.agent": "Agent · INTERVIEW LAB",
   "doc.date": "Generated 2026-07-29",

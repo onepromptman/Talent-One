@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: f2a9b0d67e0c
+Source fingerprint: 04a18ad66597
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_01.content-schema.json
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
@@ -325,7 +325,7 @@ Prose the template generator found in the worked example at this location, with 
 - doc.prose0 (4-8, column header) under s1.title
 - doc.prose1 (13-31, prose) under s6.title
 - doc.prose2 (3-6, label) under s6.title
-- doc.prose3 (4-8, label) under s8.title "The words that find the pool"
+- doc.prose3 (4-8, label) under s8.title
 - collab.nodes.prose0 (12-28, prose) in collab.nodes rows, after node.name2; under s7.title
 - collab.nodes.v1.prose0 (16-36, prose) in collab.nodes row variant 1, after node.core; under s7.title
 

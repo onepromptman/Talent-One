@@ -389,7 +389,7 @@
     "max": 8
    },
    "role": "label",
-   "context": "under s8.title \"The words that find the pool\""
+   "context": "under s8.title"
   }
  },
  "repeats": {

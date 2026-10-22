@@ -240,7 +240,7 @@
     "max": 8
    },
    "role": "label",
-   "context": "under sB.title \"Compensation reality\""
+   "context": "under sB.title"
   },
   "doc.prose1": {
    "type": "prose_long",
@@ -264,7 +264,7 @@
     "max": 4
    },
    "role": "column header",
-   "context": "under sF.title \"Requirement calibration\""
+   "context": "under sF.title"
   },
   "doc.prose2": {
    "type": "prose_long",
@@ -288,7 +288,7 @@
     "max": 4
    },
    "role": "column header",
-   "context": "after doc.prose1 \"Requirement, as documented\"; under sF.title \"Requirement calibration\""
+   "context": "after doc.prose1; under sF.title"
   },
   "doc.prose3": {
    "type": "prose_long",
@@ -309,7 +309,7 @@
     "max": 7
    },
    "role": "label",
-   "context": "under sG.title \"The trade-off lock and a mutual SLA\""
+   "context": "under sG.title"
   }
  },
  "repeats": {

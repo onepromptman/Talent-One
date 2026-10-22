@@ -46,7 +46,7 @@ step "render + verify examples x8 (0 HIGH required; MEDIUM $med, LOW $low, self-
 bad=0
 if grep -rIn --exclude-dir=_ds --exclude='*.py' $'\xe2\x80\x94' agents skills README.md CHANGELOG.md CONNECTORS.md docs/*.md >"$OUT/emdash.log" 2>/dev/null; then
   bad=1; echo "      em dashes found (see evals/out/emdash.log)"; fi
-TRACKED=$(git ls-files | grep -E '(^|/)(runs|roles)/|talent-one-profile\.md$|\.content\.json$' | grep -v '^skills/talent-one/references/content-schemas/')
+TRACKED=$(git ls-files | grep -E '(^|/)(talent-one-roles|talent-one-runs|talent-one-kb|runs|roles|\.claude)/|talent-one-profile\.md$|\.content\.json$' | grep -v '^skills/talent-one/references/content-schemas/')
 [ -n "$TRACKED" ] && { bad=1; echo "      tracked run/profile/content files:"; echo "$TRACKED"; }
 step "repo hygiene (no em dashes, no tracked run files)" $bad
 

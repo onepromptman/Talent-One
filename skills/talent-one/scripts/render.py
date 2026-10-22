@@ -461,9 +461,10 @@ def synthetic_row_entries(row, layout, siblings, name_prefix):
 # where it sits; briefs printed "?-?" and agents skipped or guessed. These
 # derive both from the template itself: the range from the worked example's
 # own word count, the location from the nearest heading (and, inside a
-# repeat row, the nearest preceding real slot). Template heading TEXT is
-# worked-example copy, so it is shown only when it carries no worked-example
-# domain language; the heading's own slot name is always shown instead.
+# repeat row, the nearest preceding real slot). Slotted headings and
+# synthetic siblings are named by slot only, since agents rewrite their text;
+# quoted template text is kept only for unslotted structural headings, and
+# only when it carries no worked-example domain language.
 
 
 def _synthetic_words(text):
@@ -498,13 +499,17 @@ def _named_label(name, text, limit=60):
 
 
 def _heading_label(h, limit=60):
-    """Label for a heading element: its own (or nearest) slot name plus its
-    template text, see _named_label."""
+    """Label for a heading element. A slotted heading (its own data-slot, or
+    one nested in or around it) is rewritten by the agent, so its template
+    text is worked-example copy: the slot name alone. Only an unslotted
+    structural heading keeps its quoted text, see _named_label."""
     slot = h.get("data-slot")
     if not slot:
         near = h.find(attrs={"data-slot": True}) or h.find_parent(attrs={"data-slot": True})
-        slot = near["data-slot"] if near is not None else h.name
-    return _named_label(slot, clean_text(h), limit)
+        slot = near["data-slot"] if near is not None else None
+    if slot:
+        return slot
+    return _named_label(h.name, clean_text(h), limit)
 
 
 def _synthetic_context(el, row=None, after=None, limit=60):
@@ -560,7 +565,7 @@ def doc_synthetic_slots(soup):
                                "role": _synthetic_role(el, t),
                                "context": _synthetic_context(el, after=last_label)}
             if entries[sname]["role"] in ("label", "column header"):
-                last_label = _named_label(sname, t, 50)
+                last_label = sname  # a synthetic sibling: its name, never its example text
     return entries
 
 
@@ -1533,13 +1538,28 @@ CHROME_SLOTS = ("kit.mark", "footer.left")
 CREDIT_SLOT = "footer.right"
 CREDIT_TEXT = "Built with Talent One by Onepromptman"
 DEFAULT_PREFIX = "TK"
-_CREDIT_RE = re.compile(r"\s*·?\s*" + re.escape(CREDIT_TEXT) + r"\s*·?\s*", re.I)
+# The credit with any whitespace between its words, an optional trailing
+# [.,;], and an optional "·" separator on either side (with its spaces).
+_CREDIT_RE = re.compile(r"\s*(·\s*)?" + r"\s+".join(map(re.escape, CREDIT_TEXT.split()))
+                        + r"[.,;]?(\s*·)?\s*", re.I)
+
+
+def _has_credit(text):
+    return bool(_CREDIT_RE.search(text or ""))
 
 
 def strip_credit(text):
     """text with every copy of the sanctioned credit (and its separator)
-    removed: the renderer appends the credit itself, exactly once."""
-    return _CREDIT_RE.sub(" · ", text).strip(" ·")
+    removed: the renderer appends the credit itself, exactly once. Text on
+    both sides of a removed copy is rejoined with " · " when a separator
+    was there, else one space; nothing else in the text is touched."""
+    def repl(m):
+        pre = _CREDIT_RE.sub("", m.string[:m.start()]).strip()
+        post = _CREDIT_RE.sub("", m.string[m.end():]).strip()
+        if pre and post:
+            return " · " if (m.group(1) or m.group(2)) else " "
+        return ""
+    return _CREDIT_RE.sub(repl, text)
 
 
 def artifact_number(template_path, schema=None, content=None):
@@ -1554,7 +1574,7 @@ def artifact_number(template_path, schema=None, content=None):
 
 
 def fill_chrome(soup, template_path, schema, content, prefix=DEFAULT_PREFIX,
-                credit=True):
+                credit=True, report=None):
     nn = artifact_number(template_path, schema, content)
     prefix = (prefix or "").strip() or DEFAULT_PREFIX
     art_id = f"{prefix}-{nn}" if nn else prefix
@@ -1575,11 +1595,15 @@ def fill_chrome(soup, template_path, schema, content, prefix=DEFAULT_PREFIX,
         el.append(f" {art_id}")
     for el in top("footer.left"):
         set_text(el, f"{art_id} · {title}" if title else art_id)
-    for el in top(CREDIT_SLOT):
-        texts = [s for s in el.find_all(string=True) if not isinstance(s, Comment)]
-        for s in texts:
-            if CREDIT_TEXT.lower() in s.lower():
-                s.replace_with(strip_credit(str(s)))
+    credit_els = top(CREDIT_SLOT)
+    if credit and not credit_els and report is not None:
+        report["warnings"].append("credit requested but template has no footer.right")
+    for el in credit_els:
+        # An agent-written copy (even split by markup, e.g. "<b>Talent
+        # One</b>") is found in the element's whole text and dropped there;
+        # the note around it is kept as plain text.
+        if _has_credit(clean_text(el)):
+            set_text(el, strip_credit(clean_text(el)))
         if credit:
             sep = " · " if clean_text(el) else ""
             el.append(sep + CREDIT_TEXT)
@@ -1658,11 +1682,21 @@ def check_content_shape(content):
         for oid, odata in opts.items():
             if odata is None or odata is False:
                 continue
+            if odata == [] or odata == "":
+                opts[oid] = None
+                warns.append(f"content shape: `optionals.{oid}` was {odata!r}, treated as "
+                             f"null (same as leaving it out: a plain block is deleted); "
+                             f"write \"{oid}\": null or leave it out")
+                continue
             if not isinstance(odata, dict):
                 errs.append(_optional_shape_error(oid, odata))
                 opts[oid] = None  # neutralized so render() cannot crash on it; render still fails
                 continue
             for sub in ("slots", "repeats"):
+                if odata.get(sub) == []:
+                    odata[sub] = {}
+                    warns.append(f"content shape: `optionals.{oid}.{sub}` was [], treated "
+                                 f"as {{}} (an object; write {{}} when empty)")
                 if sub in odata and odata[sub] is not None and not isinstance(odata[sub], dict):
                     errs.append(f"content shape: optionals.{oid}.{sub} must be an object, "
                                 f"got {type(odata[sub]).__name__}")
@@ -1809,7 +1843,7 @@ def render(template_path, schema, content, ds_dir=None, mode=None, brand=None,
 
     apply_toggles(soup, content.get("toggles") or {}, report)
     fill_handoff(soup, content, content.get("artifact", ""), report)
-    fill_chrome(soup, template_path, schema, content, prefix, credit)
+    fill_chrome(soup, template_path, schema, content, prefix, credit, report)
 
     root = soup.find(attrs={"data-mode": True})
     if root is not None:
@@ -1905,13 +1939,21 @@ def extract(doc_path, schema):
             continue
         if name == CREDIT_SLOT:
             # The agent's optional note only; the renderer re-adds the credit.
-            note = strip_credit(clean_text(el))
-            if note:
-                content["slots"][name] = note
+            if el.find(True) is not None:
+                note_el = copy.copy(el)
+                for s in note_el.find_all(string=True):
+                    if not isinstance(s, Comment) and _has_credit(str(s)):
+                        s.replace_with(strip_credit(str(s)))
+                if clean_text(note_el):
+                    content["slots"][name] = {"html": note_el.decode_contents().strip()}
+            else:
+                note = strip_credit(clean_text(el)).strip()
+                if note:
+                    content["slots"][name] = note
             continue
         ekids = kids(el)
         if entry.get("html") or len(ekids) > 1:
-            content["slots"][name] = {"html": "".join(str(k) for k in ekids)}
+            content["slots"][name] = {"html": el.decode_contents()}
         elif entry.get("type") == "pill" or name.endswith(".pill"):
             content["slots"][name] = parse_pill_text(clean_text(el)) or clean_text(el)
         else:
@@ -2006,6 +2048,13 @@ def verify(doc_path, template_path, schema, content_path=None):
     prose_doc = BeautifulSoup(str(doc), "html.parser")
     for t in prose_doc.find_all(["style", "script"]):
         t.extract()
+    # The renderer appends the credit exactly once; a second copy (an agent
+    # wrote it too, e.g. split by markup) ships the studio credit twice.
+    n_credit = len(_CREDIT_RE.findall(clean_text(prose_doc)))
+    if n_credit > 1:
+        add("MEDIUM", "credit repeated",
+            f"the footer credit appears {n_credit} times; it belongs only in "
+            f"footer.right, once, appended by the renderer (drop it from content)")
     for el in prose_doc.find_all(string=lambda s: EM_DASH in s):
         add("HIGH", "em-dash", str(el).strip()[:90])
     # The banned-list exhibit (TK_05's data-repeat="banned") displays the
@@ -2082,10 +2131,14 @@ def verify(doc_path, template_path, schema, content_path=None):
     # The renderer-appended credit is removed before the marker scan rather
     # than exempting the whole element, so a drifted studio credit sitting
     # beside the sanctioned one in the same footer still flags.
-    for el in doc.find_all(True):
+    # Only the top-level footer.right is stripped, on a copy: the exact
+    # credit phrase anywhere else in the document still flags.
+    marker_doc = copy.copy(doc)
+    for el in marker_doc.find_all(attrs={"data-slot": CREDIT_SLOT}):
+        if not in_repeat(el) and not in_optional(el) and _has_credit(clean_text(el)):
+            set_text(el, strip_credit(clean_text(el)))
+    for el in marker_doc.find_all(True):
         t = clean_text(el)
-        if t and SANCTIONED_CREDIT in t.lower():
-            t = strip_credit(t)
         if t and DOMAIN_MARKERS.search(t) and len(t) < 400:
             slot = el.get("data-slot", el.name)
             add("HIGH", "surviving example text",
@@ -2219,10 +2272,15 @@ _STATED_COUNT = re.compile(
     r"\b(\d{1,2}|" + "|".join(_NUM_WORDS) + r")[\s-]+(touch|touches|step|steps)\b", re.I)
 _DAY_SLASH_LIST = re.compile(r"\bday\s+(\d{1,3}(?:\s*/\s*\d{1,3})+)", re.I)
 _DAY_MARKER = re.compile(r"\b(?:d|day\s?)(\d{1,3})\b", re.I)
+# What may sit between two markers of one enumeration: a comma, slash or
+# semicolon, whitespace, "and" / "&". A "-" or "to" makes the pair a range.
+_DAY_LIST_SEP = re.compile(r"\s*(?:[,/;&]|\band\b)?\s*(?:\band\b\s*)?", re.I)
+_DAY_RANGE_SEP = re.compile(r"\s*(?:-|–|\bto\b|\bthrough\b)\s*", re.I)
+_SEQUENCE_LIST_KEYS = ("sequence", "touches", "steps", "sequence_steps")
 
 
 def _check_pack_budget(obj, label, budget, findings):
-    est = len(json.dumps(obj, ensure_ascii=False)) // 4
+    est = len(json.dumps(obj, ensure_ascii=False, separators=(",", ":"))) // 4
     if est > budget:
         where = ("move long methods, evidence lists and persona detail to "
                  "pack-research.json" if label == "pack.json" else
@@ -2233,15 +2291,34 @@ def _check_pack_budget(obj, label, budget, findings):
 
 
 def _day_marker_count(text):
-    """Touches enumerated in a cadence string, counted by day markers
-    ("d0", "D3", "day 7", or "day 0 / 4 / 11"). None when fewer than three
-    markers: too few to read as an enumeration, so no comparison is made."""
-    n = 0
-    for m in _DAY_SLASH_LIST.finditer(text):
-        n += len(re.findall(r"\d+", m.group(1)))
-    rest = _DAY_SLASH_LIST.sub(" ", text)
-    n += len(_DAY_MARKER.findall(rest))
-    return n if n >= 3 else None
+    """Touches enumerated in a cadence string: the distinct day markers
+    ("d0", "D3", "day 7", or "day 0 / 4 / 11") that sit inside an actual
+    enumeration, i.e. a run of two or more markers separated only by
+    commas, slashes, spaces or "and". Markers joined by "-" or "to" are a
+    range ("D0-D21"), not touches, and are ignored. None when fewer than
+    three distinct markers qualify: no comparison is made."""
+    text = _DAY_SLASH_LIST.sub(
+        lambda m: " / ".join(f"D{d}" for d in re.findall(r"\d+", m.group(1))), text)
+    marks = list(_DAY_MARKER.finditer(text))
+    days, run = set(), []
+    for i, m in enumerate(marks):
+        between = text[marks[i - 1].end():m.start()] if i else None
+        in_range = (between is not None and _DAY_RANGE_SEP.fullmatch(between)) or (
+            i + 1 < len(marks) and _DAY_RANGE_SEP.fullmatch(text[m.end():marks[i + 1].start()]))
+        if in_range:
+            if len(run) >= 2:
+                days.update(run)
+            run = []
+            continue
+        if run and between is not None and _DAY_LIST_SEP.fullmatch(between):
+            run.append(int(m.group(1)))
+        else:
+            if len(run) >= 2:
+                days.update(run)
+            run = [int(m.group(1))]
+    if len(run) >= 2:
+        days.update(run)
+    return len(days) if len(days) >= 3 else None
 
 
 def _stated_counts(text):
@@ -2255,9 +2332,9 @@ def _stated_counts(text):
 def _check_sequence_counts(channels, findings):
     """D6 (1): a cadence string that states N touches/steps while the list it
     describes holds a different number. The list is either a sibling list in
-    the same object whose key names a sequence, or the day markers the
-    string itself enumerates. Unsure (no stated count, too few markers) means
-    no finding."""
+    the same object whose key is exactly sequence / touches / steps /
+    sequence_steps, or the day markers the string itself enumerates. Unsure
+    (no stated count, too few markers) means no finding."""
     if not isinstance(channels, dict):
         return
     scopes = [("channels", channels)]
@@ -2265,7 +2342,7 @@ def _check_sequence_counts(channels, findings):
         scopes.append(("channels.sequence_frame", channels["sequence_frame"]))
     for base, scope in scopes:
         lists = {k: v for k, v in scope.items() if isinstance(v, list) and
-                 re.search(r"sequence|touch|step|cadence|schedule", k, re.I)}
+                 k in _SEQUENCE_LIST_KEYS}
         for key, val in scope.items():
             if not isinstance(val, str):
                 continue
@@ -2287,7 +2364,7 @@ def _check_sequence_counts(channels, findings):
 
 def _parse_as_of(value):
     """'YYYY-MM' or 'YYYY-MM-DD' -> (year, month, day or None), else None."""
-    m = re.match(r"^\s*(\d{4})-(\d{1,2})(?:-(\d{1,2}))?\b", str(value or ""))
+    m = re.match(r"^\s*(\d{4})-(\d{1,2})(?:-(\d{1,2}))?(?!\d)", str(value or ""))
     if not m:
         return None
     y, mo = int(m.group(1)), int(m.group(2))
@@ -2307,9 +2384,9 @@ def _check_comp_sla(pack, findings):
     if not isinstance(comp, dict):
         return
     ref = _parse_as_of(pack.get("built"))
-    if ref and ref[2]:
+    if ref:
         try:
-            ref_date = datetime.date(*ref)
+            ref_date = datetime.date(ref[0], ref[1], ref[2] or 1)
         except ValueError:
             ref_date = datetime.date.today()
     else:
@@ -2436,6 +2513,16 @@ def append_compat_handoff(handoffs_path, content, role, schema=None):
 # ---------------------------------------------------------------- main
 
 
+def _on_off(value):
+    """--credit value: on/true/yes/1 or off/false/no/0, any case."""
+    v = str(value).strip().lower()
+    if v in ("on", "true", "yes", "1"):
+        return "on"
+    if v in ("off", "false", "no", "0"):
+        return "off"
+    raise argparse.ArgumentTypeError(f"expected on or off, got {value!r}")
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -2467,7 +2554,7 @@ def main(argv=None):
     r.add_argument("--prefix", default=DEFAULT_PREFIX,
                    help="artifact ID prefix for the masthead and footer "
                         "(profile branding.prefix), rendered as <PREFIX>-NN")
-    r.add_argument("--credit", choices=("on", "off"), default="on",
+    r.add_argument("--credit", type=_on_off, choices=("on", "off"), default="on",
                    help="append the footer credit (profile branding.credit)")
 
     v = sub.add_parser("verify")

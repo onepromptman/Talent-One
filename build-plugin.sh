@@ -14,15 +14,16 @@ V=${1:-$PJ}
 OUT="dist/talent-one-$V.plugin"
 [ -e "$OUT" ] && { echo "$OUT already exists; bump the version instead of overwriting"; exit 1; }
 [ -f "docs/RELEASE_NOTES_$V.md" ] || { echo "docs/RELEASE_NOTES_$V.md is missing"; exit 1; }
-mkdir -p dist
 # What ships: plugin manifest, bundled connector list, the eleven agents, the
-# skills with their references and scripts, and the user-facing docs.
-zip -q -r -X "$OUT" \
-  .claude-plugin/plugin.json .mcp.json \
-  README.md LICENSE.md CONNECTORS.md CHANGELOG.md \
-  "docs/INSTALL.md" "docs/RELEASE_NOTES_$V.md" \
-  agents skills \
-  -x '*/__pycache__/*' '*.pyc' '*/.DS_Store'
+# skills with their references and scripts, and the user-facing docs. Only
+# committed files ship: a dirty tree (edits or untracked files under these
+# paths) is refused, so the build is exactly what HEAD holds.
+SHIP=(agents skills .claude-plugin .mcp.json README.md LICENSE.md CONNECTORS.md
+      CHANGELOG.md docs/INSTALL.md "docs/RELEASE_NOTES_$V.md")
+DIRTY=$(git status --porcelain -- "${SHIP[@]}")
+[ -z "$DIRTY" ] || { echo "uncommitted changes in shipped paths; commit or stash first:"; echo "$DIRTY"; exit 1; }
+mkdir -p dist
+git ls-files -z -- "${SHIP[@]}" | xargs -0 zip -q -X "$OUT"
 ( cd dist && sha256sum "talent-one-$V.plugin" > "talent-one-$V.plugin.sha256" )
 echo "built $OUT ($(unzip -Z1 "$OUT" | wc -l) files)"
 cat "dist/talent-one-$V.plugin.sha256"

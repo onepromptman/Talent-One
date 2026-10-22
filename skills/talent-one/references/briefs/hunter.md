@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 695e23b2cd2a
+Source fingerprint: 0f0c11e4a67b
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_04.content-schema.json
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
@@ -347,7 +347,7 @@ Envelope (top-level keys of your content JSON, in this order; type and empty sta
 
 ### Synthetic slots (required under --strict)
 Prose the template generator found in the worked example at this location, with no named slot; write your own text that fits the heading, never the example's. Numbered in document order; `--strict` fails on any you omit. Format: `name (MIN-MAX, role) where`; `in X rows` = a key in each row of repeat X, otherwise a key in `slots`.
-- strings.prose0 (16-38, prose) in strings rows, after string.query; under s2.title "Search strings for a concentrated pool"
+- strings.prose0 (16-38, prose) in strings rows, after string.query; under s2.title
 
 ### Optional blocks
 - `optional_1` (handoff_block=True): Handoff → next artifact Internal · optional: delete before sharing outside the search team Producesp

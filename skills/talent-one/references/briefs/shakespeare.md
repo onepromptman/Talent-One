@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 7e5f1c8a9e69
+Source fingerprint: 33c6df394fba
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_05.content-schema.json
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
@@ -326,17 +326,17 @@ Envelope (top-level keys of your content JSON, in this order; type and empty sta
 
 ### Synthetic slots (required under --strict)
 Prose the template generator found in the worked example at this location, with no named slot; write your own text that fits the heading, never the example's. Numbered in document order; `--strict` fails on any you omit. Format: `name (MIN-MAX, role) where`; `in X rows` = a key in each row of repeat X, otherwise a key in `slots`.
-- doc.prose0 (4-8, label) under s2.title "Email 1 · the origin touch"
-- doc.prose1 (4-8, label) under s5.title "Honest urgency, then the exit ramp"
-- doc.prose2 (4-8, label) after doc.prose1 "E4 · day 14 · must be true"; under s5.title "Honest urgency, then the exit ramp"
-- doc.prose3 (8-20, prose) after doc.prose2 "E5 · day 21 · highest reply rate"; under s5.title "Honest urgency, then the exit ramp"
-- doc.prose4 (13-29, prose) after doc.prose2 "E5 · day 21 · highest reply rate"; under s5.title "Honest urgency, then the exit ramp"
-- doc.prose5 (14-34, prose) after doc.prose2 "E5 · day 21 · highest reply rate"; under s5.title "Honest urgency, then the exit ramp"
-- doc.prose6 (3-6, label) after doc.prose2 "E5 · day 21 · highest reply rate"; under s5.title "Honest urgency, then the exit ramp"
-- doc.prose7 (11-25, prose) after doc.prose6 "Go build,[Your first name]"; under s5.title "Honest urgency, then the exit ramp"
-- doc.prose8 (5-11, label) after doc.prose6 "Go build,[Your first name]"; under s5.title "Honest urgency, then the exit ramp"
-- doc.prose9 (3-6, label) under s7.title "Tier discipline and the banned list"
-- emails.prose0 (13-29, prose) in emails rows, after email.note; under s3.title "Proof first, then scope"
+- doc.prose0 (4-8, label) under s2.title
+- doc.prose1 (4-8, label) under s5.title
+- doc.prose2 (4-8, label) after doc.prose1; under s5.title
+- doc.prose3 (8-20, prose) after doc.prose2; under s5.title
+- doc.prose4 (13-29, prose) after doc.prose2; under s5.title
+- doc.prose5 (14-34, prose) after doc.prose2; under s5.title
+- doc.prose6 (3-6, label) after doc.prose2; under s5.title
+- doc.prose7 (11-25, prose) after doc.prose6; under s5.title
+- doc.prose8 (5-11, label) after doc.prose6; under s5.title
+- doc.prose9 (3-6, label) under s7.title
+- emails.prose0 (13-29, prose) in emails rows, after email.note; under s3.title
 
 ### Standalone bars
 [{'form': 'donut', 'example': 0.18, 'context': '18% Reply target Benchmarks to beat: 68% open, 18% reply, 9% interested. Estimat'}]
