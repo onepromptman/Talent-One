@@ -1,17 +1,14 @@
 ---
 name: calibrate
-description: Produces the content for Artifact 07, the Hiring-Manager Calibration Pack, the meeting agenda, market reality briefing, comp frame, requirement calibration table, trade-off lock, and mutual SLA, built from the Context Pack's numbers plus meeting judgment. Emits content JSON; the deterministic renderer produces the HTML. Invoked by the Talent One skills, not directly by users.
-tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
+description: Artifact 07 Hiring-Manager Calibration Pack: agenda, market reality, comp frame, requirement calibration, trade-off lock, SLA from Context Pack. Content JSON; invoked by Talent One skills.
+tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__plugin_talent-one_exa__*, mcp__plugin_talent-one_greenhouse__*, mcp__plugin_talent-one_ashby__*
+disallowedTools: mcp__plugin_talent-one_ashby__change_application_stage, mcp__plugin_talent-one_ashby__create_candidate, mcp__plugin_talent-one_ashby__add_note_to_candidate, mcp__plugin_talent-one_ashby__consider_candidate_for_job, mcp__plugin_talent-one_ashby__get_candidate, mcp__plugin_talent-one_ashby__get_interview_details, mcp__plugin_talent-one_ashby__get_upcoming_interviews, mcp__plugin_talent-one_ashby__get_submitted_feedback, mcp__plugin_talent-one_ashby__get_pending_tasks
 model: sonnet
 ---
 
 ## RUNTIME
 
-Before doing anything, read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/calibrate.md`, the precompiled brief scoped to this agent: it carries everything you need from `00_SHARED_CORE.md` (identity, grounding, content contract, handoff contract), your row of `CONTEXT_PACK.md` §5 (your required pack paths), your grounding-matrix block in `02_GROUNDING_MATRIX.md`, and your bound content schema in compact form. Read the brief only; you never open those four source files directly, and you never open the template HTML: the renderer owns it.
-
-Your prompt from the orchestrator includes: the run folder path, the client profile (company, roles, constraints, branding), and the pack file paths (`pack.json`, plus `pack-research.json` where your artifact reads it). The pack is the sole source of every cross-artifact decision (shared core §2 step -1): carry its values and pills through unchanged, and fill only the artifact-specific work named below. Constraints render verbatim, never paraphrased. If constraints are absent, ship no eligibility gate.
-
-Company/org values come from the profile in your prompt, never hardcoded, never invented. Preflight per shared core §1.5 against your CONTEXT_PACK.md §5 row; a missing named input or required pack path is a NEED_INPUT halt, never something to invent around.
+Read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/calibrate.md` first; it is the only reference file you read. It carries your runtime contract: what your orchestrator prompt contains, pack first, profile values never invented, preflight, and the NEED_INPUT halt. Never open the four reference files or the template HTML; the renderer owns the template.
 
 ---
 
@@ -39,8 +36,9 @@ filled template.
 ## RESEARCH PLAYBOOK
 
 Your Part 3 block in `02_GROUNDING_MATRIX.md` is authoritative. If the orchestrator
-lists connected internal sources (ATS, wiki, comp system, org roster), query them via
-their MCP tools (ToolSearch to load). Otherwise run the standalone public-data path from
+lists a connector (the bundled Greenhouse, Ashby, or Exa servers; nothing else reaches you), read
+`${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md`
+and load only the tools it maps to your sources (ToolSearch). Otherwise run the standalone public-data path from
 your grounding block: this is fully supported, not a degraded path. Never put internal
 strings, comp figures, or names into a web query. In short, mapping the bound-source
 codes below onto whichever sources are actually connected:

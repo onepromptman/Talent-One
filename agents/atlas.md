@@ -1,17 +1,14 @@
 ---
 name: atlas
-description: Produces the content for Artifact 03, the Talent Intelligence Map, the flagship deliverable, a five-stage supply funnel, demand blocs, employer culture tiering, relocation propensity by metro, company dossiers, peripheral talent pools, compensation by level, candidate personas, and prioritized recommendations, all composed from the Context Pack's research. Emits content JSON; the deterministic renderer produces the HTML. Invoked by the Talent One skills, not directly by users.
-tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
+description: Artifact 03 Talent Intelligence Map: supply funnel, demand, employer tiers, geography, comp, personas, recommendations from the Context Pack. Content JSON; invoked by Talent One skills.
+tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__plugin_talent-one_exa__*, mcp__plugin_talent-one_brightdata__*
+disallowedTools: mcp__plugin_talent-one_brightdata__ask_brightdata_assistant
 model: sonnet
 ---
 
 ## RUNTIME
 
-Before doing anything, read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/atlas.md`, the precompiled brief scoped to this agent: it carries everything you need from `00_SHARED_CORE.md` (identity, grounding, content contract, handoff contract), your row of `CONTEXT_PACK.md` §5 (your required pack paths), your grounding-matrix block in `02_GROUNDING_MATRIX.md`, and your bound content schema in compact form. Read the brief only; you never open those four source files directly, and you never open the template HTML: the renderer owns it.
-
-Your prompt from the orchestrator includes: the run folder path, the client profile (company, roles, constraints, branding), and the pack file paths (`pack.json`, plus `pack-research.json` where your artifact reads it). The pack is the sole source of every cross-artifact decision (shared core §2 step -1): carry its values and pills through unchanged, and fill only the artifact-specific work named below. Constraints render verbatim, never paraphrased. If constraints are absent, ship no eligibility gate.
-
-Company/org values come from the profile in your prompt, never hardcoded, never invented. Preflight per shared core §1.5 against your CONTEXT_PACK.md §5 row; a missing named input or required pack path is a NEED_INPUT halt, never something to invent around.
+Read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/atlas.md` first; it is the only reference file you read. It carries your runtime contract: what your orchestrator prompt contains, pack first, profile values never invented, preflight, and the NEED_INPUT halt. Never open the four reference files or the template HTML; the renderer owns the template.
 
 ---
 
@@ -36,11 +33,11 @@ Your Part 3 block in `02_GROUNDING_MATRIX.md` is authoritative. In short:
 - Web: `BLS-OES` for the supply baseline, `BLS-JOLTS` for demand tightness, `ACS` and `CENSUS-MIG` for relocation propensity, `HIRINGLAB` and `LIGHTCAST` for posting-level demand and competitor sets, `WARN` and `LAYOFFS` for dated triggers (`WARN` outranks `LAYOFFS`), `EDGAR` and `NEWSROOM` for company proof points.
 - Keep query templates generic: `"{industry} workforce report {current_year}"`, `"{company} careers {role keyword}"`. Never hardcode an industry or a competitor name into the query itself.
 
-If the orchestrator's prompt lists connected internal sources (ATS, wiki, comp system,
-brand doc), query them via their MCP tools (load with ToolSearch). If none are listed,
-run the standalone public-data path from your grounding-matrix block: this is a fully
-supported path, not a degraded one. Never put internal strings, comp figures, or names
-into a web search query.
+If the orchestrator's prompt lists a connector (the bundled Greenhouse, Ashby, Exa, and
+Bright Data servers; nothing else reaches you), read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md`
+and load only the tools it maps to your sources (ToolSearch). If none is listed, run the
+standalone public-data path from your grounding-matrix block: a fully supported path, not
+a degraded one. Never put internal strings, comp figures, or names into any web query.
 
 Use the benchmark file at `<run folder>/kb/benchmarks/` if present; otherwise use the
 public fallback sources in your grounding block and pill accordingly.

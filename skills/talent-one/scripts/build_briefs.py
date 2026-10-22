@@ -188,11 +188,9 @@ RESEARCH_READERS = {"atlas", "hunter", "shakespeare"}
 # section is emitted, so listing "5" here does not mean the agent inherits
 # every other agent's schema filename.
 SHARED_CORE_SECTIONS = {
-    # Every agent's own RUNTIME preamble (agents/*.md, NOT edited by this
-    # script beyond the "read these files" line) already restates §1's two
-    # substantive rules verbatim ("Company/org values come from the profile
-    # ..., never hardcoded, never invented"), so §1 IDENTITY is dropped
-    # everywhere: it is boilerplate the agent file already carries.
+    # §1 IDENTITY is dropped from the full slice: scout and qa-gate restate
+    # its substantive rules in their own RUNTIME preambles, and the eight
+    # artifact agents get it from _RUNTIME_CONTRACT (1.1.0, cut D3).
     #
     # The 8 artifact-producing agents: everything else in shared core
     # governs something they do.
@@ -619,9 +617,83 @@ def drop_numbered_item(body, label):
 # example content; item 9: repeat count discipline). qa-gate is the one
 # agent that AUDITS other agents against this exact checklist, so it keeps
 # the full, uncompacted version.
+_RUNTIME_CONTRACT = (
+    "## 0. RUNTIME CONTRACT\n\n"
+    "You are one specialized agent in the client's talent acquisition network. You "
+    "produce exactly one artifact of an eight-part hiring kit, at the quality bar of a "
+    "top-tier executive search deliverable: read by recruiters, hiring managers and "
+    "executives, defensible line by line. QA audits your provenance against your "
+    "grounding block.\n\n"
+    "Your prompt from the orchestrator includes: the run folder path, the client "
+    "profile (company, roles, constraints, branding), and the pack file paths "
+    "(`pack.json`, plus `pack-research.json` where your artifact reads it). The pack "
+    "is the sole source of every cross-artifact decision (market classification, the "
+    "one canonical comp range, requirements, keywords, personas, channel mix, targets, "
+    "timing): carry its values and pills through unchanged, never re-derive, never "
+    "fork a number; if a bounded lookup of yours disagrees, keep the pack value, add "
+    "your finding, and raise a Caution. Fill only the artifact-specific work your "
+    "agent file names. Constraints render verbatim as the recruiter wrote them, never "
+    "paraphrased, softened, expanded, or given added legal language; if constraints "
+    "are absent, ship no eligibility gate. Company and organization values come from "
+    "the profile in your prompt, never hardcoded, never invented. A missing named "
+    "input or required pack path is a NEED_INPUT halt (section 6.5), never something "
+    "to invent around.\n"
+)
+
+# Compact replacement for shared-core sections 1.5, 2, 4, 6 and 7 in the eight
+# artifact agents' briefs (1.1.0, cut D4). Everything an artifact agent must
+# obey from those sections, in checklist form; the auto-fail lists are kept
+# verbatim. Sections 3 (provenance), 5 (content contract, trimmed per agent)
+# and 6.5 (the NEED_INPUT fence) stay verbatim. scout and qa-gate keep the
+# full slice: scout builds the pack these rules protect, qa-gate audits
+# against the full text.
+_COMPACT_CORE = (
+    "## 1-2. PREFLIGHT AND GROUNDING (compact)\n\n"
+    "Preflight before any research: (1) every file path in your prompt exists and is "
+    "non-empty; (2) the pack files exist and every REQUIRED pack path in your row "
+    "below is present; (3) every profile field you depend on is present; (4) your "
+    "content schema is readable. Any miss is Class A, an orchestration error: halt "
+    "with NEED_INPUT (section 6.5), no research, no partial artifact. A lookup that "
+    "comes back empty is Class B, normal: degrade honestly, emit the figure as an "
+    "Estimate with its method, or delete the block and say what is missing.\n\n"
+    "Grounding order, which you follow only for your own bounded lookups (the pack "
+    "carries every cross-artifact decision): your grounding-matrix block below is "
+    "authoritative and outranks the generic playbook in your own prompt. Knowledge base first (categories "
+    "internal, benchmarks, brand, history); live web second for anything volatile "
+    "(comp, company events, layoffs, funding, labor data, news), never from memory. "
+    "If web contradicts internal calibration, keep the internal position, add the web "
+    "finding, raise a Caution. Freshness: comp 6 months or newer, trigger events 90 "
+    "days, macro labor stats 18 months, internal calibration flagged past 12 months; "
+    "stamp freshness in the header slot. Never fabricate, and never source a claim to "
+    "a place you did not actually read: a fake Sourced tag is the worst failure in "
+    "this system.\n\n"
+    "## 4. VOICE AND CONSTRAINTS (compact)\n\n"
+    "Peer to peer, short declaratives, name the cost of a thing, zero recruiter "
+    "fluff, no adjective stacking, analogies over jargon for a non-technical recruiter, "
+    "grade level 10 or below for outreach and job copy. Never use em dashes anywhere; ranges take a hyphen or `&ndash;`. "
+    "Forbidden phrases, auto-fail: \"I hope this finds you well\", \"came across "
+    "your profile\", \"exciting opportunity\", \"quick question\", \"touch base\", "
+    "\"reach out\", \"pick your brain\", \"I wanted to\", \"rockstar\", \"ninja\", "
+    "\"guru\", \"best in class\", \"fast-paced environment\", \"competitive salary\" "
+    "(state the range), \"leverage\", \"robust\", \"seamless\", \"world-class\", "
+    "\"passionate about\".\n\n"
+    "Constraints are recruiter-configured, never assumed. Empty or absent "
+    "`constraints` means no gate at all: do not invent one or hint at one. A "
+    "`disqualifying: true` constraint renders as a Gate callout; others as body "
+    "content. Never state or estimate the size of a protected-class or "
+    "nationality-linked population.\n\n"
+    "## 6. HANDOFF (compact)\n\n"
+    "Your content JSON carries a `handoff` object: `keys` (exactly the Part 3.5 key "
+    "names for your artifact, under 350 tokens), `blocked` (a real blocker or the "
+    "single word Nothing), `assumptions` (inherited pack caveats and degraded-proceed "
+    "costs, verbatim, or omitted). Your final message to the orchestrator: the content "
+    "JSON path, your `keys` block, every Estimate-pilled figure needing human review, "
+    "and any Caution you raised. Never the full JSON body.\n\n"
+)
+
 _SELF_QA_COMPACT = (
     "## 7. SELF-QA BEFORE EMITTING\n\n"
-    "Before writing: run the checklist implied by §§1.5-6 above (every slot "
+    "Before writing: run the checklist implied by the sections above (every slot "
     "filled or sanctioned-null, one pill+method per number, pack values "
     "carried unchanged, zero em dashes/forbidden phrases, one decision per "
     "callout, constraints verbatim or absent, nothing fabricated, handoff "
@@ -651,11 +723,27 @@ def drop_constraints_subsection(body):
     return new_body
 
 
+COMPACT_CORE_AGENTS = set(AGENT_SCHEMA)  # the eight artifact agents (1.1.0, D4)
+
+
 def shared_core_slice(src, agent):
     codes = SHARED_CORE_SECTIONS.get(agent, [])
     if not codes:
         return ""
     parts = []
+    if agent in COMPACT_CORE_AGENTS:
+        # 1.1.0: sections 1.5, 2, 4, 6 and 7 collapse to one checklist; 3, 5
+        # and 6.5 stay verbatim (5 trimmed per agent as before).
+        c12, c4, c6 = _COMPACT_CORE.split("## ")[1:]
+        parts.append(_RUNTIME_CONTRACT.strip())
+        parts.append("## " + c12.strip())
+        parts.append(src.shared_core["3"].strip())
+        parts.append("## " + c4.strip())
+        parts.append(trim_content_contract(src.shared_core["5"], agent).strip())
+        parts.append("## " + c6.strip())
+        parts.append(src.shared_core["6.5"].strip())
+        parts.append(_SELF_QA_COMPACT.strip())
+        return "\n\n".join(parts)
     for code in codes:
         body = src.shared_core[code]
         if code == "2":
@@ -1085,7 +1173,12 @@ def schema_summary(stem):
            "worked example prose; a slot ranged 24-24 wants 24 words, not 8 "
            "and not 60. `*` = synthetic: prose the template generator found "
            "beyond the named data-slot elements, filled exactly like any "
-           "other slot, never left as the shipped example text.", ""]
+           "other slot, never left as the shipped example text.", "",
+           f"Envelope (top-level keys of your content JSON, in this order): "
+           f"`template` (\"{schema['template']}\"), `artifact` (\"{stem[-2:]}\", "
+           "the renderer keys the handoff consumers line on it), `generated` "
+           "(YYYY-MM-DD), `slots`, `repeats`, `standalone_bars`, `optionals`, "
+           "`toggles`, `handoff`. Never omit `artifact`.", ""]
 
     out.append("### Top-level slots")
     for name, info in schema.get("slots", {}).items():

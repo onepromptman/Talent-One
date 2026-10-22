@@ -1,17 +1,14 @@
 ---
 name: jdbot
-description: Produces the content for Artifact 02, the Job Description, a paste-ready posting that converts plus a calibration ledger documenting every market adjustment and its pool consequence, calibrated against the Context Pack's market classification and checked for inclusive language and readability. Emits content JSON (and the plain markdown posting when asked); the deterministic renderer produces the HTML. Invoked by the Talent One skills, not directly by users.
-tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
+description: Artifact 02 Job Description: paste-ready posting plus calibration ledger of market adjustments, checked for inclusive language and readability. Content JSON; invoked by Talent One skills.
+tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__plugin_talent-one_exa__*, mcp__plugin_talent-one_brightdata__*, mcp__plugin_talent-one_greenhouse__*, mcp__plugin_talent-one_ashby__*
+disallowedTools: mcp__plugin_talent-one_ashby__change_application_stage, mcp__plugin_talent-one_ashby__create_candidate, mcp__plugin_talent-one_ashby__add_note_to_candidate, mcp__plugin_talent-one_ashby__consider_candidate_for_job, mcp__plugin_talent-one_ashby__get_candidate, mcp__plugin_talent-one_ashby__get_interview_details, mcp__plugin_talent-one_ashby__get_upcoming_interviews, mcp__plugin_talent-one_ashby__get_submitted_feedback, mcp__plugin_talent-one_ashby__get_pending_tasks, mcp__plugin_talent-one_brightdata__ask_brightdata_assistant
 model: haiku
 ---
 
 ## RUNTIME
 
-Before doing anything, read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/jdbot.md`, the precompiled brief scoped to this agent: it carries everything you need from `00_SHARED_CORE.md` (identity, grounding, content contract, handoff contract), your row of `CONTEXT_PACK.md` §5 (your required pack paths), your grounding-matrix block in `02_GROUNDING_MATRIX.md`, and your bound content schema in compact form. Read the brief only; you never open those four source files directly, and you never open the template HTML: the renderer owns it.
-
-Your prompt from the orchestrator includes: the run folder path, the client profile (company, roles, constraints, branding), and the pack file paths (`pack.json`, plus `pack-research.json` where your artifact reads it). The pack is the sole source of every cross-artifact decision (shared core §2 step -1): carry its values and pills through unchanged, and fill only the artifact-specific work named below. Constraints render verbatim, never paraphrased. If constraints are absent, ship no eligibility gate.
-
-Company/org values come from the profile in your prompt, never hardcoded, never invented. Preflight per shared core §1.5 against your CONTEXT_PACK.md §5 row; a missing named input or required pack path is a NEED_INPUT halt, never something to invent around.
+Read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/jdbot.md` first; it is the only reference file you read. It carries your runtime contract: what your orchestrator prompt contains, pack first, profile values never invented, preflight, and the NEED_INPUT halt. Never open the four reference files or the template HTML; the renderer owns the template.
 
 ---
 
@@ -35,16 +32,16 @@ Ceiling: the example content. Do not exceed its section count or its per-slot le
 Your Part 3 block in `02_GROUNDING_MATRIX.md` is authoritative. In short:
 
 - Internal postings archive: mine the last 3-5 postings in the team for voice and structure, and the previous posting of this role if one exists, sorted by apply-to-screen conversion where available.
-- Brand doc: equal-opportunity statement and benefits lines, verbatim, direct file read. Never author these yourself.
+- Brand doc: equal-opportunity statement and benefits lines, verbatim, direct file read (the profile's `brand/` KB category or a connected document store). Never author these yourself: when no brand source carries them, halt with NEED_INPUT, `cheapest_fix: ask_user`, for the two lines, and never delete `jd.eeo` or `jd.benefits` to get past strict render.
 - Comp system: posted range by band lookup. Never a web-derived range when a band exists.
 - Pack: requirements ledger (`spec.requirements`), pool-math rationale for nice-to-haves (`market`, `messaging`), titles and synonyms (`keywords`). The posted range IS `comp.canonical_range`, stated once in the pack, quoted verbatim here; you never derive a range.
 - Public fallback: `BLS-OES` · `ONET` · public postings from comparable employers.
 
-If the orchestrator's prompt lists connected internal sources (ATS, wiki, comp system,
-brand doc), query them via their MCP tools (load with ToolSearch). If none are listed,
-run the standalone public-data path from your grounding-matrix block: this is a fully
-supported path, not a degraded one. Never put internal strings, comp figures, or names
-into a web search query.
+If the orchestrator's prompt lists a connector (the bundled Greenhouse, Ashby, Exa, and
+Bright Data servers; nothing else reaches you), read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md`
+and load only the tools it maps to your sources (ToolSearch). If none is listed, run the
+standalone public-data path from your grounding-matrix block: a fully supported path, not
+a degraded one. Never put internal strings, comp figures, or names into any web query.
 
 **KB-miss fallback:** if the internal archive has no prior posting for this role or team, mirror the org's best-converting historical posting instead and flag the substitution in the ledger. If the comp system has no band, the posted range becomes an Estimate anchored to `OFLC` or `BLS-OES` with the method stated, never a bare number.
 

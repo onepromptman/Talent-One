@@ -4,7 +4,7 @@
 
 **Download the plugin, drop it into Cowork or Claude Code, and go.** Eleven talent-acquisition agents turn one role brief into a full eight-document hiring kit.
 
-[![Version](https://img.shields.io/badge/version-1.0.3-black)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.1.0-black)](CHANGELOG.md)
 [![Runs in](https://img.shields.io/badge/runs%20in-Claude%20Code%20%7C%20Cowork-orange)](#where-it-runs)
 [![License](https://img.shields.io/badge/license-source--available-blue)](LICENSE.md)
 
@@ -33,7 +33,7 @@ by [Onepromptman](https://github.com/onepromptman) · © 2026
 /plugin install talent-one@onepromptman
 ```
 
-**Option B — download the build:** grab [`dist/talent-one-1.0.3.plugin`](dist/talent-one-1.0.3.plugin) (or the file attached to the [latest release](../../releases/latest)) and add it as a plugin in Claude Code or Cowork.
+**Option B — download the build:** grab [`dist/talent-one-1.1.0.plugin`](dist/talent-one-1.1.0.plugin) (or the file attached to the [latest release](../../releases/latest)) and add it as a plugin in Claude Code or Cowork.
 
 Then, once:
 
@@ -95,12 +95,12 @@ Eight real documents from one `Propulsion Engineer` run (a fictional company, pu
 > Previews are screenshots. Each links to the full self-contained HTML — open it in a browser for the live document (GitHub shows `.html` as source, so use the raw/download view or clone the repo).
 
 <p align="center">
-  <a href="https://github.com/onepromptman/Talent-One/raw/main/dist/talent-one-1.0.3.plugin">
+  <a href="https://github.com/onepromptman/Talent-One/raw/main/dist/talent-one-1.1.0.plugin">
     <img src="assets/download-button.png" alt="Download the Talent One plugin, then drop it into Cowork or Claude Code" width="680">
   </a>
 </p>
 
-<p align="center"><sub>Downloads <code>talent-one-1.0.3.plugin</code> · then in Cowork or Claude Code: add it as a plugin and run <code>set up talent one</code></sub></p>
+<p align="center"><sub>Downloads <code>talent-one-1.1.0.plugin</code> · then in Cowork or Claude Code: add it as a plugin and run <code>set up talent one</code></sub></p>
 
 ## How it works
 
@@ -128,20 +128,19 @@ Anything you already hold — a JD, intake notes, comp data, a brain dump — sh
 
 Works with **zero connections**, using public data: BLS, O\*NET, Census, DOL disclosure data, levels.fyi, live web search. That is a fully supported path, not a degraded mode.
 
-Connecting your ATS or document store upgrades specific agents — see [CONNECTORS.md](CONNECTORS.md).
+Four connectors ship inside the plugin, none required: **Exa** (web research, keyless by default), **Bright Data** (search results and page reads behind bot protection), and the official **Greenhouse** and **Ashby** MCP servers (sign in once, read-only, pipelines as counts, never candidates). Your own document store or ATS connector works the same way. See [CONNECTORS.md](CONNECTORS.md).
 
 Constraints (work authorization, clearance, licensure) are recruiter-written, rendered verbatim, and never invented. An empty constraints list ships no eligibility gate at all.
 
 ## Is it safe to install?
 
-The plugin is plain text: prompts, templates, and two small scripts that only run inside Claude's sandbox. No executables, nothing installs on your computer, nothing reports back to anyone. The whole source is in this repo — read it.
+The plugin is plain text: prompts, templates, three small scripts that only run inside Claude's sandbox, and a list of four optional remote connectors (see [CONNECTORS.md](CONNECTORS.md)) that do nothing until you sign in. No executables, nothing installs on your computer, nothing reports back to anyone. The whole source is in this repo — read it.
 
-Verify your download is the official build:
+Verify your download is the official build: run `sha256sum talent-one-1.1.0.plugin` and compare with the expected hash in [docs/INSTALL.md](docs/INSTALL.md) and the [changelog](CHANGELOG.md). The hash lives outside the archive because the archive contains this README.
 
-```bash
-sha256sum talent-one-1.0.3.plugin
-# ca7f3c207ab89cce313b6c5c47b92aaeee45794e402aeac74eb2823e934ab88b
-```
+## Privacy
+
+The plugin itself sends nothing anywhere: the renderer and the scripts run inside Claude's sandbox and make no network calls, and every generated document is self-contained. Research traffic goes through the web tools of the Claude surface you run it in. The four bundled connectors (Exa, Bright Data, Greenhouse, Ashby) are third-party services, each under its own privacy policy, and none receives anything until you sign in, and the plugin stores no API key. The agents reach only those four servers plus the built-in web tools, never your other connectors; what they may read, and what they may never pass on, is set out in [CONNECTORS.md](CONNECTORS.md). Your profile, role folders, and packs stay on your machine.
 
 ## Repository layout
 
@@ -159,7 +158,7 @@ dist/               packaged .plugin build
 - [Quickstart (PDF)](docs/TalentOne_Quickstart.pdf) — 3 pages: what it is, how it works, setup
 - [One-pager (PDF)](docs/TalentOne_OnePager.pdf)
 - [Install guide](docs/INSTALL.md) — per-surface steps for Claude Code and Cowork
-- [Release notes 1.0.3](docs/RELEASE_NOTES_1.0.3.md) · [Changelog](CHANGELOG.md)
+- [Release notes 1.1.0](docs/RELEASE_NOTES_1.1.0.md) · [1.0.3](docs/RELEASE_NOTES_1.0.3.md) · [Changelog](CHANGELOG.md)
 - [Connectors](CONNECTORS.md)
 
 ## License
