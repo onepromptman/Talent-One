@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: db663dad756c
+Source fingerprint: 711c8932486c
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
@@ -157,8 +157,13 @@ them from the pack's `quadrant` research where present) plus optional `size` px 
 and its heading: that is the honest empty state, never hedging prose. `data-count`
 in the schema is guidance: respect it unless the data genuinely demands otherwise.
 
-Omit `"optionals"` entries you have no data for: the block is deleted. Toggles
-(TK_03 only) choose which sections ship visible; never fake them elsewhere.
+Envelope types, empty state in backticks: `slots` object `{}`; `repeats` object
+`{}`; `standalone_bars` a LIST `[]` of numbers or `[start, end]` pairs, one per
+standalone bar in template order; `optionals` object `{}`, each value
+`{"slots": {...}, "repeats": {...}}` or `null`; `toggles` object `{}` of booleans;
+`handoff` object (§6). Never `{}` for `standalone_bars`, never a bare string for an
+optional. Omit `"optionals"` entries you have no data for: the block is deleted.
+Toggles (TK_03 only) choose which sections ship visible; never fake them elsewhere.
 
 Synthetic prose slots: some schema entries are marked `"synthetic": true`. These
 are prose sites the template carries without a `data-slot` attribute (a "why it
@@ -166,7 +171,8 @@ wins" line, a card aside); the renderer fills them by structural path. Fill ever
 schema-listed synthetic slot like any other slot, at the example's length and in
 the search's own domain language. A synthetic slot you omit renders BLANK, never
 the template's example prose; leaving one out is a visible hole in the artifact,
-so omission is never a shortcut.
+so omission is never a shortcut, and `render.py --strict` fails on it. The schema
+gives each one a word range and a `context` (the heading it sits under).
 
 ### 5.3 Hard rules
 

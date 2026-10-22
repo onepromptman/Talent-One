@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 3e83589fa094
+Source fingerprint: f7350b9747f4
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_05.content-schema.json
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
@@ -88,8 +88,13 @@ lists. An empty repeat list deletes the block
 and its heading: that is the honest empty state, never hedging prose. `data-count`
 in the schema is guidance: respect it unless the data genuinely demands otherwise.
 
-Omit `"optionals"` entries you have no data for: the block is deleted. Toggles
-(TK_03 only) choose which sections ship visible; never fake them elsewhere.
+Envelope types, empty state in backticks: `slots` object `{}`; `repeats` object
+`{}`; `standalone_bars` a LIST `[]` of numbers or `[start, end]` pairs, one per
+standalone bar in template order; `optionals` object `{}`, each value
+`{"slots": {...}, "repeats": {...}}` or `null`; `toggles` object `{}` of booleans;
+`handoff` object (§6). Never `{}` for `standalone_bars`, never a bare string for an
+optional. Omit `"optionals"` entries you have no data for: the block is deleted.
+Toggles (TK_03 only) choose which sections ship visible; never fake them elsewhere.
 
 Synthetic prose slots: some schema entries are marked `"synthetic": true`. These
 are prose sites the template carries without a `data-slot` attribute (a "why it
@@ -97,7 +102,8 @@ wins" line, a card aside); the renderer fills them by structural path. Fill ever
 schema-listed synthetic slot like any other slot, at the example's length and in
 the search's own domain language. A synthetic slot you omit renders BLANK, never
 the template's example prose; leaving one out is a visible hole in the artifact,
-so omission is never a shortcut.
+so omission is never a shortcut, and `render.py --strict` fails on it. The schema
+gives each one a word range and a `context` (the heading it sits under).
 
 ### 5.3 Hard rules
 
@@ -247,9 +253,9 @@ A missing REQUIRED path is Class A: halt with NEED_INPUT, `kind: pack_key`. The 
 
 ## SCHEMA SUMMARY · `TK_05.content-schema.json` (template: `TK_05_Outreach_Campaign.dc.html`)
 
-Format: `name (type MIN-MAX)`, word count not the full JSON or worked example prose; a slot ranged 24-24 wants 24 words, not 8 and not 60. `*` = synthetic: prose the template generator found beyond the named data-slot elements, filled exactly like any other slot, never left as the shipped example text.
+Format: `name (type MIN-MAX)`, word count not the full JSON or worked example prose; a slot ranged 24-24 wants 24 words, not 8 and not 60. `*` = synthetic (see Synthetic slots below).
 
-Envelope (top-level keys of your content JSON, in this order): `template` ("TK_05_Outreach_Campaign.dc.html"), `artifact` ("05", the renderer keys the handoff consumers line on it), `generated` (YYYY-MM-DD), `slots`, `repeats`, `standalone_bars`, `optionals`, `toggles`, `handoff`. Never omit `artifact`.
+Envelope (top-level keys of your content JSON, in this order; type and empty state): `template` ("TK_05_Outreach_Campaign.dc.html"), `artifact` ("05", the renderer keys the handoff consumers line on it), `generated` ("YYYY-MM-DD"), `slots: {}` (object), `repeats: {}` (object of row lists), `standalone_bars: []` (LIST of 1 number(s) or [start, end] pair(s), template order), `optionals: {}` (only the handoff block, kept and filled from `handoff`: write {}), `toggles: {}` (this template has none: write {}), `handoff: {...}` (object, §6). Never omit `artifact`; never `{}` for `standalone_bars`; never a bare string for an optional.
 
 ### Top-level slots
 - kit.mark (prose_short 4-4)
@@ -286,16 +292,6 @@ Envelope (top-level keys of your content JSON, in this order): `template` ("TK_0
 - tier.note (prose_short 23-23)
 - footer.left (prose_short 6-7)
 - footer.right (prose_short 3-6)
-- doc.prose0 (prose_long ?-?)*
-- doc.prose1 (prose_long ?-?)*
-- doc.prose2 (prose_long ?-?)*
-- doc.prose3 (prose_long ?-?)*
-- doc.prose4 (prose_long ?-?)*
-- doc.prose5 (prose_long ?-?)*
-- doc.prose6 (prose_long ?-?)*
-- doc.prose7 (prose_long ?-?)*
-- doc.prose8 (prose_long ?-?)*
-- doc.prose9 (prose_long ?-?)*
 
 ### Repeats
 - sequence [rows n=5-10]
@@ -313,7 +309,7 @@ Envelope (top-level keys of your content JSON, in this order): `template` ("TK_0
   - email.subjB (prose_short 4-4)
   - email.body (prose_long 73-73)
   - email.note (prose_short 24-24)
-  - emails.prose0 (prose_long ?-?)*
+  - emails.prose0 (prose_long 13-29)*
 - linkedin [rows n=2]
   - li.label (label 5-5)
   - li.meta (prose_short 4-4)
@@ -329,6 +325,20 @@ Envelope (top-level keys of your content JSON, in this order): `template` ("TK_0
   - tier.elements (prose_short 10-10)
 - banned [rows n=6-16]
   - banned.term (label 6-6)
+
+### Synthetic slots (required under --strict)
+Prose the template generator found in the worked example at this location, with no named slot; write your own text that fits the heading, never the example's. Numbered in document order; `--strict` fails on any you omit. Format: `name (MIN-MAX, role) where`; `in X rows` = a key in each row of repeat X, otherwise a key in `slots`.
+- doc.prose0 (4-8, label) under s2.title "Email 1 · the origin touch"
+- doc.prose1 (4-8, label) under s5.title "Honest urgency, then the exit ramp"
+- doc.prose2 (4-8, label) after doc.prose1 "E4 · day 14 · must be true"; under s5.title "Honest urgency, then the exit ramp"
+- doc.prose3 (8-20, prose) after doc.prose2 "E5 · day 21 · highest reply rate"; under s5.title "Honest urgency, then the exit ramp"
+- doc.prose4 (13-29, prose) after doc.prose2 "E5 · day 21 · highest reply rate"; under s5.title "Honest urgency, then the exit ramp"
+- doc.prose5 (14-34, prose) after doc.prose2 "E5 · day 21 · highest reply rate"; under s5.title "Honest urgency, then the exit ramp"
+- doc.prose6 (3-6, label) after doc.prose2 "E5 · day 21 · highest reply rate"; under s5.title "Honest urgency, then the exit ramp"
+- doc.prose7 (11-25, prose) after doc.prose6 "Go build,[Your first name]"; under s5.title "Honest urgency, then the exit ramp"
+- doc.prose8 (5-11, label) after doc.prose6 "Go build,[Your first name]"; under s5.title "Honest urgency, then the exit ramp"
+- doc.prose9 (3-6, label) under s7.title "Tier discipline and the banned list"
+- emails.prose0 (13-29, prose) in emails rows, after email.note; under s3.title "Proof first, then scope"
 
 ### Standalone bars
 [{'form': 'donut', 'example': 0.18, 'context': '18% Reply target Benchmarks to beat: 68% open, 18% reply, 9% interested. Estimat'}]

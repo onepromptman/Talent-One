@@ -332,7 +332,13 @@
     0,
     1
    ],
-   "example": "What that means day to day"
+   "example": "What that means day to day",
+   "words": {
+    "min": 4,
+    "max": 8
+   },
+   "role": "column header",
+   "context": "under s1.title"
   },
   "doc.prose1": {
    "type": "prose_long",
@@ -348,7 +354,13 @@
     0,
     2
    ],
-   "example": "Equivalent hands-on depth is explicitly fine. If someone has shipped and tested real propulsion hardware for years, the degree question is closed."
+   "example": "Equivalent hands-on depth is explicitly fine. If someone has shipped and tested real propulsion hardware for years, the degree question is closed.",
+   "words": {
+    "min": 13,
+    "max": 31
+   },
+   "role": "prose",
+   "context": "under s6.title"
   },
   "doc.prose2": {
    "type": "prose_long",
@@ -364,7 +376,13 @@
     1,
     0
    ],
-   "example": "Alternative pathways that convert"
+   "example": "Alternative pathways that convert",
+   "words": {
+    "min": 3,
+    "max": 6
+   },
+   "role": "label",
+   "context": "under s6.title"
   },
   "doc.prose3": {
    "type": "prose_long",
@@ -380,7 +398,13 @@
     1,
     0
    ],
-   "example": "Title synonyms: search all of these"
+   "example": "Title synonyms: search all of these",
+   "words": {
+    "min": 4,
+    "max": 8
+   },
+   "role": "label",
+   "context": "under s8.title \"The words that find the pool\""
   }
  },
  "repeats": {
@@ -595,7 +619,13 @@
       1,
       1
      ],
-     "example": "Owns high-temp alloys, additive parts, and how the hardware actually gets built. Drives what the design can and cannot do."
+     "example": "Owns high-temp alloys, additive parts, and how the hardware actually gets built. Drives what the design can and cannot do.",
+     "words": {
+      "min": 12,
+      "max": 28
+     },
+     "role": "prose",
+     "context": "after node.name2; under s7.title"
     }
    },
    "bars_per_row": 0,
@@ -613,7 +643,13 @@
        "path": [
         1
        ],
-       "example": "The integration point for anything that makes thrust. Touches nearly every discipline, which is why communication weight is as high as technical weight in this hire."
+       "example": "The integration point for anything that makes thrust. Touches nearly every discipline, which is why communication weight is as high as technical weight in this hire.",
+       "words": {
+        "min": 16,
+        "max": 36
+       },
+       "role": "prose",
+       "context": "after node.core; under s7.title"
       }
      },
      "bars_per_row": 0,

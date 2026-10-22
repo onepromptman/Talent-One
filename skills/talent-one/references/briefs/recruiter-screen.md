@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 5ac640e9850a
+Source fingerprint: 141ef499daf8
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_08.content-schema.json
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
@@ -86,8 +86,13 @@ Repeats: a list of row objects keyed by the schema's `row_slots`. An empty repea
 and its heading: that is the honest empty state, never hedging prose. `data-count`
 in the schema is guidance: respect it unless the data genuinely demands otherwise.
 
-Omit `"optionals"` entries you have no data for: the block is deleted. Toggles
-(TK_03 only) choose which sections ship visible; never fake them elsewhere.
+Envelope types, empty state in backticks: `slots` object `{}`; `repeats` object
+`{}`; `standalone_bars` a LIST `[]` of numbers or `[start, end]` pairs, one per
+standalone bar in template order; `optionals` object `{}`, each value
+`{"slots": {...}, "repeats": {...}}` or `null`; `toggles` object `{}` of booleans;
+`handoff` object (§6). Never `{}` for `standalone_bars`, never a bare string for an
+optional. Omit `"optionals"` entries you have no data for: the block is deleted.
+Toggles (TK_03 only) choose which sections ship visible; never fake them elsewhere.
 
 Synthetic prose slots: some schema entries are marked `"synthetic": true`. These
 are prose sites the template carries without a `data-slot` attribute (a "why it
@@ -95,7 +100,8 @@ wins" line, a card aside); the renderer fills them by structural path. Fill ever
 schema-listed synthetic slot like any other slot, at the example's length and in
 the search's own domain language. A synthetic slot you omit renders BLANK, never
 the template's example prose; leaving one out is a visible hole in the artifact,
-so omission is never a shortcut.
+so omission is never a shortcut, and `render.py --strict` fails on it. The schema
+gives each one a word range and a `context` (the heading it sits under).
 
 ### 5.3 Hard rules
 
@@ -234,9 +240,9 @@ A missing REQUIRED path is Class A: halt with NEED_INPUT, `kind: pack_key`. The 
 
 ## SCHEMA SUMMARY · `TK_08.content-schema.json` (template: `TK_08_Recruiter_Screen.dc.html`)
 
-Format: `name (type MIN-MAX)`, word count not the full JSON or worked example prose; a slot ranged 24-24 wants 24 words, not 8 and not 60. `*` = synthetic: prose the template generator found beyond the named data-slot elements, filled exactly like any other slot, never left as the shipped example text.
+Format: `name (type MIN-MAX)`, word count not the full JSON or worked example prose; a slot ranged 24-24 wants 24 words, not 8 and not 60. `*` = synthetic (see Synthetic slots below).
 
-Envelope (top-level keys of your content JSON, in this order): `template` ("TK_08_Recruiter_Screen.dc.html"), `artifact` ("08", the renderer keys the handoff consumers line on it), `generated` (YYYY-MM-DD), `slots`, `repeats`, `standalone_bars`, `optionals`, `toggles`, `handoff`. Never omit `artifact`.
+Envelope (top-level keys of your content JSON, in this order; type and empty state): `template` ("TK_08_Recruiter_Screen.dc.html"), `artifact` ("08", the renderer keys the handoff consumers line on it), `generated` ("YYYY-MM-DD"), `slots: {}` (object), `repeats: {}` (object of row lists), `standalone_bars: []` (this template has none: write []), `optionals: {}` (only the handoff block, kept and filled from `handoff`: write {}), `toggles: {}` (this template has none: write {}), `handoff: {...}` (object, §6). Never omit `artifact`; never `{}` for `standalone_bars`; never a bare string for an optional.
 
 ### Top-level slots
 - kit.mark (prose_short 4-4)
@@ -304,6 +310,8 @@ Envelope (top-level keys of your content JSON, in this order): `template` ("TK_0
   - crit.level (chip 1-1)
 - wrapup [rows n=3-6]
   - wrap.item (prose_short 14-14)
+
+### Synthetic slots: none in this template
 
 ### Optional blocks
 - `optional_1` (handoff_block=True): Handoff → scheduling & technical interviewer Internal · optional: delete before sharing outside the

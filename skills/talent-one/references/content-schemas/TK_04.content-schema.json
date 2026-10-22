@@ -331,7 +331,13 @@
       2,
       0
      ],
-     "example": "the thermofluids and combustion vocabulary is the real skill proxy, and excluding sales and technician titles keeps the list to engineers who can ramp onto flight hardware."
+     "example": "the thermofluids and combustion vocabulary is the real skill proxy, and excluding sales and technician titles keeps the list to engineers who can ramp onto flight hardware.",
+     "words": {
+      "min": 16,
+      "max": 38
+     },
+     "role": "prose",
+     "context": "after string.query; under s2.title \"Search strings for a concentrated pool\""
     }
    },
    "bars_per_row": 0,
