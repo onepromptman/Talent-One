@@ -5,7 +5,7 @@
     "url": "https://github.com/onepromptman"
   },
   "metadata": {
-    "description": "Onepromptman's plugin marketplace — production agent kits for talent, ops, and go-to-market work.",
+    "description": "Onepromptman's plugin marketplace: production agent kits for talent, ops, and go-to-market work.",
     "version": "1.0.0"
   },
   "plugins": [
@@ -13,8 +13,8 @@
       "name": "talent-one",
       "source": "./",
       "displayName": "Talent One",
-      "description": "Eleven coordinated TA agents turn one role brief into a full eight-document hiring package: educational brief, calibration brief, JD, talent map, sourcing playbook, outreach campaign, interview plan, and recruiter screen guide — rendered deterministically as polished, self-contained HTML with sourced market data.",
-      "version": "1.0.3",
+      "description": "Eleven coordinated TA agents turn one role brief into a full eight-document hiring package: educational brief, calibration brief, JD, talent map, sourcing playbook, outreach campaign, interview plan, and recruiter screen guide: rendered deterministically as polished, self-contained HTML with sourced market data.",
+      "version": "1.1.2",
       "author": {
         "name": "Onepromptman"
       },

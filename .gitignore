@@ -28,3 +28,4 @@ talent-one-profile.md
 *.tmp
 *.bak
 scratch/
+evals/out/

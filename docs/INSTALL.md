@@ -26,17 +26,27 @@ Open the plugin browser and add the marketplace `onepromptman/talent-one`, then 
 
 If your build of Cowork does not expose a marketplace field, use the direct build instead:
 
-1. Download [`dist/talent-one-1.0.3.plugin`](../dist/talent-one-1.0.3.plugin), or the file attached to the [latest release](../../../releases/latest).
+1. Download [`dist/talent-one-1.1.2.plugin`](../dist/talent-one-1.1.2.plugin), or the file attached to the [latest release](../../../releases/latest).
 2. Add it as a plugin from the plugin browser.
 
 ## Verify the download
 
 ```bash
-sha256sum talent-one-1.0.3.plugin
-# ca7f3c207ab89cce313b6c5c47b92aaeee45794e402aeac74eb2823e934ab88b
+sha256sum talent-one-1.1.2.plugin
 ```
 
-The `.plugin` file is a zip. Rename it to `.zip` and look inside if you want to read every prompt before installing — it is all plain text.
+Compare with the row for your version. The same hash is in the `.sha256` file beside each build in `dist/`.
+
+| Build | SHA-256 |
+| --- | --- |
+| `talent-one-1.1.2.plugin` | `PENDING_1_1_2_SHA256` |
+| `talent-one-1.1.1.plugin` | `4014d3f2a4e4f28232157081559eaef97fa1db1edbdde6f55b7e2530d259a3ce` |
+| `talent-one-1.1.0.plugin` | `d8ec24e499a8e4d589c46a04fbd1c050cae22080290cea861272fb3b2e298e93` |
+| `talent-one-1.0.3.plugin` | `ca7f3c207ab89cce313b6c5c47b92aaeee45794e402aeac74eb2823e934ab88b` |
+
+Older builds stay in `dist/`; none is ever overwritten.
+
+The `.plugin` file is a zip. Rename it to `.zip` and look inside if you want to read every prompt before installing: it is all plain text.
 
 ---
 
