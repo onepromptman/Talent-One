@@ -1,4 +1,4 @@
-# Talent One — License
+# Talent One: License
 
 Copyright © 2026 Onepromptman. All rights reserved.
 

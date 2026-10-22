@@ -155,11 +155,11 @@ This kit was originally architected for n8n / Claude Projects. The reference fil
     provenance intact, and marks `built_from: external-deep-research`. A validated
     external research file with named dated sources satisfies item 13f's bar for
     market/funnel/comp/personas; a bare assertion still never does.
-23. **Model tiers per agent** (frontmatter `model:`): relay, jdbot, and
-    recruiter-screen run haiku (pack-fed, tightly contracted, no research duties);
-    scout and the remaining artifact agents run sonnet (bounded research +
-    judgment); qa-gate runs opus (small input, final judgment gate). Aliases, not
-    pinned versions, so installs track current models.
+23. **Model tiers per agent**: each agent runs the model tier named in its
+    frontmatter `model:` (a light tier for pack-fed, tightly contracted agents; a
+    mid tier for scout and the artifact agents; the top tier for qa-gate, small
+    input and a final judgment gate). Aliases, not pinned versions, so installs
+    track current models.
 24. **NEED_INPUT vocabulary updated** (shared core §6.5): `kind` gains `pack_key`,
     `cheapest_fix` values are `ask_user | orchestrator_writes_file | run_scout`
     (replacing `run_upstream_agent`). Item 12 otherwise unchanged: halt on missing
@@ -279,7 +279,7 @@ This kit was originally architected for n8n / Claude Projects. The reference fil
     no-op here: the variant "posting" row has no tick divs at that path, so
     the copy silently fails and the clone keeps whatever the BASE element
     already carries), EVERY rendered row, including the base row itself,
-    showed the template's literal example numbers regardless of content , 
+    showed the template's literal example numbers regardless of content,
     confirmed live: a JD shipped with 105k/135k/174k ticks against an
     approved $200-260K band. Fix: the three numeric tick texts are now
     `comp.low`/`comp.mid`/`comp.high`, each on its own inline `<span

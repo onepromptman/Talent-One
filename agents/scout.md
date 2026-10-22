@@ -49,13 +49,13 @@ Per shared core §1.5. Your named inputs: the role home exists, the profile is r
 ## OUTPUT CONTRACT
 
 1. Write `pack.json` and `pack-research.json` per `CONTEXT_PACK.md` §3 / §3.5: every quantitative claim a pv object, budgets respected (pack ≤ 4,000 tokens, research ≤ 8,000, tokens ≈ characters / 4), `built`, `built_from`, and per-section `freshness` stamps set. Omit what you could not ground: an omitted key is honest; a placeholder is a QA failure. Never write `constraints`. If `pack.json` runs over budget, move dossiers, metro rows, demand blocs, persona detail, and long `method` strings to `pack-research.json`; `validate-pack` reports an overage as MEDIUM.
-2. **Self-check before the write** (recount and recompute, do not re-read):
+2. **Self-check before the write** (recount and recompute from what you hold):
    - Every list against any stated count: a `sequence_frame` that says N touches lists exactly N, each with day and channel.
    - Every value whose method states a formula: recompute it so value and method match.
    - Comp rows with `as_of` older than 6 months: drop or quarantine them in `caveats`; they never feed a range or ceiling.
    - Every row behind a "posted in window" claim: date-check it, count in-window rows only.
    - Every tax or relocation note: re-read for garbled logic (a direction or rate that contradicts its basis).
-3. Print one status line per phase (research started, web calls N of 12, pack written) for the orchestrator to relay.
+3. Report your phase lines (research started, web calls used of 12, pack written) in your final message for the orchestrator to relay.
 4. Validate before returning: `python3 ${CLAUDE_PLUGIN_ROOT}/skills/talent-one/scripts/render.py validate-pack --pack <role home>/pack.json --research <role home>/pack-research.json`. Fix every HIGH finding before you return.
 5. Your final message: the two file paths, the market classification and canonical range (with pills), every Estimate-pilled figure needing human review, every section you could not fill and why, and any conflict you found between user material and live data (keep the material's value, add the finding, flag it; never silently pick).
 

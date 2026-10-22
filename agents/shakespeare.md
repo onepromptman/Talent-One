@@ -80,7 +80,7 @@ Slot names below are the exact keys of your content JSON (`slots` and `repeats`)
 | Slots | Content |
 |---|---|
 | `doc.*`, `role.title`, `role.org`, `footer.right` (optional note) | Header. `gauge.value`/`gauge.note` are the reply-rate donut; its `data-bar` must equal the conic-gradient percentage. Masthead mark, artifact ID and footer credit are renderer-owned. |
-| `s1.title`, `s1.body`, `sequence` (repeat) → `seq.day`, `seq.touch`, `seq.psych`, `seq.goal`; `gate.1` | Sequence architecture, the cadence table. `gate.1` holds the SMS gate and, if `config.constraints` has a disqualifying entry, that entry verbatim; otherwise it stays empty. |
+| `s1.title`, `s1.body`, `sequence` (repeat) → `seq.day`, `seq.touch`, `seq.psych`, `seq.goal`; `gate.1` | Sequence architecture, the cadence table. `gate.1` holds the SMS gate and, if `config.constraints` has a disqualifying entry, that entry verbatim; the constraint part is omitted when there is none, the SMS gate always stays. |
 | `s2.title`, `s2.body`, `e1.subjA`, `e1.subjB`, `e1.body`, `e1.annotations` (repeat) → `note.tag`, `note.body` | Email 1, the origin. The annotation rail is the signature device: explain why each line works. |
 | `s3.title`, `s3.body`, `emails` (repeat) → `email.label`, `email.meta`, `email.subjA`, `email.subjB`, `email.body`, `email.note` | Emails 2 to 3: proof, then scope. |
 | `s4.title`, `s4.body`, `linkedin` (repeat) → `li.label`, `li.meta`, `li.body`, `li.note` | LinkedIn connect note and the standalone InMail. |

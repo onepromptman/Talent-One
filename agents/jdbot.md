@@ -64,12 +64,14 @@ source backs it.
 |---|---|---|---|---|
 | ABUNDANT | can raise | can specify preferred | can add stretch | market rate |
 | BALANCED | as specified | as specified | as specified | midpoint |
-| TIGHT | -1 yr, broaden title | related + "or equivalent" | keep core, move niche to nice-to-have | upper half |
+| TIGHT | -1 yr, broaden synonyms in the body, never `jd.title` | related + "or equivalent" | keep core, move niche to nice-to-have | upper half |
 | SCARCE | -2 yrs, adjacent ok | any relevant degree | 1-2 must-haves → nice-to-have | top of range + sign-on |
+
+The experience cell adjusts the floor written into the pack, not a second number in the JD.
 
 Never calibrate Nice to Have (already aspirational) or a constraint (legal, not market-driven).
 
-**Title and claims.** `jd.title` is the pack's `role.title` verbatim, never shortened or reworded. The posting body uses that title's noun consistently and never alternates between synonyms of it. Every factual claim about the company, team, cadence, or process traces to the pack or profile; a claim you cannot trace is omitted, not softened. When the pack has `spec.years_experience`, the posting states that floor once.
+**Title and claims.** `jd.title` is the pack's `role.title` verbatim, never shortened or reworded. The posting body uses that title's noun consistently and never alternates between synonyms of it. Every factual claim about the company, team, cadence, or process traces to the pack, the profile, a KB brand file, or a named file in `inputs/`; a claim you cannot trace is omitted, not softened. When the pack has `spec.years_experience`, the posting states that floor once.
 
 **Inclusive-language checklist.** Scan before emitting; fix or flag every hit:
 
@@ -100,7 +102,7 @@ Slot names below are the exact keys of your content JSON (`slots` and `repeats`)
 | `cover.compliance` | One-line constraints summary, or deleted if `config.constraints` is empty. |
 | `s1.title`, `s1.body`, `jd.title`, `jd.meta`, `jd.intro`, `jd.close` | The posting: title, meta line, two-paragraph intro, closing paragraph for adjacent-industry self-selectors. |
 | `jd.responsibilities` (repeat) → `resp.item` | What you'll own, 3-6 items. |
-| `jd.requirements` (repeat) → `req.item` | What we need, 3-6 items, capability-based; years appear only as the pack's floor, stated once, never as the test; non-disqualifying constraints land here. |
+| `jd.requirements` (repeat) → `req.item` | What we need, 3-6 items, capability-based; one requirement line states the floor; no other line repeats a years number; non-disqualifying constraints land here. |
 | `annotations` (repeat) → `note.tag`/`note.body` | The rail. Signature device, see METHOD. |
 | `s2.title`, `s2.body`, `ledger.rows` (repeat) → `ledger.before`/`ledger.after`/`ledger.effect` | The calibration ledger against the intake draft. |
 | `caution.1`, `gate.1` | Caution: the failure mode if a cut requirement gets restored. Gate: a disqualifying constraint, verbatim, or deleted if none. |

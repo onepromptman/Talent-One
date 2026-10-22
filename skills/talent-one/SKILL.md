@@ -26,9 +26,9 @@ Look for `talent-one-profile.md` in the working folder (and `talent-one-runs/`).
 
 ## 1. Intake (two beats, one round trip each)
 
-**1a. Facts (chips).** Collect in ONE AskUserQuestion pass whatever the profile does not already answer: role title, level, location/work model, comp posture or band hint, which artifacts they want (default: all eight), and whether the JD should also ship as a plain document (markdown or docx; default HTML only). Team context and hm/recruiter names ride this pass only if a question slot is free; otherwise they are stated defaults. Proceed on stated defaults for anything skipped, labeled. Chips carry scalar facts only.
+**1a. Facts (chips).** Collect in ONE AskUserQuestion pass whatever the profile does not already answer: role title, level, location/work model, comp posture or band hint, which artifacts they want (default: all eight), and whether the JD should also ship as a plain document (markdown or docx; default HTML only). Team context and hm/recruiter names ride this pass only if a slot is free; otherwise stated defaults. Proceed on stated defaults for anything skipped, labeled. Chips carry scalar facts only.
 
-**1b. Brain dump (always offered, skippable).** Before spawning relay, invite context in one plain message, never a chip question: paste or attach anything they already have for this search, a JD or draft, intake notes, comp data, team background, links, or a straight brain dump, or say skip. File what arrives: attached files copy into `talent-one-roles/<role_slug>/inputs/` unchanged; pasted text writes to `talent-one-roles/<role_slug>/inputs/braindump-<YYYY-MM-DD>.md` verbatim. Never ask them to reformat anything; never ask twice. Everything that lands feeds the pack build: a rich dump means less research, an empty folder means the public-data path, fully supported. Offer once, as an option: pasting `references/PACK_RESEARCH_PROMPT.md` into any Claude chat and dropping the returned JSON into `inputs/` is an external deep-research file, and scout then may not need to run.
+**1b. Brain dump (always offered, skippable).** Before spawning relay, invite context in one plain message, never a chip question: paste or attach anything they already have for this search, a JD or draft, intake notes, comp data, team background, links, or a straight brain dump, or say skip. File what arrives: attached files copy into `talent-one-roles/<role_slug>/inputs/` unchanged; pasted text writes to `talent-one-roles/<role_slug>/inputs/braindump-<YYYY-MM-DD>.md` verbatim. Never ask them to reformat anything; never ask twice. Everything that lands feeds the pack build: a rich dump means less research, an empty folder the public-data path, fully supported. Only if they mention deep research or are clearly technical, offer once: pasting `references/PACK_RESEARCH_PROMPT.md` into a Claude chat and dropping the returned JSON into `inputs/` is an external deep-research file, so scout may not need to run.
 
 ## 2. Plan (relay)
 
@@ -68,9 +68,9 @@ file you reference first. An agent that halts on a missing input did the right t
 sections) unless a fresh pack, an import, or complete seeding covers the need.
 After any pack write, copy the profile's `constraints[]` into the pack verbatim,
 run `render.py validate-pack`, then copy `pack.json` (and `pack-research.json`)
-into the run folder as the run's snapshot. During the 5 to 10 minute scout pass print one
-progress line per phase (research started; web calls N of 12; pack written;
-validate-pack result).
+into the run folder as the run's snapshot. Before spawning scout, say research
+has started and takes 5 to 10 minutes; when scout returns, relay its phase lines
+and the validate-pack result.
 
 **Phase 2 (content, ALL PARALLEL).** Spawn every requested artifact agent
 concurrently in one message. Each gets: the run folder path, the profile contents,
