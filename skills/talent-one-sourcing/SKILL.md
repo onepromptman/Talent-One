@@ -7,7 +7,7 @@ description: >
   skill applies instead.
 ---
 
-# Talent One — sourcing playbook with tiered boolean library and pipeline math
+# Talent One: sourcing playbook with tiered boolean library and pipeline math
 
 Build artifact 04 (sourcing playbook with tiered boolean library and pipeline math) via the Talent One agent pipeline. You never write artifact content yourself.
 

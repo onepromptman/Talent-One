@@ -9,7 +9,7 @@ description: >
   skill applies instead. Not the hiring-manager calibration brief (talent-one-brief).
 ---
 
-# Talent One — educational brief
+# Talent One: educational brief
 
 Build artifact 01 (educational brief) via the Talent One agent pipeline. You never write artifact content yourself.
 

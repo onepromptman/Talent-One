@@ -226,7 +226,7 @@ This kit was originally architected for n8n / Claude Projects. The reference fil
     covering every descendant path, removing the fragile redundant synthetic
     slot that made TK_01 fail on non-example content (TK_01 schema and
     example content regenerated; `extract(template) == example-content`
-    held for all eight artifacts at the time of writing — superseded in
+    held for all eight artifacts at the time of writing, superseded in
     1.0.3: items 32-35 genericize dead variant literals, so example content
     is now authored, not derivable from the template; the enforced
     invariant is `extract(render(example)) == example`, which holds 8/8);
@@ -279,7 +279,7 @@ This kit was originally architected for n8n / Claude Projects. The reference fil
     no-op here: the variant "posting" row has no tick divs at that path, so
     the copy silently fails and the clone keeps whatever the BASE element
     already carries), EVERY rendered row, including the base row itself,
-    showed the template's literal example numbers regardless of content —
+    showed the template's literal example numbers regardless of content , 
     confirmed live: a JD shipped with 105k/135k/174k ticks against an
     approved $200-260K band. Fix: the three numeric tick texts are now
     `comp.low`/`comp.mid`/`comp.high`, each on its own inline `<span
@@ -315,7 +315,7 @@ This kit was originally architected for n8n / Claude Projects. The reference fil
     row's axis-label `<div>` now carries `data-slot="comp.range"`; the three
     variant rows' now-dead label literals (including variant 2's median-tick
     label, `$138K typical`, which was already structurally unreachable because
-    its row has two extra elements the base row lacks — `render_rows` clones the
+    its row has two extra elements the base row lacks, `render_rows` clones the
     base row's shape, so that tick and its label never rendered even before this
     fix and still do not) are genericized to `range label` / `median value label`
     so no leftover dollar fiction reads as real content. `SLOT_SCHEMA.json` gains
@@ -332,13 +332,13 @@ This kit was originally architected for n8n / Claude Projects. The reference fil
 34. **Verbatim-furniture sweep of the remaining templates (2026-08-10).** Same
     class as items 32-33, swept across TK_01/03/04/05/06/08 plus TK_00.
     (a) TK_01 `collab.nodes`: the base row's second subcard title
-    (`Materials & manufacturing`, 25 chars — under the 45-char row synthetic
+    (`Materials & manufacturing`, 25 chars, under the 45-char row synthetic
     floor) was unslotted and shipped verbatim into every render; it is now
     `data-slot="node.name2"` (SLOT_SCHEMA entry `label 2-3`, schema and
     example content regenerated, `agents/sensei.md` documents the field).
     (b) TK_03 `comp.levels` variant rows 2-4 and TK_08 `logistics`
     Compensation row: dead propulsion comp literals genericized (rendered
-    output byte-identical — the base rows are fully slotted, so the old
+    output byte-identical, the base rows are fully slotted, so the old
     literals never rendered; they were a trap for derivative builds).
     (c) TK_04/05/06 verified clean; TK_00 Pattern Library brought up to the
     fixed conventions (item 35) since it is the canonical copy source.
@@ -351,7 +351,7 @@ This kit was originally architected for n8n / Claude Projects. The reference fil
     their `data-bar` element (`apply_bar` moves the bar; children ride
     along), making label/bar agreement structural: TK_02 `comp.rows` prints
     `comp.low` at the bar's left edge and `comp.high` at its right
-    (`comp.mid` and the frozen median marker are removed — no honest
+    (`comp.mid` and the frozen median marker are removed, no honest
     midpoint position exists without an axis definition); TK_07
     `comp.rows`' `comp.range` rides its bar's right edge; variant rows'
     bar-containers mirror the base's child structure so per-row style
@@ -365,7 +365,7 @@ This kit was originally architected for n8n / Claude Projects. The reference fil
     (stderr warnings + `furniture_warnings` key when non-empty) and
     `verify` (HIGH findings, labeled as TEMPLATE defects so nobody chases a
     content patch). Round-2 hardening after adversarial review: the lint
-    scans every surface the renderer actually copies verbatim — rows
+    scans every surface the renderer actually copies verbatim, rows
     repeats (using the real synthetic-promotion predicate, not a length
     proxy), nested and optional-pass repeats (which have NO synthetic pass,
     so any length is risky there), `data-optional` block text, the grid
@@ -375,6 +375,6 @@ This kit was originally architected for n8n / Claude Projects. The reference fil
     the template's own example text (e.g. `105k`) that the 25-char floor of
     the existing check missed; and `render_rows` now BLANKS a missing row
     slot's direct text (still reported in `missing`) instead of leaving the
-    base row's worked-example prose — item 25's guarantee ("missing content
+    base row's worked-example prose, item 25's guarantee ("missing content
     never leaves template example prose behind") now genuinely holds for
     every slot class, making item 31(d)'s claim true for row slots.

@@ -7,7 +7,7 @@ description: >
   skill applies instead.
 ---
 
-# Talent One — 8-touch multi-channel outreach campaign
+# Talent One: 8-touch multi-channel outreach campaign
 
 Build artifact 05 (8-touch multi-channel outreach campaign) via the Talent One agent pipeline. You never write artifact content yourself.
 

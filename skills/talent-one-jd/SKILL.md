@@ -7,7 +7,7 @@ description: >
   skill applies instead.
 ---
 
-# Talent One — job description with annotation rail
+# Talent One: job description with annotation rail
 
 Build artifact 02 (job description with annotation rail) via the Talent One agent pipeline. You never write artifact content yourself.
 

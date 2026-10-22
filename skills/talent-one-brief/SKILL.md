@@ -10,7 +10,7 @@ description: >
   full kit the talent-one skill applies instead.
 ---
 
-# Talent One — hiring-manager calibration brief
+# Talent One: hiring-manager calibration brief
 
 Build artifact 07 (hiring-manager calibration brief) via the Talent One agent pipeline. You never write artifact content yourself.
 

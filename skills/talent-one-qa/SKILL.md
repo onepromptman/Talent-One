@@ -7,7 +7,7 @@ description: >
   skill applies instead.
 ---
 
-# Talent One — QA audit
+# Talent One: QA audit
 
 Audit an existing Talent One run. Find the newest run folder across both layouts, `talent-one-roles/*/runs/*/` and the legacy `talent-one-runs/*/` (or the one the user names; naming a role means the newest run under that role). If none exists, say so and offer to build something instead.
 

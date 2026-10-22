@@ -7,7 +7,7 @@ description: >
   skill applies instead.
 ---
 
-# Talent One — talent intelligence map (supply, demand, geography, comp)
+# Talent One: talent intelligence map (supply, demand, geography, comp)
 
 Build artifact 03 (talent intelligence map (supply, demand, geography, comp)) via the Talent One agent pipeline. You never write artifact content yourself.
 

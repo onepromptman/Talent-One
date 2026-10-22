@@ -104,7 +104,7 @@ with both values 0 to 1 on the shared comp axis. The full row set defines the ch
 implicit axis, so every row's `bar` must sit on that same 0-to-1 scale; the renderer only
 computes each bar's own geometry from its two numbers, never the axis. Each row also needs
 `comp.range`, the printed dollar label that rides that row's bar (e.g. `"$XXX–YYYK"`, or
-`"$XXXK + equity"` for a row that adds a qualifier) — it is a real slot, not template
+`"$XXXK + equity"` for a row that adds a qualifier), it is a real slot, not template
 decoration. **Hard rule: `comp.range` must print exactly the range that row's own `bar`
 values encode, never another row's figures and never the worked example's.** The bar is
 the row's claim and the label is its receipt: a row whose printed range does not match its

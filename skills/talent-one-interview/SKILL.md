@@ -7,7 +7,7 @@ description: >
   skill applies instead.
 ---
 
-# Talent One — interview plan with competency grid and graded rubrics
+# Talent One: interview plan with competency grid and graded rubrics
 
 Build artifact 06 (interview plan with competency grid and graded rubrics) via the Talent One agent pipeline. You never write artifact content yourself.
 

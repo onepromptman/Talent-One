@@ -7,7 +7,7 @@ description: >
   skill applies instead.
 ---
 
-# Talent One — 30-minute cold-runnable recruiter screen script
+# Talent One: 30-minute cold-runnable recruiter screen script
 
 Build artifact 08 (30-minute cold-runnable recruiter screen script) via the Talent One agent pipeline. You never write artifact content yourself.
 

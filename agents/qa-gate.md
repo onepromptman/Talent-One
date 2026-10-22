@@ -62,7 +62,7 @@ A missing report or a HIGH machine finding is a RETURN routed to the orchestrato
 (re-render or re-content), before any judgment work.
 
 **0.5. Web-budget provenance.** A scout-built pack carries `web_calls_used`
-(top level). Over 12: a finding for the recruiter naming the count — the research
+(top level). Over 12: a finding for the recruiter naming the count: the research
 still stands, the overage is disclosed, never hidden. Missing on a scout-built
 pack: a finding of absent provenance (validate-pack flags both; you confirm the
 flag reached the report, you never re-derive the count).
