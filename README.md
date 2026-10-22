@@ -128,7 +128,7 @@ Anything you already hold — a JD, intake notes, comp data, a brain dump — sh
 
 Works with **zero connections**, using public data: BLS, O\*NET, Census, DOL disclosure data, levels.fyi, live web search. That is a fully supported path, not a degraded mode.
 
-Four connectors ship inside the plugin, none required: **Exa** (web research, keyless by default), **Bright Data** (search results, bot-protected pages, LinkedIn company and job-listing data), and the official **Greenhouse** and **Ashby** MCP servers (sign in once, read-only, pipelines as counts, never candidates). Your own document store or ATS connector works the same way. See [CONNECTORS.md](CONNECTORS.md).
+Four connectors ship inside the plugin, none required: **Exa** (web research, keyless by default), **Bright Data** (search results and page reads behind bot protection), and the official **Greenhouse** and **Ashby** MCP servers (sign in once, read-only, pipelines as counts, never candidates). Your own document store or ATS connector works the same way. See [CONNECTORS.md](CONNECTORS.md).
 
 Constraints (work authorization, clearance, licensure) are recruiter-written, rendered verbatim, and never invented. An empty constraints list ships no eligibility gate at all.
 
@@ -140,7 +140,7 @@ Verify your download is the official build: run `sha256sum talent-one-1.1.0.plug
 
 ## Privacy
 
-The plugin itself sends nothing anywhere: the renderer and both scripts run inside Claude's sandbox and make no network calls, and every generated document is self-contained. Research traffic goes through the web tools of the Claude surface you run it in. The four bundled connectors (Exa, Bright Data, Greenhouse, Ashby) are third-party services, each under its own privacy policy, and none receives anything until you sign in, and the plugin stores no API key; what agents may read from them, and what they may never pass on, is set out in [CONNECTORS.md](CONNECTORS.md). Your profile, role folders, and packs stay on your machine.
+The plugin itself sends nothing anywhere: the renderer and the scripts run inside Claude's sandbox and make no network calls, and every generated document is self-contained. Research traffic goes through the web tools of the Claude surface you run it in. The four bundled connectors (Exa, Bright Data, Greenhouse, Ashby) are third-party services, each under its own privacy policy, and none receives anything until you sign in, and the plugin stores no API key. The agents reach only those four servers plus the built-in web tools, never your other connectors; what they may read, and what they may never pass on, is set out in [CONNECTORS.md](CONNECTORS.md). Your profile, role folders, and packs stay on your machine.
 
 ## Repository layout
 

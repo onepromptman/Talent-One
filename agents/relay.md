@@ -49,7 +49,10 @@ which internal connectors are available.
    pack, or external research with named dated sources only); `constraints` never
    seeds at all. The skill writes seeds, not you: report each candidate as a
    proposal.
-4. **Preflight.** For every planned step, verify its inputs exist: files, profile
+4. **Preflight.** Resolve every relative path in your prompt against the working
+   folder the orchestrator names before you test it (Glob and Read take the absolute
+   path); a miss you report must be one you verified at that absolute path, never a
+   bare relative lookup. For every planned step, verify its inputs exist: files, profile
    fields, pack paths (for artifact agents, their §5 row; treat a section scout will
    build this run as satisfied). Return the preflight block: every miss, the step it
    blocks, the cheapest fix (`ask_user` | `orchestrator_writes_file` | `run_scout`).

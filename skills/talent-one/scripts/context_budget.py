@@ -17,7 +17,7 @@ import os
 import re
 import sys
 
-# Measured on the shipped 1.1.0 tree plus roughly 3 percent headroom (resident 1,841;
+# Measured on the shipped 1.1.0 tree plus three to four percent headroom (resident 1,841;
 # main window 3,259; largest bundle scout at 12,639 with baselines.json). Lower a ceiling
 # when a cut lands; never raise one to make the check pass. On-demand references
 # (ORCHESTRATOR_*.md, CONNECTOR_RUNTIME.md) load only on their path and are not counted.

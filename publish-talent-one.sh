@@ -12,7 +12,7 @@ OWNER="onepromptman"
 REPO="talent-one"
 TAG="v1.1.0"
 PLUGIN="dist/talent-one-1.1.0.plugin"
-SHA="04c5001730a0ef780af06ead1eb14685ecd2c5cbf98ca241c8ec2254bb2c348b"
+SHA="d8ec24e499a8e4d589c46a04fbd1c050cae22080290cea861272fb3b2e298e93"
 
 echo "==> preflight"
 command -v gh >/dev/null || { echo "gh CLI not installed: https://cli.github.com"; exit 1; }

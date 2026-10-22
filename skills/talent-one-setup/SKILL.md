@@ -41,15 +41,17 @@ Explain in one sentence: some searches carry hard eligibility requirements, and 
 
 State plainly: everything works with public data alone. Talent One bundles four connectors; none is required. Check which are live with ToolSearch (`+exa`, `+brightdata`, `+greenhouse`, `+ashby`) and show the user one line each:
 
-- **Exa** (web research): live by default, no key. Signing in once, from `/mcp` in Claude Code or the plugin's Connectors tab in Cowork, moves it onto their own Exa plan and rate limits.
-- **Bright Data** (search results, bot-protected pages, LinkedIn company and job-listing data): sign in once via OAuth from `/mcp` or the Connectors tab. Not signed in means skipped.
-- **Greenhouse** or **Ashby** (ATS): sign in once via OAuth from `/mcp` or the Connectors tab. A Greenhouse Site Admin enables scopes under Dev Center, MCP Access; an Ashby Org Admin turns on the MCP Server opt-in. Suggest switching the one they do not use off in `/mcp`.
+- **Exa** (web research): live by default, no key or sign-in. Their own Exa plan needs Exa's own plugin or `https://mcp.exa.ai/mcp?login` added as their own server.
+- **Bright Data** (search results and page reads behind bot protection, four tools only): sign in once via OAuth from `/mcp` or the Connectors tab. Not signed in means skipped.
+- **Greenhouse** or **Ashby** (ATS): sign in once via OAuth from `/mcp` or the Connectors tab. A Greenhouse Site Admin enables scopes under Dev Center, MCP Access: tell them to keep write scopes off and to deselect Candidates and Attachments on the consent screen, because the plugin cannot deny Greenhouse tools one by one. An Ashby Org Admin turns on the MCP Server opt-in; connecting users need Elevated Access. Suggest switching the one they do not use off in `/mcp`.
 
-For any other ATS or document store, search the connector registry (SearchMcpRegistry) and suggest via SuggestConnectors if found. Record what is connected in the profile's `connectors` block, one name per line (`exa`, `brightdata`, `greenhouse`, `ashby`, or the connector's own name), or `none`. The kit reads candidate pipelines as counts only and never writes to an ATS; say so in one sentence. Do not block on any of this.
+For any other ATS or document store, search the connector registry (SearchMcpRegistry) and suggest via SuggestConnectors if found. Record what is connected in the profile's `connectors` block, one name per line (`exa`, `brightdata`, `greenhouse`, `ashby`, or the connector's own name), or `none`. The kit's agents reach only these four servers; anything else they connected (a document store, another ATS) is read by you at intake and filed into `inputs/` or the KB. The kit reads candidate pipelines as counts only and never writes to an ATS; say so in one sentence. Do not block on any of this.
 
 ## 5.5 Brain dump (what they already have)
 
 One plain-message invitation, never a chip question: paste or attach anything that should inform every future search. Brand or careers-page copy, an EEO statement, a benefits blurb, comp philosophy or bands, past postings that worked, hiring process notes, or a straight brain dump. Skippable like every step, and skipping costs nothing: the kit runs fully on public data.
+
+If they skip, ask once more for exactly two things and nothing else, because the job description cannot ship without them and no public source can supply them: the company's equal-opportunity statement and its benefits summary, each as the sentence or short paragraph they want candidates to read (paste from an existing posting is fine; `(none yet)` is an acceptable answer and means JD-Bot will ask again at run time). File both under `talent-one-kb/brand/`.
 
 File what arrives under `talent-one-kb/` by KB category: `brand/` (voice, EEO, benefits), `benchmarks/` (comp), `internal/` (process notes, calibration), `history/` (past postings). Pasted text becomes a dated `.md` file in the right category, verbatim, never reformatted. Record `kb_root: talent-one-kb/` in the profile's resources so every agent's KB-FIRST step reads it. If they hand over role-specific material (a JD for one particular search), accept it, note which role, and file it to that role's `talent-one-roles/<role_slug>/inputs/` instead.
 

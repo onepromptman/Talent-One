@@ -6,7 +6,7 @@
     },
     "brightdata": {
       "type": "http",
-      "url": "https://mcp.brightdata.com/mcp?tools=search_engine,search_engine_batch,scrape_as_markdown,scrape_batch,web_data_linkedin_company_profile,web_data_linkedin_job_listings"
+      "url": "https://mcp.brightdata.com/mcp?tools=search_engine,search_engine_batch,scrape_as_markdown,scrape_batch"
     },
     "greenhouse": {
       "type": "http",

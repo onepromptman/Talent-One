@@ -33,7 +33,7 @@ If your build of Cowork does not expose a marketplace field, use the direct buil
 
 ```bash
 sha256sum talent-one-1.1.0.plugin
-# 04c5001730a0ef780af06ead1eb14685ecd2c5cbf98ca241c8ec2254bb2c348b
+# d8ec24e499a8e4d589c46a04fbd1c050cae22080290cea861272fb3b2e298e93
 ```
 
 The `.plugin` file is a zip. Rename it to `.zip` and look inside if you want to read every prompt before installing — it is all plain text.
@@ -66,8 +66,8 @@ Make an interview plan for a security engineer
 
 Four remote connectors ship with the plugin: Exa, Bright Data, Greenhouse, Ashby. Nothing is required; the kit runs fully on public data.
 
-- Exa works at once, keyless. Sign in from `/mcp` (Claude Code) or the plugin's Connectors tab (Cowork) to use your own plan.
-- Bright Data, Greenhouse, and Ashby sign in with OAuth from `/mcp` (Claude Code) or the plugin's Connectors tab (Cowork); for the two ATS servers your admin enables MCP access on the vendor side first. No API key is stored in the plugin.
+- Exa works at once, keyless. To use your own Exa plan, install Exa's own plugin or add `https://mcp.exa.ai/mcp?login` as your own server.
+- Bright Data, Greenhouse, and Ashby sign in with OAuth from `/mcp` (Claude Code) or the plugin's Connectors tab (Cowork). Greenhouse: a Site Admin enables scopes under Dev Center, MCP Access (keep write scopes off); Ashby: an Org Admin turns on the MCP Server opt-in and connecting users need Elevated Access. On a Claude Team or Enterprise plan an owner may have to approve the connector first. No API key is stored in the plugin.
 
 Switch off any you do not use in `/mcp`. Details and the privacy rules: [CONNECTORS.md](../CONNECTORS.md).
 

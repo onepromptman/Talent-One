@@ -284,8 +284,19 @@ def bar_form(el):
 def apply_bar(el, value, report):
     """value: number, [a,b], or 'a,b' string. Rewrites data-bar + inline geometry."""
     form = bar_form(el)
-    if isinstance(value, str) and "," in value:
-        value = [float(x) for x in value.split(",")]
+    try:
+        if isinstance(value, str) and "," in value:
+            value = [float(x) for x in value.split(",")]
+        elif isinstance(value, str):
+            value = float(value)
+        if isinstance(value, (list, tuple)):
+            value = [float(x) for x in value]
+        elif isinstance(value, bool) or not isinstance(value, (int, float)):
+            raise TypeError(type(value).__name__)
+    except (TypeError, ValueError):
+        report["errors"].append(
+            f"bar on <{el.name}> expects a number, [start,end], or 'a,b', got {value!r}")
+        return
     if form == "range":
         if not isinstance(value, (list, tuple)) or len(value) != 2:
             report["errors"].append(
@@ -1407,6 +1418,58 @@ def fill_handoff(soup, content, artifact, report):
             set_text(el, str(v))
 
 
+def check_content_shape(content):
+    """Structural precheck of a content JSON before any template work.
+
+    An agent that emits the wrong container type (optionals as a list, a
+    standalone bar as an object, toggles as a string) used to surface as a
+    Python traceback deep inside the fill, which routes nowhere. This turns
+    every such case into a plain error string so the render fails the same
+    way a strict miss does: exit 1, a report naming the field, and the fix
+    routed to the owning agent as a content patch. Returns a list of errors;
+    empty means the shape is sound (values are still checked by the fill).
+    """
+    errs = []
+    if not isinstance(content, dict):
+        return ["content shape: top level must be an object"]
+    for key in ("slots", "repeats", "toggles", "handoff", "optionals"):
+        if key in content and content[key] is not None and not isinstance(content[key], dict):
+            errs.append(f"content shape: `{key}` must be an object, got {type(content[key]).__name__}")
+    sb = content.get("standalone_bars")
+    if sb is not None:
+        if not isinstance(sb, list):
+            errs.append(f"content shape: `standalone_bars` must be a list, got {type(sb).__name__}")
+        else:
+            for i, v in enumerate(sb):
+                ok = (isinstance(v, (int, float)) and not isinstance(v, bool)) or \
+                     (isinstance(v, list) and 1 <= len(v) <= 2 and
+                      all(isinstance(x, (int, float)) and not isinstance(x, bool) for x in v)) or \
+                     (isinstance(v, str) and "," in v)
+                if not ok:
+                    errs.append(f"content shape: standalone_bars[{i}] must be a number, [start,end], "
+                                f"or 'a,b', got {v!r}")
+    opts = content.get("optionals")
+    if isinstance(opts, dict):
+        for oid, odata in opts.items():
+            if odata is None or odata is False:
+                continue
+            if not isinstance(odata, dict):
+                errs.append(f"content shape: optionals.{oid} must be an object with `slots` and/or "
+                            f"`repeats` (or null to delete), got {type(odata).__name__}")
+                continue
+            for sub in ("slots", "repeats"):
+                if sub in odata and odata[sub] is not None and not isinstance(odata[sub], dict):
+                    errs.append(f"content shape: optionals.{oid}.{sub} must be an object, "
+                                f"got {type(odata[sub]).__name__}")
+    reps = content.get("repeats")
+    if isinstance(reps, dict):
+        for rname, rows in reps.items():
+            if rows is not None and not isinstance(rows, (list, dict)):
+                errs.append(f"content shape: repeats.{rname} must be a list of rows (or a grid object), "
+                            f"got {type(rows).__name__}")
+    return errs
+
+
 def render(template_path, schema, content, ds_dir=None, mode=None, brand=None):
     soup = parse_doc(template_path)
     report = {"errors": [], "warnings": [], "missing": [], "deleted": [],
@@ -2026,6 +2089,12 @@ def main(argv=None):
         for kv in args.brand:
             k, _, v2 = kv.partition("=")
             brand[k] = v2
+        shape_errors = check_content_shape(content)
+        if shape_errors:
+            summary = {"out": None, "attempted_out": args.out, "errors": shape_errors,
+                       "fix": "content patch by the owning agent; nothing was rendered"}
+            print(json.dumps(summary, indent=1, ensure_ascii=False))
+            sys.exit(1)
         soup, report = render(args.template, schema, content,
                               ds_dir=args.ds, mode=args.mode, brand=brand)
         failed = bool(report["errors"] or (args.strict and report["missing"]))
@@ -2049,6 +2118,9 @@ def main(argv=None):
             print(json.dumps(summary, indent=1, ensure_ascii=False))
             sys.exit(1)
         tmp_path.replace(out_path)
+        stale = out_path.with_name(out_path.name + ".failed")
+        if stale.exists():
+            stale.unlink()  # a later clean render supersedes the kept failed attempt
         if args.handoffs:
             append_compat_handoff(args.handoffs, content, args.role, schema)
         summary = {"out": args.out, **{k: v for k, v in report.items() if v}}

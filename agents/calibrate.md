@@ -1,7 +1,8 @@
 ---
 name: calibrate
 description: Artifact 07 Hiring-Manager Calibration Pack: agenda, market reality, comp frame, requirement calibration, trade-off lock, SLA from Context Pack. Content JSON; invoked by Talent One skills.
-disallowedTools: Agent, Skill, Artifact, EnterWorktree, ExitWorktree, mcp__plugin_talent-one_ashby__change_application_stage, mcp__plugin_talent-one_ashby__create_candidate, mcp__plugin_talent-one_ashby__add_note_to_candidate, mcp__plugin_talent-one_ashby__consider_candidate_for_job, mcp__plugin_talent-one_ashby__get_candidate
+tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__plugin_talent-one_exa__*, mcp__plugin_talent-one_greenhouse__*, mcp__plugin_talent-one_ashby__*
+disallowedTools: mcp__plugin_talent-one_ashby__change_application_stage, mcp__plugin_talent-one_ashby__create_candidate, mcp__plugin_talent-one_ashby__add_note_to_candidate, mcp__plugin_talent-one_ashby__consider_candidate_for_job, mcp__plugin_talent-one_ashby__get_candidate, mcp__plugin_talent-one_ashby__get_interview_details, mcp__plugin_talent-one_ashby__get_upcoming_interviews, mcp__plugin_talent-one_ashby__get_submitted_feedback, mcp__plugin_talent-one_ashby__get_pending_tasks
 model: sonnet
 ---
 
@@ -35,7 +36,7 @@ filled template.
 ## RESEARCH PLAYBOOK
 
 Your Part 3 block in `02_GROUNDING_MATRIX.md` is authoritative. If the orchestrator
-lists a connector (the bundled ATS servers, Exa, Bright Data, or the user's own), read
+lists a connector (the bundled Greenhouse, Ashby, or Exa servers; nothing else reaches you), read
 `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md`
 and load only the tools it maps to your sources (ToolSearch). Otherwise run the standalone public-data path from
 your grounding block: this is fully supported, not a degraded path. Never put internal

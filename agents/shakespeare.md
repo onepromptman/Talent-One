@@ -1,7 +1,7 @@
 ---
 name: shakespeare
 description: Artifact 05 Outreach Campaign: paste-ready email, LinkedIn, InMail, SMS, voicemail and phone copy with A/B variants, proof points. Content JSON; invoked by Talent One skills.
-disallowedTools: Agent, Skill, Artifact, EnterWorktree, ExitWorktree, mcp__plugin_talent-one_ashby__change_application_stage, mcp__plugin_talent-one_ashby__create_candidate, mcp__plugin_talent-one_ashby__add_note_to_candidate, mcp__plugin_talent-one_ashby__consider_candidate_for_job, mcp__plugin_talent-one_ashby__get_candidate
+tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__plugin_talent-one_exa__*
 model: sonnet
 ---
 
