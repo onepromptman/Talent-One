@@ -447,9 +447,89 @@ def synthetic_row_entries(row, layout, siblings, name_prefix):
         if len(longest) >= MIN_SYNTHETIC_LEN:
             sname = f"{name_prefix}.prose{idx}"
             idx += 1
+            el = at_path(row, p)
             entries[sname] = {"type": "prose_long", "synthetic": True,
-                               "path": list(p), "example": longest[:220]}
+                               "path": list(p), "example": longest[:220],
+                               "words": _synthetic_words(longest),
+                               "role": _synthetic_role(el, longest),
+                               "context": _synthetic_context(el, row)}
     return entries
+
+
+# Synthetic slot guidance (1.1.2, D3). A synthetic slot has no SLOT_SCHEMA
+# entry, so before this its schema entry carried no word range and no hint of
+# where it sits; briefs printed "?-?" and agents skipped or guessed. These
+# derive both from the template itself: the range from the worked example's
+# own word count, the location from the nearest heading (and, inside a
+# repeat row, the nearest preceding real slot). Template heading TEXT is
+# worked-example copy, so it is shown only when it carries no worked-example
+# domain language; the heading's own slot name is always shown instead.
+
+
+def _synthetic_words(text):
+    """Word range for a synthetic slot: about 0.6x to 1.4x the worked
+    example's word count, floor 3."""
+    n = len([w for w in text.split() if re.search(r"\w", w)])
+    lo = max(3, int(round(n * 0.6)))
+    return {"min": lo, "max": max(lo, int(round(n * 1.4)))}
+
+
+def _synthetic_role(el, text):
+    """What kind of text sits at a synthetic site, in one word or two."""
+    if el.name == "th":
+        return "column header"
+    if el.name in ("h1", "h2", "h3", "h4", "h5", "h6"):
+        return "heading"
+    n = len([w for w in text.split() if re.search(r"\w", w)])
+    return "label" if n <= 8 else "prose"
+
+
+def _named_label(name, text, limit=60):
+    """`name "text"` in about `limit` chars: the text dropped when it carries
+    worked-example domain language, em dashes normalized, long text cut."""
+    text = re.sub(r"\s+", " ", text or "").replace(EM_DASH, ",").strip()
+    if not text or DOMAIN_MARKERS.search(text):
+        return name
+    head = f"{name} " if name else ""
+    room = max(10, limit - len(head) - 2)
+    if len(text) > room:
+        text = text[:room - 3].rstrip() + "..."
+    return f'{head}"{text}"'
+
+
+def _heading_label(h, limit=60):
+    """Label for a heading element: its own (or nearest) slot name plus its
+    template text, see _named_label."""
+    slot = h.get("data-slot")
+    if not slot:
+        near = h.find(attrs={"data-slot": True}) or h.find_parent(attrs={"data-slot": True})
+        slot = near["data-slot"] if near is not None else h.name
+    return _named_label(slot, clean_text(h), limit)
+
+
+def _synthetic_context(el, row=None, after=None, limit=60):
+    """Where a synthetic slot sits, as plain text: the nearest preceding
+    heading outside any repeat, prefixed by the nearest preceding label in
+    the same section (`after`, from doc_synthetic_slots) or, inside a repeat
+    row, the nearest preceding real slot in that row."""
+    parts = []
+    if row is not None:
+        for p in el.find_all_previous(True):
+            if p is row or row not in p.parents:
+                break
+            if p.has_attr("data-slot"):
+                parts.append(f"after {p['data-slot']}")
+                break
+        if not parts:
+            parts.append("first text in the row")
+    elif after:
+        parts.append(f"after {after}")
+    for p in el.find_all_previous(("h1", "h2", "h3", "h4", "h5", "h6")):
+        if in_repeat(p) or in_optional(p):
+            continue
+        parts.append(f"under {_heading_label(p, limit)}")
+        break
+    return "; ".join(parts) if parts else "top of document"
 
 
 def doc_synthetic_slots(soup):
@@ -458,9 +538,13 @@ def doc_synthetic_slots(soup):
     doc.prose0, doc.prose1, ... in document order."""
     entries = {}
     idx = 0
+    last_label = None  # nearest preceding synthetic label in this section
     for el in soup.find_all(True):
         if el.name in ("script", "style"):
             continue
+        if el.name in ("h1", "h2", "h3", "h4", "h5", "h6") and not (
+                in_repeat(el) or in_optional(el)):
+            last_label = None  # a new section starts; context restarts
         if el.has_attr("data-slot") or in_repeat(el) or in_optional(el):
             continue
         if el.find_parent(attrs={"data-slot": True}) is not None:
@@ -471,7 +555,12 @@ def doc_synthetic_slots(soup):
             sname = f"doc.prose{idx}"
             idx += 1
             entries[sname] = {"type": "prose_long", "synthetic": True,
-                               "path": list(el_path(soup, el)), "example": t[:220]}
+                               "path": list(el_path(soup, el)), "example": t[:220],
+                               "words": _synthetic_words(t),
+                               "role": _synthetic_role(el, t),
+                               "context": _synthetic_context(el, after=last_label)}
+            if entries[sname]["role"] in ("label", "column header"):
+                last_label = _named_label(sname, t, 50)
     return entries
 
 
@@ -1506,17 +1595,55 @@ def check_content_shape(content):
     way a strict miss does: exit 1, a report naming the field, and the fix
     routed to the owning agent as a content patch. Returns a list of errors;
     empty means the shape is sound (values are still checked by the fill).
+
+    Belt-and-braces coercion (1.1.2, D1): an EMPTY container of the wrong
+    type carries no data, so it is coerced in place instead of failing the
+    render: `"standalone_bars": {}` becomes `[]`, `"optionals": []` (or any
+    other object-typed envelope key given as `[]`) becomes `{}`, and a null
+    `slots` / `repeats` / `optionals` / `standalone_bars` becomes its empty
+    form (render() would otherwise crash on it). A NON-empty container of
+    the wrong type is still an error: guessing what it meant is exactly how
+    a value lands in the wrong place.
+
+    Warning channel: the return value stays a plain list of errors (main()
+    is unchanged), so each coercion is recorded as a string in
+    `content["_shape_warnings"]` (a list; render() reads only the envelope
+    keys it knows, so the extra key is inert) and echoed to stderr as
+    `WARNING: content shape: ...` so a CLI caller sees it today. A caller
+    that wants it in the render report can move it across with
+    `report["warnings"] += content.pop("_shape_warnings", [])`.
     """
     errs = []
     if not isinstance(content, dict):
         return ["content shape: top level must be an object"]
+    warns = []
+    for key, empty in _ENVELOPE_EMPTY.items():
+        if key not in content:
+            continue
+        val = content[key]
+        if val is None and key in ("slots", "repeats", "optionals", "standalone_bars"):
+            content[key] = type(empty)()
+            warns.append(f"content shape: `{key}` was null, treated as {empty!r}")
+        elif isinstance(empty, dict) and isinstance(val, list) and not val:
+            content[key] = {}
+            warns.append(f"content shape: `{key}` was [], treated as {{}} "
+                         f"(`{key}` is an object; write {{}} when empty)")
+        elif isinstance(empty, list) and isinstance(val, dict) and not val:
+            content[key] = []
+            warns.append(f"content shape: `{key}` was {{}}, treated as [] "
+                         f"(`{key}` is a list; write [] when empty, never {{}})")
     for key in ("slots", "repeats", "toggles", "handoff", "optionals"):
         if key in content and content[key] is not None and not isinstance(content[key], dict):
-            errs.append(f"content shape: `{key}` must be an object, got {type(content[key]).__name__}")
+            errs.append(f"content shape: `{key}` must be an object, got "
+                        f"{type(content[key]).__name__}; write \"{key}\": {{}} when empty")
+            content[key] = {}  # neutralized so nothing downstream crashes; render still fails
     sb = content.get("standalone_bars")
     if sb is not None:
         if not isinstance(sb, list):
-            errs.append(f"content shape: `standalone_bars` must be a list, got {type(sb).__name__}")
+            errs.append(f"content shape: `standalone_bars` must be a list, got {type(sb).__name__}; "
+                        "write \"standalone_bars\": [0.42, [0.2, 0.6]] (one number or [start, end] "
+                        "per standalone bar, in template order), or [] when the schema lists none")
+            content["standalone_bars"] = []
         else:
             for i, v in enumerate(sb):
                 ok = (isinstance(v, (int, float)) and not isinstance(v, bool)) or \
@@ -1532,8 +1659,8 @@ def check_content_shape(content):
             if odata is None or odata is False:
                 continue
             if not isinstance(odata, dict):
-                errs.append(f"content shape: optionals.{oid} must be an object with `slots` and/or "
-                            f"`repeats` (or null to delete), got {type(odata).__name__}")
+                errs.append(_optional_shape_error(oid, odata))
+                opts[oid] = None  # neutralized so render() cannot crash on it; render still fails
                 continue
             for sub in ("slots", "repeats"):
                 if sub in odata and odata[sub] is not None and not isinstance(odata[sub], dict):
@@ -1545,7 +1672,32 @@ def check_content_shape(content):
             if rows is not None and not isinstance(rows, (list, dict)):
                 errs.append(f"content shape: repeats.{rname} must be a list of rows (or a grid object), "
                             f"got {type(rows).__name__}")
+    if warns:
+        content.setdefault("_shape_warnings", []).extend(warns)
+        for w in warns:
+            sys.stderr.write(f"WARNING: {w}\n")
     return errs
+
+
+# Envelope keys with their type and empty-state literal. Mirrors the
+# "Envelope" line build_briefs.py writes into every artifact brief and
+# 00_SHARED_CORE.md §5.2; keep the three in step.
+_ENVELOPE_EMPTY = {"slots": {}, "repeats": {}, "standalone_bars": [],
+                   "optionals": {}, "toggles": {}, "handoff": {}}
+
+
+def _optional_shape_error(oid, odata):
+    """Error text for an optional block given as a non-object (agent 08 sent
+    `"optional_1": "No optional block shipped"`): names the exact literal to
+    write instead, for both intents (drop it or fill it)."""
+    got = type(odata).__name__
+    if isinstance(odata, str):
+        got += f" {odata[:40]!r}"
+    return (f"content shape: optionals.{oid} must be an object or null, got {got}. "
+            f"Nothing to put there: leave it out (\"optionals\": {{}}) or write "
+            f"\"{oid}\": null. To fill it: \"{oid}\": "
+            f"{{\"slots\": {{\"<slot>\": \"<text>\"}}, \"repeats\": {{}}}}. "
+            f"Never a bare string.")
 
 
 def render(template_path, schema, content, ds_dir=None, mode=None, brand=None,
@@ -1553,6 +1705,9 @@ def render(template_path, schema, content, ds_dir=None, mode=None, brand=None,
     soup = parse_doc(template_path)
     report = {"errors": [], "warnings": [], "missing": [], "deleted": [],
               "deleted_slots": []}
+    # Coercion notes from check_content_shape (an empty {} given for a list,
+    # etc.) ride the report so the orchestrator sees them, not only stderr.
+    report["warnings"] += list(content.pop("_shape_warnings", []) or [])
     # Renderer-owned chrome (kit.mark, footer.left) comes from --prefix and the
     # template's artifact number, never from content. Older cached content
     # still carries these keys: ignore them with a warning, never an error.
@@ -2049,6 +2204,160 @@ def _walk_pv(node, path, findings):
                              "evidence": path})
 
 
+# Size budgets from CONTEXT_PACK.md §1, in estimated tokens (chars / 4 of the
+# compact JSON dump). Every artifact agent reads pack.json whole, so an
+# oversized pack taxes every spawn (1.1.2, D4: a 26KB fixture pack passed).
+PACK_TOKEN_BUDGET = 4000
+RESEARCH_TOKEN_BUDGET = 8000
+COMP_SLA_MONTHS = 6
+PERSONA_TEMPLATE_CAP = 4  # TK_03 renders at most four persona cards
+
+_NUM_WORDS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
+              "seven": 7, "eight": 8, "nine": 9, "ten": 10, "eleven": 11,
+              "twelve": 12}
+_STATED_COUNT = re.compile(
+    r"\b(\d{1,2}|" + "|".join(_NUM_WORDS) + r")[\s-]+(touch|touches|step|steps)\b", re.I)
+_DAY_SLASH_LIST = re.compile(r"\bday\s+(\d{1,3}(?:\s*/\s*\d{1,3})+)", re.I)
+_DAY_MARKER = re.compile(r"\b(?:d|day\s?)(\d{1,3})\b", re.I)
+
+
+def _check_pack_budget(obj, label, budget, findings):
+    est = len(json.dumps(obj, ensure_ascii=False)) // 4
+    if est > budget:
+        where = ("move long methods, evidence lists and persona detail to "
+                 "pack-research.json" if label == "pack.json" else
+                 "trim dossiers and metros to what A03/A04/A05 render")
+        findings.append({"severity": "MEDIUM", "check": "pack size budget",
+                         "evidence": f"{label} is ~{est:,} tokens (chars/4), over its "
+                                     f"{budget:,}-token budget (CONTEXT_PACK.md §1); {where}"})
+
+
+def _day_marker_count(text):
+    """Touches enumerated in a cadence string, counted by day markers
+    ("d0", "D3", "day 7", or "day 0 / 4 / 11"). None when fewer than three
+    markers: too few to read as an enumeration, so no comparison is made."""
+    n = 0
+    for m in _DAY_SLASH_LIST.finditer(text):
+        n += len(re.findall(r"\d+", m.group(1)))
+    rest = _DAY_SLASH_LIST.sub(" ", text)
+    n += len(_DAY_MARKER.findall(rest))
+    return n if n >= 3 else None
+
+
+def _stated_counts(text):
+    out = []
+    for m in _STATED_COUNT.finditer(text):
+        tok = m.group(1).lower()
+        out.append(int(tok) if tok.isdigit() else _NUM_WORDS[tok])
+    return out
+
+
+def _check_sequence_counts(channels, findings):
+    """D6 (1): a cadence string that states N touches/steps while the list it
+    describes holds a different number. The list is either a sibling list in
+    the same object whose key names a sequence, or the day markers the
+    string itself enumerates. Unsure (no stated count, too few markers) means
+    no finding."""
+    if not isinstance(channels, dict):
+        return
+    scopes = [("channels", channels)]
+    if isinstance(channels.get("sequence_frame"), dict):
+        scopes.append(("channels.sequence_frame", channels["sequence_frame"]))
+    for base, scope in scopes:
+        lists = {k: v for k, v in scope.items() if isinstance(v, list) and
+                 re.search(r"sequence|touch|step|cadence|schedule", k, re.I)}
+        for key, val in scope.items():
+            if not isinstance(val, str):
+                continue
+            stated = _stated_counts(val)
+            if len(set(stated)) != 1:
+                continue  # no count, or several different ones: not sure
+            n = stated[0]
+            for lkey, lval in lists.items():
+                if len(lval) != n:
+                    findings.append({"severity": "MEDIUM", "check": "stated count vs list",
+                                     "evidence": f"{base}.{key} states {n} touches/steps "
+                                                 f"but {base}.{lkey} lists {len(lval)}"})
+            marks = _day_marker_count(val)
+            if marks is not None and marks != n:
+                findings.append({"severity": "MEDIUM", "check": "stated count vs list",
+                                 "evidence": f"{base}.{key} states {n} touches/steps but "
+                                             f"enumerates {marks} dated touches: {val[:90]}"})
+
+
+def _parse_as_of(value):
+    """'YYYY-MM' or 'YYYY-MM-DD' -> (year, month, day or None), else None."""
+    m = re.match(r"^\s*(\d{4})-(\d{1,2})(?:-(\d{1,2}))?\b", str(value or ""))
+    if not m:
+        return None
+    y, mo = int(m.group(1)), int(m.group(2))
+    if not 1 <= mo <= 12:
+        return None
+    return y, mo, (int(m.group(3)) if m.group(3) else None)
+
+
+def _check_comp_sla(pack, findings):
+    """D6 (2): a comp pv or row whose `as_of` is older than the 6-month comp
+    SLA, measured from pack.built (today when absent), that still feeds
+    comp.canonical_range, comp.by_level or a ceiling. A month-only as_of is
+    judged by whole months (2026-04 is in window for a 2026-10-22 build), so
+    a borderline vintage is never flagged."""
+    import datetime
+    comp = pack.get("comp")
+    if not isinstance(comp, dict):
+        return
+    ref = _parse_as_of(pack.get("built"))
+    if ref and ref[2]:
+        try:
+            ref_date = datetime.date(*ref)
+        except ValueError:
+            ref_date = datetime.date.today()
+    else:
+        ref_date = datetime.date.today()
+    cy, cm = ref_date.year, ref_date.month - COMP_SLA_MONTHS
+    if cm <= 0:
+        cm, cy = cm + 12, cy - 1
+    cutoff_day = min(ref_date.day, 28)
+
+    def stale(as_of):
+        p = _parse_as_of(as_of)
+        if not p:
+            return False
+        if p[2] is None:
+            return (p[0], p[1]) < (cy, cm)
+        return (p[0], p[1], p[2]) < (cy, cm, cutoff_day)
+
+    def walk(node, path):
+        if isinstance(node, dict):
+            if "as_of" in node and stale(node["as_of"]):
+                findings.append({"severity": "MEDIUM", "check": "comp row older than 6-month SLA",
+                                 "evidence": f"{path}: as_of {node['as_of']} vs pack built "
+                                             f"{ref_date.isoformat()}; drop it from ranges "
+                                             f"and ceilings or refresh it"})
+            for k, v in node.items():
+                if k != "as_of":
+                    walk(v, f"{path}.{k}")
+        elif isinstance(node, list):
+            for i, v in enumerate(node):
+                walk(v, f"{path}[{i}]")
+
+    for key, val in comp.items():
+        if key in ("canonical_range", "by_level") or "ceiling" in key.lower():
+            walk(val, f"comp.{key}")
+
+
+def _check_pack_consistency(pack, findings):
+    """Scout internal-consistency checks (1.1.2, D6), all MEDIUM, all written
+    to stay quiet when the pack's shape is not what they expect."""
+    _check_sequence_counts(pack.get("channels"), findings)
+    _check_comp_sla(pack, findings)
+    personas = pack.get("personas")
+    if isinstance(personas, list) and len(personas) > PERSONA_TEMPLATE_CAP:
+        findings.append({"severity": "MEDIUM", "check": "persona count",
+                         "evidence": f"personas has {len(personas)}: personas exceed template "
+                                     f"cap of {PERSONA_TEMPLATE_CAP}; atlas will drop the extras"})
+
+
 def validate_pack(pack_path, research_path=None):
     findings = []
     pack = json.loads(read(pack_path))
@@ -2080,9 +2389,12 @@ def validate_pack(pack_path, research_path=None):
         findings.append({"severity": "MEDIUM", "check": "web_calls_used missing",
                          "evidence": "scout-built pack reports no web-call count"})
     _walk_pv(pack, "pack", findings)
+    _check_pack_budget(pack, "pack.json", PACK_TOKEN_BUDGET, findings)
+    _check_pack_consistency(pack, findings)
     if research_path:
         research = json.loads(read(research_path))
         _walk_pv(research, "research", findings)
+        _check_pack_budget(research, "pack-research.json", RESEARCH_TOKEN_BUDGET, findings)
         for p in research.get("quadrant", []):
             for ax in ("x", "y"):
                 if not (0 <= float(p.get(ax, -1)) <= 1):

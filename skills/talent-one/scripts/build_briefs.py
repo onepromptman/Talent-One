@@ -17,7 +17,7 @@ THE FIX
 This is a BUILD-TIME script. It parses the four source reference files once,
 slices out exactly what each agent needs per the mapping tables below, and
 writes one precompiled brief per agent to references/briefs/<agent>.md
-(target ~15KB, soft target 20KB, HARD ceiling 24KB — the script exits nonzero
+(target ~15KB, soft target 20KB, HARD ceiling 24KB: the script exits nonzero
 when any brief crosses the hard ceiling, in --check mode too: a brief that
 outgrows its budget is a build failure, not a warning to scroll past; trim the
 source mapping, don't raise the ceiling). Each agent's RUNTIME block is edited (by
@@ -1162,6 +1162,70 @@ def format_repeat(name, info):
     return "\n".join(lines)
 
 
+def envelope_line(schema, stem):
+    """The content JSON envelope with every key's TYPE and empty-state
+    literal (1.1.2, D1: agents 06/07/08 sent `"standalone_bars": {}` and a
+    bare-string optional when this line named the keys only). Tailored to
+    the bound schema so an agent whose template has no standalone bars, or
+    only the handoff optional, is told the exact literal to write. Mirrors
+    render.py check_content_shape() and 00_SHARED_CORE.md §5.2."""
+    n_bars = len(schema.get("standalone_bars") or [])
+    bars = (f"LIST of {n_bars} number(s) or [start, end] pair(s), template order"
+            if n_bars else "this template has none: write []")
+    opts = schema.get("optionals") or []
+    if opts and all(o.get("handoff_block") for o in opts):
+        opt = "only the handoff block, kept and filled from `handoff`: write {}"
+    else:
+        opt = ('each value {"slots": {...}, "repeats": {...}}, or null to '
+               "delete the block")
+    tog = "booleans" if schema.get("toggles") else "this template has none: write {}"
+    return (f"Envelope (top-level keys of your content JSON, in this order; type "
+            f"and empty state): `template` (\"{schema['template']}\"), "
+            f"`artifact` (\"{stem[-2:]}\", the renderer keys the handoff "
+            "consumers line on it), `generated` (\"YYYY-MM-DD\"), `slots: {}` "
+            "(object), `repeats: {}` (object of row lists), "
+            f"`standalone_bars: []` ({bars}), `optionals: {{}}` ({opt}), "
+            f"`toggles: {{}}` ({tog}), `handoff: {{...}}` (object, §6). Never "
+            "omit `artifact`; never `{}` for `standalone_bars`; never a bare "
+            "string for an optional.")
+
+
+def synthetic_section(schema):
+    """'Synthetic slots (required under --strict)' list for the bound
+    template (1.1.2, D3): every synthetic slot, top-level and row-level, with
+    its word range, role, and location context from build_schema(). One
+    purpose paragraph for the whole list keeps it compact."""
+    items = []
+    for name, info in schema.get("slots", {}).items():
+        if info.get("synthetic"):
+            items.append((name, info, "slots"))
+    for rname, rinfo in schema.get("repeats", {}).items():
+        shapes = [(rinfo.get("row_slots", {}), f"{rname} rows")] + [
+            (v.get("row_slots", {}), f"{rname} row variant {v.get('position')}")
+            for v in rinfo.get("row_variants", [])]
+        for shape, where in shapes:
+            for name, info in shape.items():
+                if info.get("synthetic"):
+                    items.append((name, info, where))
+    if not items:
+        return ["### Synthetic slots: none in this template", ""]
+    out = ["### Synthetic slots (required under --strict)",
+           "Prose the template generator found in the worked example at this "
+           "location, with no named slot; write your own text that fits the "
+           "heading, never the example's. Numbered in document order; "
+           "`--strict` fails on any you omit. Format: `name (MIN-MAX, role) "
+           "where`; `in X rows` = a key in each row of repeat X, otherwise a "
+           "key in `slots`."]
+    for name, info, where in items:
+        w = info.get("words") or {}
+        rng = f"{w.get('min', '?')}-{w.get('max', '?')}"
+        loc = "" if where == "slots" else f"in {where}, "
+        role = info.get("role", "prose")
+        out.append(f"- {name} ({rng}, {role}) {loc}{info.get('context', '')}")
+    out.append("")
+    return out
+
+
 def schema_summary(stem):
     path = os.path.join(SCHEMA_DIR, f"{stem}.content-schema.json")
     with open(path, encoding="utf-8") as f:
@@ -1171,24 +1235,22 @@ def schema_summary(stem):
            f"(template: `{schema['template']}`)", "",
            "Format: `name (type MIN-MAX)`, word count not the full JSON or "
            "worked example prose; a slot ranged 24-24 wants 24 words, not 8 "
-           "and not 60. `*` = synthetic: prose the template generator found "
-           "beyond the named data-slot elements, filled exactly like any "
-           "other slot, never left as the shipped example text.", "",
-           f"Envelope (top-level keys of your content JSON, in this order): "
-           f"`template` (\"{schema['template']}\"), `artifact` (\"{stem[-2:]}\", "
-           "the renderer keys the handoff consumers line on it), `generated` "
-           "(YYYY-MM-DD), `slots`, `repeats`, `standalone_bars`, `optionals`, "
-           "`toggles`, `handoff`. Never omit `artifact`.", ""]
+           "and not 60. `*` = synthetic (see Synthetic slots below).", "",
+           envelope_line(schema, stem), ""]
 
+    slots = schema.get("slots", {})
     out.append("### Top-level slots")
-    for name, info in schema.get("slots", {}).items():
-        out.append(format_slot(name, info))
+    for name, info in slots.items():
+        if not info.get("synthetic"):
+            out.append(format_slot(name, info))
     out.append("")
 
     out.append("### Repeats")
     for name, info in schema.get("repeats", {}).items():
         out.append(format_repeat(name, info))
     out.append("")
+
+    out += synthetic_section(schema)
 
     if schema.get("standalone_bars"):
         out.append(f"### Standalone bars\n{schema['standalone_bars']}\n")

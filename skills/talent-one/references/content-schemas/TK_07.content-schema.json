@@ -234,7 +234,13 @@
     1,
     0
    ],
-   "example": "Working anchor: say this out loud"
+   "example": "Working anchor: say this out loud",
+   "words": {
+    "min": 4,
+    "max": 8
+   },
+   "role": "label",
+   "context": "under sB.title \"Compensation reality\""
   },
   "doc.prose1": {
    "type": "prose_long",
@@ -252,7 +258,13 @@
     0,
     0
    ],
-   "example": "Requirement, as documented"
+   "example": "Requirement, as documented",
+   "words": {
+    "min": 3,
+    "max": 4
+   },
+   "role": "column header",
+   "context": "under sF.title \"Requirement calibration\""
   },
   "doc.prose2": {
    "type": "prose_long",
@@ -270,7 +282,13 @@
     0,
     2
    ],
-   "example": "Market check & recommendation"
+   "example": "Market check & recommendation",
+   "words": {
+    "min": 3,
+    "max": 4
+   },
+   "role": "column header",
+   "context": "after doc.prose1 \"Requirement, as documented\"; under sF.title \"Requirement calibration\""
   },
   "doc.prose3": {
    "type": "prose_long",
@@ -285,7 +303,13 @@
     1,
     0
    ],
-   "example": "Pick two: speed · bar · comp"
+   "example": "Pick two: speed · bar · comp",
+   "words": {
+    "min": 3,
+    "max": 7
+   },
+   "role": "label",
+   "context": "under sG.title \"The trade-off lock and a mutual SLA\""
   }
  },
  "repeats": {

@@ -185,7 +185,13 @@
     1,
     0
    ],
-   "example": "Primary owner: writes the score"
+   "example": "Primary owner: writes the score",
+   "words": {
+    "min": 3,
+    "max": 7
+   },
+   "role": "label",
+   "context": "under s2.title \"Every competency gets one owner\""
   }
  },
  "repeats": {

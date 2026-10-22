@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 0dc727ff44a9
+Source fingerprint: 15614d801cba
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_03.content-schema.json
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
@@ -91,8 +91,13 @@ them from the pack's `quadrant` research where present) plus optional `size` px 
 and its heading: that is the honest empty state, never hedging prose. `data-count`
 in the schema is guidance: respect it unless the data genuinely demands otherwise.
 
-Omit `"optionals"` entries you have no data for: the block is deleted. Toggles
-(TK_03 only) choose which sections ship visible; never fake them elsewhere.
+Envelope types, empty state in backticks: `slots` object `{}`; `repeats` object
+`{}`; `standalone_bars` a LIST `[]` of numbers or `[start, end]` pairs, one per
+standalone bar in template order; `optionals` object `{}`, each value
+`{"slots": {...}, "repeats": {...}}` or `null`; `toggles` object `{}` of booleans;
+`handoff` object (§6). Never `{}` for `standalone_bars`, never a bare string for an
+optional. Omit `"optionals"` entries you have no data for: the block is deleted.
+Toggles (TK_03 only) choose which sections ship visible; never fake them elsewhere.
 
 Synthetic prose slots: some schema entries are marked `"synthetic": true`. These
 are prose sites the template carries without a `data-slot` attribute (a "why it
@@ -100,7 +105,8 @@ wins" line, a card aside); the renderer fills them by structural path. Fill ever
 schema-listed synthetic slot like any other slot, at the example's length and in
 the search's own domain language. A synthetic slot you omit renders BLANK, never
 the template's example prose; leaving one out is a visible hole in the artifact,
-so omission is never a shortcut.
+so omission is never a shortcut, and `render.py --strict` fails on it. The schema
+gives each one a word range and a `context` (the heading it sits under).
 
 ### 5.3 Hard rules
 
@@ -269,9 +275,9 @@ tightness anywhere in the kit; no agent file may use a second one.
 
 ## SCHEMA SUMMARY · `TK_03.content-schema.json` (template: `TK_03_Talent_Map.dc.html`)
 
-Format: `name (type MIN-MAX)`, word count not the full JSON or worked example prose; a slot ranged 24-24 wants 24 words, not 8 and not 60. `*` = synthetic: prose the template generator found beyond the named data-slot elements, filled exactly like any other slot, never left as the shipped example text.
+Format: `name (type MIN-MAX)`, word count not the full JSON or worked example prose; a slot ranged 24-24 wants 24 words, not 8 and not 60. `*` = synthetic (see Synthetic slots below).
 
-Envelope (top-level keys of your content JSON, in this order): `template` ("TK_03_Talent_Map.dc.html"), `artifact` ("03", the renderer keys the handoff consumers line on it), `generated` (YYYY-MM-DD), `slots`, `repeats`, `standalone_bars`, `optionals`, `toggles`, `handoff`. Never omit `artifact`.
+Envelope (top-level keys of your content JSON, in this order; type and empty state): `template` ("TK_03_Talent_Map.dc.html"), `artifact` ("03", the renderer keys the handoff consumers line on it), `generated` ("YYYY-MM-DD"), `slots: {}` (object), `repeats: {}` (object of row lists), `standalone_bars: []` (this template has none: write []), `optionals: {}` (each value {"slots": {...}, "repeats": {...}}, or null to delete the block), `toggles: {}` (booleans), `handoff: {...}` (object, §6). Never omit `artifact`; never `{}` for `standalone_bars`; never a bare string for an optional.
 
 ### Top-level slots
 - doc.agent (prose_short 3-4)
@@ -317,13 +323,6 @@ Envelope (top-level keys of your content JSON, in this order): `template` ("TK_0
 - s10.title (label 3-4)
 - s10.body (prose_long 16-28)
 - footer.right (prose_short 3-6)
-- doc.prose0 (prose_long ?-?)*
-- doc.prose1 (prose_long ?-?)*
-- doc.prose2 (prose_long ?-?)*
-- doc.prose3 (prose_long ?-?)*
-- doc.prose4 (prose_long ?-?)*
-- doc.prose5 (prose_long ?-?)*
-- doc.prose6 (prose_long ?-?)*
 
 ### Repeats
 - cover.metrics [rows n=4-6]
@@ -383,6 +382,16 @@ Envelope (top-level keys of your content JSON, in this order): `template` ("TK_0
   - rec.why (prose_long 29-29)
   - rec.owner (label 1-1)
   - rec.when (duration 2-2)
+
+### Synthetic slots (required under --strict)
+Prose the template generator found in the worked example at this location, with no named slot; write your own text that fits the heading, never the example's. Numbered in document order; `--strict` fails on any you omit. Format: `name (MIN-MAX, role) where`; `in X rows` = a key in each row of repeat X, otherwise a key in `slots`.
+- doc.prose0 (4-8, label) under doc.title
+- doc.prose1 (3-6, label) under s4.title "Where cadence meets flight heritage"
+- doc.prose2 (3-7, label) after doc.prose1 "Flight heritage & tech maturity →"; under s4.title "Where cadence meets flight heritage"
+- doc.prose3 (3-6, label) after doc.prose2; under s4.title "Where cadence meets flight heritage"
+- doc.prose4 (5-11, label) under s5.title
+- doc.prose5 (20-46, prose) after doc.prose4 "How to read this, and what to do"; under s5.title
+- doc.prose6 (8-18, prose) after doc.prose4 "How to read this, and what to do"; under s5.title
 
 ### Toggles
 ['method', 'dives', 'peripheral', 'personas', 'comp'] (booleans selecting which sections render; choose defaults in the template's `state = {...}` logic block, never delete an `<sc-if>` wrapper to hide a section)

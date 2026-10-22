@@ -359,7 +359,13 @@
     0,
     6
    ],
-   "example": "Hidden sections are excluded from print"
+   "example": "Hidden sections are excluded from print",
+   "words": {
+    "min": 4,
+    "max": 8
+   },
+   "role": "label",
+   "context": "under doc.title"
   },
   "doc.prose1": {
    "type": "prose_long",
@@ -376,7 +382,13 @@
     0,
     0
    ],
-   "example": "Flight heritage & tech maturity →"
+   "example": "Flight heritage & tech maturity →",
+   "words": {
+    "min": 3,
+    "max": 6
+   },
+   "role": "label",
+   "context": "under s4.title \"Where cadence meets flight heritage\""
   },
   "doc.prose2": {
    "type": "prose_long",
@@ -394,7 +406,13 @@
     1,
     1
    ],
-   "example": "Test & hot-fire cadence → (iteration speed)"
+   "example": "Test & hot-fire cadence → (iteration speed)",
+   "words": {
+    "min": 3,
+    "max": 7
+   },
+   "role": "label",
+   "context": "after doc.prose1 \"Flight heritage & tech maturity →\"; under s4.title \"Where cadence meets flight heritage\""
   },
   "doc.prose3": {
    "type": "prose_long",
@@ -410,7 +428,13 @@
     1,
     0
    ],
-   "example": "Marker = target archetype · ★ = Onepromptman"
+   "example": "Marker = target archetype · ★ = Onepromptman",
+   "words": {
+    "min": 3,
+    "max": 6
+   },
+   "role": "label",
+   "context": "after doc.prose2; under s4.title \"Where cadence meets flight heritage\""
   },
   "doc.prose4": {
    "type": "prose_long",
@@ -425,7 +449,13 @@
     2,
     0
    ],
-   "example": "How to read this, and what to do"
+   "example": "How to read this, and what to do",
+   "words": {
+    "min": 5,
+    "max": 11
+   },
+   "role": "label",
+   "context": "under s5.title"
   },
   "doc.prose5": {
    "type": "prose_long",
@@ -440,7 +470,13 @@
     2,
     2
    ],
-   "example": "Historical relocation-acceptance from these metros runs low for this role family, so package alone rarely closes them. Source them for exceptional inbound only, and do not spend a sourcing block chasing relocations there"
+   "example": "Historical relocation-acceptance from these metros runs low for this role family, so package alone rarely closes them. Source them for exceptional inbound only, and do not spend a sourcing block chasing relocations there",
+   "words": {
+    "min": 20,
+    "max": 46
+   },
+   "role": "prose",
+   "context": "after doc.prose4 \"How to read this, and what to do\"; under s5.title"
   },
   "doc.prose6": {
    "type": "prose_long",
@@ -456,7 +492,13 @@
     2,
     0
    ],
-   "example": "Huntsville and Melbourne look strong on pool and cost, and fail on propensity."
+   "example": "Huntsville and Melbourne look strong on pool and cost, and fail on propensity.",
+   "words": {
+    "min": 8,
+    "max": 18
+   },
+   "role": "prose",
+   "context": "after doc.prose4 \"How to read this, and what to do\"; under s5.title"
   }
  },
  "repeats": {

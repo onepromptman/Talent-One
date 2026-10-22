@@ -276,7 +276,13 @@
     0,
     0
    ],
-   "example": "E1 · day 0 · curiosity plus identity"
+   "example": "E1 · day 0 · curiosity plus identity",
+   "words": {
+    "min": 4,
+    "max": 8
+   },
+   "role": "label",
+   "context": "under s2.title \"Email 1 · the origin touch\""
   },
   "doc.prose1": {
    "type": "prose_long",
@@ -293,7 +299,13 @@
     0,
     0
    ],
-   "example": "E4 · day 14 · must be true"
+   "example": "E4 · day 14 · must be true",
+   "words": {
+    "min": 4,
+    "max": 8
+   },
+   "role": "label",
+   "context": "under s5.title \"Honest urgency, then the exit ramp\""
   },
   "doc.prose2": {
    "type": "prose_long",
@@ -310,7 +322,13 @@
     0,
     0
    ],
-   "example": "E5 · day 21 · highest reply rate"
+   "example": "E5 · day 21 · highest reply rate",
+   "words": {
+    "min": 4,
+    "max": 8
+   },
+   "role": "label",
+   "context": "after doc.prose1 \"E4 · day 14 · must be true\"; under s5.title \"Honest urgency, then the exit ramp\""
   },
   "doc.prose3": {
    "type": "prose_long",
@@ -327,7 +345,13 @@
     2,
     1
    ],
-   "example": "Closing the file on my end: you clearly have good things going at [[CurrentCompany]]."
+   "example": "Closing the file on my end: you clearly have good things going at [[CurrentCompany]].",
+   "words": {
+    "min": 8,
+    "max": 20
+   },
+   "role": "prose",
+   "context": "after doc.prose2 \"E5 · day 21 · highest reply rate\"; under s5.title \"Honest urgency, then the exit ramp\""
   },
   "doc.prose4": {
    "type": "prose_long",
@@ -344,7 +368,13 @@
     2,
     2
    ],
-   "example": "One sentence for the archive: this is the team building the propulsion system for [[NextMilestone]], and the seat is still open."
+   "example": "One sentence for the archive: this is the team building the propulsion system for [[NextMilestone]], and the seat is still open.",
+   "words": {
+    "min": 13,
+    "max": 29
+   },
+   "role": "prose",
+   "context": "after doc.prose2 \"E5 · day 21 · highest reply rate\"; under s5.title \"Honest urgency, then the exit ramp\""
   },
   "doc.prose5": {
    "type": "prose_long",
@@ -361,7 +391,13 @@
     2,
     3
    ],
-   "example": "If timing ever changes, my inbox doesn't. And if a former teammate comes to mind who'd want this, that introduction would genuinely mean something."
+   "example": "If timing ever changes, my inbox doesn't. And if a former teammate comes to mind who'd want this, that introduction would genuinely mean something.",
+   "words": {
+    "min": 14,
+    "max": 34
+   },
+   "role": "prose",
+   "context": "after doc.prose2 \"E5 · day 21 · highest reply rate\"; under s5.title \"Honest urgency, then the exit ramp\""
   },
   "doc.prose6": {
    "type": "prose_long",
@@ -378,7 +414,13 @@
     2,
     4
    ],
-   "example": "Go build,[Your first name]"
+   "example": "Go build,[Your first name]",
+   "words": {
+    "min": 3,
+    "max": 6
+   },
+   "role": "label",
+   "context": "after doc.prose2 \"E5 · day 21 · highest reply rate\"; under s5.title \"Honest urgency, then the exit ramp\""
   },
   "doc.prose7": {
    "type": "prose_long",
@@ -394,7 +436,13 @@
     1,
     3
    ],
-   "example": "Do not add one back in. The referral line earns more replies than the direct question ever does."
+   "example": "Do not add one back in. The referral line earns more replies than the direct question ever does.",
+   "words": {
+    "min": 11,
+    "max": 25
+   },
+   "role": "prose",
+   "context": "after doc.prose6 \"Go build,[Your first name]\"; under s5.title \"Honest urgency, then the exit ramp\""
   },
   "doc.prose8": {
    "type": "prose_long",
@@ -411,7 +459,13 @@
     3,
     0
    ],
-   "example": "Dropping the ask is what makes it land."
+   "example": "Dropping the ask is what makes it land.",
+   "words": {
+    "min": 5,
+    "max": 11
+   },
+   "role": "label",
+   "context": "after doc.prose6 \"Go build,[Your first name]\"; under s5.title \"Honest urgency, then the exit ramp\""
   },
   "doc.prose9": {
    "type": "prose_long",
@@ -427,7 +481,13 @@
     1,
     0
    ],
-   "example": "Banned: automatic QA fail"
+   "example": "Banned: automatic QA fail",
+   "words": {
+    "min": 3,
+    "max": 6
+   },
+   "role": "label",
+   "context": "under s7.title \"Tier discipline and the banned list\""
   }
  },
  "repeats": {
@@ -546,7 +606,13 @@
       1,
       1
      ],
-     "example": "Both highlighted tokens. Use facts a candidate can confirm in one search: funding stage, a named test campaign, a public milestone."
+     "example": "Both highlighted tokens. Use facts a candidate can confirm in one search: funding stage, a named test campaign, a public milestone.",
+     "words": {
+      "min": 13,
+      "max": 29
+     },
+     "role": "prose",
+     "context": "after email.note; under s3.title \"Proof first, then scope\""
     }
    },
    "bars_per_row": 0,
