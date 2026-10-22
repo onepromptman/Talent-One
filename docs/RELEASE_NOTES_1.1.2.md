@@ -17,8 +17,10 @@ Fixed
 
 - Renders no longer fail on content shape. The briefs now state the content
   envelope with its types (`standalone_bars` is a list, `optionals` is an
-  object, `toggles` is an object), and the renderer coerces a few common
-  near-misses with a warning instead of refusing the whole document.
+  object, `toggles` is an object), and the renderer coerces empty containers
+  of the wrong type (for example `{}` given for `standalone_bars`) with a
+  warning. Non-empty wrong shapes still fail, with a message that shows the
+  correct literal.
 - Synthetic prose slots are documented. Template prose that has no named slot
   of its own is now listed in every agent's brief, with where it sits on the
   page and its word range, so agents fill it first time instead of guessing.
@@ -33,7 +35,8 @@ Fixed
 - Job descriptions keep the title. `jd.title` is the pack's role title
   verbatim, the body uses that title's noun consistently, and any claim about
   the company, team, or cadence must trace to the pack or profile or be left
-  out. Title length limits were widened so real titles fit.
+  out. `jd.title` was widened from exactly 3 words to 2 to 8 words, so real
+  titles fit.
 - Scout checks its own work before it writes the pack: it recounts every list
   against its stated count, recomputes any figure that states a formula,
   quarantines comp rows older than six months, and date-checks every row used
@@ -70,8 +73,10 @@ Changed
 - Setup checks brand, benefits, and EEO text against the kit's forbidden-phrase
   list when you hand it over, and offers an edit then, instead of failing later
   at job-description verification.
-- The deep-research prompt is now one optional sentence for technical users,
-  not a default suggestion. The Look step explains Dancheong in one line.
+- The deep-research prompt is demoted in setup to one optional sentence for
+  technical users, and the orchestrator now offers it only when the user
+  mentions deep research or is clearly technical. The Look step explains
+  Dancheong in one line.
 
 Deferred to the next release
 

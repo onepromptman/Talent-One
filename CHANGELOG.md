@@ -10,11 +10,11 @@ Hotfix from a full end-to-end test on a live role at a client (a complete kit ru
 
 ### Fixed
 
-- **Renders no longer fail on content shape.** The briefs state the content envelope with types (`standalone_bars: []`, `optionals: {}`, `toggles: {}`), and the renderer coerces common near-misses with a warning instead of refusing the document.
+- **Renders no longer fail on content shape.** The briefs state the content envelope with types (`standalone_bars: []`, `optionals: {}`, `toggles: {}`), and the renderer coerces empty containers of the wrong type (for example `{}` given for `standalone_bars`) with a warning; non-empty wrong shapes still fail with a message that shows the correct literal.
 - **Synthetic prose slots are documented** in every brief with their place on the page and word range, so agents fill them first time.
 - **One kit, one look.** Kit mark, artifact id, and footer credit are renderer-owned, so a run no longer produces eight different mastheads or a stray copyright line.
-- **Outreach follows the pack.** Cadence comes from the pack's `channels.sequence_frame`, with any divergence shown on the page. SMS only after the candidate replies and supplies the number; a referral is not consent. The worked example no longer contradicts that rule.
-- **Job descriptions keep the title.** `jd.title` is the pack's role title verbatim, the body uses its noun consistently, and any claim about the company, team, or cadence must trace to the pack or profile. Title length limits widened.
+- **Outreach follows the pack.** Cadence comes from the pack's `channels.sequence_frame`, with any divergence shown on the page. SMS only after the candidate replies and supplies the number; a referral is not consent. The outreach template's SMS label now reads "after the candidate replies", and the worked example no longer contradicts that rule.
+- **Job descriptions keep the title.** `jd.title` is the pack's role title verbatim, the body uses its noun consistently, and any claim about the company, team, or cadence must trace to the pack or profile. `jd.title` widened from exactly 3 words to 2 to 8.
 - **Scout self-check.** Before writing the pack it recounts lists against stated counts, recomputes figures that state a formula, quarantines comp rows older than six months, and date-checks "posted in window" claims.
 - Persona counts match what the talent map can show; the educational brief's example no longer carries inline-style markup.
 
@@ -29,7 +29,10 @@ Hotfix from a full end-to-end test on a live role at a client (a complete kit ru
 
 - **Shorter setup.** The eligibility step is two smaller asks: the candidate-facing sentence first, then gate stage and whether a No ends the process. The legal caution and the no-invented-EEO-or-address rule stay.
 - Setup lints brand, benefits, and EEO text against the forbidden-phrase list at capture and offers an edit then.
-- The deep-research prompt is one optional line for technical users; the Look step explains Dancheong in a line.
+- The deep-research prompt is demoted in setup to one optional sentence for technical users, and the orchestrator offers it only when the user mentions deep research or is clearly technical. The Look step explains Dancheong in a line.
+- `.gitignore` and the acceptance gate now also cover `talent-one-roles/`, `talent-one-runs/`, and `talent-one-kb/`, so local role output cannot be committed by accident.
+- `build-plugin.sh` packages only tracked files, so nothing local slips into a build.
+- The eight public samples and their README screenshots are re-rendered with the 1.1.2 masthead, artifact ids, and footer credit.
 
 ### Deferred
 
