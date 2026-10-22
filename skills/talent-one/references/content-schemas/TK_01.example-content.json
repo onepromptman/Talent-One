@@ -25,11 +25,9 @@
   "s5.body": "You cannot judge their analysis. You can absolutely judge how they talk about failure, ownership, and the people who disagreed with them, which carries real predictive signal and the part hiring managers most often skip.",
   "s6.title": "Where propulsion engineers come from",
   "s6.body": "A degree is a proxy here, not a gate. The alternative pathways below are worth weighting alongside pedigree for hands-on propulsion work, and they are far less contested.",
-  "edu.academic": {
-   "html": "<span style=\"font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-success);background:#EEF6F1;border:1px solid #BFDCCB\">Sourced</span><span style=\"font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)\">BLS-OOH / O*NET 2024, aerospace engineers</span>"
-  },
+  "edu.academic": "A bachelor's in aerospace or mechanical engineering is typical, and a master's is common for design roles. Coursework or project work in propulsion or turbomachinery is a reasonable sourcing signal, but it is a shortcut, not a requirement. Sourced · BLS-OOH / O*NET 2024, aerospace engineers",
   "edu.alt": {
-   "html": "<b>Adjacent-industry engineers.</b><span style=\"font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--bh-warning);background:#FAF0E6;border:1px solid #E3CDB4\">Estimate</span><span style=\"font-family:var(--bh-font-mono);font-size:11px;color:var(--bh-muted)\">O*NET adjacency + cross-industry pools</span>"
+   "html": "<b>Adjacent-industry engineers.</b> Automotive and motorsport powertrain, gas-turbine and jet-engine, and high-pressure process or chemical engineers bring combustion, thermofluids, and feed-system fluency directly. Under-recruited because their titles do not say \"propulsion.\" Estimate · O*NET adjacency + cross-industry pools"
   },
   "edu.hobby": "Builders and defense crossovers. High-power amateur rocketry, university propulsion or Formula teams, and military or defense propulsion technicians. Someone doing this on weekends is telling you exactly what they want to do all day.",
   "s7.title": "Who a propulsion engineer works with",

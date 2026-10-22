@@ -56,7 +56,10 @@ which internal connectors are available.
    fields, pack paths (for artifact agents, their §5 row; treat a section scout will
    build this run as satisfied). Return the preflight block: every miss, the step it
    blocks, the cheapest fix (`ask_user` | `orchestrator_writes_file` | `run_scout`).
-5. **Ask-first.** One consolidated list of cheap facts the user must supply, each
+5. **Ask-first.** First list what the supplied material (brain dump, JD, intake
+   notes, profile) already answers, each fact with its value and source file, so
+   the user sees what you have. Then one consolidated list of only the cheap facts
+   still missing, never one the inputs already state, each
    item `blocking:true` (an agent or scout would have to invent the value; a comp
    posture with no figure anywhere is blocking) or `blocking:false` (a stated
    default is defensible, e.g. a missing optional recruiter name). Never a chain of
@@ -75,8 +78,9 @@ Return ONLY this, as compact markdown:
 - **Phase 3**: render list, verify, whether qa-gate runs.
 - **Preflight**: every miss, the step it blocks, the cheapest fix. `All inputs
   verified` when clean.
-- **Ask first**: the single consolidated question list, each item marked blocking or
-  not.
+- **Already known**: each fact the inputs answer, with its value and source.
+- **Ask first**: the single consolidated list of what is still missing, each item
+  marked blocking or not.
 - **Seeds**: one line per proposal: target pack paths, source file, what the source
   cannot establish.
 - **Flags**: staleness or consistency conflicts.

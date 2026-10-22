@@ -21,6 +21,10 @@ Two files, both JSON, both living in the role home:
 | `talent-one-roles/<role_slug>/pack.json` | Every cross-artifact decision and canonical value | ≤ 4,000 tokens | every artifact agent, whole file |
 | `talent-one-roles/<role_slug>/pack-research.json` | Extended findings: company dossiers, metro rows, demand blocs, persona detail, proof points | ≤ 8,000 tokens | A03, A04, A05 only |
 
+Budget rule (tokens ≈ characters / 4): when `pack.json` would exceed 4,000 tokens,
+move dossiers, metro rows, demand blocs, persona detail, and long `method` strings
+to `pack-research.json`. `validate-pack` reports an overage in either file as MEDIUM.
+
 At spawn time the orchestrator copies both into the run folder
 (`runs/<YYYY-MM-DD>/pack.json`, `pack-research.json`) so every run is auditable
 against the exact pack it was built from. The role-home copy is canonical; the run
@@ -129,14 +133,14 @@ Never write a placeholder, "TBD", or an empty pv to silence a halt.
     "primary": ["..."], "title_synonyms": ["..."],
     "cross_industry_pools": ["..."], "skill_transfer_notes": ["..."]
   },
-  "personas": [
+  "personas": [                                    // 3 to 4: the talent map renders at most 4
     {"name": "The plateaued platform lead", "who": "...",
      "optimizes_for": "...", "message_key": "...", "risk": "..."}
   ],
   "channels": {
     "mix": [{"channel": "Outbound LinkedIn", "share": 0.55,
              "basis": {"pill": "Estimate", "method": "GEM-BM 2025 outbound benchmarks"}}],
-    "sequence_frame": "3-touch, day 0 / 4 / 11, channel switch on touch 3."
+    "sequence_frame": "3-touch, day 0 / 4 / 11, channel switch on touch 3."   // N touches lists exactly N
   },
   "targets": {
     "tier1": [{"name": "...", "tier": "S", "angle": "..."}],
@@ -234,6 +238,9 @@ This table replaces the 0.9.x handoff DAG. An artifact agent's preflight
 (00_SHARED_CORE.md §1.5) verifies these exact paths exist in the pack it was given.
 A missing required path is Class A: halt with NEED_INPUT naming the path, kind
 `pack_key`. There are no inter-artifact dependencies left; all eight run in parallel.
+
+Update mode widens this table's affected set by search: it greps the role's cached
+`content/*.content.json` for the old value and adds every hit (ORCHESTRATOR_UPDATE_MODE.md).
 
 | Artifact | Required pack paths | Optional but used |
 |---|---|---|

@@ -78,7 +78,7 @@ Slot names below are the exact keys of your content JSON (`slots` and `repeats`)
 | `s6.title`, `s6.body`, `dossiers` (repeat) → `dossier.name`, `dossier.flag`, `dossier.trigger`, `dossier.pool`, `dossier.angle` | Company dossiers (toggle: `dives`). |
 | `s7.title`, `s7.body`, `peripheral` (repeat) → `per.name`, `per.why`, `per.where`, `per.transfer`, `per.ramp` | Peripheral pools (toggle: `peripheral`). |
 | `s8.title`, `s8.body`, `comp.levels` (repeat) → `comp.level`, `comp.base`, `comp.total`, `comp.note`; `comp.positioning` | Compensation by level (toggle: `comp`). |
-| `s9.title`, `s9.body`, `personas` (repeat) | Candidate personas (toggle: `personas`): who, what they optimize for, the message key, the risk to screen for. |
+| `s9.title`, `s9.body`, `personas` (repeat) | Candidate personas (toggle: `personas`): who, what they optimize for, the message key, the risk to screen for. The template holds at most 4: when more arrive, keep the 4 with the largest pool share and name the dropped one in the handoff `assumptions` line, which renders. |
 | `s10.title`, `s10.body`, `recommendations` (repeat) | Three moves, each with an owner, a timeframe, and a tie to a specific finding above. |
 | `handoff.*` | Per `00_SHARED_CORE.md` §6: `handoff.produces`, `handoff.consumers`, `handoff.calibration`, `handoff.blocked`. |
 

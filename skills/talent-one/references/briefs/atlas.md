@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 4ed0f5cf4e28
+Source fingerprint: 0dc727ff44a9
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_03.content-schema.json
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
@@ -235,7 +235,7 @@ A missing REQUIRED path is Class A: halt with NEED_INPUT, `kind: pack_key`. The 
       ]
     }
   },
-  "personas": [
+  "personas": [                                    // 3 to 4: the talent map renders at most 4
     {"name": "The plateaued platform lead", "who": "...",
      "optimizes_for": "...", "message_key": "...", "risk": "..."}
   ],

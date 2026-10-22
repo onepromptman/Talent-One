@@ -85,8 +85,8 @@
   "jd.title": {
    "type": "label",
    "words": {
-    "min": 3,
-    "max": 3
+    "min": 2,
+    "max": 8
    },
    "example": "Propulsion Engineer"
   },

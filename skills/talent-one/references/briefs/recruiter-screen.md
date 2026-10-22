@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 47f201e51c3e
+Source fingerprint: 8b0276cb7f29
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_08.content-schema.json
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
