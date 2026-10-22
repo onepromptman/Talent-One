@@ -263,7 +263,7 @@
  "handoff": {
   "produces": "sequence · channels · ab_variants · banned_phrases_checked",
   "consumers": "09 QA GATE · weekly pipeline standup",
-  "compliance": "No phrases outside the reference list · one call to action per touch · every number carries a Sourced or Estimate pill · SMS gated to reply or referral only · every automated send carries a working opt-out and postal address",
+  "compliance": "No phrases outside the reference list · one call to action per touch · every number carries a Sourced or Estimate pill · SMS gated to candidate reply only · every automated send carries a working opt-out and postal address",
   "blocked": "Real funding and milestone facts from Onepromptman, plus one real open technical problem from the hiring manager, to replace the bracketed tokens throughout"
  }
 }

@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: bde9c5893b68
+Source fingerprint: f6693137c169
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_02.content-schema.json
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
@@ -262,7 +262,7 @@ Envelope (top-level keys of your content JSON, in this order): `template` ("TK_0
 - cover.compliance (prose_short 6-6)
 - s1.title (label 2-7)
 - s1.body (prose_long 18-85)
-- jd.title (label 3-3)
+- jd.title (label 2-8)
 - jd.meta (prose_short 9-9)
 - jd.intro (prose_long 80-80)
 - jd.close (prose_long 31-31)

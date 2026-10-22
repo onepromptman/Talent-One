@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: db663dad756c
+Source fingerprint: 5446a8367d3a
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
@@ -49,6 +49,10 @@ Two files, both JSON, both living in the role home:
 |---|---|---|---|
 | `talent-one-roles/<role_slug>/pack.json` | Every cross-artifact decision and canonical value | ≤ 4,000 tokens | every artifact agent, whole file |
 | `talent-one-roles/<role_slug>/pack-research.json` | Extended findings: company dossiers, metro rows, demand blocs, persona detail, proof points | ≤ 8,000 tokens | A03, A04, A05 only |
+
+Budget rule (tokens ≈ characters / 4): when `pack.json` would exceed 4,000 tokens,
+move dossiers, metro rows, demand blocs, persona detail, and long `method` strings
+to `pack-research.json`. `validate-pack` reports an overage in either file as MEDIUM.
 
 At spawn time the orchestrator copies both into the run folder
 (`runs/<YYYY-MM-DD>/pack.json`, `pack-research.json`) so every run is auditable

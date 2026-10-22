@@ -13,7 +13,7 @@ description: >
   route here when the request spans more than one.
 ---
 
-# Talent One — orchestrator (1.0)
+# Talent One: orchestrator (1.0)
 
 You orchestrate the pack-and-render pipeline: scout builds a per-role Context Pack,
 artifact agents emit content JSON in parallel against it, and `scripts/render.py`
@@ -22,22 +22,25 @@ no artifact HTML ever passes through a model, yours included.
 
 ## 0. Profile gate (always first)
 
-Look for `talent-one-profile.md` in the working folder (and `talent-one-runs/`). If it does not exist, tell the user this is their first run and invoke the `talent-one-setup` skill, or offer the quick path: proceed without setup, asking only for what this run needs. On the quick path the company identity is still a hard gate: ASK which company this search is for (AskUserQuestion), even if chat history or memory suggests an answer; offer context-derived candidates as options but never auto-select one. If a profile exists, read it and confirm in one line that its company is the right one for THIS search ("Running against the [company name] profile") so a multi-company user can redirect. Never hardcode or invent a company fact that belongs in the profile.
+Look for `talent-one-profile.md` in the working folder (and `talent-one-runs/`). If it does not exist, tell the user this is their first run and invoke the `talent-one-setup` skill, or offer the quick path: proceed without setup, asking only for what this run needs. On the quick path the company identity is still a hard gate: ASK which company this search is for (AskUserQuestion), even if chat or memory suggests one; offer candidates as options, never auto-select. If a profile exists, read it and confirm in one line that its company is the right one for THIS search ("Running against the [company name] profile") so a multi-company user can redirect. Never hardcode or invent a company fact that belongs in the profile.
 
 ## 1. Intake (two beats, one round trip each)
 
-**1a. Facts (chips).** Collect in ONE AskUserQuestion pass whatever the profile does not already answer: role title, level, location/work model, comp posture or band hint, which artifacts they want (default: all eight), and whether the JD should also ship as a plain document (markdown or docx; default HTML only). Team context and hm/recruiter names ride this pass only if a question slot is free; otherwise they are stated defaults. Proceed on stated defaults for anything skipped; label every assumption. Chip questions carry scalar facts only: four chips cannot carry context.
+**1a. Facts (chips).** Collect in ONE AskUserQuestion pass whatever the profile does not already answer: role title, level, location/work model, comp posture or band hint, which artifacts they want (default: all eight), and whether the JD should also ship as a plain document (markdown or docx; default HTML only). Team context and hm/recruiter names ride this pass only if a question slot is free; otherwise they are stated defaults. Proceed on stated defaults for anything skipped, labeled. Chips carry scalar facts only.
 
-**1b. Brain dump (always offered, skippable).** Before spawning relay, invite context in one plain message, never a chip question: paste or attach anything they already have for this search, a JD or draft, intake notes, comp data, team background, links, or a straight brain dump, or say skip. File what arrives: attached files copy into `talent-one-roles/<role_slug>/inputs/` unchanged; pasted text writes to `talent-one-roles/<role_slug>/inputs/braindump-<YYYY-MM-DD>.md` verbatim. Never ask them to reformat anything; never ask twice. Everything that lands feeds the pack build: a rich dump means scout researches less, an external deep-research file means scout may not run at all, an empty folder means the public-data path, all supported. Mention the fastest version of that once, as an option, never a requirement: pasting `references/PACK_RESEARCH_PROMPT.md` into any Claude chat (claude.ai, the app, or a second Cowork tab) and dropping the returned JSON into `inputs/` is exactly that external deep-research file, and scout then may not need to run at all.
+**1b. Brain dump (always offered, skippable).** Before spawning relay, invite context in one plain message, never a chip question: paste or attach anything they already have for this search, a JD or draft, intake notes, comp data, team background, links, or a straight brain dump, or say skip. File what arrives: attached files copy into `talent-one-roles/<role_slug>/inputs/` unchanged; pasted text writes to `talent-one-roles/<role_slug>/inputs/braindump-<YYYY-MM-DD>.md` verbatim. Never ask them to reformat anything; never ask twice. Everything that lands feeds the pack build: a rich dump means less research, an empty folder means the public-data path, fully supported. Offer once, as an option: pasting `references/PACK_RESEARCH_PROMPT.md` into any Claude chat and dropping the returned JSON into `inputs/` is an external deep-research file, and scout then may not need to run.
 
 ## 2. Plan (relay)
 
-Create the role home and the run folder first: `talent-one-roles/<role_slug>/` with `inputs/` and `content/` beside `runs/<YYYY-MM-DD>/` (which gets its own `content/`), never overwriting existing contents. `<role_slug>` carries the client company when the profile covers more than one (`<company>-<role>`). Legacy `talent-one-runs/<date>_<role_slug>/` folders stay readable and are never rewritten. Spawn the `relay` agent with: requested artifacts, role home, run folder, profile, per-run inputs, available connectors. The connector list is the profile's `connectors` block plus whatever ToolSearch finds live among the bundled servers (`+exa`, `+brightdata`, `+greenhouse`, `+ashby`); a server that is not connected stays off the list, and the agents' rules for using one are in `references/CONNECTOR_RUNTIME.md`. Agents reach only those four servers: anything else the user has connected (a document store, another ATS) you read here, at intake, and file into `inputs/` or the KB. Relay returns the pack plan (build / sectional refresh / import / migrate / reuse, with options), the parallel phase-2 list, the preflight report, the consolidated ask-first list, and seed proposals. Put relay's ask-first list, options, and proposed seeds to the user in one message, then execute.
+Create the role home and the run folder first: `talent-one-roles/<role_slug>/` with `inputs/` and `content/` beside `runs/<YYYY-MM-DD>/` (which gets its own `content/`), never overwriting existing contents. `<role_slug>` carries the client company when the profile covers more than one (`<company>-<role>`). Legacy `talent-one-runs/<date>_<role_slug>/` folders stay readable and are never rewritten. Spawn the `relay` agent with: requested artifacts, role home, run folder, profile, per-run inputs, available connectors. The connector list is the profile's `connectors` block plus whatever ToolSearch finds live among the bundled servers (`+exa`, `+brightdata`, `+greenhouse`, `+ashby`); a server that is not connected stays off the list, and the agents' rules for using one are in `references/CONNECTOR_RUNTIME.md`. Agents reach only those four servers: anything else the user has connected (a document store, another ATS) you read here, at intake, and file into `inputs/` or the KB. Relay returns the pack plan (build / sectional refresh / import / migrate / reuse, with options), the phase-2 list, the preflight report, the ask-first list, and seed proposals. Put the ask-first list, options, and seeds to the user in one message, then execute.
 
 ### 2.5 The ask-first gate (BLOCKING)
 
 Relay returns an ask-first list and a preflight report. Both are gates, not advice.
 
+- Open with relay's "Already known" list: what the supplied material (brain dump,
+  JD, intake notes, profile) answers, each fact with its value. Ask only for what is
+  missing; never re-ask a fact the inputs state.
 - Every ask-first item marked `blocking:true` must be answered by the user, or
   explicitly waived by the user, before you spawn ANY agent. Put them all in one
   AskUserQuestion pass. You may not answer them on the user's behalf, and you may not
@@ -58,15 +61,16 @@ from the profile, and an omitted path stays omitted.
 
 ### 3.0 Input preflight (before every spawn)
 
-Verify on disk every input you are about to name in an agent's prompt. If you
-reference a path, write that file first. An agent that halts on a missing input has
-done the right thing; the cost of the halt is yours, not its.
+Verify on disk every input you are about to name in an agent's prompt; write any
+file you reference first. An agent that halts on a missing input did the right thing.
 
 **Phase 1 (pack).** Per relay's pack plan: spawn `scout` (full or scoped to stale
 sections) unless a fresh pack, an import, or complete seeding covers the need.
 After any pack write, copy the profile's `constraints[]` into the pack verbatim,
 run `render.py validate-pack`, then copy `pack.json` (and `pack-research.json`)
-into the run folder as the run's snapshot.
+into the run folder as the run's snapshot. During the 5 to 10 minute scout pass print one
+progress line per phase (research started; web calls N of 12; pack written;
+validate-pack result).
 
 **Phase 2 (content, ALL PARALLEL).** Spawn every requested artifact agent
 concurrently in one message. Each gets: the run folder path, the profile contents,
@@ -87,17 +91,20 @@ python3 ${CLAUDE_PLUGIN_ROOT}/skills/talent-one/scripts/render.py render \
   --ds ${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/templates/_ds/seoul-4575df7f-c086-4195-b0df-a53fa16e473e \
   --out <run folder>/<NN>_<agent>.html \
   --handoffs <run folder>/handoffs.json --role <role_slug> --strict \
+  --prefix <profile branding.prefix> --credit <profile branding.credit> \
   [--mode <profile branding mode>] [--brand --bh-primary=<hex> --bh-accent=<hex>]
 ```
 
+The renderer owns the kit mark, artifact id, and footer credit (`footer.right` is an
+optional agent note). Pass `--prefix` and `--credit` (`on` or `off`) from the profile's
+`branding` block on every render so all documents match; defaults are `TK` and `on`.
+
 `--strict` fails the render (exit 1, a `.failed` artifact, nothing written at
 `--out`) when a required or synthetic slot is missing, instead of silently
-rendering a blanked region; the failure routes to the owning agent as a content
-patch per section 4, same as any other render error. Then `render.py verify
---template ... --schema ... --doc <out> --out <run
-folder>/verify/<NN>.verify.json`. A render error, a `--strict` failure, or a verify
-HIGH goes back to the owning agent as a content patch instruction, not to the
-renderer. If the profile
+rendering a blanked region. Then `render.py verify --template ... --schema ... --doc
+<out> --out <run folder>/verify/<NN>.verify.json`. A render error, a `--strict`
+failure, or a verify HIGH goes back to the owning agent as a content patch
+instruction (section 4), not to the renderer. If the profile
 sets `plain_doc` and 02 was built, JD-BOT already wrote the markdown beside its
 content; convert to docx here if asked (conversion, never retyping).
 
@@ -123,9 +130,10 @@ failure. Never re-spawn it with the same prompt.
 
 Deliver each artifact with SendUserFile as it renders; do not wait for the full
 package. Then pass the returned file_uuid to create_artifact so it persists in the
-user's artifact gallery. Id convention: `<prefix>-<artifact-number>-<role-slug>`. A
-re-run of the same artifact for the same role updates in place via update_artifact
-rather than creating a duplicate. If no desktop is connected, SendUserFile alone.
+user's artifact gallery. Id convention: the renderer stamps the artifact id
+`<prefix>-NN` into each document; the gallery id is `<prefix>-NN-<role-slug>`. A
+re-run for the same role updates in place via update_artifact, never a duplicate.
+If no desktop is connected, SendUserFile alone.
 
 ## 4. QA gate (after render, when 2+ artifacts were built)
 
@@ -139,8 +147,11 @@ surface remaining findings to the user honestly.
 
 When the user asks to change or refresh an existing artifact for a role with cached
 `content/`, read `references/ORCHESTRATOR_UPDATE_MODE.md` and follow it: no full run,
-pack facts update first with provenance, affected agents regenerate only the touched
-fields, then re-render, re-verify, deliver via update_artifact. Never edit rendered HTML.
+pack facts update first with provenance, then widen the section 5 affected set: grep
+the role's cached `content/*.content.json` for the OLD value (number, phrase, spelled-out
+form) and for key phrases of any changed assumption, add every hit, and list the hits in
+the update report. Agents regenerate only the touched fields. Then re-render, re-verify,
+deliver via update_artifact. Never edit rendered HTML.
 
 ## 6. Completion report
 
@@ -172,12 +183,10 @@ for a role. It is the recruiter's index across runs and clients; no agent reads 
 `references/00_SHARED_CORE.md` (agent contract, authoritative) ·
 `references/CONTEXT_PACK.md` (the pack: schema, freshness, per-artifact
 requirements, seeding, migration) · `references/02_GROUNDING_MATRIX.md` (sources
-and provenance) · `references/content-schemas/` (per-artifact content schemas +
-worked example content) · `references/PACK_RESEARCH_PROMPT.md` (external
-deep-research pack building) · `scripts/render.py` (render / verify /
+and provenance) · `references/content-schemas/` (schemas + worked examples) ·
+`references/PACK_RESEARCH_PROMPT.md` · `scripts/render.py` (render / verify /
 validate-pack / extract) · `references/templates/` (renderer-owned) ·
-`references/ADAPTATIONS.md` (authoritative deltas, items 1-31) ·
+`references/ADAPTATIONS.md` (authoritative deltas) ·
 `references/ORCHESTRATOR_SEEDING.md` and `references/ORCHESTRATOR_UPDATE_MODE.md`
-(sections 2.7 and 5 in full, loaded when that path runs) ·
-`references/CONNECTOR_RUNTIME.md` (bundled and user connectors: tool map, budget,
-privacy; agents read it only when a connector is listed).
+(sections 2.7 and 5, loaded on that path) · `references/CONNECTOR_RUNTIME.md`
+(connector tool map, budget, privacy; read only when a connector is listed).

@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 3e83589fa094
+Source fingerprint: 5447e009317e
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_05.content-schema.json
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
@@ -217,7 +217,7 @@ A missing REQUIRED path is Class A: halt with NEED_INPUT, `kind: pack_key`. The 
   "channels": {
     "mix": [{"channel": "Outbound LinkedIn", "share": 0.55,
              "basis": {"pill": "Estimate", "method": "GEM-BM 2025 outbound benchmarks"}}],
-    "sequence_frame": "3-touch, day 0 / 4 / 11, channel switch on touch 3."
+    "sequence_frame": "3-touch, day 0 / 4 / 11, channel switch on touch 3."   // N touches lists exactly N
   },
   "comp": {
     "canonical_range": {"value": "$210-245K base", "pill": "Sourced",
@@ -228,7 +228,7 @@ A missing REQUIRED path is Class A: halt with NEED_INPUT, `kind: pack_key`. The 
     "comp_angle": "How to talk about the range without apologizing for it.",
     "pain_point_angles": ["..."]
   },
-  "personas": [
+  "personas": [                                    // 3 to 4: the talent map renders at most 4
     {"name": "The plateaued platform lead", "who": "...",
      "optimizes_for": "...", "message_key": "...", "risk": "..."}
   ],

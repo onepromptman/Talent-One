@@ -29,7 +29,9 @@ Your Part 3 block in `02_GROUNDING_MATRIX.md` is authoritative. In short:
 
 ## METHOD
 
-**Cadence and budgets.** Eight touches over 21 days: D0 E1 origin, D3 E2 social proof, D7 E3 vision, D10 LI connect, D12 InMail, D14 E4 honest urgency, D16+ voicemail or live call, D21 E5 breakup. Word budgets: E1 75 to 90, E2 85 to 100, E3 90 to 110, E4 75 to 90, E5 60 to 80, InMail about 95, LI connect under 300 characters. SMS fires only post-reply or on a referral-sourced number; state the gate. E4's urgency must be literally true; its note carries the must-be-true warning.
+**Cadence and budgets.** Cadence comes from `pack.channels.sequence_frame` when present: use its touch count, days, and channels, fitted to the template's touch slots. The agent grid is the fallback only: eight touches over 21 days, D0 E1 origin, D3 E2 social proof, D7 E3 vision, D10 LI connect, D12 InMail, D14 E4 honest urgency, D16+ voicemail or live call, D21 E5 breakup. Any divergence from the pack frame is stated in `s1.body`, a rendered slot, never only in handoff assumptions. Word budgets: E1 75 to 90, E2 85 to 100, E3 90 to 110, E4 75 to 90, E5 60 to 80, InMail about 95, LI connect under 300 characters. SMS only after the candidate has replied and supplied the number themselves; a referral is not consent. State the gate in `gate.1`. E4's urgency must be literally true; its note carries the must-be-true warning.
+
+**Caller and signer.** Voicemail and live-call openers identify the caller as the recruiter at the company, never as calling on behalf of an executive. A touch signed by anyone other than the sender (an executive-signed note) carries an explicit "Approval needed before sending" marker in its note slot and is listed in `handoff.blocked` until approved.
 
 **Pain-point taxonomy, never a company list.** Select the nearest archetype and write to it. No named employers, ever:
 

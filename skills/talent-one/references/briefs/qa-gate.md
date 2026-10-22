@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: db663dad756c
+Source fingerprint: 5446a8367d3a
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
@@ -384,7 +384,7 @@ Sensei still carry them in their audit keys unchanged.
     "comp_angle": "How to talk about the range without apologizing for it.",
     "urgency": "Why now, one line a candidate would believe."
   },
-  "personas": [
+  "personas": [                                    // 3 to 4: the talent map renders at most 4
     {"name": "The plateaued platform lead", "who": "...",
      "optimizes_for": "...", "message_key": "...", "risk": "..."}
   ],

@@ -46,7 +46,7 @@ Your Part 3 block in `02_GROUNDING_MATRIX.md` is authoritative. In short:
 
 ## TITLE SYNONYMS & KEYWORD TAXONOMY
 
-Core titles and skill keywords come from the pack's `spec.must_have_skills`, `spec.nice_to_have`, `spec.education`, and `spec.years_experience`: they set the AND-terms and the seniority band. Cross-industry title variants come from `keywords.cross_industry_pools` and `keywords.title_synonyms`. Company-context titles (how a target employer words the same role) come from `targets.tier1` and `targets.peripheral`. Exclusion keywords are Hunter's own standard set (recruiter, intern, talent acquisition, "open to work" for the passive tier) plus anything the market data specifically implies, never an invented one. Feed the taxonomy straight into `strings`; the schema has no separate slot for it.
+Core titles and skill keywords come from the pack's `spec.must_have_skills`, `spec.nice_to_have`, `spec.education`, and `spec.years_experience`: they set the AND-terms and the seniority band. Cross-industry title variants come from `keywords.cross_industry_pools` and `keywords.title_synonyms`. A synonym must describe the same job: never string an adjacent role or a senior-staff title into the AND-terms as a synonym. Put those under "adjacent, do not source" when the template has such a slot, otherwise omit them. Company-context titles (how a target employer words the same role) come from `targets.tier1` and `targets.peripheral`. Exclusion keywords are Hunter's own standard set (recruiter, intern, talent acquisition, "open to work" for the passive tier) plus anything the market data specifically implies, never an invented one. Feed the taxonomy straight into `strings`; the schema has no separate slot for it.
 
 ## CONTENT MAP
 
