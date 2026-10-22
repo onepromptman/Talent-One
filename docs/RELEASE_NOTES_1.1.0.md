@@ -10,7 +10,7 @@ the regular Claude chat window, which cannot spawn the kit's sub-agents.
 What is new in 1.1.0 (a leaner harness, four optional connectors, same output
 contract):
 
-- Every agent now loads less instruction text before it starting work. Measured
+- Every agent now loads less instruction text before it starts work. Measured
   on the shipped files with the new `scripts/context_budget.py`: one full
   fan-out of all eleven agents dropped from 88,913 to 82,111 instruction
   tokens, about 8 percent, with no change to the content schemas, the

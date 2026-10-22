@@ -1,8 +1,8 @@
 # Install
 
-Talent One runs in **Claude Code** (CLI) and **Cowork** (the Claude desktop app).
+Talent One runs in **Cowork** (the Claude desktop app) and **Claude Code** (the command line).
 
-It does **not** run in the regular Claude chat window. Chat cannot spawn the kit's eleven sub-agents, so `set up talent one` silently does nothing there. If nothing happens, you are in the wrong surface.
+It does **not** run in the regular Claude chat window. Chat cannot run the kit's eleven specialists, so `set up talent one` silently does nothing there. If nothing happens, you are in the wrong surface.
 
 ---
 
@@ -35,7 +35,7 @@ If your build of Cowork does not expose a marketplace field, use the direct buil
 sha256sum talent-one-1.1.2.plugin
 ```
 
-Compare with the row for your version. The same hash is in the `.sha256` file beside each build in `dist/`.
+Compare with the row for your version.
 
 | Build | SHA-256 |
 | --- | --- |
@@ -43,6 +43,8 @@ Compare with the row for your version. The same hash is in the `.sha256` file be
 | `talent-one-1.1.1.plugin` | `4014d3f2a4e4f28232157081559eaef97fa1db1edbdde6f55b7e2530d259a3ce` |
 | `talent-one-1.1.0.plugin` | `d8ec24e499a8e4d589c46a04fbd1c050cae22080290cea861272fb3b2e298e93` |
 | `talent-one-1.0.3.plugin` | `ca7f3c207ab89cce313b6c5c47b92aaeee45794e402aeac74eb2823e934ab88b` |
+
+Each build also ships with a `.sha256` file beside it in `dist/`; that file is the authoritative hash for that build.
 
 Older builds stay in `dist/`; none is ever overwritten.
 
@@ -74,7 +76,11 @@ Make an interview plan for a security engineer
 
 ## Uninstall
 
+In Claude Code:
+
 ```
 /plugin uninstall talent-one@onepromptman
 /plugin marketplace remove onepromptman
 ```
+
+In Cowork, open the plugin browser and remove **Talent One**.
