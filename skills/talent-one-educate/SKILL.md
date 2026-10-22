@@ -9,7 +9,7 @@ description: >
   skill applies instead. Not the hiring-manager calibration brief (talent-one-brief).
 ---
 
-# Talent One — educational brief
+# Talent One: educational brief
 
 Build artifact 01 (educational brief) via the Talent One agent pipeline. You never write artifact content yourself.
 
@@ -26,10 +26,11 @@ Build artifact 01 (educational brief) via the Talent One agent pipeline. You nev
      --schema ${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/content-schemas/TK_01.content-schema.json \
      --content <run folder>/content/01.content.json \
      --ds ${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/templates/_ds/seoul-4575df7f-c086-4195-b0df-a53fa16e473e \
-     --out <run folder>/01_sensei.html --handoffs <run folder>/handoffs.json --role <role_slug> --strict
+     --out <run folder>/01_sensei.html --handoffs <run folder>/handoffs.json --role <role_slug> --strict \
+     --prefix <profile branding.prefix> --credit <profile branding.credit>
    ```
 
-   then `render.py verify` on the output. `--strict` fails the render (exit 1, a `.failed` artifact, nothing written at `--out`) when a required or synthetic slot is missing, so a gap is never silently blanked. A render error, a `--strict` failure, or verify HIGH routes back to `sensei` as a content patch, never to hand-edited HTML. Deliver the artifact with SendUserFile (then create_artifact per the orchestrator's delivery convention), copy the content JSON to the role home's `content/` cache, and handle NEED_INPUT per the orchestrator's §3.5 rules (batch every ask into one pass; `run_scout` means a sectional pack build).
+   then `render.py verify` on the output. The masthead mark, the `<prefix>-NN` artifact ID and the footer credit are renderer-owned from those two flags (defaults `TK` and `on` when the profile sets no branding), so content never carries `kit.mark` or `footer.left`. `--strict` fails the render (exit 1, a `.failed` artifact, nothing written at `--out`) when a required or synthetic slot is missing, so a gap is never silently blanked. A render error, a `--strict` failure, or verify HIGH routes back to `sensei` as a content patch, never to hand-edited HTML. Deliver the artifact with SendUserFile (then create_artifact per the orchestrator's delivery convention), copy the content JSON to the role home's `content/` cache, and handle NEED_INPUT per the orchestrator's §3.5 rules (batch every ask into one pass; `run_scout` means a sectional pack build).
 4. **Self-QA travels with the agent** (00_SHARED_CORE.md §7) and the verify report covers the machine layer; the full qa-gate runs only for multi-artifact packages or on request. Updates to an existing artifact for this role follow the orchestrator's update mode: patch pack or content, re-render, never a full rerun.
 
 ## Non-negotiables

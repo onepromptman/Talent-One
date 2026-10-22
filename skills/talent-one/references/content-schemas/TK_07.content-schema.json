@@ -2,14 +2,6 @@
  "template": "TK_07_HM_Calibration.dc.html",
  "version": "1.0",
  "slots": {
-  "kit.mark": {
-   "type": "prose_short",
-   "words": {
-    "min": 4,
-    "max": 4
-   },
-   "example": "Talent Kit · 07"
-  },
   "doc.agent": {
    "type": "prose_short",
    "words": {
@@ -219,16 +211,9 @@
    },
    "example": "If the feedback SLA is not agreed in this meeting, say plainly that the time-to-fill target moves out, and record that in the recap. A scarce, mid-career propul"
   },
-  "footer.left": {
-   "type": "prose_short",
-   "words": {
-    "min": 6,
-    "max": 7
-   },
-   "example": "Talent Kit 07 · Propulsion calibration · © 2026 Onepromptman"
-  },
   "footer.right": {
    "type": "prose_short",
+   "required": false,
    "words": {
     "min": 3,
     "max": 6
@@ -249,7 +234,13 @@
     1,
     0
    ],
-   "example": "Working anchor: say this out loud"
+   "example": "Working anchor: say this out loud",
+   "words": {
+    "min": 4,
+    "max": 8
+   },
+   "role": "label",
+   "context": "under sB.title"
   },
   "doc.prose1": {
    "type": "prose_long",
@@ -267,7 +258,13 @@
     0,
     0
    ],
-   "example": "Requirement, as documented"
+   "example": "Requirement, as documented",
+   "words": {
+    "min": 3,
+    "max": 4
+   },
+   "role": "column header",
+   "context": "under sF.title"
   },
   "doc.prose2": {
    "type": "prose_long",
@@ -285,7 +282,13 @@
     0,
     2
    ],
-   "example": "Market check & recommendation"
+   "example": "Market check & recommendation",
+   "words": {
+    "min": 3,
+    "max": 4
+   },
+   "role": "column header",
+   "context": "after doc.prose1; under sF.title"
   },
   "doc.prose3": {
    "type": "prose_long",
@@ -300,7 +303,13 @@
     1,
     0
    ],
-   "example": "Pick two: speed · bar · comp"
+   "example": "Pick two: speed · bar · comp",
+   "words": {
+    "min": 3,
+    "max": 7
+   },
+   "role": "label",
+   "context": "under sG.title"
   }
  },
  "repeats": {

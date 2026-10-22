@@ -1,7 +1,7 @@
 {
  "template": "TK_05_Outreach_Campaign.dc.html",
+ "artifact": "05",
  "slots": {
-  "kit.mark": "Talent Kit · 05",
   "doc.agent": "Agent · SHAKESPEARE",
   "doc.date": "Written peer-to-peer, not pitched",
   "doc.eyebrow": "Artifact 05 · Campaign copy",
@@ -19,7 +19,7 @@
   "e1.subjA": "the failure mode most reviews miss",
   "e1.subjB": "for the engineer who already owns half the engine",
   "e1.body": {
-   "html": "<p style=\"margin:0 0 14px\">[[FirstName]],</p><p style=\"margin:0 0 14px\"><span style=\"background:#EEF6F1;border-bottom:1px solid #BFDCCB\">Your [[SpecificProject]] work at [[CurrentCompany]]</span> reads like someone who trusts test data over intuition, which is rarer than it should be in propulsion.</p><p style=\"margin:0 0 14px\">Here's a problem worth your attention: most propulsion failures are decided on paper, months before a chamber ever sees propellant, and margins shrink every generation.</p><p style=\"margin:0 0 14px\">We build [[SystemScope]] largely in-house, on a team small enough that one engineer owns a full subsystem.</p><p style=\"margin:0 0 14px\">Worth sixty seconds to see what the propulsion team owns here? If you'd rather not hear from me, reply once and I'll close the file for good.</p><p style=\"margin:0\">[Your first name]</p>"
+   "html": "<p>[[FirstName]],</p><p><span>Your [[SpecificProject]] work at [[CurrentCompany]]</span> reads like someone who trusts test data over intuition, which is rarer than it should be in propulsion.</p><p>Here's a problem worth your attention: most propulsion failures are decided on paper, months before a chamber ever sees propellant, and margins shrink every generation.</p><p>We build [[SystemScope]] largely in-house, on a team small enough that one engineer owns a full subsystem.</p><p>Worth sixty seconds to see what the propulsion team owns here? If you'd rather not hear from me, reply once and I'll close the file for good.</p><p>[Your first name]</p>"
   },
   "s3.title": "Proof first, then scope",
   "s3.body": "Two introduces the team and the checkable facts. Three describes the actual job. Every claim in both must survive scrutiny, because a propulsion engineer who has sat through a design review will check.",
@@ -29,7 +29,7 @@
   "s5.body": "Email four ships only if every word in it is literally true. Email five drops the ask entirely, which is exactly why it outperforms the other four.",
   "e4.subj": "where the search actually stands",
   "e4.body": {
-   "html": "<p style=\"margin:0 0 12px\">[[FirstName]],</p><p style=\"margin:0 0 12px\">Straight status: we're filling one propulsion seat this cycle, the loop runs about two weeks start to finish, and the panel is engineers who have run hardware programs themselves.</p><p style=\"margin:0 0 12px\">We're moving candidates to scheduling this week, so the timing here is real, not a sales deadline.</p><p style=\"margin:0 0 12px\">If you've been even half-curious, this is the week where a twenty-minute call still leaves you every option open.</p><p style=\"margin:0 0 12px\">Either way, this is my second-to-last note. If you'd rather not hear from me, reply once and I'll close the file for good.</p><p style=\"margin:0\">[Your first name]</p>"
+   "html": "<p>[[FirstName]],</p><p>Straight status: we're filling one propulsion seat this cycle, the loop runs about two weeks start to finish, and the panel is engineers who have run hardware programs themselves.</p><p>We're moving candidates to scheduling this week, so the timing here is real, not a sales deadline.</p><p>If you've been even half-curious, this is the week where a twenty-minute call still leaves you every option open.</p><p>Either way, this is my second-to-last note. If you'd rather not hear from me, reply once and I'll close the file for good.</p><p>[Your first name]</p>"
   },
   "e4.note": "Send this only if it is true. A fabricated deadline is easy to spot and costly to be caught in with an audience that reads specs for a living. If two seats are open, say two.",
   "s6.title": "The phone script, and the texts that follow it",
@@ -37,8 +37,7 @@
   "s7.title": "Tier discipline and the banned list",
   "s7.body": "Tier discipline is the difference between an 18% reply rate and a 6% one. The banned list is not a style preference: each phrase measurably drags down replies, and several signal that the sender has never touched a test stand.",
   "tier.note": "One call to action, one question, every single time. Sign with a real name, never a team inbox. Every email carries at least one fact a candidate could verify independently.",
-  "footer.left": "OPM-05 · Propulsion Outreach Campaign",
-  "footer.right": "Send nothing you would not want forwarded · © 2026 Onepromptman",
+  "footer.right": "Write nothing you would not forward",
   "doc.prose0": "E1 · day 0 · curiosity plus identity",
   "doc.prose1": "E4 · day 14 · must be true",
   "doc.prose2": "E5 · day 21 · highest reply rate",
@@ -263,7 +262,7 @@
  "handoff": {
   "produces": "sequence · channels · ab_variants · banned_phrases_checked",
   "consumers": "09 QA GATE · weekly pipeline standup",
-  "compliance": "No phrases outside the reference list · one call to action per touch · every number carries a Sourced or Estimate pill · SMS gated to reply or referral only · every automated send carries a working opt-out and postal address",
+  "compliance": "No phrases outside the reference list · one call to action per touch · every number carries a Sourced or Estimate pill · SMS gated to candidate reply only · every automated send carries a working opt-out and postal address",
   "blocked": "Real funding and milestone facts from Onepromptman, plus one real open technical problem from the hiring manager, to replace the bracketed tokens throughout"
  }
 }

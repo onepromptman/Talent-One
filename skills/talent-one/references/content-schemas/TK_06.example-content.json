@@ -1,7 +1,7 @@
 {
  "template": "TK_06_Interview_Plan.dc.html",
+ "artifact": "06",
  "slots": {
-  "kit.mark": "Talent Kit · 06",
   "doc.agent": "Agent · INTERVIEW LAB",
   "doc.date": "Generated 2026-07-29",
   "doc.eyebrow": "Artifact 06 · Loop design",
@@ -22,8 +22,7 @@
   "gate.1": "Cannot reason about a propulsion system as one coupled thermal, fluid, and structural problem. After two stages of prompting they still size a component in isolation. On a small team shipping flight hardware, that is the expensive miss.",
   "gate.2": "Treats the hardware partner as an obstacle rather than a peer, and cannot name a test result that once changed their mind. Unworkable on a team this small.",
   "nongate.1": "No launch-prime pedigree. No master's degree. No one specific analysis package. None of these predict propulsion judgment, and every one of them shrinks an already small pool.",
-  "footer.left": "Talent Kit 06 · Propulsion Interview Plan",
-  "footer.right": "One owner per competency · © 2026 Onepromptman",
+  "footer.right": "One owner per competency",
   "doc.prose0": "Primary owner: writes the score"
  },
  "repeats": {

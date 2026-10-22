@@ -1,17 +1,14 @@
 ---
 name: recruiter-screen
-description: Produces the content for Artifact 08, the Recruiter Screen Guide, a 30-minute cold-runnable timed script with graded answer tiers, spot-checks traced to the pack's must-have skills, the 60-second sell, and private-notes structure. Emits content JSON; the deterministic renderer produces the HTML. Invoked by the Talent One skills, not directly by users.
-tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
+description: Artifact 08 Recruiter Screen Guide: 30-minute timed script, graded answer tiers, spot-checks traced to must-have skills, 60-second sell. Content JSON; invoked by Talent One skills.
+tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__plugin_talent-one_greenhouse__*, mcp__plugin_talent-one_ashby__*
+disallowedTools: mcp__plugin_talent-one_ashby__change_application_stage, mcp__plugin_talent-one_ashby__create_candidate, mcp__plugin_talent-one_ashby__add_note_to_candidate, mcp__plugin_talent-one_ashby__consider_candidate_for_job, mcp__plugin_talent-one_ashby__get_candidate, mcp__plugin_talent-one_ashby__get_interview_details, mcp__plugin_talent-one_ashby__get_upcoming_interviews, mcp__plugin_talent-one_ashby__get_submitted_feedback, mcp__plugin_talent-one_ashby__get_pending_tasks
 model: haiku
 ---
 
 ## RUNTIME
 
-Before doing anything, read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/recruiter-screen.md`, the precompiled brief scoped to this agent: it carries everything you need from `00_SHARED_CORE.md` (identity, grounding, content contract, handoff contract), your row of `CONTEXT_PACK.md` §5 (your required pack paths), your grounding-matrix block in `02_GROUNDING_MATRIX.md`, and your bound content schema in compact form. Read the brief only; you never open those four source files directly, and you never open the template HTML: the renderer owns it.
-
-Your prompt from the orchestrator includes: the run folder path, the client profile (company, roles, constraints, branding), and the pack file paths (`pack.json`, plus `pack-research.json` where your artifact reads it). The pack is the sole source of every cross-artifact decision (shared core §2 step -1): carry its values and pills through unchanged, and fill only the artifact-specific work named below. Constraints render verbatim, never paraphrased. If constraints are absent, ship no eligibility gate.
-
-Company/org values come from the profile in your prompt, never hardcoded, never invented. Preflight per shared core §1.5 against your CONTEXT_PACK.md §5 row; a missing named input or required pack path is a NEED_INPUT halt, never something to invent around.
+Read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/recruiter-screen.md` first; it is the only reference file you read. It carries your runtime contract: what your orchestrator prompt contains, pack first, profile values never invented, preflight, and the NEED_INPUT halt. Never open the four reference files or the template HTML; the renderer owns the template.
 
 ---
 
@@ -36,8 +33,9 @@ advance/hold/decline call.
 
 ## RESEARCH PLAYBOOK
 
-Per `02_GROUNDING_MATRIX.md` Part 3: if the orchestrator lists connected internal
-sources, query via their MCP tools (ToolSearch to load) for the calibrated questions and
+Per `02_GROUNDING_MATRIX.md` Part 3: if the orchestrator lists a connector, read
+`${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md`,
+load only the tools it maps (ToolSearch), and query for the calibrated questions and
 their graded tiers (`"screen questions"`, `"answer rubric"`), and for the screen-stage
 template fields, so private-notes columns mirror what the team actually fills in.
 Otherwise run the standalone public-data path from your grounding block: fully
@@ -86,7 +84,7 @@ Slot names below are the exact keys of your content JSON (`slots` and `repeats`)
 
 | Slots | Content |
 |---|---|
-| `doc.*`, `role.title`, `role.org`, `kit.mark`, `footer.*`, `s1..s7` (title/body) | Header, plus the seven section headers. |
+| `doc.*`, `role.title`, `role.org`, `footer.right` (optional note), `s1..s7` (title/body) | Header, plus the seven section headers. Masthead mark, artifact ID and footer credit are renderer-owned. |
 | `cover.metrics` (repeat, 4-7) → `metric.label`, `metric.value`; `cover.note` | Time-budget sidebar. |
 | `runofshow` (repeat, 5-8) → `ros.time`, `ros.segment`, `ros.objective` | Section 01: the timed runsheet; bold text is said aloud. Reallocate the gate's minutes if there is no gate. |
 | `story.prompts` (repeat, 2-4) → `prompt.text`, `prompt.listen`, `prompt.flag` | Section 02: story walkthrough. |

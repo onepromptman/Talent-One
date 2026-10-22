@@ -2,14 +2,6 @@
  "template": "TK_01_Educational_Brief.dc.html",
  "version": "1.0",
  "slots": {
-  "kit.mark": {
-   "type": "prose_short",
-   "words": {
-    "min": 4,
-    "max": 4
-   },
-   "example": "Talent Kit · 01"
-  },
   "doc.agent": {
    "type": "prose_short",
    "words": {
@@ -300,21 +292,14 @@
    },
    "example": "Left column is what to say. Right column is the version that costs you the candidate, and why. Specificity is the entire game with this audience."
   },
-  "footer.left": {
-   "type": "prose_short",
-   "words": {
-    "min": 6,
-    "max": 7
-   },
-   "example": "Talent Kit 01 · Propulsion literacy"
-  },
   "footer.right": {
    "type": "prose_short",
+   "required": false,
    "words": {
     "min": 3,
     "max": 6
    },
-   "example": "Plain-language by design · © 2026 Onepromptman"
+   "example": "Plain-language by design"
   },
   "doc.prose0": {
    "type": "prose_long",
@@ -332,7 +317,13 @@
     0,
     1
    ],
-   "example": "What that means day to day"
+   "example": "What that means day to day",
+   "words": {
+    "min": 4,
+    "max": 8
+   },
+   "role": "column header",
+   "context": "under s1.title"
   },
   "doc.prose1": {
    "type": "prose_long",
@@ -348,7 +339,13 @@
     0,
     2
    ],
-   "example": "Equivalent hands-on depth is explicitly fine. If someone has shipped and tested real propulsion hardware for years, the degree question is closed."
+   "example": "Equivalent hands-on depth is explicitly fine. If someone has shipped and tested real propulsion hardware for years, the degree question is closed.",
+   "words": {
+    "min": 13,
+    "max": 31
+   },
+   "role": "prose",
+   "context": "under s6.title"
   },
   "doc.prose2": {
    "type": "prose_long",
@@ -364,7 +361,13 @@
     1,
     0
    ],
-   "example": "Alternative pathways that convert"
+   "example": "Alternative pathways that convert",
+   "words": {
+    "min": 3,
+    "max": 6
+   },
+   "role": "label",
+   "context": "under s6.title"
   },
   "doc.prose3": {
    "type": "prose_long",
@@ -380,7 +383,13 @@
     1,
     0
    ],
-   "example": "Title synonyms: search all of these"
+   "example": "Title synonyms: search all of these",
+   "words": {
+    "min": 4,
+    "max": 8
+   },
+   "role": "label",
+   "context": "under s8.title"
   }
  },
  "repeats": {
@@ -595,7 +604,13 @@
       1,
       1
      ],
-     "example": "Owns high-temp alloys, additive parts, and how the hardware actually gets built. Drives what the design can and cannot do."
+     "example": "Owns high-temp alloys, additive parts, and how the hardware actually gets built. Drives what the design can and cannot do.",
+     "words": {
+      "min": 12,
+      "max": 28
+     },
+     "role": "prose",
+     "context": "after node.name2; under s7.title"
     }
    },
    "bars_per_row": 0,
@@ -613,7 +628,13 @@
        "path": [
         1
        ],
-       "example": "The integration point for anything that makes thrust. Touches nearly every discipline, which is why communication weight is as high as technical weight in this hire."
+       "example": "The integration point for anything that makes thrust. Touches nearly every discipline, which is why communication weight is as high as technical weight in this hire.",
+       "words": {
+        "min": 16,
+        "max": 36
+       },
+       "role": "prose",
+       "context": "after node.core; under s7.title"
       }
      },
      "bars_per_row": 0,

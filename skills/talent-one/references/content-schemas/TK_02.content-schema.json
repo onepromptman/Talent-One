@@ -2,14 +2,6 @@
  "template": "TK_02_Job_Description.dc.html",
  "version": "1.0",
  "slots": {
-  "kit.mark": {
-   "type": "prose_short",
-   "words": {
-    "min": 4,
-    "max": 4
-   },
-   "example": "Talent Kit · 02"
-  },
   "doc.agent": {
    "type": "prose_short",
    "words": {
@@ -93,8 +85,8 @@
   "jd.title": {
    "type": "label",
    "words": {
-    "min": 3,
-    "max": 3
+    "min": 2,
+    "max": 8
    },
    "example": "Propulsion Engineer"
   },
@@ -187,21 +179,14 @@
    },
    "example": "Read-out: the posted band sits inside the sourced band and reaches toward its upper half, fair for a small non-prime employer. This is an Estimate, not a survey"
   },
-  "footer.left": {
-   "type": "prose_short",
-   "words": {
-    "min": 6,
-    "max": 7
-   },
-   "example": "Talent Kit 02 · Propulsion Engineer"
-  },
   "footer.right": {
    "type": "prose_short",
+   "required": false,
    "words": {
     "min": 3,
     "max": 6
    },
-   "example": "Rail is internal, never ships · © 2026 Onepromptman"
+   "example": "Rail is internal, never ships"
   }
  },
  "repeats": {

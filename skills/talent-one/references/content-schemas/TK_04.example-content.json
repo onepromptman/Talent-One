@@ -1,7 +1,7 @@
 {
  "template": "TK_04_Sourcing_Strategy.dc.html",
+ "artifact": "04",
  "slots": {
-  "kit.mark": "Talent Kit · 04",
   "doc.agent": "Agent · HUNTER",
   "doc.date": "Inputs · 02 · 03 · 07",
   "doc.eyebrow": "Artifact 04 · Execution plan",
@@ -32,8 +32,7 @@
   "s7.title": "A/B tests for a thin, technical pool",
   "s7.body": "Run one test at a time, report weekly, keep the winner. This turns a scarce search into a repeatable capability instead of a one-off scramble, and it is the section most teams skip. This matrix names the frame to test and the metric to decide on; the deployed copy variants live in artifact 05.",
   "insight.1": "Sample sizes here stay small: this pool does not support statistical elegance. Look for the difference between 10% and 25% reply, not a p-value. Kill any test that has not produced a decision within three weeks; a stalled test just burns pipeline.",
-  "footer.left": "OPM-04 · Propulsion Sourcing Strategy",
-  "footer.right": "Cadence is the deliverable · © 2026 Onepromptman"
+  "footer.right": "Cadence is the deliverable"
  },
  "repeats": {
   "cover.metrics": [

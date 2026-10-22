@@ -558,6 +558,104 @@
  * Do NOT import the per-medium .html preview cards here (they are dsCard previews, not CSS).
  */
 
+
+/* Talent One responsive layer (1.1.1).
+ * Templates lay out with inline styles, so these rules match on the inline
+ * style text and use !important, the only way a stylesheet outranks an inline
+ * declaration. Desktop and print are untouched: every rule sits inside a
+ * max-width screen query. Intentional horizontal scrollers (overflow-x:auto
+ * wrappers around wide heat grids and tables) keep scrolling inside their box.
+ */
+@media screen and (max-width: 760px) {
+
+  /* Page gutters: 48px desktop -> 16px phone */
+  [style*="padding:0 48px"] { padding-left: 16px !important; padding-right: 16px !important; }
+
+  /* Two-pane and label-rail grids collapse to one column */
+  [style*="grid-template-columns:1fr 330px"],
+  [style*="grid-template-columns:1fr 300px"],
+  [style*="grid-template-columns:1fr 280px"],
+  [style*="grid-template-columns:180px 1fr"],
+  [style*="grid-template-columns:190px 1fr"],
+  [style*="grid-template-columns:250px 1fr"],
+  [style*="grid-template-columns:140px 1fr"],
+  [style*="grid-template-columns:130px 1fr"],
+  [style*="grid-template-columns:1fr 1fr"],
+  [style*="grid-template-columns:1.5fr 1fr"],
+  [style*="grid-template-columns:1.4fr 1fr"],
+  [style*="grid-template-columns:1.1fr 1fr"],
+  [style*="grid-template-columns:1fr 1.15fr 1fr"],
+  [style*="grid-template-columns:repeat(2,1fr)"],
+  [style*="grid-template-columns:repeat(3,1fr)"],
+  [style*="grid-template-columns:86px 220px 1fr"],
+  [style*="grid-template-columns:86px 210px 1fr"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  /* Pull-stat callout (big number beside its claim) stacks */
+  [style*="grid-template-columns:auto 1fr;gap:36px"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px !important;
+    padding: 22px 20px !important;
+  }
+
+  /* Stat strips and four-column data rows go to two columns */
+  [style*="grid-template-columns:repeat(4,1fr)"],
+  [style*="grid-template-columns:repeat(5,1fr)"],
+  [style*="grid-template-columns:repeat(6,1fr)"],
+  [style*="grid-template-columns:220px 1fr 92px 96px"],
+  [style*="grid-template-columns:190px 1fr 84px 96px"],
+  [style*="grid-template-columns:44px 1fr 150px 130px"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* Stacked panes need tighter gaps */
+  [style*="display:grid"][style*="gap:60px"],
+  [style*="display:grid"][style*="gap:56px"],
+  [style*="display:grid"][style*="gap:48px"] { gap: 24px !important; }
+  [style*="display:grid"][style*="gap:40px"] { gap: 12px !important; }
+
+  /* Grid and flex children may shrink below their content width */
+  [style*="display:grid"] > *, [style*="display:flex"] > * { min-width: 0; }
+
+  /* Header strips and chip rows wrap instead of pushing off-screen */
+  [style*="display:flex"][style*="justify-content:space-between"],
+  [style*="display:flex"][style*="gap:"] { flex-wrap: wrap; row-gap: 8px; }
+
+  /* Fixed-width blocks never exceed the viewport */
+  [style*=";width:250px"], [style*=";width:200px"], [style*=";width:150px"] { max-width: 100% !important; }
+  img, svg, video, canvas { max-width: 100%; height: auto; }
+
+  /* Display type scales down */
+  [style*="font-size:88px"] { font-size: 52px !important; line-height: 1.05 !important; }
+  [style*="font-size:52px"] { font-size: 36px !important; line-height: 1.1 !important; }
+  [style*="font-size:44px"] { font-size: 32px !important; }
+
+  /* Vertical rhythm tightens */
+  [style*="padding:60px 0 44px"] { padding-top: 32px !important; padding-bottom: 28px !important; }
+  section[style*="padding:88px 0"], section[style*="padding:80px 0"] { padding-top: 44px !important; padding-bottom: 44px !important; }
+
+  /* Long tokens (boolean strings, URLs, mono IDs) wrap instead of overflowing */
+  pre, code { white-space: pre-wrap !important; word-break: break-word; }
+  p, li, td, th, span, div { overflow-wrap: break-word; }
+  td:first-child, th:first-child { white-space: nowrap; }
+
+  /* Tables: up to 4 columns fit the screen and wrap; 5+ columns keep their
+     template scroller (overflow-x:auto wrapper) at a narrower minimum. */
+  table[style*="min-width"]:not(:has(tr > :nth-child(5))) { min-width: 0 !important; }
+  table[style*="min-width"]:has(tr > :nth-child(5)) { min-width: 600px !important; }
+  td[style*="padding"], th[style*="padding"] { padding-left: 10px !important; padding-right: 10px !important; }
+  th { letter-spacing: .06em !important; }
+}
+
+/* Small phones: stat strips stack to one column so display numerals never break */
+@media screen and (max-width: 380px) {
+  [style*="grid-template-columns:repeat(4,1fr)"],
+  [style*="grid-template-columns:repeat(5,1fr)"],
+  [style*="grid-template-columns:repeat(6,1fr)"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
 </style>
 
 
@@ -587,7 +685,7 @@ const __ds_scope = {};
 <header style="border-bottom:1px solid var(--bh-border);background:var(--bh-surface)">
 <div style="max-width:1120px;margin:0 auto;padding:0 48px">
 <div style="display:flex;justify-content:space-between;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--bh-border)">
-<div data-slot="kit.mark" style="font-family:var(--bh-font-mono);font-size:12px;letter-spacing:.30em;text-transform:uppercase">Talent Kit · 05</div>
+<div data-slot="kit.mark" style="font-family:var(--bh-font-mono);font-size:12px;letter-spacing:.30em;text-transform:uppercase">Talent One <span style="color:var(--bh-accent)">·</span> TK-05</div>
 <div style="font-family:var(--bh-font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-muted)"><span data-slot="doc.agent">Agent · SHAKESPEARE</span> <span style="color:var(--bh-lattice-line)">/</span> <span data-slot="doc.date">Written peer-to-peer, not pitched</span></div>
 </div>
 <div style="display:grid;grid-template-columns:1fr 330px;gap:60px;padding:60px 0 44px;align-items:start">
@@ -716,7 +814,7 @@ const __ds_scope = {};
 <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--bh-primary);background:#DCE6F2;border:1px solid #C9D6E6;flex:none">Subj A</span><span data-slot="e1.subjA">the failure mode most reviews miss</span></div>
 <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--bh-muted);background:#F0EDE6;border:1px solid var(--bh-border);flex:none">Subj B</span><span data-slot="e1.subjB">for the engineer who already owns half the engine</span></div>
 </div>
-<div data-slot="e1.body" style="padding:26px 24px;font-size:15.5px;color:var(--bh-ink-dim);line-height:1.75"><p style="margin:0 0 14px">[[FirstName]],</p><p style="margin:0 0 14px"><span style="background:#EEF6F1;border-bottom:1px solid #BFDCCB">Your [[SpecificProject]] work at [[CurrentCompany]]</span> reads like someone who trusts test data over intuition, which is rarer than it should be in propulsion.</p><p style="margin:0 0 14px">Here's a problem worth your attention: most propulsion failures are decided on paper, months before a chamber ever sees propellant, and margins shrink every generation.</p><p style="margin:0 0 14px">We build [[SystemScope]] largely in-house, on a team small enough that one engineer owns a full subsystem.</p><p style="margin:0 0 14px">Worth sixty seconds to see what the propulsion team owns here? If you'd rather not hear from me, reply once and I'll close the file for good.</p><p style="margin:0">[Your first name]</p></div>
+<div data-slot="e1.body" style="padding:26px 24px;font-size:15.5px;color:var(--bh-ink-dim);line-height:1.75"><p>[[FirstName]],</p><p><span>Your [[SpecificProject]] work at [[CurrentCompany]]</span> reads like someone who trusts test data over intuition, which is rarer than it should be in propulsion.</p><p>Here's a problem worth your attention: most propulsion failures are decided on paper, months before a chamber ever sees propellant, and margins shrink every generation.</p><p>We build [[SystemScope]] largely in-house, on a team small enough that one engineer owns a full subsystem.</p><p>Worth sixty seconds to see what the propulsion team owns here? If you'd rather not hear from me, reply once and I'll close the file for good.</p><p>[Your first name]</p></div>
 </div>
 <div data-count="3-5" data-repeat="e1.annotations" style="padding:26px 22px;background:#FBF9F4;display:grid;gap:20px;align-content:start"><div style="border-left:2px solid var(--bh-primary);padding-left:14px">
 <div data-slot="note.tag" style="font-family:var(--bh-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bh-primary);margin-bottom:5px">Why it works</div>
@@ -849,7 +947,7 @@ const __ds_scope = {};
 <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--bh-primary);background:#DCE6F2;border:1px solid #C9D6E6;flex:none">Subj A</span><span data-slot="e4.subj">where the search actually stands</span></div>
 <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--bh-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--bh-muted);background:#F0EDE6;border:1px solid var(--bh-border);flex:none">Subj B</span><span>timing, plainly stated</span></div>
 </div>
-<div data-slot="e4.body" style="padding:22px 24px;font-size:15px;color:var(--bh-ink-dim);line-height:1.75"><p style="margin:0 0 12px">[[FirstName]],</p><p style="margin:0 0 12px">Straight status: we're filling one propulsion seat this cycle, the loop runs about two weeks start to finish, and the panel is engineers who have run hardware programs themselves.</p><p style="margin:0 0 12px">We're moving candidates to scheduling this week, so the timing here is real, not a sales deadline.</p><p style="margin:0 0 12px">If you've been even half-curious, this is the week where a twenty-minute call still leaves you every option open.</p><p style="margin:0 0 12px">Either way, this is my second-to-last note. If you'd rather not hear from me, reply once and I'll close the file for good.</p><p style="margin:0">[Your first name]</p></div>
+<div data-slot="e4.body" style="padding:22px 24px;font-size:15px;color:var(--bh-ink-dim);line-height:1.75"><p>[[FirstName]],</p><p>Straight status: we're filling one propulsion seat this cycle, the loop runs about two weeks start to finish, and the panel is engineers who have run hardware programs themselves.</p><p>We're moving candidates to scheduling this week, so the timing here is real, not a sales deadline.</p><p>If you've been even half-curious, this is the week where a twenty-minute call still leaves you every option open.</p><p>Either way, this is my second-to-last note. If you'd rather not hear from me, reply once and I'll close the file for good.</p><p>[Your first name]</p></div>
 <div data-slot="e4.note" style="padding:14px 20px;border-top:1px solid var(--bh-border);background:#FAF0E6;font-size:13.5px;color:var(--bh-ink-dim)">Send this only if it is true. A fabricated deadline is easy to spot and costly to be caught in with an audience that reads specs for a living. If two seats are open, say two.</div>
 </div>
 <div style="background:var(--bh-surface);border:1px solid var(--bh-border);border-top:3px solid var(--bh-success)">
@@ -914,7 +1012,7 @@ const __ds_scope = {};
 </div>
 <div style="background:var(--bh-surface);border:1px solid var(--bh-border);border-top:3px solid var(--bh-accent)">
 <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--bh-border);background:#FBF9F4">
-<span style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-accent)">Text · after a reply or referral only</span>
+<span style="font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bh-accent)">Text · after the candidate replies</span>
 <span style="font-family:var(--bh-font-mono);font-size:10px;color:var(--bh-muted)">Never cold</span>
 </div>
 <div style="padding:20px 24px;display:grid;gap:14px">
@@ -992,13 +1090,13 @@ const __ds_scope = {};
 <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;font-family:var(--bh-font-mono);font-size:13px;line-height:1.9">
 <div><div style="color:var(--bh-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Produces</div><div data-slot="handoff.produces">sequence · channels · ab_variants · banned_phrases_checked</div></div>
 <div><div style="color:var(--bh-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Consumed by</div><div data-slot="handoff.consumers">09 QA GATE · weekly pipeline standup</div></div>
-<div><div style="color:var(--bh-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Compliance</div><div data-slot="handoff.compliance">No phrases outside the reference list · one call to action per touch · every number carries a Sourced or Estimate pill · SMS gated to reply or referral only · every automated send carries a working opt-out and postal address</div></div>
+<div><div style="color:var(--bh-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Compliance</div><div data-slot="handoff.compliance">No phrases outside the reference list · one call to action per touch · every number carries a Sourced or Estimate pill · SMS gated to candidate reply only · every automated send carries a working opt-out and postal address</div></div>
 <div><div style="color:var(--bh-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Blocked on</div><div data-slot="handoff.blocked" style="color:var(--bh-hwang-light)">Real funding and milestone facts from Onepromptman, plus one real open technical problem from the hiring manager, to replace the bracketed tokens throughout</div></div>
 </div>
 </div>
 </section>
 <footer style="margin-top:56px;padding-top:20px;border-top:1px solid var(--bh-border);display:flex;justify-content:space-between;font-family:var(--bh-font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--bh-ink-300)">
-<span data-slot="footer.left">OPM-05 · Propulsion Outreach Campaign</span><span data-slot="footer.right">Send nothing you would not want forwarded · © 2026 Onepromptman</span>
+<span data-slot="footer.left">TK-05 · Multi-Channel Outreach</span><span data-slot="footer.right">Write nothing you would not forward · Built with Talent One by Onepromptman</span>
 </footer>
 </main>
 </div>

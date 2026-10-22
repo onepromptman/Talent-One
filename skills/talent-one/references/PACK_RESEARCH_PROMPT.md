@@ -136,7 +136,7 @@ so every claim must be defensible.
 Quadrant: x = build cadence (0 slow to 1 fast), y = hardware/software integration
 depth rendered top-down (0 = deepest, near the top of the plot), both plot-ready
 fractions; include the hiring company itself with `"accent": true` and `"size": 15`.
-Fill 5 to 9 dossiers, 4 to 7 metros, 3 to 5 personas, 5 to 7 tier1 targets. Return
+Fill 3 to 6 dossiers, 4 to 7 metros, 3 to 4 personas, 5 to 7 tier1 targets. Return
 ONLY the JSON code block.
 
 ---- END OF PROMPT ----

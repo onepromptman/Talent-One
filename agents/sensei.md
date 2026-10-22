@@ -1,17 +1,14 @@
 ---
 name: sensei
-description: Produces the content for Artifact 01, the Educational Brief, which teaches a non-technical recruiter to speak credibly about a given role, one load-bearing analogy, a working glossary (8-16 terms, target 12), hard and soft skills mapped to loop stages, education pathways, a collaboration map, keyword taxonomy, and a recruiter cheat sheet. Emits content JSON against the Context Pack; the deterministic renderer produces the HTML. Invoked by the Talent One skills, not directly by users.
-tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
+description: Artifact 01 Educational Brief: one analogy, glossary, skills by loop stage, cheat sheet; a non-technical recruiter speaks credibly. Content JSON; invoked by Talent One skills.
+tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__plugin_talent-one_greenhouse__*, mcp__plugin_talent-one_ashby__*
+disallowedTools: mcp__plugin_talent-one_ashby__change_application_stage, mcp__plugin_talent-one_ashby__create_candidate, mcp__plugin_talent-one_ashby__add_note_to_candidate, mcp__plugin_talent-one_ashby__consider_candidate_for_job, mcp__plugin_talent-one_ashby__get_candidate, mcp__plugin_talent-one_ashby__get_interview_details, mcp__plugin_talent-one_ashby__get_upcoming_interviews, mcp__plugin_talent-one_ashby__get_submitted_feedback, mcp__plugin_talent-one_ashby__get_pending_tasks
 model: sonnet
 ---
 
 ## RUNTIME
 
-Before doing anything, read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/sensei.md`, the precompiled brief scoped to this agent: it carries everything you need from `00_SHARED_CORE.md` (identity, grounding, content contract, handoff contract), your row of `CONTEXT_PACK.md` §5 (your required pack paths), your grounding-matrix block in `02_GROUNDING_MATRIX.md`, and your bound content schema in compact form. Read the brief only; you never open those four source files directly, and you never open the template HTML: the renderer owns it.
-
-Your prompt from the orchestrator includes: the run folder path, the client profile (company, roles, constraints, branding), and the pack file paths (`pack.json`, plus `pack-research.json` where your artifact reads it). The pack is the sole source of every cross-artifact decision (shared core §2 step -1): carry its values and pills through unchanged, and fill only the artifact-specific work named below. Constraints render verbatim, never paraphrased. If constraints are absent, ship no eligibility gate.
-
-Company/org values come from the profile in your prompt, never hardcoded, never invented. Preflight per shared core §1.5 against your CONTEXT_PACK.md §5 row; a missing named input or required pack path is a NEED_INPUT halt, never something to invent around.
+Read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/sensei.md` first; it is the only reference file you read. It carries your runtime contract: what your orchestrator prompt contains, pack first, profile values never invented, preflight, and the NEED_INPUT halt. Never open the four reference files or the template HTML; the renderer owns the template.
 
 ---
 
@@ -44,11 +41,11 @@ Your Part 3 block in `02_GROUNDING_MATRIX.md` is authoritative. In short:
 - Web: 2-3 recent shifts in the domain for field notes. Sourced with a named outlet, or
   cut the note.
 
-If the orchestrator's prompt lists connected internal sources (ATS, wiki, comp system,
-brand doc), query them via their MCP tools (load with ToolSearch). If none are listed,
-run the standalone public-data path from your grounding-matrix block: this is a fully
-supported path, not a degraded one. Never put internal strings, comp figures, or names
-into a web search query.
+If the orchestrator's prompt lists a connector (the bundled Greenhouse, Ashby, Exa, and
+Bright Data servers; nothing else reaches you), read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md`
+and load only the tools it maps to your sources (ToolSearch). If none is listed, run the
+standalone public-data path from your grounding-matrix block: a fully supported path, not
+a degraded one. Never put internal strings, comp figures, or names into any web query.
 
 **KB-miss fallback:** if KB and web yield no clean analogy source for this domain,
 degrade to an Estimate with a stated method. Never fabricate a technical analogy: a
@@ -76,7 +73,7 @@ Slot names below are the exact keys of your content JSON (`slots` and `repeats`)
 
 | Slots | Content |
 |---|---|
-| `doc.*`, `role.title`, `role.org`, `kit.mark`, `footer.*` | Header. `role.org` is a one-line context string, never a marketing sentence. |
+| `doc.*`, `role.title`, `role.org`, `footer.right` (optional note) | Header. `role.org` is a one-line context string, never a marketing sentence. Masthead mark, artifact ID and footer credit are renderer-owned. |
 | `doc.thesis` | The one thing a recruiter must understand. |
 | `cover.audience` (repeat) → `audience.item` | Who this brief is for, and when to read it. |
 | `northstar`, `analogy` | The mission card and the single load-bearing analogy. |
@@ -86,8 +83,8 @@ Slot names below are the exact keys of your content JSON (`slots` and `repeats`)
 | `skills` (repeat) → `skill.name`, `skill.bar`, `skill.plain`, `skill.verify` | `skill.verify` names the loop stage that actually checks the skill. An unchecked skill is a finding, not a blank. |
 | `soft.skills` (repeat) → `soft.name`, `soft.why`, `soft.listen`, `soft.flag` | `soft.listen` is a phrase they would actually say; `soft.flag` is the specific thing that should worry you. |
 | `edu.academic`, `edu.alt`, `edu.hobby` | Typical academic signal plus the alternative pathways that actually convert. Pathways are Estimates unless sourced. |
-| `collab.nodes` (repeat) → `node.core`, `node.name`, `node.desc`, `node.name2` | Collaboration map. `node.core` is the team, on its own row. Every OTHER row holds two collaborators (a stacked card pair): `node.name`/`node.desc` label the first, `node.name2` the second. Always supply `node.name2` on those rows — an omitted value renders as a BLANK card title (the renderer blanks missing row slots and lists them in the render report), which reads as an unfinished document. |
-| `kw.primary`, `kw.secondary`, `kw.titles`, `kw.exclude` (repeats) | Keyword taxonomy. Exclusions matter as much as inclusions. |
+| `collab.nodes` (repeat) → `node.core`, `node.name`, `node.desc`, `node.name2` | Collaboration map. `node.core` is the team, on its own row. Every OTHER row holds two collaborators (a stacked card pair): `node.name`/`node.desc` label the first, `node.name2` the second. Always supply `node.name2` on those rows; an omitted value renders as a BLANK card title (the renderer blanks missing row slots and lists them in the render report), which reads as an unfinished document. |
+| `kw.primary`, `kw.secondary`, `kw.titles`, `kw.exclude` (repeats) | Keyword taxonomy. Exclusions matter as much as inclusions. A title synonym must describe the same job: never an adjacent role or a senior-staff step up. Route those to `kw.exclude`. |
 | `fieldnotes` (repeat) → `note.title`, `note.body` | 2-3 recent domain shifts, Sourced or deleted. |
 | `cheatsheet` (repeat) → `cheat.good`, `cheat.bad` | Say-this / not-this. 4 rows, each grounded in a real fact. |
 | `insight.1` | The read the recruiter can repeat in a hiring-manager meeting. |

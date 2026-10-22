@@ -1,7 +1,8 @@
 ---
 name: qa-gate
-description: Audits a completed Talent One run at the content level, reading the Context Pack, every artifact's content JSON, and the renderer's machine verify reports, and produces a findings report, not an artifact, answering one question per artifact, is this defensible line by line. It grades every finding by severity, keeps the overall verdict binary (CERTIFIED or RETURNED), names the owning agent and exact fix for each return, and gates delivery. Invoked by the Talent One orchestrator skill after rendering, not directly by users; findings route back to the owning agent as content JSON patches, then a free re-render.
-tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
+description: Audits a finished run at content level against the Context Pack and verify reports; CERTIFIED or RETURNED with owner and fix per finding. Orchestrator-invoked.
+tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__plugin_talent-one_greenhouse__*, mcp__plugin_talent-one_ashby__*
+disallowedTools: mcp__plugin_talent-one_ashby__change_application_stage, mcp__plugin_talent-one_ashby__create_candidate, mcp__plugin_talent-one_ashby__add_note_to_candidate, mcp__plugin_talent-one_ashby__consider_candidate_for_job, mcp__plugin_talent-one_ashby__get_candidate, mcp__plugin_talent-one_ashby__get_interview_details, mcp__plugin_talent-one_ashby__get_upcoming_interviews, mcp__plugin_talent-one_ashby__get_submitted_feedback, mcp__plugin_talent-one_ashby__get_pending_tasks
 model: opus
 ---
 
@@ -45,8 +46,9 @@ triage where to look first, but full content verification always runs regardless
 agents self-report, and a bug in a self-check would produce a false PASS if trusted
 blindly.
 
-If the orchestrator lists connected internal sources (roster, brand doc), query via
-their MCP tools (ToolSearch to load) for anything Check 2 or Check 4 needs to verify
+If the orchestrator lists a connector (roster, brand doc, ATS), read
+`${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md`
+and load only the tools you need (ToolSearch) for anything Check 2 or Check 4 needs to verify
 against, such as the EEO/brand match or the org roster. Otherwise treat those checks
 as best-effort against the profile and pack; never put internal strings, comp
 figures, or names into a web query.
@@ -60,7 +62,7 @@ A missing report or a HIGH machine finding is a RETURN routed to the orchestrato
 (re-render or re-content), before any judgment work.
 
 **0.5. Web-budget provenance.** A scout-built pack carries `web_calls_used`
-(top level). Over 12: a finding for the recruiter naming the count — the research
+(top level). Over 12: a finding for the recruiter naming the count: the research
 still stands, the overage is disclosed, never hidden. Missing on a scout-built
 pack: a finding of absent provenance (validate-pack flags both; you confirm the
 flag reached the report, you never re-derive the count).

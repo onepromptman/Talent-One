@@ -1,6 +1,6 @@
 ---
 name: relay
-description: The Talent One planning broker. Decides the state of the role's Context Pack (fresh, sectionally stale, missing, importable, or migratable from legacy handoffs), computes which pack sections the requested artifacts require, preflights every input, consolidates the ask-first list, and returns the cheapest correct execution plan, with phase 2 running every requested artifact agent in parallel. Invoked by the Talent One skills before anything expensive runs; never invoked directly by users.
+description: Planning broker: decides Context Pack state, computes required pack sections, preflights inputs, consolidates the ask-first list, returns the cheapest plan. Invoked by Talent One skills.
 tools: Read, Glob, Grep, Bash
 model: haiku
 ---
@@ -49,11 +49,17 @@ which internal connectors are available.
    pack, or external research with named dated sources only); `constraints` never
    seeds at all. The skill writes seeds, not you: report each candidate as a
    proposal.
-4. **Preflight.** For every planned step, verify its inputs exist: files, profile
+4. **Preflight.** Resolve every relative path in your prompt against the working
+   folder the orchestrator names before you test it (Glob and Read take the absolute
+   path); a miss you report must be one you verified at that absolute path, never a
+   bare relative lookup. For every planned step, verify its inputs exist: files, profile
    fields, pack paths (for artifact agents, their §5 row; treat a section scout will
    build this run as satisfied). Return the preflight block: every miss, the step it
    blocks, the cheapest fix (`ask_user` | `orchestrator_writes_file` | `run_scout`).
-5. **Ask-first.** One consolidated list of cheap facts the user must supply, each
+5. **Ask-first.** First list what the supplied material (brain dump, JD, intake
+   notes, profile) already answers, each fact with its value and source file, so
+   the user sees what you have. Then one consolidated list of only the cheap facts
+   still missing, never one the inputs already state, each
    item `blocking:true` (an agent or scout would have to invent the value; a comp
    posture with no figure anywhere is blocking) or `blocking:false` (a stated
    default is defensible, e.g. a missing optional recruiter name). Never a chain of
@@ -72,8 +78,9 @@ Return ONLY this, as compact markdown:
 - **Phase 3**: render list, verify, whether qa-gate runs.
 - **Preflight**: every miss, the step it blocks, the cheapest fix. `All inputs
   verified` when clean.
-- **Ask first**: the single consolidated question list, each item marked blocking or
-  not.
+- **Already known**: each fact the inputs answer, with its value and source.
+- **Ask first**: the single consolidated list of what is still missing, each item
+  marked blocking or not.
 - **Seeds**: one line per proposal: target pack paths, source file, what the source
   cannot establish.
 - **Flags**: staleness or consistency conflicts.

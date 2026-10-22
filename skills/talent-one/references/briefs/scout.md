@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 939a3a54a03e
+Source fingerprint: b2884b10abfb
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
@@ -303,7 +303,7 @@ triangulate or raise a Caution callout, never silently override.
   "channels": {
     "mix": [{"channel": "Outbound LinkedIn", "share": 0.55,
              "basis": {"pill": "Estimate", "method": "GEM-BM 2025 outbound benchmarks"}}],
-    "sequence_frame": "3-touch, day 0 / 4 / 11, channel switch on touch 3."
+    "sequence_frame": "3-touch, day 0 / 4 / 11, channel switch on touch 3."   // N touches lists exactly N
   },
   "comp": {
     "canonical_range": {"value": "$210-245K base", "pill": "Sourced",
@@ -346,7 +346,7 @@ triangulate or raise a Caution callout, never silently override.
     "pain_point_angles": ["..."]
   },
   "pack_version": "1.0",
-  "personas": [
+  "personas": [                                    // 3 to 4: the talent map renders at most 4
     {"name": "The plateaued platform lead", "who": "...",
      "optimizes_for": "...", "message_key": "...", "risk": "..."}
   ],

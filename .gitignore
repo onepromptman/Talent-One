@@ -17,7 +17,11 @@ venv/
 # Node
 node_modules/
 
-# Local runs — per-role output should never be committed
+# Local runs: per-role output should never be committed
+talent-one-roles/
+talent-one-runs/
+talent-one-kb/
+.claude/
 output/
 runs/
 roles/
@@ -28,3 +32,4 @@ talent-one-profile.md
 *.tmp
 *.bak
 scratch/
+evals/out/
