@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: dd1185999c8d
+Source fingerprint: 2581d67b260c
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_06.content-schema.json
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
@@ -260,7 +260,7 @@ Envelope (top-level keys of your content JSON, in this order; type and empty sta
 - gate.1 (prose_long 16-46)
 - gate.2 (prose_short 21-21)
 - nongate.1 (prose_short 21-21)
-- footer.right (prose_short 3-6)
+- footer.right (prose_short 3-6) optional, omit or null when there is nothing to say
 
 ### Repeats
 - cover.metrics [rows n=4-6]

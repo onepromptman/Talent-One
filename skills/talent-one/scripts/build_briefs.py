@@ -1124,7 +1124,9 @@ def format_slot(name, info, indent="- "):
     words = info.get("words", {})
     w = f"{words.get('min', '?')}-{words.get('max', '?')}"
     synth = "*" if info.get("synthetic") else ""
-    return f"{indent}{name} ({info.get('type')} {w}){synth}"
+    opt = " optional, omit or null when there is nothing to say" \
+        if info.get("required") is False else ""
+    return f"{indent}{name} ({info.get('type')} {w}){synth}{opt}"
 
 
 def format_repeat(name, info):
