@@ -1,8 +1,7 @@
 ---
 name: sensei
-description: Artifact 01 Educational Brief: one analogy, glossary, skills by loop stage, cheat sheet; a non-technical recruiter speaks credibly. Content JSON; invoked by Talent One skills.
-tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__plugin_talent-one_greenhouse__*, mcp__plugin_talent-one_ashby__*
-disallowedTools: mcp__plugin_talent-one_ashby__change_application_stage, mcp__plugin_talent-one_ashby__create_candidate, mcp__plugin_talent-one_ashby__add_note_to_candidate, mcp__plugin_talent-one_ashby__consider_candidate_for_job, mcp__plugin_talent-one_ashby__get_candidate, mcp__plugin_talent-one_ashby__get_interview_details, mcp__plugin_talent-one_ashby__get_upcoming_interviews, mcp__plugin_talent-one_ashby__get_submitted_feedback, mcp__plugin_talent-one_ashby__get_pending_tasks
+description: "Artifact 01 Educational Brief: one analogy, glossary, skills by loop stage, cheat sheet; a non-technical recruiter speaks credibly. Content JSON; invoked by Talent One skills."
+tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
 model: sonnet
 ---
 
@@ -41,10 +40,9 @@ Your Part 3 block in `02_GROUNDING_MATRIX.md` is authoritative. In short:
 - Web: 2-3 recent shifts in the domain for field notes. Sourced with a named outlet, or
   cut the note.
 
-If the orchestrator's prompt lists a connector (the bundled Greenhouse, Ashby, Exa, and
-Bright Data servers; nothing else reaches you), read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md`
-and load only the tools it maps to your sources (ToolSearch). If none is listed, run the
-standalone public-data path from your grounding-matrix block: a fully supported path, not
+No connector reaches you: the ATS-derived facts you need (titles, synonyms, team language) arrive
+through the pack scout built and the KB filed at intake. Run the standalone public-data path
+from your grounding-matrix block for your own bounded lookups: a fully supported path, not
 a degraded one. Never put internal strings, comp figures, or names into any web query.
 
 **KB-miss fallback:** if KB and web yield no clean analogy source for this domain,

@@ -1,8 +1,7 @@
 ---
 name: interview-lab
-description: Artifact 06 Interview Plan: loop stages, competency heat grid, graded question rubrics, interviewer assignments, debrief protocol. Content JSON; invoked by Talent One skills.
-tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__plugin_talent-one_greenhouse__*, mcp__plugin_talent-one_ashby__*
-disallowedTools: mcp__plugin_talent-one_ashby__change_application_stage, mcp__plugin_talent-one_ashby__create_candidate, mcp__plugin_talent-one_ashby__add_note_to_candidate, mcp__plugin_talent-one_ashby__consider_candidate_for_job, mcp__plugin_talent-one_ashby__get_candidate, mcp__plugin_talent-one_ashby__get_interview_details, mcp__plugin_talent-one_ashby__get_upcoming_interviews, mcp__plugin_talent-one_ashby__get_submitted_feedback, mcp__plugin_talent-one_ashby__get_pending_tasks
+description: "Artifact 06 Interview Plan: loop stages, competency heat grid, graded question rubrics, interviewer assignments, debrief protocol. Content JSON; invoked by Talent One skills."
+tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__plugin_talent-one_greenhouse__*, mcp__plugin_talent-one_ashby__search_records_by_name, mcp__plugin_talent-one_ashby__filter_records, mcp__plugin_talent-one_ashby__describe_object_fields, mcp__plugin_talent-one_ashby__get_record_details, mcp__plugin_talent-one_ashby__get_job_pipeline, mcp__plugin_talent-one_ashby__get_interview_plan
 model: sonnet
 ---
 
@@ -10,7 +9,7 @@ model: sonnet
 
 ## RUNTIME
 
-Read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/interview-lab.md` first; it is the only reference file you read. It carries your runtime contract: what your orchestrator prompt contains, pack first, profile values never invented, preflight, and the NEED_INPUT halt. Never open the four reference files or the template HTML; the renderer owns the template.
+Read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/interview-lab.md` first; it is the only reference file you read, apart from `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md` when your prompt lists a connector. It carries your runtime contract: what your orchestrator prompt contains, pack first, profile values never invented, preflight, and the NEED_INPUT halt. Never open the four reference files or the template HTML; the renderer owns the template.
 
 ---
 
@@ -38,8 +37,8 @@ zero KB access. Every worked example and checklist below exists so that test pas
 
 Your Part 3 block in `02_GROUNDING_MATRIX.md` is authoritative. In short:
 
-- If the orchestrator's prompt lists a connector, read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md` and load only the tools it maps to your sources (ToolSearch): interview plan, questions of record, protocol rules, scoring rubric verbatim, values
-  definitions (from the profile's `brand` category, never hardcoded). Query `"{role} interview plan"`, `"scoring
+- If the orchestrator's prompt lists a connector, read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md` and load only the tools it maps to your sources (ToolSearch): the ATS interview plan of record and scorecard fields. Questions of record, protocol rules, the scoring rubric verbatim and values
+  definitions come from the KB (`internal/` and `brand/` categories, filed at intake), never hardcoded. Query `"{role} interview plan"`, `"scoring
   rubric"`, `"values"`. Otherwise run the standalone public-data path from your grounding block: fully supported, not degraded. Never put internal strings, comp figures, or names into a web search query.
 - If connected, an ATS-equivalent internal source: scorecard attributes. The competency matrix must be a superset of real scorecard fields,
   INTERNAL-pilled; a mismatch is a Caution callout, never a silent addition.

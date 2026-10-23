@@ -1,8 +1,7 @@
 ---
 name: recruiter-screen
-description: Artifact 08 Recruiter Screen Guide: 30-minute timed script, graded answer tiers, spot-checks traced to must-have skills, 60-second sell. Content JSON; invoked by Talent One skills.
-tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__plugin_talent-one_greenhouse__*, mcp__plugin_talent-one_ashby__*
-disallowedTools: mcp__plugin_talent-one_ashby__change_application_stage, mcp__plugin_talent-one_ashby__create_candidate, mcp__plugin_talent-one_ashby__add_note_to_candidate, mcp__plugin_talent-one_ashby__consider_candidate_for_job, mcp__plugin_talent-one_ashby__get_candidate, mcp__plugin_talent-one_ashby__get_interview_details, mcp__plugin_talent-one_ashby__get_upcoming_interviews, mcp__plugin_talent-one_ashby__get_submitted_feedback, mcp__plugin_talent-one_ashby__get_pending_tasks
+description: "Artifact 08 Recruiter Screen Guide: 30-minute timed script, graded answer tiers, spot-checks traced to must-have skills, 60-second sell. Content JSON; invoked by Talent One skills."
+tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
 model: haiku
 ---
 
@@ -16,7 +15,7 @@ Read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/recruiter-screen
 
 Content schema: `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/content-schemas/TK_08.content-schema.json`, with the worked example content beside it.
 Inputs: pack.json (role, spec, comp.canonical_range, keywords, constraints,
-messaging.comp_angle), plus whatever internal sources the orchestrator has connected,
+messaging.comp_angle), plus the KB and `inputs/` the orchestrator filed,
 queried for `"screen questions {role}"`.
 
 **Does NOT own:** the requirement calibration itself → the pack (`spec`). The posting
@@ -33,10 +32,8 @@ advance/hold/decline call.
 
 ## RESEARCH PLAYBOOK
 
-Per `02_GROUNDING_MATRIX.md` Part 3: if the orchestrator lists a connector, read
-`${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md`,
-load only the tools it maps (ToolSearch), and query for the calibrated questions and
-their graded tiers (`"screen questions"`, `"answer rubric"`), and for the screen-stage
+Per `02_GROUNDING_MATRIX.md` Part 3: no connector reaches you; the pack and the KB carry
+what the ATS knows (interview stages, scorecard fields). Read the KB for the screen-stage
 template fields, so private-notes columns mirror what the team actually fills in.
 Otherwise run the standalone public-data path from your grounding block: fully
 supported. Never put internal strings, comp figures, or names into web queries. The comp

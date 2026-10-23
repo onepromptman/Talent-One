@@ -4,7 +4,7 @@
 
 **Tell it the role you are hiring for. Get back eight ready-to-use hiring documents.**
 
-[![Version](https://img.shields.io/badge/version-1.1.2-black)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.1.3-black)](CHANGELOG.md)
 [![Runs in](https://img.shields.io/badge/runs%20in-Claude%20Code%20%7C%20Cowork-orange)](#where-it-runs)
 [![License](https://img.shields.io/badge/license-source--available-blue)](LICENSE.md)
 
@@ -29,12 +29,12 @@ by [Onepromptman](https://github.com/onepromptman) · © 2026
 **1. Download the plugin** and add it as a plugin in Cowork or Claude Code.
 
 <p align="center">
-  <a href="https://github.com/onepromptman/Talent-One/raw/main/dist/talent-one-1.1.2.plugin">
+  <a href="https://github.com/onepromptman/Talent-One/raw/main/dist/talent-one-1.1.3.plugin">
     <img src="assets/download-button.png" alt="Download the Talent One plugin, then drop it into Cowork or Claude Code" width="680">
   </a>
 </p>
 
-<p align="center"><sub>Downloads <code>talent-one-1.1.2.plugin</code> · the same file is attached to the <a href="https://github.com/onepromptman/Talent-One/releases/latest">latest release</a></sub></p>
+<p align="center"><sub>Downloads <code>talent-one-1.1.3.plugin</code> · the same file is attached to the <a href="https://github.com/onepromptman/Talent-One/releases/latest">latest release</a></sub></p>
 
 Comfortable typing commands? Install from the marketplace instead, two lines:
 
@@ -49,7 +49,7 @@ Comfortable typing commands? Install from the marketplace instead, two lines:
 set up talent one
 ```
 
-Five questions about your company, each with a default and a skip. About five minutes.
+A few questions about your company, each with a default and a skip. About five minutes.
 
 **3. Ask for what you need, in plain words:**
 
@@ -135,19 +135,19 @@ Anything you already hold (a JD, intake notes, comp data, a brain dump) shortens
 
 Works with **zero connections**, using public data: BLS, O\*NET, Census, DOL disclosure data, levels.fyi, live web search. That is a fully supported path, not a degraded mode.
 
-Four connectors ship inside the plugin, none required: **Exa** (web research, keyless by default), **Bright Data** (search results and page reads behind bot protection), and the official **Greenhouse** and **Ashby** MCP servers (sign in once, read-only, pipelines as counts, never candidates). Your own document store or ATS connector is read at intake in your main session and filed where every agent can read it. See [CONNECTORS.md](CONNECTORS.md).
+Four connectors ship inside the plugin, none required, each signed in once with OAuth: **Exa** (web research), **Bright Data** (search results and page reads behind bot protection), and the official **Greenhouse** and **Ashby** MCP servers. Agents read ATS pipelines as counts; Ashby writes and candidate reads are outside what agents can call, and Greenhouse stays read-only through your admin's scopes. Your own document store or ATS connector is read at intake in your main session and filed where every agent can read it. See [CONNECTORS.md](CONNECTORS.md).
 
 Constraints (work authorization, clearance, licensure) are recruiter-written, rendered verbatim, and never invented. An empty constraints list ships no eligibility gate at all.
 
 ## Privacy
 
-The plugin itself sends nothing anywhere: the renderer and the scripts run inside Claude's sandbox and make no network calls, and every generated document is self-contained. Research traffic goes through the web tools of the Claude surface you run it in. The four bundled connectors (Exa, Bright Data, Greenhouse, Ashby) are third-party services, each under its own privacy policy; none receives anything until you sign in, and the plugin stores no API key. The agents reach only those four servers plus the built-in web tools, never your other connectors; what they may read, and what they may never pass on, is set out in [CONNECTORS.md](CONNECTORS.md). Your profile, role folders, and packs stay on your machine.
+The plugin itself sends nothing anywhere: the renderer and the scripts make no network calls, and every generated document is self-contained. Research traffic goes through the web tools of the Claude surface you run it in. The four bundled connectors (Exa, Bright Data, Greenhouse, Ashby) are third-party services, each under its own privacy policy; none receives anything until you sign in, and the plugin stores no API key. The agents reach only those four servers plus the built-in web tools, never your other connectors; what they may read, and what they may never pass on, is set out in [CONNECTORS.md](CONNECTORS.md). Your profile, role folders, and packs stay on your machine.
 
 ## Is it safe to install?
 
-The plugin is plain text: prompts, templates, three small scripts that only run inside Claude's sandbox, and a list of four optional remote connectors (see [CONNECTORS.md](CONNECTORS.md)) that do nothing until you sign in. No executables, nothing installs on your computer, nothing reports back to anyone. The whole source is in this repo, so read it. `bash evals/run_gate.sh` runs the acceptance gate on the kit's own worked examples.
+The plugin is plain text: prompts, templates, three small Python scripts, and a list of four optional remote connectors (see [CONNECTORS.md](CONNECTORS.md)) that do nothing until you sign in. In Claude Code the scripts run as ordinary commands on your machine (the first render may `pip install beautifulsoup4`); in Cowork they run in Cowork's sandbox. They make no network calls and nothing reports back to anyone. The whole source is in this repo, so read it. `bash evals/run_gate.sh` runs the acceptance gate on the kit's own worked examples.
 
-Verify your download is the official build: run `sha256sum talent-one-1.1.2.plugin` and compare with the expected hash in [docs/INSTALL.md](docs/INSTALL.md) or the `.sha256` file beside the build in [`dist/`](dist/). The hash lives outside the archive because the archive contains this README. Older builds stay in `dist/`, each with its own `.sha256` file.
+Verify your download is the official build: run `sha256sum talent-one-1.1.3.plugin` and compare with the expected hash in [docs/INSTALL.md](docs/INSTALL.md) or the `.sha256` file beside the build in [`dist/`](dist/). The hash lives outside the archive because the archive contains this README. Older builds stay in `dist/`, each with its own `.sha256` file.
 
 ## Repository layout
 
@@ -160,7 +160,7 @@ samples/            all 8 documents from the built-in worked example
 assets/             README images and sample screenshots
 docs/               quickstart PDF, one-pager PDF, install guide, release notes
 evals/              acceptance gate (run_gate.sh) on the kit's own worked examples
-dist/               packaged .plugin builds (1.0.3 to 1.1.2), sha256 beside each
+dist/               packaged .plugin builds (1.0.3 to 1.1.3), sha256 beside each
 build-plugin.sh     packages a new build into dist/ without overwriting an old one
 ```
 
@@ -169,8 +169,8 @@ build-plugin.sh     packages a new build into dist/ without overwriting an old o
 - [Install guide](docs/INSTALL.md) · per-surface steps, uninstall, and the sha256 table
 - [Quickstart (PDF)](docs/TalentOne_Quickstart.pdf) · 3 pages: what it is, how it works, setup. made for 1.0; the overview and setup steps still apply, and the install guide has the current details
 - [One-pager (PDF)](docs/TalentOne_OnePager.pdf) · made for 1.0.3; the overview still holds
-- [Release notes 1.1.2](docs/RELEASE_NOTES_1.1.2.md) · [Changelog](CHANGELOG.md)
-- Older builds: release notes [1.1.1](docs/RELEASE_NOTES_1.1.1.md) · [1.1.0](docs/RELEASE_NOTES_1.1.0.md) · [1.0.3](docs/RELEASE_NOTES_1.0.3.md); the builds themselves stay in [`dist/`](dist/)
+- [Release notes 1.1.3](docs/RELEASE_NOTES_1.1.3.md) · [Changelog](CHANGELOG.md)
+- Older builds: release notes [1.1.2](docs/RELEASE_NOTES_1.1.2.md) · [1.1.1](docs/RELEASE_NOTES_1.1.1.md) · [1.1.0](docs/RELEASE_NOTES_1.1.0.md) · [1.0.3](docs/RELEASE_NOTES_1.0.3.md); the builds themselves stay in [`dist/`](dist/)
 - [Connectors](CONNECTORS.md)
 
 ## License

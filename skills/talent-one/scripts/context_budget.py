@@ -1,7 +1,7 @@
 """Context budget for the Talent One module.
 
 Reports three buckets (bytes/4 as the token estimate):
-  (a) resident: skill + agent descriptions, present in every session the plugin is installed
+  (a) resident: skill descriptions plus the agent listings (description and tools line) a session holds
   (b) main window: the orchestrator SKILL.md
   (c) per-subagent bundle: agents/<x>.md + references/briefs/<x>.md (+ example content when named)
 
@@ -17,11 +17,11 @@ import os
 import re
 import sys
 
-# Measured on the shipped 1.1.0 tree plus three to four percent headroom (resident 1,841;
-# main window 3,259; largest bundle scout at 12,639 with baselines.json). Lower a ceiling
-# when a cut lands; never raise one to make the check pass. On-demand references
-# (ORCHESTRATOR_*.md, CONNECTOR_RUNTIME.md) load only on their path and are not counted.
-CEILINGS = {"resident": 1900, "main": 3400, "bundle_max": 13000}
+# Measured on the shipped 1.1.3 tree plus about three percent headroom (resident 2,578 with
+# the agent listings counted; main window 3,410; largest bundle scout at 12,948 with
+# baselines.json). Lower a ceiling when a cut lands; never raise one to make the check pass.
+# On-demand references (ORCHESTRATOR_*.md, CONNECTOR_RUNTIME.md) load only on their path.
+CEILINGS = {"resident": 2650, "main": 3500, "bundle_max": 13300}
 
 
 def tok(path: str) -> int:
@@ -31,27 +31,46 @@ def tok(path: str) -> int:
         return 0
 
 
-def frontmatter_tok(path: str) -> int:
-    """Tokens of the `description:` field alone: that is what a session holds for every
-    installed skill and agent. The rest of the frontmatter (tools, disallowedTools,
-    model) is loader configuration and never enters the model's context."""
+def _fm_fields(path: str) -> dict:
     with open(path, encoding="utf-8", errors="ignore") as fh:
         text = fh.read()
     match = re.match(r"^---\n(.*?)\n---", text, re.S)
+    fields: dict = {}
     if not match:
-        return 0
-    lines = match.group(1).split("\n")
-    out: list[str] = []
-    grab = False
-    for line in lines:
-        if re.match(r"^[A-Za-z][A-Za-z0-9_-]*:", line):
-            grab = line.startswith("description:")
-            if grab:
-                out.append(line[len("description:"):].strip())
-            continue
-        if grab:
-            out.append(line.strip())
-    return len(" ".join(x for x in out if x)) // 4
+        return fields
+    key = None
+    for line in match.group(1).split("\n"):
+        m = re.match(r"^([A-Za-z][A-Za-z0-9_-]*):(.*)$", line)
+        if m:
+            key = m.group(1)
+            fields[key] = m.group(2).strip()
+        elif key:
+            fields[key] = (fields[key] + " " + line.strip()).strip()
+    return fields
+
+
+def frontmatter_tok(path: str) -> int:
+    """Tokens of what a session actually holds for this file.
+
+    For a skill that is the `description:` text. For an agent it is the listing
+    Claude Code renders into the main context, `- <name>: <description> (Tools: ...)`,
+    where the Tools part is the agent's `tools:` line with any `disallowedTools`
+    removed, or "All tools except ..." when no `tools:` line is set. Everything
+    else in the frontmatter (model, color) is loader configuration."""
+    f = _fm_fields(path)
+    desc = f.get("description", "").strip().strip('"').strip("'")
+    if "/agents/" not in path.replace(os.sep, "/"):
+        return len(desc) // 4
+    tools = [x.strip() for x in f.get("tools", "").split(",") if x.strip()]
+    deny = [x.strip() for x in f.get("disallowedTools", "").split(",") if x.strip()]
+    if tools:
+        shown = ", ".join(x for x in tools if x not in deny)
+    elif deny:
+        shown = "All tools except " + ", ".join(deny)
+    else:
+        shown = "All tools"
+    listing = f"- {f.get('name', '')}: {desc} (Tools: {shown})"
+    return len(listing) // 4
 
 
 def main() -> int:

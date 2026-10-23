@@ -35,10 +35,14 @@ worked example's domain words (`propulsion`, `spacecraft`, `onepromptman`, and a
 The test client is Onepromptman, a propulsion company, so the kit's own footer credit, the
 role's "propulsion controller firmware", and a pack requirement named "Spacecraft or
 satellite experience" all trip it. A real client in the same domain would trip it the same
-way. This is a 1.0.3 verifier limitation, unchanged in 1.1.0 (no renderer code changed), and
+way. This is a 1.0.3 verifier limitation, unchanged in 1.1.0 (the verifier code is unchanged; the renderer gained a content-shape precheck), and
 it is recorded here rather than silenced.
 
 ## Findings against the kit (not caused by 1.1.0, found by this run)
+
+Items 1, 2 and 3 below were fixed in 1.1.0 (scout's spend rule, the envelope in every brief, and
+JD-Bot's NEED_INPUT halt for the EEO and benefits lines); item 5's content-shape and envelope
+observations were fixed in 1.1.2; the rest stand as recorded.
 
 1. `validate-pack` budgets 12 web calls per pack but counts `web_calls_used` cumulatively, so a
    sectional refresh after a full build always fails the budget check. The honest count (16)
@@ -48,8 +52,7 @@ it is recorded here rather than silenced.
    builder now prints the envelope in every schema summary, with the artifact's own number.
 3. With no brand document connected, jdbot cannot fill `jd.eeo` and `jd.benefits` and deletes
    them, which strict render refuses. The right path is a NEED_INPUT ask for the two lines;
-   the agent file says "never author these yourself" but not "halt and ask". Worth a one-line
-   fix in a later release.
+   the agent file says "never author these yourself" but not "halt and ask".
 4. The compiled brief's word bands are exact counts; several agents reported boolean strings
    and graded answer bars cannot meet them and treated the bands as guidance, as the shared
    core allows.

@@ -1,14 +1,14 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: b2884b10abfb
+Source fingerprint: 745ae8f8ac4d
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
 
 # BRIEF · SCOUT (union of A07 + A01 + A03 sources)
 
-Precompiled slice of this kit's four reference files, scoped to what this agent needs. Read this file only; it replaces reading 00_SHARED_CORE.md, CONTEXT_PACK.md, 02_GROUNDING_MATRIX.md, and this agent's content-schema + example-content pair in full.
+Precompiled slice of this kit's four reference files, scoped to what this agent needs. Read this file only (plus CONNECTOR_RUNTIME.md when your prompt lists a connector); it replaces reading 00_SHARED_CORE.md, CONTEXT_PACK.md, 02_GROUNDING_MATRIX.md, and this agent's content-schema + example-content pair in full.
 
 ## SHARED CORE SLICE (from `00_SHARED_CORE.md`)
 
@@ -260,7 +260,7 @@ triangulate or raise a Caution callout, never silently override.
 
 **Part 5 · access, scopes, and sensitive-data routing:**
 - **`ATS`**: read-only, scoped to jobs, postings, offers, scorecards, users. Candidate
-  object access limited to rediscovery queries. Candidate personal data is never passed
+  objects are read as counts and stage names only. Candidate personal data is never passed
   into SHAKESPEARE's context and never leaves T0 systems.
 - **`WIKI`**: recruiting space, read-only. A periodic export is the fallback wherever
   live access is not approved.

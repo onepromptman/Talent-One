@@ -26,13 +26,13 @@ Open the plugin browser and add the marketplace `onepromptman/talent-one`, then 
 
 If your build of Cowork does not expose a marketplace field, use the direct build instead:
 
-1. Download [`dist/talent-one-1.1.2.plugin`](../dist/talent-one-1.1.2.plugin), or the file attached to the [latest release](../../../releases/latest).
+1. Download [`dist/talent-one-1.1.3.plugin`](../dist/talent-one-1.1.3.plugin), or the file attached to the [latest release](../../../releases/latest).
 2. Add it as a plugin from the plugin browser.
 
 ## Verify the download
 
 ```bash
-sha256sum talent-one-1.1.2.plugin
+sha256sum talent-one-1.1.3.plugin
 ```
 
 Compare with the row for your version.
@@ -58,7 +58,7 @@ The `.plugin` file is a zip. Rename it to `.zip` and look inside if you want to 
 set up talent one
 ```
 
-Five questions about your company. Every one has a default and a skip. About five minutes, once.
+A few questions about your company. Every one has a default and a skip. About five minutes, once.
 
 Then:
 
@@ -73,6 +73,16 @@ Write me a JD for a staff accountant
 Build a talent map for a mechanical engineer in Denver
 Make an interview plan for a security engineer
 ```
+
+## Connectors (optional)
+
+Four remote connectors ship with the plugin: Exa, Bright Data, Greenhouse, Ashby. Nothing is required; the kit runs fully on public data, and nothing is sent to any of them until you sign in.
+
+- Claude Code (2.1.300 or later for the agents to see them): the four servers register when the plugin is enabled; sign in to the ones you want from `/mcp`.
+- Cowork: installing the plugin does not add them. Open the plugin's Connectors tab, add each one you want, then sign in. On Team and Enterprise plans an Owner adds connectors for the organization.
+- Greenhouse: a Site Admin connects first and sets scopes under Dev Center, MCP Access (keep write scopes off, deselect Candidates and Attachments at consent). Ashby: an Org Admin turns on the MCP Server opt-in and connecting users need Elevated Access. Exa and Bright Data: a free account on each is enough. No API key is stored in the plugin.
+
+Switch off any you do not use in `/mcp`. Details and the privacy rules: [CONNECTORS.md](../CONNECTORS.md).
 
 ## Uninstall
 

@@ -4,6 +4,33 @@ All notable changes to Talent One. Format loosely follows [Keep a Changelog](htt
 
 ---
 
+## [1.1.3] · 2026-10-23
+
+Connector hardening from an independent review of the 1.1.0 connector work (three verifiers: claims against code, vendor facts against primary sources, whole-tree consistency), plus the review's renderer and relay findings. sha256 in docs/INSTALL.md.
+
+### Fixed
+
+- **Bright Data tool list.** Bright Data removed its `web_data_*` tools on 2026-10-11, and old names in the server URL silently enable its whole scraper group, LinkedIn person scrapers included. The bundled server is now limited to four tools: search results and page reads. Every LinkedIn claim is gone from the docs and the agent-facing runtime map.
+- **Exa signs in.** The bundled Exa URL was keyless, so agents sent research queries to Exa with no sign-in while the README said no connector received anything before sign-in. The URL now carries Exa's `?login` flag (Exa's own recommendation for plugins): nothing is sent until you sign in, and usage runs on your Exa plan.
+- **Least privilege, fail closed.** Ashby is an exact-name allowlist of six read tools (`search_records_by_name`, `filter_records`, `describe_object_fields`, `get_record_details`, `get_job_pipeline`, `get_interview_plan`) in the five agents that query an ATS; the write tools, `get_candidate`, the interview, feedback and task tools, and anything Ashby adds later are invisible. Sensei, Recruiter Screen and the QA gate no longer hold ATS grants; they read ATS facts from the pack and the KB. Exa, Bright Data and Greenhouse stay server-wide grants (the first two are fenced by their URLs; Greenhouse by your admin's scopes, since the plugin cannot block its roughly 150 tools one by one).
+- **The grounding matrix no longer permits candidate records.** Its `ATS` rows still said "candidate objects only for rediscovery queries" and outranked the stricter counts-only rule; all three rows now say counts and stage names only, and the hunter's rediscovery is a count.
+- **Agents can actually open the connector runtime.** Each artifact agent said its brief was "the only reference file you read" and, later, to read `CONNECTOR_RUNTIME.md`; the brief header said the same. Both now carry the exception. Agent prose no longer points at wiki or document-store sources no bundled tool reaches: that material is read by the orchestrator at intake and filed into `inputs/` or the KB.
+- **Honest README and connector docs.** Scripts run as ordinary commands in Claude Code (the first render may `pip install beautifulsoup4`) and in Cowork's sandbox only there; the ATS servers are not "read-only, never candidates" by construction; Exa's search tools can return profile pages if asked with its people category, so agents are told never to. Cowork does not add a plugin's connectors at install (open the plugin's Connectors tab; on Team and Enterprise an Owner adds them); the agent tool entries need Claude Code 2.1.300 or later. Greenhouse: a Site Admin connects first, default scopes include candidates and applications, Dev Center needs developer permissions, the US host is what Greenhouse gives for Claude Code. Ashby: not for Analytics-only organizations. Workday's Agent-Ready MCP Tools are an admin project with write tools; Lever has no official server we could find.
+- **Renderer.** A repeat row that is not an object (a string or a list) failed deep inside the fill with a traceback; it now fails up front with the row named. A shape error also removes a stale `.failed` attempt beside it.
+- **Relay** gets the working folder as an absolute path from every spawn (the orchestrator and the eight single-artifact skills), and the single-artifact skills now define the connector list the same way the orchestrator does.
+- **Setup.** No stray Tavily mention; `(none yet)` for the EEO or benefits line files nothing instead of a literal placeholder; the brain-dump skip names its one cost; Exa and Greenhouse guidance matches the vendors.
+- Agent descriptions are quoted so strict YAML parsers accept them; `ADAPTATIONS.md` item 7 and the 1.1.0 QA run notes match the shipped behavior.
+
+### Changed
+
+- `context_budget.py` counts what a session really holds for an agent: the rendered listing (description plus tools line), not the description alone. Re-baselined with that metric: 1.0.3 2,806, 1.1.2 2,296, 1.1.3 2,578 (the Ashby allowlist costs about 280 resident tokens; the three dropped ATS grants pay back the rest). Ceilings: resident 2,650, main window 3,500, largest bundle 13,300, each about three percent above the measured tree.
+
+### Not exercised
+
+No live connector call was possible from the verification sandbox (all four MCP hosts blocked by its proxy), so the OAuth flows and the wildcard tool grants are confirmed from vendor and Claude Code documentation and the Claude Code binary, not from an observed call. The acceptance gate (`evals/run_gate.sh`) and `claude plugin validate --strict` pass on this tree.
+
+---
+
 ## [1.1.2] · 2026-10-22
 
 Hotfix from a full end-to-end test on a live role at a client (a complete kit run, a simulated recruiter, two QA laps, an update round). sha256 in docs/INSTALL.md.

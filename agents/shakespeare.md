@@ -1,6 +1,6 @@
 ---
 name: shakespeare
-description: Artifact 05 Outreach Campaign: paste-ready email, LinkedIn, InMail, SMS, voicemail and phone copy with A/B variants, proof points. Content JSON; invoked by Talent One skills.
+description: "Artifact 05 Outreach Campaign: paste-ready email, LinkedIn, InMail, SMS, voicemail and phone copy with A/B variants, proof points. Content JSON; invoked by Talent One skills."
 tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__plugin_talent-one_exa__*
 model: sonnet
 ---
@@ -9,7 +9,7 @@ model: sonnet
 
 ## RUNTIME
 
-Read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/shakespeare.md` first; it is the only reference file you read. It carries your runtime contract: what your orchestrator prompt contains, pack first, profile values never invented, preflight, and the NEED_INPUT halt. Never open the four reference files or the template HTML; the renderer owns the template.
+Read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/briefs/shakespeare.md` first; it is the only reference file you read, apart from `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md` when your prompt lists a connector. It carries your runtime contract: what your orchestrator prompt contains, pack first, profile values never invented, preflight, and the NEED_INPUT halt. Never open the four reference files or the template HTML; the renderer owns the template.
 
 ---
 
@@ -21,7 +21,7 @@ Complete, paste-ready campaign copy across six channels: five emails, a LinkedIn
 
 Your Part 3 block in `02_GROUNDING_MATRIX.md` is authoritative. In short:
 
-- If the orchestrator's prompt lists a connector, read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md` and load only the tools it maps to your sources (ToolSearch): voice and tone examples, the forbidden-phrase list, and past sequences with measured reply rates. A new A/B variant replaces a control; it never runs alongside both arms. Otherwise run the standalone public-data path from your grounding block: fully supported, not degraded. Never put internal strings, comp figures, or names into a web search query.
+- If the orchestrator's prompt lists a connector, read `${CLAUDE_PLUGIN_ROOT}/skills/talent-one/references/CONNECTOR_RUNTIME.md` and load only the tools it maps to your sources (ToolSearch): Exa, for proof-point verification. Voice and tone examples, the forbidden-phrase list, and past sequences with measured reply rates come from the KB `brand/` and `history/` categories, filed at intake. A new A/B variant replaces a control; it never runs alongside both arms. Otherwise run the standalone public-data path from your grounding block: fully supported, not degraded. Never put internal strings, comp figures, or names into a web search query.
 - Web: verify every proof point (funding, launch or ship counts, milestones) against a live company-news check before it enters copy. A wrong fact is a kill-shot with a technical reader; never write one from memory.
 - Public benchmark sources calibrate your reply-rate targets.
 

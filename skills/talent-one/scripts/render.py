@@ -1641,6 +1641,32 @@ def check_content_shape(content):
     if not isinstance(content, dict):
         return ["content shape: top level must be an object"]
     warns = []
+    # Repeat rows must be objects (or a grid object): a string or list row
+    # crashed render_rows deep inside the fill with an AttributeError.
+    reps = content.get("repeats")
+    if isinstance(reps, dict):
+        for rname, rows in reps.items():
+            if isinstance(rows, list):
+                for i, row in enumerate(rows):
+                    if not isinstance(row, dict):
+                        errs.append(f"content shape: repeats.{rname}[{i}] must be an object "
+                                    f"(one row with its slot keys), got {type(row).__name__}")
+                reps[rname] = [r for r in rows if isinstance(r, dict)]
+            elif rows is not None and not isinstance(rows, dict):
+                errs.append(f"content shape: repeats.{rname} must be a list of row objects "
+                            f"(or a grid object), got {type(rows).__name__}")
+                reps[rname] = []
+    opts0 = content.get("optionals")
+    if isinstance(opts0, dict):
+        for oid, odata in opts0.items():
+            if isinstance(odata, dict) and isinstance(odata.get("repeats"), dict):
+                for rname, rows in odata["repeats"].items():
+                    if isinstance(rows, list):
+                        for i, row in enumerate(rows):
+                            if not isinstance(row, dict):
+                                errs.append(f"content shape: optionals.{oid}.repeats.{rname}[{i}] must be "
+                                            f"an object, got {type(row).__name__}")
+                        odata["repeats"][rname] = [r for r in rows if isinstance(r, dict)]
     for key, empty in _ENVELOPE_EMPTY.items():
         if key not in content:
             continue
@@ -2603,6 +2629,9 @@ def main(argv=None):
             brand[k] = v2
         shape_errors = check_content_shape(content)
         if shape_errors:
+            stale0 = Path(args.out).with_name(Path(args.out).name + ".failed")
+            if stale0.exists():
+                stale0.unlink()  # an older failed attempt must not outlive a newer shape error
             summary = {"out": None, "attempted_out": args.out, "errors": shape_errors,
                        "fix": "content patch by the owning agent; nothing was rendered"}
             print(json.dumps(summary, indent=1, ensure_ascii=False))

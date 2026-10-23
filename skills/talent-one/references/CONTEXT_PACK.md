@@ -84,8 +84,9 @@ Never write a placeholder, "TBD", or an empty pv to silence a halt.
                                                    // "external-deep-research",
                                                    // "legacy-handoffs", "user_stated"
   "web_calls_used": 9,                             // (req when built_from includes
-                                                   // "scout") searches + fetches the
-                                                   // build actually spent, self-
+                                                   // "scout") this run's own web calls
+                                                   // (WebSearch, WebFetch, Exa, Bright
+                                                   // Data; a refresh reports its own), self-
                                                    // reported by scout; the 12-call
                                                    // budget is audited from this by
                                                    // validate-pack and qa-gate

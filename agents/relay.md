@@ -1,6 +1,6 @@
 ---
 name: relay
-description: Planning broker: decides Context Pack state, computes required pack sections, preflights inputs, consolidates the ask-first list, returns the cheapest plan. Invoked by Talent One skills.
+description: "Planning broker: decides Context Pack state, computes required pack sections, preflights inputs, consolidates the ask-first list, returns the cheapest plan. Invoked by Talent One skills."
 tools: Read, Glob, Grep, Bash
 model: haiku
 ---

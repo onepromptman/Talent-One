@@ -1,14 +1,14 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: de211b8fabdc
+Source fingerprint: 2edd870657a1
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_07.content-schema.json
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
 
 # BRIEF · A07 CALIBRATE
 
-Precompiled slice of this kit's four reference files, scoped to what this agent needs. Read this file only; it replaces reading 00_SHARED_CORE.md, CONTEXT_PACK.md, 02_GROUNDING_MATRIX.md, and this agent's content-schema + example-content pair in full.
+Precompiled slice of this kit's four reference files, scoped to what this agent needs. Read this file only (plus CONNECTOR_RUNTIME.md when your prompt lists a connector); it replaces reading 00_SHARED_CORE.md, CONTEXT_PACK.md, 02_GROUNDING_MATRIX.md, and this agent's content-schema + example-content pair in full.
 
 ## SHARED CORE SLICE (from `00_SHARED_CORE.md`)
 

@@ -1,14 +1,14 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 33c6df394fba
+Source fingerprint: 7926acfccbeb
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_05.content-schema.json
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
 
 # BRIEF · A05 SHAKESPEARE
 
-Precompiled slice of this kit's four reference files, scoped to what this agent needs. Read this file only; it replaces reading 00_SHARED_CORE.md, CONTEXT_PACK.md, 02_GROUNDING_MATRIX.md, and this agent's content-schema + example-content pair in full.
+Precompiled slice of this kit's four reference files, scoped to what this agent needs. Read this file only (plus CONNECTOR_RUNTIME.md when your prompt lists a connector); it replaces reading 00_SHARED_CORE.md, CONTEXT_PACK.md, 02_GROUNDING_MATRIX.md, and this agent's content-schema + example-content pair in full.
 
 ## SHARED CORE SLICE (from `00_SHARED_CORE.md`)
 

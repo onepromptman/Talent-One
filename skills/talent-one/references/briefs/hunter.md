@@ -1,14 +1,14 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 0f0c11e4a67b
+Source fingerprint: 60a5f58bfd1c
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_04.content-schema.json
 Regenerate: python3 skills/talent-one/scripts/build_briefs.py
 -->
 
 # BRIEF · A04 HUNTER
 
-Precompiled slice of this kit's four reference files, scoped to what this agent needs. Read this file only; it replaces reading 00_SHARED_CORE.md, CONTEXT_PACK.md, 02_GROUNDING_MATRIX.md, and this agent's content-schema + example-content pair in full.
+Precompiled slice of this kit's four reference files, scoped to what this agent needs. Read this file only (plus CONNECTOR_RUNTIME.md when your prompt lists a connector); it replaces reading 00_SHARED_CORE.md, CONTEXT_PACK.md, 02_GROUNDING_MATRIX.md, and this agent's content-schema + example-content pair in full.
 
 ## SHARED CORE SLICE (from `00_SHARED_CORE.md`)
 
@@ -182,7 +182,7 @@ Content JSON written to `<run folder>/content/<NN>.content.json`; final message 
 
 | Source | Grounds | Retrieval pattern |
 |---|---|---|
-| `ATS` | House funnel actuals (replace `OR` rates when n ≥ 30); rediscovery pool (past onsite candidates, adjacent roles); source-of-hire channel mix | Pipeline aggregation plus rediscovery query |
+| `ATS` | House funnel actuals (replace `OR` rates when n ≥ 30); rediscovery count (past onsite candidates, adjacent roles; never a name or record); source-of-hire channel mix | Pipeline aggregation plus a rediscovery count |
 | `OR` | Benchmark rates where house n < 30; outreach sequence benchmarks | Categories `funnel`, `outreach` |
 | `MKT` | Search-string result-size sanity checks | Compare against expected-result estimates |
 | `HX` | Versioned string library with past performance | Reuse winning strings, increment the version tag |

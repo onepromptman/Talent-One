@@ -20,7 +20,7 @@ primary · **T3** aggregator (triangulation only, never a sole source).
 
 | ID | Source role | Type | Tier | Binding | Refresh |
 |----|-------------|------|------|---------|---------|
-| `ATS` | Applicant tracking system | LIVE SYSTEM | T0 | Read-only scopes: jobs, postings, offers, scorecards, users; candidate objects only for rediscovery queries | Live |
+| `ATS` | Applicant tracking system | LIVE SYSTEM | T0 | Read-only scopes: jobs, postings, offers, scorecards, users; candidate objects as counts and stage names only (rediscovery is a count) | Live |
 | `WIKI` | Internal recruiting wiki / collaboration space | LIVE SYSTEM | T0 | Space-scoped read, or a periodic export drop to `kb/internal/` | Live |
 | `CSR` | **Comp System of Record**, the approved internal band | LIVE SYSTEM (export) | T0 | Band export to `kb/internal/comp/bands.csv`, keyed by a role-family crosswalk ID | Per comp cycle |
 | `CSV` | **Comp Survey Vendor**, external market survey | SURVEY | T2 | Percentile lookup via the same crosswalk ID | Per survey cycle |
@@ -177,7 +177,7 @@ same role: what changed, and what it costs in pool.
 
 | Source | Grounds | Retrieval pattern |
 |---|---|---|
-| `ATS` | House funnel actuals (replace `OR` rates when n ≥ 30); rediscovery pool (past onsite candidates, adjacent roles); source-of-hire channel mix | Pipeline aggregation plus rediscovery query |
+| `ATS` | House funnel actuals (replace `OR` rates when n ≥ 30); rediscovery count (past onsite candidates, adjacent roles; never a name or record); source-of-hire channel mix | Pipeline aggregation plus a rediscovery count |
 | `OR` | Benchmark rates where house n < 30; outreach sequence benchmarks | Categories `funnel`, `outreach` |
 | `MKT` | Search-string result-size sanity checks | Compare against expected-result estimates |
 | `HX` | Versioned string library with past performance | Reuse winning strings, increment the version tag |
@@ -349,7 +349,7 @@ supported standalone path, not a degraded mode:
 ## PART 5 · ACCESS, SCOPES, AND SENSITIVE-DATA ROUTING
 
 - **`ATS`**: read-only, scoped to jobs, postings, offers, scorecards, users. Candidate
-  object access limited to rediscovery queries. Candidate personal data is never passed
+  objects are read as counts and stage names only. Candidate personal data is never passed
   into SHAKESPEARE's context and never leaves T0 systems.
 - **`WIKI`**: recruiting space, read-only. A periodic export is the fallback wherever
   live access is not approved.

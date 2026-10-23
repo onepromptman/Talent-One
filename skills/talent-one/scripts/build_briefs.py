@@ -1341,7 +1341,7 @@ def build_agent_brief(src, agent):
     parts = [header(agent),
               f"# BRIEF · {label}", "",
               "Precompiled slice of this kit's four reference files, scoped "
-              "to what this agent needs. Read this file only; it replaces "
+              "to what this agent needs. Read this file only (plus CONNECTOR_RUNTIME.md when your prompt lists a connector); it replaces "
               "reading 00_SHARED_CORE.md, CONTEXT_PACK.md, "
               "02_GROUNDING_MATRIX.md, and this agent's content-schema + "
               "example-content pair in full.", "",
