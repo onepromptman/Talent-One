@@ -39,6 +39,7 @@ Compare with the row for your version.
 
 | Build | SHA-256 |
 | --- | --- |
+| `talent-one-1.1.3.plugin` | `40f880069f1efefa4a4cbb9e783b89669422abe63ce8179f457355ab54b509e3` |
 | `talent-one-1.1.2.plugin` | `663c0e9612612afcd31c547b5e4db557cc1f5ae4565b2479e1457bbef84fb91b` |
 | `talent-one-1.1.1.plugin` | `4014d3f2a4e4f28232157081559eaef97fa1db1edbdde6f55b7e2530d259a3ce` |
 | `talent-one-1.1.0.plugin` | `d8ec24e499a8e4d589c46a04fbd1c050cae22080290cea861272fb3b2e298e93` |
