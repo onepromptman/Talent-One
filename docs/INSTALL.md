@@ -33,7 +33,7 @@ If your build of Cowork does not expose a marketplace field, use the direct buil
 
 ```bash
 sha256sum talent-one-1.1.0.plugin
-# d8ec24e499a8e4d589c46a04fbd1c050cae22080290cea861272fb3b2e298e93
+# daf69aba64ecdca63e6e7bbd02f835385929c46845cf89017dc2bd36061f8d5a
 ```
 
 The `.plugin` file is a zip. Rename it to `.zip` and look inside if you want to read every prompt before installing — it is all plain text.

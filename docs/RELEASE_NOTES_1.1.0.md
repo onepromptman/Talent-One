@@ -11,12 +11,12 @@ What is new in 1.1.0 (a leaner harness, same output contract):
 
 - Every agent now loads less instruction text before it starts work. Measured
   on the shipped files with the new `scripts/context_budget.py`: one full
-  fan-out of all eleven agents dropped from 87,430 to 81,875 instruction
+  fan-out of all eleven agents dropped from 87,430 to 82,576 instruction
   tokens, about 6 percent, with no change to the content schemas or the
   templates. The eight artifact agents each read about 1,000
   fewer tokens; the per-session footprint of the plugin (agent and skill
   descriptions resident in every session) dropped from 2,588 to 1,841 tokens,
-  about 29 percent, and the orchestrator skill from 3,424 to 3,259.
+  about 29 percent, and the orchestrator skill from 3,424 to 3,301.
 - The shared rules every artifact agent reads are now a compact contract
   compiled once into its brief (`build_briefs.py`): the provenance rules, the
   content-JSON shape, and the NEED_INPUT halt contract stay verbatim; the
@@ -61,4 +61,4 @@ before testing; then one full kit run (relay, scout, all eight artifact agents,
 strict render, machine verify, QA gate) on a synthetic role at Onepromptman,
 with the results recorded in the pull request.
 
-SHA-256 of `talent-one-1.1.0.plugin`: d8ec24e499a8e4d589c46a04fbd1c050cae22080290cea861272fb3b2e298e93
+SHA-256 of `talent-one-1.1.0.plugin`: daf69aba64ecdca63e6e7bbd02f835385929c46845cf89017dc2bd36061f8d5a

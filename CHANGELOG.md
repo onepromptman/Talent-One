@@ -7,11 +7,11 @@ All notable changes to Talent One. Format loosely follows [Keep a Changelog](htt
 ## [1.1.0] — 2026-10-21
 
 A leaner harness, same output contract. SHA-256 of `talent-one-1.1.0.plugin`:
-`d8ec24e499a8e4d589c46a04fbd1c050cae22080290cea861272fb3b2e298e93`
+`daf69aba64ecdca63e6e7bbd02f835385929c46845cf89017dc2bd36061f8d5a`
 
 ### Changed
 
-- **Agents load less before they work.** Measured with the new `scripts/context_budget.py` on the shipped files: one full fan-out of all eleven agents dropped from 87,430 to 81,875 instruction tokens (about 6 percent); the always-resident agent and skill descriptions from 2,588 to 1,841 tokens (about 29 percent); the orchestrator skill from 3,424 to 3,259. No content schema or template changed; the renderer gained only the shape precheck below.
+- **Agents load less before they work.** Measured with the new `scripts/context_budget.py` on the shipped files: one full fan-out of all eleven agents dropped from 87,430 to 82,576 instruction tokens (about 6 percent); the always-resident agent and skill descriptions from 2,588 to 1,841 tokens (about 29 percent); the orchestrator skill from 3,424 to 3,301. No content schema or template changed; the renderer gained only the shape precheck below.
 - **Compact shared contract for the eight artifact agents.** `build_briefs.py` compiles the shared rules into each brief once: provenance (section 3), the content-JSON shape (section 5) and the NEED_INPUT halt contract (section 6.5) stay verbatim; preflight, grounding order, voice, constraints, handoff and self-QA are condensed to checklists that keep every auto-fail list word for word. scout and qa-gate keep the full text.
 - **Agent files point at their brief** in three sentences instead of a three-paragraph preamble; the rules that preamble carried now live once in the brief as a runtime contract. Every agent description is 25 words or fewer.
 - **Orchestrator loads seeding and update-mode procedures on demand** (`references/ORCHESTRATOR_SEEDING.md`, `references/ORCHESTRATOR_UPDATE_MODE.md`); the blocking ask-first gate stays resident.

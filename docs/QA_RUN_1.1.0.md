@@ -79,7 +79,7 @@ NEED_INPUT halt for the EEO and benefits lines); the rest stand as recorded.
 Re-measured with the shipped `context_budget.py` on the final 1.1.0 tree (after the connector
 work landed) against a clean 1.0.3 checkout, with the resident bucket now counting description text
 only (the rest of the frontmatter is loader configuration): resident 2,588 to 1,841;
-orchestrator 3,424 to 3,259; one fan-out 87,430 to 81,875. The table above is the figure recorded on the day of the
+orchestrator 3,424 to 3,301; one fan-out 87,430 to 82,576. The table above is the figure recorded on the day of the
 run; the changelog carries the re-measured pair.
 
 ## QA gate verdict
