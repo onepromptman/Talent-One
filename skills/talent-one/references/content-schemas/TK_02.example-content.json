@@ -1,0 +1,158 @@
+{
+ "template": "TK_02_Job_Description.dc.html",
+ "artifact": "02",
+ "slots": {
+  "doc.agent": "Agent · JD-BOT",
+  "doc.date": "Generated 2026-07-29",
+  "doc.eyebrow": "Artifact 02 · Posting copy",
+  "doc.title": "Job Description",
+  "role.title": "Battery Systems Engineer (Mid)",
+  "role.org": "Harborlight Energy · Hybrid, distributed · Small battery team, one cell partner",
+  "doc.thesis": "The left column is paste-ready posting copy. The right column is why each line reads the way it does. Read the rail once, post the left side, and never look at the rail again.",
+  "cover.compliance": "Reviewed for EEO + gendered/ableist language",
+  "s1.title": "The posting, with a why-rail",
+  "s1.body": "Copy the left column straight into the ATS. The right rail is internal reasoning and never ships to a candidate.",
+  "jd.title": "Battery Systems Engineer",
+  "jd.meta": "Hybrid, distributed; test work onsite · $115,000-$155,000 base salary + equity",
+  "jd.intro": {
+   "html": "<p>We build home batteries, and the battery team is small: a handful of engineers and one cell partner. You would own a battery subsystem, not a slice of one.</p><p>The work is hands-on in the way battery work always is. You will spend more time on what the hardware does on the test rig than on a clean analysis deck. Abuse tests fail, sensors lie, and someone has to find out why before the next build. That is the job, and it is also why people here stay.</p>"
+  },
+  "jd.close": "Direct home-storage experience is not required and is not an edge in our screen. The same problem, a large amount of stored energy kept cool and safe in hardware people live with, shows up in EV battery and powertrain work, power electronics, and consumer-electronics battery qualification. We have hired from those fields, and those engineers are among our strongest. If that is you, apply.",
+  "jd.benefits": "Base range reflects the posted location. Compensation also includes equity, health coverage, retirement plan, and paid time off. Open until filled.",
+  "jd.eeo": "We are an equal opportunity employer. All qualified applicants will be considered without regard to any characteristic protected by applicable law. If you need an accommodation to apply or interview, tell your recruiter.",
+  "s2.title": "What we changed from intake",
+  "s2.body": "Every change from the hiring manager's first draft, with its pool consequence. Pool counts are Estimates off the BLS-OES 17-2199 base (BLS OEWS May 2024 national employment for SOC 17-2199), each filter applied to the reachable battery subset. Bring this if any line gets challenged.",
+  "caution.1": "If the field-heritage requirement is restored, the posted band no longer clears the experienced market where the shortage bites hardest, and the search reverts to a 90-day, relocation-dependent profile. Those two are one decision, not two.",
+  "gate.1": "No eligibility or work-authorization line is posted. Adding one goes through counsel, not the hiring manager.",
+  "s3.title": "Where the base band lands",
+  "s3.body": "Published base band against the national market for the same title and a comparable stage of company. The role is distributed, so the benchmark is national, not one metro.",
+  "comp.readout": "Read-out: the posted band sits inside the sourced band and reaches toward its upper half, fair for a small hardware employer. This is an Estimate, not a survey: BLS-OES 17-2199 P25-P75 ($105K-$174K) blended with a second published battery-industry source ($112K-$172K; name it when you fill this). Expect to win on scope, cadence, and equity, not top-of-market cash. Say that in the screen, not at offer.",
+  "footer.right": "Rail is internal, never ships"
+ },
+ "repeats": {
+  "cover.metrics": [
+   {
+    "metric.label": "Word count",
+    "metric.value": "330"
+   },
+   {
+    "metric.label": "Requirements listed",
+    "metric.value": "5"
+   },
+   {
+    "metric.label": "Reading level",
+    "metric.value": "Grade 9"
+   },
+   {
+    "metric.label": "Pay transparency",
+    "metric.value": "Included"
+   }
+  ],
+  "jd.responsibilities": [
+   {
+    "resp.item": "Design and analyze a battery subsystem end to end: what it must do, how it is sized, how it is verified."
+   },
+   {
+    "resp.item": "Own cycling and abuse test: build the setup, instrument it, run it, and reduce the data into decisions."
+   },
+   {
+    "resp.item": "Thermal and electrical analysis: thermal, FEA, and circuit models the hardware then confirms or refutes."
+   },
+   {
+    "resp.item": "Work the interfaces: thermal management, enclosure, firmware, and the one external cell partner. A few weeks a year at the test lab through certification campaigns."
+   }
+  ],
+  "jd.requirements": [
+   {
+    "req.item": "Battery pack design in at least one chemistry: LFP, NMC, or another lithium-ion family. You have taken a design from requirements to real hardware."
+   },
+   {
+    "req.item": "Real command of thermal and electrical fundamentals: heat transfer, circuits, and cell behaviour applied to high-energy hardware in production or test settings."
+   },
+   {
+    "req.item": "Hands-on battery test: cycling or abuse-test work, test-rig instrumentation, and turning raw runs into clean data reduction."
+   },
+   {
+    "req.item": "CAD plus analysis fluency: thermal, FEA, or electrical modeling in a standard toolchain, for example ANSYS, MATLAB, or SolidWorks."
+   },
+   {
+    "req.item": "You have owned a subsystem end to end on shipped or test hardware, including the parts nobody scoped, from requirements through verification."
+   }
+  ],
+  "annotations": [
+   {
+    "note.tag": "Opening",
+    "note.body": "Team size and the cell partner are in the first two lines. For a small battery team, \"own a subsystem, not a slice\" is the strongest promise in the post."
+   },
+   {
+    "note.tag": "Honest cost",
+    "note.body": "The test-rig line is deliberate. Naming that abuse-test and hardware work is hands-on and mostly onsite raises reply quality and kills a late-stage surprise."
+   },
+   {
+    "note.tag": "Five, not twelve",
+    "note.body": "Long requirement lists suppress applications, including from the adjacent-industry engineers we most want. Everything cuttable was cut to five."
+   },
+   {
+    "note.tag": "No eligibility gate",
+    "note.body": "This search ships no work-authorization line. Some hardware postings carry one by habit; this role does not, so none was invented or implied."
+   },
+   {
+    "note.tag": "The closer",
+    "note.body": "The last paragraph converts adjacent-industry engineers, EV powertrain, power electronics, consumer electronics, who would otherwise self-reject. It is the highest-yield sentence in the file."
+   }
+  ],
+  "ledger.rows": [
+   {
+    "ledger.before": "8+ years shipped home-battery packs",
+    "ledger.after": "Pack design in one chemistry, capability-based",
+    "ledger.effect": "2,600 → 4,900 (est.)"
+   },
+   {
+    "ledger.before": "Master's in electrical engineering required",
+    "ledger.after": "Education requirement removed entirely",
+    "ledger.effect": "+22% pool (est.)"
+   },
+   {
+    "ledger.before": "Twelve required bullets",
+    "ledger.after": "Five, capability-based",
+    "ledger.effect": "Apply-rate lift"
+   },
+   {
+    "ledger.before": "Onsite at one hub, relocation unspecified",
+    "ledger.after": "Hybrid and distributed; most test work onsite",
+    "ledger.effect": "+12% reach (est.)"
+   }
+  ],
+  "comp.rows": [
+   {
+    "comp.label": "What the market pays",
+    "comp.n": "Sourced · BLS-OES 2024 · 17-2199 national base, P25-P75",
+    "comp.low": "105k",
+    "comp.high": "174k",
+    "bar": [
+     0.12,
+     0.7
+    ]
+   },
+   {
+    "comp.label": "What we're posting",
+    "comp.n": "Estimate · posted band, floor to ceiling",
+    "comp.low": "115k",
+    "comp.high": "155k",
+    "bar": [
+     0.21,
+     0.54
+    ]
+   }
+  ]
+ },
+ "standalone_bars": [],
+ "optionals": {},
+ "toggles": {},
+ "handoff": {
+  "produces": "must_have_skills[] · nice_to_have[] · years_experience · education · posted_range · assessment_methods[]",
+  "consumers": "04 Sourcing Strategy · 09 QA Gate",
+  "assumptions": "Base band approved. Adjacent-industry hires acceptable. Distributed with onsite test work is fixed. Requirements are capability-based, not years-based.",
+  "blocked": "Nothing outstanding: cleared to post."
+ }
+}

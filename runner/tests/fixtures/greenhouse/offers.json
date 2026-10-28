@@ -1,0 +1,6 @@
+[
+  {"job_id": 101, "status": "accepted", "level": "L3", "salary": 180000, "candidate": {"name": "Bob Offeree", "email": "bob.offeree@example.com"}},
+  {"job_id": 101, "status": "accepted", "level": "L3", "salary": 190000, "candidate": {"name": "Bob Offeree"}},
+  {"job_id": 102, "status": "accepted", "level": "L3", "salary": 200000, "candidate": {"name": "Bob Offeree"}},
+  {"job_id": 102, "status": "accepted", "level": "L4", "starting_salary": {"value": 230000}, "candidate": {"name": "Bob Offeree"}}
+]

@@ -1,0 +1,123 @@
+{
+  "template": "TK_04_Sourcing_Strategy.dc.html",
+  "derived_from": "example-content",
+  "required": [
+    "caution.1",
+    "cover.note",
+    "doc.agent",
+    "doc.date",
+    "doc.eyebrow",
+    "doc.thesis",
+    "doc.title",
+    "footer.right",
+    "funnel.note.1",
+    "funnel.note.2",
+    "insight.1",
+    "pullstat.claim",
+    "pullstat.label",
+    "pullstat.method",
+    "pullstat.value",
+    "role.org",
+    "role.title",
+    "s1.body",
+    "s1.title",
+    "s2.body",
+    "s2.title",
+    "s3.body",
+    "s3.title",
+    "s4.body",
+    "s4.title",
+    "s5.body",
+    "s5.title",
+    "s6.body",
+    "s6.title",
+    "s7.body",
+    "s7.title"
+  ],
+  "optional": {},
+  "numeric": [
+    "doc.thesis",
+    "funnel.note.1",
+    "funnel.note.2",
+    "insight.1",
+    "pullstat.claim"
+  ],
+  "repeats": {
+    "cover.metrics": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "metric.label",
+        "metric.value"
+      ],
+      "optional_keys": []
+    },
+    "strings": {
+      "min": 1,
+      "max": 8,
+      "item_keys": [
+        "string.name",
+        "string.note",
+        "string.query",
+        "string.yield",
+        "strings.prose0"
+      ],
+      "optional_keys": []
+    },
+    "channels": {
+      "min": 1,
+      "max": 8,
+      "item_keys": [
+        "ch.effort",
+        "ch.name",
+        "ch.verdict",
+        "ch.yield"
+      ],
+      "optional_keys": []
+    },
+    "timing.cards": {
+      "min": 1,
+      "max": 4,
+      "item_keys": [
+        "timing.label",
+        "timing.rule",
+        "timing.why"
+      ],
+      "optional_keys": []
+    },
+    "timeline.rows": {
+      "min": 1,
+      "max": 8,
+      "item_keys": [
+        "bar",
+        "phase.label"
+      ],
+      "optional_keys": []
+    },
+    "funnel.stages": {
+      "min": 1,
+      "max": 8,
+      "item_keys": [
+        "bar",
+        "stage.basis",
+        "stage.label",
+        "stage.n",
+        "stage.rate"
+      ],
+      "optional_keys": []
+    },
+    "tests": {
+      "min": 1,
+      "max": 8,
+      "item_keys": [
+        "test.a",
+        "test.b",
+        "test.metric",
+        "test.n",
+        "test.name"
+      ],
+      "optional_keys": []
+    }
+  },
+  "toggles": []
+}

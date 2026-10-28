@@ -1,0 +1,218 @@
+{
+  "pack_version": "1.0",
+  "role": {
+    "slug": "harborlight-battery-systems-engineer",
+    "title": "Battery Systems Engineer",
+    "level": "Mid",
+    "company": "Harborlight Energy",
+    "org_descriptor": "small home-battery hardware employer; fictional search used as the shipped worked example",
+    "location": "Distributed, United States",
+    "work_model": "Hybrid, distributed; test work onsite",
+    "team": "Battery team of 5"
+  },
+  "built": "2026-07-29",
+  "built_from": [
+    "inputs/fixture-pack.json"
+  ],
+  "spec": {
+    "requirements": [
+      {
+        "name": "Battery pack test experience (cycling and abuse)",
+        "verdict": "must",
+        "verified_by": "HM intake 2026-07-28"
+      },
+      {
+        "name": "Thermal and electrical analysis for battery packs",
+        "verdict": "must",
+        "verified_by": "HM intake 2026-07-28"
+      },
+      {
+        "name": "Test-rig data reduction and anomaly write-ups",
+        "verdict": "must",
+        "verified_by": "HM intake 2026-07-28"
+      },
+      {
+        "name": "Field heritage on a shipped home-battery product",
+        "verdict": "dropped",
+        "verified_by": "HM intake 2026-07-28; restores a 90-day relocation-dependent search"
+      },
+      {
+        "name": "Cell-to-pack design experience",
+        "verdict": "nice",
+        "verified_by": "HM intake 2026-07-28"
+      }
+    ],
+    "must_have_skills": [
+      "pack test",
+      "thermal and electrical analysis",
+      "data reduction",
+      "anomaly investigation"
+    ],
+    "nice_to_have": [
+      "cell-to-pack design",
+      "high-voltage safety practice",
+      "Python test-data tooling"
+    ],
+    "years_experience": {
+      "value": "3-6",
+      "pill": "Estimate",
+      "method": "capability-based ladder, recruiter-stated",
+      "as_of": "2026-07"
+    },
+    "education": {
+      "value": "Engineering degree or equivalent test experience",
+      "pill": "Internal",
+      "method": "profile",
+      "as_of": "2026-07"
+    },
+    "assessment_methods": [
+      "test-campaign walkthrough",
+      "analysis take-home",
+      "anomaly debrief"
+    ],
+    "tradeoff_lock": "Capability-based requirements, not years-based; adjacent-industry hires acceptable.",
+    "seniority_ladder": "Associate -> Mid -> Senior; Mid here means owns a test campaign end to end."
+  },
+  "market": {
+    "classification": {
+      "value": "TIGHT",
+      "pill": "Estimate",
+      "method": "BLS OEWS May 2025 base for SOC 17-2199, 5-stage filter to the reachable battery subset",
+      "as_of": "2026-07"
+    },
+    "ratio": {
+      "value": "1:4 engaged supply to open demand",
+      "pill": "Estimate",
+      "method": "BLS OEWS vs public postings count",
+      "as_of": "2026-07"
+    },
+    "funnel": {
+      "baseline": {
+        "value": "~4,900",
+        "pill": "Sourced",
+        "method": "BLS OEWS May 2025 national employment for SOC 17-2199, reachable battery subset",
+        "as_of": "2026-04"
+      },
+      "stages": [
+        {
+          "name": "Battery test experience",
+          "pct": 0.53,
+          "basis": "reachable subset after the test-experience filter, about 2,600 people",
+          "pill": "Estimate",
+          "method": "share of the OEWS 17-2199 base after this filter; recruiter estimate"
+        },
+        {
+          "name": "Field heritage (dropped)",
+          "pct": 0.22,
+          "basis": "each restored filter costs the pool 12% to 22%",
+          "pill": "Estimate",
+          "method": "share of the OEWS 17-2199 base after this filter; recruiter estimate"
+        }
+      ]
+    },
+    "demand": [
+      {
+        "name": "Home-storage and EV battery hiring",
+        "read": "Each added filter costs 12% to 22% of the reachable pool; the shortage bites hardest at the experienced end."
+      }
+    ],
+    "macro": {
+      "shortage_rate": {
+        "value": "experienced battery test engineers are the scarce band",
+        "pill": "Estimate",
+        "method": "postings vs OEWS base",
+        "as_of": "2026-07"
+      },
+      "cost_of_vacancy": {
+        "value": "one test campaign slip per open quarter",
+        "pill": "Estimate",
+        "method": "HM-stated",
+        "as_of": "2026-07"
+      }
+    }
+  },
+  "comp": {
+    "canonical_range": {
+      "value": "$115,000-$155,000 base salary + equity",
+      "pill": "Internal",
+      "method": "approved band, profile",
+      "as_of": "2026-07"
+    },
+    "frame": {
+      "posture": "Inside the sourced band, reaching toward its upper half",
+      "anchor": "P25-P75 of the sourced band",
+      "equity_note": "equity on top of base; not quantified in the posting",
+      "basis": "BLS OEWS 17-2199 (May 2025 release) plus one fixture survey band"
+    },
+    "by_level": [
+      {
+        "level": "Mid",
+        "base": {
+          "value": "$105K-$174K",
+          "pill": "Sourced",
+          "method": "BLS OEWS 17-2199 P25-P75, May 2025 release",
+          "as_of": "2026-04"
+        },
+        "total": {
+          "label": "total comp",
+          "value": "$112K-$172K",
+          "pill": "Estimate",
+          "method": "second battery-industry source's total comp fixture band standing in for a survey; synthetic, unnamed on purpose",
+          "as_of": "2026-07"
+        },
+        "note": "posted band $115,000-$155,000 (base) sits inside the sourced base band and the total comp fixture band"
+      }
+    ],
+    "positioning": "Fair for a small hardware employer: inside the sourced band, upper half reachable."
+  },
+  "keywords": {
+    "primary": [
+      "battery systems engineer",
+      "battery test engineer",
+      "battery pack engineer"
+    ],
+    "title_synonyms": [
+      "test engineer, battery",
+      "pack validation engineer",
+      "energy storage systems engineer"
+    ],
+    "cross_industry_pools": [
+      "EV battery validation",
+      "power electronics test",
+      "consumer electronics battery qualification"
+    ],
+    "skill_transfer_notes": [
+      "EV validation engineers carry the data-reduction habit; teach the home-storage safety standards"
+    ]
+  },
+  "messaging": {
+    "urgency": "The next certification campaign is scheduled; the seat owns it.",
+    "comp_angle": "State the band; it sits inside the sourced market band.",
+    "pain_point_angles": [
+      "own a campaign end to end instead of a subsystem"
+    ]
+  },
+  "constraints": [
+    {
+      "label": "Work authorization",
+      "requirement": "Must be authorized to work in the United States; this role does not sponsor visas.",
+      "gate_stage": "screen",
+      "disqualifying": true
+    }
+  ],
+  "_eval_note": "Fixture pack for the eval: figures mirror the shipped worked example, a fictional search.",
+  "caveats": [],
+  "assumptions": [
+    "Base band approved.",
+    "Adjacent-industry hires acceptable.",
+    "Distributed with onsite test work is fixed.",
+    "Requirements are capability-based, not years-based."
+  ],
+  "freshness": {
+    "market": "2026-07-29",
+    "comp": "2026-07-29",
+    "targets": "2026-07-29",
+    "spec": "2026-07-29",
+    "keywords": "2026-07-29"
+  }
+}

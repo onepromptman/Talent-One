@@ -1,0 +1,47 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# Local runs: per-role output should never be committed
+talent-one-roles/
+talent-one-runs/
+talent-one-kb/
+.claude/
+output/
+runs/
+roles/
+talent-one-runs/
+talent-one-roles/
+*-profile.md
+
+# Scratch
+*.tmp
+*.bak
+scratch/
+evals/out/
+
+# eval run outputs (claude plugin eval)
+evals/results/
+
+# packaged builds (build-plugin.sh); attach to a release, never commit
+dist/
+
+# Secrets: never committed
+.env
+.env.*
+!.env.example

@@ -1,0 +1,7 @@
+from_stage,to_stage,low_pct,high_pct,benchmark_label
+Applications,Recruiter screen,20,35,Application to recruiter screen (technical roles)
+Recruiter screen,Hiring-manager screen,45,55,Recruiter screen to hiring-manager screen
+Hiring-manager screen,V1 technical,45,55,Hiring-manager screen to first technical round
+V1 technical,V2 final,30,40,First technical round to next round
+V2 final,Offer,60,70,Final round to offer
+Offer,Accept,70,90,Offer to accept

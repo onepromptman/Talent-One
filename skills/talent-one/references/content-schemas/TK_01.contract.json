@@ -1,0 +1,173 @@
+{
+  "template": "TK_01_Educational_Brief.dc.html",
+  "derived_from": "example-content",
+  "required": [
+    "analogy",
+    "cover.note",
+    "doc.agent",
+    "doc.date",
+    "doc.eyebrow",
+    "doc.prose0",
+    "doc.prose1",
+    "doc.prose2",
+    "doc.prose3",
+    "doc.thesis",
+    "doc.title",
+    "edu.academic",
+    "edu.hobby",
+    "footer.right",
+    "insight.1",
+    "kw.note",
+    "northstar",
+    "role.org",
+    "role.title",
+    "s1.body",
+    "s1.body2",
+    "s1.title",
+    "s10.body",
+    "s10.title",
+    "s2.body",
+    "s2.title",
+    "s3.body",
+    "s3.title",
+    "s4.body",
+    "s4.title",
+    "s5.body",
+    "s5.title",
+    "s6.body",
+    "s6.title",
+    "s7.body",
+    "s7.title",
+    "s8.body",
+    "s8.title",
+    "s9.body",
+    "s9.title"
+  ],
+  "optional": {},
+  "numeric": [],
+  "repeats": {
+    "cover.audience": {
+      "min": 1,
+      "max": 5,
+      "item_keys": [
+        "audience.item"
+      ],
+      "optional_keys": []
+    },
+    "responsibilities": {
+      "min": 1,
+      "max": 8,
+      "item_keys": [
+        "resp.detail",
+        "resp.name"
+      ],
+      "optional_keys": []
+    },
+    "stack.layers": {
+      "min": 1,
+      "max": 7,
+      "item_keys": [],
+      "optional_keys": [
+        "layer.desc",
+        "layer.name",
+        "layer.owned"
+      ]
+    },
+    "glossary": {
+      "min": 1,
+      "max": 16,
+      "item_keys": [
+        "term.name",
+        "term.plain",
+        "term.why"
+      ],
+      "optional_keys": []
+    },
+    "skills": {
+      "min": 1,
+      "max": 10,
+      "item_keys": [
+        "skill.bar",
+        "skill.name",
+        "skill.plain",
+        "skill.verify"
+      ],
+      "optional_keys": []
+    },
+    "soft.skills": {
+      "min": 1,
+      "max": 7,
+      "item_keys": [
+        "soft.flag",
+        "soft.listen",
+        "soft.name",
+        "soft.why"
+      ],
+      "optional_keys": []
+    },
+    "collab.nodes": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [],
+      "optional_keys": [
+        "collab.nodes.prose0",
+        "collab.nodes.v1.prose0",
+        "node.core",
+        "node.desc",
+        "node.name",
+        "node.name2"
+      ]
+    },
+    "kw.primary": {
+      "min": 1,
+      "max": 12,
+      "item_keys": [
+        "kw.term"
+      ],
+      "optional_keys": []
+    },
+    "kw.secondary": {
+      "min": 1,
+      "max": 16,
+      "item_keys": [
+        "kw2.term"
+      ],
+      "optional_keys": []
+    },
+    "kw.titles": {
+      "min": 1,
+      "max": 12,
+      "item_keys": [
+        "title.term"
+      ],
+      "optional_keys": []
+    },
+    "kw.exclude": {
+      "min": 1,
+      "max": 10,
+      "item_keys": [
+        "ex.term"
+      ],
+      "optional_keys": []
+    },
+    "fieldnotes": {
+      "min": 1,
+      "max": 4,
+      "item_keys": [
+        "note.body",
+        "note.title"
+      ],
+      "optional_keys": []
+    },
+    "cheatsheet": {
+      "min": 1,
+      "max": 8,
+      "item_keys": [
+        "cheat.bad",
+        "cheat.good"
+      ],
+      "optional_keys": []
+    }
+  },
+  "toggles": []
+}

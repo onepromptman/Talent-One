@@ -1,0 +1,97 @@
+/* Talent One responsive layer (1.1.1).
+ * Templates lay out with inline styles, so these rules match on the inline
+ * style text and use !important, the only way a stylesheet outranks an inline
+ * declaration. Desktop and print are untouched: every rule sits inside a
+ * max-width screen query. Intentional horizontal scrollers (overflow-x:auto
+ * wrappers around wide heat grids and tables) keep scrolling inside their box.
+ */
+@media screen and (max-width: 760px) {
+
+  /* Page gutters: 48px desktop -> 16px phone */
+  [style*="padding:0 48px"] { padding-left: 16px !important; padding-right: 16px !important; }
+
+  /* Two-pane and label-rail grids collapse to one column */
+  [style*="grid-template-columns:1fr 330px"],
+  [style*="grid-template-columns:1fr 300px"],
+  [style*="grid-template-columns:1fr 280px"],
+  [style*="grid-template-columns:180px 1fr"],
+  [style*="grid-template-columns:190px 1fr"],
+  [style*="grid-template-columns:250px 1fr"],
+  [style*="grid-template-columns:140px 1fr"],
+  [style*="grid-template-columns:130px 1fr"],
+  [style*="grid-template-columns:1fr 1fr"],
+  [style*="grid-template-columns:1.5fr 1fr"],
+  [style*="grid-template-columns:1.4fr 1fr"],
+  [style*="grid-template-columns:1.1fr 1fr"],
+  [style*="grid-template-columns:1fr 1.15fr 1fr"],
+  [style*="grid-template-columns:repeat(2,1fr)"],
+  [style*="grid-template-columns:repeat(3,1fr)"],
+  [style*="grid-template-columns:86px 220px 1fr"],
+  [style*="grid-template-columns:86px 210px 1fr"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  /* Pull-stat callout (big number beside its claim) stacks */
+  [style*="grid-template-columns:auto 1fr;gap:36px"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px !important;
+    padding: 22px 20px !important;
+  }
+
+  /* Stat strips and four-column data rows go to two columns */
+  [style*="grid-template-columns:repeat(4,1fr)"],
+  [style*="grid-template-columns:repeat(5,1fr)"],
+  [style*="grid-template-columns:repeat(6,1fr)"],
+  [style*="grid-template-columns:220px 1fr 92px 96px"],
+  [style*="grid-template-columns:190px 1fr 84px 96px"],
+  [style*="grid-template-columns:44px 1fr 150px 130px"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* Stacked panes need tighter gaps */
+  [style*="display:grid"][style*="gap:60px"],
+  [style*="display:grid"][style*="gap:56px"],
+  [style*="display:grid"][style*="gap:48px"] { gap: 24px !important; }
+  [style*="display:grid"][style*="gap:40px"] { gap: 12px !important; }
+
+  /* Grid and flex children may shrink below their content width */
+  [style*="display:grid"] > *, [style*="display:flex"] > * { min-width: 0; }
+
+  /* Header strips and chip rows wrap instead of pushing off-screen */
+  [style*="display:flex"][style*="justify-content:space-between"],
+  [style*="display:flex"][style*="gap:"] { flex-wrap: wrap; row-gap: 8px; }
+
+  /* Fixed-width blocks never exceed the viewport */
+  [style*=";width:250px"], [style*=";width:200px"], [style*=";width:150px"] { max-width: 100% !important; }
+  img, svg, video, canvas { max-width: 100%; height: auto; }
+
+  /* Display type scales down */
+  [style*="font-size:88px"] { font-size: 52px !important; line-height: 1.05 !important; }
+  [style*="font-size:52px"] { font-size: 36px !important; line-height: 1.1 !important; }
+  [style*="font-size:44px"] { font-size: 32px !important; }
+
+  /* Vertical rhythm tightens */
+  [style*="padding:60px 0 44px"] { padding-top: 32px !important; padding-bottom: 28px !important; }
+  section[style*="padding:88px 0"], section[style*="padding:80px 0"] { padding-top: 44px !important; padding-bottom: 44px !important; }
+
+  /* Long tokens (boolean strings, URLs, mono IDs) wrap instead of overflowing */
+  pre, code { white-space: pre-wrap !important; word-break: break-word; }
+  p, li, td, th, span, div { overflow-wrap: break-word; }
+  td:first-child, th:first-child { white-space: nowrap; }
+
+  /* Tables: up to 4 columns fit the screen and wrap; 5+ columns keep their
+     template scroller (overflow-x:auto wrapper) at a narrower minimum. */
+  table[style*="min-width"]:not(:has(tr > :nth-child(5))) { min-width: 0 !important; }
+  table[style*="min-width"]:has(tr > :nth-child(5)) { min-width: 600px !important; }
+  td[style*="padding"], th[style*="padding"] { padding-left: 10px !important; padding-right: 10px !important; }
+  th { letter-spacing: .06em !important; }
+}
+
+/* Small phones: stat strips stack to one column so display numerals never break */
+@media screen and (max-width: 380px) {
+  [style*="grid-template-columns:repeat(4,1fr)"],
+  [style*="grid-template-columns:repeat(5,1fr)"],
+  [style*="grid-template-columns:repeat(6,1fr)"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}

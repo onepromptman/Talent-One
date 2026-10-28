@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>/* ============================================================================
+   OnePromptMan — Unified Korean Design System (token spine)
+   ----------------------------------------------------------------------------
+   ONE system, THREE modes on a single axis: two clean minimal grounds (light,
+   dark) + one colorful heritage mode (dancheong). Components read SEMANTIC tokens
+   only (--op-bg / --op-ink / --op-primary / --op-accent / --op-shadow-* /
+   --op-radius-* / --op-font-display ...). A mode is a block that redefines what
+   those semantics resolve to, so a surface restyles by switching ONE attribute:
+
+     <body data-mode="light">       minimal — editorial, hanji/white ground, shadows, rounded
+     <body data-mode="dark">        minimal — editorial, dark ground, shadows, rounded
+     <section data-mode="dancheong"> COLORFUL — green temple-eave ground, orange flowers,
+                                     rainbow stripe, cream ink, flat, sharp
+
+   (태극 taegeuk + 수묵 sumook removed 2026-06-23 — see the note above the dancheong block.)
+   The shadow-vs-lattice and rounded-vs-sharp differences are NOT global stances:
+   they are per-mode token values. light/dark resolve --op-shadow-* to real
+   shadows and --op-radius-* to 4-8px; dancheong resolves them to
+   `none` and `0`, taking depth from the changsal lattice instead.
+
+   Heritage: 오방색 obangsaek + 단청 dancheong mineral pigments + Taegukgi.
+   ============================================================================ */
+
+:root {
+  /* ==========================================================================
+     LAYER 1 — RAW PALETTE (mode-independent constants; never used by product
+     code directly, only referenced by the mode blocks below)
+     ========================================================================== */
+
+  /* ---- 오방색 obangsaek — five cardinal colors -------------------------- */
+  --op-cheong:        #2B6CB0;  /* 청 East/Wood   — editorial interactive blue */
+  --op-cheong-light:  #4A90D9;  /* hover / dark-mode interactive */
+  --op-cheong-dark:   #1A3F6F;  /* premium / leadership register */
+  --op-jeok:          #B03030;  /* 적 South/Fire  — editorial strong accent */
+  --op-jeok-muted:    #C0484A;  /* inline badges, pips */
+  --op-hwang:         #C8A84B;  /* 황 Center/Earth — premium highlight (sparse) */
+  --op-hwang-light:   #E8CC80;  /* decorative warm wash */
+  --op-baek:          #F5F2EC;  /* 백 West/Metal  — hanji near-white */
+  --op-baek-pure:     #FFFFFF;  /* reversed text, lockups */
+  --op-heuk:          #1A1A1F;  /* 흑 North/Water — cool near-black ink */
+  --op-heuk-mid:      #3A3A42;  /* secondary ink, borders */
+
+  /* ---- 오간색 ogansaek — functional intermediates ----------------------- */
+  --op-nok:           #2D7A4F;  /* success / growth   (cheong+hwang) */
+  --op-byeok:         #3D8C8C;  /* jade-teal accent   (cheong+baek) */
+  --op-dan:           #C06030;  /* warning / warm     (jeok+hwang) */
+  --op-jasak:         #5C3D7A;  /* decorative depth   (heuk+jeok) */
+  --op-yu:            #6B6B78;  /* UI neutral / disabled (baek+heuk) */
+
+  /* ---- 비색 Goryeo celadon — the quiet third neutral -------------------- */
+  --op-bisaek:        #7FAE96;
+  --op-bisaek-light:  #A8C9B8;
+  --op-bisaek-dark:   #4A7A63;
+
+  /* ---- 태극기 Taegukgi flag — OFFICIAL Munsell→hex, reference only ------- */
+  --op-flag-red:      #CD2E3A;
+  --op-flag-blue:     #0047A0;
+  --op-flag-black:    #000000;
+  --op-flag-white:    #FFFFFF;
+
+  /* ---- 단청 dancheong mineral pigments ---------------------------------- *
+     RECALIBRATED 2026-06-23 directly from the reference photo
+     (polyflower.jfif — a green temple eave with orange flower bosses):
+     GREEN-dominant ground, VIVID ORANGE flowers, jade centers, cream outlines,
+     brick-red + a rainbow 머리초 meoricho stripe (blue/teal/green/orange/red/white).
+     This replaces the earlier teal/blue-led interpretation. */
+  --op-dc-green-deep:  #233D28;  /* deep beam green — the colorful-mode GROUND */
+  --op-dc-green:       #2C4A33;  /* raised panel green */
+  --op-dc-noerok:      #3A6948;  /* 뇌록 celadonite — mid green field */
+  --op-dc-yangnok:     #4E8C70;  /* 양록 malachite — flower-center jade */
+  --op-dc-hayeop:      #66AF92;  /* 하엽 — soft light jade */
+  --op-dc-orange:      #E87216;  /* 주황 — VIVID orange (the flower petals) */
+  --op-dc-orange-gold: #F19526;  /* lighter orange-gold petal highlight */
+  --op-dc-jangdan:     #AB3010;  /* 장단 minium — brick red accent */
+  --op-dc-seokganju:   #93412F;  /* 석간주 hematite — column red-brown */
+  --op-dc-seokhwang:   #E0A82E;  /* 석황 orpiment — gold highlight */
+  --op-dc-samcheong:   #1B6CA8;  /* 삼청 azurite — rainbow-stripe blue */
+  --op-dc-teal:        #2B9BA8;  /* turquoise — rainbow-stripe teal */
+  --op-dc-hobun:       #F0E6CE;  /* 호분 calcite/shell — cream outlines + INK on green */
+  --op-meok:           #161818;  /* 먹 carbon — ink outlines (all edges) */
+  --op-lacquer:        #2C4A33;  /* raised field = panel green (was dark lacquer) */
+
+  /* ---- 한지 hanji + ink ramp (editorial neutral register) --------------- */
+  --op-hanji:         #FAF6EE;
+  --op-ink-900:       #1A1A1A;
+  --op-ink-700:       #3A3A3A;
+  --op-ink-500:       #6B6B6B;
+  --op-ink-300:       #9A958A;
+  --op-ink-line:      #D8D2C4;
+  --op-obang-blue:    #0047A0;  /* alias kept; used in the meoricho band gradient */
+
+  /* ==========================================================================
+     LAYER 1b — TYPE / SPACE / STRUCTURE scales (mode-independent)
+     ========================================================================== */
+
+  /* Families. --op-font-display is overridden PER MODE (heritage vs editorial). */
+  --op-font-noto:     "Noto Serif KR", "Playfair Display", Georgia, serif;
+  --op-font-gowun:    "Gowun Batang", "Nanum Myeongjo", Georgia, serif;
+  --op-font-body:     "IBM Plex Sans", "IBM Plex Sans KR", "Pretendard", system-ui, sans-serif;
+  --op-font-mono:     "IBM Plex Mono", "IBM Plex Sans KR", ui-monospace, monospace; /* KR fallback: Hangul has no mono glyph, avoids tofu */
+
+  --op-text-xs:    0.75rem;   --op-text-sm:   0.875rem;  --op-text-base: 1rem;
+  --op-text-lg:    1.125rem;  --op-text-xl:   1.25rem;   --op-text-2xl:  1.5rem;
+  --op-text-3xl:   1.875rem;  --op-text-4xl:  2.25rem;   --op-text-5xl:  3rem;
+  --op-text-6xl:   3.75rem;
+  --op-display:    clamp(3.5rem, 9vw, 9rem); /* @kind font */ /* fluid statement display */
+  --op-display-sm: clamp(2.25rem, 5vw, 4rem); /* @kind font */
+
+  --op-leading-tight: 1.25;  --op-leading-snug: 1.375;
+  --op-leading-normal: 1.6;  --op-leading-relaxed: 1.75;
+  --op-leading-display: 0.98;
+  --op-tracking-tight: -0.025em;  --op-tracking-normal: 0;  --op-tracking-wide: 0.05em;
+  --op-tracking-eyebrow: 0.18em;
+
+  --op-space-1: 0.25rem;  --op-space-2: 0.5rem;  --op-space-3: 0.75rem;
+  --op-space-4: 1rem;     --op-space-5: 1.5rem;  --op-space-6: 2rem;
+  --op-space-7: 3rem;     --op-space-8: 4rem;    --op-space-9: 6rem;
+  --op-space-10: 8rem;
+  --op-measure: 66ch;
+  --op-container: 1200px;
+  --op-hairline: 1px;
+  --op-bar: 3px;                       /* trigram / accent bar weight */
+  --op-seam: 2px;                      /* jogakbo structural seam */
+  --op-grid-jogakbo-5: 2fr 1fr 3fr 1fr 2fr; /* @kind other */
+  --op-grid-jogakbo-7: 1fr 2fr 1fr 3fr 1fr 2fr 1fr; /* @kind other */
+  --op-pattern-opacity: 0.08; /* @kind other */
+
+  /* Motion — one behavior: Y-translate on reveal. */
+  --op-ease:     cubic-bezier(0.2, 0, 0, 1); /* @kind other */
+  --op-dur-fast: 120ms; /* @kind other */
+  --op-dur-base: 200ms; /* @kind other */
+  --op-dur-slow: 320ms; /* @kind other */
+  --op-dur-reveal: 520ms; /* @kind other */
+
+  /* Choreography durations (animation-owned; clip-wipe + bloom reveals only).
+     Added Phase S 2026-06-25 — see 00-master-build-order §S.3. */
+  --op-dur-intro:  1200ms; /* @kind other */  /* hero entrance / lattice settle */
+  --op-dur-bloom:   900ms; /* @kind other */  /* polyflower sector reveal */
+  --op-dur-draw:   1400ms; /* @kind other */  /* band + roundel clip wipe */
+  --op-stagger-tight:  60ms; /* @kind other */ /* petal sectors, trigram bars */
+  --op-stagger-base:   80ms; /* @kind other */ /* word-cascade — the ONLY word-cascade value */
+  --op-stagger-loose: 140ms; /* @kind other */ /* brand-reveal headline only */
+  --op-ease-draw: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */ /* Material ease-in-out — clip-wipe reveals ONLY, never UI-state */
+
+  /* Slides-only lattice projection opacities. */
+  --op-pattern-opacity-projection: 0.10; /* @kind other */
+  --op-pattern-opacity-quote:      0.12; /* @kind other */
+
+  /* ==========================================================================
+     LAYER 2 — SEMANTIC DEFAULTS (= the "light" mode). Product code reads ONLY
+     these. Every mode block below redefines this same set.
+     ========================================================================== */
+  --op-bg:            var(--op-baek);     /* page canvas */
+  --op-surface:       var(--op-baek-pure);/* raised surface / card fill */
+  --op-ink:           var(--op-heuk);     /* body text */
+  --op-ink-dim:       var(--op-heuk-mid); /* secondary text */
+  --op-border:        #E2DCD0;            /* hairline */
+  --op-line:          #E2DCD0;            /* alias of border for divider rules */
+  --op-lattice-line:  #C2BAA8;            /* changsal lattice geometry */
+  --op-primary:       var(--op-cheong);   /* THE one interactive color */
+  --op-primary-hover: var(--op-cheong-light);
+  --op-accent:        var(--op-jeok);     /* THE one scarce strong accent ("flag") */
+  --op-highlight:     var(--op-hwang);    /* premium highlight, <1% */
+  --op-success:       var(--op-nok);
+  --op-warning:       var(--op-dan);
+  --op-danger:        var(--op-jeok);
+  --op-muted:         var(--op-yu);
+
+  /* Interaction-state tokens (prototype-owned). Added Phase S 2026-06-25.
+     --op-state-selected is ALWAYS paired with a 3px hobun/primary bar — tint
+     alone is not a WCAG cue. Defaults = light mode. */
+  --op-state-selected: #EAF1F9;
+  --op-state-pressed:  rgba(26,26,31,0.10);
+  --op-overlay-scrim:  rgba(26,26,31,0.55);
+
+  --op-font-display:  var(--op-font-noto);/* editorial heritage face */
+
+  /* Elevation + radius are TOKENS, not stances. light/dark = real; flat modes = none/0. */
+  --op-shadow-1: 0 1px 2px rgba(26,26,31,0.06);
+  --op-shadow-2: 0 2px 8px rgba(26,26,31,0.08);
+  --op-shadow-3: 0 8px 24px rgba(26,26,31,0.10);
+  --op-radius-none: 0;
+  --op-radius-sm:   2px;
+  --op-radius-md:   4px;
+  --op-radius-lg:   8px;
+  --op-radius-full: 9999px;
+  --op-radius-interactive: var(--op-radius-md);  /* default interactive corner */
+}
+
+/* ============================================================================
+   LAYER 3 — MODES (single axis: data-mode). Exactly one active per surface.
+   ============================================================================ */
+
+/* ---- light (editorial, default) — kept identical to legacy OnePromptMan light --- */
+[data-mode="light"] {
+  --op-bg: var(--op-baek);  --op-surface: var(--op-baek-pure);
+  --op-ink: var(--op-heuk); --op-ink-dim: var(--op-heuk-mid);
+  --op-border: #E2DCD0;     --op-line: #E2DCD0;  --op-lattice-line: #C2BAA8;
+  --op-primary: var(--op-cheong);  --op-primary-hover: var(--op-cheong-light);
+  --op-accent: var(--op-jeok);     --op-highlight: var(--op-hwang);
+  --op-font-display: var(--op-font-noto);
+  --op-shadow-1: 0 1px 2px rgba(26,26,31,0.06);
+  --op-shadow-2: 0 2px 8px rgba(26,26,31,0.08);
+  --op-shadow-3: 0 8px 24px rgba(26,26,31,0.10);
+  --op-radius-interactive: var(--op-radius-md);
+  --op-state-selected: #EAF1F9;  --op-state-pressed: rgba(26,26,31,0.10);
+  --op-overlay-scrim: rgba(26,26,31,0.55);
+  /* 연화문 roundel tuning — taegukgi flag red + flag blue, restrained for editorial */
+  --r-frame:#0047A0; --r-ring:#0047A0; --r-field:#FFFFFF; --r-leaf:#2D7A4F;
+  --r-petal:#CD2E3A; --r-petalHi:#E0555E; --r-petalDot:#FFFFFF; --r-inner:#0047A0;
+  --r-innerHi:#2B6CB0; --r-bossRing:#2D7A4F; --r-boss:#0047A0; --r-pip:#CD2E3A;
+  --r-line:#FFFFFF; --r-edge:#1A1A1F;
+}
+
+/* ---- dark (editorial) — kept identical to legacy OnePromptMan dark -------------- */
+[data-mode="dark"] {
+  --op-bg: var(--op-heuk);  --op-surface: #23232B;
+  --op-ink: var(--op-baek); --op-ink-dim: #B8B4AB;
+  --op-border: #2E2E36;     --op-line: #2E2E36;  --op-lattice-line: #45454F;
+  --op-primary: var(--op-cheong-light);  --op-primary-hover: #6BA8E5;
+  --op-accent: var(--op-jeok-muted);     --op-highlight: var(--op-hwang);
+  --op-font-display: var(--op-font-noto);
+  --op-shadow-1: 0 1px 2px rgba(0,0,0,0.40);
+  --op-shadow-2: 0 2px 8px rgba(0,0,0,0.45);
+  --op-shadow-3: 0 8px 24px rgba(0,0,0,0.55);
+  --op-radius-interactive: var(--op-radius-md);
+  --op-state-selected: #2A3340;  --op-state-pressed: rgba(255,255,255,0.12);
+  --op-overlay-scrim: rgba(0,0,0,0.66);
+  /* 연화문 roundel tuning — bright luminous brights on near-black */
+  --r-frame:#F4A02A; --r-ring:#1F8A6B; --r-field:#101014; --r-leaf:#3FD08A;
+  --r-petal:#FF5A2C; --r-petalHi:#FFC042; --r-petalDot:#FFF3D6; --r-inner:#37B0FF;
+  --r-innerHi:#7FE0E8; --r-bossRing:#3FD08A; --r-boss:#FFD23F; --r-pip:#FF3B2F;
+  --r-line:#FFF3D6; --r-edge:#000000;
+}
+
+/* ---- (태극 taegeuk + 수묵 sumook REMOVED 2026-06-23) ----------------------- *
+   The system is now THREE modes: light / dark / dancheong (colorful).
+   - taegeuk read near-identical to light → folded into light.
+   - sumook (the short-lived "bright daylight polychrome") is retired; the single
+     colorful register is now dancheong, rebuilt from the reference photo.
+   Any stray data-mode="taegeuk"/"sumook" falls back to :root (= light). ------- */
+
+/* ---- 단청 dancheong (THE colorful mode) — green temple eave, orange flowers -- *
+   REBUILT 2026-06-23 from polyflower.jfif: a GREEN beam ground, VIVID ORANGE
+   flower bosses with jade centers + cream outlines, brick-red accents, and a
+   rainbow 머리초 meoricho stripe. Cream ink on green reads cleanly; orange is THE
+   interactive color; brick-red is the scarce flag. Flat + sharp (heritage). */
+[data-mode="dancheong"] {
+  --op-bg: var(--op-dc-green-deep);   --op-surface: var(--op-dc-green);
+  --op-ink: var(--op-dc-hobun);       --op-ink-dim: #BFCBB0;   /* cream + muted sage */
+  --op-border: #3C5A42;  --op-line: #3C5A42;  --op-lattice-line: #4A6B51;
+  --op-primary: var(--op-dc-orange);       --op-primary-hover: var(--op-dc-orange-gold);
+  --op-accent: var(--op-dc-jangdan);       --op-highlight: var(--op-dc-seokhwang);
+  --op-muted: #A9BFA8;                      /* readable sage — AA on the green ground */
+  /* Feedback hues hardened FOR the green ground (recompute, never quote).
+     Backported from foundation/motion.html in Phase S 2026-06-25 — the :root
+     defaults (nok/dan/jeok) are invisible on green. */
+  --op-success: #66AF92;  /* 하엽 hayeop jade — ~4.58:1 on green */
+  --op-warning: #E0A82E;  /* 석황 seokhwang gold — ~5.54:1 on green */
+  --op-danger:  #EE7A52;  /* coral minium — ~4.26:1 readable error on green */
+  --op-font-display: var(--op-font-gowun);
+  --op-shadow-1: none;  --op-shadow-2: none;  --op-shadow-3: none;
+  --op-radius-interactive: var(--op-radius-none);
+  --op-state-selected: #3A6948;  --op-state-pressed: rgba(240,230,206,0.16);
+  --op-overlay-scrim: rgba(15,28,18,0.66);
+  --op-lattice-opacity: 0.10; /* @kind other */  /* watermark lattices: a touch more on green */
+  /* 연화문 roundel tuning — native mineral polychrome (the temple register) */
+  --r-frame:#2B9BA8; --r-ring:#1F8A6B; --r-field:#0E3B2E; --r-leaf:#7CC59B;
+  --r-petal:#E0451C; --r-petalHi:#F4A02A; --r-petalDot:#F0E6CE; --r-inner:#1E78C2;
+  --r-innerHi:#37B0C0; --r-bossRing:#1F8A6B; --r-boss:#F2C230; --r-pip:#E0451C;
+  --r-line:#F0E6CE; --r-edge:#161818;
+}
+
+/* ============================================================================
+   TYPOGRAPHY primitives (read semantic tokens)
+   ============================================================================ */
+.op-display {
+  font-family: var(--op-font-display);
+  font-size: var(--op-display);
+  line-height: var(--op-leading-display);
+  letter-spacing: var(--op-tracking-tight);
+  color: var(--op-ink);
+  font-weight: 700;
+}
+.op-eyebrow {
+  font-family: var(--op-font-mono);
+  font-size: var(--op-text-xs);
+  letter-spacing: var(--op-tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--op-primary);
+}
+.op-body {
+  font-family: var(--op-font-body);
+  font-size: var(--op-text-base);
+  line-height: var(--op-leading-normal);
+  color: var(--op-ink);
+  max-width: var(--op-measure);
+}
+.op-num { font-family: var(--op-font-mono); font-variant-numeric: tabular-nums; }
+
+/* Hangul: keep-all + zero negative tracking (load-bearing). */
+:lang(ko), [lang="ko"], .op-ko { word-break: keep-all; letter-spacing: 0; }
+
+/* ============================================================================
+   MOTIF REGISTER 1 — 창살 changsal lattice (structure; depth without shadow)
+   ============================================================================ */
+.op-lattice-bissal {
+  background-image:
+    repeating-linear-gradient( 45deg, var(--op-lattice-line) 0 var(--op-hairline), transparent var(--op-hairline) 14px),
+    repeating-linear-gradient(-45deg, var(--op-lattice-line) 0 var(--op-hairline), transparent var(--op-hairline) 14px);
+}
+.op-lattice-jeongja {
+  background-image:
+    repeating-linear-gradient(0deg, var(--op-lattice-line) 0 var(--op-hairline), transparent var(--op-hairline) 18px),
+    repeating-linear-gradient(90deg, var(--op-lattice-line) 0 var(--op-hairline), transparent var(--op-hairline) 18px);
+}
+.op-lattice-faint { opacity: 0.5; }
+
+/* ============================================================================
+   MOTIF REGISTER 4 — WATERMARK LATTICES (line-art tiles, per-mode ink/cream)
+   Seamless line tiles baked in two tones: ink (#222428) for light grounds,
+   cream (#F0E6CE) for dark + dancheong. Swapped on the data-mode axis and held
+   at watermark opacity. Use as a decorative layer (empty div / ::before) BEHIND
+   content — never as a foreground surface. Pairs with the feature florals below
+   (this tier whispers; that tier is the subject).
+   ============================================================================ */
+.op-lattice-chilbo, .op-lattice-asa, .op-lattice-cloud,
+.op-lattice-su, .op-lattice-maedeup, .op-lattice-bosanghwa {
+  background-repeat: repeat;
+  background-position: center;
+  opacity: var(--op-lattice-opacity, 0.08);
+  pointer-events: none;
+}
+.op-lattice-chilbo    { background-image: url(../assets/lattice-chilbo-ink.svg);    background-size: 80px; }
+.op-lattice-asa       { background-image: url(../assets/lattice-asa-ink.svg);       background-size: 60px; }
+.op-lattice-cloud     { background-image: url(../assets/lattice-cloud-ink.svg);     background-size: 60px; }
+.op-lattice-su        { background-image: url(../assets/lattice-su-ink.svg);        background-size: 70px; }
+.op-lattice-maedeup   { background-image: url(../assets/lattice-maedeup-ink.svg);   background-size: 64px; }
+.op-lattice-bosanghwa { background-image: url(../assets/lattice-bosanghwa-ink.svg); background-size: 72px; }
+/* dark + dancheong grounds → cream linework */
+[data-mode="dark"] .op-lattice-chilbo,     [data-mode="dancheong"] .op-lattice-chilbo    { background-image: url(../assets/lattice-chilbo-cream.svg); }
+[data-mode="dark"] .op-lattice-asa,        [data-mode="dancheong"] .op-lattice-asa       { background-image: url(../assets/lattice-asa-cream.svg); }
+[data-mode="dark"] .op-lattice-cloud,      [data-mode="dancheong"] .op-lattice-cloud     { background-image: url(../assets/lattice-cloud-cream.svg); }
+[data-mode="dark"] .op-lattice-su,         [data-mode="dancheong"] .op-lattice-su        { background-image: url(../assets/lattice-su-cream.svg); }
+[data-mode="dark"] .op-lattice-maedeup,    [data-mode="dancheong"] .op-lattice-maedeup   { background-image: url(../assets/lattice-maedeup-cream.svg); }
+[data-mode="dark"] .op-lattice-bosanghwa,  [data-mode="dancheong"] .op-lattice-bosanghwa { background-image: url(../assets/lattice-bosanghwa-cream.svg); }
+
+/* ============================================================================
+   MOTIF REGISTER 5 — 연화문 FEATURE FLORALS (polychrome; the SUBJECT)
+   Roundel + floral lattice are intrinsically polychrome. As a background-image
+   they paint the dancheong palette (the SVG's baked fallbacks). To retune for
+   light/dark, INLINE the SVG instead — the per-mode --r-* vars above recolor it.
+   ============================================================================ */
+.op-roundel {
+  aspect-ratio: 1 / 1;
+  background: url(../assets/roundel-yeonhwa.svg) center / contain no-repeat;
+}
+.op-pattern-yeonhwa {
+  background: url(../assets/pattern-yeonhwa-lattice.svg) center / 230px repeat;
+}
+
+/* ============================================================================
+   MOTIF REGISTER 6 — 용·봉 ROYAL SEALS (tintable line-art feature marks)
+   The 용보 dragon (king) + 봉황 phoenix (queen) roundels, plus a bold folk
+   dragon. Drawn as line art, loaded as an ALPHA MASK so the ink color is set
+   by CSS — fully tintable. Set --op-seal-color (or `color`) to retint; it
+   defaults per mode (red on light, gold on dark/dancheong). Reserve for
+   section titles / dividers / covers — never beside the floral roundel.
+       <span class="op-seal-dragon" style="width:120px"></span>
+       <span class="op-seal-phoenix" style="width:120px; --op-seal-color:#0047A0"></span>
+   For flat-export contexts (PPTX screenshot mode) the baked --red / --gold
+   modifiers swap to a pre-colored image instead of the mask.
+   ============================================================================ */
+.op-seal-dragon, .op-seal-dragon--bold, .op-seal-phoenix {
+  display: inline-block;
+  aspect-ratio: 1 / 1;
+  background-color: var(--op-seal-color, var(--op-seal-color-default, currentColor));
+  -webkit-mask-position: center; mask-position: center;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-size: contain; mask-size: contain;
+}
+.op-seal-dragon       { -webkit-mask-image: url(../assets/seal-dragon-mask.png);      mask-image: url(../assets/seal-dragon-mask.png); }
+.op-seal-dragon--bold { -webkit-mask-image: url(../assets/seal-dragon-bold-mask.png); mask-image: url(../assets/seal-dragon-bold-mask.png); }
+.op-seal-phoenix      { aspect-ratio: 1929 / 1979; -webkit-mask-image: url(../assets/seal-phoenix-mask.png); mask-image: url(../assets/seal-phoenix-mask.png); }
+
+/* per-mode default tint (overridden by --op-seal-color or inline color) */
+[data-mode="light"]     { --op-seal-color-default: var(--op-jeok, #C8102E); }
+[data-mode="dark"]      { --op-seal-color-default: var(--op-dc-seokhwang, #E8B91E); }
+[data-mode="dancheong"] { --op-seal-color-default: var(--op-dc-seokhwang, #E8B91E); }
+
+/* baked-color fallbacks for flat export (no mask support): drop the mask, paint an image */
+.op-seal-dragon--red,  .op-seal-phoenix--red  { -webkit-mask-image:none; mask-image:none; background-color:transparent; background-repeat:no-repeat; background-position:center; background-size:contain; }
+.op-seal-dragon--gold, .op-seal-phoenix--gold { -webkit-mask-image:none; mask-image:none; background-color:transparent; background-repeat:no-repeat; background-position:center; background-size:contain; }
+.op-seal-dragon--red   { background-image:url(../assets/seal-dragon-red.png); }
+.op-seal-dragon--gold  { background-image:url(../assets/seal-dragon-gold.png); }
+.op-seal-phoenix--red  { background-image:url(../assets/seal-phoenix-red.png); }
+.op-seal-phoenix--gold { background-image:url(../assets/seal-phoenix-gold.png); }
+
+/* ============================================================================
+   MOTIF REGISTER 2 — 단청 dancheong ornament band (rationed polychrome)
+   Even rainbow 머리초 meoricho stripe: samcheong blue / teal / yangnok green /
+   seokhwang gold / orange / jangdan brick / noerok jade — seven equal segments.
+   No color dominates the band; green ground + orange primary live in the mode
+   tokens, not here. Mineral fields separated by 호분 hobun hairlines, as in
+   real dancheong. Polychrome is bounded to this band + the roundel medallion.
+   ============================================================================ */
+.op-dancheong-band {
+  height: 12px;
+  background: linear-gradient(90deg,
+    var(--op-dc-samcheong)  0 14%,                var(--op-dc-hobun) 14% calc(14% + 2px),
+    var(--op-dc-teal)       calc(14% + 2px) 28%,  var(--op-dc-hobun) 28% calc(28% + 2px),
+    var(--op-dc-yangnok)    calc(28% + 2px) 42%,  var(--op-dc-hobun) 42% calc(42% + 2px),
+    var(--op-dc-seokhwang)  calc(42% + 2px) 56%,  var(--op-dc-hobun) 56% calc(56% + 2px),
+    var(--op-dc-orange)     calc(56% + 2px) 70%,  var(--op-dc-hobun) 70% calc(70% + 2px),
+    var(--op-dc-jangdan)    calc(70% + 2px) 84%,  var(--op-dc-hobun) 84% calc(84% + 2px),
+    var(--op-dc-noerok)     calc(84% + 2px) 100%);
+}
+.op-dancheong-band--tall { height: 28px; }
+
+/* ============================================================================
+   MOTIF REGISTER 3 — 괘 trigram bars (the mark / type-as-architecture)
+   ☰ geon = 3×bar | ☷ gon = 3×bar--broken | ☵ gam = broken,solid,broken |
+   ☲ ri = solid,broken,solid
+   ============================================================================ */
+.op-trigram { display: inline-flex; flex-direction: column; gap: 4px; width: 2.5rem; }
+.op-trigram .op-bar { height: var(--op-bar); background: var(--op-primary); }
+.op-trigram .op-bar--broken {
+  background: linear-gradient(90deg, var(--op-primary) 0 42%, transparent 42% 58%, var(--op-primary) 58% 100%);
+}
+.op-accent-bar { border-left: var(--op-bar) solid var(--op-primary); padding-left: var(--op-space-4); }
+
+/* ============================================================================
+   LAYOUT — 조각보 jogakbo asymmetric grid (one dominant field + side panels)
+   ============================================================================ */
+.op-jogakbo {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(120px, auto);
+  gap: var(--op-seam);
+  background: var(--op-line);            /* seams read as stitching */
+}
+.op-jogakbo > * { background: var(--op-surface); padding: var(--op-space-5); }
+.op-jogakbo > .dominant  { grid-column: span 7; grid-row: span 2; }
+.op-jogakbo > .side      { grid-column: span 5; }
+.op-jogakbo > .wide      { grid-column: span 12; }
+
+/* ============================================================================
+   COMPONENTS — read semantic tokens; elevation + radius come from the mode.
+   ============================================================================ */
+.op-btn {
+  font-family: var(--op-font-body);
+  font-size: var(--op-text-sm);
+  font-weight: 500;
+  min-height: 44px;                       /* WCAG 2.5.5 */
+  padding: 0 var(--op-space-5);
+  display: inline-flex; align-items: center; gap: var(--op-space-2);
+  background: transparent;
+  color: var(--op-ink);
+  border: var(--op-hairline) solid var(--op-ink);
+  border-radius: var(--op-radius-interactive);
+  box-shadow: var(--op-shadow-1);
+  cursor: pointer;
+  transition: background var(--op-dur-fast) var(--op-ease),
+              color var(--op-dur-fast) var(--op-ease),
+              box-shadow var(--op-dur-fast) var(--op-ease);
+}
+.op-btn:hover { background: var(--op-ink); color: var(--op-bg); box-shadow: var(--op-shadow-2); }
+.op-btn--primary {
+  border-color: var(--op-primary);
+  background: var(--op-primary);
+  color: var(--op-bg);
+}
+.op-btn--primary:hover { filter: brightness(1.08); background: var(--op-primary); color: var(--op-bg); }
+
+.op-input {                               /* 띠살 ttisal: a single bottom bar, not a box */
+  font-family: var(--op-font-body);
+  font-size: var(--op-text-base);
+  min-height: 44px;  width: 100%;
+  background: transparent;  color: var(--op-ink);
+  border: 0;  border-bottom: var(--op-bar) solid var(--op-line);
+  border-radius: 0;  padding: var(--op-space-1) 0;
+}
+.op-input:focus { outline: none; border-bottom-color: var(--op-primary); }
+
+.op-link {
+  color: var(--op-ink);
+  text-decoration: underline; text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px; text-decoration-color: var(--op-line);
+}
+.op-link:hover { text-decoration-color: var(--op-primary); color: var(--op-primary); }
+
+/* Focus ring — visible, primary, never removed (WCAG 2.4.7). */
+:focus-visible { outline: var(--op-bar) solid var(--op-primary); outline-offset: 3px; }
+
+/* ============================================================================
+   RESPONSIVE — modes/motifs do NOT change on mobile; only layout collapses.
+   ============================================================================ */
+@media (max-width: 768px) {
+  :root { --op-display: clamp(2.75rem, 12vw, 4rem); /* @kind font */ }
+  .op-jogakbo > * { grid-column: 1 / -1; grid-row: auto; }
+  .op-body { max-width: 100%; }
+}
+
+/* Reduced motion: honor the OS setting. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --op-dur-fast: 0ms; /* @kind other */
+    --op-dur-base: 0ms; /* @kind other */
+    --op-dur-slow: 0ms; /* @kind other */
+    --op-dur-reveal: 0ms; /* @kind other */
+    --op-dur-intro: 0ms; /* @kind other */
+    --op-dur-bloom: 0ms; /* @kind other */
+    --op-dur-draw: 0ms; /* @kind other */
+    --op-stagger-tight: 0ms; /* @kind other */
+    --op-stagger-base: 0ms; /* @kind other */
+    --op-stagger-loose: 0ms; /* @kind other */
+  }
+  /* NOTE (master §5 #7): `animation: none` CANCELS — the `both` fill is lost, so any
+     mark authored opacity:0 at rest stays invisible. Every animated card MUST author
+     its COMPLETED state as the static default. Gates assert final visibility, not duration. */
+  * { animation: none !important; transition: none !important; }
+}
+
+/*
+ * OnePromptMan — Design System Connect Entry
+ *
+ * This file is the single root stylesheet for Claude Design binding.
+ * Import it once in any surface to pull in the complete OnePromptMan token contract.
+ *
+ * What it provides (via tokens/tokens.css):
+ *   - Three-mode system on a single `data-mode` axis:
+ *       data-mode="light"      editorial, hanji ground, cheong-blue primary
+ *       data-mode="dark"       editorial dark, heuk ground, cheong-light primary
+ *       data-mode="dancheong"  colorful heritage, green temple-eave ground, orange primary
+ *   - Full --op-* custom property namespace (semantic tokens only in product code)
+ *   - Typography primitives: .op-display, .op-eyebrow, .op-body, .op-num
+ *   - Motif classes: .op-lattice-bissal, .op-lattice-jeongja, .op-dancheong-band, .op-trigram
+ *   - Watermark lattices: .op-lattice-chilbo/asa/cloud/su/maedeup/bosanghwa (ink-tinted, low opacity)
+ *   - Feature florals: .op-roundel (연화문), .op-pattern-yeonhwa — polychrome, per-mode via --r-*
+ *   - Royal seal: .op-seal-dragon (+ --ink/--green/--red) — 용보 corner stamp / feature mark
+ *   - Layout: .op-jogakbo asymmetric grid
+ *   - Component primitives: .op-btn, .op-input, .op-link
+ *   - Motion tokens: --op-dur-*, --op-stagger-*, --op-ease, --op-ease-draw
+ *   - Reduced-motion path: prefers-reduced-motion zeroes all durations
+ *
+ * Do NOT hand-edit _ds_manifest.json or _ds_bundle.js — those are auto-generated.
+ * Do NOT inline raw hex values in component code; read --op-* semantic tokens only.
+ * Do NOT import the per-medium .html preview cards here (they are dsCard previews, not CSS).
+ */
+
+
+/* Talent One responsive layer (1.1.1).
+ * Templates lay out with inline styles, so these rules match on the inline
+ * style text and use !important, the only way a stylesheet outranks an inline
+ * declaration. Desktop and print are untouched: every rule sits inside a
+ * max-width screen query. Intentional horizontal scrollers (overflow-x:auto
+ * wrappers around wide heat grids and tables) keep scrolling inside their box.
+ */
+@media screen and (max-width: 760px) {
+
+  /* Page gutters: 48px desktop -> 16px phone */
+  [style*="padding:0 48px"] { padding-left: 16px !important; padding-right: 16px !important; }
+
+  /* Two-pane and label-rail grids collapse to one column */
+  [style*="grid-template-columns:1fr 330px"],
+  [style*="grid-template-columns:1fr 300px"],
+  [style*="grid-template-columns:1fr 280px"],
+  [style*="grid-template-columns:180px 1fr"],
+  [style*="grid-template-columns:190px 1fr"],
+  [style*="grid-template-columns:250px 1fr"],
+  [style*="grid-template-columns:140px 1fr"],
+  [style*="grid-template-columns:130px 1fr"],
+  [style*="grid-template-columns:1fr 1fr"],
+  [style*="grid-template-columns:1.5fr 1fr"],
+  [style*="grid-template-columns:1.4fr 1fr"],
+  [style*="grid-template-columns:1.1fr 1fr"],
+  [style*="grid-template-columns:1fr 1.15fr 1fr"],
+  [style*="grid-template-columns:repeat(2,1fr)"],
+  [style*="grid-template-columns:repeat(3,1fr)"],
+  [style*="grid-template-columns:86px 220px 1fr"],
+  [style*="grid-template-columns:86px 210px 1fr"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  /* Pull-stat callout (big number beside its claim) stacks */
+  [style*="grid-template-columns:auto 1fr;gap:36px"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px !important;
+    padding: 22px 20px !important;
+  }
+
+  /* Stat strips and four-column data rows go to two columns */
+  [style*="grid-template-columns:repeat(4,1fr)"],
+  [style*="grid-template-columns:repeat(5,1fr)"],
+  [style*="grid-template-columns:repeat(6,1fr)"],
+  [style*="grid-template-columns:220px 1fr 92px 96px"],
+  [style*="grid-template-columns:190px 1fr 84px 96px"],
+  [style*="grid-template-columns:44px 1fr 150px 130px"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* Stacked panes need tighter gaps */
+  [style*="display:grid"][style*="gap:60px"],
+  [style*="display:grid"][style*="gap:56px"],
+  [style*="display:grid"][style*="gap:48px"] { gap: 24px !important; }
+  [style*="display:grid"][style*="gap:40px"] { gap: 12px !important; }
+
+  /* Grid and flex children may shrink below their content width */
+  [style*="display:grid"] > *, [style*="display:flex"] > * { min-width: 0; }
+
+  /* Header strips and chip rows wrap instead of pushing off-screen */
+  [style*="display:flex"][style*="justify-content:space-between"],
+  [style*="display:flex"][style*="gap:"] { flex-wrap: wrap; row-gap: 8px; }
+
+  /* Fixed-width blocks never exceed the viewport */
+  [style*=";width:250px"], [style*=";width:200px"], [style*=";width:150px"] { max-width: 100% !important; }
+  img, svg, video, canvas { max-width: 100%; height: auto; }
+
+  /* Display type scales down */
+  [style*="font-size:88px"] { font-size: 52px !important; line-height: 1.05 !important; }
+  [style*="font-size:52px"] { font-size: 36px !important; line-height: 1.1 !important; }
+  [style*="font-size:44px"] { font-size: 32px !important; }
+
+  /* Vertical rhythm tightens */
+  [style*="padding:60px 0 44px"] { padding-top: 32px !important; padding-bottom: 28px !important; }
+  section[style*="padding:88px 0"], section[style*="padding:80px 0"] { padding-top: 44px !important; padding-bottom: 44px !important; }
+
+  /* Long tokens (boolean strings, URLs, mono IDs) wrap instead of overflowing */
+  pre, code { white-space: pre-wrap !important; word-break: break-word; }
+  p, li, td, th, span, div { overflow-wrap: break-word; }
+  td:first-child, th:first-child { white-space: nowrap; }
+
+  /* Tables: up to 4 columns fit the screen and wrap; 5+ columns keep their
+     template scroller (overflow-x:auto wrapper) at a narrower minimum. */
+  table[style*="min-width"]:not(:has(tr > :nth-child(5))) { min-width: 0 !important; }
+  table[style*="min-width"]:has(tr > :nth-child(5)) { min-width: 600px !important; }
+  td[style*="padding"], th[style*="padding"] { padding-left: 10px !important; padding-right: 10px !important; }
+  th { letter-spacing: .06em !important; }
+}
+
+/* Small phones: stat strips stack to one column so display numerals never break */
+@media screen and (max-width: 380px) {
+  [style*="grid-template-columns:repeat(4,1fr)"],
+  [style*="grid-template-columns:repeat(5,1fr)"],
+  [style*="grid-template-columns:repeat(6,1fr)"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+</style>
+
+
+
+
+<script>/* @ds-bundle: {"format":3,"namespace":"OPDS_4575df","components":[],"sourceHashes":{},"inlinedExternals":[],"unexposedExports":[]} */
+
+(() => {
+
+const __ds_ns = (window.OPDS_4575df = window.OPDS_4575df || {});
+
+const __ds_scope = {};
+
+(__ds_ns.__errors = __ds_ns.__errors || []);
+
+})();
+</script>
+<style>
+  /* derived ramp tints (no token exists for these): #F0EDE6 track, #FBF9F4 rail, #EDE8DE hairline, #F7F5F0 script ground, #DCE6F2 cheong pale, #EEF6F1/#BFDCCB nok pale, #FAF0E6/#E3CDB4 dan pale, #F9EFEF/#E3C4C4 jeok pale, #C9D6E6 link rule */
+  body{margin:0;background:var(--op-bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  a{color:var(--op-primary);text-decoration:underline;text-underline-offset:.18em;text-decoration-color:#C9D6E6}
+  a:hover{color:var(--op-cheong-dark);text-decoration-color:var(--op-primary)}
+  @media print{@page{size:letter;margin:0.5in} section{break-inside:avoid}}
+</style>
+</helmet>
+<div data-mode="light" style="background:var(--op-bg);color:var(--op-ink);font-family:var(--op-font-body);font-size:16px;line-height:1.6">
+<header style="border-bottom:1px solid var(--op-border);background:var(--op-surface)">
+<div style="max-width:1120px;margin:0 auto;padding:0 48px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--op-border)">
+<div data-slot="kit.mark" style="font-family:var(--op-font-mono);font-size:12px;letter-spacing:.30em;text-transform:uppercase">Talent One <span style="color:var(--op-accent)">·</span> TK-05</div>
+<div style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted)"><span data-slot="doc.agent">Agent · SHAKESPEARE</span> <span style="color:var(--op-lattice-line)">/</span> <span data-slot="doc.date">Written peer-to-peer, not pitched</span></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 330px;gap:60px;padding:60px 0 44px;align-items:start">
+<div>
+<div data-slot="doc.eyebrow" style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-primary);margin-bottom:18px">Artifact 05 · Campaign copy</div>
+<h1 data-slot="doc.title" style="font-family:var(--op-font-display);font-weight:700;font-size:52px;line-height:1.08;letter-spacing:-0.02em;margin:0;text-wrap:balance">Multi-Channel Outreach</h1>
+<div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+<span data-slot="role.title" style="font-family:var(--op-font-mono);font-size:13px;letter-spacing:.06em;color:var(--op-surface);background:var(--op-ink);padding:7px 14px">Battery Systems Engineer · Mid-Level</span>
+<span data-slot="role.org" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-muted)">Harborlight Energy · 8 touches across 21 days</span>
+</div>
+<p data-slot="doc.thesis" style="margin:26px 0 0;max-width:62ch;font-size:18px;color:var(--op-ink-dim);text-wrap:pretty">Every touch is ready to send: five emails, a LinkedIn connect note, an InMail, a voicemail script, a live-call opener with branches, and two texts, all written engineer to engineer. Nothing here works unedited: the bracketed tokens are the job, not decoration.</p>
+</div>
+<div style="border:1px solid var(--op-border);background:#FBF9F4;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 24px">
+<div data-bar="0.18" style="position:relative;width:150px;height:150px;border-radius:50%;background:conic-gradient(var(--op-primary) 0 18%, #F0EDE6 18% 100%)">
+<div style="position:absolute;inset:20px;background:#FBF9F4;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center">
+<div data-slot="gauge.value" style="font-family:var(--op-font-display);font-size:36px;line-height:1">18%</div>
+<div style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-top:6px">Reply target</div>
+</div>
+</div>
+<div data-slot="gauge.note" style="margin-top:16px;font-size:13.5px;color:var(--op-ink-dim);text-align:center;max-width:28ch">Benchmarks to beat: 68% open, 18% reply, 9% interested. Estimate: a public industry benchmark, name the report and year when you fill this, discounted for a scarce, specialized pool.</div>
+</div>
+</div>
+<div style="display:flex;height:5px">
+<div style="flex:5;background:var(--op-primary)"></div><div style="flex:1;background:var(--op-byeok)"></div><div style="flex:1;background:var(--op-success)"></div><div style="flex:1;background:var(--op-highlight)"></div><div style="flex:1;background:var(--op-warning)"></div><div style="flex:1;background:var(--op-accent)"></div>
+</div>
+</div>
+</header>
+<main style="max-width:1120px;margin:0 auto;padding:0 48px 88px">
+<!-- 01 · SEQUENCE ARCHITECTURE -->
+<section style="padding:56px 0 0">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">01</div>
+<div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Architecture</div>
+</div>
+<div>
+<h2 data-slot="s1.title" style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px">Eight touches, twenty-one days</h2>
+<p data-slot="s1.body" style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty">Each touch does one job and stops. None repeats the argument of the one before it. If touch four is just a louder touch one, cut it. The psychology column is why this specific order works on this specific pool.</p>
+</div>
+</div>
+<div style="margin-top:32px;background:var(--op-surface);border:1px solid var(--op-border);overflow-x:auto">
+<table style="width:100%;border-collapse:collapse;font-size:14px;min-width:800px">
+<thead>
+<tr>
+<th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Day</th>
+<th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Touch</th>
+<th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Psychology</th>
+<th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Goal</th>
+</tr>
+</thead>
+<tbody data-count="5-10" data-repeat="sequence"><tr>
+<td data-slot="seq.day" style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-family:var(--op-font-mono);font-size:13px">0</td>
+<td data-slot="seq.touch" style="padding:12px 16px;border-bottom:1px solid var(--op-border);font-weight:600">Email 1 · origin touch</td>
+<td data-slot="seq.psych" style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Curiosity plus identity hook</td>
+<td data-slot="seq.goal" style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Open a loop only a battery engineer can close</td>
+</tr>
+<tr>
+<td data-slot="seq.day" style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-family:var(--op-font-mono);font-size:13px">3</td>
+<td data-slot="seq.touch" style="padding:12px 16px;border-bottom:1px solid var(--op-border);font-weight:600">Email 2 · social proof</td>
+<td data-slot="seq.psych" style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Credibility and belonging</td>
+<td data-slot="seq.goal" style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Show the team and the hardware track record</td>
+</tr>
+<tr>
+<td data-slot="seq.day" style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-family:var(--op-font-mono);font-size:13px">7</td>
+<td data-slot="seq.touch" style="padding:12px 16px;border-bottom:1px solid var(--op-border);font-weight:600">Email 3 · vision</td>
+<td data-slot="seq.psych" style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Ownership and aspiration</td>
+<td data-slot="seq.goal" style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Name the subsystem they would own</td>
+</tr>
+<tr>
+<td data-slot="seq.day" style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-byeok);font-family:var(--op-font-mono);font-size:13px">10</td>
+<td data-slot="seq.touch" style="padding:12px 16px;border-bottom:1px solid var(--op-border);font-weight:600">LinkedIn connect note</td>
+<td data-slot="seq.psych" style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Familiarity, low pressure</td>
+<td data-slot="seq.goal" style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Open a second channel with no ask attached</td>
+</tr>
+<tr>
+<td data-slot="seq.day" style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-byeok);font-family:var(--op-font-mono);font-size:13px">12</td>
+<td data-slot="seq.touch" style="padding:12px 16px;border-bottom:1px solid var(--op-border);font-weight:600">InMail · if connect unanswered</td>
+<td data-slot="seq.psych" style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Standalone value restatement</td>
+<td data-slot="seq.goal" style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Reach engineers who never check email</td>
+</tr>
+<tr>
+<td data-slot="seq.day" style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-family:var(--op-font-mono);font-size:13px">14</td>
+<td data-slot="seq.touch" style="padding:12px 16px;border-bottom:1px solid var(--op-border);font-weight:600">Email 4 · honest urgency</td>
+<td data-slot="seq.psych" style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Real scarcity, peer signal</td>
+<td data-slot="seq.goal" style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Put a truthful clock on the decision</td>
+</tr>
+<tr>
+<td data-slot="seq.day" style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-highlight);font-family:var(--op-font-mono);font-size:13px">16+</td>
+<td data-slot="seq.touch" style="padding:12px 16px;border-bottom:1px solid var(--op-border);font-weight:600">Voicemail or live call</td>
+<td data-slot="seq.psych" style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Human effort signal</td>
+<td data-slot="seq.goal" style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">High-touch tier only. The effort is the message.</td>
+</tr>
+<tr>
+<td data-slot="seq.day" style="padding:12px 16px;border-left:3px solid var(--op-muted);font-family:var(--op-font-mono);font-size:13px">21</td>
+<td data-slot="seq.touch" style="padding:12px 16px;font-weight:600">Email 5 · breakup</td>
+<td data-slot="seq.psych" style="padding:12px 16px;color:var(--op-ink-dim);font-size:13.5px">Closure and reciprocity</td>
+<td data-slot="seq.goal" style="padding:12px 16px;color:var(--op-ink-dim);font-size:13.5px">Close with dignity. Harvest a referral. Strongest-testing line of the eight.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="margin-top:16px;background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-accent);padding:20px 24px">
+<div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-accent);margin-bottom:8px">Gate</div>
+<p data-slot="gate.1" style="margin:0;font-size:15px;color:var(--op-ink-dim);max-width:84ch">Text only after the candidate has replied to you directly and given you the number themselves. A referral is not consent. A cold text to a battery candidate burns the relationship and carries real legal exposure in several states.</p>
+</div>
+</section>
+<!-- 02 · EMAIL 1 with rail -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-primary);line-height:1">02</div>
+<div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary);margin-top:6px">The one that matters</div>
+</div>
+<div>
+<h2 data-slot="s2.title" style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px">Email 1 · the origin touch</h2>
+<p data-slot="s2.body" style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty">Seventy-five to ninety words, grade seven reading level or lower. Two sentences about them, two about us, one ask. If the highlighted token cannot be filled honestly, this profile is not ready to contact.</p>
+</div>
+</div>
+<div style="margin-top:32px;display:grid;grid-template-columns:1fr 300px;background:var(--op-surface);border:1px solid var(--op-border)">
+<div style="border-right:1px solid var(--op-border)">
+<div style="display:flex;justify-content:space-between;gap:16px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
+<span style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)">E1 · day 0 · curiosity plus identity</span>
+<span style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">81 words · grade 7</span>
+</div>
+<div style="padding:16px 20px;border-bottom:1px solid var(--op-border);display:grid;gap:8px;font-size:14.5px">
+<div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;flex:none">Subj A</span><span data-slot="e1.subjA">the failure mode most reviews miss</span></div>
+<div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-muted);background:#F0EDE6;border:1px solid var(--op-border);flex:none">Subj B</span><span data-slot="e1.subjB">for the engineer who already owns half the pack</span></div>
+</div>
+<div data-slot="e1.body" style="padding:26px 24px;font-size:15.5px;color:var(--op-ink-dim);line-height:1.75"><p>[[FirstName]],</p><p><span>Your [[SpecificProject]] work at [[CurrentCompany]]</span> reads like someone who trusts test data over intuition, which is rarer than it should be in battery work.</p><p>Here's a problem worth your attention: most pack failures are decided on paper, months before a cell ever sees an abuse chamber, and margins shrink every generation.</p><p>We build [[SystemScope]] largely in-house, on a team small enough that one engineer owns a full subsystem.</p><p>Worth sixty seconds to see what the battery team owns here? If you'd rather not hear from me, reply once and I'll close the file for good.</p><p>[Your first name]</p></div>
+</div>
+<div data-count="3-5" data-repeat="e1.annotations" style="padding:26px 22px;background:#FBF9F4;display:grid;gap:20px;align-content:start"><div style="border-left:2px solid var(--op-primary);padding-left:14px">
+<div data-slot="note.tag" style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px">Why it works</div>
+<div data-slot="note.body" data-verify-exempt="phrase-scan" style="font-size:13.5px;color:var(--op-ink-dim)">The first sentence carries no information about us at all. It is entirely a technical read on their public work, which lands as informed rather than flattering.</div>
+</div>
+<div style="border-left:2px solid var(--op-primary);padding-left:14px">
+<div data-slot="note.tag" style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px">The hook</div>
+<div data-slot="note.body" data-verify-exempt="phrase-scan" style="font-size:13.5px;color:var(--op-ink-dim)">"Decided on paper" is a claim, not a compliment. Battery engineers argue about design margin constantly, so a bold claim invites a rebuttal, and a rebuttal is a reply.</div>
+</div>
+<div style="border-left:2px solid var(--op-warning);padding-left:14px">
+<div data-slot="note.tag" style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-warning);margin-bottom:5px">Must swap</div>
+<div data-slot="note.body" data-verify-exempt="phrase-scan" style="font-size:13.5px;color:var(--op-ink-dim)">The highlighted token. Source it from a conference talk, a paper, a patent, or their own post. If they've published nothing, fall back to the cell chemistry or test rig named on their profile. Never invent specificity.</div>
+</div>
+<div style="border-left:2px solid var(--op-accent);padding-left:14px">
+<div data-slot="note.tag" style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-accent);margin-bottom:5px">Never</div>
+<div data-slot="note.body" data-verify-exempt="phrase-scan" style="font-size:13.5px;color:var(--op-ink-dim)">"Reaching out", "came across your profile", "exciting opportunity", or any pun on the word charge.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 03 · EMAILS 2-3 -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">03</div>
+<div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Emails 2–3</div>
+</div>
+<div>
+<h2 data-slot="s3.title" style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px">Proof first, then scope</h2>
+<p data-slot="s3.body" style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty">Two introduces the team and the checkable facts. Three describes the actual job. Every claim in both must survive scrutiny, because a battery engineer who has sat through a design review will check.</p>
+</div>
+</div>
+<div data-count="2-5" data-repeat="emails" style="margin-top:32px;display:grid;gap:16px"><div style="background:var(--op-surface);border:1px solid var(--op-border);display:grid;grid-template-columns:1fr 280px">
+<div style="border-right:1px solid var(--op-border)">
+<div style="display:flex;justify-content:space-between;gap:16px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
+<span data-slot="email.label" style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)">E2 · day 3 · credibility and belonging</span>
+<span data-slot="email.meta" style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">89 words</span>
+</div>
+<div style="padding:14px 20px;border-bottom:1px solid var(--op-border);display:grid;gap:7px;font-size:14px">
+<div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;flex:none">Subj A</span><span data-slot="email.subjA">five abuse tests, zero anomalies logged</span></div>
+<div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-muted);background:#F0EDE6;border:1px solid var(--op-border);flex:none">Subj B</span><span data-slot="email.subjB">who you'd test with</span></div>
+</div>
+<div data-slot="email.body" style="padding:24px;font-size:15px;color:var(--op-ink-dim);line-height:1.75"><p style="margin:0 0 12px">[[FirstName]],</p><p style="margin:0 0 12px">Following up with the part most people ask about first: the team.</p><p style="margin:0 0 12px">This group has run battery hardware from first cell characterization through abuse-test certification, with [[SubsystemScope]] designed in-house alongside [[PartnerContext]], and [[TestCampaignFact]]. <span style="background:#EEF6F1;border-bottom:1px solid #BFDCCB">[[FundingFact]]</span>, and <span style="background:#EEF6F1;border-bottom:1px solid #BFDCCB">[[MilestoneFact]]</span>.</p><p style="margin:0 0 12px">The battery team is small enough that you'd know every cell lot and every test anomaly personally.</p><p style="margin:0 0 12px">Happy to set up twenty minutes with one of the engineers, not a recruiter pitch. Interested?</p><p style="margin:0">[Your first name]</p></div>
+</div>
+<div style="padding:24px 22px;background:#FBF9F4;display:grid;gap:18px;align-content:start">
+<div style="border-left:2px solid var(--op-primary);padding-left:14px">
+<div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px">Why it works</div>
+<div data-slot="email.note" style="font-size:13.5px;color:var(--op-ink-dim)">Every claim is independently checkable, which is the point. "Not a recruiter pitch" is a real promise: keep it or don't make it.</div>
+</div>
+<div style="border-left:2px solid var(--op-warning);padding-left:14px">
+<div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-warning);margin-bottom:5px">Must swap</div>
+<div style="font-size:13.5px;color:var(--op-ink-dim)">Both highlighted tokens. Use facts a candidate can confirm in one search: funding stage, a named test campaign, a public milestone.</div>
+</div>
+</div>
+</div>
+<div style="background:var(--op-surface);border:1px solid var(--op-border);display:grid;grid-template-columns:1fr 280px">
+<div style="border-right:1px solid var(--op-border)">
+<div style="display:flex;justify-content:space-between;gap:16px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
+<span data-slot="email.label" style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)">E3 · day 7 · ownership and aspiration</span>
+<span data-slot="email.meta" style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">104 words · A/B the lead</span>
+</div>
+<div style="padding:14px 20px;border-bottom:1px solid var(--op-border);display:grid;gap:7px;font-size:14px">
+<div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;flex:none">Subj A</span><span data-slot="email.subjA">what you'd own on this team</span></div>
+<div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-muted);background:#F0EDE6;border:1px solid var(--op-border);flex:none">Subj B</span><span data-slot="email.subjB">before the paperwork stage</span></div>
+</div>
+<div data-slot="email.body" style="padding:24px;font-size:15px;color:var(--op-ink-dim);line-height:1.75"><p style="margin:0 0 12px">[[FirstName]],</p><p style="margin:0 0 12px">Last substantive note from me. Here's the actual scope:</p><p style="margin:0 0 12px">You would own battery subsystem hardware, from initial design through certification: design margin on the thermal system, abuse-test campaigns on the rig one floor away, and the failure investigations that decide whether a design ships. <span style="background:#EEF6F1;border-bottom:1px solid #BFDCCB">[[NextMilestone]]</span> is in [[MilestonePhase]], and its design decisions are being made now.</p><p style="margin:0 0 12px">At this stage, the scope is the argument; the equity terms come with the offer. On a team this size, your test data is the record.</p><p style="margin:0 0 12px">If any of that maps to what you want next, I can get you thirty minutes with the hiring manager this week.</p><p style="margin:0">[Your first name]</p></div>
+</div>
+<div style="padding:24px 22px;background:#FBF9F4;display:grid;gap:18px;align-content:start">
+<div style="border-left:2px solid var(--op-primary);padding-left:14px">
+<div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px">Why it works</div>
+<div data-slot="email.note" style="font-size:13.5px;color:var(--op-ink-dim)">"Your test data is the record" is the strongest-testing line in the sequence for experienced candidates. It promises scope without promising a title.</div>
+</div>
+<div style="border-left:2px solid var(--op-primary);padding-left:14px">
+<div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px">A/B this one</div>
+<div style="font-size:13.5px;color:var(--op-ink-dim)">Ownership-led against stage-and-equity-led. Different personas split hard on this. See the test matrix in artifact 04.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 04 · LINKEDIN -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">04</div>
+<div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">LinkedIn</div>
+</div>
+<div>
+<h2 data-slot="s4.title" style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px">The connect note and the InMail</h2>
+<p data-slot="s4.body" style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty">The connect note is deliberately not a pitch: it buys familiarity for the emails that follow. The InMail assumes zero context, since it is the one touch that might get read on its own.</p>
+</div>
+</div>
+<div data-count="2" data-repeat="linkedin" style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:16px"><div style="background:var(--op-surface);border:1px solid var(--op-border)">
+<div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
+<span data-slot="li.label" style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)">Connect note · day 10</span>
+<span data-slot="li.meta" style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">234 / 300 chars</span>
+</div>
+<div data-slot="li.body" style="padding:22px 24px;font-size:15px;color:var(--op-ink-dim);line-height:1.7">[[FirstName]], the [[SpecificProject]] work at [[CurrentCompany]] is the kind of battery depth that gets buried on a big pack team. We're building a small battery group where one person owns a full subsystem. Worth connecting?</div>
+<div data-slot="li.note" style="padding:14px 20px;border-top:1px solid var(--op-border);font-size:13.5px;color:var(--op-ink-dim)">No pitch, no ask, no link. Send nothing else on this channel for at least two days, or the note reads as a setup.</div>
+</div>
+<div style="background:var(--op-surface);border:1px solid var(--op-border)">
+<div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
+<span data-slot="li.label" style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)">InMail · day 12 · standalone</span>
+<span data-slot="li.meta" style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">89 words</span>
+</div>
+<div data-slot="li.body" style="padding:22px 24px;font-size:15px;color:var(--op-ink-dim);line-height:1.7">Subjthe battery problem worth changing jobs for</div>
+<div data-slot="li.note" style="padding:14px 20px;border-top:1px solid var(--op-border);font-size:13.5px;color:var(--op-ink-dim)"><p style="margin:0 0 12px">[[FirstName]],</p><p style="margin:0 0 12px">Short version, since InMail is nobody's favorite inbox:</p><p style="margin:0 0 12px">We build [[SystemScope]] mostly in-house, on a small team where one engineer owns a whole subsystem, from thermal design through abuse test, instead of a slice of one.</p><p style="margin:0 0 12px">Your background at [[CurrentCompany]] fits the shape of what this team needs: someone who has done the test-rig work, not just the analysis behind it. If a fifteen-minute intro is worth your time, name a day. If not, no follow-up beyond one more note.</p><p style="margin:0">[Your first name]</p></div>
+</div>
+</div>
+</section>
+<!-- 05 · URGENCY + BREAKUP -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">05</div>
+<div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Emails 4–5</div>
+</div>
+<div>
+<h2 data-slot="s5.title" style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px">Honest urgency, then the exit ramp</h2>
+<p data-slot="s5.body" style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty">Email four ships only if every word in it is literally true. Email five drops the ask entirely, which is exactly why it outperforms the other four.</p>
+</div>
+</div>
+<div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+<div style="background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-warning)">
+<div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
+<span style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-warning)">E4 · day 14 · must be true</span>
+<span style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">76 words</span>
+</div>
+<div style="padding:14px 20px;border-bottom:1px solid var(--op-border);display:grid;gap:7px;font-size:14px">
+<div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;flex:none">Subj A</span><span data-slot="e4.subj">where the search actually stands</span></div>
+<div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-muted);background:#F0EDE6;border:1px solid var(--op-border);flex:none">Subj B</span><span>timing, plainly stated</span></div>
+</div>
+<div data-slot="e4.body" style="padding:22px 24px;font-size:15px;color:var(--op-ink-dim);line-height:1.75"><p>[[FirstName]],</p><p>Straight status: we're filling one battery seat this cycle, the loop runs about two weeks start to finish, and the panel is engineers who have run hardware programs themselves.</p><p>We're moving candidates to scheduling this week, so the timing here is real, not a sales deadline.</p><p>If you've been even half-curious, this is the week where a twenty-minute call still leaves you every option open.</p><p>Either way, this is my second-to-last note. If you'd rather not hear from me, reply once and I'll close the file for good.</p><p>[Your first name]</p></div>
+<div data-slot="e4.note" style="padding:14px 20px;border-top:1px solid var(--op-border);background:#FAF0E6;font-size:13.5px;color:var(--op-ink-dim)">Send this only if it is true. A fabricated deadline is easy to spot and costly to be caught in with an audience that reads specs for a living. If two seats are open, say two.</div>
+</div>
+<div style="background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-success)">
+<div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
+<span style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-success)">E5 · day 21 · highest reply rate</span>
+<span style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">65 words</span>
+</div>
+<div style="padding:14px 20px;border-bottom:1px solid var(--op-border);display:grid;gap:7px;font-size:14px">
+<div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;flex:none">Subj A</span><span>closing the file</span></div>
+<div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-muted);background:#F0EDE6;border:1px solid var(--op-border);flex:none">Subj B</span><span>last one, promise</span></div>
+</div>
+<div style="padding:22px 24px;font-size:15px;color:var(--op-ink-dim);line-height:1.75">
+<p style="margin:0 0 12px">[[FirstName]],</p>
+<p style="margin:0 0 12px">Closing the file on my end: you clearly have good things going at [[CurrentCompany]].</p>
+<p style="margin:0 0 12px">One sentence for the archive: this is the team building the battery system for [[NextMilestone]], and the seat is still open.</p>
+<p style="margin:0 0 12px">If timing ever changes, my inbox doesn't. And if a former teammate comes to mind who'd want this, that introduction would genuinely mean something.</p>
+<p style="margin:0"><br/>Go build,[Your first name]</p>
+</div>
+<div style="padding:14px 20px;border-top:1px solid var(--op-border);background:#EEF6F1;font-size:13.5px;color:var(--op-ink-dim)"><b>Dropping the ask is what makes it land.</b>Do not add one back in. The referral line earns more replies than the direct question ever does.</div>
+</div>
+</div>
+</section>
+<!-- 06 · VOICE + SMS -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">06</div>
+<div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Voice &amp; text</div>
+</div>
+<div>
+<h2 data-slot="s6.title" style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px">The phone script, and the texts that follow it</h2>
+<p data-slot="s6.body" style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty">Reserved for the high-touch tier. A call is a costly signal for both sides, which is exactly why it moves a scarce battery candidate when another email will not.</p>
+</div>
+</div>
+<div data-count="2-4" data-repeat="voice.blocks" style="margin-top:32px;display:grid;gap:16px"><div style="background:var(--op-surface);border:1px solid var(--op-border)">
+<div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
+<span data-slot="voice.label" style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)">Voicemail · day 16 onward · ~20 seconds</span>
+<span style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">High-touch tier</span>
+</div>
+<div data-slot="voice.script" style="padding:20px 24px;background:#F7F5F0;font-size:15px;color:var(--op-ink);line-height:1.75;white-space:pre-wrap">"Hi [[FirstName]], this is [Name]. I've sent a couple of notes about our battery team. Short version: we're mid-[[ProgramPhase]] on [[ProgramName]], the seat is still open, and your test-rig work at [[CurrentCompany]] is why I keep calling. My number is [number]. If it's a no, a two-word text saves us both the dance. Thanks, [[FirstName]]."</div>
+<div data-slot="voice.note" style="padding:14px 20px;border-top:1px solid var(--op-border);font-size:13.5px;color:var(--op-ink-dim)">The two-word opt-out is what earns callbacks. A cheap, guilt-free exit produces more calls than a hard close does, since it removes the fear of an awkward yes.</div>
+</div>
+<div style="background:var(--op-surface);border:1px solid var(--op-border)">
+<div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
+<span style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)">Live call opener · 15 seconds + branches</span>
+<span style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">Memorise the branches</span>
+</div>
+<div data-slot="call.script" style="padding:20px 24px;background:#F7F5F0;font-size:15px;color:var(--op-ink);line-height:1.75;white-space:pre-wrap">"Hi [[FirstName]], [Name] here. I'll be brief: your test-rig and analysis work at [[CurrentCompany]] maps closely onto what our battery team owns, and I'd rather ask than assume. Is a fifteen-minute intro this week worth your time?"</div>
+<div data-count="2-5" data-repeat="call.branches" style="padding:20px 24px;border-top:1px solid var(--op-border);display:grid;gap:16px"><div style="display:grid;grid-template-columns:190px 1fr;gap:18px;align-items:start">
+<div data-slot="branch.if" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-warning)">"I'm happy where I am"</div>
+<div data-slot="branch.then" style="font-size:14.5px;color:var(--op-ink-dim)">"Completely fair, and I appreciate you saying so plainly. Mind if I send one paragraph on the scope for future reference? And if anyone comes to mind who'd fit, I take referrals seriously."</div>
+</div>
+<div style="display:grid;grid-template-columns:190px 1fr;gap:18px;align-items:start">
+<div data-slot="branch.if" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-warning)">"What does this pay?"</div>
+<div data-slot="branch.then" style="font-size:14.5px;color:var(--op-ink-dim)">"Posted range is [[BandLow]] to [[BandHigh]] base, plus equity depending on level. Worth fifteen minutes to see if the scope earns it?"</div>
+</div>
+<div style="display:grid;grid-template-columns:190px 1fr;gap:18px;align-items:start">
+<div data-slot="branch.if" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-warning)">"This isn't a good time"</div>
+<div data-slot="branch.then" style="font-size:14.5px;color:var(--op-ink-dim)">"Understood. Does Tuesday morning or Thursday afternoon work better, or should I just close the file?" Offering to close the file turns this into a real choice instead of a nudge.</div>
+</div>
+</div>
+</div>
+<div style="background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-accent)">
+<div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
+<span style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-accent)">Text · after the candidate replies</span>
+<span style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">Never cold</span>
+</div>
+<div style="padding:20px 24px;display:grid;gap:14px">
+<div>
+<div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:6px">Scheduling</div>
+<div data-slot="sms.1" style="background:#F7F5F0;padding:14px 16px;font-size:14.5px;color:var(--op-ink)">"Hey [[FirstName]], it's [Name]. Glad you're open to a call. I can hold Wed 9am or Thu 3pm for twenty minutes with [HM first name], either work for you? I'll get the invite out."</div>
+</div>
+<div>
+<div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:6px">Day-of confirm</div>
+<div data-slot="sms.2" style="background:#F7F5F0;padding:14px 16px;font-size:14.5px;color:var(--op-ink)">"[[FirstName]], see you at 3 today with [HM first name]. Video link is in the invite. Anything specific you want covered, tell me now and I'll brief them."</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 07 · GUARDRAILS -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">07</div>
+<div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Guardrails</div>
+</div>
+<div>
+<h2 data-slot="s7.title" style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px">Tier discipline and the banned list</h2>
+<p data-slot="s7.body" style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty">Tier discipline is the difference between an 18% reply rate and a 6% one. The banned list is not a style preference: each phrase measurably drags down replies, and several signal that the sender has never touched a test rig.</p>
+</div>
+</div>
+<div style="margin-top:32px;display:grid;grid-template-columns:1.1fr 1fr;gap:2px;background:var(--op-border);border:1px solid var(--op-border)">
+<div style="background:var(--op-surface);padding:26px 28px">
+<div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-primary);margin-bottom:16px">Tiers</div>
+<div data-count="2-4" data-repeat="tiers" style="display:grid;gap:16px"><div style="border-left:2px solid var(--op-muted);padding-left:14px">
+<div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:4px"><span data-slot="tier.name" style="font-size:14.5px;font-weight:600">Baseline</span><span data-slot="tier.target" style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted)">high-volume strings</span></div>
+<div data-slot="tier.elements" style="font-size:13.5px;color:var(--op-ink-dim)">Only [[FirstName]] and [[CurrentCompany]] filled in. Expect the benchmark reply rate and nothing above it.</div>
+</div>
+<div style="border-left:2px solid var(--op-primary);padding-left:14px">
+<div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:4px"><span data-slot="tier.name" style="font-size:14.5px;font-weight:600">Targeted</span><span data-slot="tier.target" style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted)">named target list</span></div>
+<div data-slot="tier.elements" style="font-size:13.5px;color:var(--op-ink-dim)">Adds [[TestSignal]]: the cell chemistry, pack architecture, or test campaign named on their own profile. Cheap to add, clearly better.</div>
+</div>
+<div style="border-left:2px solid var(--op-success);padding-left:14px">
+<div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:4px"><span data-slot="tier.name" style="font-size:14.5px;font-weight:600">Full-touch</span><span data-slot="tier.target" style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-success)">target &gt;22% reply</span></div>
+<div data-slot="tier.elements" style="font-size:13.5px;color:var(--op-ink-dim)">Passives, referrals, and trigger-based sends. Adds [[SpecificProject]], a hand-written opener, plus the voicemail or live call. Fifteen minutes of research per name.</div>
+</div>
+</div>
+<div data-slot="tier.note" style="margin-top:22px;padding-top:16px;border-top:1px solid var(--op-border);font-size:14px;color:var(--op-ink-dim)">One call to action, one question, every single time. Sign with a real name, never a team inbox. Every email carries at least one fact a candidate could verify independently.</div>
+</div>
+<div style="background:var(--op-surface);padding:26px 28px">
+<div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-accent);margin-bottom:16px">Banned: automatic QA fail</div>
+<div data-count="6-16" data-repeat="banned" style="display:flex;flex-wrap:wrap;gap:8px"><span data-slot="banned.term" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">we're hiring</span>
+<span data-slot="banned.term" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">per my last email</span>
+<span data-slot="banned.term" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">circle back</span>
+<span data-slot="banned.term" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">just following up</span>
+<span data-slot="banned.term" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">synergy</span>
+<span data-slot="banned.term" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">end-to-end</span>
+<span data-slot="banned.term" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">crushing it</span>
+<span data-slot="banned.term" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">low-hanging fruit</span>
+<span data-slot="banned.term" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">move the needle</span>
+<span data-slot="banned.term" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">wear many hats</span>
+<span data-slot="banned.term" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">dynamic team</span>
+<span data-slot="banned.term" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">I hope this finds you well</span>
+<span data-slot="banned.term" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">came across your profile</span>
+<span data-slot="banned.term" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">exciting opportunity</span>
+<span data-slot="banned.term" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">rockstar</span>
+<span data-slot="banned.term" style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">perfect fit</span>
+</div>
+</div>
+</div>
+</section>
+<!-- HANDOFF -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+<div data-optional="" style="background:var(--op-ink);color:var(--op-bg);padding:30px 34px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:18px">
+<div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-bisaek)">Handoff → next artifact</div>
+<div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">Internal · optional: delete before sharing outside the search team</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;font-family:var(--op-font-mono);font-size:13px;line-height:1.9">
+<div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Produces</div><div data-slot="handoff.produces">sequence · channels · ab_variants · banned_phrases_checked</div></div>
+<div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Consumed by</div><div data-slot="handoff.consumers">09 QA GATE · weekly pipeline standup</div></div>
+<div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Compliance</div><div data-slot="handoff.compliance">No phrases outside the reference list · one call to action per touch · every number carries a Sourced or Estimate pill · SMS gated to candidate reply only · every automated send carries a working opt-out and postal address</div></div>
+<div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Blocked on</div><div data-slot="handoff.blocked" style="color:var(--op-hwang-light)">Real funding and milestone facts from Harborlight Energy, plus one real open technical problem from the hiring manager, to replace the bracketed tokens throughout</div></div>
+</div>
+</div>
+</section>
+<footer style="margin-top:56px;padding-top:20px;border-top:1px solid var(--op-border);display:flex;justify-content:space-between;font-family:var(--op-font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">
+<span data-slot="footer.left">TK-05 · Multi-Channel Outreach</span><span data-slot="footer.right">Write nothing you would not forward · Built with Talent One by OnePromptMan</span>
+</footer>
+</main>
+</div>
+</x-dc>
+<script data-dc-script="" data-props='{"$preview":{"width":1180,"height":900}}' type="text/x-dc"></script>
+</body>
+</html>

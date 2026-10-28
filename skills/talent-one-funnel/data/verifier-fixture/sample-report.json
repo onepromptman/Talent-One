@@ -1,0 +1,48 @@
+{
+  "role": "Synthetic engineering role",
+  "quarter": "Demonstration cohort",
+  "stages": [
+    {
+      "stage": "Applications",
+      "count": 220,
+      "prior_count": null,
+      "pass_pct": null
+    },
+    {
+      "stage": "Recruiter screen",
+      "count": 132,
+      "prior_count": 220,
+      "pass_pct": 60.0
+    },
+    {
+      "stage": "Hiring manager screen",
+      "count": 66,
+      "prior_count": 132,
+      "pass_pct": 50.0
+    },
+    {
+      "stage": "Technical",
+      "count": 13,
+      "prior_count": 66,
+      "pass_pct": 19.696969696969695
+    },
+    {
+      "stage": "Final",
+      "count": 9,
+      "prior_count": 13,
+      "pass_pct": 69.23076923076923
+    },
+    {
+      "stage": "Offer",
+      "count": 7,
+      "prior_count": 9,
+      "pass_pct": 77.77777777777777
+    }
+  ],
+  "findings": [
+    "Technical: reported 10%; computed 19.7%"
+  ],
+  "scope": "Ordered cumulative cohort; counts are supplied, not independently verified.",
+  "interpretation": "Stage conversion is descriptive. No causal diagnosis, candidate ranking, or inferred acceptances.",
+  "source_sha256": "b52ce10a283bfc275b6a9dc03defd789df0732c09e2b91db4d7d2701ae93220e"
+}

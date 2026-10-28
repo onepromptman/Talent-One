@@ -1,0 +1,95 @@
+{
+  "template": "TK_02_Job_Description.dc.html",
+  "derived_from": "example-content",
+  "required": [
+    "caution.1",
+    "comp.readout",
+    "doc.agent",
+    "doc.date",
+    "doc.eyebrow",
+    "doc.thesis",
+    "doc.title",
+    "footer.right",
+    "jd.benefits",
+    "jd.close",
+    "jd.meta",
+    "jd.title",
+    "role.org",
+    "role.title",
+    "s1.body",
+    "s1.title",
+    "s2.body",
+    "s2.title",
+    "s3.body",
+    "s3.title"
+  ],
+  "optional": {
+    "cover.compliance": "jdbot brief: one-line constraints summary, or deleted alongside gate.1 when the list is empty",
+    "gate.1": "jdbot brief: a disqualifying constraint, verbatim, or deleted if the profile's constraints list is empty",
+    "jd.eeo": "jdbot brief: the equal-opportunity statement is a straight brand-doc read, verbatim, never authored; absent when the profile supplies none"
+  },
+  "numeric": [
+    "comp.readout",
+    "jd.meta",
+    "s2.body"
+  ],
+  "repeats": {
+    "cover.metrics": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "metric.label",
+        "metric.value"
+      ],
+      "optional_keys": []
+    },
+    "jd.responsibilities": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "resp.item"
+      ],
+      "optional_keys": []
+    },
+    "jd.requirements": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "req.item"
+      ],
+      "optional_keys": []
+    },
+    "annotations": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "note.body",
+        "note.tag"
+      ],
+      "optional_keys": []
+    },
+    "ledger.rows": {
+      "min": 1,
+      "max": 8,
+      "item_keys": [
+        "ledger.after",
+        "ledger.before",
+        "ledger.effect"
+      ],
+      "optional_keys": []
+    },
+    "comp.rows": {
+      "min": 1,
+      "max": 4,
+      "item_keys": [
+        "bar",
+        "comp.high",
+        "comp.label",
+        "comp.low",
+        "comp.n"
+      ],
+      "optional_keys": []
+    }
+  },
+  "toggles": []
+}

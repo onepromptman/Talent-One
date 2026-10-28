@@ -1,0 +1,6 @@
+[
+  {"id": 101, "name": "Controls Engineer", "departments": [{"name": "Controls"}], "opened_at": "2026-01-05", "closed_at": "2026-03-10"},
+  {"id": 102, "name": "Senior Controls Engineer", "departments": [{"name": "Controls"}], "opened_at": "2026-02-01", "closed_at": "2026-04-15"},
+  {"id": 201, "name": "Embedded Software Engineer", "departments": [{"name": "Firmware"}], "opened_at": "2026-01-20", "closed_at": null},
+  {"id": 301, "name": "Office Manager", "departments": [{"name": "General & Administrative"}], "opened_at": "2026-01-02", "closed_at": "2026-02-20"}
+]

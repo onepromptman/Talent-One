@@ -1,0 +1,7 @@
+{
+  "optional": {
+    "gate.1": "jdbot brief: a disqualifying constraint, verbatim, or deleted if the profile's constraints list is empty",
+    "cover.compliance": "jdbot brief: one-line constraints summary, or deleted alongside gate.1 when the list is empty",
+    "jd.eeo": "jdbot brief: the equal-opportunity statement is a straight brand-doc read, verbatim, never authored; absent when the profile supplies none"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "_comment": "Phase manifest for the Talent One headless runner, matching the 2.x shape that agents/relay.md runs inside a session: (1) scout builds the Context Pack, critic reviews it; (2) every requested artifact agent runs in parallel against the pack, each writing content/<NN>.content.json; (2.5) critic per artifact; (3) deterministic render + verify with skills/talent-one/scripts/render.py; (4) qa-gate over the package when 2 or more artifacts were built. There is no inter-artifact dependency: `pack_paths` is each artifact's CONTEXT_PACK.md section 5 row (required paths; `research:` entries live in pack-research.json), which the runner preflights before spawning and tools/check_dag.py keeps in step with the reference. Models and tools come from each agent file's frontmatter (stamped by function-core's compile.py), so tiers follow MODULE.yaml. JSON on purpose: stdlib parse only.",
+  "phases": ["pack", "content", "critic", "render", "qa"],
+  "pack_agent": "scout",
+  "critic_agent": "critic",
+  "qa_agent": "qa-gate",
+  "qa_min_artifacts": 2,
+  "artifacts": {
+    "07": {"agent": "calibrate",        "pack_paths": ["role", "spec.requirements", "comp.canonical_range", "comp.frame", "market.macro", "timing"]},
+    "01": {"agent": "sensei",           "pack_paths": ["role", "spec.must_have_skills", "keywords.primary", "keywords.title_synonyms", "spec.seniority_ladder"]},
+    "03": {"agent": "atlas",            "pack_paths": ["role", "market.classification", "market.funnel", "targets.tier1", "targets.geo_sequence", "comp.by_level", "personas", "research:dossiers", "research:metros", "research:quadrant"]},
+    "02": {"agent": "jdbot",            "pack_paths": ["role", "spec.requirements", "spec.must_have_skills", "comp.canonical_range", "keywords.title_synonyms"]},
+    "06": {"agent": "interview-lab",    "pack_paths": ["role", "spec.requirements", "spec.must_have_skills", "timing.sla"]},
+    "08": {"agent": "recruiter-screen", "pack_paths": ["role", "spec.requirements", "comp.canonical_range", "keywords.title_synonyms"]},
+    "09": {"agent": "interview-coach",  "pack_paths": ["role", "spec.requirements", "spec.must_have_skills", "timing.sla"]},
+    "04": {"agent": "hunter",           "pack_paths": ["role", "keywords", "market.funnel", "targets.tier1", "channels", "personas", "research:metros", "research:persona_detail"]},
+    "05": {"agent": "shakespeare",      "pack_paths": ["role", "personas", "channels", "messaging", "research:proof_points"]}
+  }
+}

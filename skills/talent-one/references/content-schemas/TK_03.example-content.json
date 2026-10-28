@@ -1,0 +1,483 @@
+{
+ "template": "TK_03_Talent_Map.dc.html",
+ "artifact": "03",
+ "slots": {
+  "doc.agent": "Agent · ATLAS",
+  "doc.date": "Freshness Jul 2026 · 60-day refresh",
+  "doc.eyebrow": "Artifact 03 · Market intelligence",
+  "doc.title": "Battery Talent Map",
+  "role.title": "Battery Systems Engineer, mid level",
+  "role.org": "Connected-hardware builder · distributed hybrid · small battery team",
+  "doc.thesis": "Where mid-career battery talent actually sits, who is bidding for it, what moves it, which adjacent industries hide it, and whether it will relocate. The pool is small and clustered, so Section 05 decides your week.",
+  "cover.provenance": "Ratios hold · treat absolute counts as planning figures",
+  "s1.title": "The constraint is mid-career reach, not headcount",
+  "s1.body": "About 68,000 engineers work nationally in the base occupation, but the mid-career, field-proven battery subset is only a few thousand, and it clusters in a handful of metros. EV makers, funded storage startups, and large cell manufacturers all chase the same people. You will not win this on base salary. You win on ownership scope, test cadence, and adjacent pools nobody else is fishing.",
+  "pullstat.value": "~2%",
+  "pullstat.label": "Of the national engineering base are engageable for this search",
+  "pullstat.claim": "68,440 engineers in the base occupation become roughly 1,300 after four filters. Three of those four are choices you can still reopen with the hiring manager.",
+  "pullstat.method": "BLS-OES baseline × documented filters · see methodology",
+  "insight.1": "Adjacent-industry engineers, EV powertrain, power electronics, and consumer electronics, close the home-storage gap in months, not years. That reframe materially widens the reachable pool, and title-based searches rarely surface these people for a battery role.",
+  "caution.1": "Battery talent is concentrated in a few clusters, so most hires need relocation. A distributed posting will not change that: test-rig and abuse-test work is onsite by nature. Budget relocation now, or the search stalls on geography alone.",
+  "gate.1": "Work-authorization requirements, where a role has them, are a role constraint, not a sourcing filter. Ask the identical question of every candidate, in writing, as procedure. Never infer eligibility from a profile, a name, or a school.",
+  "s2.title": "From national supply to reachable target",
+  "s2.body": "Each stage applies one documented filter to the stage above it. The baseline is Sourced from BLS; every stage below it is an Estimate with a stated filter. Read the ratios, not the absolute counts.",
+  "s3.title": "Who is bidding on the same engineers",
+  "s3.body": "Measured in competing open requisitions a qualified battery engineer would realistically weigh against yours, not total market headcount.",
+  "structural.1": "Engineering employment in this base is growing faster than average through 2034, and storage hiring has expanded across EVs, utilities, and consumer hardware. The shortage bites hardest at the field-proven mid-career band, exactly the band you are hiring. Req counts are Estimates from aggregated public job-board queries; rerun at refresh. Sourced · BLS-OOH 2024-34",
+  "s4.title": "Where cadence meets field heritage",
+  "s4.body": "Test cadence against field heritage and battery-technology maturity. Source where your working style already exists: an engineer who has only known multi-year program cycles will read a fast-iterating team as chaos, not opportunity.",
+  "s5.title": "Where battery talent sits, and whether it moves",
+  "s5.body": "Pool size tells you where talent sits. Response tells you whether it moves: historical relocation-acceptance for this role family, housing-cost delta, state-tax delta, and industry identity. Battery talent is concentrated, so validate relocation response per metro before you spend a sourcing block. Pool figures are modeled from BLS-OES metro data; cost and tax deltas from public indices. Verify before quoting.",
+  "relo.readout": "The Bay Area is your anchor. It holds the largest renter-heavy pool, so many hires need no move at all, plus the deepest battery identity in the country. Seattle is the strongest relocation source next, a mobile, no-income-tax metro with an established clean-energy base. Both beat the rooted, high-ownership clusters on pool quality per dollar of relocation spend.",
+  "relo.seq.1": "1 · Bay Area",
+  "relo.seq.2": "2 · Seattle",
+  "relo.seq.3": "3 · Denver, Austin, Boston",
+  "relo.seq.skip": "Skip Detroit / Reno",
+  "s6.title": "Target archetypes and where they open up",
+  "s6.body": "These are archetypes, not named employers. A trigger here is a structural condition that raises willingness to move: vest cliffs, roadmap resets, or ceilings on scope. Watch the pattern, not a dated event.",
+  "s7.title": "Same engineering problem, different industry",
+  "s7.body": "The test is the engineering problem, not the title: a large amount of stored energy kept cool and safe in shipped hardware. Competitors search by title, so these pools stay under-fished. Quote each ramp gap honestly. Estimate · practitioner judgment.",
+  "s8.title": "Battery engineering pay, by level",
+  "s8.body": "Base working ranges modeled from BLS-OES 17-2199 (2024) percentiles, positioned market-mid for a small hardware employer. Modeled ranges are illustrative, not an approved band. Use these to qualify expectations at the screen, not to negotiate at offer.",
+  "comp.positioning": "A small hardware company wins on ownership, mission, and equity upside, not on cash. EV makers and large cell manufacturers pay competitive base with stability appeal; adjacent industries sometimes pay more in pure cash. Position at the modeled mid band above, and qualify comp expectations at the recruiter screen, not at offer.",
+  "s9.title": "Four people you will actually talk to",
+  "s9.body": "Each persona needs a different opening line. The risk line is what to probe at the screen, not a reason to pass.",
+  "s10.title": "Three moves, in order",
+  "s10.body": "Everything above exists to justify these three. If you read nothing else, run them in this order.",
+  "footer.right": "Estimates flagged · verify before quoting",
+  "doc.prose0": "Hidden sections are excluded from print",
+  "doc.prose1": "Field heritage & tech maturity →",
+  "doc.prose2": "Test cadence → (iteration speed)",
+  "doc.prose3": "Marker = target archetype · ★ = Harborlight Energy",
+  "doc.prose4": "How to read this, and what to do",
+  "doc.prose5": "Historical relocation-acceptance from these metros runs low for this role family, so package alone rarely closes them. Source them for exceptional inbound only, and do not spend a sourcing block chasing relocations there.",
+  "doc.prose6": "Detroit and Reno look strong on pool and cost, and fail on propensity."
+ },
+ "repeats": {
+  "cover.metrics": [
+   {
+    "metric.label": "Market classification",
+    "metric.value": "Tight"
+   },
+   {
+    "metric.label": "Field-proven band (5+ yr)",
+    "metric.value": "Scarce"
+   },
+   {
+    "metric.label": "Sourcing difficulty",
+    "metric.value": "8 / 10"
+   },
+   {
+    "metric.label": "Reachable supply : demand",
+    "metric.value": "~1.5 : 1"
+   },
+   {
+    "metric.label": "Engageable pool",
+    "metric.value": "~1,300"
+   },
+   {
+    "metric.label": "Comp posture",
+    "metric.value": "P50–P60"
+   }
+  ],
+  "funnel.stages": [
+   {
+    "stage.label": "Engineers in the base occupation, national",
+    "stage.n": "68,440",
+    "stage.filter": "baseline",
+    "bar": 1.0
+   },
+   {
+    "stage.label": "Battery-focused",
+    "stage.n": "~13,700",
+    "stage.filter": "× 20%",
+    "bar": 0.2
+   },
+   {
+    "stage.label": "Field/test proven",
+    "stage.n": "~4,800",
+    "stage.filter": "× 35%",
+    "bar": 0.07
+   },
+   {
+    "stage.label": "In reachable hubs",
+    "stage.n": "~2,600",
+    "stage.filter": "× 55%",
+    "bar": 0.038
+   },
+   {
+    "stage.label": "Engageable, small employer",
+    "stage.n": "~1,300",
+    "stage.filter": "× 50%",
+    "bar": 0.019
+   }
+  ],
+  "method.rows": [
+   {
+    "method.stage": "68,440 engineers",
+    "method.basis": "National employment, engineers in SOC 17-2199",
+    "method.pill": {
+     "pill": "Sourced",
+     "method": "BLS-OES 2024"
+    }
+   },
+   {
+    "method.stage": "~13,700 battery",
+    "method.basis": "Filtered to battery, cell, thermal-management, or power-electronics skills",
+    "method.pill": {
+     "pill": "Estimate"
+    }
+   },
+   {
+    "method.stage": "~4,800 mid-career",
+    "method.basis": "5+ yrs with shipped-pack or abuse-test experience",
+    "method.pill": {
+     "pill": "Estimate"
+    }
+   },
+   {
+    "method.stage": "~2,600 reachable",
+    "method.basis": "In or reachable to concentrated battery clusters",
+    "method.pill": {
+     "pill": "Estimate"
+    }
+   },
+   {
+    "method.stage": "~1,300 engageable",
+    "method.basis": "Open to a small hardware employer, minus the hard-passive segment",
+    "method.pill": {
+     "pill": "Estimate"
+    }
+   }
+  ],
+  "demand.rows": [
+   {
+    "demand.name": "EV makers startups and established automakers",
+    "demand.reqs": "600–900",
+    "demand.velocity": "High",
+    "demand.read": "Identical profile and your toughest poach. Compete on ownership scope, not prestige."
+   },
+   {
+    "demand.name": "Large cell manufacturers cell plants and gigafactory programs",
+    "demand.reqs": "400–600",
+    "demand.velocity": "High",
+    "demand.read": "Big programs, slower loops. They squeeze the same mid-career pool you need."
+   },
+   {
+    "demand.name": "Battery component suppliers BMS boards, thermal plates, enclosures",
+    "demand.reqs": "250–400",
+    "demand.velocity": "Steady",
+    "demand.read": "Lower ceilings, deep component fluency. A realistic source pool, not a rival."
+   },
+   {
+    "demand.name": "Adjacent electronics power electronics, chargers, consumer devices",
+    "demand.reqs": "500–800",
+    "demand.velocity": "Net exporter",
+    "demand.read": "Not bidding on your offers. Your best uncontested source pool: fish here."
+   }
+  ],
+  "quadrant.points": [
+   {
+    "label": "Harborlight Energy ★",
+    "x": 0.66,
+    "y": 0.46,
+    "size": 15,
+    "accent": true
+   },
+   {
+    "label": "Storage startups",
+    "x": 0.74,
+    "y": 0.3,
+    "size": 13
+   },
+   {
+    "label": "Established EV makers",
+    "x": 0.52,
+    "y": 0.18,
+    "size": 14
+   },
+   {
+    "label": "Large cell makers",
+    "x": 0.3,
+    "y": 0.22,
+    "size": 14
+   },
+   {
+    "label": "Component suppliers",
+    "x": 0.44,
+    "y": 0.54,
+    "size": 11
+   },
+   {
+    "label": "Adjacent electronics",
+    "x": 0.8,
+    "y": 0.76,
+    "size": 14
+   },
+   {
+    "label": "Legacy automotive",
+    "x": 0.2,
+    "y": 0.66,
+    "size": 10
+   }
+  ],
+  "tier.notes": [
+   {
+    "tier.title": "EV makers",
+    "tier.body": "Deep bench and comp-competitive. Poach only the individuals who want subsystem ownership a large org will not give."
+   },
+   {
+    "tier.title": "Storage startups",
+    "tier.body": "Strongest match: mission-driven with an equity story. Sell smaller-team ownership and faster test cadence against big-company process."
+   },
+   {
+    "tier.title": "Component suppliers",
+    "tier.body": "BMS, thermal-plate, and enclosure specialists. Deep component fluency; sell the step up to full-system ownership and field impact."
+   },
+   {
+    "tier.title": "Adjacent & legacy",
+    "tier.body": "Power electronics, consumer electronics, legacy automotive. Real transfer, but screen for genuine startup-cadence appetite and ramp on home-storage safety standards."
+   }
+  ],
+  "hubs": [
+   {
+    "hub.name": "San Francisco Bay Area primary cluster",
+    "hub.pool": "2,000–2,800",
+    "hub.anchors": "EV makers, storage startups, component suppliers, power electronics",
+    "hub.ownership": "High",
+    "hub.housing": "-",
+    "hub.tax": "-",
+    "hub.relo": "Anchor · in-cluster"
+   },
+   {
+    "hub.name": "Seattle renter-heavy, mobile",
+    "hub.pool": "1,000–1,500",
+    "hub.anchors": "Grid-storage integrators, EV startups, big-tech hardware, utilities",
+    "hub.ownership": "Med-high",
+    "hub.housing": "−10–15%",
+    "hub.tax": "−13% (no income tax)",
+    "hub.relo": "Med-high"
+   },
+   {
+    "hub.name": "Denver / Boulder",
+    "hub.pool": "900–1,300",
+    "hub.anchors": "Battery startups, solar and storage installers, research spinouts",
+    "hub.ownership": "Med",
+    "hub.housing": "−25–30%",
+    "hub.tax": "−9%",
+    "hub.relo": "Med"
+   },
+   {
+    "hub.name": "Austin",
+    "hub.pool": "800–1,200",
+    "hub.anchors": "EV and storage manufacturing, power electronics, energy",
+    "hub.ownership": "Med",
+    "hub.housing": "−45–50%",
+    "hub.tax": "−13% (no income tax)",
+    "hub.relo": "Med"
+   },
+   {
+    "hub.name": "Boston / Cambridge",
+    "hub.pool": "700–1,000",
+    "hub.anchors": "Battery startups, cell R&D, power electronics, universities",
+    "hub.ownership": "Med",
+    "hub.housing": "−15–20%",
+    "hub.tax": "−8%",
+    "hub.relo": "Med · research-heavy"
+   },
+   {
+    "hub.name": "Detroit / SE Michigan",
+    "hub.pool": "800–1,200",
+    "hub.anchors": "Automaker battery programs, cell plants, tier-one suppliers",
+    "hub.ownership": "Low",
+    "hub.housing": "−55–60%",
+    "hub.tax": "−8%",
+    "hub.relo": "Med-low · skip"
+   },
+   {
+    "hub.name": "Reno / Sparks, NV",
+    "hub.pool": "600–900",
+    "hub.anchors": "Cell and pack factories, recycling, storage manufacturing",
+    "hub.ownership": "Low",
+    "hub.housing": "−50–55%",
+    "hub.tax": "−13% (no income tax)",
+    "hub.relo": "Med-low · skip"
+   }
+  ],
+  "dossiers": [
+   {
+    "dossier.name": "Large EV makers",
+    "dossier.flag": "None negative",
+    "dossier.trigger": "Post-liquidity and vest-cliff windows recur at scaled players. Some engineers bank the win and chase the next early-equity story; others turn immovable.",
+    "dossier.pool": "The largest single concentration of field-proven battery talent. Pack design and validation orgs are the closest match to this role.",
+    "dossier.angle": "Own a full subsystem, not a slice, on a faster test loop."
+   },
+   {
+    "dossier.name": "Funded storage startups",
+    "dossier.flag": "None negative",
+    "dossier.trigger": "Funding cycles and roadmap resets create openness 12 to 18 months post-raise. Mission-driven engineers will weigh a smaller-team ownership pitch.",
+    "dossier.pool": "Mission-motivated mid-career battery engineers, already receptive to an equity story and more ownership than a large org gives.",
+    "dossier.angle": "On a small team, the subsystem you design is the one that ships."
+   },
+   {
+    "dossier.name": "Component suppliers",
+    "dossier.flag": "None negative",
+    "dossier.trigger": "Component and subsystem suppliers cap out on system-level scope. Strong engineers plateau and start looking for full-system ownership.",
+    "dossier.pool": "Deep BMS, thermal-plate, and enclosure specialists. Component fluency that is ready for a system-level step up.",
+    "dossier.angle": "Move from one component to owning a full battery subsystem."
+   },
+   {
+    "dossier.name": "Adjacent electronics pools",
+    "dossier.flag": "None negative",
+    "dossier.trigger": "Power-electronics, consumer-electronics, and automotive engineers hit ceilings on mission and impact. A step into home energy storage is the pull.",
+    "dossier.pool": "Thermal, electrical, and safety depth from inverters, devices, and powertrain. Ramp is on pack-level safety standards.",
+    "dossier.angle": "Your thermal and electrical skills transfer directly, plus a mission."
+   }
+  ],
+  "peripheral": [
+   {
+    "per.name": "EV battery validation",
+    "per.why": "Pack test, thermal, and safety work on shipped hardware. Missing only the home-storage standards.",
+    "per.where": "EV makers, battery validation labs, pack suppliers",
+    "per.transfer": "High",
+    "per.ramp": "Weeks"
+   },
+   {
+    "per.name": "Power electronics",
+    "per.why": "Inverters, DC-DC conversion, and high-voltage design, plus a fast production cadence.",
+    "per.where": "Inverter and charger makers, solar electronics, EV power electronics",
+    "per.transfer": "High",
+    "per.ramp": "1–2 months"
+   },
+   {
+    "per.name": "Consumer-electronics batteries",
+    "per.why": "Cell qualification and safety testing at extreme volume, with a rapid-iteration, test-driven mindset.",
+    "per.where": "Phone, laptop, and wearables makers, battery test labs",
+    "per.transfer": "High",
+    "per.ramp": "Weeks"
+   },
+   {
+    "per.name": "E-bike & micromobility",
+    "per.why": "Direct pack and BMS experience on shipped hardware. Ramp is on larger packs and home-safety standards.",
+    "per.where": "E-bike, scooter, and power-tool makers, pack integrators",
+    "per.transfer": "High",
+    "per.ramp": "1–2 months"
+   },
+   {
+    "per.name": "Chemical & process",
+    "per.why": "Electrochemistry, materials handling, and process safety. Medium transfer, strong on cell behaviour.",
+    "per.where": "Chemical and materials firms, cell-material suppliers, process plants",
+    "per.transfer": "Medium",
+    "per.ramp": "2–3 months"
+   },
+   {
+    "per.name": "Utilities & grid power",
+    "per.why": "Power systems and grid interconnection at scale. Medium transfer, learns the pack specifics.",
+    "per.where": "Utilities, grid-equipment makers, substation engineering",
+    "per.transfer": "Medium",
+    "per.ramp": "2–3 months"
+   },
+   {
+    "per.name": "HVAC & data-centre thermal",
+    "per.why": "Thermal management and cooling-loop design, directly relevant to pack thermal systems. Medium transfer.",
+    "per.where": "HVAC and refrigeration makers, data-centre cooling, thermal-systems firms",
+    "per.transfer": "Medium",
+    "per.ramp": "2–3 months"
+   }
+  ],
+  "comp.levels": [
+   {
+    "comp.level": "Early-career · 0–3 yrs",
+    "comp.base": "$95–115K",
+    "comp.total": "-",
+    "comp.note": "Around BLS-OES P25 $105K, below the anchor"
+   },
+   {
+    "comp.level": "Mid · 4–8 yrs",
+    "comp.base": "$115–155K",
+    "comp.total": "~$135K mid",
+    "comp.note": "The anchor: BLS-OES P25–P75, aggregator blend"
+   },
+   {
+    "comp.level": "Senior · 8–12 yrs",
+    "comp.base": "$150–190K",
+    "comp.total": "P75 ~$174K",
+    "comp.note": "Toward BLS-OES P75 $174K; equity carries the delta"
+   },
+   {
+    "comp.level": "Staff+ · 12+ yrs",
+    "comp.base": "$185K+",
+    "comp.total": "P90 ~$206K",
+    "comp.note": "P90 $206K; contested by EV makers and adjacent industries"
+   }
+  ],
+  "personas": [
+   {
+    "persona.name": "The field-proven builder",
+    "persona.who": "Mid engineer, 4 to 6 years on shipped or test-validated packs.",
+    "persona.wants": "Ownership and shipping hardware, a full subsystem rather than a slice",
+    "persona.message": "\"Own a full battery subsystem here, not a slice of someone else's.\"",
+    "persona.risk": "May expect big-team resources. Probe for scrappiness on a small team."
+   },
+   {
+    "persona.name": "The adjacent-industry crossover",
+    "persona.who": "EV, power-electronics, or consumer-electronics engineer eyeing a move into home storage.",
+    "persona.wants": "A mission and a real step up in impact over their current field",
+    "persona.message": "\"Your thermal and electrical skills transfer directly, and here they serve a mission.\"",
+    "persona.risk": "Ramp on home-storage safety standards. Screen for adaptability."
+   },
+   {
+    "persona.name": "The test-and-analysis specialist",
+    "persona.who": "Battery test or thermal analyst who wants design ownership.",
+    "persona.wants": "Growth from analysis into hands-on design ownership",
+    "persona.message": "\"Design-and-test ownership here, not analysis handed off to someone else.\"",
+    "persona.risk": "Unproven hands-on design depth. Probe for real build experience."
+   },
+   {
+    "persona.name": "The early-career high-slope",
+    "persona.who": "Two to three years, strong fundamentals, steep growth trajectory.",
+    "persona.wants": "Learning speed and scope beyond the years of experience",
+    "persona.message": "\"Outsized responsibility early, on a team small enough to see everything.\"",
+    "persona.risk": "Mentorship load on a small team. Weigh the ramp cost honestly."
+   }
+  ],
+  "recommendations": [
+   {
+    "rec.n": "1",
+    "rec.action": "Open the local Bay Area pipeline first",
+    "rec.why": "The largest renter-heavy pool with the deepest battery identity, so most hires need no move. Few small storage companies contest these people, so yield is high for the least relocation spend.",
+    "rec.owner": "Sourcer",
+    "rec.when": "This week"
+   },
+   {
+    "rec.n": "2",
+    "rec.action": "Build the adjacent-industry crossover pipeline in parallel",
+    "rec.why": "EV, power-electronics, and consumer-electronics engineers materially widen the reachable pool; title-based searches rarely surface them. Quote the ramp gap to the hiring manager up front, do not hide it.",
+    "rec.owner": "Sourcer",
+    "rec.when": "Week 1, ongoing"
+   },
+   {
+    "rec.n": "3",
+    "rec.action": "Confirm the mid band and relocation budget with the hiring manager",
+    "rec.why": "Battery talent is concentrated, so relocation is unavoidable outside the Bay Area. Lock the mid band and a relocation package now, or the search stalls on geography no matter how good sourcing is.",
+    "rec.owner": "Recruiter",
+    "rec.when": "Before outreach"
+   }
+  ]
+ },
+ "standalone_bars": [],
+ "optionals": {},
+ "toggles": {
+  "method": true,
+  "dives": true,
+  "peripheral": true,
+  "personas": true,
+  "comp": true
+ },
+ "handoff": {
+  "produces": "market · funnel · comp_guidance · tier1_targets[] · peripheral[] · geo_sequence[] · personas[] · market_urgency · comp_messaging · pain_point_angles[] · cross_industry_pools[] · skill_transfer_notes[]",
+  "consumers": "02 Job Description · 04 Sourcing Strategy · 05 Outreach Campaign",
+  "calibration": "Keep battery pack design and thermal and electrical fundamentals as must-have; cell behaviour and abuse test stay calibrated; CAD/analysis and shipped-systems flex. No eligibility gate: constraints are empty. Mirror the dominant title, Battery Systems Engineer, in body copy.",
+  "blocked": "Nothing"
+ }
+}

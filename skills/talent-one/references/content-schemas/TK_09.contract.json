@@ -1,0 +1,77 @@
+{
+  "template": "TK_09_Interviewer_Briefing.dc.html",
+  "derived_from": "example-content",
+  "required": [
+    "caution.1",
+    "cover.note",
+    "doc.agent",
+    "doc.date",
+    "doc.eyebrow",
+    "doc.thesis",
+    "doc.title",
+    "footer.right",
+    "legal.note",
+    "role.org",
+    "role.title",
+    "s1.body",
+    "s1.title",
+    "s2.body",
+    "s2.title",
+    "s3.body",
+    "s3.title",
+    "s4.body",
+    "s4.title"
+  ],
+  "optional": {},
+  "numeric": [],
+  "repeats": {
+    "cover.metrics": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "metric.label",
+        "metric.value"
+      ],
+      "optional_keys": []
+    },
+    "prep.stages": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "prep.focus",
+        "prep.meta",
+        "prep.stage"
+      ],
+      "optional_keys": []
+    },
+    "coaching.lines": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "coach.body",
+        "coach.label"
+      ],
+      "optional_keys": []
+    },
+    "debrief.fields": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "field.label",
+        "field.prompt",
+        "field.type"
+      ],
+      "optional_keys": []
+    },
+    "agenda.items": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "agenda.body",
+        "agenda.title"
+      ],
+      "optional_keys": []
+    }
+  },
+  "toggles": []
+}

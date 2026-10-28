@@ -1,0 +1,148 @@
+{
+  "template": "TK_07_HM_Calibration.dc.html",
+  "derived_from": "example-content",
+  "required": [
+    "comp.premium",
+    "cover.note",
+    "doc.agent",
+    "doc.date",
+    "doc.eyebrow",
+    "doc.prose0",
+    "doc.prose1",
+    "doc.prose2",
+    "doc.prose3",
+    "doc.thesis",
+    "doc.title",
+    "footer.right",
+    "gate.1",
+    "role.org",
+    "role.title",
+    "sA.body",
+    "sA.title",
+    "sB.body",
+    "sB.title",
+    "sC.body",
+    "sC.title",
+    "sD.body",
+    "sD.title",
+    "sE.body",
+    "sE.title",
+    "sF.body",
+    "sF.title",
+    "sG.body",
+    "sG.title",
+    "to.selected"
+  ],
+  "optional": {},
+  "numeric": [],
+  "repeats": {
+    "cover.decisions": {
+      "min": 1,
+      "max": 5,
+      "item_keys": [
+        "decision.item"
+      ],
+      "optional_keys": []
+    },
+    "market.stats": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "stat.detail",
+        "stat.label",
+        "stat.pill",
+        "stat.value"
+      ],
+      "optional_keys": []
+    },
+    "comp.rows": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "bar",
+        "comp.label",
+        "comp.n",
+        "comp.range"
+      ],
+      "optional_keys": []
+    },
+    "comp.sources": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "src.high",
+        "src.low",
+        "src.mid",
+        "src.name",
+        "src.read"
+      ],
+      "optional_keys": []
+    },
+    "timing.windows": {
+      "min": 1,
+      "max": 4,
+      "item_keys": [
+        "window.body",
+        "window.label"
+      ],
+      "optional_keys": []
+    },
+    "agenda": {
+      "min": 1,
+      "max": 8,
+      "item_keys": [
+        "agenda.objective",
+        "agenda.segment",
+        "agenda.time"
+      ],
+      "optional_keys": []
+    },
+    "intake.questions": {
+      "min": 1,
+      "max": 12,
+      "item_keys": [
+        "iq.extract",
+        "iq.text"
+      ],
+      "optional_keys": []
+    },
+    "requirements": {
+      "min": 1,
+      "max": 10,
+      "item_keys": [
+        "req.name",
+        "req.rec",
+        "req.verdict"
+      ],
+      "optional_keys": []
+    },
+    "tradeoffs": {
+      "min": 1,
+      "max": 3,
+      "item_keys": [
+        "to.choice",
+        "to.consequence"
+      ],
+      "optional_keys": []
+    },
+    "sla.recruiter": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "sla.item",
+        "sla.when"
+      ],
+      "optional_keys": []
+    },
+    "sla.hm": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "hm.item",
+        "hm.when"
+      ],
+      "optional_keys": []
+    }
+  },
+  "toggles": []
+}

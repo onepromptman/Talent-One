@@ -1,0 +1,134 @@
+{
+ "template": "TK_09_Interviewer_Briefing.dc.html",
+ "artifact": "09",
+ "slots": {
+  "doc.agent": "Agent · INTERVIEW COACH",
+  "doc.date": "Generated 2026-08-24",
+  "doc.eyebrow": "Artifact 09 · Interviewer readiness",
+  "doc.title": "Interviewer Briefing",
+  "role.title": "Battery Systems Engineer",
+  "role.org": "Four stages briefed · one debrief form · one decision meeting",
+  "doc.thesis": "A briefing that repeats the whole interview plan wastes the ten minutes an interviewer actually has. Give each one their own stage, the specific thing to probe, and the two lines they are not allowed to ask.",
+  "cover.note": "One page per interviewer. Nothing more to read.",
+  "s1.title": "Your stage, not the whole plan",
+  "s1.body": "Each interviewer gets the ten-minute version of the plan: what they own, what to probe, and what to review before the candidate joins.",
+  "s2.title": "What every interviewer holds before the room",
+  "s2.body": "Stated once here so it never has to be repeated per stage. Read it every time, not only the first time.",
+  "caution.1": "An interviewer who skips the ten-minute prep window shows up reading the resume live, in front of the candidate. That reads as disorganized and it costs the loop a stage's worth of signal, so protect the window on the calendar.",
+  "s3.title": "Four fields, the same form every time",
+  "s3.body": "A rating with no cited evidence is a vibe with a number attached. Every field below asks for the specific thing, never the summary judgment.",
+  "s4.title": "The decision meeting, in order",
+  "s4.body": "Thirty minutes, same order every time, so the loudest voice in the room never sets the outcome by going first.",
+  "legal.note": "Every candidate for this role gets the same stages, the same questions, and the same rubric. A deviation made for one candidate and not another is the fact pattern that turns a rejection into a claim.",
+  "footer.right": "Same rubric for every candidate"
+ },
+ "repeats": {
+  "cover.metrics": [
+   {
+    "metric.label": "Interviewers briefed",
+    "metric.value": "4"
+   },
+   {
+    "metric.label": "Prep time each",
+    "metric.value": "10 min"
+   },
+   {
+    "metric.label": "Debrief window",
+    "metric.value": "24 hours"
+   },
+   {
+    "metric.label": "Decision meeting",
+    "metric.value": "30 min"
+   }
+  ],
+  "prep.stages": [
+   {
+    "prep.meta": "45 min · HM",
+    "prep.stage": "Hiring manager",
+    "prep.focus": "Scope fit and ownership appetite. Read the tradeoff lock before the room opens."
+   },
+   {
+    "prep.meta": "60 min · battery eng",
+    "prep.stage": "Technical screen",
+    "prep.focus": "The can-they-do-it filter. Bring the two backup questions, not just the primary."
+   },
+   {
+    "prep.meta": "75 min · 2 eng",
+    "prep.stage": "Technical deep-dive",
+    "prep.focus": "Design depth and a test-rig anomaly. Split ownership before the loop, not during it."
+   },
+   {
+    "prep.meta": "45 min · cross-team",
+    "prep.stage": "Systems & values",
+    "prep.focus": "Someone outside the reporting line. Score the scenario, not the resume."
+   }
+  ],
+  "coaching.lines": [
+   {
+    "coach.label": "Score the answer, not the accent",
+    "coach.body": "A different communication style or a nontraditional path is not a competency gap. Write down the words, not the delivery."
+   },
+   {
+    "coach.label": "One story is not a pattern",
+    "coach.body": "A single strong or weak answer sets that competency's own score, never the rest of the loop. Halo and horn effects are real."
+   },
+   {
+    "coach.label": "Never ask about protected status",
+    "coach.body": "Family plans, age, national origin, disability, and religion stay off the table, directly or by inference from a resume gap."
+   },
+   {
+    "coach.label": "Write the example, not the adjective",
+    "coach.body": "\"Strong\" is not evidence a debrief can use. The specific thing they said or did is the only entry worth writing down."
+   }
+  ],
+  "debrief.fields": [
+   {
+    "field.type": "Rating 1 to 4",
+    "field.label": "Technical depth",
+    "field.prompt": "Cite the exchange that earned this score. An adjective alone is not a valid entry."
+   },
+   {
+    "field.type": "Rating 1 to 4",
+    "field.label": "Independence",
+    "field.prompt": "Name the hint you had to give, or say they reached it alone."
+   },
+   {
+    "field.type": "Yes or no",
+    "field.label": "Deal-breaker triggered",
+    "field.prompt": "Cite the pattern the plan named, or leave this one blank."
+   },
+   {
+    "field.type": "Free text",
+    "field.label": "One line for the room",
+    "field.prompt": "The sentence you would say out loud before anyone averages a score."
+   }
+  ],
+  "agenda.items": [
+   {
+    "agenda.title": "Scores in before the room opens",
+    "agenda.body": "No score, no vote. Whoever has not submitted a form does not speak first."
+   },
+   {
+    "agenda.title": "Lowest scorer speaks first",
+    "agenda.body": "Seniority does not open the meeting. Concerns get air before enthusiasm anchors the room."
+   },
+   {
+    "agenda.title": "Each owner reads their form",
+    "agenda.body": "Follow the stage order from the interview plan, not seniority or volume."
+   },
+   {
+    "agenda.title": "Decide inside the thirty minutes",
+    "agenda.body": "Hire, no-hire, or one named missing check with an owner and a date."
+   }
+  ]
+ },
+ "standalone_bars": [],
+ "optionals": {},
+ "toggles": {},
+ "handoff": {
+  "produces": "interviewer_prep · coaching_lines · debrief_form · decision_agenda",
+  "consumers": "A09 QA Gate · scorecard setup",
+  "assumptions": "Same panel already read the interview plan. No new interviewer added after this briefing goes out.",
+  "blocked": "Nothing"
+ }
+}

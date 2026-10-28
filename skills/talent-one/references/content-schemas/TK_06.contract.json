@@ -1,0 +1,75 @@
+{
+  "template": "TK_06_Interview_Plan.dc.html",
+  "derived_from": "example-content",
+  "required": [
+    "caution.1",
+    "cover.note",
+    "doc.agent",
+    "doc.date",
+    "doc.eyebrow",
+    "doc.prose0",
+    "doc.thesis",
+    "doc.title",
+    "footer.right",
+    "gate.1",
+    "gate.2",
+    "nongate.1",
+    "role.org",
+    "role.title",
+    "s1.body",
+    "s1.title",
+    "s2.body",
+    "s2.title",
+    "s3.body",
+    "s3.title",
+    "s4.body",
+    "s4.title"
+  ],
+  "optional": {},
+  "numeric": [
+    "role.org"
+  ],
+  "repeats": {
+    "cover.metrics": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "metric.label",
+        "metric.value"
+      ],
+      "optional_keys": []
+    },
+    "loop.stages": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "stage.job",
+        "stage.meta",
+        "stage.name"
+      ],
+      "optional_keys": []
+    },
+    "questions": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "q.owner",
+        "q.strong",
+        "q.text",
+        "q.time",
+        "q.weak"
+      ],
+      "optional_keys": []
+    },
+    "debrief.steps": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "step.body",
+        "step.title"
+      ],
+      "optional_keys": []
+    }
+  },
+  "toggles": []
+}

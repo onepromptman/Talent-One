@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/onepromptman-ds/tokens/tokens.css">
+<link rel="stylesheet" href="_ds/onepromptman-ds/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="_ds/onepromptman-ds/_ds_bundle.js"></script>
+<style>
+  /* derived ramp tints (no token exists for these): #F0EDE6 track, #FBF9F4 rail, #EDE8DE hairline, #F7F5F0 script ground, #DCE6F2/#EAF1F9 cheong pale, #EEF6F1/#BFDCCB nok pale, #FAF0E6/#E3CDB4 dan pale, #F9EFEF/#E3C4C4 jeok pale, #C9D6E6 link rule */
+  body{margin:0;background:var(--op-bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  a{color:var(--op-primary);text-decoration:underline;text-underline-offset:.18em;text-decoration-color:#C9D6E6}
+  a:hover{color:var(--op-cheong-dark);text-decoration-color:var(--op-primary)}
+  @media print{@page{size:letter;margin:0.5in} section{break-inside:avoid}}
+</style>
+</helmet>
+
+<div data-mode="light" style="background:var(--op-bg);color:var(--op-ink);font-family:var(--op-font-body);font-size:16px;line-height:1.6">
+
+<header style="border-bottom:1px solid var(--op-border);background:var(--op-surface)">
+  <div style="max-width:1120px;margin:0 auto;padding:0 48px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--op-border)">
+      <div style="font-family:var(--op-font-mono);font-size:12px;letter-spacing:.30em;text-transform:uppercase" data-slot="kit.mark">Talent One <span style="color:var(--op-accent)">·</span> TK-08</div>
+      <div style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted)"><span data-slot="doc.agent">Agent · RECRUITER SCREEN</span> <span style="color:var(--op-lattice-line)">/</span> <span data-slot="doc.date">30 min · run within 48 hours of first contact</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 330px;gap:60px;padding:60px 0 44px;align-items:start">
+      <div>
+        <div style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-primary);margin-bottom:18px" data-slot="doc.eyebrow">Artifact 08 · Run the call</div>
+        <h1 style="font-family:var(--op-font-display);font-weight:700;font-size:52px;line-height:1.08;letter-spacing:-0.02em;margin:0;text-wrap:balance" data-slot="doc.title">Recruiter Screen Guide</h1>
+        <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+          <span style="font-family:var(--op-font-mono);font-size:13px;letter-spacing:.06em;color:var(--op-surface);background:var(--op-ink);padding:7px 14px" data-slot="role.title">Battery Systems Engineer · Mid level</span>
+          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-muted)" data-slot="role.org">Harborlight Energy · non-technical recruiter, no engineer present</span>
+        </div>
+        <p style="margin:26px 0 0;max-width:62ch;font-size:18px;color:var(--op-ink-dim);text-wrap:pretty" data-slot="doc.thesis">A script you can run cold, including three calibrated battery spot-checks with graded answer keys. You do not need to understand batteries: match what they say against the key and write down their exact phrases. That is a real, defensible signal.</p>
+      </div>
+      <div style="border:1px solid var(--op-border);background:#FBF9F4">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-muted)">Time budget</div>
+        <div data-repeat="cover.metrics" data-count="4-7">
+          <div style="display:flex;justify-content:space-between;gap:14px;padding:12px 20px;border-bottom:1px solid #EDE8DE"><span style="font-size:13.5px;color:var(--op-muted)" data-slot="metric.label">Open &amp; frame</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600" data-slot="metric.value">2 min</span></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;padding:12px 20px;border-bottom:1px solid #EDE8DE"><span style="font-size:13.5px;color:var(--op-muted)">Story walkthrough</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600">6 min</span></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;padding:12px 20px;border-bottom:1px solid #EDE8DE"><span style="font-size:13.5px;color:var(--op-muted)">Technical spot-checks</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600;color:var(--op-primary)">9 min</span></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;padding:12px 20px;border-bottom:1px solid #EDE8DE"><span style="font-size:13.5px;color:var(--op-muted)">Motivation &amp; fit</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600">5 min</span></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;padding:12px 20px;border-bottom:1px solid #EDE8DE"><span style="font-size:13.5px;color:var(--op-muted)">Logistics</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600">5 min</span></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;padding:12px 20px"><span style="font-size:13.5px;color:var(--op-muted)">Sell &amp; close</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600">3 min</span></div>
+        </div>
+        <div style="padding:12px 20px;background:#F0EDE6;border-top:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:10px;letter-spacing:.1em;color:var(--op-muted);text-transform:uppercase" data-slot="cover.note">Behind at the half? Cut logistics, protect the spot-checks</div>
+      </div>
+    </div>
+    <div style="display:flex;height:5px">
+      <div style="flex:5;background:var(--op-primary)"></div><div style="flex:1;background:var(--op-byeok)"></div><div style="flex:1;background:var(--op-success)"></div><div style="flex:1;background:var(--op-highlight)"></div><div style="flex:1;background:var(--op-warning)"></div><div style="flex:1;background:var(--op-accent)"></div>
+    </div>
+  </div>
+</header>
+
+<main style="max-width:1120px;margin:0 auto;padding:0 48px 88px">
+
+  <!-- 01 · RUN OF SHOW -->
+  <section style="padding:56px 0 0">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">01</div>
+        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Run of show</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s1.title">Thirty minutes, fully scripted</h2>
+        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s1.body">Bold text is said out loud; everything else is for you. The first two minutes set the agenda, and that is what earns you permission to interrupt later, so do not skip it to save time. There is no eligibility gate on this call: that time goes to the story and the spot-checks.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;background:var(--op-surface);border:1px solid var(--op-border)" data-repeat="runofshow" data-count="5-8">
+      <div style="display:grid;grid-template-columns:86px 210px 1fr;border-bottom:1px solid var(--op-border)">
+        <div style="padding:16px 0 16px 20px;font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary)" data-slot="ros.time">0–2</div>
+        <div style="padding:16px;font-weight:600" data-slot="ros.segment">Open &amp; agenda</div>
+        <div style="padding:16px 20px;color:var(--op-ink-dim);font-size:14.5px" data-slot="ros.objective"><b>"Thirty minutes. I'll cover the role and the team, ask you about battery work you've actually done, and leave time for your questions. Sound right?"</b></div>
+      </div>
+      <div style="display:grid;grid-template-columns:86px 210px 1fr;border-bottom:1px solid var(--op-border)">
+        <div style="padding:16px 0 16px 20px;font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary)">2–8</div>
+        <div style="padding:16px;font-weight:600">Story walkthrough</div>
+        <div style="padding:16px 20px;color:var(--op-ink-dim);font-size:14.5px">Career arc, current scope, and the hardware their battery work has actually shipped or been tested on.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:86px 210px 1fr;border-bottom:1px solid var(--op-border);background:#EAF1F9">
+        <div style="padding:16px 0 16px 20px;font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary)">8–17</div>
+        <div style="padding:16px;font-weight:600">Technical spot-checks</div>
+        <div style="padding:16px 20px;color:var(--op-ink-dim);font-size:14.5px">Three calibrated questions, graded against the keys in section 03. The highest-value nine minutes of the call.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:86px 210px 1fr;border-bottom:1px solid var(--op-border)">
+        <div style="padding:16px 0 16px 20px;font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary)">17–22</div>
+        <div style="padding:16px;font-weight:600">Motivation</div>
+        <div style="padding:16px 20px;color:var(--op-ink-dim);font-size:14.5px">Why this company, what's missing today, and what would make them decline.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:86px 210px 1fr;border-bottom:1px solid var(--op-border)">
+        <div style="padding:16px 0 16px 20px;font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary)">22–27</div>
+        <div style="padding:16px;font-weight:600">Logistics</div>
+        <div style="padding:16px 20px;color:var(--op-ink-dim);font-size:14.5px">Timeline, competing processes and their stages, comp expectations, location and relocation reality.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:86px 210px 1fr">
+        <div style="padding:16px 0 16px 20px;font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary)">27–30</div>
+        <div style="padding:16px;font-weight:600">Sell &amp; next steps</div>
+        <div style="padding:16px 20px;color:var(--op-ink-dim);font-size:14.5px">Deliver the sixty-second pitch, explain the loop, commit to a response date. Never "we'll be in touch."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · STORY -->
+  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">02</div>
+        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Their work</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s2.title">Story and hardware walkthrough</h2>
+        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s2.body">Two prompts, then stay quiet. You are listening for whether they can name what they personally designed, analyzed, or tested, and whether they understand what breaks when battery hardware fails.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;display:grid;gap:16px" data-repeat="story.prompts" data-count="2-4">
+      <div style="background:var(--op-surface);border:1px solid var(--op-border);border-left:3px solid var(--op-primary);padding:22px 26px">
+        <div style="font-size:16.5px;font-weight:600;margin-bottom:10px;text-wrap:pretty" data-slot="prompt.text">"Walk me through your path in about three minutes, with emphasis on the battery hardware your work has actually shipped or been tested on."</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+          <div style="font-size:14px;color:var(--op-ink-dim)" data-slot="prompt.listen"><b style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-success)">Listen for</b><br>Named programs, cell chemistries or pack types, test campaigns, and their specific piece of it. "I owned the cooling-plate redesign on our second abuse-test campaign" is what a good answer sounds like.</div>
+          <div style="font-size:14px;color:var(--op-ink-dim)" data-slot="prompt.flag"><b style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-accent)">Red flag</b><br>Supervisory-only exposure. Cannot name what they personally designed or tested. Describes the team's work in first-person plural throughout.</div>
+        </div>
+      </div>
+      <div style="background:var(--op-surface);border:1px solid var(--op-border);border-left:3px solid var(--op-primary);padding:22px 26px">
+        <div style="font-size:16.5px;font-weight:600;margin-bottom:10px;text-wrap:pretty">"What's the highest-consequence battery component or test you've personally owned, and how did it fit into the larger system?"</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+          <div style="font-size:14px;color:var(--op-ink-dim)"><b style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-success)">Listen for</b><br>Consequence awareness (what fails, and how badly, if this is wrong) plus fluency about the system around their piece: feed, thermal, controls. Both matter more than the complexity itself.</div>
+          <div style="font-size:14px;color:var(--op-ink-dim)"><b style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-accent)">Red flag</b><br>Describes scope as headcount or budget. No sense of what depended on the hardware, or what its failure mode was.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · SPOT-CHECKS -->
+  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-primary);line-height:1">03</div>
+        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary);margin-top:6px">The core of it</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s3.title">Battery spot-checks, with answer keys</h2>
+        <p style="margin:0 0 12px;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s3.body">Three questions with graded keys. Read the question exactly as written, then match what you hear against the five bands. You are not judging whether the answer is <em>right</em>: you are locating it on a ladder an engineer calibrated.</p>
+        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s3.body2">Write down their actual phrases even when you don't follow them. Those phrases are what the battery interviewer uses to calibrate their own session, and they are the most valuable thing you produce on this call.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;display:grid;gap:20px" data-repeat="spotchecks" data-count="2-5">
+
+      <div style="background:var(--op-surface);border:1px solid var(--op-border)">
+        <div style="padding:20px 26px;border-bottom:1px solid var(--op-border)">
+          <div style="display:flex;justify-content:space-between;gap:16px;align-items:baseline;margin-bottom:10px">
+            <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)" data-slot="sc.label">Spot-check 1 · thermal and electrical fundamentals</div>
+            <div style="font-family:var(--op-font-mono);font-size:10.5px;color:var(--op-muted)" data-slot="sc.time">3 min</div>
+          </div>
+          <div style="font-size:18px;font-weight:600;text-wrap:pretty" data-slot="sc.question">"What is <span style="font-family:var(--op-font-mono);font-size:16px">energy density</span>, and what does it tell you?"</div>
+        </div>
+        <div style="padding:16px 26px;border-bottom:1px solid var(--op-border);background:#FBF9F4;font-size:14px;color:var(--op-ink-dim)" data-slot="sc.tests"><b style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300)">What it actually tests</b> &nbsp;Whether they understand the core efficiency metric or just recite a definition. Energy density is the field's most basic figure of merit, so everyone claims to know it. A precise answer separates people who use the number from people who know what drives it. Role-derived from the O*NET electrical and thermal baseline.</div>
+        <div data-repeat="sc.bands" data-count="4-5">
+          <div style="display:grid;grid-template-columns:130px 1fr;border-bottom:1px solid #EDE8DE">
+            <div style="padding:14px 18px;font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-accent);background:#F9EFEF" data-slot="band.label">No signal</div>
+            <div style="padding:14px 20px;font-size:14.5px;color:var(--op-ink-dim)" data-slot="band.answer">No idea, or confuses it with power output.</div>
+          </div>
+          <div style="display:grid;grid-template-columns:130px 1fr;border-bottom:1px solid #EDE8DE">
+            <div style="padding:14px 18px;font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-warning);background:#FAF0E6">Weak</div>
+            <div style="padding:14px 20px;font-size:14.5px;color:var(--op-ink-dim)">"It's how good the battery is." <span style="color:var(--op-muted)">Right neighborhood, no sense of what it measures or its units.</span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:130px 1fr;border-bottom:1px solid #EDE8DE">
+            <div style="padding:14px 18px;font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-primary);background:#DCE6F2">Good</div>
+            <div style="padding:14px 20px;font-size:14.5px;color:var(--op-ink-dim)">Energy stored per unit of mass or volume, measured in watt-hours per kilogram or per litre. Higher means a lighter, smaller pack for the same job. <b>This band advances.</b></div>
+          </div>
+          <div style="display:grid;grid-template-columns:130px 1fr;border-bottom:1px solid #EDE8DE">
+            <div style="padding:14px 18px;font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-success);background:#EEF6F1">Great</div>
+            <div style="padding:14px 20px;font-size:14.5px;color:var(--op-ink-dim)">Separates cell-level from pack-level figures, explains why the pack number is always lower, and names typical ranges for the chemistries they have worked with.</div>
+          </div>
+          <div style="display:grid;grid-template-columns:130px 1fr">
+            <div style="padding:14px 18px;font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-surface);background:var(--op-ink)">Exceptional</div>
+            <div style="padding:14px 20px;font-size:14.5px;color:var(--op-ink-dim)">Connects it to the trade against power, cycle life, and safety margin, and to where chasing density stops paying against cost or thermal risk. <b>You are not expected to follow this.</b> Write down their phrases, tick the box, tell the battery interviewer to raise their starting difficulty.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--op-surface);border:1px solid var(--op-border)">
+        <div style="padding:20px 26px;border-bottom:1px solid var(--op-border)">
+          <div style="display:flex;justify-content:space-between;gap:16px;align-items:baseline;margin-bottom:10px">
+            <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)">Spot-check 2 · the abuse-test tell</div>
+            <div style="font-family:var(--op-font-mono);font-size:10.5px;color:var(--op-muted)">3 min</div>
+          </div>
+          <div style="font-size:18px;font-weight:600;text-wrap:pretty">"What is <span style="font-family:var(--op-font-mono);font-size:16px">thermal runaway</span>, and why does it matter?"</div>
+        </div>
+        <div style="padding:16px 26px;border-bottom:1px solid var(--op-border);background:#FBF9F4;font-size:14px;color:var(--op-ink-dim)"><b style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300)">What it actually tests</b> &nbsp;This is the single best proxy for genuine abuse-test experience in a short answer. Analysts and designers can define it; people who have actually tested packs have been scared by it. If they connect it to one cell's heat setting off its neighbours and a pack lost in seconds, they have done the real work. Role-derived from the cell-safety and test skills baseline.</div>
+        <div>
+          <div style="display:grid;grid-template-columns:130px 1fr;border-bottom:1px solid #EDE8DE">
+            <div style="padding:14px 18px;font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-accent);background:#F9EFEF">No signal</div>
+            <div style="padding:14px 20px;font-size:14.5px;color:var(--op-ink-dim)">No idea.</div>
+          </div>
+          <div style="display:grid;grid-template-columns:130px 1fr;border-bottom:1px solid #EDE8DE">
+            <div style="padding:14px 18px;font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-warning);background:#FAF0E6">Weak</div>
+            <div style="padding:14px 20px;font-size:14.5px;color:var(--op-ink-dim)">"The battery gets too hot." <span style="color:var(--op-muted)">A guess in the right neighborhood, with no mechanism.</span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:130px 1fr;border-bottom:1px solid #EDE8DE">
+            <div style="padding:14px 18px;font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-primary);background:#DCE6F2">Good</div>
+            <div style="padding:14px 20px;font-size:14.5px;color:var(--op-ink-dim)">A cell heats past the point where its own reactions keep generating heat, and it can spread to the cells around it if it is not contained. <b>This band advances.</b></div>
+          </div>
+          <div style="display:grid;grid-template-columns:130px 1fr;border-bottom:1px solid #EDE8DE">
+            <div style="padding:14px 18px;font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-success);background:#EEF6F1">Great</div>
+            <div style="padding:14px 20px;font-size:14.5px;color:var(--op-ink-dim)">Frames it as a self-feeding heat reaction, names cell spacing, thermal barriers, venting, or BMS cut-offs as countermeasures, and knows it can take a pack in seconds. <b>This is the abuse-test tell.</b> Often arrives with a war story: let them tell it.</div>
+          </div>
+          <div style="display:grid;grid-template-columns:130px 1fr">
+            <div style="padding:14px 18px;font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-surface);background:var(--op-ink)">Exceptional</div>
+            <div style="padding:14px 20px;font-size:14.5px;color:var(--op-ink-dim)">Distinguishes onset temperatures across chemistries, or discusses propagation testing and nail-penetration results. Mark it and move on.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--op-surface);border:1px solid var(--op-border)">
+        <div style="padding:20px 26px;border-bottom:1px solid var(--op-border)">
+          <div style="display:flex;justify-content:space-between;gap:16px;align-items:baseline;margin-bottom:10px">
+            <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)">Spot-check 3 · the fast-charge transient</div>
+            <div style="font-family:var(--op-font-mono);font-size:10.5px;color:var(--op-muted)">3 min</div>
+          </div>
+          <div style="font-size:18px;font-weight:600;text-wrap:pretty">"Walk me through what happens in a pack from plug-in to a full fast charge."</div>
+        </div>
+        <div style="padding:16px 26px;border-bottom:1px solid var(--op-border);background:#FBF9F4;font-size:14px;color:var(--op-ink-dim)"><b style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300)">What it actually tests</b> &nbsp;Whether they reason about the transient, not just the steady state. Datasheet performance lives at steady state; real packs are won or lost in the first minutes of a fast charge, when current limits, heat, and cell balance decide whether you get a full pack or a derated, overheating one. Author-generated, to reach the charging layer the fundamentals questions miss.</div>
+        <div>
+          <div style="display:grid;grid-template-columns:130px 1fr;border-bottom:1px solid #EDE8DE">
+            <div style="padding:14px 18px;font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-accent);background:#F9EFEF">No signal</div>
+            <div style="padding:14px 20px;font-size:14.5px;color:var(--op-ink-dim)">No idea, or "you plug it in and it fills up."</div>
+          </div>
+          <div style="display:grid;grid-template-columns:130px 1fr;border-bottom:1px solid #EDE8DE">
+            <div style="padding:14px 18px;font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-warning);background:#FAF0E6">Weak</div>
+            <div style="padding:14px 20px;font-size:14.5px;color:var(--op-ink-dim)">"Current flows in and the cells charge." <span style="color:var(--op-muted)">A steady-state worldview. Not disqualifying alone, but note it.</span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:130px 1fr;border-bottom:1px solid #EDE8DE">
+            <div style="padding:14px 18px;font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-primary);background:#DCE6F2">Good</div>
+            <div style="padding:14px 20px;font-size:14.5px;color:var(--op-ink-dim)">Describes a sequence: the charger and BMS agree on limits, current ramps up, the pack heats, and charging tapers as cells near full. <b>This band advances.</b></div>
+          </div>
+          <div style="display:grid;grid-template-columns:130px 1fr;border-bottom:1px solid #EDE8DE">
+            <div style="padding:14px 18px;font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-success);background:#EEF6F1">Great</div>
+            <div style="padding:14px 20px;font-size:14.5px;color:var(--op-ink-dim)">A real ordered sequence: pre-checks, a constant-current then constant-voltage phase, temperature-based derating, cell balancing near the top, and a clean handoff to idle. <b>Bonus signal:</b> raises unprompted what happens when one cell hits its limit early and how you stop safely. That instinct is the job.</div>
+          </div>
+          <div style="display:grid;grid-template-columns:130px 1fr">
+            <div style="padding:14px 18px;font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-surface);background:var(--op-ink)">Exceptional</div>
+            <div style="padding:14px 20px;font-size:14.5px;color:var(--op-ink-dim)">Discusses lithium plating at low temperature, charge-rate modeling, or balancing-current limits. <b>You are not expected to follow this.</b> Note their phrases and raise the interviewer's starting difficulty.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;background:var(--op-surface);border:1px solid var(--op-border);border-left:4px solid var(--op-primary);padding:24px 28px">
+      <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-primary);margin-bottom:10px">How to score the three</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;font-size:14.5px;color:var(--op-ink-dim)">
+        <div data-slot="score.rule.1"><b style="color:var(--op-success)">Two at Good or better</b> → advance. That is the bar; do not hold out for three strong answers.</div>
+        <div data-slot="score.rule.2"><b style="color:var(--op-primary)">One Great or Exceptional, the other two mixed</b> → hold for hiring-manager review instead of forcing the call.</div>
+        <div data-slot="score.rule.3"><b style="color:var(--op-accent)">Two Bad answers</b> → decline, regardless of the résumé. This is the one place you can say no on technical grounds.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · MOTIVATION -->
+  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">04</div>
+        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Motivation</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s4.title">Motivation and honest fit</h2>
+        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s4.body">Four questions. Surface every deal-breaker now rather than at offer stage, and capture their own words for the hiring manager: paraphrasing loses the thing that makes it useful.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:16px" data-repeat="motivation" data-count="3-6">
+      <div style="background:var(--op-surface);border:1px solid var(--op-border);border-left:3px solid var(--op-primary);padding:20px 24px">
+        <div style="font-size:15.5px;font-weight:600;margin-bottom:8px" data-slot="mq.text">"What drew you to us, and to battery work here specifically?"</div>
+        <div style="font-size:13.5px;color:var(--op-ink-dim)" data-slot="mq.listen"><b style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary)">Listen for</b> &nbsp;Researched specifics: our hardware, the pack approach, a test they read about. "Clean energy is cool" is neutral, not negative. Specifics are a strong buy signal.</div>
+      </div>
+      <div style="background:var(--op-surface);border:1px solid var(--op-border);border-left:3px solid var(--op-primary);padding:20px 24px">
+        <div style="font-size:15.5px;font-weight:600;margin-bottom:8px">"What are you optimising for in your next role that you don't have today?"</div>
+        <div style="font-size:13.5px;color:var(--op-ink-dim)"><b style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary)">Listen for</b> &nbsp;Alignment with what this role actually offers: full-subsystem ownership, test cadence, hardware proximity. Write their phrasing down verbatim and pass it to the hiring manager.</div>
+      </div>
+      <div style="background:var(--op-surface);border:1px solid var(--op-border);border-left:3px solid var(--op-accent);padding:20px 24px">
+        <div style="font-size:15.5px;font-weight:600;margin-bottom:8px">"What would make you decline an offer even if everything else looked right?"</div>
+        <div style="font-size:13.5px;color:var(--op-ink-dim)"><b style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-accent)">Listen for</b> &nbsp;Deal-breakers now, not at offer: a comp floor, relocation limits, a title need, a timing constraint. Every one you learn here is a week you don't lose later.</div>
+      </div>
+      <div style="background:var(--op-surface);border:1px solid var(--op-border);border-left:3px solid var(--op-warning);padding:20px 24px">
+        <div style="font-size:15.5px;font-weight:600;margin-bottom:8px">"Most battery work here is on-site near the test hardware. How does that land for you?"</div>
+        <div style="font-size:13.5px;color:var(--op-ink-dim)"><b style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-warning)">Listen for</b> &nbsp;Genuine feasibility, not politeness. Ask what a move would actually require and take the answer at face value. Do not infer from personal circumstances.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · LOGISTICS -->
+  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">05</div>
+        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Logistics</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s5.title">Fields to capture, and how to ask</h2>
+        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s5.body">Ask these in one run so none of them feels loaded. Each has a private-notes field attached. If a field is empty at the end of the call, the screen isn't finished.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;background:var(--op-surface);border:1px solid var(--op-border);overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:14.5px;min-width:700px">
+        <thead>
+          <tr>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 18px;border-bottom:1px solid var(--op-ink);width:200px">Field</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 18px;border-bottom:1px solid var(--op-ink)">Say this</th>
+          </tr>
+        </thead>
+        <tbody data-repeat="logistics" data-count="3-7">
+          <tr>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-weight:600" data-slot="log.field">Location</td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)" data-slot="log.script">"Where are you based today, and if you're outside the metro, what would a move near the test hardware actually require for you?"</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-weight:600">Timeline</td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">"If we ran a two-week loop, does anything in your world make that timing hard?"</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-weight:600">Competing processes</td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">"Where else are you interviewing, and at what stage? I'm asking so we can pace correctly, not to pressure you."</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-accent);font-weight:600">Compensation</td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">"The published range for this role is $X to $YK base plus equity, level-dependent. How does that sit against your expectations?" <span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:#FAF0E6;border:1px solid #E3CDB4">Estimate</span> <span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted)">Example range from the calibration brief: modeled reference blended from documented sources, small private employer</span><span style="display:block;margin-top:4px;color:var(--op-muted);font-size:13.5px">If their number is above the ceiling, say so on this call. Never let it surface at offer.</span></td>
+          </tr>
+          <tr>
+            <td style="padding:14px 18px;border-left:3px solid var(--op-muted);font-weight:600">Notice period</td>
+            <td style="padding:14px 18px;color:var(--op-ink-dim)">"And if this went well, what does your notice period look like?"</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 06 · SELL -->
+  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">06</div>
+        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Close</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s6.title">The sixty-second pitch</h2>
+        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s6.body">Learn this, don't read it. The shape matters: facts first, then the constraint that makes the work interesting, then the honest cost, then a specific next step with a date.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;background:#F7F5F0;border:1px solid var(--op-border);border-left:4px solid var(--op-primary);padding:28px 32px;font-size:16px;color:var(--op-ink);line-height:1.8" data-slot="sell.script">
+      <p style="margin:0 0 14px">"Quick picture of what you'd be walking into. A small battery team designing, building, and abuse-testing our own hardware, iterating fast between tests instead of waiting on a big-company release train. <span style="background:#EEF6F1;border-bottom:1px solid #BFDCCB">Small enough that one engineer owns a whole subsystem, not a slice.</span></p>
+      <p style="margin:0 0 14px">And here's the part battery engineers care about: you follow your hardware from the whiteboard to the test rig and watch it run. When something breaks on the rig, it's yours to understand and fix, not a ticket handed to another group.</p>
+      <p style="margin:0 0 14px">The honest cost is that this is hands-on and mostly on-site near the test hardware, and certification campaigns bring long days when a lab window is open.</p>
+      <p style="margin:0">Next step is a technical deep-dive with one of our battery engineers. I can have you scheduled within a week, and either way you'll hear from me by <span data-slot="sell.date">[Date]</span>."</p>
+    </div>
+
+    <div style="margin-top:16px;background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-warning);padding:20px 24px">
+      <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-warning);margin-bottom:8px">Caution</div>
+      <p style="margin:0;font-size:15px;color:var(--op-ink-dim);max-width:84ch" data-slot="caution.1">Before you score, check your own read. The affinity trap (over-crediting someone who reminds you of a past hire) and the halo or horn effect (letting one strong or weak moment color the whole call) both hit hardest on a cold screen. Grade each spot-check against its key on its own, not against your gut feeling about the person.</p>
+    </div>
+  </section>
+
+  <!-- 07 · PASS/FAIL -->
+  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">07</div>
+        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Decide</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s7.title">The call: advance, hold, or decline</h2>
+        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s7.body">Write it up the same day. Anything past four lines is you dodging the call, and the hiring manager reads only the first two anyway.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--op-border);border:1px solid var(--op-border)">
+      <div style="background:var(--op-surface);padding:26px 30px">
+        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-primary);margin-bottom:18px">Advance criteria</div>
+        <div style="display:grid;gap:12px" data-repeat="criteria" data-count="4-8">
+          <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding-bottom:10px;border-bottom:1px solid #EDE8DE"><span style="font-size:14.5px" data-slot="crit.item">Two of the three spot-checks graded Good or better</span><span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-accent);white-space:nowrap" data-slot="crit.level">Required</span></div>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding-bottom:10px;border-bottom:1px solid #EDE8DE"><span style="font-size:14.5px">Designed, analyzed, or tested real battery hardware</span><span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-accent);white-space:nowrap">Required</span></div>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding-bottom:10px;border-bottom:1px solid #EDE8DE"><span style="font-size:14.5px">Can name a failure they personally caused or caught</span><span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-accent);white-space:nowrap">Required</span></div>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding-bottom:10px;border-bottom:1px solid #EDE8DE"><span style="font-size:14.5px">Candidate confirms the on-site expectation works for them</span><span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-accent);white-space:nowrap">Required</span></div>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding-bottom:10px;border-bottom:1px solid #EDE8DE"><span style="font-size:14.5px">Comp expectations within the band</span><span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-highlight);white-space:nowrap">Preferred</span></div>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline"><span style="font-size:14.5px">Available inside 60 days</span><span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted);white-space:nowrap">Nice-to-have</span></div>
+        </div>
+      </div>
+      <div style="background:var(--op-surface);padding:26px 30px">
+        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-success);margin-bottom:18px">Before you hang up</div>
+        <div style="display:grid;gap:14px" data-repeat="wrapup" data-count="3-6">
+          <div style="display:grid;grid-template-columns:20px 1fr;gap:12px"><span style="color:var(--op-success)">·</span><span style="font-size:14.5px;color:var(--op-ink-dim)" data-slot="wrap.item"><b>Spot-check grades</b> logged, with their exact phrases quoted even where you couldn't follow them.</span></div>
+          <div style="display:grid;grid-template-columns:20px 1fr;gap:12px"><span style="color:var(--op-success)">·</span><span style="font-size:14.5px;color:var(--op-ink-dim)"><b>One-sentence failure story</b> in their words. This is the single line the hiring manager will actually read.</span></div>
+          <div style="display:grid;grid-template-columns:20px 1fr;gap:12px"><span style="color:var(--op-success)">·</span><span style="font-size:14.5px;color:var(--op-ink-dim)"><b>Private notes complete:</b> location and relocation, timeline, comp, competing processes, notice.</span></div>
+          <div style="display:grid;grid-template-columns:20px 1fr;gap:12px"><span style="color:var(--op-success)">·</span><span style="font-size:14.5px;color:var(--op-ink-dim)"><b>Strong-signal phrases forwarded</b> to the battery interviewer so they calibrate their starting difficulty.</span></div>
+          <div style="display:grid;grid-template-columns:20px 1fr;gap:12px"><span style="color:var(--op-success)">·</span><span style="font-size:14.5px;color:var(--op-ink-dim)"><b>Candidate's own questions captured verbatim</b> for the handoff; what they ask signals what they are really weighing.</span></div>
+          <div style="display:grid;grid-template-columns:20px 1fr;gap:12px"><span style="color:var(--op-success)">·</span><span style="font-size:14.5px;color:var(--op-ink-dim)"><b>Recommendation logged:</b> advance, hold, or decline, each with evidence you'd defend in a debrief. "Maybe" is not an option on this form.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-primary);padding:20px 24px">
+      <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-primary);margin-bottom:8px">Insight</div>
+      <p style="margin:0;font-size:15px;color:var(--op-ink-dim);max-width:84ch" data-slot="insight.1">Beyond the two-Bad-answers rule, you are not qualified to reject on battery depth from this call, and you should not try. Advance anyone who clears the spot-check bar and tells a real failure story; hold the genuinely ambiguous ones for the hiring manager. This talent pool is small, and a false negative here is invisible and expensive.</p>
+    </div>
+  </section>
+
+  <!-- HANDOFF -->
+  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+    <div style="background:var(--op-ink);color:var(--op-bg);padding:30px 34px" data-optional>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:18px">
+        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-bisaek)">Handoff → scheduling &amp; technical interviewer</div>
+        <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">Internal · optional: delete before sharing outside the search team</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;font-family:var(--op-font-mono);font-size:13px;line-height:1.9">
+        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Produces</div><div data-slot="handoff.produces">grades · motivators_verbatim · flags · recommendation</div></div>
+        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Consumers</div><div data-slot="handoff.consumers">QA gate (the interview-plan agent never reads this)</div></div>
+        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Blocked on</div><div data-slot="handoff.blocked">Nothing</div></div>
+        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Assumptions</div><div style="color:var(--op-hwang-light)" data-slot="handoff.assumptions">Recruiter is non-technical. Band ceiling is confirmed at intake and quotable. No eligibility gate: constraints ship empty for this search.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="margin-top:56px;padding-top:20px;border-top:1px solid var(--op-border);display:flex;justify-content:space-between;font-family:var(--op-font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">
+    <span data-slot="footer.left">TK-08 · Recruiter Screen Guide</span><span data-slot="footer.right">Bold text is said out loud</span>
+  </footer>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:900}}"></script>
+</body>
+</html>

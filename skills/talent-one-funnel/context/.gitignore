@@ -1,0 +1,4 @@
+# Keep real data out of a public fork: only the *.example.md templates and this README are tracked
+*.md
+!*.example.md
+!README.md

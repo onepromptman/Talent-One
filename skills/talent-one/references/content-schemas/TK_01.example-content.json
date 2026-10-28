@@ -1,0 +1,451 @@
+{
+ "template": "TK_01_Educational_Brief.dc.html",
+ "artifact": "01",
+ "slots": {
+  "doc.agent": "Agent · SENSEI",
+  "doc.date": "Reads in ~12 min",
+  "doc.eyebrow": "Artifact 01 · Role literacy",
+  "doc.title": "Educational Brief",
+  "role.title": "Battery Systems Engineer · Mid",
+  "role.org": "Connected-hardware company · small battery team, one cell partner",
+  "doc.thesis": "Everything you need to talk credibly with a battery systems engineer or a hiring manager: what the role builds, where it sits in the product, how to translate the jargon into plain English, and which words surface the right candidates. You will not have to look anything up mid-call.",
+  "cover.note": "Section 3 (the glossary) and Section 10 (the cheat sheet) are the two to keep open on a live call",
+  "s1.title": "What a battery systems engineer actually does all day",
+  "s1.body": "They design the battery pack, and the thermal and electrical systems around it, that store energy and hand it back on demand, then they prove it on a test rig before it ever ships. Most of the week goes on buying margin against the ways a pack destroys itself: thermal runaway, an internal short, a cooling loop that falls behind, an overcharge. The craft is judged on the worst cycle, not the best one, so caution here is a professional virtue, not timidity.",
+  "s1.body2": "Two things follow, and both change how you talk to candidates. First, they are precise: vague enthusiasm reads as not-serious. Second, they respect failure as a subject, so the fastest way to earn credibility is to ask what failed in the abuse chamber, not what shipped.",
+  "northstar": "Design and prove the battery pack, and the thermal and electrical systems behind it, that store energy and deliver it on demand, and keep it from overheating on the test rig or in a customer's garage.",
+  "analogy": "It is a fuel tank that can set itself on fire, packed into a box the size of a fridge. The whole craft is keeping a large amount of stored energy calm and usable: charge it too fast and the cells wear out, let the heat build and one cell can push its neighbours into runaway, let the cells drift apart and the pack quits early. Every design choice buys margin against one of those failures.",
+  "s2.title": "Where the role sits in the product, layer by layer",
+  "s2.body": "Use this to place any candidate in thirty seconds. Ask them which of these layers they have lived in. The marked layers are this role. One layer away is an adjacent hire worth pursuing; two layers away is a neighbouring discipline that only shares vocabulary.",
+  "insight.1": "The disciplines one step away, EV battery validation, power electronics, consumer-electronics battery qualification, and grid-scale storage integration, often hold reachable battery talent the home-storage sector alone will not surface. Sourcing only people whose title already reads \"battery\" is the fastest way to stall a search where the qualified pool is small and geographically concentrated.",
+  "s3.title": "Every term, translated for you",
+  "s3.body": "The middle column is what you say to a non-engineer. The right column is why the term matters, which is what lets you ask a real follow-up instead of nodding. Use one translation per call; do not lecture an engineer with their own vocabulary. Keep this glossary at definition level; never fill it with performance figures from your own program.",
+  "s4.title": "The real bar, and who checks each skill",
+  "s4.body": "You are not assessing any of this yourself. Your job is to know which stage in the loop owns each skill, so you can tell a hiring manager where a concern gets answered instead of guessing at it on the phone. Loop stages below are a common default; map them to your own.",
+  "s5.title": "What you can read on a call",
+  "s5.body": "You cannot judge their analysis. You can absolutely judge how they talk about failure, ownership, and the people who disagreed with them, which carries real predictive signal and the part hiring managers most often skip.",
+  "s6.title": "Where battery systems engineers come from",
+  "s6.body": "A degree is a proxy here, not a gate. The alternative pathways below are worth weighting alongside pedigree for hands-on battery work, and they are far less contested.",
+  "edu.academic": "A bachelor's in electrical, mechanical, or chemical engineering is typical; design roles often add a master's. Battery or power-electronics project work is a signal, not a requirement. Sourced · BLS-OOH / O*NET 2024, electrical engineers",
+  "edu.alt": {
+   "html": "<b>Adjacent-industry engineers.</b> EV powertrain, power-electronics, and consumer-electronics engineers bring cell, thermal, and safety fluency. Their titles rarely say \"battery systems.\" Estimate · O*NET adjacency + cross-industry pools"
+  },
+  "edu.hobby": "Builders and field-service crossovers. E-bike and home-battery builders, university solar-car or Formula Electric teams, and EV or solar field technicians. Someone doing this on weekends is telling you exactly what they want to do all day.",
+  "s7.title": "Who a battery systems engineer works with",
+  "s7.body": "Use this to answer \"what's the team like?\" with specifics instead of adjectives. It doubles as a referral map: each of these functions knows people who could do this job.",
+  "s8.title": "The words that find the pool",
+  "s8.body": "The seed list the sourcing strings get built from. The market's dominant titles are not the one on your requisition, so search every synonym or you miss much of the pool.",
+  "kw.note": "Worth knowing: the market spreads this role across many titles (Battery Systems, Battery Pack, Energy Storage Systems, Battery Test, Cell Engineering). Search all of them. Exclude pure cell-chemistry research roles unless the pack and test skills clearly transfer.",
+  "s9.title": "What shifted in this market lately",
+  "s9.body": "Three shifts worth knowing before a hiring-manager conversation. Each is a place where last year's assumptions are now slightly wrong.",
+  "s10.title": "The credibility cheat sheet",
+  "s10.body": "Left column is what to say. Right column is the version that costs you the candidate, and why. Specificity is the entire game with this audience.",
+  "footer.right": "Plain-language by design",
+  "doc.prose0": "What that means day to day",
+  "doc.prose1": "Equivalent hands-on depth is explicitly fine. If someone has shipped and tested real battery hardware for years, the degree question is closed.",
+  "doc.prose2": "Alternative pathways that convert",
+  "doc.prose3": "Title synonyms: search all of these"
+ },
+ "repeats": {
+  "cover.audience": [
+   {
+    "audience.item": "You have never sourced battery or electrical engineers before"
+   },
+   {
+    "audience.item": "You have to run the recruiter screen without an engineer in the room"
+   },
+   {
+    "audience.item": "You are about to write outreach and do not know the vocabulary"
+   },
+   {
+    "audience.item": "A hiring manager just used five terms you could not place"
+   }
+  ],
+  "responsibilities": [
+   {
+    "resp.name": "Design the pack and its parts",
+    "resp.detail": "Cells, modules, busbars, enclosure, and cooling. Turn product requirements into a pack that delivers the right energy and power without failing."
+   },
+   {
+    "resp.name": "Own the thermal system",
+    "resp.detail": "The cooling plates, fans, sensors, and controls that keep every cell inside its safe temperature window. A large share of battery failures start here."
+   },
+   {
+    "resp.name": "Test it, for real, on a rig",
+    "resp.detail": "Cycling and abuse-test campaigns: instrument the pack, run it, reduce the data, and find where the model was wrong before it ships."
+   },
+   {
+    "resp.name": "Model before building hardware",
+    "resp.detail": "Thermal, electrical, and FEA analysis in ANSYS, MATLAB, or SolidWorks to predict heat, current, and stress, then design margin against each."
+   },
+   {
+    "resp.name": "Work across disciplines",
+    "resp.detail": "Coordinate with mechanical, firmware, power electronics, materials, and manufacturing so the hardware, the analysis, and the build all agree."
+   }
+  ],
+  "stack.layers": [
+   {
+    "layer.name": "Product / system level",
+    "layer.desc": "The whole home battery unit. A different team (systems, firmware) sets the energy, power, and safety requirements this role has to meet."
+   },
+   {
+    "layer.owned": {
+     "html": "<div style=\"padding:20px 18px;font-family:var(--op-font-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-surface)\">Battery pack system <span style=\"display:block;font-size:9.5px;letter-spacing:.14em;opacity:.8;margin-top:4px\">★ core of this role</span></div><div style=\"padding:20px 18px;background:#DCE6F2;font-size:14.5px;color:var(--op-ink)\">The pack plus its thermal and electrical systems as one integrated subsystem: architecture, requirements, budgets, integration. This is where the hire spends most of their time.</div>"
+    }
+   },
+   {
+    "layer.name": "Pack & module design ★ must be at home here",
+    "layer.desc": "Cells, modules, busbars, and enclosure, plus the cooling and the battery management system that watches every cell."
+   },
+   {
+    "layer.name": "Test & analysis ★ where hardware empathy shows",
+    "layer.desc": "Cycling, abuse, and environmental testing, plus thermal, electrical, and FEA models. Many of your strongest candidates come from a pure test or analysis title."
+   },
+   {
+    "layer.name": "Materials & manufacturing",
+    "layer.desc": "Cell materials, thermal interface materials, welding and assembly. Built by materials and manufacturing engineers. Shares vocabulary, different discipline: not a substitute for this role."
+   }
+  ],
+  "glossary": [
+   {
+    "term.name": "Energy density (Wh/kg)",
+    "term.plain": "The fuel economy of a pack: how much energy you store for each kilogram you carry.",
+    "term.why": "The headline efficiency number. Someone who talks energy-density trade-offs unprompted is thinking like a battery engineer, not reciting."
+   },
+   {
+    "term.name": "Thermal runaway",
+    "term.plain": "One cell overheats and vents, and can push its neighbours past their limits in seconds.",
+    "term.why": "The nightmare failure mode. Anyone who has chased it in an abuse chamber has scarce, real experience. Ask what they saw."
+   },
+   {
+    "term.name": "Abuse test (crush, nail, overcharge)",
+    "term.plain": "Deliberately mistreating a cell or pack to prove it fails safely, not dangerously.",
+    "term.why": "Where theory meets reality. \"How many abuse tests have you run or witnessed?\" is a high-signal question."
+   },
+   {
+    "term.name": "Test rig / cycler",
+    "term.plain": "The instrumented equipment that charges and drains a pack and measures exactly what it does.",
+    "term.why": "Test experience is scarce and prized. It separates people who have designed packs from people who have only designed them on paper."
+   },
+   {
+    "term.name": "Thermal management system",
+    "term.plain": "The cooling plates, fans, fluid loops, and sensors that keep every cell at a safe temperature.",
+    "term.why": "A large share of battery failures are thermal failures. This fluency transfers straight from HVAC, data-centre, and EV work."
+   },
+   {
+    "term.name": "Battery management system (BMS)",
+    "term.plain": "The electronics that watch every cell's voltage and temperature and decide when to stop charging.",
+    "term.why": "One of the hardest parts to get right. EV and power-electronics engineers transfer here directly."
+   },
+   {
+    "term.name": "Cell balancing",
+    "term.plain": "Evening out the charge across cells so no single cell works harder than the rest.",
+    "term.why": "The classic answer to early pack failure. Knowing balancing schemes signals real pack-design depth, not just analysis."
+   },
+   {
+    "term.name": "State of charge & state of health",
+    "term.plain": "How full the pack is right now, and how much of its original capacity it still holds.",
+    "term.why": "A place where candidates reveal design intuition and the trade-offs they actually understand."
+   },
+   {
+    "term.name": "Cell chemistry: LFP / NMC",
+    "term.plain": "The materials inside each cell, which set its energy, lifetime, cost, and safety.",
+    "term.why": "Tells you which sub-family a candidate lives in. Chemistry research and pack engineering are close to different careers."
+   },
+   {
+    "term.name": "Power electronics (inverter / DC-DC)",
+    "term.plain": "The converters that move energy between the pack, the house, the grid, and the solar panels.",
+    "term.why": "A fast-growing specialty with different physics. Screen for which side, pack or power electronics, the requisition actually wants."
+   },
+   {
+    "term.name": "Thermal / FEA analysis",
+    "term.plain": "Computer simulation of heat flow and structural stress before any hardware is built.",
+    "term.why": "The daily design tool. Fluency in ANSYS, MATLAB, or SolidWorks is table stakes for a design role."
+   },
+   {
+    "term.name": "Field heritage & certification",
+    "term.plain": "How proven a design is, from lab prototype to installed in homes, and the testing that certifies it.",
+    "term.why": "\"Field-proven\" is the scarce, expensive kind of experience. It separates R&D engineers from production ones."
+   }
+  ],
+  "skills": [
+   {
+    "skill.name": "Battery pack design",
+    "skill.bar": "Required",
+    "skill.plain": "Designing a pack from cells and modules up, from requirements to working hardware.",
+    "skill.verify": "Technical deep-dive · design review + portfolio"
+   },
+   {
+    "skill.name": "Thermal and electrical",
+    "skill.bar": "Required",
+    "skill.plain": "The core physics: heat transfer, circuits, and electrochemistry basics. The foundation everything else rests on.",
+    "skill.verify": "Technical screen · fundamentals"
+   },
+   {
+    "skill.name": "Cell behaviour and safety",
+    "skill.bar": "Required",
+    "skill.plain": "How cells age, heat, and fail, and the safety design that keeps one failure contained.",
+    "skill.verify": "Technical deep-dive · sub-family depth"
+   },
+   {
+    "skill.name": "Battery test",
+    "skill.bar": "Required",
+    "skill.plain": "Cycling and abuse-test work: instrumentation, running the test, and reducing the data afterward.",
+    "skill.verify": "Deep-dive + reference · test-rig experience"
+   },
+   {
+    "skill.name": "CAD + analysis (thermal/FEA)",
+    "skill.bar": "Required",
+    "skill.plain": "Modeling heat, current, and stress in ANSYS, MATLAB, or SolidWorks before committing to hardware.",
+    "skill.verify": "Analysis exercise · take-home or live"
+   },
+   {
+    "skill.name": "Systems engineering on shipped hardware",
+    "skill.bar": "Required",
+    "skill.plain": "Requirements, tolerances, and verification: making sure the built part meets the part on paper.",
+    "skill.verify": "Technical deep-dive · requirements walk-through"
+   },
+   {
+    "skill.name": "Cell-to-pack / high-voltage safety",
+    "skill.bar": "Preferred",
+    "skill.plain": "Cell-to-pack layouts and high-voltage safe working, increasingly common in storage hardware.",
+    "skill.verify": "Resume + reference · not a screen-out"
+   },
+   {
+    "skill.name": "BMS logic; MATLAB/Python",
+    "skill.bar": "Nice-to-have",
+    "skill.plain": "Battery management logic, plus scripting for analysis and data reduction.",
+    "skill.verify": "You can ask this: \"which of these have you owned, and where?\""
+   }
+  ],
+  "soft.skills": [
+   {
+    "soft.name": "End-to-end ownership",
+    "soft.why": "Small team, wide blast radius: requirements through design, test, and the field launch.",
+    "soft.listen": "\"I owned that pack from analysis through abuse test.\" Names the failure they personally caught.",
+    "soft.flag": "Only describes analysis someone else turned into hardware."
+   },
+   {
+    "soft.name": "Hardware empathy",
+    "soft.why": "The design meets cells, heat, and current. Blaming the test rig is not a debugging strategy.",
+    "soft.listen": "Stories with a rig, an instrument, a scrubbed test, a burned weekend in them.",
+    "soft.flag": "Has never left the simulation. \"The test team handles that.\""
+   },
+   {
+    "soft.name": "Productive paranoia",
+    "soft.why": "Margin and failure analysis are a temperament before they are a spreadsheet.",
+    "soft.listen": "Asks \"what happens when this fails?\" without being prompted.",
+    "soft.flag": "Happy-path thinking. Treats testing as a formality."
+   },
+   {
+    "soft.name": "Persuasion under disagreement",
+    "soft.why": "Design reviews on a small hardware team get contentious every week.",
+    "soft.listen": "Describes changing their own mind because the data said so.",
+    "soft.flag": "Every disagreement story ends with the other person being wrong."
+   },
+   {
+    "soft.name": "Teaching reflex",
+    "soft.why": "At mid level the hire is expected to raise the team's practices, not just their own output.",
+    "soft.listen": "Concrete examples of levelling up a junior engineer or a technician.",
+    "soft.flag": "Hoards context. \"It is faster if I just do it myself.\""
+   }
+  ],
+  "collab.nodes": [
+   {
+    "node.name": "Mechanical & enclosure",
+    "node.desc": "Designs the enclosure, mounts, and structure the pack bolts into. Constant back-and-forth on loads, interfaces, and packaging.",
+    "collab.nodes.prose0": "Owns cells, thermal materials, welded joints, and how the hardware actually gets built. Drives what the design can and cannot do.",
+    "node.name2": "Materials & manufacturing"
+   },
+   {
+    "node.core": "Battery systems",
+    "collab.nodes.v1.prose0": "The integration point for anything that stores or moves energy. Touches nearly every discipline, which is why communication weight is as high as technical weight in this hire."
+   },
+   {
+    "node.name": "Firmware & power electronics",
+    "node.desc": "Runs the battery management system and reads its sensors. Sets the power and timing the pack has to deliver.",
+    "collab.nodes.prose0": "Runs the rigs, the instrumentation, and the certification campaign with this engineer at the bench.",
+    "node.name2": "Test & quality"
+   }
+  ],
+  "kw.primary": [
+   {
+    "kw.term": "battery systems"
+   },
+   {
+    "kw.term": "battery pack"
+   },
+   {
+    "kw.term": "energy storage"
+   },
+   {
+    "kw.term": "lithium-ion"
+   },
+   {
+    "kw.term": "thermal management"
+   },
+   {
+    "kw.term": "battery management system"
+   },
+   {
+    "kw.term": "abuse testing"
+   },
+   {
+    "kw.term": "cycle testing"
+   },
+   {
+    "kw.term": "cell balancing"
+   },
+   {
+    "kw.term": "thermal analysis"
+   }
+  ],
+  "kw.secondary": [
+   {
+    "kw2.term": "energy density"
+   },
+   {
+    "kw2.term": "BMS"
+   },
+   {
+    "kw2.term": "LFP"
+   },
+   {
+    "kw2.term": "NMC"
+   },
+   {
+    "kw2.term": "thermal runaway"
+   },
+   {
+    "kw2.term": "ANSYS"
+   },
+   {
+    "kw2.term": "MATLAB"
+   },
+   {
+    "kw2.term": "SolidWorks"
+   },
+   {
+    "kw2.term": "FEA"
+   },
+   {
+    "kw2.term": "high voltage"
+   },
+   {
+    "kw2.term": "cell chemistry"
+   },
+   {
+    "kw2.term": "DC-DC converter"
+   },
+   {
+    "kw2.term": "busbar design"
+   },
+   {
+    "kw2.term": "UL 9540"
+   }
+  ],
+  "kw.titles": [
+   {
+    "title.term": "Battery Systems Engineer"
+   },
+   {
+    "title.term": "Battery Pack Engineer"
+   },
+   {
+    "title.term": "Energy Storage Systems Engineer"
+   },
+   {
+    "title.term": "Battery Design Engineer"
+   },
+   {
+    "title.term": "Cell Engineer"
+   },
+   {
+    "title.term": "Battery Integration Engineer"
+   },
+   {
+    "title.term": "Battery Test Engineer"
+   },
+   {
+    "title.term": "Battery Validation Engineer"
+   },
+   {
+    "title.term": "Battery Development Engineer"
+   }
+  ],
+  "kw.exclude": [
+   {
+    "ex.term": "sales role"
+   },
+   {
+    "ex.term": "technician only"
+   },
+   {
+    "ex.term": "cell chemistry research"
+   },
+   {
+    "ex.term": "battery recycling ops"
+   },
+   {
+    "ex.term": "intern-only history"
+   },
+   {
+    "ex.term": "coursework only"
+   },
+   {
+    "ex.term": "recruiter"
+   }
+  ],
+  "fieldnotes": [
+   {
+    "note.title": "Demand is outrunning the pool",
+    "note.body": {
+     "html": "<span style=\"font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:#FAF0E6;border:1px solid #E3CDB4\">Estimate</span><span style=\"font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted)\">directional, no single published source</span>"
+    }
+   },
+   {
+    "note.title": "New specialties are heating up",
+    "note.body": {
+     "html": "<span style=\"font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:#FAF0E6;border:1px solid #E3CDB4\">Estimate</span><span style=\"font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted)\">sub-field trend read, not measured</span>"
+    }
+   },
+   {
+    "note.title": "The scarcity is at mid level",
+    "note.body": {
+     "html": "<span style=\"font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB\">Sourced</span><span style=\"font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted)\">BLS-OOH 2024-34</span>"
+    }
+   }
+  ],
+  "cheatsheet": [
+   {
+    "cheat.good": "\"You'd own a battery subsystem end to end, from analysis and design through abuse testing.\"",
+    "cheat.bad": "\"You'd be saving the planet!\" Maybe they build cooling plates, or harnesses. Overclaiming the mission reads as not having read the req."
+   },
+   {
+    "cheat.good": "\"The work is pack design in ANSYS and SolidWorks, plus cycling and abuse testing on real hardware.\"",
+    "cheat.bad": "\"They use cutting-edge battery technology.\" Says you cannot describe the work, so the technical conversation ends here."
+   },
+   {
+    "cheat.good": "\"You'd run your own test campaigns, not hand a model to someone else to validate.\"",
+    "cheat.bad": "\"It's a high-impact role with lots of ownership.\" Abstract impact claims are the most ignored sentence in recruiting."
+   },
+   {
+    "cheat.good": "\"Small battery team with one cell partner, so you see a part from analysis to tested hardware.\"",
+    "cheat.bad": "\"It's a lean team where you do a bit of everything.\" Reads as understaffed and disorganised. The specifics do the work instead."
+   },
+   {
+    "cheat.good": "\"Your EV or power-electronics background transfers directly; the home-storage standards are what you'd ramp on.\"",
+    "cheat.bad": "\"Great pay at a fast-growing startup.\" Every company says this, so it reads as concealment. Give the band and a real proof point."
+   }
+  ]
+ },
+ "standalone_bars": [],
+ "optionals": {},
+ "toggles": {},
+ "handoff": {
+  "produces": "primary_keywords · title_synonyms · cross_industry_pools · skill_transfer_notes · seniority_ladder · must_have_skills",
+  "consumers": "02 Job Description · 03 Talent Map · 06 Interview Plan · 08 Recruiter Screen",
+  "assumptions": "Recruiter is non-technical. No engineer at the recruiter screen. Degree is a proxy, not a gate. Most battery test work is onsite by nature (test rigs, hardware), even on a hybrid req.",
+  "blocked": "Nothing. Runs from the CALIBRATE handoff plus public data."
+ }
+}

@@ -1,0 +1,208 @@
+{
+  "template": "TK_03_Talent_Map.dc.html",
+  "derived_from": "example-content",
+  "required": [
+    "caution.1",
+    "comp.positioning",
+    "cover.provenance",
+    "doc.agent",
+    "doc.date",
+    "doc.eyebrow",
+    "doc.prose0",
+    "doc.prose1",
+    "doc.prose2",
+    "doc.prose3",
+    "doc.prose4",
+    "doc.prose5",
+    "doc.prose6",
+    "doc.thesis",
+    "doc.title",
+    "footer.right",
+    "gate.1",
+    "insight.1",
+    "pullstat.claim",
+    "pullstat.label",
+    "pullstat.method",
+    "pullstat.value",
+    "relo.readout",
+    "relo.seq.1",
+    "relo.seq.2",
+    "relo.seq.3",
+    "relo.seq.skip",
+    "role.org",
+    "role.title",
+    "s1.body",
+    "s1.title",
+    "s10.body",
+    "s10.title",
+    "s2.body",
+    "s2.title",
+    "s3.body",
+    "s3.title",
+    "s4.body",
+    "s4.title",
+    "s5.body",
+    "s5.title",
+    "s6.body",
+    "s6.title",
+    "s7.body",
+    "s7.title",
+    "s8.body",
+    "s8.title",
+    "s9.body",
+    "s9.title",
+    "structural.1"
+  ],
+  "optional": {},
+  "numeric": [
+    "pullstat.claim",
+    "pullstat.value",
+    "s1.body",
+    "s8.body"
+  ],
+  "repeats": {
+    "cover.metrics": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "metric.label",
+        "metric.value"
+      ],
+      "optional_keys": []
+    },
+    "funnel.stages": {
+      "min": 1,
+      "max": 7,
+      "item_keys": [
+        "bar",
+        "stage.filter",
+        "stage.label",
+        "stage.n"
+      ],
+      "optional_keys": []
+    },
+    "method.rows": {
+      "min": 1,
+      "max": 7,
+      "item_keys": [
+        "method.basis",
+        "method.pill",
+        "method.stage"
+      ],
+      "optional_keys": []
+    },
+    "demand.rows": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "demand.name",
+        "demand.read",
+        "demand.reqs",
+        "demand.velocity"
+      ],
+      "optional_keys": []
+    },
+    "quadrant.points": {
+      "min": 1,
+      "max": 9,
+      "item_keys": [
+        "label",
+        "size",
+        "x",
+        "y"
+      ],
+      "optional_keys": [
+        "accent"
+      ]
+    },
+    "tier.notes": {
+      "min": 1,
+      "max": 5,
+      "item_keys": [
+        "tier.body",
+        "tier.title"
+      ],
+      "optional_keys": []
+    },
+    "hubs": {
+      "min": 1,
+      "max": 8,
+      "item_keys": [
+        "hub.anchors",
+        "hub.housing",
+        "hub.name",
+        "hub.ownership",
+        "hub.pool",
+        "hub.relo",
+        "hub.tax"
+      ],
+      "optional_keys": []
+    },
+    "dossiers": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "dossier.angle",
+        "dossier.flag",
+        "dossier.name",
+        "dossier.pool",
+        "dossier.trigger"
+      ],
+      "optional_keys": []
+    },
+    "peripheral": {
+      "min": 1,
+      "max": 8,
+      "item_keys": [
+        "per.name",
+        "per.ramp",
+        "per.transfer",
+        "per.where",
+        "per.why"
+      ],
+      "optional_keys": []
+    },
+    "comp.levels": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "comp.base",
+        "comp.level",
+        "comp.note",
+        "comp.total"
+      ],
+      "optional_keys": []
+    },
+    "personas": {
+      "min": 1,
+      "max": 4,
+      "item_keys": [
+        "persona.message",
+        "persona.name",
+        "persona.risk",
+        "persona.wants",
+        "persona.who"
+      ],
+      "optional_keys": []
+    },
+    "recommendations": {
+      "min": 1,
+      "max": 5,
+      "item_keys": [
+        "rec.action",
+        "rec.n",
+        "rec.owner",
+        "rec.when",
+        "rec.why"
+      ],
+      "optional_keys": []
+    }
+  },
+  "toggles": [
+    "comp",
+    "dives",
+    "method",
+    "peripheral",
+    "personas"
+  ]
+}

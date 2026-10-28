@@ -1,0 +1,13 @@
+[
+  {"job_id": 101, "current_stage": {"name": "Application Review"}, "status": "active", "candidate": {"name": "Jane Q. Applicant", "email_addresses": [{"value": "jane.applicant@example.com"}]}, "name": "Jane Q. Applicant", "email": "jane.applicant@example.com"},
+  {"job_id": 101, "current_stage": {"name": "Application Review"}, "status": "active", "candidate": {"name": "Jane Q. Applicant", "email_addresses": [{"value": "jane.applicant@example.com"}]}},
+  {"job_id": 102, "current_stage": {"name": "Application Review"}, "status": "active", "candidate": {"name": "Jane Q. Applicant"}},
+  {"job_id": 101, "current_stage": {"name": "Recruiter Screen"}, "status": "active", "candidate": {"name": "Carol Screening", "email_addresses": [{"value": "carol.screening@example.com"}]}},
+  {"job_id": 102, "current_stage": {"name": "Recruiter Screen"}, "status": "active", "candidate": {"name": "Carol Screening"}},
+  {"job_id": 101, "current_stage": {"name": "Onsite Interview"}, "status": "active", "candidate": {"name": "Jane Q. Applicant"}},
+  {"job_id": 101, "current_stage": {"name": "Offer"}, "status": "active", "candidate": {"name": "Bob Offeree", "email": "bob.offeree@example.com"}},
+  {"job_id": 102, "current_stage": {"name": "Hired"}, "status": "hired", "candidate": {"name": "Bob Offeree"}},
+  {"job_id": 201, "current_stage": {"name": "Application Review"}, "status": "active", "candidate": {"name": "Jane Q. Applicant"}},
+  {"job_id": 201, "current_stage": {"name": "Application Review"}, "status": "active", "candidate": {"name": "Jane Q. Applicant"}},
+  {"job_id": 201, "current_stage": {"name": "Recruiter Screen"}, "status": "active", "candidate": {"name": "Carol Screening"}}
+]

@@ -1,0 +1,118 @@
+{
+  "template": "TK_08_Recruiter_Screen.dc.html",
+  "derived_from": "example-content",
+  "required": [
+    "caution.1",
+    "cover.note",
+    "doc.agent",
+    "doc.date",
+    "doc.eyebrow",
+    "doc.thesis",
+    "doc.title",
+    "footer.right",
+    "insight.1",
+    "role.org",
+    "role.title",
+    "s1.body",
+    "s1.title",
+    "s2.body",
+    "s2.title",
+    "s3.body",
+    "s3.body2",
+    "s3.title",
+    "s4.body",
+    "s4.title",
+    "s5.body",
+    "s5.title",
+    "s6.body",
+    "s6.title",
+    "s7.body",
+    "s7.title",
+    "score.rule.1",
+    "score.rule.2",
+    "score.rule.3",
+    "sell.date"
+  ],
+  "optional": {},
+  "numeric": [],
+  "repeats": {
+    "cover.metrics": {
+      "min": 1,
+      "max": 7,
+      "item_keys": [
+        "metric.label",
+        "metric.value"
+      ],
+      "optional_keys": []
+    },
+    "runofshow": {
+      "min": 1,
+      "max": 8,
+      "item_keys": [
+        "ros.objective",
+        "ros.segment",
+        "ros.time"
+      ],
+      "optional_keys": []
+    },
+    "story.prompts": {
+      "min": 1,
+      "max": 4,
+      "item_keys": [
+        "prompt.flag",
+        "prompt.listen",
+        "prompt.text"
+      ],
+      "optional_keys": []
+    },
+    "spotchecks": {
+      "min": 1,
+      "max": 5,
+      "item_keys": [
+        "sc.label",
+        "sc.question",
+        "sc.tests",
+        "sc.time"
+      ],
+      "optional_keys": [
+        "sc.bands"
+      ]
+    },
+    "motivation": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "mq.listen",
+        "mq.text"
+      ],
+      "optional_keys": []
+    },
+    "logistics": {
+      "min": 1,
+      "max": 7,
+      "item_keys": [
+        "log.field",
+        "log.script"
+      ],
+      "optional_keys": []
+    },
+    "criteria": {
+      "min": 1,
+      "max": 8,
+      "item_keys": [
+        "crit.item",
+        "crit.level"
+      ],
+      "optional_keys": []
+    },
+    "wrapup": {
+      "min": 1,
+      "max": 6,
+      "item_keys": [
+        "wrap.item"
+      ],
+      "optional_keys": []
+    }
+  },
+  "toggles": []
+}

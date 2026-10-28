@@ -1,0 +1,123 @@
+{
+  "baselines_version": "1.0",
+  "purpose": "Bundled snapshot of stable public reference data (BLS/ONET wage tables, ACS metro housing stats, industry recruiting benchmarks) so scout does not re-fetch it live every run. Scout loads this file FIRST and spends its web budget only on role-specific facts this file cannot carry: named target companies, hiring triggers, live posting language, comp postings for the specific role being researched.",
+  "built": "2026-08-06",
+  "usage_note": "Every figure here is Sourced from the named public series at the stated as_of vintage. When scout cites a value from this file in pack.json or pack-research.json, the method field names the original source and this file's as_of vintage (not today's date), per the pill rules in CONTEXT_PACK.md section 2 and 00_SHARED_CORE.md section 3. A figure marked confidence:unverified below is a best-known estimate that could not be confirmed against a live source this build; scout should not upgrade its pill past Estimate and should re-verify with a live lookup if the role's search specifically turns on that figure.",
+
+  "bls_oews_occupations": {
+    "as_of": "BLS OEWS (Occupational Employment and Wage Statistics) May 2025 national estimates, published Apr 2026",
+    "source": "BLS Occupational Employment and Wage Statistics (api.bls.gov / bls.gov/oes), wage percentiles cross-checked via O*NET OnLine national wage tables (onetonline.org, sourced from the same BLS OEWS release)",
+    "wage_unit": "USD, annual",
+    "note": "Employment counts drawn from the BLS OEWS May 2025 national news-release table. Eight rows below have an employment figure that could not be independently confirmed this build (extraction ambiguity on a secondary table pull); those carry confidence:unverified on the employment field only, wage data on the same rows is independently sourced and considered reliable.",
+    "occupations": [
+      {"soc": "15-1252", "title": "Software Developers", "employment": 1687890, "median_annual": 135980, "p10_annual": 82460, "p25_annual": 105210, "p75_annual": 171980, "p90_annual": 214670},
+      {"soc": "15-1253", "title": "Software Quality Assurance Analysts and Testers", "employment": 186740, "median_annual": 104300, "p10_annual": 61440, "p25_annual": 80310, "p75_annual": 133180, "p90_annual": 167010},
+      {"soc": "15-1254", "title": "Web Developers", "employment": 70190, "median_annual": 92650, "p10_annual": 48100, "p25_annual": 64230, "p75_annual": 126230, "p90_annual": 162290},
+      {"soc": "15-1211", "title": "Computer Systems Analysts", "employment": 519530, "median_annual": 105850, "p10_annual": 67340, "p25_annual": 82860, "p75_annual": 134110, "p90_annual": 167710},
+      {"soc": "15-1251", "title": "Computer Programmers", "employment": 92230, "median_annual": 100390, "p10_annual": 57710, "p25_annual": 75850, "p75_annual": 130680, "p90_annual": 160460},
+      {"soc": "15-1242", "title": "Database Administrators", "employment": 69990, "median_annual": 104620, "p10_annual": 60230, "p25_annual": 79610, "p75_annual": 135460, "p90_annual": 163320},
+      {"soc": "15-1243", "title": "Database Architects", "employment": 67140, "employment_confidence": "unverified", "median_annual": 139500, "p10_annual": 86240, "p25_annual": 109370, "p75_annual": 169290, "p90_annual": 204000},
+      {"soc": "15-1244", "title": "Network and Computer Systems Administrators", "employment": 314340, "median_annual": 99130, "p10_annual": 62640, "p25_annual": 78010, "p75_annual": 126640, "p90_annual": 155050},
+      {"soc": "15-1241", "title": "Computer Network Architects", "employment": 179740, "median_annual": 134050, "p10_annual": 79900, "p25_annual": 104620, "p75_annual": 168200, "p90_annual": 202680},
+      {"soc": "15-1212", "title": "Information Security Analysts", "employment": 190650, "median_annual": 129180, "p10_annual": 75090, "p25_annual": 97810, "p75_annual": 163500, "p90_annual": 199850},
+      {"soc": "15-1221", "title": "Computer and Information Research Scientists", "employment": 37200, "employment_confidence": "unverified", "median_annual": 140300, "p10_annual": 82200, "p25_annual": 103570, "p75_annual": 188700, "p90_annual": 230630},
+      {"soc": "15-2051", "title": "Data Scientists", "employment": 262440, "median_annual": 120230, "p10_annual": 67240, "p25_annual": 85660, "p75_annual": 158880, "p90_annual": 199130},
+      {"soc": "17-2061", "title": "Computer Hardware Engineers", "employment": 76660, "median_annual": 161740, "p10_annual": 92940, "p25_annual": 126090, "p75_annual": 202990, "p90_annual": 225330},
+      {"soc": "17-2072", "title": "Electronics Engineers, Except Computer", "employment": 96900, "employment_confidence": "unverified", "median_annual": 130220, "p10_annual": 81840, "p25_annual": 101680, "p75_annual": 167670, "p90_annual": 206960},
+      {"soc": "15-1255", "title": "Web and Digital Interface Designers", "employment": 113330, "median_annual": 104000, "p10_annual": 53750, "p25_annual": 73290, "p75_annual": 158820, "p90_annual": 201550},
+      {"soc": "15-2031", "title": "Operations Research Analysts", "employment": 108510, "median_annual": 91290, "p10_annual": 53910, "p25_annual": 66910, "p75_annual": 124120, "p90_annual": 159280},
+      {"soc": "11-2021", "title": "Marketing Managers", "employment": 395240, "median_annual": 166790, "p10_annual": 90260, "p25_annual": 123020, "p75_annual": 216410, "p90_annual": 293610},
+      {"soc": "11-2022", "title": "Sales Managers", "employment": 637080, "median_annual": 148270, "p10_annual": 73170, "p25_annual": 100360, "p75_annual": 207340, "p90_annual": 290540},
+      {"soc": "41-4011", "title": "Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products", "employment": 284800, "employment_confidence": "unverified", "median_annual": 100070, "p10_annual": 48840, "p25_annual": 65640, "p75_annual": 146150, "p90_annual": 194890},
+      {"soc": "41-1012", "title": "First-Line Supervisors of Non-Retail Sales Workers", "employment": 214390, "employment_confidence": "unverified", "median_annual": 87520, "p10_annual": 50320, "p25_annual": 63940, "p75_annual": 122050, "p90_annual": 164070},
+      {"soc": "13-1161", "title": "Market Research Analysts and Marketing Specialists", "employment": 899580, "employment_confidence": "unverified", "median_annual": 78760, "p10_annual": 43390, "p25_annual": 58350, "p75_annual": 108310, "p90_annual": 155480},
+      {"soc": "27-3031", "title": "Public Relations Specialists", "employment": 283380, "median_annual": 74750, "p10_annual": 44110, "p25_annual": 56260, "p75_annual": 100370, "p90_annual": 135150},
+      {"soc": "13-1151", "title": "Training and Development Specialists", "employment": 458300, "median_annual": 69280, "p10_annual": 38760, "p25_annual": 50110, "p75_annual": 95050, "p90_annual": 123250},
+      {"soc": "13-1071", "title": "Human Resources Specialists", "employment": 912430, "median_annual": 75940, "p10_annual": 47180, "p25_annual": 58610, "p75_annual": 99380, "p90_annual": 128720},
+      {"soc": "11-3121", "title": "Human Resources Managers", "employment": 220660, "median_annual": 149280, "p10_annual": 88200, "p25_annual": 111110, "p75_annual": 199290, "p90_annual": 267810},
+      {"soc": "13-1111", "title": "Management Analysts", "employment": 898280, "median_annual": 101860, "p10_annual": 60640, "p25_annual": 77950, "p75_annual": 133370, "p90_annual": 171640},
+      {"soc": "11-1021", "title": "General and Operations Managers", "employment": 3503020, "median_annual": 105770, "p10_annual": 50090, "p25_annual": 72320, "p75_annual": 167280, "p90_annual": 253390},
+      {"soc": "11-3021", "title": "Computer and Information Systems Managers", "employment": 670570, "median_annual": 175140, "p10_annual": 107550, "p25_annual": 138060, "p75_annual": 220730, "p90_annual": 297510},
+      {"soc": "13-2011", "title": "Accountants and Auditors", "employment": 1449500, "median_annual": 83680, "p10_annual": 56020, "p25_annual": 67020, "p75_annual": 109810, "p90_annual": 144090},
+      {"soc": "43-4051", "title": "Customer Service Representatives", "employment": 2880000, "employment_confidence": "unverified", "median_annual": 44770, "p10_annual": 31750, "p25_annual": 36870, "p75_annual": 51780, "p90_annual": 63590},
+      {"soc": "13-1141", "title": "Compensation, Benefits, and Job Analysis Specialists", "employment": 112380, "employment_confidence": "unverified", "median_annual": 78210, "p10_annual": 49480, "p25_annual": 60890, "p75_annual": 100400, "p90_annual": 128920}
+    ]
+  },
+
+  "acs_metro_housing": {
+    "as_of": "ACS (American Community Survey) 2020-2024 5-year estimates",
+    "source": "Census Bureau QuickFacts, ACS 5-year tables B19013 (median household income), B25003 (owner-occupied rate), B25077 (median home value)",
+    "wage_unit": "USD",
+    "note": "Figures are the principal city's ACS numbers, used as a metro proxy per CONTEXT_PACK.md pack-research metros schema (relocation propensity, ownership, housing). A city figure understates a full CBSA/metro figure for dense core cities with large suburban homeowner rings (e.g. San Francisco city 38.2% ownership vs. the broader Bay Area metro, which runs well above 50%); scout should note this when a search's geography is metro-wide rather than core-city. Four metros below (Washington DC, Nashville, Salt Lake City, Minneapolis) could not be freshly confirmed this build; their figures are best-known estimates, confidence:unverified.",
+    "metros": [
+      {"name": "San Francisco, CA", "median_household_income": 140970, "homeownership_rate_pct": 38.2, "median_home_value": 1394500},
+      {"name": "San Jose, CA", "median_household_income": 146427, "homeownership_rate_pct": 55.8, "median_home_value": 1233200},
+      {"name": "Seattle, WA", "median_household_income": 123860, "homeownership_rate_pct": 43.7, "median_home_value": 938600},
+      {"name": "New York, NY", "median_household_income": 80483, "homeownership_rate_pct": 32.8, "median_home_value": 777600},
+      {"name": "Austin, TX", "median_household_income": 93658, "homeownership_rate_pct": 43.4, "median_home_value": 555300},
+      {"name": "Denver, CO", "median_household_income": 94718, "homeownership_rate_pct": 48.8, "median_home_value": 616000},
+      {"name": "Boston, MA", "median_household_income": 97344, "homeownership_rate_pct": 35.7, "median_home_value": 731700},
+      {"name": "Los Angeles, CA", "median_household_income": 81939, "homeownership_rate_pct": 36.0, "median_home_value": 921200},
+      {"name": "Chicago, IL", "median_household_income": 77902, "homeownership_rate_pct": 46.0, "median_home_value": 334100},
+      {"name": "Dallas, TX", "median_household_income": 70518, "homeownership_rate_pct": 42.4, "median_home_value": 320700},
+      {"name": "Raleigh, NC", "median_household_income": 85395, "homeownership_rate_pct": 50.7, "median_home_value": 415800},
+      {"name": "Portland, OR", "median_household_income": 90919, "homeownership_rate_pct": 52.0, "median_home_value": 581500},
+      {"name": "San Diego, CA", "median_household_income": 108077, "homeownership_rate_pct": 47.3, "median_home_value": 906700},
+      {"name": "Phoenix, AZ", "median_household_income": 81332, "homeownership_rate_pct": 57.3, "median_home_value": 420700},
+      {"name": "Miami, FL", "median_household_income": 62462, "homeownership_rate_pct": 30.8, "median_home_value": 518100},
+      {"name": "Washington, DC", "median_household_income": 106300, "homeownership_rate_pct": 42.4, "median_home_value": 690000, "confidence": "unverified"},
+      {"name": "Nashville, TN", "median_household_income": 74000, "homeownership_rate_pct": 53.0, "median_home_value": 412000, "confidence": "unverified"},
+      {"name": "Salt Lake City, UT", "median_household_income": 79000, "homeownership_rate_pct": 48.0, "median_home_value": 525000, "confidence": "unverified"},
+      {"name": "Minneapolis, MN", "median_household_income": 76000, "homeownership_rate_pct": 48.0, "median_home_value": 335000, "confidence": "unverified"}
+    ]
+  },
+
+  "recruiting_benchmarks": {
+    "as_of": "2024-2026, per-item vintage stated below (GEM-BM / SHRM-BM style constants)",
+    "source": "Named per item; primary named reports (Gem, Ashby, SHRM, NACE, Instantly.ai) as directly cited, some retrieved via Pin.com's benchmark-report synthesis where the primary report itself was not directly fetchable, noted per item",
+    "items": {
+      "offer_accept_rate": {
+        "overall": {"value_pct": 84, "as_of": "2024", "source": "Gem, 2025 Recruiting Benchmarks Report (data Jan 2021-Dec 2024)"},
+        "technical_roles": {"value_pct": 73, "as_of": "2024", "source": "Ashby, Talent Trends Report, Offer Acceptance Rates (data Jan 2021-Mar 2024)"},
+        "business_roles": {"value_pct": 84, "as_of": "2024", "source": "Ashby, Talent Trends Report, Offer Acceptance Rates (data Jan 2021-Mar 2024)"},
+        "three_year_average": {"value_pct": 78, "as_of": "2021-2024", "source": "Ashby, Talent Trends Report, Offer Acceptance Rates"}
+      },
+      "interviews_per_hire": {
+        "overall_2024": {"value": 20, "as_of": "2024", "source": "Gem, 2025 Recruiting Benchmarks Report", "note": "up from 14 in 2021"},
+        "technical_roles_2026": {"value": 17.6, "as_of": "2026", "source": "Ashby 2026, as cited in Pin.com Sourcing Benchmarks Report (May 2026)"},
+        "business_roles_2026": {"value": 11.7, "as_of": "2026", "source": "Ashby 2026, as cited in Pin.com Sourcing Benchmarks Report (May 2026)"}
+      },
+      "time_to_fill_days": {
+        "overall_2024": {"value": 41, "as_of": "2024", "source": "Gem, 2025 Recruiting Benchmarks Report", "note": "up from 33 in 2021"},
+        "technical_roles_2026": {"value": 76, "as_of": "2026", "source": "Ashby 2026 / SmartRecruiters 2025, as cited in Pin.com Sourcing Benchmarks Report (May 2026)"},
+        "business_roles_2026": {"value": 44, "as_of": "2026", "source": "SHRM 2025, US median nonexecutive roles, as cited in Pin.com Sourcing Benchmarks Report (May 2026)"},
+        "classic_shrm_reference": {"value": 42, "as_of": "unclear, long-standing SHRM Human Capital Benchmark figure still widely cited", "source": "SHRM Human Capital Benchmarking Report", "confidence": "unverified"}
+      },
+      "cost_per_hire_usd": {"value": 4100, "as_of": "unclear, long-standing SHRM figure still widely cited as of 2024-2025", "source": "SHRM Human Capital Benchmarking Report", "confidence": "unverified"},
+      "outreach_response_rate": {
+        "initial_touch": {"value_pct": 15, "as_of": "2024", "source": "Gem, 2024 Recruiting Email Outreach Benchmarks (4M emails analyzed)"},
+        "followup_touch": {"value_pct": 50, "as_of": "2024", "source": "Gem, 2024 Recruiting Email Outreach Benchmarks"},
+        "four_touch_sequence_lift": {"value": "2x more replies, 68% higher interested rate vs. a single email", "as_of": "2024", "source": "Gem, 2024 Recruiting Email Outreach Benchmarks"},
+        "cold_email_baseline_2026": {"value_pct": 3.43, "as_of": "2026", "source": "Instantly.ai 2026, all-industry baseline, as cited in Pin.com Sourcing Benchmarks Report"},
+        "cold_email_top_quartile_2026": {"value_pct": 5.5, "as_of": "2026", "source": "Instantly.ai 2026, as cited in Pin.com Sourcing Benchmarks Report"},
+        "cold_email_elite_top10pct_2026": {"value_pct": 10.7, "as_of": "2026", "source": "Instantly.ai 2026, as cited in Pin.com Sourcing Benchmarks Report"},
+        "multichannel_sequence_2026": {"value_pct": 34, "as_of": "2026", "source": "Gem 2026 (email + LinkedIn + phone combined), as cited in Pin.com Sourcing Benchmarks Report"}
+      },
+      "application_funnel_2026": {
+        "application_to_pass_initial_screen": {"value_pct": 8, "source": "Gem 2026 (1.2M hires) / Ashby 2026 (109M applications), as cited in Pin.com Sourcing Benchmarks Report"},
+        "application_to_interview": {"value_pct": 4, "source": "Gem 2026 / Ashby 2026, as cited in Pin.com Sourcing Benchmarks Report"},
+        "application_to_hire": {"value_pct": 0.5, "source": "Gem 2026 / Ashby 2026, as cited in Pin.com Sourcing Benchmarks Report"}
+      },
+      "channel_yield_multiplier_vs_inbound_2026": {
+        "baseline": "inbound job board = 1x",
+        "direct_sourcing": {"value": "4x", "source": "Gem 2026 (165M+ applications, 1.2M hires), as cited in Pin.com Sourcing Benchmarks Report"},
+        "employee_referrals": {"value": "11x", "source": "Gem 2026, as cited in Pin.com Sourcing Benchmarks Report"},
+        "internal_mobility": {"value": "32x", "source": "Gem 2026, as cited in Pin.com Sourcing Benchmarks Report"},
+        "crm_rediscovery_share_of_sourced_hires_pct": {"value": 46, "source": "Gem 2026, as cited in Pin.com Sourcing Benchmarks Report"}
+      },
+      "talent_rediscovery_rate_pct": {"value": 44.0, "as_of": "2024", "source": "Gem, 2025 Recruiting Benchmarks Report", "note": "up from 29.1% in 2021"},
+      "sourced_vs_inbound_hire_multiplier": {"value": "5x", "as_of": "2024", "source": "Gem, 2025 Recruiting Benchmarks Report", "note": "a sourced candidate is roughly 5 times more likely to be hired than an inbound applicant"},
+      "job_board_application_share_vs_hire_share_pct": {"applications": 49.0, "hires": 24.6, "as_of": "2024", "source": "Gem, 2025 Recruiting Benchmarks Report", "note": "job boards drive roughly half of applications but under a quarter of hires, a channel-mix caution useful for hunter's channel ranking"}
+    }
+  }
+}

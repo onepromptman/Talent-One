@@ -1,0 +1,57 @@
+module: talent-one
+description: One role brief in, a full hiring package out. A per-role Context Pack, nine artifact specialists, a scout that builds the pack, a REFUTE critic and a QA gate on the verifier tier, and an orchestrator that runs the loop. Rendered deterministically as branded HTML with sourced market data. Also carries an Oracle funnel diagnosis with a scripted answer key, a Prompt Forge helper, and a headless runner. Built from the talent-one module of onepromptman/talentai; the paste-in and n8n swarm editions of the roster are published separately as onepromptman/dag-talent-agents.
+version: 2.1.0
+stages: [intake, calibrate, role-definition, sourcing, outreach, screen, interview, qa]
+
+core:
+  skeleton: KIT-CORE.md
+  output: skills/talent-one/references/00_SHARED_CORE.md
+
+tiers:
+  Sourced: verified external or system-of-record figure; the method names the source and its month or year
+  Estimate: the agent's own calculation; the method appears adjacent to the figure
+  Internal: from the client's knowledge base or system of record
+
+agents:
+  relay: {role: orchestrator}
+  scout: {role: executor, verifier: critic}
+  calibrate: {role: executor, verifier: critic}
+  sensei: {role: executor, verifier: critic}
+  jdbot: {role: executor, verifier: critic}
+  atlas: {role: executor, verifier: critic}
+  hunter: {role: executor, verifier: critic}
+  shakespeare: {role: executor, verifier: critic}
+  interview-lab: {role: executor, verifier: critic}
+  recruiter-screen: {role: executor, verifier: critic}
+  interview-coach: {role: executor, verifier: critic}
+  oracle: {role: executor, verifier: critic}
+  pforge: {role: executor, verifier: critic}
+  critic: {role: verifier, template: critic}
+  qa-gate: {role: verifier}
+
+after_compile:
+  - python skills/talent-one/scripts/build_briefs.py
+
+check_commands:
+  - python skills/talent-one/scripts/build_briefs.py --check
+
+supersedes:
+  - onepromptman/Talent-One
+  - dag-talent-agents (published separately as onepromptman/dag-talent-agents)
+  - an earlier private agent-roster repo, folded into dag-talent-agents
+
+evals:
+  commands:
+    - python -m pytest -q
+    - python skills/talent-one/scripts/validate_content.py check-examples
+  cases: evals
+  post_run:
+    tk02-data-accuracy: python skills/talent-one/scripts/validate_content.py check --render --content {workspace}/out/TK_02.content.json --pack {workspace}/fixtures/pack.json
+
+# `tk02-data-accuracy` is proven at 3/3 clean over 16 runs and its result is bound to the
+# prompt text it already has; re-proving it is a spend the owner has not authorized, and
+# whether a namespaced subagent type even resolves under `claude -p --plugin-dir` is one of
+# the open questions a live run has to answer. So the bare `jdbot` stays, visibly, until a
+# run is authorized -- namespace it in the same change that re-proves it.
+namespace_allow:
+  - evals/tk02-data-accuracy/prompt.md

@@ -1,0 +1,7 @@
+# runtime state and run output; never committed (they can hold your work content)
+.talent-kit/
+talent-one-roles/
+/config.yaml
+/crosswalk.csv
+__pycache__/
+*.pyc

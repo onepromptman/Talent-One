@@ -1,0 +1,7 @@
+stage,count,pass_pct_of_prior,role,quarter
+Applications,220,,Staff Backend Engineer,Q-prior
+Recruiter screen,132,60%,Staff Backend Engineer,Q-prior
+Hiring-manager screen,66,50%,Staff Backend Engineer,Q-prior
+V1 technical,13,19.7%,Staff Backend Engineer,Q-prior
+V2 final,9,69.2%,Staff Backend Engineer,Q-prior
+Offer,7,78%,Staff Backend Engineer,Q-prior

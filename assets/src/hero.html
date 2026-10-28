@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Talent One overview</title>
+<!-- Source of assets/hero.png. Rebuild with: bash assets/src/screenshots.sh -->
+<style>
+:root{--ink:#1C1C1E;--dim:#55524C;--navy:#1F3A5F;--gold:#A9893F;--line:#E4DCCB;--ground:#FBFAF7;--card:#F8F6F0}
+*{box-sizing:border-box}html,body{margin:0;background:var(--ground);color:var(--ink)}
+body{width:1320px;padding:44px 48px 40px;font-family:Georgia,"Times New Roman",serif}
+.mono{font-family:Menlo,"SF Mono",Consolas,monospace;letter-spacing:.2em;text-transform:uppercase;font-size:12px;font-weight:600}
+header{display:flex;justify-content:space-between;padding-bottom:16px;border-bottom:2px solid var(--ink)}
+header .l{color:var(--navy)}header .r{color:#8A857B}
+.top{display:grid;grid-template-columns:1fr 590px;gap:56px;margin-top:34px}
+h1{font-weight:400;font-size:68px;line-height:1.02;margin:0 0 28px;letter-spacing:-.01em}
+.lede{font-size:18.5px;line-height:1.6;color:var(--dim);margin:0}
+.facts{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--gold);background:var(--card)}
+.facts>div{padding:24px 24px 22px;border:1px solid var(--line)}
+.facts .mono{display:block;margin-bottom:12px;font-size:11.5px}
+.facts .g{color:var(--gold)}.facts .n{color:var(--navy)}
+.facts p{margin:0;font-size:15.5px;line-height:1.55;color:var(--dim)}.facts b{color:var(--ink)}
+.rule{display:flex;align-items:center;gap:18px;margin:34px 0 16px;color:var(--navy)}.rule:after{content:"";flex:1;height:1px;background:var(--line)}
+.docs{display:grid;grid-template-columns:repeat(3,1fr);border:1.5px solid var(--gold);background:#fff}
+.docs>div{padding:18px 22px 16px;border:1px solid var(--line)}
+.docs .mono{color:var(--navy);font-size:11px}
+.docs h3{margin:8px 0 6px;font-size:21px;font-weight:700}
+.docs p{margin:0;font-size:14px;line-height:1.5;color:var(--dim)}
+</style></head><body>
+<header><span class="mono l">OnePromptMan &nbsp;·&nbsp; Talent One &nbsp;·&nbsp; Overview</span><span class="mono r">v2.1 &nbsp;·&nbsp; MIT</span></header>
+<div class="top">
+ <div>
+  <h1>One role brief in.<br>A full hiring<br>package out.</h1>
+  <p class="lede">A Claude plugin of coordinated talent-acquisition agents. Tell it what you are hiring for. One research pass builds a per-role Context Pack from public data; nine document specialists write in parallel from the same pack; a critic challenges each draft, a deterministic renderer builds the documents, and a QA gate signs off the package.</p>
+ </div>
+ <div class="facts">
+  <div><span class="mono g">Zero setup cost</span><p>Works with no connections. Public data <b>plus a bundled baseline snapshot</b> is the default path. Connectors are optional and read-only.</p></div>
+  <div><span class="mono n">Every number cited</span><p><b>Sourced</b> (named public source and date), <b>Estimate</b> (method shown), or <b>Internal</b> (your data). No receipt, no ship.</p></div>
+  <div><span class="mono g">Ask small or large</span><p>"Write me a JD" runs one specialist. "Run Talent One" runs all nine in parallel. Both pass the same checks.</p></div>
+  <div><span class="mono n">Updates in seconds</span><p>Documents never pass through a model at render time. A comp change re-renders the kit in <b>about one second</b>.</p></div>
+ </div>
+</div>
+<div class="rule"><span class="mono">The nine documents</span></div>
+<div class="docs">
+ <div><span class="mono">01 · Sensei</span><h3>Role Educational Brief</h3><p>Glossary, skills, career paths, say-this-not-that.</p></div>
+ <div><span class="mono">02 · JD-Bot</span><h3>Job Description</h3><p>Paste-ready posting with an annotation rail.</p></div>
+ <div><span class="mono">03 · Atlas</span><h3>Talent Intelligence Map</h3><p>Supply, demand, geography, personas, comp.</p></div>
+ <div><span class="mono">04 · Hunter</span><h3>Sourcing Playbook</h3><p>Boolean library, channel mix, pipeline math.</p></div>
+ <div><span class="mono">05 · Shakespeare</span><h3>Outreach Campaign</h3><p>Eight touches across email, LinkedIn, SMS, phone.</p></div>
+ <div><span class="mono">06 · Interview Lab</span><h3>Interview Plan</h3><p>Competency ownership grid and graded rubrics.</p></div>
+ <div><span class="mono">07 · Calibrate</span><h3>HM Calibration Brief</h3><p>Market frame, comp anchor, intake questions, SLAs.</p></div>
+ <div><span class="mono">08 · Recruiter Screen</span><h3>30-Minute Screen Script</h3><p>Timed run sheet and graded spot-checks.</p></div>
+ <div><span class="mono">09 · Interview Coach</span><h3>Interviewer Briefing</h3><p>Per-stage prep, debrief form, decision agenda.</p></div>
+</div>
+</body></html>

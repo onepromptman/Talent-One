@@ -1,0 +1,132 @@
+{
+  "template": "TK_05_Outreach_Campaign.dc.html",
+  "derived_from": "example-content",
+  "required": [
+    "doc.agent",
+    "doc.date",
+    "doc.eyebrow",
+    "doc.prose0",
+    "doc.prose1",
+    "doc.prose2",
+    "doc.prose3",
+    "doc.prose4",
+    "doc.prose5",
+    "doc.prose6",
+    "doc.prose7",
+    "doc.prose8",
+    "doc.prose9",
+    "doc.thesis",
+    "doc.title",
+    "e1.subjA",
+    "e1.subjB",
+    "e4.note",
+    "e4.subj",
+    "footer.right",
+    "gate.1",
+    "gauge.note",
+    "gauge.value",
+    "role.org",
+    "role.title",
+    "s1.body",
+    "s1.title",
+    "s2.body",
+    "s2.title",
+    "s3.body",
+    "s3.title",
+    "s4.body",
+    "s4.title",
+    "s5.body",
+    "s5.title",
+    "s6.body",
+    "s6.title",
+    "s7.body",
+    "s7.title",
+    "tier.note"
+  ],
+  "optional": {},
+  "numeric": [
+    "gauge.note",
+    "gauge.value",
+    "s7.body"
+  ],
+  "repeats": {
+    "sequence": {
+      "min": 1,
+      "max": 10,
+      "item_keys": [
+        "seq.day",
+        "seq.goal",
+        "seq.psych",
+        "seq.touch"
+      ],
+      "optional_keys": []
+    },
+    "e1.annotations": {
+      "min": 1,
+      "max": 5,
+      "item_keys": [
+        "note.body",
+        "note.tag"
+      ],
+      "optional_keys": []
+    },
+    "emails": {
+      "min": 1,
+      "max": 5,
+      "item_keys": [
+        "email.body",
+        "email.label",
+        "email.meta",
+        "email.note",
+        "email.subjA",
+        "email.subjB",
+        "emails.prose0"
+      ],
+      "optional_keys": []
+    },
+    "linkedin": {
+      "min": 1,
+      "max": 2,
+      "item_keys": [
+        "li.body",
+        "li.label",
+        "li.meta",
+        "li.note"
+      ],
+      "optional_keys": []
+    },
+    "voice.blocks": {
+      "min": 1,
+      "max": 4,
+      "item_keys": [],
+      "optional_keys": [
+        "call.branches",
+        "call.script",
+        "sms.1",
+        "sms.2",
+        "voice.label",
+        "voice.note",
+        "voice.script"
+      ]
+    },
+    "tiers": {
+      "min": 1,
+      "max": 4,
+      "item_keys": [
+        "tier.elements",
+        "tier.name",
+        "tier.target"
+      ],
+      "optional_keys": []
+    },
+    "banned": {
+      "min": 1,
+      "max": 16,
+      "item_keys": [
+        "banned.term"
+      ],
+      "optional_keys": []
+    }
+  },
+  "toggles": []
+}

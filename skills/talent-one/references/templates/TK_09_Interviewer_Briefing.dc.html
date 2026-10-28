@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/onepromptman-ds/tokens/tokens.css">
+<link rel="stylesheet" href="_ds/onepromptman-ds/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="_ds/onepromptman-ds/_ds_bundle.js"></script>
+<style>
+  /* derived ramp tints (no token exists for these): #F0EDE6 track, #FBF9F4 rail, #EDE8DE hairline, #EEF6F1 nok pale */
+  body{margin:0;background:var(--op-bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  a{color:var(--op-primary);text-decoration:underline;text-underline-offset:.18em;text-decoration-color:#C9D6E6}
+  a:hover{color:var(--op-cheong-dark);text-decoration-color:var(--op-primary)}
+  @media print{@page{size:letter;margin:0.5in} section{break-inside:avoid}}
+</style>
+</helmet>
+
+<div data-mode="light" style="background:var(--op-bg);color:var(--op-ink);font-family:var(--op-font-body);font-size:16px;line-height:1.6">
+
+<header style="border-bottom:1px solid var(--op-border);background:var(--op-surface)">
+  <div style="max-width:1120px;margin:0 auto;padding:0 48px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--op-border)">
+      <div style="font-family:var(--op-font-mono);font-size:12px;letter-spacing:.30em;text-transform:uppercase" data-slot="kit.mark">Talent One <span style="color:var(--op-accent)">·</span> TK-09</div>
+      <div style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted)"><span data-slot="doc.agent">Agent · INTERVIEW COACH</span> <span style="color:var(--op-lattice-line)">/</span> <span data-slot="doc.date">Generated 2026-08-24</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 330px;gap:60px;padding:60px 0 44px;align-items:start">
+      <div>
+        <div style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-primary);margin-bottom:18px" data-slot="doc.eyebrow">Artifact 09 · Interviewer readiness</div>
+        <h1 style="font-family:var(--op-font-display);font-weight:700;font-size:52px;line-height:1.08;letter-spacing:-0.02em;margin:0;text-wrap:balance" data-slot="doc.title">Interviewer Briefing</h1>
+        <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+          <span style="font-family:var(--op-font-mono);font-size:13px;letter-spacing:.06em;color:var(--op-surface);background:var(--op-ink);padding:7px 14px" data-slot="role.title">Battery Systems Engineer</span>
+          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-muted)" data-slot="role.org">Four stages briefed · one debrief form · one decision meeting</span>
+        </div>
+        <p style="margin:26px 0 0;max-width:62ch;font-size:18px;color:var(--op-ink-dim);text-wrap:pretty" data-slot="doc.thesis">A briefing that repeats the whole interview plan wastes the ten minutes an interviewer actually has. Give each one their own stage, the specific thing to probe, and the two lines they are not allowed to ask.</p>
+      </div>
+      <div style="border:1px solid var(--op-border);background:#FBF9F4">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-muted)">Briefing budget</div>
+        <div data-repeat="cover.metrics" data-count="3-6">
+          <div style="display:flex;justify-content:space-between;gap:14px;padding:13px 20px;border-bottom:1px solid #EDE8DE"><span style="font-size:13.5px;color:var(--op-muted)" data-slot="metric.label">Interviewers briefed</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600" data-slot="metric.value">4</span></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;padding:13px 20px;border-bottom:1px solid #EDE8DE"><span style="font-size:13.5px;color:var(--op-muted)">Prep time each</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600">10 min</span></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;padding:13px 20px;border-bottom:1px solid #EDE8DE"><span style="font-size:13.5px;color:var(--op-muted)">Debrief window</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600">24 hours</span></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;padding:13px 20px"><span style="font-size:13.5px;color:var(--op-muted)">Decision meeting</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600;color:var(--op-accent)">30 min</span></div>
+        </div>
+        <div style="padding:12px 20px;background:#F0EDE6;border-top:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:10px;letter-spacing:.1em;color:var(--op-muted);text-transform:uppercase" data-slot="cover.note">One page per interviewer. Nothing more to read.</div>
+      </div>
+    </div>
+    <div style="display:flex;height:5px">
+      <div style="flex:5;background:var(--op-primary)"></div><div style="flex:1;background:var(--op-byeok)"></div><div style="flex:1;background:var(--op-success)"></div><div style="flex:1;background:var(--op-highlight)"></div><div style="flex:1;background:var(--op-warning)"></div><div style="flex:1;background:var(--op-accent)"></div>
+    </div>
+  </div>
+</header>
+
+<main style="max-width:1120px;margin:0 auto;padding:0 48px 88px">
+
+  <!-- 01 · PREP PER STAGE -->
+  <section style="padding:56px 0 0">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">01</div>
+        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Prep</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s1.title">Your stage, not the whole plan</h2>
+        <p style="margin:0;max-width:66ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s1.body">Each interviewer gets the ten-minute version of the plan: what they own, what to probe, and what to review before the candidate joins.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--op-border);border:1px solid var(--op-border)" data-repeat="prep.stages" data-count="3-6">
+      <div style="background:var(--op-surface);padding:22px 18px;border-top:3px solid var(--op-primary)">
+        <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:9px" data-slot="prep.meta">45 min · HM</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:6px" data-slot="prep.stage">Hiring manager</div>
+        <div style="font-size:13px;color:var(--op-ink-dim)" data-slot="prep.focus">Scope fit and ownership appetite. Read the tradeoff lock before the room opens.</div>
+      </div>
+      <div style="background:var(--op-surface);padding:22px 18px;border-top:3px solid var(--op-byeok)">
+        <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:9px">60 min · battery eng</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:6px">Technical screen</div>
+        <div style="font-size:13px;color:var(--op-ink-dim)">The can-they-do-it filter. Bring the two backup questions, not just the primary.</div>
+      </div>
+      <div style="background:var(--op-surface);padding:22px 18px;border-top:3px solid var(--op-byeok)">
+        <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:9px">75 min · 2 eng</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:6px">Technical deep-dive</div>
+        <div style="font-size:13px;color:var(--op-ink-dim)">Design depth and a test-rig anomaly. Split ownership before the loop, not during it.</div>
+      </div>
+      <div style="background:var(--op-surface);padding:22px 18px;border-top:3px solid var(--op-muted)">
+        <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:9px">45 min · cross-team</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:6px">Systems &amp; values</div>
+        <div style="font-size:13px;color:var(--op-ink-dim)">Someone outside the reporting line. Score the scenario, not the resume.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · BIAS AND LEGAL COACHING -->
+  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">02</div>
+        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Coaching</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s2.title">What every interviewer holds before the room</h2>
+        <p style="margin:0;max-width:66ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s2.body">Stated once here so it never has to be repeated per stage. Read it every time, not only the first time.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;background:var(--op-surface);border:1px solid var(--op-border);padding:26px 30px;display:grid;gap:16px" data-repeat="coaching.lines" data-count="3-6">
+      <div style="display:grid;grid-template-columns:220px 1fr;gap:20px;padding-bottom:14px;border-bottom:1px solid var(--op-border)">
+        <div style="font-size:14.5px;font-weight:600" data-slot="coach.label">Score the answer, not the accent</div>
+        <div style="font-size:13.5px;color:var(--op-ink-dim)" data-slot="coach.body">A different communication style or a nontraditional path is not a competency gap. Write down the words, not the delivery.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:220px 1fr;gap:20px;padding-bottom:14px;border-bottom:1px solid var(--op-border)">
+        <div style="font-size:14.5px;font-weight:600">One story is not a pattern</div>
+        <div style="font-size:13.5px;color:var(--op-ink-dim)">A single strong or weak answer sets that competency's own score, never the rest of the loop. Halo and horn effects are real.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:220px 1fr;gap:20px;padding-bottom:14px;border-bottom:1px solid var(--op-border)">
+        <div style="font-size:14.5px;font-weight:600">Never ask about protected status</div>
+        <div style="font-size:13.5px;color:var(--op-ink-dim)">Family plans, age, national origin, disability, and religion stay off the table, directly or by inference from a resume gap.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:220px 1fr;gap:20px">
+        <div style="font-size:14.5px;font-weight:600">Write the example, not the adjective</div>
+        <div style="font-size:13.5px;color:var(--op-ink-dim)">"Strong" is not evidence a debrief can use. The specific thing they said or did is the only entry worth writing down.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-warning);padding:20px 24px">
+      <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-warning);margin-bottom:8px">Caution</div>
+      <p style="margin:0;font-size:15px;color:var(--op-ink-dim);max-width:80ch" data-slot="caution.1">An interviewer who skips the ten-minute prep window shows up reading the resume live, in front of the candidate. That reads as disorganized and it costs the loop a stage's worth of signal, so protect the window on the calendar.</p>
+    </div>
+  </section>
+
+  <!-- 03 · STRUCTURED DEBRIEF FORM -->
+  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">03</div>
+        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Debrief form</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s3.title">Four fields, the same form every time</h2>
+        <p style="margin:0;max-width:66ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s3.body">A rating with no cited evidence is a vibe with a number attached. Every field below asks for the specific thing, never the summary judgment.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--op-border);border:1px solid var(--op-border)" data-repeat="debrief.fields" data-count="3-6">
+      <div style="background:var(--op-surface);padding:22px 18px;border-top:3px solid var(--op-primary)">
+        <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:9px" data-slot="field.type">Rating 1 to 4</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:6px" data-slot="field.label">Technical depth</div>
+        <div style="font-size:13px;color:var(--op-ink-dim)" data-slot="field.prompt">Cite the exchange that earned this score. An adjective alone is not a valid entry.</div>
+      </div>
+      <div style="background:var(--op-surface);padding:22px 18px;border-top:3px solid var(--op-primary)">
+        <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:9px">Rating 1 to 4</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:6px">Independence</div>
+        <div style="font-size:13px;color:var(--op-ink-dim)">Name the hint you had to give, or say they reached it alone.</div>
+      </div>
+      <div style="background:var(--op-surface);padding:22px 18px;border-top:3px solid var(--op-byeok)">
+        <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:9px">Yes or no</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:6px">Deal-breaker triggered</div>
+        <div style="font-size:13px;color:var(--op-ink-dim)">Cite the pattern the plan named, or leave this one blank.</div>
+      </div>
+      <div style="background:var(--op-surface);padding:22px 18px;border-top:3px solid var(--op-muted)">
+        <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:9px">Free text</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:6px">One line for the room</div>
+        <div style="font-size:13px;color:var(--op-ink-dim)">The sentence you would say out loud before anyone averages a score.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · DECISION MEETING AGENDA -->
+  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+      <div>
+        <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">04</div>
+        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Decision</div>
+      </div>
+      <div>
+        <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s4.title">The decision meeting, in order</h2>
+        <p style="margin:0;max-width:66ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s4.body">Thirty minutes, same order every time, so the loudest voice in the room never sets the outcome by going first.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;display:grid;grid-template-columns:1.4fr 1fr;gap:2px;background:var(--op-border);border:1px solid var(--op-border)">
+      <div style="background:var(--op-surface);padding:26px 30px">
+        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:18px">Run it in this order</div>
+        <div style="display:grid;gap:16px" data-repeat="agenda.items" data-count="3-6">
+          <div style="display:grid;grid-template-columns:26px 1fr;gap:14px">
+            <div style="font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary)">1</div>
+            <div><div style="font-size:14.5px;font-weight:600;margin-bottom:3px" data-slot="agenda.title">Scores in before the room opens</div><div style="font-size:13.5px;color:var(--op-ink-dim)" data-slot="agenda.body">No score, no vote. Whoever has not submitted a form does not speak first.</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:26px 1fr;gap:14px">
+            <div style="font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary)">2</div>
+            <div><div style="font-size:14.5px;font-weight:600;margin-bottom:3px">Lowest scorer speaks first</div><div style="font-size:13.5px;color:var(--op-ink-dim)">Seniority does not open the meeting. Concerns get air before enthusiasm anchors the room.</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:26px 1fr;gap:14px">
+            <div style="font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary)">3</div>
+            <div><div style="font-size:14.5px;font-weight:600;margin-bottom:3px">Each owner reads their form</div><div style="font-size:13.5px;color:var(--op-ink-dim)">Follow the stage order from the interview plan, not seniority or volume.</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:26px 1fr;gap:14px">
+            <div style="font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary)">4</div>
+            <div><div style="font-size:14.5px;font-weight:600;margin-bottom:3px">Decide inside the thirty minutes</div><div style="font-size:13.5px;color:var(--op-ink-dim)">Hire, no-hire, or one named missing check with an owner and a date.</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="background:var(--op-surface);padding:26px 30px;display:grid;gap:16px;align-content:start">
+        <div style="border-top:3px solid var(--op-accent);padding-top:14px">
+          <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-accent);margin-bottom:8px">Legal line</div>
+          <p style="margin:0;font-size:14px;color:var(--op-ink-dim)" data-slot="legal.note">Every candidate for this role gets the same stages, the same questions, and the same rubric. A deviation made for one candidate and not another is the fact pattern that turns a rejection into a claim.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HANDOFF -->
+  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+    <div style="background:var(--op-ink);color:var(--op-bg);padding:30px 34px" data-optional>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:18px">
+        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-bisaek)">Handoff → next artifact</div>
+        <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">Internal · optional: delete before sharing outside the search team</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;font-family:var(--op-font-mono);font-size:13px;line-height:1.9">
+        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Produces</div><div data-slot="handoff.produces">interviewer_prep · coaching_lines · debrief_form · decision_agenda</div></div>
+        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Consumed by</div><div data-slot="handoff.consumers">A09 QA Gate · scorecard setup</div></div>
+        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Assumptions</div><div data-slot="handoff.assumptions">Same panel already read the interview plan. No new interviewer added after this briefing goes out.</div></div>
+        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Blocked on</div><div style="color:var(--op-hwang-light)" data-slot="handoff.blocked">Nothing</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="margin-top:56px;padding-top:20px;border-top:1px solid var(--op-border);display:flex;justify-content:space-between;font-family:var(--op-font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">
+    <span data-slot="footer.left">TK-09 · Interviewer Briefing</span><span data-slot="footer.right">Same rubric for every candidate</span>
+  </footer>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:900}}"></script>
+</body>
+</html>
