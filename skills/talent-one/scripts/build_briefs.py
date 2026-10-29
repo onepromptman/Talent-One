@@ -96,8 +96,17 @@ GENERATOR_NAME = "skills/talent-one/scripts/build_briefs.py"
 # All 12 agents this kit ships (13 including critic, which reads a core
 # template rather than a brief and so is not in this list).
 ALL_AGENTS = [
-    "sensei", "jdbot", "atlas", "hunter", "shakespeare", "interview-lab",
-    "calibrate", "recruiter-screen", "interview-coach", "qa-gate", "scout",
+    "sensei",
+    "jdbot",
+    "atlas",
+    "hunter",
+    "shakespeare",
+    "interview-lab",
+    "calibrate",
+    "recruiter-screen",
+    "interview-coach",
+    "qa-gate",
+    "scout",
     "relay",
 ]
 
@@ -106,16 +115,16 @@ ALL_AGENTS = [
 # its Agent label in Part 4's per-agent fallback table (all three use the
 # same "A0N NAME" string).
 AGENT_CODE = {
-    "sensei":            "A01 SENSEI",
-    "jdbot":             "A02 JD-BOT",
-    "atlas":             "A03 ATLAS",
-    "hunter":            "A04 HUNTER",
-    "shakespeare":       "A05 SHAKESPEARE",
-    "interview-lab":     "A06 INTERVIEW LAB",
-    "calibrate":         "A07 CALIBRATE",
-    "recruiter-screen":  "A08 RECRUITER SCREEN",
-    "qa-gate":           "A09 QA GATE",
-    "interview-coach":   "A10 INTERVIEW COACH",
+    "sensei": "A01 SENSEI",
+    "jdbot": "A02 JD-BOT",
+    "atlas": "A03 ATLAS",
+    "hunter": "A04 HUNTER",
+    "shakespeare": "A05 SHAKESPEARE",
+    "interview-lab": "A06 INTERVIEW LAB",
+    "calibrate": "A07 CALIBRATE",
+    "recruiter-screen": "A08 RECRUITER SCREEN",
+    "qa-gate": "A09 QA GATE",
+    "interview-coach": "A10 INTERVIEW COACH",
 }
 
 # scout has no single Part 3 block of its own: scout.md's own GROUNDING
@@ -126,16 +135,26 @@ SCOUT_SOURCE_AGENTS = ["A07 CALIBRATE", "A01 SENSEI", "A03 ATLAS"]
 # Agents absent from this dict (scout, qa-gate, relay) have no single bound
 # template; see build_scout_brief / build_qa_gate_brief / build_relay_brief.
 AGENT_SCHEMA = {
-    "sensei": "TK_01", "jdbot": "TK_02", "atlas": "TK_03", "hunter": "TK_04",
-    "shakespeare": "TK_05", "interview-lab": "TK_06", "calibrate": "TK_07",
-    "recruiter-screen": "TK_08", "interview-coach": "TK_09",
+    "sensei": "TK_01",
+    "jdbot": "TK_02",
+    "atlas": "TK_03",
+    "hunter": "TK_04",
+    "shakespeare": "TK_05",
+    "interview-lab": "TK_06",
+    "calibrate": "TK_07",
+    "recruiter-screen": "TK_08",
+    "interview-coach": "TK_09",
 }
 
 # Agent id -> its row label in CONTEXT_PACK.md §5's per-artifact table.
 AGENT_PACK_ROW = {
-    "sensei": "01 sensei", "jdbot": "02 jdbot", "atlas": "03 atlas",
-    "hunter": "04 hunter", "shakespeare": "05 shakespeare",
-    "interview-lab": "06 interview-lab", "calibrate": "07 calibrate",
+    "sensei": "01 sensei",
+    "jdbot": "02 jdbot",
+    "atlas": "03 atlas",
+    "hunter": "04 hunter",
+    "shakespeare": "05 shakespeare",
+    "interview-lab": "06 interview-lab",
+    "calibrate": "07 calibrate",
     "recruiter-screen": "08 recruiter-screen",
     "interview-coach": "09 interview-coach",
 }
@@ -148,13 +167,34 @@ AGENT_PACK_ROW = {
 # rather than mis-extracted; see FIDELITY NOTES in the generated relay/scout
 # briefs and the run report for the one case this kit's source file hits.
 VALID_PACK_TOP_KEYS = {
-    "pack_version", "role", "built", "built_from", "spec", "market", "comp",
-    "keywords", "personas", "channels", "targets", "messaging", "timing",
-    "constraints", "caveats", "assumptions", "freshness",
+    "pack_version",
+    "role",
+    "built",
+    "built_from",
+    "spec",
+    "market",
+    "comp",
+    "keywords",
+    "personas",
+    "channels",
+    "targets",
+    "messaging",
+    "timing",
+    "constraints",
+    "caveats",
+    "assumptions",
+    "freshness",
 }
 VALID_RESEARCH_TOP_KEYS = {
-    "dossiers", "metros", "demand_blocs", "persona_detail", "proof_points",
-    "quadrant", "pack_version", "role_slug", "built",
+    "dossiers",
+    "metros",
+    "demand_blocs",
+    "persona_detail",
+    "proof_points",
+    "quadrant",
+    "pack_version",
+    "role_slug",
+    "built",
 }
 
 # Manual overrides: dotted pack.json paths an agent's own file (agents/*.md
@@ -173,8 +213,12 @@ VALID_RESEARCH_TOP_KEYS = {
 # required or optional.
 EXTRA_PACK_PATHS = {
     "jdbot": ["market.classification"],
-    "hunter": ["spec.must_have_skills", "spec.nice_to_have",
-               "spec.education", "spec.years_experience"],
+    "hunter": [
+        "spec.must_have_skills",
+        "spec.nice_to_have",
+        "spec.education",
+        "spec.years_experience",
+    ],
 }
 
 # Agents whose bound artifact also reads pack-research.json (CONTEXT_PACK.md
@@ -198,27 +242,27 @@ SHARED_CORE_SECTIONS = {
     #
     # The 8 artifact-producing agents: everything else in shared core
     # governs something they do.
-    "sensei":            ["1.5", "2", "3", "4", "5", "6", "6.5", "7"],
-    "jdbot":             ["1.5", "2", "3", "4", "5", "6", "6.5", "7"],
-    "atlas":             ["1.5", "2", "3", "4", "5", "6", "6.5", "7"],
-    "hunter":            ["1.5", "2", "3", "4", "5", "6", "6.5", "7"],
-    "shakespeare":       ["1.5", "2", "3", "4", "5", "6", "6.5", "7"],
-    "interview-lab":     ["1.5", "2", "3", "4", "5", "6", "6.5", "7"],
-    "calibrate":         ["1.5", "2", "3", "4", "5", "6", "6.5", "7"],
-    "recruiter-screen":  ["1.5", "2", "3", "4", "5", "6", "6.5", "7"],
-    "interview-coach":   ["1.5", "2", "3", "4", "5", "6", "6.5", "7"],
+    "sensei": ["1.5", "2", "3", "4", "5", "6", "6.5", "7"],
+    "jdbot": ["1.5", "2", "3", "4", "5", "6", "6.5", "7"],
+    "atlas": ["1.5", "2", "3", "4", "5", "6", "6.5", "7"],
+    "hunter": ["1.5", "2", "3", "4", "5", "6", "6.5", "7"],
+    "shakespeare": ["1.5", "2", "3", "4", "5", "6", "6.5", "7"],
+    "interview-lab": ["1.5", "2", "3", "4", "5", "6", "6.5", "7"],
+    "calibrate": ["1.5", "2", "3", "4", "5", "6", "6.5", "7"],
+    "recruiter-screen": ["1.5", "2", "3", "4", "5", "6", "6.5", "7"],
+    "interview-coach": ["1.5", "2", "3", "4", "5", "6", "6.5", "7"],
     # scout writes the pack, not a content JSON: no §5 (content-JSON
     # contract), no §6 (the handoff object it never emits), no §7
     # (self-QA is content-JSON specific; scout's own OUTPUT CONTRACT step
     # "validate-pack" is its equivalent and lives in scout.md, untouched).
-    "scout":             ["1.5", "2", "3", "4", "6.5"],
+    "scout": ["1.5", "2", "3", "4", "6.5"],
     # qa-gate audits every other agent's compliance with all of shared core,
     # so it needs the substantive rule sections including the content
     # contract and self-QA checklist it audits against. It has its own
     # missing-content fallback (not the NEED_INPUT block) and no preflight
     # of its own, so 1.5 and 6.5 are dropped to leave room for its (large)
     # grounding-matrix and pack-fidelity slice.
-    "qa-gate":           ["2", "3", "4", "5", "6", "7"],
+    "qa-gate": ["2", "3", "4", "5", "6", "7"],
     # relay is a pure planner: it never writes provenance, pills, content,
     # or a handoff, and never halts via NEED_INPUT, so none of the other
     # shared-core sections apply. §8 VERIFICATION is the one exception: once
@@ -229,7 +273,7 @@ SHARED_CORE_SECTIONS = {
     # not shared_core_slice()-driven like the 8 artifact agents), so listing
     # it here is the source of truth build_relay_brief reads from, not a
     # dead entry.
-    "relay":              ["8"],
+    "relay": ["8"],
 }
 
 # ============================================================================
@@ -283,7 +327,7 @@ def parse_md_table(text):
 
 def extract_fenced_json(section_text, n=0):
     """n-th ```json ... ``` fence body inside section_text, or None."""
-    fences = list(re.finditer(r"```json\n(.*?)```", section_text, re.S))
+    fences = list(re.finditer(r"```json\n(.*?)```", section_text, re.DOTALL))
     if not fences:
         return None
     return fences[n].group(1)
@@ -326,7 +370,7 @@ def extract_key_block(fence, key, indent=2):
         end = fence.find("\n", i)
         if end == -1:
             end = len(fence)
-    return fence[m.start():end].rstrip().rstrip(",")
+    return fence[m.start() : end].rstrip().rstrip(",")
 
 
 def gm_source_codenames(text):
@@ -418,7 +462,7 @@ def extract_pack_block(fence, top, subs):
             pieces.append(piece)
     if not pieces:
         return whole
-    return f'  "{top}": {{\n' + ",\n".join(pieces) + f'\n  }},'
+    return f'  "{top}": {{\n' + ",\n".join(pieces) + "\n  },"
 
 
 def bullets_from_rows(rows, cols, sep=" - "):
@@ -438,7 +482,8 @@ class Sources:
     def __init__(self):
         self.shared_core_text = read(SHARED_CORE_PATH)
         self.shared_core, self.shared_core_order = split_sections(
-            self.shared_core_text, level=2)
+            self.shared_core_text, level=2
+        )
 
         self.gm_text = read(GROUNDING_PATH)
         self.gm_parts, self.gm_order = split_sections(self.gm_text, level=2)
@@ -449,14 +494,18 @@ class Sources:
         self.gm_part35_notes = self._notes_after_table(self._gm("PART 3.5"))
         self.gm_part4_sub, _ = split_sections(self._gm("PART 4"), level=3)
         self.gm_part4_fallback_rows = parse_md_table(
-            self.gm_part4_sub["Per-agent public-source fallback"])
+            self.gm_part4_sub["Per-agent public-source fallback"]
+        )
         self.gm_part4_register_rows = parse_md_table(
-            self.gm_part4_sub["Source register: what the extractor ingests"])
+            self.gm_part4_sub["Source register: what the extractor ingests"]
+        )
         self.gm_part15_sub, _ = split_sections(self._gm("PART 1.5"), level=3)
         self.gm_part15_rows = {}
-        for tier in ("T1 · Government and official series",
-                     "T2 · Industry primary research",
-                     "T3 · Aggregators (triangulation only, never a sole source)"):
+        for tier in (
+            "T1 · Government and official series",
+            "T2 · Industry primary research",
+            "T3 · Aggregators (triangulation only, never a sole source)",
+        ):
             self.gm_part15_rows[tier] = parse_md_table(self.gm_part15_sub[tier])
         self.gm_part15_rules = self.gm_part15_sub["Rules for the public layer"]
         self.gm_part5_block = self._gm("PART 5")
@@ -480,9 +529,9 @@ class Sources:
         (Part 3.5's 'assumptions is a sanctioned extra key' + relay note)."""
         lines = section_text.splitlines()
         last_table_idx = max(
-            (i for i, l in enumerate(lines) if l.strip().startswith("|")),
-            default=-1)
-        return "\n".join(lines[last_table_idx + 1:]).strip()
+            (i for i, l in enumerate(lines) if l.strip().startswith("|")), default=-1
+        )
+        return "\n".join(lines[last_table_idx + 1 :]).strip()
 
     def _market_vocab_note(self):
         """The ABUNDANT/BALANCED/TIGHT/SCARCE definition + legacy-term
@@ -490,9 +539,9 @@ class Sources:
         pack.json schema block, before §3.5 starts."""
         sec3 = self.cp["3"]
         fence_end = sec3.rfind("```")
-        tail = sec3[fence_end + 3:]
+        tail = sec3[fence_end + 3 :]
         m = re.search(r"(?m)^`market\.classification`.*", tail)
-        return tail[m.start():].strip() if m else ""
+        return tail[m.start() :].strip() if m else ""
 
 
 # ---------------------------------------------------------------- shared-core
@@ -529,24 +578,35 @@ def trim_repeats_paragraph(body, features):
     unconditionally (empty-repeat honesty, data-count guidance)."""
     m = re.search(
         r"(?ms)^Repeats: a list of row objects.*?data genuinely demands otherwise\.\n",
-        body)
+        body,
+    )
     if not m:
-        raise ValueError("trim_repeats_paragraph: paragraph not found "
-                          "(source section wording changed)")
+        raise ValueError(
+            "trim_repeats_paragraph: paragraph not found "
+            "(source section wording changed)"
+        )
     sentences = {
         "bars": (r'Bars ride the row\n?as `"bar": 0\.34`.*?both 0 to 1\. ', "bars"),
-        "row_variants": (r"A repeat with `row_variants`.*?its variant\nlists\. ", "row_variants"),
-        "grid": (r'A `grid` repeat takes.*?`primary \| secondary \| touch \| none \| gap`\. ', "grid"),
-        "points": (r'A `points` repeat\ntakes.*?client-company star\. ', "points"),
+        "row_variants": (
+            r"A repeat with `row_variants`.*?its variant\nlists\. ",
+            "row_variants",
+        ),
+        "grid": (
+            r"A `grid` repeat takes.*?`primary \| secondary \| touch \| none \| gap`\. ",
+            "grid",
+        ),
+        "points": (r"A `points` repeat\ntakes.*?client-company star\. ", "points"),
     }
     para = m.group(0)
     for key, (pat, feat) in sentences.items():
         if feat not in features:
-            para, n = re.subn(pat, "", para, count=1, flags=re.S)
+            para, n = re.subn(pat, "", para, count=1, flags=re.DOTALL)
             if n == 0:
-                raise ValueError(f"trim_repeats_paragraph: sentence for "
-                                  f"{key!r} not found (source wording changed)")
-    return body[:m.start()] + para + body[m.end():]
+                raise ValueError(
+                    f"trim_repeats_paragraph: sentence for "
+                    f"{key!r} not found (source wording changed)"
+                )
+    return body[: m.start()] + para + body[m.end() :]
 
 
 def trim_content_contract(body, agent):
@@ -566,8 +626,7 @@ def trim_content_contract(body, agent):
         row_variants, grid, points) this agent's own schema actually uses;
         see trim_repeats_paragraph().
     """
-    table_re = re.compile(
-        r"(?m)^\| Agent \| Content schema.*$\n(?:^\|.*$\n?)+")
+    table_re = re.compile(r"(?m)^\| Agent \| Content schema.*$\n(?:^\|.*$\n?)+")
     if agent in AGENT_SCHEMA:
         stem = AGENT_SCHEMA[agent]
         replacement = (
@@ -591,7 +650,8 @@ def trim_content_contract(body, agent):
     body = table_re.sub(replacement, body, count=1)
 
     beside_re = re.compile(
-        r"(?ms)^Beside each schema sits.*?You never open the template HTML itself\.\n\n")
+        r"(?ms)^Beside each schema sits.*?You never open the template HTML itself\.\n\n"
+    )
     body = beside_re.sub("", body, count=1)
 
     example_re = re.compile(r"(?ms)^```json\n\{\n  \"artifact\": \"03\".*?\n```\n\n")
@@ -613,12 +673,15 @@ def drop_numbered_item(body, label):
     (see the drop-site comments below for the specific grep evidence)."""
     pat = re.compile(
         rf"(?m)^{re.escape(label)}\.\s+(?:\*\*)?.*?(?=^-?\d+(?:\.\d+)?\.\s|^---\s*$)",
-        re.S)
+        re.DOTALL,
+    )
     new_body, n = pat.subn("", body, count=1)
     if n == 0:
-        raise ValueError(f"drop_numbered_item: label {label!r} not found "
-                          f"(source section wording changed; fix the mapping "
-                          f"or this function)")
+        raise ValueError(
+            f"drop_numbered_item: label {label!r} not found "
+            f"(source section wording changed; fix the mapping "
+            f"or this function)"
+        )
     return new_body
 
 
@@ -684,12 +747,12 @@ _COMPACT_CORE = (
     "Peer to peer, short declaratives, name the cost of a thing, zero recruiter "
     "fluff, no adjective stacking, analogies over jargon for a non-technical recruiter, "
     "grade level 10 or below for outreach and job copy. Never use em dashes anywhere; ranges take a hyphen or `&ndash;`. "
-    "Forbidden phrases, auto-fail: \"I hope this finds you well\", \"came across "
-    "your profile\", \"exciting opportunity\", \"quick question\", \"touch base\", "
-    "\"reach out\", \"pick your brain\", \"I wanted to\", \"rockstar\", \"ninja\", "
-    "\"guru\", \"best in class\", \"fast-paced environment\", \"competitive salary\" "
-    "(state the range), \"leverage\", \"robust\", \"seamless\", \"world-class\", "
-    "\"passionate about\".\n\n"
+    'Forbidden phrases, auto-fail: "I hope this finds you well", "came across '
+    'your profile", "exciting opportunity", "quick question", "touch base", '
+    '"reach out", "pick your brain", "I wanted to", "rockstar", "ninja", '
+    '"guru", "best in class", "fast-paced environment", "competitive salary" '
+    '(state the range), "leverage", "robust", "seamless", "world-class", '
+    '"passionate about".\n\n'
     "Constraints are recruiter-configured, never assumed. Empty or absent "
     "`constraints` means no gate at all: do not invent one or hint at one. A "
     "`disqualifying: true` constraint renders as a Gate callout; others as body "
@@ -731,8 +794,10 @@ def drop_constraints_subsection(body):
     pat = re.compile(r"(?ms)^\*\*Constraints \(eligibility gates\)\*\*.*?(?=^---\s*$)")
     new_body, n = pat.subn("", body, count=1)
     if n == 0:
-        raise ValueError("drop_constraints_subsection: marker not found "
-                          "(source section wording changed)")
+        raise ValueError(
+            "drop_constraints_subsection: marker not found "
+            "(source section wording changed)"
+        )
     return new_body
 
 
@@ -812,14 +877,19 @@ def shared_core_slice(src, agent):
             # required pack path is a NEED_INPUT halt"). Dropped everywhere.
             body = re.sub(
                 r"(?ms)^A pack value that was seeded or imported.*?Halt on it\.\n\n",
-                "", body, count=1)
+                "",
+                body,
+                count=1,
+            )
         if code == "5":
             body = trim_content_contract(body, agent)
             if agent == "qa-gate":
                 # §5.4 (reskinning) is orchestrator-owned: qa-gate audits content,
                 # never the render flags, and the brief must stay under its ceiling
                 # once 1.1.x's envelope rules joined §5.2 (2.1.0 port).
-                body = re.sub(r"(?ms)^### 5\.4 Reskinning.*?(?=^### |\Z)", "", body, count=1)
+                body = re.sub(
+                    r"(?ms)^### 5\.4 Reskinning.*?(?=^### |\Z)", "", body, count=1
+                )
         if code == "7" and agent != "qa-gate":
             body = _SELF_QA_COMPACT
         parts.append(body.strip())
@@ -888,18 +958,28 @@ def grounding_matrix_slice(src, agent):
     if agent in PART4_REDUNDANT_FOR:
         fallback_rows = []
     else:
-        fallback_rows = [r for r in src.gm_part4_fallback_rows
-                          if any(r.get("Agent", "").startswith(h) for h in block_headings)]
+        fallback_rows = [
+            r
+            for r in src.gm_part4_fallback_rows
+            if any(r.get("Agent", "").startswith(h) for h in block_headings)
+        ]
     fallback_text = "\n".join(
-        f"- {r.get('Agent')}: {r.get('Public sources')}" for r in fallback_rows)
+        f"- {r.get('Agent')}: {r.get('Public sources')}" for r in fallback_rows
+    )
 
     out = ["## GROUNDING MATRIX SLICE (from `02_GROUNDING_MATRIX.md`)", ""]
     if agent == "scout":
-        out.append("Your sources are the union of the A07 + A01 + A03 blocks "
-                    "(per scout.md's own GROUNDING section):")
+        out.append(
+            "Your sources are the union of the A07 + A01 + A03 blocks "
+            "(per scout.md's own GROUNDING section):"
+        )
     out.append(own_block_text)
     if fallback_text:
-        out += ["", "**Part 4 · standalone / no-connector reading list:**", fallback_text]
+        out += [
+            "",
+            "**Part 4 · standalone / no-connector reading list:**",
+            fallback_text,
+        ]
 
     if agent not in BROAD_SOURCE_AGENTS:
         return "\n".join(out)
@@ -920,9 +1000,12 @@ def grounding_matrix_slice(src, agent):
     if agent == "scout":
         part1_text = ""
     else:
-        part1_rows = [r for r in src.gm_part1_rows if r.get("ID", "").strip("`") in codenames]
+        part1_rows = [
+            r for r in src.gm_part1_rows if r.get("ID", "").strip("`") in codenames
+        ]
         part1_text = format_registry_rows(
-            part1_rows, "ID", ["Source role", "Tier", "Binding"])
+            part1_rows, "ID", ["Source role", "Tier", "Binding"]
+        )
 
     part15_lines = []
     # scout works through WebSearch/WebFetch, not raw API endpoints, and its
@@ -935,8 +1018,11 @@ def grounding_matrix_slice(src, agent):
     # this table adds. qa-gate, the other broad-source agent, keeps the
     # full row: it has no equivalent per-codename restatement of its own,
     # and cross-checks whether a producer cited the right KIND of source.
-    part15_cols = ("Source", "Note") if agent == "scout" \
+    part15_cols = (
+        ("Source", "Note")
+        if agent == "scout"
         else ("Source", "Grounds", "Access", "Note")
+    )
     for tier, rows in src.gm_part15_rows.items():
         code_col = "Code"
         matched = [r for r in rows if r.get(code_col, "").strip("`") in codenames]
@@ -961,25 +1047,43 @@ def grounding_matrix_slice(src, agent):
         # dropped from this table for qa-gate only.
         cols = ["Producer", "Exact keys in `handoff`"]
         rows_fmt = "\n".join(
-            "| " + " | ".join(r.get(c, "") for c in cols) + " |" for r in part35_rows)
+            "| " + " | ".join(r.get(c, "") for c in cols) + " |" for r in part35_rows
+        )
         header = "| " + " | ".join(cols) + " |\n|" + "---|" * len(cols)
         part35_text = header + "\n" + rows_fmt + "\n\n" + src.gm_part35_notes
 
     if part1_text:
-        out += ["", "**Part 1 · source registry, filtered to codenames above:**", part1_text]
+        out += [
+            "",
+            "**Part 1 · source registry, filtered to codenames above:**",
+            part1_text,
+        ]
     if part15_text:
-        out += ["", "**Part 1.5 · public data sources, filtered to codenames above:**", part15_text]
+        out += [
+            "",
+            "**Part 1.5 · public data sources, filtered to codenames above:**",
+            part15_text,
+        ]
     part2_text = src.gm_part2_block.split("\n", 1)[1].strip()
     if agent == "scout":
         # scout never builds an interview plan or rubric (INTERVIEW LAB's
         # job); this is the one Part 2 row with no scout section behind it.
         part2_text = re.sub(
-            r"(?m)^\| Interview process, rubrics, interviewer names \|.*\n", "",
-            part2_text, count=1)
+            r"(?m)^\| Interview process, rubrics, interviewer names \|.*\n",
+            "",
+            part2_text,
+            count=1,
+        )
     out += ["", "**Part 2 · source-of-truth precedence:**", part2_text]
     if part35_text:
-        out += ["", "**Part 3.5 · consolidated handoff schema, every producer "
-                "(you audit conformance across all of them):**", part35_text]
+        out += [
+            "",
+            (
+                "**Part 3.5 · consolidated handoff schema, every producer "
+                "(you audit conformance across all of them):**"
+            ),
+            part35_text,
+        ]
     # The "Routing rule" bullet ("no internal string, band figure, employee
     # name, or candidate name may appear inside a web search query") is
     # restated verbatim in both scout.md and qa-gate.md bodies already
@@ -987,10 +1091,15 @@ def grounding_matrix_slice(src, agent):
     # scope, the comp file location, the constraints/protected-class rule)
     # is not restated anywhere and stays.
     part5_text = re.sub(
-        r"(?ms)^- \*\*Routing rule\*\*:.*?\n(?=- )", "",
-        src.gm_part5_block.split("\n", 1)[1].strip() + "\n")
-    out += ["", "**Part 5 · access, scopes, and sensitive-data routing:**",
-            part5_text.strip()]
+        r"(?ms)^- \*\*Routing rule\*\*:.*?\n(?=- )",
+        "",
+        src.gm_part5_block.split("\n", 1)[1].strip() + "\n",
+    )
+    out += [
+        "",
+        "**Part 5 · access, scopes, and sensitive-data routing:**",
+        part5_text.strip(),
+    ]
     return "\n".join(out)
 
 
@@ -1004,31 +1113,48 @@ def context_pack_slice(src, agent):
     out = ["## CONTEXT PACK SLICE (from `CONTEXT_PACK.md`)", ""]
 
     # §2 pv shape: universal to every pack reader/writer.
-    out += ["**§2 · the pilled value (pv) shape, every quantitative claim in "
-            "the pack:**", "", "```json",
+    out += [
+        "**§2 · the pilled value (pv) shape, every quantitative claim in the pack:**",
+        "",
+        "```json",
+        (
             '{"value": "$150-175K", "pill": "Sourced", '
-            '"method": "OFLC 2026 filings, 14 rows", "as_of": "2026-06"}',
-            "```",
+            '"method": "OFLC 2026 filings, 14 rows", "as_of": "2026-06"}'
+        ),
+        "```",
+        (
             "`pill` is exactly Sourced, Estimate, or Internal. `method` is "
             "required, never empty. Nothing downstream may upgrade a pill "
-            "it reads from the pack.", ""]
+            "it reads from the pack."
+        ),
+        "",
+    ]
 
     if agent in AGENT_PACK_ROW:
-        row = next(r for r in src.cp_sec5_rows if r["Artifact"] == AGENT_PACK_ROW[agent])
-        out += [f"**§5 · your row in the per-artifact pack requirements table:**", "",
-                f"- Required: {row['Required pack paths']}",
-                f"- Optional but used: {row['Optional but used']}",
-                "",
+        row = next(
+            r for r in src.cp_sec5_rows if r["Artifact"] == AGENT_PACK_ROW[agent]
+        )
+        out += [
+            "**§5 · your row in the per-artifact pack requirements table:**",
+            "",
+            f"- Required: {row['Required pack paths']}",
+            f"- Optional but used: {row['Optional but used']}",
+            "",
+            (
                 "A missing REQUIRED path is Class A: halt with NEED_INPUT, "
                 "`kind: pack_key`. The pack is the sole source of market "
                 "classification and carries exactly ONE canonical comp range "
                 "(`comp.canonical_range`), which every artifact states "
                 "identically; disagree from your own lookup and you keep the "
                 "pack value, add your finding, raise a Caution, never fork "
-                "the number.", ""]
+                "the number."
+            ),
+            "",
+        ]
         pmap = subpath_map(
             [row["Required pack paths"], row["Optional but used"]],
-            extra_paths=EXTRA_PACK_PATHS.get(agent))
+            extra_paths=EXTRA_PACK_PATHS.get(agent),
+        )
         # Every §5 row names bare "role" (always in scope), which
         # subpath_map() resolves to None (whole block). But only
         # calibrate's own body names `hm_names` / `recruiter_names`
@@ -1039,20 +1165,35 @@ def context_pack_slice(src, agent):
         # team). Narrow to the fields every artifact actually renders;
         # calibrate alone keeps the whole block.
         if agent != "calibrate":
-            pmap["role"] = {"title", "level", "company", "location",
-                             "work_model", "team"}
+            pmap["role"] = {
+                "title",
+                "level",
+                "company",
+                "location",
+                "work_model",
+                "team",
+            }
         pmap.setdefault("role", None)
-        req_keys, req_research = classify_pack_path_cell(row["Required pack paths"])
-        opt_keys, opt_research = classify_pack_path_cell(row["Optional but used"])
+        _req_keys, req_research = classify_pack_path_cell(row["Required pack paths"])
+        _opt_keys, opt_research = classify_pack_path_cell(row["Optional but used"])
         research_keys = req_research | opt_research
         if agent in EXTRA_PACK_PATHS:
-            out += [f"*(Fidelity override: `{', '.join(EXTRA_PACK_PATHS[agent])}` added "
-                     f"beyond the §5 row above because {agent}.md's own METHOD "
-                     f"section reads it; see F2 run report for the source-file "
-                     f"gap this covers.)*", ""]
+            out += [
+                (
+                    f"*(Fidelity override: `{', '.join(EXTRA_PACK_PATHS[agent])}` added "
+                    f"beyond the §5 row above because {agent}.md's own METHOD "
+                    f"section reads it; see F2 run report for the source-file "
+                    f"gap this covers.)*"
+                ),
+                "",
+            ]
     elif agent == "scout":
         pmap = {k: None for k in VALID_PACK_TOP_KEYS}  # writes every field
-        research_keys = set(VALID_RESEARCH_TOP_KEYS) - {"pack_version", "role_slug", "built"}
+        research_keys = set(VALID_RESEARCH_TOP_KEYS) - {
+            "pack_version",
+            "role_slug",
+            "built",
+        }
     elif agent == "qa-gate":
         # Check 3 (pack fidelity) names these paths explicitly ("comp.
         # canonical_range", "market.classification", "spec.requirements",
@@ -1069,12 +1210,20 @@ def context_pack_slice(src, agent):
         # check and are dropped (unlike scout, qa-gate never has to WRITE
         # the pack, only trace values already IN content JSON back to it).
         pmap = {
-            "role": {"title", "level", "company"},  # check 4: consistency of title/level
+            "role": {
+                "title",
+                "level",
+                "company",
+            },  # check 4: consistency of title/level
             "spec": {"requirements", "must_have_skills"},
             "market": {"classification"},
-            "comp": {"canonical_range"}, "keywords": None, "personas": None,
+            "comp": {"canonical_range"},
+            "keywords": None,
+            "personas": None,
             "messaging": {"urgency", "comp_angle"},
-            "constraints": None, "caveats": None, "built_from": None,
+            "constraints": None,
+            "caveats": None,
+            "built_from": None,
         }
         # Check 3's traceability list plus check 3c's seeded-values check;
         # `demand_blocs` and `persona_detail` aren't named by any check.
@@ -1083,18 +1232,30 @@ def context_pack_slice(src, agent):
         pmap, research_keys = {}, set()
 
     if agent == "qa-gate":
-        out += ["**§5 · required pack paths per artifact "
+        out += [
+            (
+                "**§5 · required pack paths per artifact "
                 "(you audit fidelity across every artifact, not just one; "
                 "optional-but-used column omitted, see the row's own agent "
-                "brief for that):**", ""]
-        out += [f"- {r['Artifact']}: {r['Required pack paths']}" for r in src.cp_sec5_rows]
+                "brief for that):**"
+            ),
+            "",
+        ]
+        out += [
+            f"- {r['Artifact']}: {r['Required pack paths']}" for r in src.cp_sec5_rows
+        ]
         out += [""]
 
     if pmap:
-        out += ["**§3 · pack.json schema, keys and fields you read or write "
+        out += [
+            (
+                "**§3 · pack.json schema, keys and fields you read or write "
                 "(NOT the full file: only the paths named above, field shapes "
-                "only, `...` marks a worked-example placeholder value):**", "",
-                "```json"]
+                "only, `...` marks a worked-example placeholder value):**"
+            ),
+            "",
+            "```json",
+        ]
         for key in sorted(pmap, key=lambda k: (k != "role", k)):
             blk = extract_pack_block(src.cp_pack_fence, key, pmap[key])
             if blk:
@@ -1119,9 +1280,15 @@ def context_pack_slice(src, agent):
             out += [". ".join(short[:2]) + ".", ""]
 
     if research_keys:
-        out += ["**§3.5 · pack-research.json schema, keys you read "
+        out += [
+            (
+                "**§3.5 · pack-research.json schema, keys you read "
                 "(only atlas/hunter/shakespeare/scout/qa-gate read this file "
-                "at all):**", "", "```json"]
+                "at all):**"
+            ),
+            "",
+            "```json",
+        ]
         for key in sorted(research_keys):
             blk = extract_key_block(src.cp_research_fence, key)
             if blk:
@@ -1129,8 +1296,12 @@ def context_pack_slice(src, agent):
         out += ["```", ""]
 
     if agent in ("scout", "relay"):
-        out += ["**§4 · freshness table (per pack section, not per pack):**", "",
-                src.cp["4"].split("\n", 1)[1].strip(), ""]
+        out += [
+            "**§4 · freshness table (per pack section, not per pack):**",
+            "",
+            src.cp["4"].split("\n", 1)[1].strip(),
+            "",
+        ]
 
     return "\n".join(out).rstrip() + "\n"
 
@@ -1145,8 +1316,11 @@ def format_slot(name, info, indent="- "):
     words = info.get("words", {})
     w = f"{words.get('min', '?')}-{words.get('max', '?')}"
     synth = "*" if info.get("synthetic") else ""
-    opt = " optional, omit or null when there is nothing to say" \
-        if info.get("required") is False else ""
+    opt = (
+        " optional, omit or null when there is nothing to say"
+        if info.get("required") is False
+        else ""
+    )
     return f"{indent}{name} ({info.get('type')} {w}){synth}{opt}"
 
 
@@ -1175,11 +1349,13 @@ def format_repeat(name, info):
         lines.append(
             f"- {name} [grid n={count} cols={info.get('cols')} "
             f"data_cols={info.get('data_cols')} label={info.get('label_slot')} "
-            f"cells={info.get('cell_vocab')}]")
+            f"cells={info.get('cell_vocab')}]"
+        )
     elif kind == "points":
         lines.append(
             f"- {name} [points n={count} label={info.get('label_slot')} "
-            f"fields=label/x/y, optional size/accent]")
+            f"fields=label/x/y, optional size/accent]"
+        )
     else:
         lines.append(f"- {name} [{kind} n={count}]")
     return "\n".join(lines)
@@ -1193,26 +1369,32 @@ def envelope_line(schema, stem):
     only the handoff optional, is told the exact literal to write. Mirrors
     render.py check_content_shape() and 00_SHARED_CORE.md §5.2."""
     n_bars = len(schema.get("standalone_bars") or [])
-    bars = (f"LIST of {n_bars} number(s) or [start, end] pair(s), template order"
-            if n_bars else "this template has none: write []")
+    bars = (
+        f"LIST of {n_bars} number(s) or [start, end] pair(s), template order"
+        if n_bars
+        else "this template has none: write []"
+    )
     opts = schema.get("optionals") or []
     if not opts:
         opt = "this template has none: write {}"
     elif all(o.get("handoff_block") for o in opts):
         opt = "only the handoff block, kept and filled from `handoff`: write {}"
     else:
-        opt = ('each value {"slots": {...}, "repeats": {...}}, or null to '
-               "delete the block")
+        opt = (
+            'each value {"slots": {...}, "repeats": {...}}, or null to delete the block'
+        )
     tog = "booleans" if schema.get("toggles") else "this template has none: write {}"
-    return (f"Envelope (top-level keys of your content JSON, in this order; type "
-            f"and empty state): `template` (\"{schema['template']}\"), "
-            f"`artifact` (\"{stem[-2:]}\", the renderer keys the handoff "
-            "consumers line on it), `generated` (\"YYYY-MM-DD\"), `slots: {}` "
-            "(object), `repeats: {}` (object of row lists), "
-            f"`standalone_bars: []` ({bars}), `optionals: {{}}` ({opt}), "
-            f"`toggles: {{}}` ({tog}), `handoff: {{...}}` (object, §6). Never "
-            "omit `artifact`; never `{}` for `standalone_bars`; `optionals` is "
-            "keyed by id, never a list, and an optional is never a bare string.")
+    return (
+        f"Envelope (top-level keys of your content JSON, in this order; type "
+        f'and empty state): `template` ("{schema["template"]}"), '
+        f'`artifact` ("{stem[-2:]}", the renderer keys the handoff '
+        'consumers line on it), `generated` ("YYYY-MM-DD"), `slots: {}` '
+        "(object), `repeats: {}` (object of row lists), "
+        f"`standalone_bars: []` ({bars}), `optionals: {{}}` ({opt}), "
+        f"`toggles: {{}}` ({tog}), `handoff: {{...}}` (object, §6). Never "
+        "omit `artifact`; never `{}` for `standalone_bars`; `optionals` is "
+        "keyed by id, never a list, and an optional is never a bare string."
+    )
 
 
 def synthetic_section(schema):
@@ -1227,20 +1409,25 @@ def synthetic_section(schema):
     for rname, rinfo in schema.get("repeats", {}).items():
         shapes = [(rinfo.get("row_slots", {}), f"{rname} rows")] + [
             (v.get("row_slots", {}), f"{rname} row variant {v.get('position')}")
-            for v in rinfo.get("row_variants", [])]
+            for v in rinfo.get("row_variants", [])
+        ]
         for shape, where in shapes:
             for name, info in shape.items():
                 if info.get("synthetic"):
                     items.append((name, info, where))
     if not items:
         return ["### Synthetic slots: none in this template", ""]
-    out = ["### Synthetic slots (required under --strict)",
-           "Prose the template generator found in the worked example at this "
-           "location, with no named slot; write your own text that fits the "
-           "heading, never the example's. Numbered in document order; "
-           "`--strict` fails on any you omit. Format: `name (MIN-MAX, role) "
-           "where`; `in X rows` = a key in each row of repeat X, otherwise a "
-           "key in `slots`."]
+    out = [
+        "### Synthetic slots (required under --strict)",
+        (
+            "Prose the template generator found in the worked example at this "
+            "location, with no named slot; write your own text that fits the "
+            "heading, never the example's. Numbered in document order; "
+            "`--strict` fails on any you omit. Format: `name (MIN-MAX, role) "
+            "where`; `in X rows` = a key in each row of repeat X, otherwise a "
+            "key in `slots`."
+        ),
+    ]
     for name, info, where in items:
         w = info.get("words") or {}
         rng = f"{w.get('min', '?')}-{w.get('max', '?')}"
@@ -1256,12 +1443,21 @@ def schema_summary(stem):
     with open(path, encoding="utf-8") as f:
         schema = json.load(f)
 
-    out = [f"## SCHEMA SUMMARY · `{stem}.content-schema.json` "
-           f"(template: `{schema['template']}`)", "",
-           "Format: `name (type MIN-MAX)`, MIN-MAX = example word count, a "
-           "guide, not a target - do not count words. `*` = synthetic (see "
-           "Synthetic slots below).", "",
-           envelope_line(schema, stem), ""]
+    out = [
+        (
+            f"## SCHEMA SUMMARY · `{stem}.content-schema.json` "
+            f"(template: `{schema['template']}`)"
+        ),
+        "",
+        (
+            "Format: `name (type MIN-MAX)`, MIN-MAX = example word count, a "
+            "guide, not a target - do not count words. `*` = synthetic (see "
+            "Synthetic slots below)."
+        ),
+        "",
+        envelope_line(schema, stem),
+        "",
+    ]
 
     slots = schema.get("slots", {})
     out.append("### Top-level slots")
@@ -1284,14 +1480,18 @@ def schema_summary(stem):
             f"### Toggles\n{schema['toggles']} "
             f"(booleans selecting which sections render; choose defaults in "
             f"the template's `state = {{...}}` logic block, never delete an "
-            f"`<sc-if>` wrapper to hide a section)\n")
+            f"`<sc-if>` wrapper to hide a section)\n"
+        )
     if schema.get("optionals"):
         out.append(
             "### Optional blocks (write as "
-            '`"optionals": {"<id>": {"slots": {...}}}`, or `{}` when unused)')
+            '`"optionals": {"<id>": {"slots": {...}}}`, or `{}` when unused)'
+        )
         for opt in schema["optionals"]:
             ctx = opt.get("context", "")
-            out.append(f"- `{opt.get('id')}` (handoff_block={opt.get('handoff_block')}): {ctx}")
+            out.append(
+                f"- `{opt.get('id')}` (handoff_block={opt.get('handoff_block')}): {ctx}"
+            )
         out.append("")
     if schema.get("handoff_slots"):
         out.append(f"### Handoff slots\n{schema['handoff_slots']}\n")
@@ -1368,20 +1568,31 @@ def build_agent_brief(src, agent):
     """The 8 artifact-producing agents share one assembly shape: shared-core
     slice, grounding-matrix slice, context-pack slice, schema summary."""
     label = AGENT_CODE.get(agent, "SCOUT (union of A07 + A01 + A03 sources)")
-    parts = [header(agent),
-              f"# BRIEF · {label}", "",
-              "Precompiled slice of this kit's four reference files, scoped "
-              "to what this agent needs. Read this file only"
-              + ("" if agent in NO_CONNECTOR_AGENTS else
-                 " (plus CONNECTOR_RUNTIME.md when your prompt lists a connector)")
-              + "; it replaces "
-              "reading 00_SHARED_CORE.md, CONTEXT_PACK.md, "
-              "02_GROUNDING_MATRIX.md, and this agent's content-schema + "
-              "example-content pair in full.", "",
-              "## SHARED CORE SLICE (from `00_SHARED_CORE.md`)", "",
-              shared_core_slice(src, agent), "",
-              grounding_matrix_slice(src, agent), "",
-              context_pack_slice(src, agent), ""]
+    parts = [
+        header(agent),
+        f"# BRIEF · {label}",
+        "",
+        "Precompiled slice of this kit's four reference files, scoped "
+        "to what this agent needs. Read this file only"
+        + (
+            ""
+            if agent in NO_CONNECTOR_AGENTS
+            else " (plus CONNECTOR_RUNTIME.md when your prompt lists a connector)"
+        )
+        + "; it replaces "
+        "reading 00_SHARED_CORE.md, CONTEXT_PACK.md, "
+        "02_GROUNDING_MATRIX.md, and this agent's content-schema + "
+        "example-content pair in full.",
+        "",
+        "## SHARED CORE SLICE (from `00_SHARED_CORE.md`)",
+        "",
+        shared_core_slice(src, agent),
+        "",
+        grounding_matrix_slice(src, agent),
+        "",
+        context_pack_slice(src, agent),
+        "",
+    ]
     if agent in AGENT_SCHEMA:
         parts.append(schema_summary(AGENT_SCHEMA[agent]))
     return "\n".join(parts).rstrip() + "\n"
@@ -1398,43 +1609,72 @@ def build_qa_gate_brief(src):
 def build_relay_brief(src):
     parts = [
         header("relay"),
-        "# BRIEF · RELAY (planning broker and, in `mode: execute`, orchestrator)", "",
-        "relay carries no other shared-core slice (it never writes "
-        "provenance, pills, or a handoff, and never halts via NEED_INPUT "
-        "itself) and no grounding-matrix slice (it does no research). Its "
-        "planning job runs off CONTEXT_PACK.md's structural tables, "
-        "reproduced here in full since relay computes a UNION across "
-        "whichever artifacts were requested and so needs every row, not "
-        "one. Its execute job spawns critic and qa-gate, so it keeps the "
-        "one shared-core rule that governs that: §8 below.", "",
-        "## SHARED CORE SLICE (from `00_SHARED_CORE.md`)", "",
-        shared_core_slice(src, "relay"), "",
-        "## CONTEXT PACK: FULL §5 REQUIREMENTS TABLE", "",
+        "# BRIEF · RELAY (planning broker and, in `mode: execute`, orchestrator)",
+        "",
+        (
+            "relay carries no other shared-core slice (it never writes "
+            "provenance, pills, or a handoff, and never halts via NEED_INPUT "
+            "itself) and no grounding-matrix slice (it does no research). Its "
+            "planning job runs off CONTEXT_PACK.md's structural tables, "
+            "reproduced here in full since relay computes a UNION across "
+            "whichever artifacts were requested and so needs every row, not "
+            "one. Its execute job spawns critic and qa-gate, so it keeps the "
+            "one shared-core rule that governs that: §8 below."
+        ),
+        "",
+        "## SHARED CORE SLICE (from `00_SHARED_CORE.md`)",
+        "",
+        shared_core_slice(src, "relay"),
+        "",
+        "## CONTEXT PACK: FULL §5 REQUIREMENTS TABLE",
+        "",
     ]
     cols = ["Artifact", "Required pack paths", "Optional but used"]
     header_row = "| " + " | ".join(cols) + " |\n|" + "---|" * len(cols)
     rows_fmt = "\n".join(
-        "| " + " | ".join(r.get(c, "") for c in cols) + " |" for r in src.cp_sec5_rows)
-    parts += [header_row, rows_fmt, "",
-              "Union the requested artifacts' rows: that union is scout's "
-              "scope when a build or sectional refresh is needed. Note "
-              "which artifacts also need `pack-research.json` (03, 04, 05).",
-              "", "## CONTEXT PACK: §4 FRESHNESS TABLE", "",
-              src.cp["4"].split("\n", 1)[1].strip(), "",
-              "## CONTEXT PACK: §1 FILES AND LOCATIONS", "",
-              src.cp["1"].split("\n", 1)[1].strip(), "",
-              "## CONTEXT PACK: §6 SEEDING RULES (for the seed-candidate step)", "",
-              src.cp["6"].split("\n", 1)[1].strip(), "",
-              "## CONTEXT PACK: market.classification vocabulary", "",
-              src.cp_market_vocab, "",
-              "## PHASE STRUCTURE (fixed, from relay.md itself, reproduced "
-              "for quick reference)", "",
-              "Phase 1: Context Pack build/refresh/import (scout, or "
-              "skill-seeded). Phase 2: every requested artifact agent, all "
-              "parallel, each fed the pack files. Phase 3: deterministic "
-              "render (`scripts/render.py`), then qa-gate when 2+ artifacts "
-              "were built. No inter-artifact DAG: the pack carries every "
-              "cross-artifact decision.", ""]
+        "| " + " | ".join(r.get(c, "") for c in cols) + " |" for r in src.cp_sec5_rows
+    )
+    parts += [
+        header_row,
+        rows_fmt,
+        "",
+        (
+            "Union the requested artifacts' rows: that union is scout's "
+            "scope when a build or sectional refresh is needed. Note "
+            "which artifacts also need `pack-research.json` (03, 04, 05)."
+        ),
+        "",
+        "## CONTEXT PACK: §4 FRESHNESS TABLE",
+        "",
+        src.cp["4"].split("\n", 1)[1].strip(),
+        "",
+        "## CONTEXT PACK: §1 FILES AND LOCATIONS",
+        "",
+        src.cp["1"].split("\n", 1)[1].strip(),
+        "",
+        "## CONTEXT PACK: §6 SEEDING RULES (for the seed-candidate step)",
+        "",
+        src.cp["6"].split("\n", 1)[1].strip(),
+        "",
+        "## CONTEXT PACK: market.classification vocabulary",
+        "",
+        src.cp_market_vocab,
+        "",
+        (
+            "## PHASE STRUCTURE (fixed, from relay.md itself, reproduced "
+            "for quick reference)"
+        ),
+        "",
+        (
+            "Phase 1: Context Pack build/refresh/import (scout, or "
+            "skill-seeded). Phase 2: every requested artifact agent, all "
+            "parallel, each fed the pack files. Phase 3: deterministic "
+            "render (`scripts/render.py`), then qa-gate when 2+ artifacts "
+            "were built. No inter-artifact DAG: the pack carries every "
+            "cross-artifact decision."
+        ),
+        "",
+    ]
     return "\n".join(parts).rstrip() + "\n"
 
 
@@ -1446,10 +1686,16 @@ BUILDERS["relay"] = build_relay_brief
 
 def main(argv=None):
     ap = argparse.ArgumentParser()
-    ap.add_argument("--check", action="store_true",
-                     help="exit 1 if regenerating would change any file on disk")
-    ap.add_argument("--agent", action="append",
-                     help="only build this agent's brief (repeatable); default: all")
+    ap.add_argument(
+        "--check",
+        action="store_true",
+        help="exit 1 if regenerating would change any file on disk",
+    )
+    ap.add_argument(
+        "--agent",
+        action="append",
+        help="only build this agent's brief (repeatable); default: all",
+    )
     args = ap.parse_args(argv)
 
     for p in SOURCE_FILES:
@@ -1485,7 +1731,7 @@ def main(argv=None):
 
     print(f"{'agent':<18} {'bytes':>7} {'KB':>7}  path")
     for agent, out_path, size in results:
-        print(f"{agent:<18} {size:>7} {size/1024:>6.1f}K  {out_path}")
+        print(f"{agent:<18} {size:>7} {size / 1024:>6.1f}K  {out_path}")
 
     # Enforcement-by-audit: the soft 20KB target warns; the 24KB hard ceiling
     # FAILS the build, in --check mode too. (Nothing executes between an
@@ -1494,25 +1740,35 @@ def main(argv=None):
     warn = [(a, s) for a, _, s in results if 20 * 1024 < s <= HARD_CEILING_BYTES]
     over = [(a, s) for a, _, s in results if s > HARD_CEILING_BYTES]
     if warn:
-        print("\nover 20KB soft target:", ", ".join(f"{a} ({s/1024:.1f}K)" for a, s in warn),
-              file=sys.stderr)
+        print(
+            "\nover 20KB soft target:",
+            ", ".join(f"{a} ({s / 1024:.1f}K)" for a, s in warn),
+            file=sys.stderr,
+        )
     if over:
-        print(f"\nOVER {HARD_CEILING_BYTES // 1024}KB HARD CEILING (build fails):",
-              ", ".join(f"{a} ({s/1024:.1f}K)" for a, s in over), file=sys.stderr)
+        print(
+            f"\nOVER {HARD_CEILING_BYTES // 1024}KB HARD CEILING (build fails):",
+            ", ".join(f"{a} ({s / 1024:.1f}K)" for a, s in over),
+            file=sys.stderr,
+        )
 
     if args.check:
         if changed:
-            print(f"\n--check: STALE ({', '.join(changed)}); run without --check to regenerate.",
-                  file=sys.stderr)
+            print(
+                f"\n--check: STALE ({', '.join(changed)}); run without --check to regenerate.",
+                file=sys.stderr,
+            )
             return 1
         if over:
-            print("\n--check: briefs up to date but over the hard ceiling.", file=sys.stderr)
+            print(
+                "\n--check: briefs up to date but over the hard ceiling.",
+                file=sys.stderr,
+            )
             return 1
         print("\n--check: all briefs up to date.")
         return 0
 
-    print(f"\nWrote {len(results)} briefs to {BRIEFS_DIR} "
-          f"({len(changed)} changed).")
+    print(f"\nWrote {len(results)} briefs to {BRIEFS_DIR} ({len(changed)} changed).")
     return 1 if over else 0
 
 

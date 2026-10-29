@@ -13,6 +13,7 @@ that agent would do, deterministically:
 It prints the JSON envelope `claude -p --output-format json` prints. STUB_SLEEP holds
 each session open so parallel sessions overlap.
 """
+
 import json
 import os
 import shutil
@@ -33,7 +34,7 @@ def arg(flag):
 def line_value(text, prefix):
     for line in text.splitlines():
         if line.startswith(prefix):
-            return line[len(prefix):].strip()
+            return line[len(prefix) :].strip()
     return None
 
 
@@ -55,13 +56,18 @@ def main():
             pack["channels"] = [{"name": "synthetic channel"}]
             pack.setdefault("market", {}).setdefault("funnel", synth)
             pack.setdefault("comp", {}).setdefault("by_level", [synth])
-            research = {k: [{"name": "synthetic"}] for k in
-                        ("dossiers", "metros", "persona_detail", "proof_points")}
-            research["quadrant"] = [{"name": "synthetic", "x": 0.5, "y": 0.5, "size": 0.5,
-                                     "tier": "A"}]
+            research = {
+                k: [{"name": "synthetic"}]
+                for k in ("dossiers", "metros", "persona_detail", "proof_points")
+            }
+            research["quadrant"] = [
+                {"name": "synthetic", "x": 0.5, "y": 0.5, "size": 0.5, "tier": "A"}
+            ]
         (home / "pack.json").write_text(json.dumps(pack, indent=2), encoding="utf-8")
         if research:
-            (home / "pack-research.json").write_text(json.dumps(research), encoding="utf-8")
+            (home / "pack-research.json").write_text(
+                json.dumps(research), encoding="utf-8"
+            )
     elif label.startswith("content-"):
         nn = label.split("-")[1]
         out = Path(line_value(user, "WRITE YOUR CONTENT JSON TO:"))
@@ -72,8 +78,16 @@ def main():
         result += "\nVERDICT: " + os.environ.get("STUB_CRITIC", "PASS")
     elif label == "qa":
         result += "\nVERDICT: CERTIFIED"
-    print(json.dumps({"result": result, "session_id": f"stub-{label}",
-                      "total_cost_usd": 0.01, "is_error": False}))
+    print(
+        json.dumps(
+            {
+                "result": result,
+                "session_id": f"stub-{label}",
+                "total_cost_usd": 0.01,
+                "is_error": False,
+            }
+        )
+    )
 
 
 if __name__ == "__main__":

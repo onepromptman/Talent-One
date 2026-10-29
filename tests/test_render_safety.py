@@ -35,8 +35,15 @@ HOSTILE = (
     '<span style="background:url(https://attacker.invalid/b.png)" onmouseover="x()">kept text</span>'
     '<a href="https://example.com/source">a source link</a>'
 )
-LEFTOVERS = ("<script>fetch", "onerror", "onmouseover", "javascript:", "<iframe",
-             "attacker.invalid", "<img")
+LEFTOVERS = (
+    "<script>fetch",
+    "onerror",
+    "onmouseover",
+    "javascript:",
+    "<iframe",
+    "attacker.invalid",
+    "<img",
+)
 
 # CSS loaders that do not spell url( plainly, and the panel's probes (lap 1 of S3a).
 CSS_LOADERS = (
@@ -56,8 +63,21 @@ PROBES = (
     '<math><mi xlink:href="javascript:alert(1)">probe four</mi></math>'
     "<style>@import url(https://attacker.invalid/p.css)</style>"
 )
-SLOT_LEFTOVERS = ("attacker.invalid", "image-set", "\\75", "\\0000", "@import", "cross-fade",
-                  "<svg", "onload", "data:", "xlink:href", "<math", "<style", "script:")
+SLOT_LEFTOVERS = (
+    "attacker.invalid",
+    "image-set",
+    "\\75",
+    "\\0000",
+    "@import",
+    "cross-fade",
+    "<svg",
+    "onload",
+    "data:",
+    "xlink:href",
+    "<math",
+    "<style",
+    "script:",
+)
 HOSTILE_BRAND = {
     "--op-primary": "url(https://attacker.invalid/b1.png)",
     "--op-accent": "image-set('https://attacker.invalid/b2.png' 1x)",
@@ -69,17 +89,59 @@ HOSTILE_BRAND = {
 
 def _render(content: Path, out: Path, *extra: str) -> subprocess.CompletedProcess:
     return subprocess.run(
-        [sys.executable, str(RENDER), "render", "--template", str(TEMPLATE), "--schema", str(SCHEMA),
-         "--content", str(content), "--ds", str(DS_DIR), "--out", str(out), "--strict",
-         "--mode", "light", "--prefix", "TK", "--credit", "on", *extra],
-        capture_output=True, text=True)
+        [
+            sys.executable,
+            str(RENDER),
+            "render",
+            "--template",
+            str(TEMPLATE),
+            "--schema",
+            str(SCHEMA),
+            "--content",
+            str(content),
+            "--ds",
+            str(DS_DIR),
+            "--out",
+            str(out),
+            "--strict",
+            "--mode",
+            "light",
+            "--prefix",
+            "TK",
+            "--credit",
+            "on",
+            *extra,
+        ],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
 
 
 def _verify(doc: Path, report: Path) -> list[dict]:
     subprocess.run(
-        [sys.executable, str(RENDER), "verify", "--template", str(TEMPLATE), "--schema", str(SCHEMA),
-         "--doc", str(doc), "--out", str(report)], capture_output=True, text=True)
-    return [f for f in json.loads(report.read_text())["findings"] if f["check"] == "active content"]
+        [
+            sys.executable,
+            str(RENDER),
+            "verify",
+            "--template",
+            str(TEMPLATE),
+            "--schema",
+            str(SCHEMA),
+            "--doc",
+            str(doc),
+            "--out",
+            str(report),
+        ],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    return [
+        f
+        for f in json.loads(report.read_text())["findings"]
+        if f["check"] == "active content"
+    ]
 
 
 def _content(tmp_path: Path, fragment: str, brand: dict | None = None) -> Path:
@@ -95,6 +157,7 @@ def _content(tmp_path: Path, fragment: str, brand: dict | None = None) -> Path:
 
 def _slot_html(doc: Path) -> str:
     from bs4 import BeautifulSoup
+
     soup = BeautifulSoup(doc.read_text(encoding="utf-8"), "html.parser")
     return str(soup.find(attrs={"data-slot": "sell.script"}))
 
@@ -119,7 +182,13 @@ def test_css_loaders_and_probes_are_dropped(tmp_path):
     slot = _slot_html(out).lower()
     for bad in SLOT_LEFTOVERS:
         assert bad.lower() not in slot, bad
-    for kept in ("css one", "css four", "css seven", "probe one", "probe three"):  # <math> goes whole
+    for kept in (
+        "css one",
+        "css four",
+        "css seven",
+        "probe one",
+        "probe three",
+    ):  # <math> goes whole
         assert kept in slot, kept
     assert _verify(out, tmp_path / "r.json") == []
 
@@ -132,13 +201,21 @@ def test_hostile_brand_overrides_are_refused(tmp_path):
     for key in HOSTILE_BRAND:
         assert f"brand override '{key}' refused" in proc.stdout, key
     failed = out.with_name(out.name + ".failed").read_text(encoding="utf-8")
-    assert "attacker.invalid" not in failed and "image-set" not in failed and "\\75" not in failed
+    assert (
+        "attacker.invalid" not in failed
+        and "image-set" not in failed
+        and "\\75" not in failed
+    )
 
 
 def test_safe_brand_override_applies(tmp_path):
     out = tmp_path / "doc.html"
-    proc = _render(_content(tmp_path, "", brand={"--op-primary": "#123456"}), out,
-                   "--brand", "--op-accent=rgb(1, 2, 3)")
+    proc = _render(
+        _content(tmp_path, "", brand={"--op-primary": "#123456"}),
+        out,
+        "--brand",
+        "--op-accent=rgb(1, 2, 3)",
+    )
     assert proc.returncode == 0, proc.stdout + proc.stderr
     html = out.read_text(encoding="utf-8")
     assert "--op-primary:#123456" in html and "--op-accent:rgb(1, 2, 3)" in html
@@ -173,15 +250,31 @@ def test_verify_flags_css_loaders_probes_and_brand(tmp_path):
     marker = 'data-slot="sell.script"'
     i = html.index(">", html.index(marker)) + 1
     from bs4 import BeautifulSoup
+
     soup = BeautifulSoup(html[:i] + CSS_LOADERS + PROBES + html[i:], "html.parser")
     root = soup.find(attrs={"data-mode": True})
-    root["style"] = (root.get("style") or "") + ";--op-primary:image-set('https://attacker.invalid/r.png' 1x)"
+    root["style"] = (
+        root.get("style") or ""
+    ) + ";--op-primary:image-set('https://attacker.invalid/r.png' 1x)"
     doc = tmp_path / "planted.html"
     doc.write_text(str(soup), encoding="utf-8")
     findings = _verify(doc, tmp_path / "r.json")
     checks = " | ".join(f["evidence"] for f in findings)
     assert all(f["severity"] == "HIGH" for f in findings)
-    for expected in ("image-set", "-webkit-image-set", "\\\\75rl", "\\\\000075rl", "URL(", "@import",
-                     "cross-fade", "<svg>", "onload", "data:text/html", " DaTa:", "java\\tscript",
-                     "<math>", "--op-primary:image-set"):
+    for expected in (
+        "image-set",
+        "-webkit-image-set",
+        "\\\\75rl",
+        "\\\\000075rl",
+        "URL(",
+        "@import",
+        "cross-fade",
+        "<svg>",
+        "onload",
+        "data:text/html",
+        " DaTa:",
+        "java\\tscript",
+        "<math>",
+        "--op-primary:image-set",
+    ):
         assert expected in checks, (expected, checks)

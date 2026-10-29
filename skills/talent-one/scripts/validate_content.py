@@ -45,7 +45,7 @@ SCHEMAS = HERE.parent / "references" / "content-schemas"
 
 PLACEHOLDER_RE = re.compile(
     r"lorem ipsum|\bTBD\b|\bTODO\b|\[insert|\[placeholder\]|<placeholder>|placeholder text|\bXXX\b",
-    re.I,
+    re.IGNORECASE,
 )
 MONEY_RE = re.compile(r"\$\s?\d[\d,]*(?:\.\d+)?\s?[KkMm]?")
 PERCENT_RE = re.compile(r"\d+(?:\.\d+)?\s?%")
@@ -146,7 +146,7 @@ def derive_contract(
         always = set(dicts[0])
         union: set[str] = set()
         for it in dicts:
-            always &= set(k for k, v in it.items() if str(v).strip())
+            always &= {k for k, v in it.items() if str(v).strip()}
             union |= set(it)
         repeats[name] = {
             # floor/ceiling = the template's designed range when the schema states one,
@@ -195,7 +195,9 @@ def derive_all(schemas: Path = SCHEMAS) -> list[Path]:
         out = schemas / f"TK_{n}.contract.json"
         text = json.dumps(contract, indent=2, ensure_ascii=False) + "\n"
         if not out.exists() or out.read_text(encoding="utf-8") != text:
-            out.write_text(text, encoding="utf-8", newline="\n")
+            # open() rather than Path.write_text: write_text takes newline= only from 3.10
+            with open(out, "w", encoding="utf-8", newline="\n") as fh:
+                fh.write(text)
         written.append(out)
     return written
 
@@ -535,13 +537,13 @@ def check_content(
                         continue
                     label = str(row.get("metric.label", ""))
                     value = str(row.get("metric.value", ""))
-                    if re.search(r"word count", label, re.I):
+                    if re.search(r"word count", label, re.IGNORECASE):
                         got = _first_number(value)
                         if got is None or int(got) != rd["words"]:
                             findings.append(
                                 f"cover.metrics word count {value} != validator {rd['words']}"
                             )
-                    elif re.search(r"reading", label, re.I):
+                    elif re.search(r"reading", label, re.IGNORECASE):
                         got = _first_number(value)
                         if got is None or round(got, 1) != round(rd["grade"], 1):
                             findings.append(
@@ -769,6 +771,7 @@ def render_strict(content_path: Path, contract_path: Path) -> list[str]:
             text=True,
             encoding="utf-8",
             errors="replace",
+            check=False,
         )
         text = proc.stdout
         i = text.find("{")

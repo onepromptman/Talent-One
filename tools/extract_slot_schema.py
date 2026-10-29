@@ -41,10 +41,10 @@ class SlotReader(HTMLParser):
 
     def __init__(self):
         super().__init__(convert_charrefs=True)
-        self.stack = []          # open (tag, slot_name or None)
+        self.stack = []  # open (tag, slot_name or None)
         self.text = defaultdict(list)
-        self.repeats = {}        # name -> data-count
-        self.bars = set()        # slots carrying data-bar
+        self.repeats = {}  # name -> data-count
+        self.bars = set()  # slots carrying data-bar
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -75,29 +75,61 @@ NUM = r"[\d,]+(?:\.\d+)?"
 DASH = r"[-–]"  # hyphen or en dash; em dashes are banned pack-wide
 
 PATTERNS = [
-    ("pill",           r"^(Sourced|Estimate|Modeled|Internal|Derived)\b"),
+    ("pill", r"^(Sourced|Estimate|Modeled|Internal|Derived)\b"),
     # Ranges before their singular counterparts, or "$120-145K" would match
     # the plain currency pattern on its first half and stop.
-    ("currency_range",
-     rf"^\$?{NUM}\s*[KkMm]?\s*{DASH}\s*\$?{NUM}\s*[KkMm]?$"),
-    ("count_range",     rf"^{NUM}\s*{DASH}\s*{NUM}$"),
-    ("currency",        rf"^[~<>]?\${NUM}\s*[KkMm]?$"),
-    ("percent",         r"^[~<>+-]?[\d.]+\s*%$"),
-    ("ratio",           r"^[\d.]+\s*:\s*[\d.]+$"),
-    ("duration",        r"^(D\d+|[\d.]+\s*(min|minutes|hr|hours|days?|weeks?|months?|yrs?|years?)|"
-                        r"days?|weeks?|months?|hours?|minutes?)$"),
-    ("date",            r"^([A-Z]{3}\s+\d{4}|\d{4}|\d{4}-\d{2}-\d{2})$"),
-    ("count",           rf"^[~<>+-]?{NUM}\s*[KkMmBb]?\+?$"),
-    ("empty_cell",      r"^[-–—]$"),
+    ("currency_range", rf"^\$?{NUM}\s*[KkMm]?\s*{DASH}\s*\$?{NUM}\s*[KkMm]?$"),
+    ("count_range", rf"^{NUM}\s*{DASH}\s*{NUM}$"),
+    ("currency", rf"^[~<>]?\${NUM}\s*[KkMm]?$"),
+    ("percent", r"^[~<>+-]?[\d.]+\s*%$"),
+    ("ratio", r"^[\d.]+\s*:\s*[\d.]+$"),
+    (
+        "duration",
+        (
+            r"^(D\d+|[\d.]+\s*(min|minutes|hr|hours|days?|weeks?|months?|yrs?|years?)|"
+            r"days?|weeks?|months?|hours?|minutes?)$"
+        ),
+    ),
+    ("date", r"^([A-Z]{3}\s+\d{4}|\d{4}|\d{4}-\d{2}-\d{2})$"),
+    ("count", rf"^[~<>+-]?{NUM}\s*[KkMmBb]?\+?$"),
+    ("empty_cell", r"^[-–—]$"),
 ]
 
 # Short controlled vocabularies that render as chips. Case-insensitive.
 CHIP_WORDS = {
-    "high", "med-high", "med", "med-low", "low", "abundant", "balanced",
-    "tight", "scarce", "critical", "loose", "moderate", "must-have",
-    "calibrated", "flex", "nice-to-have", "non-negotiable", "advance",
-    "hold", "decline", "yes", "no", "none", "house", "oracle", "primary",
-    "secondary", "touch", "gap", "s", "a", "b", "c",
+    "high",
+    "med-high",
+    "med",
+    "med-low",
+    "low",
+    "abundant",
+    "balanced",
+    "tight",
+    "scarce",
+    "critical",
+    "loose",
+    "moderate",
+    "must-have",
+    "calibrated",
+    "flex",
+    "nice-to-have",
+    "non-negotiable",
+    "advance",
+    "hold",
+    "decline",
+    "yes",
+    "no",
+    "none",
+    "house",
+    "oracle",
+    "primary",
+    "secondary",
+    "touch",
+    "gap",
+    "s",
+    "a",
+    "b",
+    "c",
 }
 
 
@@ -111,7 +143,7 @@ def infer_type(value: str, slot: str, is_bar: bool):
     if not v:
         return "prose", True
     for name, pat in PATTERNS:
-        if re.match(pat, v, re.I):
+        if re.match(pat, v, re.IGNORECASE):
             # The optional "$" in the range patterns lets a plain count like
             # "1,800-2,400" match currency_range on a technicality. Demote it
             # to count_range unless a dollar sign is actually present.
@@ -124,7 +156,7 @@ def infer_type(value: str, slot: str, is_bar: bool):
     if slot.endswith((".title", ".name", ".label", ".term", ".stage", ".segment")):
         return "label", False
     if words <= 3:
-        return "label", True          # short but unrecognized: worth a look
+        return "label", True  # short but unrecognized: worth a look
     if words <= 25:
         return "prose_short", False
     return "prose_long", False
@@ -139,7 +171,8 @@ def infer(templates: Path = TEMPLATES) -> tuple[dict, dict]:
     for path in files:
         tk = "_".join(os.path.basename(path).split("_")[:2])
         p = SlotReader()
-        p.feed(open(path, encoding="utf-8").read())
+        with open(path, encoding="utf-8") as fh:
+            p.feed(fh.read())
         for slot, chunks in p.text.items():
             val = re.sub(r"\s+", " ", html.unescape("".join(chunks))).strip()
             seen[slot].append((tk, val, slot in p.bars))
@@ -175,29 +208,42 @@ def check(schema_path: Path = SCHEMA, templates: Path = TEMPLATES) -> list[str]:
     vocab = set(committed.get("types", {}))
     out = []
     for name in sorted(set(slots) - set(have_s)):
-        out.append(f"slot {name!r} is in {slots[name]['templates']} but not in the schema")
+        out.append(
+            f"slot {name!r} is in {slots[name]['templates']} but not in the schema"
+        )
     for name in sorted(set(have_s) - set(slots)):
         out.append(f"schema slot {name!r} is in no template")
     for name in sorted(set(slots) & set(have_s)):
-        a, b = sorted(slots[name]["templates"]), sorted(have_s[name].get("templates", []))
+        a, b = (
+            sorted(slots[name]["templates"]),
+            sorted(have_s[name].get("templates", [])),
+        )
         if a != b:
             out.append(f"slot {name!r}: templates {a}, schema says {b}")
         if vocab and have_s[name].get("type") not in vocab:
-            out.append(f"slot {name!r}: type {have_s[name].get('type')!r} is not in `types`")
+            out.append(
+                f"slot {name!r}: type {have_s[name].get('type')!r} is not in `types`"
+            )
     for name in sorted(set(repeats) - set(have_r)):
-        out.append(f"repeat {name!r} is in {repeats[name]['templates']} but not in the schema")
+        out.append(
+            f"repeat {name!r} is in {repeats[name]['templates']} but not in the schema"
+        )
     for name in sorted(set(have_r) - set(repeats)):
         out.append(f"schema repeat {name!r} is in no template")
     return out
 
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(description=__doc__,
-                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     ap.add_argument("--templates", default=str(TEMPLATES))
     ap.add_argument("--schema", default=str(SCHEMA))
-    ap.add_argument("--check", action="store_true",
-                    help="exit 1 when SLOT_SCHEMA.json and the templates disagree on structure")
+    ap.add_argument(
+        "--check",
+        action="store_true",
+        help="exit 1 when SLOT_SCHEMA.json and the templates disagree on structure",
+    )
     args = ap.parse_args(argv)
     if args.check:
         drift = check(Path(args.schema), Path(args.templates))
@@ -206,8 +252,13 @@ def main(argv=None):
         print(f"slot schema: {len(drift)} structural difference(s)")
         return 1 if drift else 0
     slots, repeats = infer(Path(args.templates))
-    print(json.dumps({"version": "inferred", "slots": slots, "repeats": repeats},
-                     indent=2, ensure_ascii=False))
+    print(
+        json.dumps(
+            {"version": "inferred", "slots": slots, "repeats": repeats},
+            indent=2,
+            ensure_ascii=False,
+        )
+    )
     return 0
 
 

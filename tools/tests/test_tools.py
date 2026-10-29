@@ -6,6 +6,7 @@ example or a renamed token set keeps them green.
 Stdlib unittest, collected by pytest when the module's evals run. The rendered-run test
 shells out to skills/talent-one/scripts/render.py (beautifulsoup4).
 """
+
 from __future__ import annotations
 
 import io
@@ -26,9 +27,9 @@ TEMPLATES = REF / "templates"
 SCHEMAS = REF / "content-schemas"
 RENDER = MODULE / "skills" / "talent-one" / "scripts" / "render.py"
 sys.path.insert(0, str(TOOLS))
-import check_dag  # noqa: E402
-import check_fill  # noqa: E402
-import extract_slot_schema  # noqa: E402
+import check_dag
+import check_fill
+import extract_slot_schema
 
 # /bin/bash is 3.2 on macOS: the version check_kit.sh's empty-array fix is for.
 BASH = "/bin/bash" if Path("/bin/bash").exists() else shutil.which("bash")
@@ -49,8 +50,10 @@ def _lint(html: str, *extra: str) -> tuple[int, str]:
         return code, out.getvalue()
 
 
-HANDOFF = ('<p data-slot="handoff.produces">a · b</p>'
-           '<p data-slot="handoff.blocked">Nothing</p>')
+HANDOFF = (
+    '<p data-slot="handoff.produces">a · b</p>'
+    '<p data-slot="handoff.blocked">Nothing</p>'
+)
 
 
 class CheckDag(unittest.TestCase):
@@ -64,7 +67,8 @@ class CheckDag(unittest.TestCase):
     def test_drift_in_the_runner_manifest_is_caught(self):
         manifest = json.loads(check_dag.MANIFEST.read_text(encoding="utf-8"))
         manifest["artifacts"]["02"]["pack_paths"] = manifest["artifacts"]["02"][
-            "pack_paths"][:-1]
+            "pack_paths"
+        ][:-1]
         manifest["artifacts"]["06"]["agent"] = "jdbot"
         with tempfile.TemporaryDirectory() as d:
             alt = Path(d) / "agents.json"
@@ -94,38 +98,51 @@ class CheckFill(unittest.TestCase):
         self.assertIn("understates", out)
 
     def test_range_bar_geometry(self):
-        ok, _ = _lint(f'<div data-bar="0.2,0.5" style="left:20%;width:30%"></div>{HANDOFF}')
-        bad, out = _lint(f'<div data-bar="0.2,0.5" style="left:20%;width:10%"></div>{HANDOFF}')
+        ok, _ = _lint(
+            f'<div data-bar="0.2,0.5" style="left:20%;width:30%"></div>{HANDOFF}'
+        )
+        bad, out = _lint(
+            f'<div data-bar="0.2,0.5" style="left:20%;width:10%"></div>{HANDOFF}'
+        )
         self.assertEqual((ok, bad), (0, 1), out)
 
     def test_heat_cell_accepts_any_primary_token_prefix(self):
         for token in ("--ds-primary", "--op-primary"):
-            code, out = _lint(f'<div data-bar="1" style="background:var({token});'
-                              f'min-height:40px"></div>{HANDOFF}')
+            code, out = _lint(
+                f'<div data-bar="1" style="background:var({token});'
+                f'min-height:40px"></div>{HANDOFF}'
+            )
             self.assertEqual(code, 0, out)
-        code, out = _lint(f'<div data-bar="1" style="background:#DCE6F2;min-height:40px">'
-                          f'</div>{HANDOFF}')
+        code, out = _lint(
+            f'<div data-bar="1" style="background:#DCE6F2;min-height:40px">'
+            f"</div>{HANDOFF}"
+        )
         self.assertEqual(code, 1, out)
 
     def test_hedged_optional_block_is_an_error(self):
-        code, out = _lint(f'<div data-optional>Comp data TBD</div>{HANDOFF}')
+        code, out = _lint(f"<div data-optional>Comp data TBD</div>{HANDOFF}")
         self.assertEqual(code, 1)
         self.assertIn("hedged-optional", out)
 
     def test_inlined_css_is_not_body_text(self):
-        code, out = _lint(f'<style>/* tokens — header */</style><p>fine text</p>{HANDOFF}')
+        _code, out = _lint(
+            f"<style>/* tokens — header */</style><p>fine text</p>{HANDOFF}"
+        )
         self.assertNotIn("em-dash", out)
-        code, out = _lint(f'<p>bad — text</p>{HANDOFF}')
+        _code, out = _lint(f"<p>bad — text</p>{HANDOFF}")
         self.assertIn("em-dash", out)
 
     def test_handoff_keys_against_the_renderers_compat_file(self):
         with tempfile.TemporaryDirectory() as d:
             h = Path(d) / "handoffs.json"
-            h.write_text(json.dumps({"01": {"handoff": {"produces": "a · b"}}}),
-                         encoding="utf-8")
+            h.write_text(
+                json.dumps({"01": {"handoff": {"produces": "a · b"}}}), encoding="utf-8"
+            )
             ok, out = _lint(HANDOFF, "--handoffs", str(h), "--artifact", "01")
             self.assertEqual(ok, 0, out)
-            h.write_text(json.dumps({"01": {"handoff": {"a": 1, "c": 2}}}), encoding="utf-8")
+            h.write_text(
+                json.dumps({"01": {"handoff": {"a": 1, "c": 2}}}), encoding="utf-8"
+            )
             bad, out = _lint(HANDOFF, "--handoffs", str(h), "--artifact", "01")
             self.assertEqual(bad, 1, out)
 
@@ -133,8 +150,13 @@ class CheckFill(unittest.TestCase):
 class CheckKit(unittest.TestCase):
     def _kit(self, *args: str) -> subprocess.CompletedProcess:
         env = dict(os.environ, PYTHON=sys.executable)
-        return subprocess.run([BASH, str(TOOLS / "check_kit.sh"), *args],
-                              capture_output=True, text=True, env=env)
+        return subprocess.run(
+            [BASH, str(TOOLS / "check_kit.sh"), *args],
+            capture_output=True,
+            text=True,
+            env=env,
+            check=False,
+        )
 
     def test_shipped_templates_on_the_system_bash(self):
         proc = self._kit()
@@ -151,12 +173,30 @@ class CheckKit(unittest.TestCase):
             for nn, agent in (("02", "jdbot"), ("06", "interview-lab")):
                 tpl = next(TEMPLATES.glob(f"TK_{nn}_*.dc.html"))
                 subprocess.run(
-                    [sys.executable, str(RENDER), "render", "--template", str(tpl),
-                     "--schema", str(SCHEMAS / f"TK_{nn}.content-schema.json"),
-                     "--content", str(SCHEMAS / f"TK_{nn}.example-content.json"),
-                     "--ds", str(ds), "--out", str(run / f"{nn}_{agent}.html"),
-                     "--handoffs", str(run / "handoffs.json"), "--role", "test-role",
-                     "--strict"], check=True, capture_output=True, text=True)
+                    [
+                        sys.executable,
+                        str(RENDER),
+                        "render",
+                        "--template",
+                        str(tpl),
+                        "--schema",
+                        str(SCHEMAS / f"TK_{nn}.content-schema.json"),
+                        "--content",
+                        str(SCHEMAS / f"TK_{nn}.example-content.json"),
+                        "--ds",
+                        str(ds),
+                        "--out",
+                        str(run / f"{nn}_{agent}.html"),
+                        "--handoffs",
+                        str(run / "handoffs.json"),
+                        "--role",
+                        "test-role",
+                        "--strict",
+                    ],
+                    check=True,
+                    capture_output=True,
+                    text=True,
+                )
             proc = self._kit(str(run))
             out = proc.stdout + proc.stderr
             self.assertNotIn("unbound variable", out)
@@ -164,8 +204,14 @@ class CheckKit(unittest.TestCase):
             # The worked example renders against itself, so unfilled-slot errors are
             # expected; geometry, colour, handoff and voice errors are not.
             self.assertIn("ERROR unfilled-slot", out)  # the report format this reads
-            for check in ("bar-geometry", "raw-hex", "handoff", "em-dash",
-                          "forbidden-phrase", "empty-repeat"):
+            for check in (
+                "bar-geometry",
+                "raw-hex",
+                "handoff",
+                "em-dash",
+                "forbidden-phrase",
+                "empty-repeat",
+            ):
                 self.assertNotIn(f"ERROR {check} ", out)
 
     def test_empty_folder_is_not_a_pass(self):
@@ -182,7 +228,7 @@ class ExtractSlotSchema(unittest.TestCase):
             doc = {"types": {}, "slots": slots, "repeats": repeats}
             p.write_text(json.dumps(doc), encoding="utf-8")
             self.assertEqual(extract_slot_schema.check(p), [])
-            gone = sorted(slots)[0]
+            gone = min(slots)
             del doc["slots"][gone]
             doc["repeats"]["not-a-repeat"] = {"count": "1", "templates": ["TK_01"]}
             p.write_text(json.dumps(doc), encoding="utf-8")

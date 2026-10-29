@@ -92,6 +92,27 @@ replaces the worked example, and renames the design system for the public
 
 ### Changed
 
+- The README follows the house shape in about 600 words: who it is for, the tags, where
+  it runs and what each path needs, a diagram, a first run, your data, settings, what to
+  do when something goes wrong, and a short section for engineers. The detail it carried
+  moves to `docs/how-it-works.md`. In the standalone edition the "Built from source"
+  note moves to the foot.
+- The README says up front what a run needs: Claude Code or Cowork, about 30 minutes in
+  a recorded cold run, about 23 model calls before repair laps (the 2 Fable calls are a
+  floor), and the four optional services in `.mcp.json`.
+- The n8n swarm's emailed deliverable is pinned to plain text with a fixed recipient,
+  subject, cc, bcc and reply-to, by a test and the publish gate (which also requires
+  exactly one Gmail node), and its README says why the body is not escaped and that a
+  repeated webhook request sends another email and spends model calls.
+- The headless runner's error messages quote at most a short, one-line head of the
+  model's output, and its log lines carry the run id plus the start time, so two runs
+  of a role on the same day log apart (the run id that resumes a run is unchanged).
+- The engine scripts log through `runlog.py`: a run id on every line, `LOG_LEVEL`,
+  `LOG_FORMAT=json` and `LOG_FILE`. What they print for you is unchanged. An error is
+  logged with its message and traceback, and `runlog.py` says so.
+- ruff lint and format applied, with a `ruff.toml` that keeps the scripts Python
+  3.9-compatible; scripts with a shebang are executable.
+- The standalone edition ships a CI workflow, `SECURITY.md` and `CONTRIBUTING.md`.
 - **New worked example.** The shipped example is now a fictional Battery Systems
   Engineer search at a fictional home-battery company, Harborlight Energy. All nine
   example contents, the templates' example text, the schemas (regenerated from the

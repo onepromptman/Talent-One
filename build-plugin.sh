@@ -27,11 +27,11 @@ DIRTY=$(git status --porcelain -- $SHIP)
 STAGE=$(mktemp -d); trap 'rm -rf "$STAGE"' EXIT
 # shellcheck disable=SC2086
 git archive HEAD -- $SHIP | tar -x -C "$STAGE"
-# the licence lives at the repository root; ship a copy inside the plugin
+# the license lives at the repository root; ship a copy inside the plugin
 ROOT=$(git rev-parse --show-toplevel)
 if [ -f LICENSE ]; then git show HEAD:"$(git rev-parse --show-prefix)LICENSE" > "$STAGE/LICENSE"
 elif [ -f "$ROOT/LICENSE" ]; then git -C "$ROOT" show HEAD:LICENSE > "$STAGE/LICENSE"; fi
-# the copied licence gets the commit's time like every archived file, so rebuilds are byte-identical
+# the copied license gets the commit's time like every archived file, so rebuilds are byte-identical
 STAMP=$(TZ=UTC git log -1 --format=%cd --date=format-local:%Y%m%d%H%M.%S)
 find "$STAGE" -maxdepth 1 -name 'LICENSE*' -exec env TZ=UTC touch -t "$STAMP" {} +
 mkdir -p dist

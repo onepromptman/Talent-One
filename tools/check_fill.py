@@ -40,32 +40,68 @@ PRIMARY_TOKEN = re.compile(r"VAR\(--[A-Z0-9]+-PRIMARY\)")
 # declares its own ramp in a leading style comment, which is authoritative for
 # that file; this is the floor every file gets.
 BASE_HEX = {
-    "#F0EDE6", "#DCE6F2", "#7FA5CC", "#FBF9F4", "#EEF6F1", "#BFDCCB",
-    "#F9EFEF", "#F6E4E4", "#EDE8DE", "#FAF0E6", "#E3CDB4", "#C9D6E6",
-    "#E3C4C4", "#FFFFFF", "#FFF", "#000000", "#000",
+    "#F0EDE6",
+    "#DCE6F2",
+    "#7FA5CC",
+    "#FBF9F4",
+    "#EEF6F1",
+    "#BFDCCB",
+    "#F9EFEF",
+    "#F6E4E4",
+    "#EDE8DE",
+    "#FAF0E6",
+    "#E3CDB4",
+    "#C9D6E6",
+    "#E3C4C4",
+    "#FFFFFF",
+    "#FFF",
+    "#000000",
+    "#000",
 }
 
 
 def declared_ramp(src):
     """Tints the file itself declares in its `derived ramp tints` comment."""
-    m = re.search(r"derived ramp tints.*?\*/", src, re.S)
+    m = re.search(r"derived ramp tints.*?\*/", src, re.DOTALL)
     found = set(re.findall(r"#[0-9A-Fa-f]{3,6}", m.group(0))) if m else set()
     return BASE_HEX | {h.upper() for h in found}
 
+
 HEDGE_PATTERNS = [
-    r"\bTBD\b", r"\bTODO\b", r"\bN/?A\b", r"data not available",
-    r"not available", r"varies by (market|region|company)", r"\[insert",
-    r"\bplaceholder\b", r"coming soon", r"to be determined",
+    r"\bTBD\b",
+    r"\bTODO\b",
+    r"\bN/?A\b",
+    r"data not available",
+    r"not available",
+    r"varies by (market|region|company)",
+    r"\[insert",
+    r"\bplaceholder\b",
+    r"coming soon",
+    r"to be determined",
 ]
 
 # Unambiguous recruiter fluff. No legitimate technical reading.
 FORBIDDEN_HARD = [
-    "i hope this finds you well", "came across your profile",
-    "exciting opportunity", "quick question", "touch base", "pick your brain",
-    "rockstar", "best in class", "fast-paced environment",
-    "competitive salary", "world-class", "passionate about", "circle back",
-    "per my last email", "synergy", "just following up", "low-hanging fruit",
-    "move the needle", "wear many hats", "crushing it",
+    "i hope this finds you well",
+    "came across your profile",
+    "exciting opportunity",
+    "quick question",
+    "touch base",
+    "pick your brain",
+    "rockstar",
+    "best in class",
+    "fast-paced environment",
+    "competitive salary",
+    "world-class",
+    "passionate about",
+    "circle back",
+    "per my last email",
+    "synergy",
+    "just following up",
+    "low-hanging fruit",
+    "move the needle",
+    "wear many hats",
+    "crushing it",
 ]
 
 # Banned as marketing filler, but each has a legitimate technical sense
@@ -76,7 +112,7 @@ VOID = {"br", "hr", "img", "input", "link", "meta", "source", "col"}
 
 
 class Node:
-    __slots__ = ("tag", "attrs", "children", "parent", "text")
+    __slots__ = ("attrs", "children", "parent", "tag", "text")
 
     def __init__(self, tag, attrs, parent):
         self.tag = tag
@@ -143,7 +179,8 @@ class Report:
 
 
 def parse(path):
-    src = open(path, encoding="utf-8").read()
+    with open(path, encoding="utf-8") as fh:
+        src = fh.read()
     d = DOM()
     d.feed(src)
     return src, d.root
@@ -201,11 +238,18 @@ def check_bars(root, rep):
         if bg and pct(style, "width") is None and "min-height" in style:
             colour = bg.group(1).strip().upper().replace(" ", "")
             v = nums[0]
-            want = ("var(--*-primary)" if v >= 0.9 else
-                    "#7FA5CC" if v >= 0.5 else
-                    "#DCE6F2" if v >= 0.15 else "#F0EDE6")
-            ok = (PRIMARY_TOKEN.search(colour) is not None if v >= 0.9
-                  else want in colour)
+            want = (
+                "var(--*-primary)"
+                if v >= 0.9
+                else "#7FA5CC"
+                if v >= 0.5
+                else "#DCE6F2"
+                if v >= 0.15
+                else "#F0EDE6"
+            )
+            ok = (
+                PRIMARY_TOKEN.search(colour) is not None if v >= 0.9 else want in colour
+            )
             if not ok:
                 rep.error(
                     "heat-encoding",
@@ -223,18 +267,23 @@ def check_bars(root, rep):
                 )
                 continue
             if abs(left - nums[0]) > TOL:
-                rep.error("bar-geometry", f'data-bar="{raw}" start {nums[0]} vs left {left}')
+                rep.error(
+                    "bar-geometry", f'data-bar="{raw}" start {nums[0]} vs left {left}'
+                )
             if abs(width - (nums[1] - nums[0])) > TOL:
                 rep.error(
                     "bar-geometry",
-                    f'data-bar="{raw}" span {nums[1]-nums[0]:.3f} vs width {width}',
+                    f'data-bar="{raw}" span {nums[1] - nums[0]:.3f} vs width {width}',
                 )
             continue
 
         # quadrant point: positioned by left+top, value is not a width
         if pct(style, "top") is not None and pct(style, "width") is None:
             if pct(style, "left") is None:
-                rep.error("bar-geometry", f'quadrant point data-bar="{raw}" has top but no left')
+                rep.error(
+                    "bar-geometry",
+                    f'quadrant point data-bar="{raw}" has top but no left',
+                )
             continue
 
         # bubble: sized in px, not verifiable against a fraction
@@ -298,7 +347,7 @@ def check_optional(root, rep):
             continue
         txt = n.inner_text()
         for pat in HEDGE_PATTERNS:
-            if re.search(pat, txt, re.I):
+            if re.search(pat, txt, re.IGNORECASE):
                 rep.error(
                     "hedged-optional",
                     f"data-optional block hedges instead of being deleted: "
@@ -330,7 +379,9 @@ def check_unfilled(root, template_root, rep):
                 stale.append(slot)
                 break
     for slot in sorted(set(stale)):
-        rep.error("unfilled-slot", f'data-slot="{slot}" still holds the shipped example text')
+        rep.error(
+            "unfilled-slot", f'data-slot="{slot}" still holds the shipped example text'
+        )
 
 
 def body_region(src):
@@ -345,7 +396,9 @@ def check_hex(src, rep):
         h = m.group(0).upper()
         if h not in allowed and h not in seen:
             seen.add(h)
-            rep.error("raw-hex", f"{m.group(0)} is not a sanctioned ramp tint; use a token")
+            rep.error(
+                "raw-hex", f"{m.group(0)} is not a sanctioned ramp tint; use a token"
+            )
 
 
 def check_text(root, rep):
@@ -357,7 +410,7 @@ def check_text(root, rep):
             return False
         for a in ("data-repeat", "data-slot"):
             v = n.attrs.get(a, "")
-            if v.startswith("banned") or v.startswith("cheat.bad"):
+            if v.startswith(("banned", "cheat.bad")):
                 return False
         return True
 
@@ -383,7 +436,7 @@ def check_text(root, rep):
         artifact doing its job, not violating the voice rule.
         """
         for m in re.finditer(rf"\b{re.escape(phrase)}\b", low):
-            before, after = low[:m.start()], low[m.end():]
+            before, after = low[: m.start()], low[m.end() :]
             # Quoted if there is an unclosed opening quote just before it.
             if before.count('"') % 2 == 1 and '"' in after:
                 continue
@@ -395,7 +448,9 @@ def check_text(root, rep):
             rep.error("forbidden-phrase", f'"{p}"')
     for p in FORBIDDEN_SOFT:
         if used_unquoted(p):
-            rep.warn("forbidden-phrase", f'"{p}" (check: filler, or a real technical use?)')
+            rep.warn(
+                "forbidden-phrase", f'"{p}" (check: filler, or a real technical use?)'
+            )
 
 
 def handoff_entry(handoffs_path, artifact, legacy_path):
@@ -406,15 +461,19 @@ def handoff_entry(handoffs_path, artifact, legacy_path):
     (`produces` as one " · "-joined string) or the keys shape (the produced keys
     themselves). `--handoff` reads a single legacy `{"handoff": {...}}` file."""
     if handoffs_path:
-        data = json.load(open(handoffs_path, encoding="utf-8"))
+        with open(handoffs_path, encoding="utf-8") as fh:
+            data = json.load(fh)
         h = (data.get(artifact) or {}).get("handoff")
         if h is None:
             return None
     else:
-        h = json.load(open(legacy_path, encoding="utf-8")).get("handoff", {})
+        with open(legacy_path, encoding="utf-8") as fh:
+            h = json.load(fh).get("handoff", {})
     if isinstance(h.get("produces"), str):
         return [k.strip() for k in re.split(r"[·|,]", h["produces"]) if k.strip()]
-    return [k for k in h if k not in ("produces", "consumers", "blocked", "assumptions")]
+    return [
+        k for k in h if k not in ("produces", "consumers", "blocked", "assumptions")
+    ]
 
 
 def check_handoff(root, rep, handoffs_path=None, artifact=None, legacy_path=None):
@@ -425,14 +484,16 @@ def check_handoff(root, rep, handoffs_path=None, artifact=None, legacy_path=None
         return
     rendered = [k.strip() for k in re.split(r"[·|,]", produces[0]) if k.strip()]
     if not (handoffs_path and artifact) and not legacy_path:
-        rep.warn("handoff", f"{len(rendered)} keys rendered; pass --handoffs and "
-                            "--artifact to verify")
+        rep.warn(
+            "handoff",
+            f"{len(rendered)} keys rendered; pass --handoffs and --artifact to verify",
+        )
         return
     actual = handoff_entry(handoffs_path, artifact, legacy_path)
     if actual is None:
         rep.error("handoff", f"no entry for artifact {artifact} in {handoffs_path}")
         return
-    norm = lambda ks: [re.sub(r"\[\]$", "", k) for k in ks]  # noqa: E731
+    norm = lambda ks: [re.sub(r"\[\]$", "", k) for k in ks]
     if norm(rendered) != norm(actual):
         rep.error(
             "handoff",
@@ -440,7 +501,9 @@ def check_handoff(root, rep, handoffs_path=None, artifact=None, legacy_path=None
         )
     blocked = slots.get("handoff.blocked", [""])[0]
     if not blocked.strip():
-        rep.error("handoff", 'handoff.blocked is empty; say "Nothing" or name a blocker')
+        rep.error(
+            "handoff", 'handoff.blocked is empty; say "Nothing" or name a blocker'
+        )
 
 
 NUM = r"[\d,]+(?:\.\d+)?"
@@ -451,26 +514,26 @@ DASH = r"[-–]"  # hyphen or en dash; em dashes are banned kit-wide
 # (not imported) so this file stands alone; tools/tests/ asserts that every type the
 # extractor or SLOT_SCHEMA.json can emit has a pattern here.
 TYPE_PATTERNS = {
-    "pill":           r"^(Sourced|Estimate|Modeled|Internal|Derived)\b",
+    "pill": r"^(Sourced|Estimate|Modeled|Internal|Derived)\b",
     "currency_range": rf"^\$?{NUM}\s*[KkMm]?\s*{DASH}\s*\$?{NUM}\s*[KkMm]?$",
     # A numeric range, optionally with a trailing unit phrase: "1-3 warm
     # intros" is still checked on its numeric front half, the words are free.
-    "count_range":    rf"^{NUM}\s*{DASH}\s*{NUM}(\s+\S.*)?$",
-    "currency":       rf"^[~<>]?\${NUM}\s*[KkMm]?$",
-    "percent":        r"^[~<>+-]?[\d.]+\s*%$",
-    "ratio":          r"^[\d.]+\s*:\s*[\d.]+$",
-    "duration":       r"^(D\d+|[\d.]+\s*(min|minutes|hr|hours|days?|weeks?|months?|yrs?|years?)|"
-                       r"days?|weeks?|months?|hours?|minutes?|"  # bare unit word, no number: "Weeks"
-                       r"[\d.]+\s*/\s*arm|this week|next week|today|"
-                       r"\d+\s*business\s*days?)$",
-    "date":           r"^([A-Z]{3}\s+\d{4}|\d{4}|\d{4}-\d{2}-\d{2})$",
-    "count":          rf"^[~<>+-]?{NUM}\s*[KkMmBb]?\+?(\s*(words|/\s*arm))?$",
-    "empty_cell":     r"^[-–—]$",
-    "delta":          rf"^{NUM}\s*(->|→)\s*{NUM}$",
+    "count_range": rf"^{NUM}\s*{DASH}\s*{NUM}(\s+\S.*)?$",
+    "currency": rf"^[~<>]?\${NUM}\s*[KkMm]?$",
+    "percent": r"^[~<>+-]?[\d.]+\s*%$",
+    "ratio": r"^[\d.]+\s*:\s*[\d.]+$",
+    "duration": r"^(D\d+|[\d.]+\s*(min|minutes|hr|hours|days?|weeks?|months?|yrs?|years?)|"
+    r"days?|weeks?|months?|hours?|minutes?|"  # bare unit word, no number: "Weeks"
+    r"[\d.]+\s*/\s*arm|this week|next week|today|"
+    r"\d+\s*business\s*days?)$",
+    "date": r"^([A-Z]{3}\s+\d{4}|\d{4}|\d{4}-\d{2}-\d{2})$",
+    "count": rf"^[~<>+-]?{NUM}\s*[KkMmBb]?\+?(\s*(words|/\s*arm))?$",
+    "empty_cell": r"^[-–—]$",
+    "delta": rf"^{NUM}\s*(->|→)\s*{NUM}$",
     # A single headline stat whose unit varies by context (%, x, K/M count);
     # only the numeric core is checked. See SLOT_SCHEMA.json's note on
     # pullstat.value for why this is its own type rather than "percent".
-    "metric":         rf"^[~<>+-]?{NUM}\s*(%|[x×]|[KkMmBb])?$",
+    "metric": rf"^[~<>+-]?{NUM}\s*(%|[x×]|[KkMmBb])?$",
 }
 
 # Types where free text is the point; nothing to check beyond presence,
@@ -521,14 +584,17 @@ def check_types(root, schema, rep, strict=False):
             continue
         pat = TYPE_PATTERNS.get(typ)
         if pat is None:
-            flag("slot-type", f'SLOT_SCHEMA.json has an unrecognized type "{typ}" for "{slot}"')
+            flag(
+                "slot-type",
+                f'SLOT_SCHEMA.json has an unrecognized type "{typ}" for "{slot}"',
+            )
             continue
         for v in vals:
             v = v.strip()
-            if v and not re.match(pat, v, re.I):
+            if v and not re.match(pat, v, re.IGNORECASE):
                 flag(
                     "slot-type",
-                    f'data-slot="{slot}" is type {typ} (e.g. "{spec.get("example","")}") '
+                    f'data-slot="{slot}" is type {typ} (e.g. "{spec.get("example", "")}") '
                     f'but got "{v}"',
                 )
 
@@ -538,33 +604,44 @@ def check_density(root, rep):
         if n.tag == "p":
             words = len(n.inner_text().split())
             if words > 80:
-                rep.warn("density", f"prose block of {words} words exceeds the 80-word budget")
+                rep.warn(
+                    "density",
+                    f"prose block of {words} words exceeds the 80-word budget",
+                )
 
 
 def main():
-    ap = argparse.ArgumentParser(description=__doc__,
-                                 formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("doc", metavar="ARTIFACT_HTML", help="the rendered artifact to lint")
+    ap = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    ap.add_argument(
+        "doc", metavar="ARTIFACT_HTML", help="the rendered artifact to lint"
+    )
     ap.add_argument("--template", help="the TK_*.dc.html this was rendered from")
     ap.add_argument("--handoffs", help="the run folder's compat handoffs.json")
     ap.add_argument("--artifact", help="artifact number (NN) to look up in --handoffs")
-    ap.add_argument("--handoff", help="a single legacy {\"handoff\": {...}} JSON file")
+    ap.add_argument("--handoff", help='a single legacy {"handoff": {...}} JSON file')
     ap.add_argument(
         "--schema",
         default=str(DEFAULT_SCHEMA),
         help="slot type schema for check_types (default: the module's SLOT_SCHEMA.json). "
-             "Pass --no-schema to skip type checking entirely.",
+        "Pass --no-schema to skip type checking entirely.",
     )
-    ap.add_argument("--no-schema", action="store_true", help="skip the --schema type check")
-    ap.add_argument("--strict-types", action="store_true",
-                    help="make SLOT_SCHEMA.json type mismatches errors, not warnings")
+    ap.add_argument(
+        "--no-schema", action="store_true", help="skip the --schema type check"
+    )
+    ap.add_argument(
+        "--strict-types",
+        action="store_true",
+        help="make SLOT_SCHEMA.json type mismatches errors, not warnings",
+    )
     ap.add_argument("--quiet", action="store_true", help="only print failures")
     ap.add_argument(
         "--reference",
         action="store_true",
         help="file documents the design system rather than carrying a search's "
-             "data (TK_00). Palette swatches print token values as literal hex "
-             "on purpose, so the raw-hex rule does not apply.",
+        "data (TK_00). Palette swatches print token values as literal hex "
+        "on purpose, so the raw-hex rule does not apply.",
     )
     args = ap.parse_args()
 
@@ -581,10 +658,13 @@ def main():
     check_handoff(root, rep, args.handoffs, args.artifact, args.handoff)
     if not args.no_schema and args.schema:
         try:
-            schema = json.load(open(args.schema, encoding="utf-8"))
+            with open(args.schema, encoding="utf-8") as fh:
+                schema = json.load(fh)
         except FileNotFoundError:
             schema = None
-            rep.warn("slot-type", f"schema {args.schema} not found, skipping type check")
+            rep.warn(
+                "slot-type", f"schema {args.schema} not found, skipping type check"
+            )
         check_types(root, schema, rep, strict=args.strict_types)
     if args.template:
         _, troot = parse(args.template)
@@ -598,7 +678,7 @@ def main():
         print(f"{level:5} {check:18} {msg}")
 
     n = len(rep.errors)
-    print(f"\n{args.doc}: {n} error(s), {len(rep.rows)-n} warning(s)")
+    print(f"\n{args.doc}: {n} error(s), {len(rep.rows) - n} warning(s)")
     return 1 if n else 0
 
 

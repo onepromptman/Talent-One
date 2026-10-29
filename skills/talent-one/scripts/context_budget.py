@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Context budget for the Talent One module.
 
 Reports three buckets (bytes/4 as the token estimate):
@@ -37,7 +38,7 @@ def tok(path: str) -> int:
 def _fm_fields(path: str) -> dict:
     with open(path, encoding="utf-8", errors="ignore") as fh:
         text = fh.read()
-    match = re.match(r"^---\n(.*?)\n---", text, re.S)
+    match = re.match(r"^---\n(.*?)\n---", text, re.DOTALL)
     fields: dict = {}
     if not match:
         return fields
@@ -86,7 +87,9 @@ def main() -> int:
 
     skills = glob.glob(os.path.join(root, "skills", "*", "SKILL.md"))
     agents = sorted(glob.glob(os.path.join(root, "agents", "*.md")))
-    resident = sum(frontmatter_tok(p) for p in skills) + sum(frontmatter_tok(p) for p in agents)
+    resident = sum(frontmatter_tok(p) for p in skills) + sum(
+        frontmatter_tok(p) for p in agents
+    )
     main_window = tok(os.path.join(base, "SKILL.md"))
 
     # The brief states it replaces the four reference files and the example content, so the
@@ -101,9 +104,13 @@ def main() -> int:
         extra = tok(baselines) if name == "scout" else 0
         rows.append((name, tok(agent), tok(brief), extra))
 
-    print(f"(a) resident every session: {resident} tok ({len(skills)} skills, {len(agents)} agents)")
+    print(
+        f"(a) resident every session: {resident} tok ({len(skills)} skills, {len(agents)} agents)"
+    )
     print(f"(b) main window per run:    {main_window} tok")
-    print(f"(c) per-subagent bundle (agent + brief [+ baselines]); pack fixture adds {pack} tok each:")
+    print(
+        f"(c) per-subagent bundle (agent + brief [+ baselines]); pack fixture adds {pack} tok each:"
+    )
     total = 0
     worst = 0
     for name, a, b, e in rows:

@@ -45,41 +45,74 @@ import re
 import sys
 from pathlib import Path
 
+import runlog
+
+log = runlog.get_logger("talent-one.render")
+
 try:
     from bs4 import BeautifulSoup, Comment, Tag
 except ImportError:  # pragma: no cover
     sys.stderr.write(
         "render.py needs beautifulsoup4. Run: python3 -m pip install beautifulsoup4\n"
-        "(add --break-system-packages only if pip reports an externally-managed environment)\n")
+        "(add --break-system-packages only if pip reports an externally-managed environment)\n"
+    )
     sys.exit(2)
 
 # ---------------------------------------------------------------- constants
 
 PILL_STYLES = {
-    "Sourced": {"color": "var(--op-success)", "background": "#EEF6F1",
-                "border": "1px solid #BFDCCB"},
-    "Estimate": {"color": "var(--op-warning)", "background": "#FAF0E6",
-                 "border": "1px solid #E3CDB4"},
-    "Internal": {"color": "var(--op-primary)", "background": "#DCE6F2",
-                 "border": "1px solid #C9D6E6"},
+    "Sourced": {
+        "color": "var(--op-success)",
+        "background": "#EEF6F1",
+        "border": "1px solid #BFDCCB",
+    },
+    "Estimate": {
+        "color": "var(--op-warning)",
+        "background": "#FAF0E6",
+        "border": "1px solid #E3CDB4",
+    },
+    "Internal": {
+        "color": "var(--op-primary)",
+        "background": "#DCE6F2",
+        "border": "1px solid #C9D6E6",
+    },
 }
 
 HEAT_STRENGTH = {
-    "primary":   {"bar": "1",    "background": "var(--op-primary)", "outline": None},
-    "secondary": {"bar": "0.65", "background": "#7FA5CC",           "outline": None},
-    "touch":     {"bar": "0.3",  "background": "#DCE6F2",           "outline": None},
-    "none":      {"bar": None,   "background": "#F0EDE6",           "outline": None},
-    "gap":       {"bar": None,   "background": "#F0EDE6",
-                  "outline": "2px solid var(--op-accent)"},
+    "primary": {"bar": "1", "background": "var(--op-primary)", "outline": None},
+    "secondary": {"bar": "0.65", "background": "#7FA5CC", "outline": None},
+    "touch": {"bar": "0.3", "background": "#DCE6F2", "outline": None},
+    "none": {"bar": None, "background": "#F0EDE6", "outline": None},
+    "gap": {
+        "bar": None,
+        "background": "#F0EDE6",
+        "outline": "2px solid var(--op-accent)",
+    },
 }
-HEAT_REVERSE = {"var(--op-primary)": "primary", "#7FA5CC": "secondary",
-                "#DCE6F2": "touch", "#F0EDE6": "none"}
+HEAT_REVERSE = {
+    "var(--op-primary)": "primary",
+    "#7FA5CC": "secondary",
+    "#DCE6F2": "touch",
+    "#F0EDE6": "none",
+}
 
 FORBIDDEN_PHRASES = [
-    "i hope this finds you well", "came across your profile", "exciting opportunity",
-    "quick question", "touch base", "reach out", "pick your brain", "i wanted to",
-    "rockstar", "ninja", "guru", "best in class", "fast-paced environment",
-    "competitive salary", "world-class", "passionate about",
+    "i hope this finds you well",
+    "came across your profile",
+    "exciting opportunity",
+    "quick question",
+    "touch base",
+    "reach out",
+    "pick your brain",
+    "i wanted to",
+    "rockstar",
+    "ninja",
+    "guru",
+    "best in class",
+    "fast-paced environment",
+    "competitive salary",
+    "world-class",
+    "passionate about",
 ]
 
 # Consumers line per artifact, for the human handoff block. In 1.0 data flows
@@ -96,9 +129,17 @@ CONSUMERS = {
     "09": "A09 QA GATE",
 }
 
-AGENT_BY_ARTIFACT = {"01": "SENSEI", "02": "JD-BOT", "03": "ATLAS", "04": "HUNTER",
-                     "05": "SHAKESPEARE", "06": "INTERVIEW LAB", "07": "CALIBRATE",
-                     "08": "RECRUITER SCREEN", "09": "INTERVIEW COACH"}
+AGENT_BY_ARTIFACT = {
+    "01": "SENSEI",
+    "02": "JD-BOT",
+    "03": "ATLAS",
+    "04": "HUNTER",
+    "05": "SHAKESPEARE",
+    "06": "INTERVIEW LAB",
+    "07": "CALIBRATE",
+    "08": "RECRUITER SCREEN",
+    "09": "INTERVIEW COACH",
+}
 
 EM_DASH = "—"
 
@@ -121,7 +162,9 @@ MIN_SYNTHETIC_LEN_DOC = 25
 # that is wording drift, not sanctioned branding.
 DOMAIN_MARKERS = re.compile(
     r"harborlight|thermal[- ]runaway|abuse[- ]test|cell[- ]balancing|cooling[- ]plate"
-    r"|onepromptman|busbar|test[- ]rig|battery[- ]pack", re.I)
+    r"|onepromptman|busbar|test[- ]rig|battery[- ]pack",
+    re.IGNORECASE,
+)
 # The sanctioned footer credit is the one legitimate place the studio name
 # appears; text carrying the exact sanctioned phrase is exempt from
 # DOMAIN_MARKERS, both in verify() and in lint_template().
@@ -211,41 +254,124 @@ def set_text(el, value):
 # time means content can never smuggle a scan exemption, a fake banned-list
 # wrapper, or slot/repeat machinery into a rendered document and past
 # verify's exclusions (F1, 1.0.2 advisor finding).
-CONTENT_STRIPPED_ATTRS = ("data-verify-exempt", "data-repeat", "data-slot",
-                          "data-bar", "data-count", "data-optional")
+CONTENT_STRIPPED_ATTRS = (
+    "data-verify-exempt",
+    "data-repeat",
+    "data-slot",
+    "data-bar",
+    "data-count",
+    "data-optional",
+)
 
 # Content html fragments are model output, and a model that read the live web can be
 # steered. A rendered document promises zero network requests and no active content, so
 # set_html() keeps only inline formatting: elements that run code, load anything or
 # submit anything are dropped with their contents, any other element outside the
 # allowlist is unwrapped (its text stays), and only the attributes below survive.
-FRAGMENT_DROP = frozenset((
-    "script", "style", "iframe", "frame", "frameset", "object", "embed", "applet",
-    "noscript", "template", "link", "meta", "base", "form", "input", "button", "select",
-    "option", "textarea", "svg", "math", "img", "picture", "source", "video", "audio",
-    "track", "canvas", "portal", "dialog"))
-FRAGMENT_TAGS = frozenset((
-    "p", "span", "div", "b", "strong", "i", "em", "u", "s", "small", "mark", "sub", "sup",
-    "br", "hr", "ul", "ol", "li", "a", "code", "pre", "blockquote", "q", "cite", "abbr",
-    "h1", "h2", "h3", "h4", "h5", "h6", "table", "thead", "tbody", "tfoot", "tr", "th",
-    "td", "caption", "dl", "dt", "dd"))
+FRAGMENT_DROP = frozenset(
+    (
+        "script",
+        "style",
+        "iframe",
+        "frame",
+        "frameset",
+        "object",
+        "embed",
+        "applet",
+        "noscript",
+        "template",
+        "link",
+        "meta",
+        "base",
+        "form",
+        "input",
+        "button",
+        "select",
+        "option",
+        "textarea",
+        "svg",
+        "math",
+        "img",
+        "picture",
+        "source",
+        "video",
+        "audio",
+        "track",
+        "canvas",
+        "portal",
+        "dialog",
+    )
+)
+FRAGMENT_TAGS = frozenset(
+    (
+        "p",
+        "span",
+        "div",
+        "b",
+        "strong",
+        "i",
+        "em",
+        "u",
+        "s",
+        "small",
+        "mark",
+        "sub",
+        "sup",
+        "br",
+        "hr",
+        "ul",
+        "ol",
+        "li",
+        "a",
+        "code",
+        "pre",
+        "blockquote",
+        "q",
+        "cite",
+        "abbr",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "table",
+        "thead",
+        "tbody",
+        "tfoot",
+        "tr",
+        "th",
+        "td",
+        "caption",
+        "dl",
+        "dt",
+        "dd",
+    )
+)
 FRAGMENT_ATTRS = frozenset(("style", "class", "title", "lang", "dir", "data-slot"))
 FRAGMENT_CELL_ATTRS = frozenset(("colspan", "rowspan"))
-SAFE_HREF_RE = re.compile(r"^(?:https?://|mailto:|#)", re.I)
+SAFE_HREF_RE = re.compile(r"^(?:https?://|mailto:|#)", re.IGNORECASE)
 # A style value from content (a fragment's style attribute, a brand override) passes only
 # when it cannot load or run anything. Any backslash is refused outright, because CSS
 # escapes spell url( in disguise (\75rl(, \000075rl( and the like); so are comments,
 # at-rules and angle brackets. Every function call must be on a short allowlist, so
 # url(), image(), image-set(), -webkit-image-set(), cross-fade(), element(), paint()
 # and expression() never pass, whatever the spelling of the surrounding text.
-CSS_SAFE_FUNCS = frozenset(("", "var", "rgb", "rgba", "hsl", "hsla", "calc", "min", "max", "clamp"))
+CSS_SAFE_FUNCS = frozenset(
+    ("", "var", "rgb", "rgba", "hsl", "hsla", "calc", "min", "max", "clamp")
+)
 CSS_FUNC_RE = re.compile(r"([A-Za-z0-9_-]*)\s*\(")
-UNSAFE_STYLE_RE = re.compile(r"\\|/\*|@|<|>|javascript:|vbscript:|behavior\s*:|-moz-binding", re.I)
+UNSAFE_STYLE_RE = re.compile(
+    r"\\|/\*|@|<|>|javascript:|vbscript:|behavior\s*:|-moz-binding", re.IGNORECASE
+)
 # What verify treats as a loader in ANY style attribute of a rendered document, template
 # chrome included (templates use gradients, which the allowlist above would not admit).
-CSS_LOADER_RE = re.compile(r"\\|url\s*\(|image\s*\(|image-set\s*\(|cross-fade\s*\(|element\s*\("
-                           r"|paint\s*\(|expression\s*\(|@import|javascript:|vbscript:|behavior\s*:"
-                           r"|-moz-binding", re.I)
+CSS_LOADER_RE = re.compile(
+    r"\\|url\s*\(|image\s*\(|image-set\s*\(|cross-fade\s*\(|element\s*\("
+    r"|paint\s*\(|expression\s*\(|@import|javascript:|vbscript:|behavior\s*:"
+    r"|-moz-binding",
+    re.IGNORECASE,
+)
 BRAND_KEY_RE = re.compile(r"--op-[a-z0-9-]+")
 
 
@@ -288,7 +414,9 @@ def sanitize_fragment(frag):
         for a in list(t.attrs):
             v = t.attrs[a]
             v = " ".join(v) if isinstance(v, list) else str(v)
-            if a in FRAGMENT_ATTRS or (a in FRAGMENT_CELL_ATTRS and t.name in ("td", "th")):
+            if a in FRAGMENT_ATTRS or (
+                a in FRAGMENT_CELL_ATTRS and t.name in ("td", "th")
+            ):
                 if a == "style" and unsafe_css(v):
                     del t[a]
                 continue
@@ -346,7 +474,7 @@ def set_html(el, fragment, allowed_slots=None):
                 continue
             if a == "data-slot" and t[a] in allowed:
                 continue  # nested inside THIS slot in the template itself:
-                          # a legitimate nested slot, not smuggled machinery.
+                # a legitimate nested slot, not smuggled machinery.
             del t[a]
     for node in list(frag.children):
         el.append(node)
@@ -385,12 +513,14 @@ def apply_bar(el, value, report):
             raise TypeError(type(value).__name__)
     except (TypeError, ValueError):
         report["errors"].append(
-            f"bar on <{el.name}> expects a number, [start,end], or 'a,b', got {value!r}")
+            f"bar on <{el.name}> expects a number, [start,end], or 'a,b', got {value!r}"
+        )
         return
     if form == "range":
         if not isinstance(value, (list, tuple)) or len(value) != 2:
             report["errors"].append(
-                f"bar on <{el.name}> expects [start,end], got {value!r}")
+                f"bar on <{el.name}> expects [start,end], got {value!r}"
+            )
             return
         a, b = float(value[0]), float(value[1])
         el["data-bar"] = f"{fmt_bar(a)},{fmt_bar(b)}"
@@ -404,14 +534,20 @@ def apply_bar(el, value, report):
         new = re.sub(
             r"conic-gradient\(\s*([^,]+?)\s+0%?\s+[\d.]+%\s*,\s*([^,]+?)\s+[\d.]+%\s+100%\s*\)",
             lambda m: f"conic-gradient({m.group(1)} 0 {pct}, {m.group(2)} {pct} 100%)",
-            style)
+            style,
+        )
         if new == style:
             new = re.sub(
                 r"conic-gradient\(\s*([^,]+?)\s+0\s+[\d.]+%\s*,\s*([^,]+?)\s+[\d.]+%\s+100%\s*\)",
-                lambda m: f"conic-gradient({m.group(1)} 0 {pct}, {m.group(2)} {pct} 100%)",
-                style)
+                lambda m: (
+                    f"conic-gradient({m.group(1)} 0 {pct}, {m.group(2)} {pct} 100%)"
+                ),
+                style,
+            )
         if new == style:
-            report["errors"].append("donut conic-gradient not rewritable: " + style[:80])
+            report["errors"].append(
+                "donut conic-gradient not rewritable: " + style[:80]
+            )
         el["style"] = new
     else:
         v = float(value if not isinstance(value, (list, tuple)) else value[0])
@@ -451,12 +587,15 @@ def classify_repeat(container):
         return {"kind": "rows"}
     style = container.get("style") or ""
     if "display:grid" in style.replace(" ", "") and any(
-            (k.get("style") or "").find("min-height") >= 0 and not clean_text(k)
-            for k in ks):
+        (k.get("style") or "").find("min-height") >= 0 and not clean_text(k) for k in ks
+    ):
         return {"kind": "grid", "cols": grid_cols(container)}
     first = ks[0]
-    if style_get(first, "left") and style_get(first, "top") and \
-            "absolute" in (style_get(first, "position") or ""):
+    if (
+        style_get(first, "left")
+        and style_get(first, "top")
+        and "absolute" in (style_get(first, "position") or "")
+    ):
         return {"kind": "points"}
     return {"kind": "rows"}
 
@@ -478,9 +617,15 @@ def direct_text(el):
     """Concatenated text of el's own text-node children (not descendants).
     HTML comments (e.g. "<!-- 01 · WHY OUTBOUND -->" section annotations) are
     NavigableString too but are not content; they are excluded."""
-    return re.sub(r"\s+", " ", "".join(
-        str(c) for c in el.children
-        if not isinstance(c, Tag) and not isinstance(c, Comment))).strip()
+    return re.sub(
+        r"\s+",
+        " ",
+        "".join(
+            str(c)
+            for c in el.children
+            if not isinstance(c, Tag) and not isinstance(c, Comment)
+        ),
+    ).strip()
 
 
 def unslotted_text_paths(row, layout):
@@ -507,7 +652,7 @@ def unslotted_text_paths(row, layout):
         p = el_path(row, el)
         if p in slot_paths or el.has_attr("data-slot"):
             continue
-        if any(p[:len(sp)] == sp for sp in slot_paths):
+        if any(p[: len(sp)] == sp for sp in slot_paths):
             continue
         if direct_text(el):
             paths.append(p)
@@ -536,11 +681,15 @@ def synthetic_row_entries(row, layout, siblings, name_prefix):
             sname = f"{name_prefix}.prose{idx}"
             idx += 1
             el = at_path(row, p)
-            entries[sname] = {"type": "prose_long", "synthetic": True,
-                               "path": list(p), "example": longest[:220],
-                               "words": _synthetic_words(longest),
-                               "role": _synthetic_role(el, longest),
-                               "context": _synthetic_context(el, row)}
+            entries[sname] = {
+                "type": "prose_long",
+                "synthetic": True,
+                "path": list(p),
+                "example": longest[:220],
+                "words": _synthetic_words(longest),
+                "role": _synthetic_role(el, longest),
+                "context": _synthetic_context(el, row),
+            }
     return entries
 
 
@@ -559,8 +708,8 @@ def _synthetic_words(text):
     """Word range for a synthetic slot: about 0.6x to 1.4x the worked
     example's word count, floor 3."""
     n = len([w for w in text.split() if re.search(r"\w", w)])
-    lo = max(3, int(round(n * 0.6)))
-    return {"min": lo, "max": max(lo, int(round(n * 1.4)))}
+    lo = max(3, round(n * 0.6))
+    return {"min": lo, "max": max(lo, round(n * 1.4))}
 
 
 def _synthetic_role(el, text):
@@ -582,7 +731,7 @@ def _named_label(name, text, limit=60):
     head = f"{name} " if name else ""
     room = max(10, limit - len(head) - 2)
     if len(text) > room:
-        text = text[:room - 3].rstrip() + "..."
+        text = text[: room - 3].rstrip() + "..."
     return f'{head}"{text}"'
 
 
@@ -593,7 +742,9 @@ def _heading_label(h, limit=60):
     structural heading keeps its quoted text, see _named_label."""
     slot = h.get("data-slot")
     if not slot:
-        near = h.find(attrs={"data-slot": True}) or h.find_parent(attrs={"data-slot": True})
+        near = h.find(attrs={"data-slot": True}) or h.find_parent(
+            attrs={"data-slot": True}
+        )
         slot = near["data-slot"] if near is not None else None
     if slot:
         return slot
@@ -636,24 +787,31 @@ def doc_synthetic_slots(soup):
         if el.name in ("script", "style"):
             continue
         if el.name in ("h1", "h2", "h3", "h4", "h5", "h6") and not (
-                in_repeat(el) or in_optional(el)):
+            in_repeat(el) or in_optional(el)
+        ):
             last_label = None  # a new section starts; context restarts
         if el.has_attr("data-slot") or in_repeat(el) or in_optional(el):
             continue
         if el.find_parent(attrs={"data-slot": True}) is not None:
             continue  # nested inside a real slot's own subtree: that slot's
-                       # value already carries this text, see slot_value_of.
+            # value already carries this text, see slot_value_of.
         t = direct_text(el)
         if len(t) >= MIN_SYNTHETIC_LEN_DOC:
             sname = f"doc.prose{idx}"
             idx += 1
-            entries[sname] = {"type": "prose_long", "synthetic": True,
-                               "path": list(el_path(soup, el)), "example": t[:220],
-                               "words": _synthetic_words(t),
-                               "role": _synthetic_role(el, t),
-                               "context": _synthetic_context(el, after=last_label)}
+            entries[sname] = {
+                "type": "prose_long",
+                "synthetic": True,
+                "path": list(el_path(soup, el)),
+                "example": t[:220],
+                "words": _synthetic_words(t),
+                "role": _synthetic_role(el, t),
+                "context": _synthetic_context(el, after=last_label),
+            }
             if entries[sname]["role"] in ("label", "column header"):
-                last_label = sname  # a synthetic sibling: its name, never its example text
+                last_label = (
+                    sname  # a synthetic sibling: its name, never its example text
+                )
     return entries
 
 
@@ -753,12 +911,20 @@ def build_schema(template_path, slot_types_path=None):
     optional = set()
     if slot_types_path:
         words = {k: v.get("words") for k, v in st.get("slots", {}).items()}
-        optional = {k for k, v in st.get("slots", {}).items()
-                    if v.get("required") is False}
+        optional = {
+            k for k, v in st.get("slots", {}).items() if v.get("required") is False
+        }
 
-    schema = {"template": Path(template_path).name, "version": "1.0",
-              "slots": {}, "repeats": {}, "standalone_bars": [],
-              "optionals": [], "toggles": [], "handoff_slots": []}
+    schema = {
+        "template": Path(template_path).name,
+        "version": "1.0",
+        "slots": {},
+        "repeats": {},
+        "standalone_bars": [],
+        "optionals": [],
+        "toggles": [],
+        "handoff_slots": [],
+    }
 
     for el in soup.find_all(attrs={"data-slot": True}):
         name = el["data-slot"]
@@ -799,9 +965,12 @@ def build_schema(template_path, slot_types_path=None):
             first = ks[0]
             layout = row_slot_layout(first)
             info["row_slots"] = {
-                s: {"type": types.get(s, "label"),
-                    **({"words": words[s]} if words.get(s) else {})}
-                for s in layout}
+                s: {
+                    "type": types.get(s, "label"),
+                    **({"words": words[s]} if words.get(s) else {}),
+                }
+                for s in layout
+            }
             # Synthetic slots (F1): unslotted direct text in the base row that
             # is worked-example prose. A "positional" sibling (a later example
             # row with no data-slot of its own, cloned by copying its text
@@ -810,14 +979,17 @@ def build_schema(template_path, slot_types_path=None):
             # row does, so every positional sibling is sampled too.
             positional_siblings = [k for k in ks[1:] if not row_slot_layout(k)]
             info["row_slots"].update(
-                synthetic_row_entries(first, layout, positional_siblings, name))
+                synthetic_row_entries(first, layout, positional_siblings, name)
+            )
             info["bars_per_row"] = len(row_bar_paths(first))
             if info["bars_per_row"]:
                 forms = []
                 for p in row_bar_paths(first):
                     forms.append(bar_form(at_path(first, p)))
                 info["bar_forms"] = forms
-            nested = [r["data-repeat"] for r in first.find_all(attrs={"data-repeat": True})]
+            nested = [
+                r["data-repeat"] for r in first.find_all(attrs={"data-repeat": True})
+            ]
             if nested:
                 info["nested"] = {}
                 for nname in nested:
@@ -826,7 +998,10 @@ def build_schema(template_path, slot_types_path=None):
                     nlayout = row_slot_layout(nks[0]) if nks else {}
                     info["nested"][nname] = {
                         "count": ncont.get("data-count", ""),
-                        "row_slots": {s: {"type": types.get(s, "label")} for s in nlayout}}
+                        "row_slots": {
+                            s: {"type": types.get(s, "label")} for s in nlayout
+                        },
+                    }
             info["example_rows"] = len(ks)
             # Distinct row variants: later example rows carrying their own slot
             # attributes are separate card types, matched to content BY POSITION.
@@ -836,23 +1011,29 @@ def build_schema(template_path, slot_types_path=None):
                 if vlayout:
                     vrow_slots = {s: {"type": types.get(s, "label")} for s in vlayout}
                     vrow_slots.update(
-                        synthetic_row_entries(vk, vlayout, [], f"{name}.v{vi}"))
-                    variants.append({
-                        "position": vi,
-                        "row_slots": vrow_slots,
-                        "bars_per_row": len(row_bar_paths(vk)),
-                        "nested": [r["data-repeat"] for r in
-                                   vk.find_all(attrs={"data-repeat": True})]})
+                        synthetic_row_entries(vk, vlayout, [], f"{name}.v{vi}")
+                    )
+                    variants.append(
+                        {
+                            "position": vi,
+                            "row_slots": vrow_slots,
+                            "bars_per_row": len(row_bar_paths(vk)),
+                            "nested": [
+                                r["data-repeat"]
+                                for r in vk.find_all(attrs={"data-repeat": True})
+                            ],
+                        }
+                    )
             if variants:
                 info["row_variants"] = variants
         elif info["kind"] == "grid" and ks:
             cols = info["cols"]
             n_data = cols - 1
             info["data_cols"] = n_data
-            info["header_examples"] = [clean_text(k) for k in ks[1:1 + n_data]]
+            info["header_examples"] = [clean_text(k) for k in ks[1 : 1 + n_data]]
             info["cell_vocab"] = sorted(HEAT_STRENGTH.keys())
             label_slot = None
-            for k in ks[1 + n_data:]:
+            for k in ks[1 + n_data :]:
                 if k.has_attr("data-slot"):
                     label_slot = k["data-slot"]
                     break
@@ -868,25 +1049,35 @@ def build_schema(template_path, slot_types_path=None):
     for el in soup.find_all(attrs={"data-bar": True}):
         if in_repeat(el) or in_optional(el):
             continue
-        schema["standalone_bars"].append({
-            "form": bar_form(el), "example": read_bar(el),
-            "context": clean_text(el.parent)[:80]})
+        schema["standalone_bars"].append(
+            {
+                "form": bar_form(el),
+                "example": read_bar(el),
+                "context": clean_text(el.parent)[:80],
+            }
+        )
 
     for i, el in enumerate(soup.find_all(attrs={"data-optional": True}), 1):
         oslots = {}
         has_handoff = False
-        candidates = ([el] if el.has_attr("data-slot") else []) + \
-            el.find_all(attrs={"data-slot": True})
+        candidates = ([el] if el.has_attr("data-slot") else []) + el.find_all(
+            attrs={"data-slot": True}
+        )
         for s in candidates:
             if s["data-slot"].startswith("handoff."):
                 has_handoff = True
                 continue
             oslots[s["data-slot"]] = {"type": types.get(s["data-slot"], "label")}
         oreps = [r["data-repeat"] for r in el.find_all(attrs={"data-repeat": True})]
-        schema["optionals"].append({"id": f"optional_{i}", "slots": oslots,
-                                    "repeats": oreps,
-                                    "handoff_block": has_handoff,
-                                    "context": clean_text(el)[:100]})
+        schema["optionals"].append(
+            {
+                "id": f"optional_{i}",
+                "slots": oslots,
+                "repeats": oreps,
+                "handoff_block": has_handoff,
+                "context": clean_text(el)[:100],
+            }
+        )
 
     m = re.search(r"state\s*=\s*\{([^}]*)\}", str(soup))
     if m:
@@ -905,19 +1096,21 @@ def build_schema(template_path, slot_types_path=None):
 # undetected; a false positive just costs one review.
 _LINT_MONTHS = (
     r"january|february|march|april|may|june|july|august|september|october"
-    r"|november|december|jan|feb|mar|apr|jun|jul|aug|sept?|oct|nov|dec")
+    r"|november|december|jan|feb|mar|apr|jun|jul|aug|sept?|oct|nov|dec"
+)
 RISKY_TEXT_PATTERN = re.compile(
-    r"[$€£]\s?\d"                                    # currency amount
-    r"|\b\d[\d,]*\s?[Kk]\b"                          # standalone K-figure
-    r"|\b\d[\d,]*(?:\.\d+)?\s?[Mm]\b"                # standalone M-figure (millions)
-    r"|\b\d{1,3}(?:,\d{3})+\b"                       # thousands-separated number
-    r"|\b\d{6,}\b"                                   # bare 6+ digit figure (e.g. "120000")
-    r"|\bP\d{2}\b"                                   # percentile token (P25, P90)
-    r"|\d+(?:\.\d+)?\s?%"                             # percentage
-    r"|\b(?:19|20)\d{2}\b"                           # 4-digit year
-    rf"|\b(?:{_LINT_MONTHS})\b\.?\s+\d{{1,2}}\b"      # month + day ("March 14")
+    r"[$€£]\s?\d"  # currency amount
+    r"|\b\d[\d,]*\s?[Kk]\b"  # standalone K-figure
+    r"|\b\d[\d,]*(?:\.\d+)?\s?[Mm]\b"  # standalone M-figure (millions)
+    r"|\b\d{1,3}(?:,\d{3})+\b"  # thousands-separated number
+    r"|\b\d{6,}\b"  # bare 6+ digit figure (e.g. "120000")
+    r"|\bP\d{2}\b"  # percentile token (P25, P90)
+    r"|\d+(?:\.\d+)?\s?%"  # percentage
+    r"|\b(?:19|20)\d{2}\b"  # 4-digit year
+    rf"|\b(?:{_LINT_MONTHS})\b\.?\s+\d{{1,2}}\b"  # month + day ("March 14")
     rf"|\b(?:{_LINT_MONTHS})\b\.?\s+(?:19|20)\d{{2}}\b",  # month + year
-    re.I)
+    re.IGNORECASE,
+)
 
 
 def _has_synthetic_pass(container):
@@ -936,9 +1129,7 @@ def _has_synthetic_pass(container):
     red-team M4)."""
     if container.find_parent(attrs={"data-repeat": True}) is not None:
         return False
-    if in_optional(container):
-        return False
-    return True
+    return not in_optional(container)
 
 
 def _repeat_risky_texts(container):
@@ -1003,9 +1194,12 @@ def _repeat_risky_texts(container):
 
     if has_pass:
         positional_siblings = [k for k in ks[1:] if not row_slot_layout(k)]
-        base_exempt = {tuple(e["path"]) for e in
-                        synthetic_row_entries(base, base_layout,
-                                              positional_siblings, rname).values()}
+        base_exempt = {
+            tuple(e["path"])
+            for e in synthetic_row_entries(
+                base, base_layout, positional_siblings, rname
+            ).values()
+        }
     else:
         base_exempt = set()
 
@@ -1020,23 +1214,26 @@ def _repeat_risky_texts(container):
         own_layout = row_slot_layout(row)
         if own_layout:
             if has_pass:
-                variant_exempt = {tuple(e["path"]) for e in
-                                  synthetic_row_entries(row, own_layout, [],
-                                                        f"{rname}.v{i}").values()}
+                variant_exempt = {
+                    tuple(e["path"])
+                    for e in synthetic_row_entries(
+                        row, own_layout, [], f"{rname}.v{i}"
+                    ).values()
+                }
             else:
                 variant_exempt = set()
             for p in unslotted_text_paths(row, own_layout):
-                add_if_furniture(p, direct_text(at_path(row, p)),
-                                 f"row{i}(variant)", variant_exempt)
+                add_if_furniture(
+                    p, direct_text(at_path(row, p)), f"row{i}(variant)", variant_exempt
+                )
         else:
             for p in base_paths:
                 try:
                     el = at_path(row, p)
                 except (IndexError, TypeError):
                     continue  # base's path doesn't exist in this proto's
-                              # own shape: render_rows can't reach it either.
-                add_if_furniture(p, direct_text(el), f"row{i}(positional)",
-                                 base_exempt)
+                    # own shape: render_rows can't reach it either.
+                add_if_furniture(p, direct_text(el), f"row{i}(positional)", base_exempt)
     return out
 
 
@@ -1074,9 +1271,9 @@ def _points_risky_texts(container):
     out = []
     candidates = [(base, ())] + [(el, el_path(base, el)) for el in base.find_all(True)]
     for el, p in candidates:
-        if p[:len(target_path)] == target_path:
+        if p[: len(target_path)] == target_path:
             continue  # the label target itself (or its own subtree): the
-                       # one thing render_points actually overwrites.
+            # one thing render_points actually overwrites.
         t = direct_text(el)
         if t:
             out.append({"path": list(p), "text": t, "row": "row0"})
@@ -1208,21 +1405,39 @@ def lint_template(template_path):
         if kind == "rows":
             for item in _repeat_risky_texts(container):
                 if risky(item["text"]):
-                    findings.append({"surface": "row", "repeat": rname,
-                                     "row": item["row"], "path": item["path"],
-                                     "text": item["text"]})
+                    findings.append(
+                        {
+                            "surface": "row",
+                            "repeat": rname,
+                            "row": item["row"],
+                            "path": item["path"],
+                            "text": item["text"],
+                        }
+                    )
         elif kind == "points":
             for item in _points_risky_texts(container):
                 if risky(item["text"]):
-                    findings.append({"surface": "points", "repeat": rname,
-                                     "row": item["row"], "path": item["path"],
-                                     "text": item["text"]})
+                    findings.append(
+                        {
+                            "surface": "points",
+                            "repeat": rname,
+                            "row": item["row"],
+                            "path": item["path"],
+                            "text": item["text"],
+                        }
+                    )
         elif kind == "grid":
             for item in _grid_corner_texts(container):
                 if risky(item["text"]):
-                    findings.append({"surface": "grid-corner", "repeat": rname,
-                                     "row": item["row"], "path": item["path"],
-                                     "text": item["text"]})
+                    findings.append(
+                        {
+                            "surface": "grid-corner",
+                            "repeat": rname,
+                            "row": item["row"],
+                            "path": item["path"],
+                            "text": item["text"],
+                        }
+                    )
 
     # (d) optional-block: every data-optional element's own unslotted
     # direct text (repeats inside it are covered by (a)/(b)/(c) above,
@@ -1231,9 +1446,15 @@ def lint_template(template_path):
     for opt_el in soup.find_all(attrs={"data-optional": True}):
         for item in _optional_block_texts(opt_el):
             if risky(item["text"]):
-                findings.append({"surface": "optional-block", "repeat": None,
-                                 "row": "block", "path": item["path"],
-                                 "text": item["text"]})
+                findings.append(
+                    {
+                        "surface": "optional-block",
+                        "repeat": None,
+                        "row": "block",
+                        "path": item["path"],
+                        "text": item["text"],
+                    }
+                )
 
     # (e) doc-level: same walk as doc_synthetic_slots(), same exclusions,
     # just a floor comparison (< MIN_SYNTHETIC_LEN_DOC, the text
@@ -1248,15 +1469,28 @@ def lint_template(template_path):
             continue
         t = direct_text(el)
         if t and len(t) < MIN_SYNTHETIC_LEN_DOC and risky(t):
-            findings.append({"surface": "doc", "repeat": None, "row": None,
-                             "path": list(el_path(soup, el)), "text": t})
+            findings.append(
+                {
+                    "surface": "doc",
+                    "repeat": None,
+                    "row": None,
+                    "path": list(el_path(soup, el)),
+                    "text": t,
+                }
+            )
 
     # (f) attribute-borne (SHOULD-FIX, informational tier -- see verify()).
     for item in _attribute_risky_texts(soup):
         if risky(item["text"]):
-            findings.append({"surface": "attribute", "repeat": None,
-                             "row": item["attr"], "path": item["path"],
-                             "text": item["text"]})
+            findings.append(
+                {
+                    "surface": "attribute",
+                    "repeat": None,
+                    "row": item["attr"],
+                    "path": item["path"],
+                    "text": item["text"],
+                }
+            )
 
     return findings
 
@@ -1284,9 +1518,19 @@ def fill_slot_value(el, value, report, name, allowed_slots=None):
         target = el
         node = el.parent
         while node is not None and node.name not in ("body", "main", "html"):
-            others = [s for s in node.find_all(attrs={"data-slot": True}) if s is not el]
+            others = [
+                s for s in node.find_all(attrs={"data-slot": True}) if s is not el
+            ]
             reps = node.find_all(attrs={"data-repeat": True})
-            if others or reps or (isinstance(node, Tag) and node.has_attr("data-slot") and node is not el):
+            if (
+                others
+                or reps
+                or (
+                    isinstance(node, Tag)
+                    and node.has_attr("data-slot")
+                    and node is not el
+                )
+            ):
                 break
             target = node
             node = node.parent
@@ -1349,7 +1593,7 @@ def render_rows(container, rows, info, report, rname, nested_map=None):
             for p in unslotted_text_paths(base, base_layout):
                 if p in synth_paths:
                     continue  # >= MIN_SYNTHETIC_LEN text: filled/blanked below,
-                              # never copied straight from the template example.
+                    # never copied straight from the template example.
                 try:
                     src_el = at_path(proto, p)
                     dst_el = at_path(clone, p)
@@ -1360,9 +1604,13 @@ def render_rows(container, rows, info, report, rname, nested_map=None):
                     set_direct_text(dst_el, t)
         for sname, path in layout.items():
             if sname in row:
-                fill_slot_value(at_path(clone, path), row[sname], report,
-                                f"{rname}[{i}].{sname}",
-                                (nested_map or {}).get(sname, frozenset()))
+                fill_slot_value(
+                    at_path(clone, path),
+                    row[sname],
+                    report,
+                    f"{rname}[{i}].{sname}",
+                    (nested_map or {}).get(sname, frozenset()),
+                )
             else:
                 # Same F1 safety rule as fill_synthetic/fill_handoff/the
                 # top-level slots loop: missing content NEVER leaves
@@ -1382,15 +1630,17 @@ def render_rows(container, rows, info, report, rname, nested_map=None):
                 set_direct_text(at_path(clone, path), "")
                 report["missing"].append(f"{rname}[{i}].{sname}")
         for sname, spath in match_synthetic(info, layout).items():
-            fill_synthetic(clone, spath, sname, row, report,
-                            report_name=f"{rname}[{i}].{sname}")
+            fill_synthetic(
+                clone, spath, sname, row, report, report_name=f"{rname}[{i}].{sname}"
+            )
         bars = row.get("bars")
         if bars is None and "bar" in row:
             bars = [row["bar"]]
         if barpaths:
             if bars is None or len(bars) != len(barpaths):
                 report["errors"].append(
-                    f"repeat {rname} row {i}: needs {len(barpaths)} bar value(s), got {bars!r}")
+                    f"repeat {rname} row {i}: needs {len(barpaths)} bar value(s), got {bars!r}"
+                )
             else:
                 for path, val in zip(barpaths, bars):
                     apply_bar(at_path(clone, path), val, report)
@@ -1403,8 +1653,7 @@ def render_rows(container, rows, info, report, rname, nested_map=None):
                 ncont.extract()
                 report["deleted"].append(f"{rname}[{i}].{nname}")
             else:
-                render_rows(ncont, ndata, {}, report, f"{rname}.{nname}",
-                            nested_map)
+                render_rows(ncont, ndata, {}, report, f"{rname}.{nname}", nested_map)
         new_rows.append(clone)
     for k in list(container.children):
         k.extract()
@@ -1416,14 +1665,15 @@ def render_rows(container, rows, info, report, rname, nested_map=None):
 def render_grid(container, data, info, report, rname):
     ks = kids(container)
     n_data = info["data_cols"]
-    corner, headers = ks[0], ks[1:1 + n_data]
+    corner, headers = ks[0], ks[1 : 1 + n_data]
     label_proto = ks[1 + n_data]
     cell_proto = ks[2 + n_data]
     cols = data.get("columns", [])
     rows = data.get("rows", [])
     if len(cols) != n_data:
         report["errors"].append(
-            f"grid {rname}: template has {n_data} columns, content has {len(cols)}")
+            f"grid {rname}: template has {n_data} columns, content has {len(cols)}"
+        )
         return
     new = [copy.copy(corner)]
     for c in cols:
@@ -1439,7 +1689,8 @@ def render_grid(container, data, info, report, rname):
         cells = row.get("cells", [])
         if len(cells) != n_data:
             report["errors"].append(
-                f"grid {rname} row {i}: needs {n_data} cells, got {len(cells)}")
+                f"grid {rname} row {i}: needs {n_data} cells, got {len(cells)}"
+            )
             cells = (cells + ["none"] * n_data)[:n_data]
         for cv in cells:
             cell = copy.copy(cell_proto)
@@ -1487,8 +1738,11 @@ def render_points(container, rows, info, report, rname):
                 px = f"{int(row['size'])}px"
                 style_set(dot, "width", px)
                 style_set(dot, "height", px)
-            style_set(dot, "background",
-                      "var(--op-accent)" if row.get("accent") else "var(--op-primary)")
+            style_set(
+                dot,
+                "background",
+                "var(--op-accent)" if row.get("accent") else "var(--op-primary)",
+            )
         target = clone.find(attrs={"data-slot": label_slot})
         if target is None:
             spans = [s for s in clone.find_all("span") if s is not dot]
@@ -1546,8 +1800,11 @@ def inline_ds(soup, ds_dir, report):
         if rel == "styles.css":
             text = re.sub(r'@import\s+"[^"]*"\s*;\s*\n?', "", text)
         css_parts.append(text)
-    links = [l for l in soup.find_all("link", rel="stylesheet")
-             if "_ds/" in (l.get("href") or "")]
+    links = [
+        l
+        for l in soup.find_all("link", rel="stylesheet")
+        if "_ds/" in (l.get("href") or "")
+    ]
     if links:
         style = soup.new_tag("style")
         style.string = "\n".join(css_parts)
@@ -1571,13 +1828,17 @@ def apply_toggles(soup, toggles, report):
     for script in soup.find_all("script"):
         txt = script.string
         if txt and re.search(r"state\s*=\s*\{", txt):
+
             def sub_state(m):
                 body = m.group(1)
                 for name, val in toggles.items():
-                    body = re.sub(rf"(\b{re.escape(name)}\s*:\s*)(true|false)",
-                                  lambda mm: mm.group(1) + ("true" if val else "false"),
-                                  body)
+                    body = re.sub(
+                        rf"(\b{re.escape(name)}\s*:\s*)(true|false)",
+                        lambda mm, val=val: mm.group(1) + ("true" if val else "false"),
+                        body,
+                    )
                 return "state = {" + body + "}"
+
             script.string = re.sub(r"state\s*=\s*\{([^}]*)\}", sub_state, txt)
             return
     report["warnings"].append("toggles given but no state literal found")
@@ -1621,7 +1882,6 @@ def fill_handoff(soup, content, artifact, report, schema=None):
             set_text(el, str(v))
 
 
-
 def _envelope_dict(content, key, report):
     """An envelope key (`optionals`, `toggles`, `standalone_bars`) an agent wrote as a list or
     a string is a content error, reported and treated as empty; never a crash."""
@@ -1630,9 +1890,11 @@ def _envelope_dict(content, key, report):
         return {}  # an empty container of any shape carries nothing; {} is the schema's form
     if not isinstance(val, dict):
         report["errors"].append(
-            f"{key} must be an object keyed by id, got non-empty {type(val).__name__}")
+            f"{key} must be an object keyed by id, got non-empty {type(val).__name__}"
+        )
         return {}
     return val
+
 
 # Renderer-owned branding chrome (1.1.2, D2). Agents used to write the
 # masthead mark and footer, so one kit shipped eight different mastheads and a
@@ -1649,8 +1911,12 @@ CREDIT_TEXT = "Built with Talent One by OnePromptMan"
 DEFAULT_PREFIX = "TK"
 # The credit with any whitespace between its words, an optional trailing
 # [.,;], and an optional "·" separator on either side (with its spaces).
-_CREDIT_RE = re.compile(r"\s*(·\s*)?" + r"\s+".join(map(re.escape, CREDIT_TEXT.split()))
-                        + r"[.,;]?(\s*·)?\s*", re.I)
+_CREDIT_RE = re.compile(
+    r"\s*(·\s*)?"
+    + r"\s+".join(map(re.escape, CREDIT_TEXT.split()))
+    + r"[.,;]?(\s*·)?\s*",
+    re.IGNORECASE,
+)
 
 
 def _has_credit(text):
@@ -1662,12 +1928,14 @@ def strip_credit(text):
     removed: the renderer appends the credit itself, exactly once. Text on
     both sides of a removed copy is rejoined with " · " when a separator
     was there, else one space; nothing else in the text is touched."""
+
     def repl(m):
-        pre = _CREDIT_RE.sub("", m.string[:m.start()]).strip()
-        post = _CREDIT_RE.sub("", m.string[m.end():]).strip()
+        pre = _CREDIT_RE.sub("", m.string[: m.start()]).strip()
+        post = _CREDIT_RE.sub("", m.string[m.end() :]).strip()
         if pre and post:
             return " · " if (m.group(1) or m.group(2)) else " "
         return ""
+
     return _CREDIT_RE.sub(repl, text)
 
 
@@ -1682,8 +1950,15 @@ def artifact_number(template_path, schema=None, content=None):
     return art if re.fullmatch(r"\d{2}", art) else ""
 
 
-def fill_chrome(soup, template_path, schema, content, prefix=DEFAULT_PREFIX,
-                credit=True, report=None):
+def fill_chrome(
+    soup,
+    template_path,
+    schema,
+    content,
+    prefix=DEFAULT_PREFIX,
+    credit=True,
+    report=None,
+):
     nn = artifact_number(template_path, schema, content)
     prefix = (prefix or "").strip() or DEFAULT_PREFIX
     art_id = f"{prefix}-{nn}" if nn else prefix
@@ -1693,8 +1968,11 @@ def fill_chrome(soup, template_path, schema, content, prefix=DEFAULT_PREFIX,
     title = re.sub(r"\s+", " ", title).strip() if isinstance(title, str) else ""
 
     def top(name):
-        return [e for e in soup.find_all(attrs={"data-slot": name})
-                if not in_repeat(e) and not in_optional(e)]
+        return [
+            e
+            for e in soup.find_all(attrs={"data-slot": name})
+            if not in_repeat(e) and not in_optional(e)
+        ]
 
     for el in top("kit.mark"):
         set_text(el, "Talent One ")
@@ -1758,12 +2036,16 @@ def check_content_shape(content):
             if isinstance(rows, list):
                 for i, row in enumerate(rows):
                     if not isinstance(row, dict):
-                        errs.append(f"content shape: repeats.{rname}[{i}] must be an object "
-                                    f"(one row with its slot keys), got {type(row).__name__}")
+                        errs.append(
+                            f"content shape: repeats.{rname}[{i}] must be an object "
+                            f"(one row with its slot keys), got {type(row).__name__}"
+                        )
                 reps[rname] = [r for r in rows if isinstance(r, dict)]
             elif rows is not None and not isinstance(rows, dict):
-                errs.append(f"content shape: repeats.{rname} must be a list of row objects "
-                            f"(or a grid object), got {type(rows).__name__}")
+                errs.append(
+                    f"content shape: repeats.{rname} must be a list of row objects "
+                    f"(or a grid object), got {type(rows).__name__}"
+                )
                 reps[rname] = []
     opts0 = content.get("optionals")
     if isinstance(opts0, dict):
@@ -1773,9 +2055,13 @@ def check_content_shape(content):
                     if isinstance(rows, list):
                         for i, row in enumerate(rows):
                             if not isinstance(row, dict):
-                                errs.append(f"content shape: optionals.{oid}.repeats.{rname}[{i}] must be "
-                                            f"an object, got {type(row).__name__}")
-                        odata["repeats"][rname] = [r for r in rows if isinstance(r, dict)]
+                                errs.append(
+                                    f"content shape: optionals.{oid}.repeats.{rname}[{i}] must be "
+                                    f"an object, got {type(row).__name__}"
+                                )
+                        odata["repeats"][rname] = [
+                            r for r in rows if isinstance(r, dict)
+                        ]
     for key, empty in _ENVELOPE_EMPTY.items():
         if key not in content:
             continue
@@ -1785,33 +2071,57 @@ def check_content_shape(content):
             warns.append(f"content shape: `{key}` was null, treated as {empty!r}")
         elif isinstance(empty, dict) and isinstance(val, list) and not val:
             content[key] = {}
-            warns.append(f"content shape: `{key}` was [], treated as {{}} "
-                         f"(`{key}` is an object; write {{}} when empty)")
+            warns.append(
+                f"content shape: `{key}` was [], treated as {{}} "
+                f"(`{key}` is an object; write {{}} when empty)"
+            )
         elif isinstance(empty, list) and isinstance(val, dict) and not val:
             content[key] = []
-            warns.append(f"content shape: `{key}` was {{}}, treated as [] "
-                         f"(`{key}` is a list; write [] when empty, never {{}})")
+            warns.append(
+                f"content shape: `{key}` was {{}}, treated as [] "
+                f"(`{key}` is a list; write [] when empty, never {{}})"
+            )
     for key in ("slots", "repeats", "toggles", "handoff", "optionals"):
-        if key in content and content[key] is not None and not isinstance(content[key], dict):
-            errs.append(f"content shape: `{key}` must be an object, got "
-                        f"{type(content[key]).__name__}; write \"{key}\": {{}} when empty")
-            content[key] = {}  # neutralized so nothing downstream crashes; render still fails
+        if (
+            key in content
+            and content[key] is not None
+            and not isinstance(content[key], dict)
+        ):
+            errs.append(
+                f"content shape: `{key}` must be an object, got "
+                f'{type(content[key]).__name__}; write "{key}": {{}} when empty'
+            )
+            content[
+                key
+            ] = {}  # neutralized so nothing downstream crashes; render still fails
     sb = content.get("standalone_bars")
     if sb is not None:
         if not isinstance(sb, list):
-            errs.append(f"content shape: `standalone_bars` must be a list, got {type(sb).__name__}; "
-                        "write \"standalone_bars\": [0.42, [0.2, 0.6]] (one number or [start, end] "
-                        "per standalone bar, in template order), or [] when the schema lists none")
+            errs.append(
+                f"content shape: `standalone_bars` must be a list, got {type(sb).__name__}; "
+                'write "standalone_bars": [0.42, [0.2, 0.6]] (one number or [start, end] '
+                "per standalone bar, in template order), or [] when the schema lists none"
+            )
             content["standalone_bars"] = []
         else:
             for i, v in enumerate(sb):
-                ok = (isinstance(v, (int, float)) and not isinstance(v, bool)) or \
-                     (isinstance(v, list) and 1 <= len(v) <= 2 and
-                      all(isinstance(x, (int, float)) and not isinstance(x, bool) for x in v)) or \
-                     (isinstance(v, str) and "," in v)
+                ok = (
+                    (isinstance(v, (int, float)) and not isinstance(v, bool))
+                    or (
+                        isinstance(v, list)
+                        and 1 <= len(v) <= 2
+                        and all(
+                            isinstance(x, (int, float)) and not isinstance(x, bool)
+                            for x in v
+                        )
+                    )
+                    or (isinstance(v, str) and "," in v)
+                )
                 if not ok:
-                    errs.append(f"content shape: standalone_bars[{i}] must be a number, [start,end], "
-                                f"or 'a,b', got {v!r}")
+                    errs.append(
+                        f"content shape: standalone_bars[{i}] must be a number, [start,end], "
+                        f"or 'a,b', got {v!r}"
+                    )
     opts = content.get("optionals")
     if isinstance(opts, dict):
         for oid, odata in opts.items():
@@ -1819,28 +2129,42 @@ def check_content_shape(content):
                 continue
             if odata == [] or odata == "":
                 opts[oid] = None
-                warns.append(f"content shape: `optionals.{oid}` was {odata!r}, treated as "
-                             f"null (same as leaving it out: a plain block is deleted); "
-                             f"write \"{oid}\": null or leave it out")
+                warns.append(
+                    f"content shape: `optionals.{oid}` was {odata!r}, treated as "
+                    f"null (same as leaving it out: a plain block is deleted); "
+                    f'write "{oid}": null or leave it out'
+                )
                 continue
             if not isinstance(odata, dict):
                 errs.append(_optional_shape_error(oid, odata))
-                opts[oid] = None  # neutralized so render() cannot crash on it; render still fails
+                opts[oid] = (
+                    None  # neutralized so render() cannot crash on it; render still fails
+                )
                 continue
             for sub in ("slots", "repeats"):
                 if odata.get(sub) == []:
                     odata[sub] = {}
-                    warns.append(f"content shape: `optionals.{oid}.{sub}` was [], treated "
-                                 f"as {{}} (an object; write {{}} when empty)")
-                if sub in odata and odata[sub] is not None and not isinstance(odata[sub], dict):
-                    errs.append(f"content shape: optionals.{oid}.{sub} must be an object, "
-                                f"got {type(odata[sub]).__name__}")
+                    warns.append(
+                        f"content shape: `optionals.{oid}.{sub}` was [], treated "
+                        f"as {{}} (an object; write {{}} when empty)"
+                    )
+                if (
+                    sub in odata
+                    and odata[sub] is not None
+                    and not isinstance(odata[sub], dict)
+                ):
+                    errs.append(
+                        f"content shape: optionals.{oid}.{sub} must be an object, "
+                        f"got {type(odata[sub]).__name__}"
+                    )
     reps = content.get("repeats")
     if isinstance(reps, dict):
         for rname, rows in reps.items():
             if rows is not None and not isinstance(rows, (list, dict)):
-                errs.append(f"content shape: repeats.{rname} must be a list of rows (or a grid object), "
-                            f"got {type(rows).__name__}")
+                errs.append(
+                    f"content shape: repeats.{rname} must be a list of rows (or a grid object), "
+                    f"got {type(rows).__name__}"
+                )
     if warns:
         content.setdefault("_shape_warnings", []).extend(warns)
         for w in warns:
@@ -1851,8 +2175,14 @@ def check_content_shape(content):
 # Envelope keys with their type and empty-state literal. Mirrors the
 # "Envelope" line build_briefs.py writes into every artifact brief and
 # 00_SHARED_CORE.md §5.2; keep the three in step.
-_ENVELOPE_EMPTY = {"slots": {}, "repeats": {}, "standalone_bars": [],
-                   "optionals": {}, "toggles": {}, "handoff": {}}
+_ENVELOPE_EMPTY = {
+    "slots": {},
+    "repeats": {},
+    "standalone_bars": [],
+    "optionals": {},
+    "toggles": {},
+    "handoff": {},
+}
 
 
 def _optional_shape_error(oid, odata):
@@ -1862,18 +2192,33 @@ def _optional_shape_error(oid, odata):
     got = type(odata).__name__
     if isinstance(odata, str):
         got += f" {odata[:40]!r}"
-    return (f"content shape: optionals.{oid} must be an object or null, got {got}. "
-            f"Nothing to put there: leave it out (\"optionals\": {{}}) or write "
-            f"\"{oid}\": null. To fill it: \"{oid}\": "
-            f"{{\"slots\": {{\"<slot>\": \"<text>\"}}, \"repeats\": {{}}}}. "
-            f"Never a bare string.")
+    return (
+        f"content shape: optionals.{oid} must be an object or null, got {got}. "
+        f'Nothing to put there: leave it out ("optionals": {{}}) or write '
+        f'"{oid}": null. To fill it: "{oid}": '
+        f'{{"slots": {{"<slot>": "<text>"}}, "repeats": {{}}}}. '
+        f"Never a bare string."
+    )
 
 
-def render(template_path, schema, content, ds_dir=None, mode=None, brand=None,
-           prefix=DEFAULT_PREFIX, credit=True):
+def render(
+    template_path,
+    schema,
+    content,
+    ds_dir=None,
+    mode=None,
+    brand=None,
+    prefix=DEFAULT_PREFIX,
+    credit=True,
+):
     soup = parse_doc(template_path)
-    report = {"errors": [], "warnings": [], "missing": [], "deleted": [],
-              "deleted_slots": []}
+    report = {
+        "errors": [],
+        "warnings": [],
+        "missing": [],
+        "deleted": [],
+        "deleted_slots": [],
+    }
     # Coercion notes from check_content_shape (an empty {} given for a list,
     # etc.) ride the report so the orchestrator sees them, not only stderr.
     report["warnings"] += list(content.pop("_shape_warnings", []) or [])
@@ -1884,7 +2229,8 @@ def render(template_path, schema, content, ds_dir=None, mode=None, brand=None,
         if name in (content.get("slots") or {}):
             report["warnings"].append(
                 f"content slot `{name}` ignored: renderer-owned chrome, set by "
-                f"--prefix/--credit, drop it from the content")
+                f"--prefix/--credit, drop it from the content"
+            )
     # Computed once per render, from the freshly-parsed, still-pristine
     # template soup (before any fill below mutates it): for every slot name,
     # the data-slot names legitimately nested inside THAT slot's own element
@@ -1899,14 +2245,18 @@ def render(template_path, schema, content, ds_dir=None, mode=None, brand=None,
             continue
         if name in CHROME_SLOTS:
             continue  # an older schema may still list it; fill_chrome owns it
-        els = [e for e in soup.find_all(attrs={"data-slot": name})
-               if not in_repeat(e) and not in_optional(e)]
+        els = [
+            e
+            for e in soup.find_all(attrs={"data-slot": name})
+            if not in_repeat(e) and not in_optional(e)
+        ]
         optional = entry.get("required") is False
         value = content.get("slots", {}).get(name)
         if name in content.get("slots", {}) and not (optional and value is None):
             for el in els:
-                fill_slot_value(el, value, report, name,
-                                nested_map.get(name, frozenset()))
+                fill_slot_value(
+                    el, value, report, name, nested_map.get(name, frozenset())
+                )
         else:
             # Same safety rule as synthetic slots and handoffs: template
             # worked-example prose never survives into a rendered document.
@@ -1944,8 +2294,11 @@ def render(template_path, schema, content, ds_dir=None, mode=None, brand=None,
                 render_rows(container, data, info, report, rname, nested_map)
 
     sb = content.get("standalone_bars", [])
-    standalone = [e for e in soup.find_all(attrs={"data-bar": True})
-                  if not in_repeat(e) and not in_optional(e)]
+    standalone = [
+        e
+        for e in soup.find_all(attrs={"data-bar": True})
+        if not in_repeat(e) and not in_optional(e)
+    ]
     for i, el in enumerate(standalone):
         if i < len(sb):
             apply_bar(el, sb[i], report)
@@ -1969,8 +2322,13 @@ def render(template_path, schema, content, ds_dir=None, mode=None, brand=None,
             targets = [el] if el.get("data-slot") == sname else []
             targets += el.find_all(attrs={"data-slot": sname})
             for t in targets:
-                fill_slot_value(t, sval, report, f"{oid}.{sname}",
-                                nested_map.get(sname, frozenset()))
+                fill_slot_value(
+                    t,
+                    sval,
+                    report,
+                    f"{oid}.{sname}",
+                    nested_map.get(sname, frozenset()),
+                )
         for rname, rdata in (odata.get("repeats") or {}).items():
             cont = el.find(attrs={"data-repeat": rname})
             if cont is not None:
@@ -1990,7 +2348,9 @@ def render(template_path, schema, content, ds_dir=None, mode=None, brand=None,
         for k, v in overrides.items():
             why = unsafe_brand(k, v)
             if why:
-                report["errors"].append(f"brand override {str(k)[:40]!r} refused: {why}")
+                report["errors"].append(
+                    f"brand override {str(k)[:40]!r} refused: {why}"
+                )
                 continue
             style_set(root, k, str(v))
 
@@ -2053,15 +2413,22 @@ def extract_rows(container, base_layout, base_barpaths, info=None):
             if not nks:
                 continue  # empty nested container: same as absent
             row[ncont["data-repeat"]] = extract_rows(
-                ncont, row_slot_layout(nks[0]), row_bar_paths(nks[0]))
+                ncont, row_slot_layout(nks[0]), row_bar_paths(nks[0])
+            )
         rows.append(row)
     return rows
 
 
 def extract(doc_path, schema):
     soup = parse_doc(doc_path)
-    content = {"template": schema.get("template"), "slots": {}, "repeats": {},
-               "standalone_bars": [], "optionals": {}, "toggles": {}}
+    content = {
+        "template": schema.get("template"),
+        "slots": {},
+        "repeats": {},
+        "standalone_bars": [],
+        "optionals": {},
+        "toggles": {},
+    }
     for name, entry in schema.get("slots", {}).items():
         if entry.get("synthetic"):
             try:
@@ -2072,8 +2439,14 @@ def extract(doc_path, schema):
             continue
         if name in CHROME_SLOTS:
             continue  # renderer-owned chrome: never content (older schemas list it)
-        el = next((e for e in soup.find_all(attrs={"data-slot": name})
-                   if not in_repeat(e) and not in_optional(e)), None)
+        el = next(
+            (
+                e
+                for e in soup.find_all(attrs={"data-slot": name})
+                if not in_repeat(e) and not in_optional(e)
+            ),
+            None,
+        )
         if el is None:
             continue
         if name == CREDIT_SLOT:
@@ -2105,11 +2478,11 @@ def extract(doc_path, schema):
         ks = kids(container)
         if kind == "grid":
             n = info["data_cols"]
-            cols = [clean_text(k) for k in ks[1:1 + n]]
+            cols = [clean_text(k) for k in ks[1 : 1 + n]]
             rows = []
-            body = ks[1 + n:]
+            body = ks[1 + n :]
             for i in range(0, len(body), 1 + n):
-                chunk = body[i:i + 1 + n]
+                chunk = body[i : i + 1 + n]
                 if len(chunk) < 1 + n:
                     break
                 cells = []
@@ -2126,11 +2499,15 @@ def extract(doc_path, schema):
             for p in ks:
                 left = style_get(p, "left") or "0%"
                 top = style_get(p, "top") or "0%"
-                dot = next((s for s in p.find_all("span")
-                            if style_get(s, "border-radius")), None)
-                row = {"label": clean_text(p),
-                       "x": round(float(left.rstrip("%")) / 100, 4),
-                       "y": round(float(top.rstrip("%")) / 100, 4)}
+                dot = next(
+                    (s for s in p.find_all("span") if style_get(s, "border-radius")),
+                    None,
+                )
+                row = {
+                    "label": clean_text(p),
+                    "x": round(float(left.rstrip("%")) / 100, 4),
+                    "y": round(float(top.rstrip("%")) / 100, 4),
+                }
                 if dot is not None:
                     w = style_get(dot, "width") or ""
                     if w.endswith("px"):
@@ -2144,14 +2521,19 @@ def extract(doc_path, schema):
                 content["repeats"][rname] = []
                 continue
             content["repeats"][rname] = extract_rows(
-                container, row_slot_layout(ks[0]), row_bar_paths(ks[0]), info)
-    standalone = [e for e in soup.find_all(attrs={"data-bar": True})
-                  if not in_repeat(e) and not in_optional(e)]
+                container, row_slot_layout(ks[0]), row_bar_paths(ks[0]), info
+            )
+    standalone = [
+        e
+        for e in soup.find_all(attrs={"data-bar": True})
+        if not in_repeat(e) and not in_optional(e)
+    ]
     content["standalone_bars"] = [read_bar(e) for e in standalone]
     for i, el in enumerate(soup.find_all(attrs={"data-optional": True}), 1):
         oslots = {}
-        candidates = ([el] if el.has_attr("data-slot") else []) + \
-            el.find_all(attrs={"data-slot": True})
+        candidates = ([el] if el.has_attr("data-slot") else []) + el.find_all(
+            attrs={"data-slot": True}
+        )
         for s in candidates:
             if s["data-slot"].startswith("handoff."):
                 continue  # captured flat under content["handoff"]
@@ -2182,9 +2564,21 @@ def active_content(doc):
     reports nothing here."""
     out = []
     for t in doc.find_all(True):
-        in_slot = t.has_attr("data-slot") or t.find_parent(attrs={"data-slot": True}) is not None
-        if t.name in ("iframe", "frame", "frameset", "object", "embed", "applet", "base",
-                      "form", "portal"):
+        in_slot = (
+            t.has_attr("data-slot")
+            or t.find_parent(attrs={"data-slot": True}) is not None
+        )
+        if t.name in (
+            "iframe",
+            "frame",
+            "frameset",
+            "object",
+            "embed",
+            "applet",
+            "base",
+            "form",
+            "portal",
+        ):
             out.append(f"<{t.name}> element")
         if t.name == "meta" and str(t.get("http-equiv", "")).lower() == "refresh":
             out.append("<meta http-equiv=refresh>")
@@ -2192,26 +2586,47 @@ def active_content(doc):
             out.append(f"<link href={str(t.get('href'))[:60]!r}>")
         if t.name == "script" and (t.get("src") or in_slot):
             out.append("<script> inside a content slot or with src")
-        if t.name in ("img", "picture", "video", "audio", "source", "svg", "math", "style") and in_slot:
+        if (
+            t.name
+            in ("img", "picture", "video", "audio", "source", "svg", "math", "style")
+            and in_slot
+        ):
             out.append(f"<{t.name}> inside a content slot")
         for a in t.attrs:
             v = t.attrs[a]
             v = " ".join(v) if isinstance(v, list) else str(v)
             if a.lower().startswith("on") and in_slot:
                 out.append(f"<{t.name} {a}=...> event handler inside a content slot")
-            elif a.lower() in ("src", "srcset", "poster", "action", "formaction",
-                               "background") and (in_slot or re.match(r"\s*(?:https?:)?//", v, re.I)):
+            elif a.lower() in (
+                "src",
+                "srcset",
+                "poster",
+                "action",
+                "formaction",
+                "background",
+            ) and (in_slot or re.match(r"\s*(?:https?:)?//", v, re.IGNORECASE)):
                 out.append(f"<{t.name} {a}={v[:60]!r}>")
             elif a.lower() in ("href", "xlink:href") and re.match(
-                    r"(?:javascript|vbscript|data):", re.sub(r"[\x00-\x20]", "", v), re.I):
+                r"(?:javascript|vbscript|data):",
+                re.sub(r"[\x00-\x20]", "", v),
+                re.IGNORECASE,
+            ):
                 out.append(f"<{t.name} {a}={v[:40]!r}>")
-            elif a.lower() in ("href", "xlink:href") and in_slot and not SAFE_HREF_RE.match(v.strip()):
+            elif (
+                a.lower() in ("href", "xlink:href")
+                and in_slot
+                and not SAFE_HREF_RE.match(v.strip())
+            ):
                 out.append(f"<{t.name} {a}={v[:40]!r}> inside a content slot")
             elif a.lower() == "style" and CSS_LOADER_RE.search(v):
                 m = CSS_LOADER_RE.search(v)
-                out.append(f"<{t.name} style=...{v[max(0, m.start() - 24):m.end() + 36]!r}...> loads a resource")
+                out.append(
+                    f"<{t.name} style=...{v[max(0, m.start() - 24) : m.end() + 36]!r}...> loads a resource"
+                )
             elif a.lower() == "style" and in_slot and unsafe_css(v):
-                out.append(f"<{t.name} style={v[:60]!r}> inside a content slot: {unsafe_css(v)}")
+                out.append(
+                    f"<{t.name} style={v[:60]!r}> inside a content slot: {unsafe_css(v)}"
+                )
     return out
 
 
@@ -2232,9 +2647,12 @@ def verify(doc_path, template_path, schema, content_path=None):
     # wrote it too, e.g. split by markup) ships the studio credit twice.
     n_credit = len(_CREDIT_RE.findall(clean_text(prose_doc)))
     if n_credit > 1:
-        add("MEDIUM", "credit repeated",
+        add(
+            "MEDIUM",
+            "credit repeated",
             f"the footer credit appears {n_credit} times; it belongs only in "
-            f"footer.right, once, appended by the renderer (drop it from content)")
+            f"footer.right, once, appended by the renderer (drop it from content)",
+        )
     for el in prose_doc.find_all(string=lambda s: EM_DASH in s):
         add("HIGH", "em-dash", str(el).strip()[:90])
     for problem in active_content(doc):
@@ -2257,8 +2675,9 @@ def verify(doc_path, template_path, schema, content_path=None):
     # protects verify independently, for documents from any other source.
     # Candidate-facing copy slots (email bodies, subjects, inmails) never
     # carry the marker in any template, so they stay scanned at full strength.
-    tpl_exempt = {t.get("data-slot")
-                  for t in tpl.find_all(attrs={"data-verify-exempt": True})}
+    tpl_exempt = {
+        t.get("data-slot") for t in tpl.find_all(attrs={"data-verify-exempt": True})
+    }
     tpl_exempt.discard(None)
     for t in prose_doc.find_all(attrs={"data-verify-exempt": True}):
         if t.get("data-slot") in tpl_exempt:
@@ -2279,8 +2698,11 @@ def verify(doc_path, template_path, schema, content_path=None):
                 lv = float(left.rstrip("%")) if left != "0" else 0.0
                 wv = float(width.rstrip("%"))
                 if abs(lv - a * 100) > 0.5 or abs((lv + wv) - b * 100) > 0.5:
-                    add("HIGH", "data-bar geometry",
-                        f"range {raw_bar} vs left:{left};width:{width}")
+                    add(
+                        "HIGH",
+                        "data-bar geometry",
+                        f"range {raw_bar} vs left:{left};width:{width}",
+                    )
             elif "conic-gradient" in style:
                 v = float(raw_bar)
                 # Parse stops from the conic-gradient() segment only: the full
@@ -2288,16 +2710,25 @@ def verify(doc_path, template_path, schema, content_path=None):
                 gm = re.search(r"conic-gradient\(([^)]*)\)", style)
                 stops = re.findall(r"([\d.]+)%", gm.group(1)) if gm else []
                 if stops and abs(float(stops[0]) - v * 100) > 0.5:
-                    add("HIGH", "data-bar geometry",
-                        f"donut {raw_bar} vs first stop {stops[0]}%")
+                    add(
+                        "HIGH",
+                        "data-bar geometry",
+                        f"donut {raw_bar} vs first stop {stops[0]}%",
+                    )
             elif style_get(el, "min-height") and not clean_text(el):
                 v = float(raw_bar)  # heat cell: background encodes, spot check vocab
-                if fmt_bar(v) not in {s["bar"] for s in HEAT_STRENGTH.values() if s["bar"]}:
+                if fmt_bar(v) not in {
+                    s["bar"] for s in HEAT_STRENGTH.values() if s["bar"]
+                }:
                     add("MEDIUM", "heat-cell value", raw_bar)
             else:
                 v = float(raw_bar)
                 width = style_get(el, "width")
-                if width and width.endswith("%") and abs(float(width[:-1]) - v * 100) > 0.5:
+                if (
+                    width
+                    and width.endswith("%")
+                    and abs(float(width[:-1]) - v * 100) > 0.5
+                ):
                     add("HIGH", "data-bar geometry", f"{raw_bar} vs width:{width}")
         except (ValueError, TypeError):
             add("MEDIUM", "data-bar parse", raw_bar)
@@ -2323,8 +2754,11 @@ def verify(doc_path, template_path, schema, content_path=None):
         t = clean_text(el)
         if t and DOMAIN_MARKERS.search(t) and len(t) < 400:
             slot = el.get("data-slot", el.name)
-            add("HIGH", "surviving example text",
-                f"{slot}: worked-example domain language: {t[:70]}")
+            add(
+                "HIGH",
+                "surviving example text",
+                f"{slot}: worked-example domain language: {t[:70]}",
+            )
             break  # one finding is enough; qa-gate cites exact slots
     # tpl_texts is built WITHOUT a length floor (round-2 fix, M6) so the new
     # short-risky check below can reuse the exact same object; the >= 25
@@ -2354,7 +2788,12 @@ def verify(doc_path, template_path, schema, content_path=None):
         # < 25 chars specifically -- it closes the gap the existing check
         # leaves, rather than duplicating a second finding for text the
         # existing check already flags.
-        elif t and len(t) < 25 and t in tpl_texts.get(name, ()) and RISKY_TEXT_PATTERN.search(t):
+        elif (
+            t
+            and len(t) < 25
+            and t in tpl_texts.get(name, ())
+            and RISKY_TEXT_PATTERN.search(t)
+        ):
             add("HIGH", "identical to example (risky)", f"{name}: {t[:70]}")
 
     for el in doc.find_all(attrs={"data-repeat": True}):
@@ -2364,12 +2803,18 @@ def verify(doc_path, template_path, schema, content_path=None):
             continue
         band = (el.get("data-count") or "").strip()
         m = re.match(r"(\d+)\s*-\s*(\d+)$", band)
-        if m and el.get("data-repeat") in schema.get("repeats", {}) and \
-                schema["repeats"][el["data-repeat"]].get("kind", "rows") == "rows":
+        if (
+            m
+            and el.get("data-repeat") in schema.get("repeats", {})
+            and schema["repeats"][el["data-repeat"]].get("kind", "rows") == "rows"
+        ):
             lo, hi = int(m.group(1)), int(m.group(2))
             if not (lo <= len(ks) <= hi):
-                add("MEDIUM", "data-count band",
-                    f"{el['data-repeat']}: {len(ks)} rows, band {band}")
+                add(
+                    "MEDIUM",
+                    "data-count band",
+                    f"{el['data-repeat']}: {len(ks)} rows, band {band}",
+                )
 
     for el in doc.find_all(attrs={"data-slot": True}):
         if el["data-slot"].endswith(".pill"):
@@ -2400,11 +2845,14 @@ def verify(doc_path, template_path, schema, content_path=None):
     # forever on a finding no content patch can fix.
     for w in lint_template(template_path):
         sev = "MEDIUM" if w.get("surface") == "attribute" else "HIGH"
-        add(sev, "template furniture",
-            _format_lint_finding(w) +
-            " [TEMPLATE defect: fix the bound template (add data-slot or "
+        add(
+            sev,
+            "template furniture",
+            _format_lint_finding(w)
+            + " [TEMPLATE defect: fix the bound template (add data-slot or "
             "remove the text) -- a content patch cannot clear this finding, "
-            "it will recur on every future render off this template]")
+            "it will recur on every future render off this template]",
+        )
 
     return findings
 
@@ -2416,15 +2864,28 @@ def _walk_pv(node, path, findings):
     if isinstance(node, dict):
         if "pill" in node:
             if node["pill"] not in PILL_STYLES:
-                findings.append({"severity": "HIGH", "check": "pill vocabulary",
-                                 "evidence": f"{path}: {node['pill']!r}"})
+                findings.append(
+                    {
+                        "severity": "HIGH",
+                        "check": "pill vocabulary",
+                        "evidence": f"{path}: {node['pill']!r}",
+                    }
+                )
             if not str(node.get("method", "")).strip():
-                findings.append({"severity": "HIGH", "check": "pv missing method",
-                                 "evidence": path})
+                findings.append(
+                    {"severity": "HIGH", "check": "pv missing method", "evidence": path}
+                )
             if node["pill"] == "Sourced" and not re.search(
-                    r"\b(19|20)\d{2}\b", str(node.get("method", "")) + str(node.get("as_of", ""))):
-                findings.append({"severity": "MEDIUM", "check": "Sourced without vintage",
-                                 "evidence": path})
+                r"\b(19|20)\d{2}\b",
+                str(node.get("method", "")) + str(node.get("as_of", "")),
+            ):
+                findings.append(
+                    {
+                        "severity": "MEDIUM",
+                        "check": "Sourced without vintage",
+                        "evidence": path,
+                    }
+                )
         for k, v in node.items():
             _walk_pv(v, f"{path}.{k}", findings)
     elif isinstance(node, list):
@@ -2432,11 +2893,17 @@ def _walk_pv(node, path, findings):
             _walk_pv(v, f"{path}[{i}]", findings)
     elif isinstance(node, str):
         if EM_DASH in node:
-            findings.append({"severity": "HIGH", "check": "em-dash",
-                             "evidence": f"{path}: {node[:60]}"})
+            findings.append(
+                {
+                    "severity": "HIGH",
+                    "check": "em-dash",
+                    "evidence": f"{path}: {node[:60]}",
+                }
+            )
         if node.strip() in ("TBD", "N/A", "NOT_FOUND"):
-            findings.append({"severity": "HIGH", "check": "placeholder",
-                             "evidence": path})
+            findings.append(
+                {"severity": "HIGH", "check": "placeholder", "evidence": path}
+            )
 
 
 # Size budgets from CONTEXT_PACK.md §1, in estimated tokens (chars / 4 of the
@@ -2447,29 +2914,49 @@ RESEARCH_TOKEN_BUDGET = 8000
 COMP_SLA_MONTHS = 6
 PERSONA_TEMPLATE_CAP = 4  # TK_03 renders at most four persona cards
 
-_NUM_WORDS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
-              "seven": 7, "eight": 8, "nine": 9, "ten": 10, "eleven": 11,
-              "twelve": 12}
+_NUM_WORDS = {
+    "one": 1,
+    "two": 2,
+    "three": 3,
+    "four": 4,
+    "five": 5,
+    "six": 6,
+    "seven": 7,
+    "eight": 8,
+    "nine": 9,
+    "ten": 10,
+    "eleven": 11,
+    "twelve": 12,
+}
 _STATED_COUNT = re.compile(
-    r"\b(\d{1,2}|" + "|".join(_NUM_WORDS) + r")[\s-]+(touch|touches|step|steps)\b", re.I)
-_DAY_SLASH_LIST = re.compile(r"\bday\s+(\d{1,3}(?:\s*/\s*\d{1,3})+)", re.I)
-_DAY_MARKER = re.compile(r"\b(?:d|day\s?)(\d{1,3})\b", re.I)
+    r"\b(\d{1,2}|" + "|".join(_NUM_WORDS) + r")[\s-]+(touch|touches|step|steps)\b",
+    re.IGNORECASE,
+)
+_DAY_SLASH_LIST = re.compile(r"\bday\s+(\d{1,3}(?:\s*/\s*\d{1,3})+)", re.IGNORECASE)
+_DAY_MARKER = re.compile(r"\b(?:d|day\s?)(\d{1,3})\b", re.IGNORECASE)
 # What may sit between two markers of one enumeration: a comma, slash or
 # semicolon, whitespace, "and" / "&". A "-" or "to" makes the pair a range.
-_DAY_LIST_SEP = re.compile(r"\s*(?:[,/;&]|\band\b)?\s*(?:\band\b\s*)?", re.I)
-_DAY_RANGE_SEP = re.compile(r"\s*(?:-|–|\bto\b|\bthrough\b)\s*", re.I)
+_DAY_LIST_SEP = re.compile(r"\s*(?:[,/;&]|\band\b)?\s*(?:\band\b\s*)?", re.IGNORECASE)
+_DAY_RANGE_SEP = re.compile(r"\s*(?:-|–|\bto\b|\bthrough\b)\s*", re.IGNORECASE)
 _SEQUENCE_LIST_KEYS = ("sequence", "touches", "steps", "sequence_steps")
 
 
 def _check_pack_budget(obj, label, budget, findings):
     est = len(json.dumps(obj, ensure_ascii=False, separators=(",", ":"))) // 4
     if est > budget:
-        where = ("move long methods, evidence lists and persona detail to "
-                 "pack-research.json" if label == "pack.json" else
-                 "trim dossiers and metros to what A03/A04/A05 render")
-        findings.append({"severity": "MEDIUM", "check": "pack size budget",
-                         "evidence": f"{label} is ~{est:,} tokens (chars/4), over its "
-                                     f"{budget:,}-token budget (CONTEXT_PACK.md §1); {where}"})
+        where = (
+            "move long methods, evidence lists and persona detail to pack-research.json"
+            if label == "pack.json"
+            else "trim dossiers and metros to what A03/A04/A05 render"
+        )
+        findings.append(
+            {
+                "severity": "MEDIUM",
+                "check": "pack size budget",
+                "evidence": f"{label} is ~{est:,} tokens (chars/4), over its "
+                f"{budget:,}-token budget (CONTEXT_PACK.md §1); {where}",
+            }
+        )
 
 
 def _day_marker_count(text):
@@ -2480,13 +2967,16 @@ def _day_marker_count(text):
     range ("D0-D21"), not touches, and are ignored. None when fewer than
     three distinct markers qualify: no comparison is made."""
     text = _DAY_SLASH_LIST.sub(
-        lambda m: " / ".join(f"D{d}" for d in re.findall(r"\d+", m.group(1))), text)
+        lambda m: " / ".join(f"D{d}" for d in re.findall(r"\d+", m.group(1))), text
+    )
     marks = list(_DAY_MARKER.finditer(text))
     days, run = set(), []
     for i, m in enumerate(marks):
-        between = text[marks[i - 1].end():m.start()] if i else None
+        between = text[marks[i - 1].end() : m.start()] if i else None
         in_range = (between is not None and _DAY_RANGE_SEP.fullmatch(between)) or (
-            i + 1 < len(marks) and _DAY_RANGE_SEP.fullmatch(text[m.end():marks[i + 1].start()]))
+            i + 1 < len(marks)
+            and _DAY_RANGE_SEP.fullmatch(text[m.end() : marks[i + 1].start()])
+        )
         if in_range:
             if len(run) >= 2:
                 days.update(run)
@@ -2523,8 +3013,11 @@ def _check_sequence_counts(channels, findings):
     if isinstance(channels.get("sequence_frame"), dict):
         scopes.append(("channels.sequence_frame", channels["sequence_frame"]))
     for base, scope in scopes:
-        lists = {k: v for k, v in scope.items() if isinstance(v, list) and
-                 k in _SEQUENCE_LIST_KEYS}
+        lists = {
+            k: v
+            for k, v in scope.items()
+            if isinstance(v, list) and k in _SEQUENCE_LIST_KEYS
+        }
         for key, val in scope.items():
             if not isinstance(val, str):
                 continue
@@ -2534,14 +3027,24 @@ def _check_sequence_counts(channels, findings):
             n = stated[0]
             for lkey, lval in lists.items():
                 if len(lval) != n:
-                    findings.append({"severity": "MEDIUM", "check": "stated count vs list",
-                                     "evidence": f"{base}.{key} states {n} touches/steps "
-                                                 f"but {base}.{lkey} lists {len(lval)}"})
+                    findings.append(
+                        {
+                            "severity": "MEDIUM",
+                            "check": "stated count vs list",
+                            "evidence": f"{base}.{key} states {n} touches/steps "
+                            f"but {base}.{lkey} lists {len(lval)}",
+                        }
+                    )
             marks = _day_marker_count(val)
             if marks is not None and marks != n:
-                findings.append({"severity": "MEDIUM", "check": "stated count vs list",
-                                 "evidence": f"{base}.{key} states {n} touches/steps but "
-                                             f"enumerates {marks} dated touches: {val[:90]}"})
+                findings.append(
+                    {
+                        "severity": "MEDIUM",
+                        "check": "stated count vs list",
+                        "evidence": f"{base}.{key} states {n} touches/steps but "
+                        f"enumerates {marks} dated touches: {val[:90]}",
+                    }
+                )
 
 
 def _parse_as_of(value):
@@ -2562,6 +3065,7 @@ def _check_comp_sla(pack, findings):
     judged by whole months (2026-04 is in window for a 2026-10-22 build), so
     a borderline vintage is never flagged."""
     import datetime
+
     comp = pack.get("comp")
     if not isinstance(comp, dict):
         return
@@ -2589,10 +3093,15 @@ def _check_comp_sla(pack, findings):
     def walk(node, path):
         if isinstance(node, dict):
             if "as_of" in node and stale(node["as_of"]):
-                findings.append({"severity": "MEDIUM", "check": "comp row older than 6-month SLA",
-                                 "evidence": f"{path}: as_of {node['as_of']} vs pack built "
-                                             f"{ref_date.isoformat()}; drop it from ranges "
-                                             f"and ceilings or refresh it"})
+                findings.append(
+                    {
+                        "severity": "MEDIUM",
+                        "check": "comp row older than 6-month SLA",
+                        "evidence": f"{path}: as_of {node['as_of']} vs pack built "
+                        f"{ref_date.isoformat()}; drop it from ranges "
+                        f"and ceilings or refresh it",
+                    }
+                )
             for k, v in node.items():
                 if k != "as_of":
                     walk(v, f"{path}.{k}")
@@ -2612,9 +3121,14 @@ def _check_pack_consistency(pack, findings):
     _check_comp_sla(pack, findings)
     personas = pack.get("personas")
     if isinstance(personas, list) and len(personas) > PERSONA_TEMPLATE_CAP:
-        findings.append({"severity": "MEDIUM", "check": "persona count",
-                         "evidence": f"personas has {len(personas)}: personas exceed template "
-                                     f"cap of {PERSONA_TEMPLATE_CAP}; atlas will drop the extras"})
+        findings.append(
+            {
+                "severity": "MEDIUM",
+                "check": "persona count",
+                "evidence": f"personas has {len(personas)}: personas exceed template "
+                f"cap of {PERSONA_TEMPLATE_CAP}; atlas will drop the extras",
+            }
+        )
 
 
 def validate_pack(pack_path, research_path=None):
@@ -2622,43 +3136,78 @@ def validate_pack(pack_path, research_path=None):
     pack = json.loads(read(pack_path))
     for req in ("role", "built"):
         if req not in pack:
-            findings.append({"severity": "HIGH", "check": "missing key", "evidence": req})
+            findings.append(
+                {"severity": "HIGH", "check": "missing key", "evidence": req}
+            )
     role = pack.get("role", {})
     for req in ("title", "level", "company"):
         if not role.get(req):
-            findings.append({"severity": "HIGH", "check": "missing key",
-                             "evidence": f"role.{req}"})
+            findings.append(
+                {"severity": "HIGH", "check": "missing key", "evidence": f"role.{req}"}
+            )
     if pack.get("pack_version") != "1.0":
-        findings.append({"severity": "MEDIUM", "check": "pack_version",
-                         "evidence": str(pack.get("pack_version"))})
+        findings.append(
+            {
+                "severity": "MEDIUM",
+                "check": "pack_version",
+                "evidence": str(pack.get("pack_version")),
+            }
+        )
     if "constraints" in pack and not isinstance(pack["constraints"], list):
-        findings.append({"severity": "HIGH", "check": "constraints must be a list",
-                         "evidence": type(pack["constraints"]).__name__})
+        findings.append(
+            {
+                "severity": "HIGH",
+                "check": "constraints must be a list",
+                "evidence": type(pack["constraints"]).__name__,
+            }
+        )
     # Web-budget audit (enforcement-by-audit: scout is a prompt, nothing
     # executes between its tool calls, so the budget is enforced here from
     # scout's self-reported spend, not by an interpreter).
     calls = pack.get("web_calls_used")
     if calls is not None and not isinstance(calls, int):
-        findings.append({"severity": "HIGH", "check": "web_calls_used must be an integer",
-                         "evidence": type(calls).__name__})
+        findings.append(
+            {
+                "severity": "HIGH",
+                "check": "web_calls_used must be an integer",
+                "evidence": type(calls).__name__,
+            }
+        )
     elif isinstance(calls, int) and calls > 12:
-        findings.append({"severity": "HIGH", "check": "web budget exceeded",
-                         "evidence": f"web_calls_used {calls} > 12"})
+        findings.append(
+            {
+                "severity": "HIGH",
+                "check": "web budget exceeded",
+                "evidence": f"web_calls_used {calls} > 12",
+            }
+        )
     elif calls is None and "scout" in (pack.get("built_from") or []):
-        findings.append({"severity": "MEDIUM", "check": "web_calls_used missing",
-                         "evidence": "scout-built pack reports no web-call count"})
+        findings.append(
+            {
+                "severity": "MEDIUM",
+                "check": "web_calls_used missing",
+                "evidence": "scout-built pack reports no web-call count",
+            }
+        )
     _walk_pv(pack, "pack", findings)
     _check_pack_budget(pack, "pack.json", PACK_TOKEN_BUDGET, findings)
     _check_pack_consistency(pack, findings)
     if research_path:
         research = json.loads(read(research_path))
         _walk_pv(research, "research", findings)
-        _check_pack_budget(research, "pack-research.json", RESEARCH_TOKEN_BUDGET, findings)
+        _check_pack_budget(
+            research, "pack-research.json", RESEARCH_TOKEN_BUDGET, findings
+        )
         for p in research.get("quadrant", []):
             for ax in ("x", "y"):
                 if not (0 <= float(p.get(ax, -1)) <= 1):
-                    findings.append({"severity": "HIGH", "check": "quadrant range",
-                                     "evidence": f"{p.get('name')}: {ax}"})
+                    findings.append(
+                        {
+                            "severity": "HIGH",
+                            "check": "quadrant range",
+                            "evidence": f"{p.get('name')}: {ax}",
+                        }
+                    )
     return findings
 
 
@@ -2692,10 +3241,14 @@ def append_compat_handoff(handoffs_path, content, role, schema=None):
         entry_handoff = dict(h["keys"])
     else:
         entry_handoff = {k: v for k, v in h.items() if k != "keys" and v is not None}
-    entry = {"artifact": art, "agent": AGENT_BY_ARTIFACT.get(art, ""),
-             "role": role or "", "generated": content.get("generated", ""),
-             "derived_from": "content-render 1.0",
-             "handoff": entry_handoff}
+    entry = {
+        "artifact": art,
+        "agent": AGENT_BY_ARTIFACT.get(art, ""),
+        "role": role or "",
+        "generated": content.get("generated", ""),
+        "derived_from": "content-render 1.0",
+        "handoff": entry_handoff,
+    }
     if h.get("assumptions") and "assumptions" not in entry["handoff"]:
         entry["handoff"]["assumptions"] = h["assumptions"]
     data[art] = entry
@@ -2716,8 +3269,9 @@ def _on_off(value):
 
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(description=__doc__,
-                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     s = sub.add_parser("schema")
@@ -2741,13 +3295,22 @@ def main(argv=None):
     r.add_argument("--brand", nargs="*", default=[])
     r.add_argument("--handoffs")
     r.add_argument("--role")
-    r.add_argument("--strict", action="store_true",
-                   help="exit 1 when required slots are missing")
-    r.add_argument("--prefix", default=DEFAULT_PREFIX,
-                   help="artifact ID prefix for the masthead and footer "
-                        "(profile branding.prefix), rendered as <PREFIX>-NN")
-    r.add_argument("--credit", type=_on_off, choices=("on", "off"), default="on",
-                   help="append the footer credit (profile branding.credit)")
+    r.add_argument(
+        "--strict", action="store_true", help="exit 1 when required slots are missing"
+    )
+    r.add_argument(
+        "--prefix",
+        default=DEFAULT_PREFIX,
+        help="artifact ID prefix for the masthead and footer "
+        "(profile branding.prefix), rendered as <PREFIX>-NN",
+    )
+    r.add_argument(
+        "--credit",
+        type=_on_off,
+        choices=("on", "off"),
+        default="on",
+        help="append the footer credit (profile branding.credit)",
+    )
 
     v = sub.add_parser("verify")
     v.add_argument("--template", required=True)
@@ -2766,6 +3329,8 @@ def main(argv=None):
     p.add_argument("--out")
 
     args = ap.parse_args(argv)
+    runlog.setup()
+    log.debug("render.py %s", args.cmd)
 
     def emit(obj, out):
         text = json.dumps(obj, indent=1, ensure_ascii=False)
@@ -2781,7 +3346,9 @@ def main(argv=None):
         if furniture:
             schema["furniture_warnings"] = furniture
             for w in furniture:
-                sys.stderr.write(f"WARNING: template furniture: {_format_lint_finding(w)}\n")
+                sys.stderr.write(
+                    f"WARNING: template furniture: {_format_lint_finding(w)}\n"
+                )
         emit(schema, args.out)
     elif args.cmd == "extract":
         schema = json.loads(read(args.schema))
@@ -2795,16 +3362,30 @@ def main(argv=None):
             brand[k] = v2
         shape_errors = check_content_shape(content)
         if shape_errors:
+            log.info(
+                "render: %d content shape error(s), nothing rendered", len(shape_errors)
+            )
             stale0 = Path(args.out).with_name(Path(args.out).name + ".failed")
             if stale0.exists():
                 stale0.unlink()  # an older failed attempt must not outlive a newer shape error
-            summary = {"out": None, "attempted_out": args.out, "errors": shape_errors,
-                       "fix": "content patch by the owning agent; nothing was rendered"}
+            summary = {
+                "out": None,
+                "attempted_out": args.out,
+                "errors": shape_errors,
+                "fix": "content patch by the owning agent; nothing was rendered",
+            }
             print(json.dumps(summary, indent=1, ensure_ascii=False))
             sys.exit(1)
-        soup, report = render(args.template, schema, content,
-                              ds_dir=args.ds, mode=args.mode, brand=brand,
-                              prefix=args.prefix, credit=args.credit == "on")
+        soup, report = render(
+            args.template,
+            schema,
+            content,
+            ds_dir=args.ds,
+            mode=args.mode,
+            brand=brand,
+            prefix=args.prefix,
+            credit=args.credit == "on",
+        )
         failed = bool(report["errors"] or (args.strict and report["missing"]))
         # Atomic write: render to a temp file next to --out and only move it
         # into place when the render is clean. Writing straight to --out on a
@@ -2817,12 +3398,22 @@ def main(argv=None):
         out_path = Path(args.out)
         tmp_path = out_path.with_name(out_path.name + ".tmp")
         tmp_path.write_text(str(soup), encoding="utf-8")
+        log.info(
+            "render: %s, %d error(s), %d missing slot(s), strict=%s",
+            "failed" if failed else "clean",
+            len(report["errors"]),
+            len(report["missing"]),
+            args.strict,
+        )
         if failed:
             failed_path = out_path.with_name(out_path.name + ".failed")
             tmp_path.replace(failed_path)
-            summary = {"out": None, "attempted_out": args.out,
-                       "failed_artifact": str(failed_path),
-                       **{k: v for k, v in report.items() if v}}
+            summary = {
+                "out": None,
+                "attempted_out": args.out,
+                "failed_artifact": str(failed_path),
+                **{k: v for k, v in report.items() if v},
+            }
             print(json.dumps(summary, indent=1, ensure_ascii=False))
             sys.exit(1)
         tmp_path.replace(out_path)
@@ -2836,24 +3427,47 @@ def main(argv=None):
     elif args.cmd == "verify":
         schema = json.loads(read(args.schema))
         findings = verify(args.doc, args.template, schema, args.content)
-        emit({"doc": args.doc, "findings": findings,
-              "verdict": "PASS" if not [f for f in findings
-                                        if f["severity"] == "HIGH"] else "FAIL"},
-             args.out)
+        log.info(
+            "verify: %d finding(s), %d HIGH",
+            len(findings),
+            sum(1 for f in findings if f["severity"] == "HIGH"),
+        )
+        emit(
+            {
+                "doc": args.doc,
+                "findings": findings,
+                "verdict": "PASS"
+                if not [f for f in findings if f["severity"] == "HIGH"]
+                else "FAIL",
+            },
+            args.out,
+        )
         sys.exit(0 if not [f for f in findings if f["severity"] == "HIGH"] else 1)
     elif args.cmd == "lint-template":
         findings = lint_template(args.template)
-        emit({"template": args.template, "findings": findings,
-              "verdict": "CLEAN" if not findings else "FLAGGED"}, args.out)
+        emit(
+            {
+                "template": args.template,
+                "findings": findings,
+                "verdict": "CLEAN" if not findings else "FLAGGED",
+            },
+            args.out,
+        )
         sys.exit(0 if not findings else 1)
     elif args.cmd == "validate-pack":
         findings = validate_pack(args.pack, args.research)
-        emit({"pack": args.pack, "findings": findings,
-              "verdict": "PASS" if not [f for f in findings
-                                        if f["severity"] == "HIGH"] else "FAIL"},
-             args.out)
+        emit(
+            {
+                "pack": args.pack,
+                "findings": findings,
+                "verdict": "PASS"
+                if not [f for f in findings if f["severity"] == "HIGH"]
+                else "FAIL",
+            },
+            args.out,
+        )
         sys.exit(0 if not [f for f in findings if f["severity"] == "HIGH"] else 1)
 
 
 if __name__ == "__main__":
-    main()
+    runlog.run(main)

@@ -21,6 +21,7 @@ binding, or an edge between two artifacts that were supposed to be independent.
 
 Exit 0 when everything agrees, 1 with one FAIL line per disagreement. Stdlib only.
 """
+
 from __future__ import annotations
 
 import json
@@ -38,8 +39,13 @@ RELAY = MODULE / "agents" / "relay.md"
 
 PHASES = ["pack", "content", "critic", "render", "qa"]
 # The relay's own phase headings, in order, as agents/relay.md writes them.
-RELAY_MARKERS = ["**Phase 1 (pack).**", "**Phase 2 (content", "**Phase 2.5 (critic",
-                 "**Phase 3 (render", "**Phase 4 (qa-gate"]
+RELAY_MARKERS = [
+    "**Phase 1 (pack).**",
+    "**Phase 2 (content",
+    "**Phase 2.5 (critic",
+    "**Phase 3 (render",
+    "**Phase 4 (qa-gate",
+]
 
 
 def norm(name: str) -> str:
@@ -51,7 +57,7 @@ def norm(name: str) -> str:
 def section5(text: str) -> dict[str, dict]:
     """artifact -> {agent, required:[paths], optional:[paths], raw:str} from the
     CONTEXT_PACK.md section 5 table."""
-    m = re.search(r"^## 5\..*?$(.*?)^## ", text, re.M | re.S)
+    m = re.search(r"^## 5\..*?$(.*?)^## ", text, re.MULTILINE | re.DOTALL)
     if not m:
         raise SystemExit("FAIL  CONTEXT_PACK.md has no section 5")
     rows = {}
@@ -64,29 +70,33 @@ def section5(text: str) -> dict[str, dict]:
         required = [p.strip() for p in main.split(",") if p.strip()]
         required += [f"research:{p.strip()}" for p in research.split(",") if p.strip()]
         optional = [p.strip() for p in cells[2].split(",") if p.strip()]
-        rows[nn] = {"agent": agent, "required": required, "optional": optional,
-                    "raw": cells[1] + " " + cells[2]}
+        rows[nn] = {
+            "agent": agent,
+            "required": required,
+            "optional": optional,
+            "raw": cells[1] + " " + cells[2],
+        }
     return rows
 
 
 def module_agents(text: str) -> dict[str, dict]:
     """name -> {role, verifier} from MODULE.yaml's `agents:` block (flow mappings)."""
-    m = re.search(r"^agents:\n((?:[ \t]+.*\n|\n)+)", text, re.M)
+    m = re.search(r"^agents:\n((?:[ \t]+.*\n|\n)+)", text, re.MULTILINE)
     out = {}
     for line in (m.group(1) if m else "").splitlines():
         a = re.match(r"^\s+([a-z0-9-]+):\s*\{(.*)\}\s*$", line)
         if not a:
             continue
-        fields = dict(
-            (k.strip(), v.strip())
+        fields = {
+            k.strip(): v.strip()
             for k, _, v in (kv.partition(":") for kv in a.group(2).split(","))
-        )
+        }
         out[a.group(1)] = fields
     return out
 
 
 def renderer_agents(text: str) -> dict[str, str]:
-    m = re.search(r"AGENT_BY_ARTIFACT\s*=\s*\{(.*?)\}", text, re.S)
+    m = re.search(r"AGENT_BY_ARTIFACT\s*=\s*\{(.*?)\}", text, re.DOTALL)
     return dict(re.findall(r'"(\d{2})"\s*:\s*"([^"]+)"', m.group(1))) if m else {}
 
 
@@ -111,8 +121,11 @@ def main() -> int:
     arts = manifest.get("artifacts", {})
 
     # 1. One artifact set everywhere.
-    sets = {"CONTEXT_PACK.md section 5": set(rows), "runner/agents.json": set(arts),
-            "render.py AGENT_BY_ARTIFACT": set(by_art)}
+    sets = {
+        "CONTEXT_PACK.md section 5": set(rows),
+        "runner/agents.json": set(arts),
+        "render.py AGENT_BY_ARTIFACT": set(by_art),
+    }
     ref = set(rows)
     for where, got in sets.items():
         if got != ref:
@@ -122,20 +135,27 @@ def main() -> int:
     for nn in sorted(ref):
         agent = rows[nn]["agent"]
         if nn in arts and arts[nn].get("agent") != agent:
-            fail(f"{nn}: runner says {arts[nn].get('agent')!r}, section 5 says {agent!r}")
+            fail(
+                f"{nn}: runner says {arts[nn].get('agent')!r}, section 5 says {agent!r}"
+            )
         if nn in by_art and norm(by_art[nn]) != norm(agent):
             fail(f"{nn}: render.py says {by_art[nn]!r}, section 5 says {agent!r}")
         spec = agents.get(agent)
         if spec is None:
             fail(f"{nn}: agent {agent!r} is not declared in MODULE.yaml")
         elif spec.get("role") != "executor" or spec.get("verifier") != manifest.get(
-                "critic_agent"):
-            fail(f"{nn}: {agent} is {spec}, expected an executor verified by "
-                 f"{manifest.get('critic_agent')}")
-        for path in (MODULE / "agents" / f"{agent}.md",
-                     REF / "briefs" / f"{agent}.md",
-                     REF / "content-schemas" / f"TK_{nn}.content-schema.json",
-                     REF / "content-schemas" / f"TK_{nn}.example-content.json"):
+            "critic_agent"
+        ):
+            fail(
+                f"{nn}: {agent} is {spec}, expected an executor verified by "
+                f"{manifest.get('critic_agent')}"
+            )
+        for path in (
+            MODULE / "agents" / f"{agent}.md",
+            REF / "briefs" / f"{agent}.md",
+            REF / "content-schemas" / f"TK_{nn}.content-schema.json",
+            REF / "content-schemas" / f"TK_{nn}.example-content.json",
+        ):
             if not path.is_file():
                 fail(f"{nn}: missing {path.relative_to(MODULE)}")
         if len(list((REF / "templates").glob(f"TK_{nn}_*.dc.html"))) != 1:
@@ -155,8 +175,10 @@ def main() -> int:
         refs |= {w for w in re.findall(r"[a-z][a-z-]+", row["raw"]) if norm(w) in names}
         if refs:
             edges += len(refs)
-            fail(f"{nn}: section 5 row references other artifacts {sorted(refs)}; "
-                 "cross-artifact values belong in the pack")
+            fail(
+                f"{nn}: section 5 row references other artifacts {sorted(refs)}; "
+                "cross-artifact values belong in the pack"
+            )
 
     # 5. The fixed phases: the runner's manifest, the relay's headings, the verifiers.
     if manifest.get("phases") != PHASES:
@@ -164,9 +186,14 @@ def main() -> int:
     pos = [relay.find(m) for m in RELAY_MARKERS]
     if -1 in pos or pos != sorted(pos):
         missing = [m for m, i in zip(RELAY_MARKERS, pos) if i == -1]
-        fail(f"agents/relay.md phase headings missing or out of order: {missing or pos}")
-    for key, role in (("pack_agent", "executor"), ("critic_agent", "verifier"),
-                      ("qa_agent", "verifier")):
+        fail(
+            f"agents/relay.md phase headings missing or out of order: {missing or pos}"
+        )
+    for key, role in (
+        ("pack_agent", "executor"),
+        ("critic_agent", "verifier"),
+        ("qa_agent", "verifier"),
+    ):
         name = manifest.get(key)
         if agents.get(name, {}).get("role") != role:
             fail(f"runner {key} {name!r} is not a {role} in MODULE.yaml")
@@ -175,10 +202,14 @@ def main() -> int:
 
     if fails:
         return 1
-    print(f"wiring: {len(ref)} artifacts, {edges} inter-artifact edges; phases "
-          f"{' -> '.join(PHASES)}.")
-    print("CONTEXT_PACK.md section 5, runner/agents.json, MODULE.yaml, render.py and "
-          "agents/relay.md agree.")
+    print(
+        f"wiring: {len(ref)} artifacts, {edges} inter-artifact edges; phases "
+        f"{' -> '.join(PHASES)}."
+    )
+    print(
+        "CONTEXT_PACK.md section 5, runner/agents.json, MODULE.yaml, render.py and "
+        "agents/relay.md agree."
+    )
     return 0
 
 

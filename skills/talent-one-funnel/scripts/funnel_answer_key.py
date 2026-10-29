@@ -31,7 +31,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 SKILL = HERE.parent
 sys.path.insert(0, str(HERE))
-from funnel_verifier import analyze  # noqa: E402
+from funnel_verifier import analyze
 
 DEFAULT_CSV = SKILL / "data" / "sample-funnel.csv"
 DEFAULT_BENCH = SKILL / "data" / "teaching-benchmarks.csv"
@@ -52,7 +52,9 @@ def load_benchmarks(path: Path) -> dict[tuple[str, str], dict]:
         key = (row["from_stage"].strip().casefold(), row["to_stage"].strip().casefold())
         low, high = float(row["low_pct"]), float(row["high_pct"])
         if not 0 <= low <= high <= 100:
-            raise ValueError(f"benchmark {row['from_stage']} -> {row['to_stage']}: bad range")
+            raise ValueError(
+                f"benchmark {row['from_stage']} -> {row['to_stage']}: bad range"
+            )
         out[key] = {
             "from": row["from_stage"].strip(),
             "to": row["to_stage"].strip(),
@@ -88,7 +90,10 @@ def diagnose(funnel: Path, bench: Path) -> dict:
             "benchmark": None if b is None else {"low": b["low"], "high": b["high"]},
         }
         if rate is None or b is None:
-            t["read"], t["gap_pts"] = ("no data" if rate is None else "no benchmark"), None
+            t["read"], t["gap_pts"] = (
+                ("no data" if rate is None else "no benchmark"),
+                None,
+            )
         elif rate < b["low"]:
             t["read"], t["gap_pts"] = "below range", round(rate - b["low"], 1)
         elif rate > b["high"]:
@@ -99,7 +104,11 @@ def diagnose(funnel: Path, bench: Path) -> dict:
     last = stages[-1]["stage"].casefold()
     present = {s["stage"].casefold() for s in stages}
     missing = [
-        {"from": b["from"], "to": b["to"], "benchmark": {"low": b["low"], "high": b["high"]}}
+        {
+            "from": b["from"],
+            "to": b["to"],
+            "benchmark": {"low": b["low"], "high": b["high"]},
+        }
         for (f, to), b in benches.items()
         if f == last and to not in present
     ]
@@ -113,7 +122,10 @@ def diagnose(funnel: Path, bench: Path) -> dict:
         "not_in_file": missing,
         "weakest": None
         if weakest is None
-        else {k: weakest[k] for k in ("from", "to", "entered", "advanced", "rate", "gap_pts")}
+        else {
+            k: weakest[k]
+            for k in ("from", "to", "entered", "advanced", "rate", "gap_pts")
+        }
         | {"benchmark": weakest["benchmark"]},
         "verifier_findings": report["findings"],
     }
@@ -123,9 +135,11 @@ def render_block(d: dict, funnel_name: str, bench_name: str) -> str:
     first, last = d["stages"][0], d["stages"][-1]
     lines = [
         BEGIN,
-        f"Source: `{funnel_name}` against `{bench_name}`; {d['role']}, {d['quarter']}; "
-        f"{first['count']} {first['stage'].lower()} in, {last['count']} {last['stage'].lower()}"
-        f"{'s' if last['stage'].lower() == 'offer' else ''} out.",
+        (
+            f"Source: `{funnel_name}` against `{bench_name}`; {d['role']}, {d['quarter']}; "
+            f"{first['count']} {first['stage'].lower()} in, {last['count']} {last['stage'].lower()}"
+            f"{'s' if last['stage'].lower() == 'offer' else ''} out."
+        ),
         "",
         "| Stage | Count | Pass % of prior (computed) |",
         "|---|---|---|",
@@ -142,7 +156,11 @@ def render_block(d: dict, funnel_name: str, bench_name: str) -> str:
     w = d["weakest"]
     for t in d["transitions"]:
         name = f"{t['from']} {ARROW} {t['to']}"
-        actual = "n/a" if t["rate"] is None else f"{_fmt(t['rate'])}% ({t['advanced']} of {t['entered']})"
+        actual = (
+            "n/a"
+            if t["rate"] is None
+            else f"{_fmt(t['rate'])}% ({t['advanced']} of {t['entered']})"
+        )
         bench = "none" if t["benchmark"] is None else _range(t["benchmark"])
         if t["gap_pts"] is None:
             gap = "n/a"
@@ -153,7 +171,9 @@ def render_block(d: dict, funnel_name: str, bench_name: str) -> str:
         read = t["read"]
         if w and t["from"] == w["from"] and t["to"] == w["to"]:
             read = "weakest transition"
-            lines.append(f"| **{name}** | **{actual}** | **{bench}** | **{gap}** | **{read}** |")
+            lines.append(
+                f"| **{name}** | **{actual}** | **{bench}** | **{gap}** | **{read}** |"
+            )
         else:
             lines.append(f"| {name} | {actual} | {bench} | {gap} | {read} |")
     for m in d["not_in_file"]:
@@ -227,14 +247,20 @@ def check_narrative(text: str, d: dict) -> list[str]:
     w = d["weakest"]
     if w:
         if w["from"].casefold() not in low or w["to"].casefold() not in low:
-            findings.append(f"does not name the weakest transition {w['from']} -> {w['to']}")
+            findings.append(
+                f"does not name the weakest transition {w['from']} -> {w['to']}"
+            )
     elif "no single bottleneck" not in low:
-        findings.append("no transition is below range, yet the text does not say 'no single bottleneck'")
+        findings.append(
+            "no transition is below range, yet the text does not say 'no single bottleneck'"
+        )
     return findings
 
 
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     sub = ap.add_subparsers(dest="cmd", required=True)
     for name in ("diagnose", "write", "check"):
         p = sub.add_parser(name)
@@ -277,7 +303,9 @@ def main(argv: list[str] | None = None) -> int:
     current = text[start:end]
     if args.cmd == "check":
         if current != block:
-            print(f"check: the answer key in {args.prompt.name} drifted from the data; run `write`")
+            print(
+                f"check: the answer key in {args.prompt.name} drifted from the data; run `write`"
+            )
             return 1
         print(f"check: the answer key in {args.prompt.name} matches the data")
         return 0

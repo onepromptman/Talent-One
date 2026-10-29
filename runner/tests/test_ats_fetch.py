@@ -8,6 +8,7 @@ The load-bearing test is test_pii_never_written: the committed fixtures under
 fixtures/greenhouse/ deliberately carry candidate names/emails, and the tool must
 never let any of them reach a KB file.
 """
+
 import sys
 import tempfile
 import unittest
@@ -19,20 +20,31 @@ FIX = HERE / "fixtures" / "greenhouse"
 CROSSWALK = FIX / "crosswalk.csv"
 
 sys.path.insert(0, str(RUNNER_DIR))
-import ats_fetch          # noqa: E402
-import talent_kit         # noqa: E402
+import ats_fetch
+import talent_kit
 
 # Candidate PII strings that appear in the fixtures and must never reach output.
 PII_SENTINELS = [
-    "Jane Q. Applicant", "jane.applicant@example.com",
-    "Carol Screening", "carol.screening@example.com",
-    "Bob Offeree", "bob.offeree@example.com",
+    "Jane Q. Applicant",
+    "jane.applicant@example.com",
+    "Carol Screening",
+    "carol.screening@example.com",
+    "Bob Offeree",
+    "bob.offeree@example.com",
 ]
 
 
 def _run(out_dir, extra=None):
-    argv = ["--provider", "greenhouse", "--crosswalk", str(CROSSWALK),
-            "--out", str(out_dir), "--fixture", str(FIX)]
+    argv = [
+        "--provider",
+        "greenhouse",
+        "--crosswalk",
+        str(CROSSWALK),
+        "--out",
+        str(out_dir),
+        "--fixture",
+        str(FIX),
+    ]
     if extra:
         argv += extra
     ats_fetch.main(argv)
@@ -67,8 +79,11 @@ class Provenance(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             _run(d)
             for path, text in _all_md(d).items():
-                self.assertIn("Sourced · Greenhouse ", text,
-                              f"missing provenance pill in {path.name}")
+                self.assertIn(
+                    "Sourced · Greenhouse ",
+                    text,
+                    f"missing provenance pill in {path.name}",
+                )
 
 
 class Funnel(unittest.TestCase):
@@ -119,14 +134,20 @@ class Silence(unittest.TestCase):
             blob = "\n".join(_all_md(d).values())
             self.assertNotIn("Office Manager", blob)
             # and no office/g&a family directory was created
-            self.assertFalse((Path(d) / "internal" / "funnel" / "office_manager.md").exists())
+            self.assertFalse(
+                (Path(d) / "internal" / "funnel" / "office_manager.md").exists()
+            )
 
     def test_no_offers_means_no_offers_file(self):
         """embedded_sw has applications but no offers -> a funnel file, no offers file."""
         with tempfile.TemporaryDirectory() as d:
             _run(d)
-            self.assertTrue((Path(d) / "internal" / "funnel" / "embedded_sw.md").exists())
-            self.assertFalse((Path(d) / "internal" / "comp" / "offers-embedded_sw.md").exists())
+            self.assertTrue(
+                (Path(d) / "internal" / "funnel" / "embedded_sw.md").exists()
+            )
+            self.assertFalse(
+                (Path(d) / "internal" / "comp" / "offers-embedded_sw.md").exists()
+            )
 
 
 class DryRun(unittest.TestCase):
@@ -153,12 +174,18 @@ class RunnerKbRootScan(unittest.TestCase):
         self.assertEqual(got, (Path("/tmp/cfgdir") / "kb").resolve())
 
     def test_null_kb_root_is_none(self):
-        self.assertIsNone(talent_kit.resolve_kb_root("resources:\n  kb_root: null\n",
-                                                     Path("/tmp/cfgdir")))
+        self.assertIsNone(
+            talent_kit.resolve_kb_root(
+                "resources:\n  kb_root: null\n", Path("/tmp/cfgdir")
+            )
+        )
 
     def test_no_resources_block_is_none(self):
-        self.assertIsNone(talent_kit.resolve_kb_root("organization:\n  name: X\n",
-                                                     Path("/tmp/cfgdir")))
+        self.assertIsNone(
+            talent_kit.resolve_kb_root(
+                "organization:\n  name: X\n", Path("/tmp/cfgdir")
+            )
+        )
 
     def test_kb_root_outside_resources_ignored(self):
         # a kb_root: key at the top level (not under resources:) must be ignored
