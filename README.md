@@ -25,11 +25,9 @@ You'll need:
 
 - A Claude plan that includes Claude Code or Cowork. Nothing else: the kit works on
   public data.
-- Time and model use on your plan. A full nine-document run took about 30 minutes in a
-  recorded cold run. It makes about 23 model calls before repair laps: 10 Sonnet, 11
-  Opus, and at least 2 Fable (one more for each question it brings back to you). A
-  checker can send each document back up to twice, and each lap adds calls. One
-  document takes minutes.
+- Time and model use on your plan. A full nine-document run takes about half an hour
+  and a couple of dozen model calls; one document takes minutes. The call-by-call
+  breakdown is in [docs/how-it-works.md](docs/how-it-works.md#model-tiers-and-cost).
 - Optional: Exa or Bright Data (web research), Greenhouse or Ashby (your ATS). Nothing
   is sent to one until you sign in. See [CONNECTORS.md](CONNECTORS.md).
 
@@ -45,6 +43,26 @@ flowchart LR
   F --> G["A final check of the<br/>whole package"]
   G --> H["Nine HTML documents<br/>in your folder"]
 ```
+
+## What you get
+
+Eight of the nine documents, from a fictional search for a Battery Systems Engineer.
+They open in any browser, offline.
+
+<table>
+<tr>
+<td width="25%"><img src="assets/samples/01.png" alt="Role educational brief"><br><sub><b>Role brief</b> for the recruiter</sub></td>
+<td width="25%"><img src="assets/samples/02.png" alt="Job description"><br><sub><b>Job description</b>, with notes on each choice</sub></td>
+<td width="25%"><img src="assets/samples/03.png" alt="Talent map"><br><sub><b>Talent map</b>: where the people are</sub></td>
+<td width="25%"><img src="assets/samples/04.png" alt="Sourcing playbook"><br><sub><b>Sourcing playbook</b></sub></td>
+</tr>
+<tr>
+<td width="25%"><img src="assets/samples/05.png" alt="Outreach campaign"><br><sub><b>Outreach</b>: email, LinkedIn, phone</sub></td>
+<td width="25%"><img src="assets/samples/06.png" alt="Interview plan"><br><sub><b>Interview plan</b> with scoring guides</sub></td>
+<td width="25%"><img src="assets/samples/07.png" alt="Hiring-manager calibration brief"><br><sub><b>Hiring-manager brief</b></sub></td>
+<td width="25%"><img src="assets/samples/08.png" alt="Recruiter screen script"><br><sub><b>Screen script</b> for the first call</sub></td>
+</tr>
+</table>
 
 ## First run
 
@@ -101,6 +119,12 @@ outreach, posts a job or writes to your ATS.
 This repository is generated from the talent-one module of onepromptman/talentai by that
 repository's `tools/publish_talent_one.py`, and is never edited by hand: change the module
 there and publish again. Issues are welcome here.
+
+```bash
+python3 -m venv .venv && . .venv/bin/activate
+python -m pip install -r requirements-dev.txt ruff==0.17.3
+python -m pytest -q
+```
 
 ```bash
 bash evals/run_gate.sh      # acceptance gate: briefs, context budget, lint, render + verify x9, hygiene

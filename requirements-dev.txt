@@ -1,0 +1,4 @@
+# What the tests need: the renderer's dependency plus pytest. Python 3.11+.
+#   python3 -m pip install -r requirements-dev.txt
+-r requirements.txt
+pytest>=8

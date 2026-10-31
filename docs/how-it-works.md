@@ -152,6 +152,7 @@ tools/              structural validators for the DAG, the fill contract and the
 tests/              the renderer safety test (python -m pytest -q tests)
 docs/               install guide, this page and 1.0.3 release notes
 requirements.txt    beautifulsoup4, the renderer's one Python dependency
+requirements-dev.txt  adds pytest for the tests
 ```
 
 More: [install guide](INSTALL.md) for each surface, [connectors](../CONNECTORS.md),

@@ -12,7 +12,7 @@ The checks need Python 3.11 or later (`python3 --version`):
 
 ```bash
 python3 -m venv .venv && . .venv/bin/activate
-python -m pip install -r requirements.txt pytest ruff==0.17.3
+python -m pip install -r requirements-dev.txt ruff==0.17.3
 ```
 
 ## Before you open a pull request

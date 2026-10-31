@@ -112,7 +112,8 @@ replaces the worked example, and renames the design system for the public
   logged with its message and traceback, and `runlog.py` says so.
 - ruff lint and format applied, with a `ruff.toml` that keeps the scripts Python
   3.9-compatible; scripts with a shebang are executable.
-- The standalone edition ships a CI workflow, `SECURITY.md` and `CONTRIBUTING.md`.
+- The standalone edition ships a CI workflow, `SECURITY.md`, `CONTRIBUTING.md` and a
+  `requirements-dev.txt` that adds pytest for its tests.
 - **New worked example.** The shipped example is now a fictional Battery Systems
   Engineer search at a fictional home-battery company, Harborlight Energy. All nine
   example contents, the templates' example text, the schemas (regenerated from the
