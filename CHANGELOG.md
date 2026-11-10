@@ -10,6 +10,23 @@ published separately as onepromptman/dag-talent-agents.
 
 ## [2.1.0] - unreleased
 
+### Release fixes
+
+- **No install at run time.** beautifulsoup4 4.12.3, the renderer's one package, ships
+  inside the plugin (`skills/talent-one/scripts/_vendor/`, MIT, licence included), so a
+  render never runs pip; relay's install step and the edition's `requirements.txt` are
+  gone. A test renders with `python -S` (no site-packages).
+- **The runner accepts the profile setup writes.** A profile whose fields sit on bullets
+  (`- name: ...`) or in bold was refused with "profile has no company name"; the runner
+  now reads all three forms, setup writes the plain `key: value` form, and the plugin
+  ships the `PROFILE-SPEC.md` its skills cite.
+- **The acceptance gate's hygiene step checks files outside git.** From an unpacked zip
+  it used to pass without checking anything; it now checks every file in the folder.
+- The `plugin.json` description is 460 characters (the edition's 469), under the
+  500-character upload limit; it was 571 and the upload was refused. A test keeps it there.
+- Setup walks each connector's OAuth sign-in step by step and runs one read-only check.
+- One Python floor everywhere: 3.10 or later.
+
 Carries Talent One 1.1.x (the 1.x line's last release, 1.1.3) forward onto 2.0,
 replaces the worked example, and renames the design system for the public
 `onepromptman/talentai` home.

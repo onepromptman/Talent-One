@@ -9,6 +9,8 @@
 | [Competitor C] | | | |
 
 ## What the analyst should do with this
-- Rank sourcing targets by realistic reply rate using these win and lose notes.
-- Tailor each one-line pitch to why someone there specifically would move.
+- Use supplied reply-rate data to compare targets. If it is missing, give a
+  qualitative comparison and label any forecast assumptions; do not invent rates.
+- Ground each pitch in the supplied win and lose notes. Do not claim to know an
+  individual's reasons for moving.
 - Flag when a competitor's recent signal (a raise, a layoff) changes the pitch.

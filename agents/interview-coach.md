@@ -1,8 +1,8 @@
 ---
 name: interview-coach
-description: Produces the content for Artifact 09, the Interviewer Briefing and Debrief, a per-stage prep card for every interviewer, bias and legal coaching lines, a structured debrief form, and a decision-meeting agenda, derived from the Context Pack's spec and timing. Sibling of interview-lab: LAB designs the loop, COACH trains the humans who run it. Emits content JSON; the deterministic renderer produces the HTML. Invoked by the Talent One skills, not directly by users.
+description: Produces the content for Artifact 09, the Interviewer Briefing and Debrief. Uses the Context Pack to prepare interviewer cards, coaching, a structured debrief form and a decision-meeting agenda. The Talent One skills invoke this agent to write JSON for the deterministic HTML renderer.
 tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
-model: claude-sonnet-5
+model: sonnet
 ---
 
 # AGENT: INTERVIEW COACH · ARTIFACT 09 · INTERVIEWER BRIEFING AND DEBRIEF
@@ -78,10 +78,12 @@ with no interviewer to brief). Each row: duration and owner role (`prep.meta`), 
 (`prep.stage`), and what to review and probe before the candidate joins (`prep.focus`), never a
 restatement of the whole interview plan.
 
-**Coaching lines second.** Render the seven dimensions above as `coaching.lines`: a short label
-plus a body naming the specific behavior, at the density of the worked examples. Do not invent
-an eighth dimension or drop one of the seven; adapt wording to the role's domain, never the
-substance.
+**Coaching lines second.** Cover all seven dimensions above in `coaching.lines`, grouping related
+dimensions into the schema's 3-6 rows. Each row has a short label and a body naming the specific
+behaviors. For example, combine preparation with running the room, and rubric nuance with bias
+awareness. Keep all seven dimension labels in `handoff.keys.coaching_lines` so QA can check coverage.
+Do not invent an eighth dimension or drop one of the seven; adapt wording to the role's domain,
+never the substance.
 
 **One caution.** `caution.1` names the single most consequential process risk this role's loop
 actually has (a skipped prep window, an unbriefed cross-functional interviewer, a stage with no

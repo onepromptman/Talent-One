@@ -14,7 +14,7 @@
    "type": "prose_short",
    "words": {
     "min": 2,
-    "max": 8
+    "max": 10
    },
    "example": "Freshness Jul 2026 · 60-day refresh"
   },
@@ -37,48 +37,48 @@
   "role.title": {
    "type": "label",
    "words": {
-    "min": 4,
-    "max": 4
+    "min": 3,
+    "max": 6
    },
    "example": "Battery Systems Engineer, mid level"
   },
   "role.org": {
    "type": "prose_short",
    "words": {
-    "min": 6,
-    "max": 9
+    "min": 8,
+    "max": 12
    },
    "example": "Connected-hardware builder · distributed hybrid · small battery team"
   },
   "doc.thesis": {
    "type": "prose_long",
    "words": {
-    "min": 24,
-    "max": 48
+    "min": 25,
+    "max": 52
    },
    "example": "Where mid-career battery talent actually sits, who is bidding for it, what moves it, which adjacent industries hide it, and whether it will relocate. The pool i"
   },
   "cover.provenance": {
    "type": "prose_short",
    "words": {
-    "min": 8,
-    "max": 8
+    "min": 9,
+    "max": 9
    },
    "example": "Ratios hold · treat absolute counts as planning figures"
   },
   "s1.title": {
    "type": "label",
    "words": {
-    "min": 2,
-    "max": 7
+    "min": 4,
+    "max": 9
    },
    "example": "The constraint is mid-career reach, not headcount"
   },
   "s1.body": {
    "type": "prose_long",
    "words": {
-    "min": 18,
-    "max": 85
+    "min": 20,
+    "max": 83
    },
    "example": "About 68,000 engineers work nationally in the base occupation, but the mid-career, field-proven battery subset is only a few thousand, and it clusters in a hand"
   },
@@ -93,40 +93,40 @@
   "pullstat.label": {
    "type": "label",
    "words": {
-    "min": 9,
-    "max": 9
+    "min": 10,
+    "max": 10
    },
    "example": "Of the national engineering base are engageable for this search"
   },
   "pullstat.claim": {
    "type": "prose_short",
    "words": {
-    "min": 21,
-    "max": 24
+    "min": 25,
+    "max": 26
    },
    "example": "68,440 engineers in the base occupation become roughly 1,300 after four filters. Three of those four are choices you can still reopen with the hiring manager."
   },
   "pullstat.method": {
    "type": "prose_short",
    "words": {
-    "min": 4,
-    "max": 8
+    "min": 8,
+    "max": 16
    },
    "example": "BLS-OES baseline × documented filters · see methodology"
   },
   "insight.1": {
    "type": "prose_long",
    "words": {
-    "min": 27,
-    "max": 50
+    "min": 35,
+    "max": 58
    },
    "example": "Adjacent-industry engineers, EV powertrain, power electronics, and consumer electronics, close the home-storage gap in months, not years. That reframe materiall"
   },
   "caution.1": {
    "type": "prose_long",
    "words": {
-    "min": 26,
-    "max": 52
+    "min": 36,
+    "max": 59
    },
    "example": "Battery talent is concentrated in a few clusters, so most hires need relocation. A distributed posting will not change that: test-rig and abuse-test work is ons"
   },
@@ -134,30 +134,30 @@
    "type": "prose_long",
    "words": {
     "min": 16,
-    "max": 46
+    "max": 66
    },
    "example": "Work-authorization requirements, where a role has them, are a role constraint, not a sourcing filter. Ask the identical question of every candidate, in writing,"
   },
   "s2.title": {
    "type": "label",
    "words": {
-    "min": 2,
-    "max": 7
+    "min": 4,
+    "max": 10
    },
    "example": "From national supply to reachable target"
   },
   "s2.body": {
    "type": "prose_long",
    "words": {
-    "min": 18,
-    "max": 46
+    "min": 21,
+    "max": 48
    },
    "example": "Each stage applies one documented filter to the stage above it. The baseline is Sourced from BLS; every stage below it is an Estimate with a stated filter. Read"
   },
   "s3.title": {
    "type": "label",
    "words": {
-    "min": 3,
+    "min": 4,
     "max": 7
    },
    "example": "Who is bidding on the same engineers"
@@ -165,23 +165,23 @@
   "s3.body": {
    "type": "prose_long",
    "words": {
-    "min": 14,
-    "max": 44
+    "min": 18,
+    "max": 60
    },
    "example": "Measured in competing open requisitions a qualified battery engineer would realistically weigh against yours, not total market headcount."
   },
   "structural.1": {
    "type": "prose_long",
    "words": {
-    "min": 41,
-    "max": 41
+    "min": 54,
+    "max": 54
    },
    "example": "Engineering employment in this base is growing faster than average through 2034, and storage hiring has expanded across EVs, utilities, and consumer hardware. T"
   },
   "s4.title": {
    "type": "label",
    "words": {
-    "min": 3,
+    "min": 4,
     "max": 8
    },
    "example": "Where cadence meets field heritage"
@@ -189,15 +189,15 @@
   "s4.body": {
    "type": "prose_long",
    "words": {
-    "min": 18,
-    "max": 42
+    "min": 20,
+    "max": 53
    },
    "example": "Test cadence against field heritage and battery-technology maturity. Source where your working style already exists: an engineer who has only known multi-year p"
   },
   "s5.title": {
    "type": "label",
    "words": {
-    "min": 4,
+    "min": 5,
     "max": 8
    },
    "example": "Where battery talent sits, and whether it moves"
@@ -205,48 +205,48 @@
   "s5.body": {
    "type": "prose_long",
    "words": {
-    "min": 28,
-    "max": 38
+    "min": 27,
+    "max": 60
    },
    "example": "Pool size tells you where talent sits. Response tells you whether it moves: historical relocation-acceptance for this role family, housing-cost delta, state-tax"
   },
   "relo.readout": {
    "type": "prose_long",
    "words": {
-    "min": 64,
-    "max": 64
+    "min": 58,
+    "max": 58
    },
    "example": "The Bay Area is your anchor. It holds the largest renter-heavy pool, so many hires need no move at all, plus the deepest battery identity in the country. Seattl"
   },
   "relo.seq.1": {
    "type": "label",
    "words": {
-    "min": 3,
-    "max": 3
+    "min": 4,
+    "max": 4
    },
    "example": "1 · Bay Area"
   },
   "relo.seq.2": {
    "type": "prose_short",
    "words": {
-    "min": 4,
-    "max": 4
+    "min": 3,
+    "max": 3
    },
    "example": "2 · Seattle"
   },
   "relo.seq.3": {
    "type": "prose_short",
    "words": {
-    "min": 4,
-    "max": 4
+    "min": 5,
+    "max": 5
    },
    "example": "3 · Denver, Austin, Boston"
   },
   "relo.seq.skip": {
    "type": "prose_short",
    "words": {
-    "min": 6,
-    "max": 6
+    "min": 4,
+    "max": 4
    },
    "example": "Skip Detroit / Reno"
   },
@@ -254,23 +254,23 @@
    "type": "label",
    "words": {
     "min": 3,
-    "max": 6
+    "max": 9
    },
    "example": "Target archetypes and where they open up"
   },
   "s6.body": {
    "type": "prose_long",
    "words": {
-    "min": 24,
-    "max": 34
+    "min": 28,
+    "max": 36
    },
    "example": "These are archetypes, not named employers. A trigger here is a structural condition that raises willingness to move: vest cliffs, roadmap resets, or ceilings on"
   },
   "s7.title": {
    "type": "label",
    "words": {
-    "min": 3,
-    "max": 8
+    "min": 5,
+    "max": 7
    },
    "example": "Same engineering problem, different industry"
   },
@@ -278,14 +278,14 @@
    "type": "prose_long",
    "words": {
     "min": 25,
-    "max": 37
+    "max": 54
    },
    "example": "The test is the engineering problem, not the title: a large amount of stored energy kept cool and safe in shipped hardware. Competitors search by title, so thes"
   },
   "s8.title": {
    "type": "label",
    "words": {
-    "min": 2,
+    "min": 5,
     "max": 6
    },
    "example": "Battery engineering pay, by level"
@@ -293,23 +293,23 @@
   "s8.body": {
    "type": "prose_long",
    "words": {
-    "min": 23,
-    "max": 34
+    "min": 31,
+    "max": 37
    },
    "example": "Base working ranges modeled from BLS-OES 17-2199 (2024) percentiles, positioned market-mid for a small hardware employer. Modeled ranges are illustrative, not a"
   },
   "comp.positioning": {
    "type": "prose_long",
    "words": {
-    "min": 48,
-    "max": 48
+    "min": 52,
+    "max": 52
    },
    "example": "A small hardware company wins on ownership, mission, and equity upside, not on cash. EV makers and large cell manufacturers pay competitive base with stability "
   },
   "s9.title": {
    "type": "label",
    "words": {
-    "min": 3,
+    "min": 6,
     "max": 7
    },
    "example": "Four people you will actually talk to"
@@ -317,7 +317,7 @@
   "s9.body": {
    "type": "prose_short",
    "words": {
-    "min": 21,
+    "min": 20,
     "max": 22
    },
    "example": "Each persona needs a different opening line. The risk line is what to probe at the screen, not a reason to pass."
@@ -325,7 +325,7 @@
   "s10.title": {
    "type": "label",
    "words": {
-    "min": 3,
+    "min": 4,
     "max": 4
    },
    "example": "Three moves, in order"
@@ -333,8 +333,8 @@
   "s10.body": {
    "type": "prose_long",
    "words": {
-    "min": 16,
-    "max": 28
+    "min": 17,
+    "max": 26
    },
    "example": "Everything above exists to justify these three. If you read nothing else, run them in this order."
   },
@@ -534,7 +534,7 @@
      "type": "label",
      "words": {
       "min": 1,
-      "max": 3
+      "max": 6
      }
     },
     "stage.n": {
@@ -573,8 +573,8 @@
     "method.basis": {
      "type": "prose_short",
      "words": {
-      "min": 5,
-      "max": 5
+      "min": 6,
+      "max": 6
      }
     },
     "method.pill": {
@@ -596,8 +596,8 @@
     "demand.name": {
      "type": "label",
      "words": {
-      "min": 8,
-      "max": 8
+      "min": 6,
+      "max": 6
      }
     },
     "demand.reqs": {
@@ -617,8 +617,8 @@
     "demand.read": {
      "type": "prose_short",
      "words": {
-      "min": 13,
-      "max": 13
+      "min": 12,
+      "max": 12
      }
     }
    },
@@ -647,8 +647,8 @@
     "tier.body": {
      "type": "prose_short",
      "words": {
-      "min": 17,
-      "max": 17
+      "min": 18,
+      "max": 18
      }
     }
    },
@@ -664,7 +664,7 @@
      "type": "label",
      "words": {
       "min": 4,
-      "max": 5
+      "max": 6
      }
     },
     "hub.pool": {
@@ -705,8 +705,8 @@
     "hub.relo": {
      "type": "prose_short",
      "words": {
-      "min": 4,
-      "max": 4
+      "min": 3,
+      "max": 3
      }
     }
    },
@@ -735,15 +735,15 @@
     "dossier.trigger": {
      "type": "prose_short",
      "words": {
-      "min": 24,
-      "max": 24
+      "min": 22,
+      "max": 22
      }
     },
     "dossier.pool": {
      "type": "prose_short",
      "words": {
-      "min": 19,
-      "max": 19
+      "min": 20,
+      "max": 20
      }
     },
     "dossier.angle": {
@@ -765,8 +765,8 @@
     "per.name": {
      "type": "label",
      "words": {
-      "min": 5,
-      "max": 5
+      "min": 3,
+      "max": 3
      }
     },
     "per.why": {
@@ -809,8 +809,8 @@
     "comp.level": {
      "type": "prose_short",
      "words": {
-      "min": 5,
-      "max": 5
+      "min": 4,
+      "max": 4
      }
     },
     "comp.base": {
@@ -846,8 +846,8 @@
     "persona.name": {
      "type": "label",
      "words": {
-      "min": 4,
-      "max": 4
+      "min": 3,
+      "max": 3
      }
     },
     "persona.who": {
@@ -867,15 +867,15 @@
     "persona.message": {
      "type": "prose_short",
      "words": {
-      "min": 14,
-      "max": 14
+      "min": 12,
+      "max": 12
      }
     },
     "persona.risk": {
      "type": "prose_short",
      "words": {
-      "min": 10,
-      "max": 10
+      "min": 11,
+      "max": 11
      }
     }
    },
@@ -897,15 +897,15 @@
     "rec.action": {
      "type": "prose_short",
      "words": {
-      "min": 9,
-      "max": 9
+      "min": 7,
+      "max": 7
      }
     },
     "rec.why": {
      "type": "prose_long",
      "words": {
-      "min": 29,
-      "max": 29
+      "min": 31,
+      "max": 31
      }
     },
     "rec.owner": {

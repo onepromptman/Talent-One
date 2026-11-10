@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 208699c12e88
+Source fingerprint: 9140231f7cef
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_04.content-schema.json
 Regenerate: <python> skills/talent-one/scripts/build_briefs.py
 -->
@@ -303,35 +303,35 @@ Envelope (top-level keys of your content JSON, in this order; type and empty sta
 
 ### Top-level slots
 - doc.agent (prose_short 3-4)
-- doc.date (prose_short 2-8)
+- doc.date (prose_short 2-10)
 - doc.eyebrow (prose_short 5-6)
 - doc.title (label 2-3)
-- role.title (label 4-4)
-- role.org (prose_short 6-9)
-- doc.thesis (prose_long 24-48)
-- cover.note (prose_short 3-13)
-- s1.title (label 2-7)
-- s1.body (prose_long 18-85)
+- role.title (label 3-6)
+- role.org (prose_short 8-12)
+- doc.thesis (prose_long 25-52)
+- cover.note (prose_short 4-20)
+- s1.title (label 4-9)
+- s1.body (prose_long 20-83)
 - pullstat.value (metric 1-1)
-- pullstat.label (label 9-9)
-- pullstat.claim (prose_short 21-24)
-- pullstat.method (prose_short 4-8)
-- s2.title (label 2-7)
-- s2.body (prose_long 18-46)
-- s3.title (label 3-7)
-- s3.body (prose_long 14-44)
-- s4.title (label 3-8)
-- s4.body (prose_long 18-42)
-- s5.title (label 4-8)
-- s5.body (prose_long 28-38)
-- s6.title (label 3-6)
-- s6.body (prose_long 24-34)
-- funnel.note.1 (prose_long 35-35)
-- funnel.note.2 (prose_long 44-44)
-- caution.1 (prose_long 26-52)
-- s7.title (label 3-8)
-- s7.body (prose_long 25-37)
-- insight.1 (prose_long 27-50)
+- pullstat.label (label 10-10)
+- pullstat.claim (prose_short 25-26)
+- pullstat.method (prose_short 8-16)
+- s2.title (label 4-10)
+- s2.body (prose_long 21-48)
+- s3.title (label 4-7)
+- s3.body (prose_long 18-60)
+- s4.title (label 4-8)
+- s4.body (prose_long 20-53)
+- s5.title (label 5-8)
+- s5.body (prose_long 27-60)
+- s6.title (label 3-9)
+- s6.body (prose_long 28-36)
+- funnel.note.1 (prose_long 39-39)
+- funnel.note.2 (prose_long 39-39)
+- caution.1 (prose_long 36-59)
+- s7.title (label 5-7)
+- s7.body (prose_long 25-54)
+- insight.1 (prose_long 35-58)
 - footer.right (prose_short 3-6) optional, omit or null when there is nothing to say
 
 ### Repeats
@@ -340,30 +340,30 @@ Envelope (top-level keys of your content JSON, in this order; type and empty sta
   - metric.value (chip 1-2)
 - strings [rows n=3-8]
   - string.name (label 5-5)
-  - string.yield (prose_short 5-5)
-  - string.query (prose_long 26-26)
-  - string.note (prose_short 14-14)
+  - string.yield (prose_short 8-8)
+  - string.query (prose_long 35-35)
+  - string.note (prose_short 26-26)
   - strings.prose0 (prose_long 17-41)*
 - channels [rows n=4-8]
-  - ch.name (label 6-6)
+  - ch.name (label 7-7)
   - ch.effort (prose_short 5-5)
   - ch.yield (count_range 3-3)
-  - ch.verdict (prose_short 16-16)
+  - ch.verdict (prose_short 18-18)
 - timing.cards [rows n=2-4]
   - timing.label (label 2-2)
   - timing.rule (prose_short 5-5)
-  - timing.why (prose_short 14-14)
+  - timing.why (prose_short 21-21)
 - timeline.rows [rows n=4-8 bars=1(range)]
-  - phase.label (label 1-3)
+  - phase.label (label 1-4)
 - funnel.stages [rows n=4-8 bars=1(width)]
-  - stage.label (label 1-3)
+  - stage.label (label 1-6)
   - stage.n (count 1-1)
   - stage.rate (empty_cell 1-1)
   - stage.basis (label 2-2)
 - tests [rows n=3-8]
   - test.name (label 3-3)
-  - test.a (prose_short 8-8)
-  - test.b (prose_short 8-8)
+  - test.a (prose_short 6-6)
+  - test.b (prose_short 6-6)
   - test.n (count 3-3)
   - test.metric (label 2-2)
 

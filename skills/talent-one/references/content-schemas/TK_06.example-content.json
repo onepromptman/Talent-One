@@ -220,7 +220,7 @@
  "toggles": {},
  "handoff": {
   "produces": "stages · competency_coverage · deal_breakers · debrief_protocol",
-  "consumers": "08 Recruiter Screen · 09 QA Gate · scorecard setup",
+  "consumers": "08 Recruiter Screen · A09 QA Gate · scorecard setup",
   "assumptions": "Two battery engineers free for the deep-dive each week. No take-home. Panel is trained on the written bars.",
   "blocked": "Owner for the thermal materials and cell welding row, or removal from the scorecard"
  }

@@ -14,7 +14,7 @@
    "type": "prose_short",
    "words": {
     "min": 2,
-    "max": 8
+    "max": 10
    },
    "example": "Generated 2026-08-24"
   },
@@ -37,79 +37,79 @@
   "role.title": {
    "type": "label",
    "words": {
-    "min": 4,
-    "max": 4
+    "min": 3,
+    "max": 6
    },
    "example": "Battery Systems Engineer"
   },
   "role.org": {
    "type": "prose_short",
    "words": {
-    "min": 6,
-    "max": 9
+    "min": 8,
+    "max": 12
    },
    "example": "Four stages briefed · one debrief form · one decision meeting"
   },
   "doc.thesis": {
    "type": "prose_long",
    "words": {
-    "min": 24,
-    "max": 48
+    "min": 25,
+    "max": 52
    },
    "example": "A briefing that repeats the whole interview plan wastes the ten minutes an interviewer actually has. Give each one their own stage, the specific thing to probe,"
   },
   "cover.note": {
    "type": "prose_short",
    "words": {
-    "min": 3,
-    "max": 13
+    "min": 4,
+    "max": 20
    },
    "example": "One page per interviewer. Nothing more to read."
   },
   "s1.title": {
    "type": "label",
    "words": {
-    "min": 2,
-    "max": 7
+    "min": 4,
+    "max": 9
    },
    "example": "Your stage, not the whole plan"
   },
   "s1.body": {
    "type": "prose_long",
    "words": {
-    "min": 18,
-    "max": 85
+    "min": 20,
+    "max": 83
    },
    "example": "Each interviewer gets the ten-minute version of the plan: what they own, what to probe, and what to review before the candidate joins."
   },
   "s2.title": {
    "type": "label",
    "words": {
-    "min": 2,
-    "max": 7
+    "min": 4,
+    "max": 10
    },
    "example": "What every interviewer holds before the room"
   },
   "s2.body": {
    "type": "prose_long",
    "words": {
-    "min": 18,
-    "max": 46
+    "min": 21,
+    "max": 48
    },
    "example": "Stated once here so it never has to be repeated per stage. Read it every time, not only the first time."
   },
   "caution.1": {
    "type": "prose_long",
    "words": {
-    "min": 26,
-    "max": 52
+    "min": 36,
+    "max": 59
    },
    "example": "An interviewer who skips the ten-minute prep window shows up reading the resume live, in front of the candidate. That reads as disorganized and it costs the loo"
   },
   "s3.title": {
    "type": "label",
    "words": {
-    "min": 3,
+    "min": 4,
     "max": 7
    },
    "example": "Four fields, the same form every time"
@@ -117,15 +117,15 @@
   "s3.body": {
    "type": "prose_long",
    "words": {
-    "min": 14,
-    "max": 44
+    "min": 18,
+    "max": 60
    },
    "example": "A rating with no cited evidence is a vibe with a number attached. Every field below asks for the specific thing, never the summary judgment."
   },
   "s4.title": {
    "type": "label",
    "words": {
-    "min": 3,
+    "min": 4,
     "max": 8
    },
    "example": "The decision meeting, in order"
@@ -133,13 +133,17 @@
   "s4.body": {
    "type": "prose_long",
    "words": {
-    "min": 18,
-    "max": 42
+    "min": 20,
+    "max": 53
    },
    "example": "Thirty minutes, same order every time, so the loudest voice in the room never sets the outcome by going first."
   },
   "legal.note": {
    "type": "label",
+   "words": {
+    "min": 36,
+    "max": 36
+   },
    "example": "Every candidate for this role gets the same stages, the same questions, and the same rubric. A deviation made for one candidate and not another is the fact patt"
   },
   "footer.right": {
@@ -182,13 +186,25 @@
    "optional_block": false,
    "row_slots": {
     "prep.meta": {
-     "type": "label"
+     "type": "label",
+     "words": {
+      "min": 4,
+      "max": 4
+     }
     },
     "prep.stage": {
-     "type": "label"
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 2
+     }
     },
     "prep.focus": {
-     "type": "label"
+     "type": "label",
+     "words": {
+      "min": 13,
+      "max": 13
+     }
     }
    },
    "bars_per_row": 0,
@@ -200,10 +216,18 @@
    "optional_block": false,
    "row_slots": {
     "coach.label": {
-     "type": "label"
+     "type": "label",
+     "words": {
+      "min": 6,
+      "max": 6
+     }
     },
     "coach.body": {
-     "type": "label"
+     "type": "label",
+     "words": {
+      "min": 20,
+      "max": 20
+     }
     }
    },
    "bars_per_row": 0,
@@ -215,13 +239,25 @@
    "optional_block": false,
    "row_slots": {
     "field.type": {
-     "type": "label"
+     "type": "label",
+     "words": {
+      "min": 4,
+      "max": 4
+     }
     },
     "field.label": {
-     "type": "label"
+     "type": "label",
+     "words": {
+      "min": 2,
+      "max": 2
+     }
     },
     "field.prompt": {
-     "type": "label"
+     "type": "label",
+     "words": {
+      "min": 15,
+      "max": 15
+     }
     }
    },
    "bars_per_row": 0,
@@ -233,10 +269,18 @@
    "optional_block": false,
    "row_slots": {
     "agenda.title": {
-     "type": "label"
+     "type": "label",
+     "words": {
+      "min": 6,
+      "max": 6
+     }
     },
     "agenda.body": {
-     "type": "label"
+     "type": "label",
+     "words": {
+      "min": 14,
+      "max": 14
+     }
     }
    },
    "bars_per_row": 0,

@@ -70,7 +70,7 @@ MIN_COMP_N = 3  # do not emit a comp level below this many offers (re-id guard)
 
 # Canonical funnel buckets, in order. A stage name is bucketed by the first keyword
 # it contains (case-insensitive); anything unmatched lands in "Other" (counted, but
-# excluded from pass-through math).
+# reported separately from the named stage buckets).
 STAGE_BUCKETS = [
     ("Application", ("application", "applied", "new", "sourced", "prospect")),
     ("Screen", ("screen", "phone", "recruiter")),
@@ -258,7 +258,7 @@ def bucket_stage(name: str) -> str:
 
 # ------------------------------------------------------------------- aggregations
 def build_funnel(apps: list) -> dict | None:
-    """Per-stage counts (n) + consecutive pass-through, aggregate only."""
+    """Aggregate current stage counts from the applications snapshot."""
     if not apps:
         return None
     counts = {}
@@ -272,15 +272,9 @@ def build_funnel(apps: list) -> dict | None:
     ordered = [(b, counts[b]) for b, _ in STAGE_BUCKETS if b in counts]
     if not ordered:
         return None
-    passthrough = []
-    for i in range(len(ordered) - 1):
-        cur, nxt = ordered[i][1], ordered[i + 1][1]
-        pct = round(100 * nxt / cur) if cur else None
-        passthrough.append((ordered[i][0], ordered[i + 1][0], pct))
     other = counts.get("Other")
     return {
         "stages": ordered,
-        "passthrough": passthrough,
         "other": other,
         "total": sum(counts.values()),
     }
@@ -397,19 +391,16 @@ def _header(rf: str, kind: str, n_note: str = "") -> str:
 
 
 def write_funnel(out: Path, rf: str, f: dict) -> Path:
-    body = [_header(rf, "Funnel (house actuals)", f"total applications n={f['total']}")]
+    body = [_header(rf, "Current stage counts", f"total applications n={f['total']}")]
     body.append(
-        "Agents apply the n >= 30 HOUSE-vs-ORACLE rule per grounding-matrix "
-        "Part 2; the n for each stage is stated so that judgement is theirs.\n\n"
+        "Each application counts once at its current stage. Use cumulative "
+        "counts for one cohort to calculate conversion rates.\n\n"
     )
     body.append("| Stage | n |\n|---|---|\n")
     for stage, n in f["stages"]:
         body.append(f"| {stage} | {n} |\n")
     if f.get("other"):
         body.append(f"| Other (unbucketed) | {f['other']} |\n")
-    body.append("\n| From | To | Pass-through |\n|---|---|---|\n")
-    for a, b, pct in f["passthrough"]:
-        body.append(f"| {a} | {b} | {pct}% |\n")
     dest = out / "internal" / "funnel" / f"{rf}.md"
     _atomic_write(dest, "".join(body))
     return dest

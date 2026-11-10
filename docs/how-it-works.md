@@ -89,8 +89,8 @@ Opus calls (one pack Critic pass, nine per-artifact Critic passes, one QA Gate p
 2 Fable calls (Relay plan and execute), **before repair laps**. The 2 Fable calls are a
 floor: Relay adds one for each question it has to bring back to you. Each repair lap
 re-runs a producer and its checker, so a run with laps costs more. The extra Opus calls
-are where the honesty comes from: a producer that fabricates a figure or ships a
-placeholder has to survive an adversarial pass on a different model before it renders.
+provide a separate review before rendering. They cannot guarantee truth: check
+sources and complete the account-specific acceptance cases before using real output.
 
 **Timing.** The full kit took about 30 minutes in a recorded cold run, most of it Scout's
 research pass; nothing enforces that figure. One artifact on a warm role takes minutes.
@@ -103,9 +103,10 @@ Claude chat and hand it in as a file.
 
 ## Data and connectors
 
-With **no connections**, the kit uses public data: BLS, O\*NET, Census, DOL disclosure
-data, levels.fyi, live web search and a bundled baseline snapshot. That is a supported
-path, not a degraded mode.
+Without an ATS connection, the kit can research public sources such as BLS, O\*NET,
+Census and public postings when the host provides web tools. Supplied source files
+can fill gaps. The bundled baseline is an archived snapshot, not verified current
+market data; missing evidence must remain unresolved.
 
 Four optional remote connectors ship in `.mcp.json`: **Exa** and **Bright Data** for the
 public web, **Greenhouse** and **Ashby** for your own ATS. Nothing is sent to one until
@@ -125,11 +126,12 @@ drops the footer credit "Built with Talent One by OnePromptMan" (default on).
 
 ## What the plugin can touch
 
-The plugin is plain text: prompts, templates and small Python scripts. No executables,
-nothing reports back to anyone. In Cowork the scripts run inside Claude's sandbox; in
-Claude Code they run on your computer through Claude's Bash tool. The renderer needs one
-Python package, beautifulsoup4; the first render installs it if it is missing
-(`python3 -m pip install beautifulsoup4`). A content fragment cannot carry a script, an
+The plugin contains prompts, templates and Python scripts. Its local renderer makes
+no network calls; model sessions and research connectors use their providers. In
+Cowork the scripts run inside Claude's sandbox; in
+Claude Code they run on your computer through Claude's Bash tool. The renderer's one
+Python package, beautifulsoup4, ships inside the plugin, so nothing is installed at run
+time. A content fragment cannot carry a script, an
 event handler, a remote image or a frame into a rendered document: the renderer keeps
 only inline formatting, and its verify step flags any active content as HIGH.
 
@@ -149,10 +151,10 @@ samples/            eight documents from the built-in worked example
 evals/              acceptance gate and model evals
 runner/             headless runner (claude -p) and the aggregate ATS fetcher
 tools/              structural validators for the DAG, the fill contract and the slot schema
-tests/              the renderer safety test (python -m pytest -q tests)
+tests/              the renderer and manifest tests (python -m pytest -q tests)
 docs/               install guide, this page and 1.0.3 release notes
-requirements.txt    beautifulsoup4, the renderer's one Python dependency
-requirements-dev.txt  adds pytest for the tests
+requirements-dev.txt  pytest, for the tests (the renderer's one package ships in
+                    skills/talent-one/scripts/_vendor/)
 ```
 
 More: [install guide](INSTALL.md) for each surface, [connectors](../CONNECTORS.md),

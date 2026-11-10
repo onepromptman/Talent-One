@@ -14,7 +14,7 @@
    "type": "prose_short",
    "words": {
     "min": 2,
-    "max": 8
+    "max": 10
    },
    "example": "Written peer-to-peer, not pitched"
   },
@@ -37,24 +37,24 @@
   "role.title": {
    "type": "label",
    "words": {
-    "min": 4,
-    "max": 4
+    "min": 3,
+    "max": 6
    },
    "example": "Battery Systems Engineer · Mid-Level"
   },
   "role.org": {
    "type": "prose_short",
    "words": {
-    "min": 6,
-    "max": 9
+    "min": 8,
+    "max": 12
    },
    "example": "Harborlight Energy · 8 touches across 21 days"
   },
   "doc.thesis": {
    "type": "prose_long",
    "words": {
-    "min": 24,
-    "max": 48
+    "min": 25,
+    "max": 52
    },
    "example": "Every touch is ready to send: five emails, a LinkedIn connect note, an InMail, a voicemail script, a live-call opener with branches, and two texts, all written "
   },
@@ -69,24 +69,24 @@
   "gauge.note": {
    "type": "prose_short",
    "words": {
-    "min": 8,
-    "max": 14
+    "min": 10,
+    "max": 29
    },
    "example": "Benchmarks to beat: 68% open, 18% reply, 9% interested. Estimate: a public industry benchmark, name the report and year when you fill this, discounted for a sca"
   },
   "s1.title": {
    "type": "label",
    "words": {
-    "min": 2,
-    "max": 7
+    "min": 4,
+    "max": 9
    },
    "example": "Eight touches, twenty-one days"
   },
   "s1.body": {
    "type": "prose_long",
    "words": {
-    "min": 18,
-    "max": 85
+    "min": 20,
+    "max": 83
    },
    "example": "Each touch does one job and stops. None repeats the argument of the one before it. If touch four is just a louder touch one, cut it. The psychology column is wh"
   },
@@ -94,47 +94,47 @@
    "type": "prose_long",
    "words": {
     "min": 16,
-    "max": 46
+    "max": 66
    },
    "example": "Text only after the candidate has replied to you directly and given you the number themselves. A referral is not consent. A cold text to a battery candidate bur"
   },
   "s2.title": {
    "type": "label",
    "words": {
-    "min": 2,
-    "max": 7
+    "min": 4,
+    "max": 10
    },
    "example": "Email 1 · the origin touch"
   },
   "s2.body": {
    "type": "prose_long",
    "words": {
-    "min": 18,
-    "max": 46
+    "min": 21,
+    "max": 48
    },
    "example": "Seventy-five to ninety words, grade seven reading level or lower. Two sentences about them, two about us, one ask. If the highlighted token cannot be filled hon"
   },
   "e1.subjA": {
    "type": "prose_short",
    "words": {
-    "min": 7,
-    "max": 7
+    "min": 6,
+    "max": 6
    },
    "example": "the failure mode most reviews miss"
   },
   "e1.subjB": {
    "type": "prose_short",
    "words": {
-    "min": 7,
-    "max": 7
+    "min": 9,
+    "max": 9
    },
    "example": "for the engineer who already owns half the pack"
   },
   "e1.body": {
    "type": "prose_long",
    "words": {
-    "min": 81,
-    "max": 81
+    "min": 99,
+    "max": 99
    },
    "html": true,
    "example": "[[FirstName]], Your [[SpecificProject]] work at [[CurrentCompany]] reads like someone who trusts test data over intuition, which is rarer than it should be in b"
@@ -142,7 +142,7 @@
   "s3.title": {
    "type": "label",
    "words": {
-    "min": 3,
+    "min": 4,
     "max": 7
    },
    "example": "Proof first, then scope"
@@ -150,15 +150,15 @@
   "s3.body": {
    "type": "prose_long",
    "words": {
-    "min": 14,
-    "max": 44
+    "min": 18,
+    "max": 60
    },
    "example": "Two introduces the team and the checkable facts. Three describes the actual job. Every claim in both must survive scrutiny, because a battery engineer who has s"
   },
   "s4.title": {
    "type": "label",
    "words": {
-    "min": 3,
+    "min": 4,
     "max": 8
    },
    "example": "The connect note and the InMail"
@@ -166,15 +166,15 @@
   "s4.body": {
    "type": "prose_long",
    "words": {
-    "min": 18,
-    "max": 42
+    "min": 20,
+    "max": 53
    },
    "example": "The connect note is deliberately not a pitch: it buys familiarity for the emails that follow. The InMail assumes zero context, since it is the one touch that mi"
   },
   "s5.title": {
    "type": "label",
    "words": {
-    "min": 4,
+    "min": 5,
     "max": 8
    },
    "example": "Honest urgency, then the exit ramp"
@@ -182,24 +182,24 @@
   "s5.body": {
    "type": "prose_long",
    "words": {
-    "min": 28,
-    "max": 38
+    "min": 27,
+    "max": 60
    },
    "example": "Email four ships only if every word in it is literally true. Email five drops the ask entirely, which is exactly why it outperforms the other four."
   },
   "e4.subj": {
    "type": "label",
    "words": {
-    "min": 2,
-    "max": 2
+    "min": 5,
+    "max": 5
    },
    "example": "where the search actually stands"
   },
   "e4.body": {
    "type": "prose_long",
    "words": {
-    "min": 66,
-    "max": 66
+    "min": 92,
+    "max": 92
    },
    "html": true,
    "example": "[[FirstName]], Straight status: we're filling one battery seat this cycle, the loop runs about two weeks start to finish, and the panel is engineers who have ru"
@@ -207,8 +207,8 @@
   "e4.note": {
    "type": "prose_short",
    "words": {
-    "min": 22,
-    "max": 22
+    "min": 36,
+    "max": 36
    },
    "example": "Send this only if it is true. A fabricated deadline is easy to spot and costly to be caught in with an audience that reads specs for a living. If two seats are "
   },
@@ -216,23 +216,23 @@
    "type": "label",
    "words": {
     "min": 3,
-    "max": 6
+    "max": 9
    },
    "example": "The phone script, and the texts that follow it"
   },
   "s6.body": {
    "type": "prose_long",
    "words": {
-    "min": 24,
-    "max": 34
+    "min": 28,
+    "max": 36
    },
    "example": "Reserved for the high-touch tier. A call is a costly signal for both sides, which is exactly why it moves a scarce battery candidate when another email will not"
   },
   "s7.title": {
    "type": "label",
    "words": {
-    "min": 3,
-    "max": 8
+    "min": 5,
+    "max": 7
    },
    "example": "Tier discipline and the banned list"
   },
@@ -240,15 +240,15 @@
    "type": "prose_long",
    "words": {
     "min": 25,
-    "max": 37
+    "max": 54
    },
    "example": "Tier discipline is the difference between an 18% reply rate and a 6% one. The banned list is not a style preference: each phrase measurably drags down replies, "
   },
   "tier.note": {
    "type": "prose_short",
    "words": {
-    "min": 23,
-    "max": 23
+    "min": 30,
+    "max": 30
    },
    "example": "One call to action, one question, every single time. Sign with a real name, never a team inbox. Every email carries at least one fact a candidate could verify i"
   },
@@ -506,8 +506,8 @@
     "seq.touch": {
      "type": "prose_short",
      "words": {
-      "min": 4,
-      "max": 4
+      "min": 5,
+      "max": 5
      }
     },
     "seq.psych": {
@@ -544,7 +544,7 @@
      "type": "prose_short",
      "words": {
       "min": 11,
-      "max": 26
+      "max": 39
      }
     }
    },
@@ -573,8 +573,8 @@
     "email.subjA": {
      "type": "prose_short",
      "words": {
-      "min": 5,
-      "max": 5
+      "min": 6,
+      "max": 6
      }
     },
     "email.subjB": {
@@ -594,8 +594,8 @@
     "email.note": {
      "type": "prose_short",
      "words": {
-      "min": 24,
-      "max": 24
+      "min": 23,
+      "max": 23
      }
     },
     "emails.prose0": {
@@ -640,15 +640,15 @@
     "li.body": {
      "type": "prose_long",
      "words": {
-      "min": 38,
-      "max": 38
+      "min": 35,
+      "max": 35
      }
     },
     "li.note": {
      "type": "prose_short",
      "words": {
-      "min": 21,
-      "max": 21
+      "min": 24,
+      "max": 24
      }
     }
    },
@@ -663,22 +663,22 @@
     "voice.label": {
      "type": "label",
      "words": {
-      "min": 7,
-      "max": 7
+      "min": 8,
+      "max": 8
      }
     },
     "voice.script": {
      "type": "prose_long",
      "words": {
-      "min": 58,
-      "max": 58
+      "min": 55,
+      "max": 55
      }
     },
     "voice.note": {
      "type": "prose_long",
      "words": {
-      "min": 30,
-      "max": 30
+      "min": 28,
+      "max": 28
      }
     }
    },
@@ -734,8 +734,8 @@
     "tier.elements": {
      "type": "prose_short",
      "words": {
-      "min": 10,
-      "max": 10
+      "min": 15,
+      "max": 15
      }
     }
    },
@@ -750,8 +750,8 @@
     "banned.term": {
      "type": "label",
      "words": {
-      "min": 6,
-      "max": 6
+      "min": 2,
+      "max": 2
      }
     }
    },

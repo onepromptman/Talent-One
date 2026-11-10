@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 5c0c918ca53c
+Source fingerprint: ff827ddf6650
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_01.content-schema.json
 Regenerate: <python> skills/talent-one/scripts/build_briefs.py
 -->
@@ -262,85 +262,85 @@ Envelope (top-level keys of your content JSON, in this order; type and empty sta
 
 ### Top-level slots
 - doc.agent (prose_short 3-4)
-- doc.date (prose_short 2-8)
+- doc.date (prose_short 2-10)
 - doc.eyebrow (prose_short 5-6)
 - doc.title (label 2-3)
-- role.title (label 4-4)
-- role.org (prose_short 6-9)
-- doc.thesis (prose_long 24-48)
-- cover.note (prose_short 3-13)
-- s1.title (label 2-7)
-- s1.body (prose_long 18-85)
-- s1.body2 (prose_long 55-55)
-- northstar (prose_short 25-25)
-- analogy (prose_long 37-37)
-- s2.title (label 2-7)
-- s2.body (prose_long 18-46)
-- insight.1 (prose_long 27-50)
-- s3.title (label 3-7)
-- s3.body (prose_long 14-44)
-- s4.title (label 3-8)
-- s4.body (prose_long 18-42)
-- s5.title (label 4-8)
-- s5.body (prose_long 28-38)
-- s6.title (label 3-6)
-- s6.body (prose_long 24-34)
-- edu.academic (prose_long 34-34)
-- edu.alt (prose_long 26-26)
-- edu.hobby (prose_long 32-32)
-- s7.title (label 3-8)
-- s7.body (prose_long 25-37)
-- s8.title (label 2-6)
-- s8.body (prose_long 23-34)
-- kw.note (prose_long 39-39)
-- s9.title (label 3-7)
-- s9.body (prose_short 21-22)
-- s10.title (label 3-4)
-- s10.body (prose_long 16-28)
+- role.title (label 3-6)
+- role.org (prose_short 8-12)
+- doc.thesis (prose_long 25-52)
+- cover.note (prose_short 4-20)
+- s1.title (label 4-9)
+- s1.body (prose_long 20-83)
+- s1.body2 (prose_long 46-46)
+- northstar (prose_short 36-36)
+- analogy (prose_long 76-76)
+- s2.title (label 4-10)
+- s2.body (prose_long 21-48)
+- insight.1 (prose_long 35-58)
+- s3.title (label 4-7)
+- s3.body (prose_long 18-60)
+- s4.title (label 4-8)
+- s4.body (prose_long 20-53)
+- s5.title (label 5-8)
+- s5.body (prose_long 27-60)
+- s6.title (label 3-9)
+- s6.body (prose_long 28-36)
+- edu.academic (prose_long 47-47)
+- edu.alt (prose_long 30-30)
+- edu.hobby (prose_long 36-36)
+- s7.title (label 5-7)
+- s7.body (prose_long 25-54)
+- s8.title (label 5-6)
+- s8.body (prose_long 31-37)
+- kw.note (prose_long 38-38)
+- s9.title (label 6-7)
+- s9.body (prose_short 20-22)
+- s10.title (label 4-4)
+- s10.body (prose_long 17-26)
 - footer.right (prose_short 3-6) optional, omit or null when there is nothing to say
 
 ### Repeats
 - cover.audience [rows n=3-5]
-  - audience.item (prose_short 6-6)
+  - audience.item (prose_short 9-9)
 - responsibilities [rows n=4-8]
-  - resp.name (label 4-4)
-  - resp.detail (prose_short 15-15)
+  - resp.name (label 6-6)
+  - resp.detail (prose_short 21-21)
 - stack.layers [rows n=4-7]
-  - layer.name (label 3-3)
-  - layer.desc (prose_short 18-18)
+  - layer.name (label 4-4)
+  - layer.desc (prose_short 22-22)
 - glossary [rows n=8-16]
-  - term.name (label 2-2)
-  - term.plain (prose_short 12-12)
-  - term.why (prose_short 20-20)
+  - term.name (label 3-3)
+  - term.plain (prose_short 16-16)
+  - term.why (prose_short 18-18)
 - skills [rows n=5-10]
-  - skill.name (label 2-2)
+  - skill.name (label 3-3)
   - skill.bar (chip 1-1)
-  - skill.plain (prose_short 16-16)
+  - skill.plain (prose_short 13-13)
   - skill.verify (prose_short 7-7)
 - soft.skills [rows n=4-7]
   - soft.name (label 2-2)
-  - soft.why (prose_short 11-11)
-  - soft.listen (prose_short 13-13)
-  - soft.flag (prose_short 6-6)
+  - soft.why (prose_short 13-13)
+  - soft.listen (prose_short 15-15)
+  - soft.flag (prose_short 8-8)
 - collab.nodes [rows n=3-6]
   - node.name (label 3-3)
-  - node.desc (prose_short 13-13)
-  - node.name2 (label 2-3)
+  - node.desc (prose_short 17-17)
+  - node.name2 (label 3-3)
   - collab.nodes.prose0 (prose_long 13-29)*
 - kw.primary [rows n=5-12]
   - kw.term (label 2-2)
 - kw.secondary [rows n=5-16]
-  - kw2.term (label 1-1)
+  - kw2.term (label 2-2)
 - kw.titles [rows n=4-12]
   - title.term (label 3-3)
 - kw.exclude [rows n=4-10]
-  - ex.term (label 1-1)
+  - ex.term (label 2-2)
 - fieldnotes [rows n=2-4]
-  - note.title (label 3-3)
-  - note.body (prose_short 11-26)
+  - note.title (label 5-5)
+  - note.body (prose_short 11-39)
 - cheatsheet [rows n=3-8]
-  - cheat.good (prose_short 13-13)
-  - cheat.bad (prose_short 15-15)
+  - cheat.good (prose_short 15-15)
+  - cheat.bad (prose_short 22-22)
 
 ### Synthetic slots (required under --strict)
 Prose the template generator found in the worked example at this location, with no named slot; write your own text that fits the heading, never the example's. Numbered in document order; `--strict` fails on any you omit. Format: `name (MIN-MAX, role) where`; `in X rows` = a key in each row of repeat X, otherwise a key in `slots`.

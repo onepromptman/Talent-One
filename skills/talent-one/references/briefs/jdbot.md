@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 381806b803d0
+Source fingerprint: edce2c1695eb
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_02.content-schema.json
 Regenerate: <python> skills/talent-one/scripts/build_briefs.py
 -->
@@ -280,28 +280,28 @@ Envelope (top-level keys of your content JSON, in this order; type and empty sta
 
 ### Top-level slots
 - doc.agent (prose_short 3-4)
-- doc.date (prose_short 2-8)
+- doc.date (prose_short 2-10)
 - doc.eyebrow (prose_short 5-6)
 - doc.title (label 2-3)
-- role.title (label 4-4)
-- role.org (prose_short 6-9)
-- doc.thesis (prose_long 24-48)
+- role.title (label 3-6)
+- role.org (prose_short 8-12)
+- doc.thesis (prose_long 25-52)
 - cover.compliance (prose_short 6-6)
-- s1.title (label 2-7)
-- s1.body (prose_long 18-85)
-- jd.title (label 2-8)
-- jd.meta (prose_short 9-9)
-- jd.intro (prose_long 80-80)
-- jd.close (prose_long 31-31)
-- jd.benefits (label ?-?)
-- jd.eeo (label ?-?)
-- s2.title (label 2-7)
-- s2.body (prose_long 18-46)
-- caution.1 (prose_long 26-52)
-- gate.1 (prose_long 16-46)
-- s3.title (label 3-7)
-- s3.body (prose_long 14-44)
-- comp.readout (prose_long 23-41)
+- s1.title (label 4-9)
+- s1.body (prose_long 20-83)
+- jd.title (label 3-3)
+- jd.meta (prose_short 11-11)
+- jd.intro (prose_long 88-88)
+- jd.close (prose_long 64-64)
+- jd.benefits (prose_short 21-21)
+- jd.eeo (prose_long 33-33)
+- s2.title (label 4-10)
+- s2.body (prose_long 21-48)
+- caution.1 (prose_long 36-59)
+- gate.1 (prose_long 16-66)
+- s3.title (label 4-7)
+- s3.body (prose_long 18-60)
+- comp.readout (prose_long 24-65)
 - footer.right (prose_short 3-6) optional, omit or null when there is nothing to say
 
 ### Repeats
@@ -309,19 +309,19 @@ Envelope (top-level keys of your content JSON, in this order; type and empty sta
   - metric.label (label 2-3)
   - metric.value (chip 1-2)
 - jd.responsibilities [rows n=3-6]
-  - resp.item (prose_short 18-18)
+  - resp.item (prose_short 21-21)
 - jd.requirements [rows n=3-6]
-  - req.item (prose_short 17-17)
+  - req.item (prose_short 24-24)
 - annotations [rows n=3-6]
   - note.tag (label 1-3)
-  - note.body (prose_short 11-26)
+  - note.body (prose_short 11-39)
 - ledger.rows [rows n=3-8]
   - ledger.before (prose_short 5-5)
-  - ledger.after (prose_short 5-5)
-  - ledger.effect (delta 3-3)
+  - ledger.after (prose_short 6-6)
+  - ledger.effect (delta 4-4)
 - comp.rows [rows n=2-4 bars=1(range)]
-  - comp.label (label 2-4)
-  - comp.n (prose_short 6-7)
+  - comp.label (label 2-6)
+  - comp.n (prose_short 7-15)
   - comp.low (currency 1-1)
   - comp.high (currency 1-1)
 

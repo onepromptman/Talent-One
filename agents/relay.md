@@ -173,10 +173,8 @@ them and never ship silently.
 
 **Phase 3 (render and verify, deterministic).** This is the single home of the render
 command; `skills/talent-one/SKILL.md` §3 points here rather than restating it. For
-each artifact whose content passed (or exhausted its repair laps), render via Bash:
-install beautifulsoup4 first if missing (`<python> -m pip install beautifulsoup4`,
-adding `--break-system-packages` only if the bare install reports an
-externally-managed-environment error, which is Debian/Ubuntu-specific), then
+each artifact whose content passed (or exhausted its repair laps), render via Bash.
+The renderer's one package ships inside the plugin, so never install anything first:
 
 ```
 <python> ${CLAUDE_PLUGIN_ROOT}/skills/talent-one/scripts/render.py render \

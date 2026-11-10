@@ -15,7 +15,7 @@
   "sB.title": "Compensation reality",
   "sB.body": "Sources disagree because they measure different things: base only against total pay, entry-skewed postings against sector medians, government series against self-report. Show the hiring manager the spread first, then anchor on the working target. Doing it in that order is what makes the anchor credible.",
   "comp.anchor": {
-   "html": "<b>the BLS-OES P25–P75 base range, $104,740–$174,480, midpoint $134,830</b><em>before</em><span>Estimate</span><span>BLS-OES 17-2199 P25–P75 blended with the battery-engineer aggregator typical</span>"
+   "html": "For a mid Battery Systems Engineer at a small hardware employer, plan around <b>the BLS-OES P25-P75 base range, $104,740-$174,480, midpoint $134,830</b>, and total compensation above base once equity is counted, which no public series measures. Confirm the approved band <em>before</em> the first screen, not after a candidate asks. <span>Estimate</span> <span>BLS-OES 17-2199 P25-P75 blended with the battery-engineer aggregator typical</span>"
   },
   "comp.premium": "One thing worth naming: sodium-ion cells and fast-charge thermal design are the hot specialties, and specialty demand can push candidates toward the top of any published range. Revisit the range if the requisition drifts (directional).",
   "sC.title": "Why the demand curve favors moving now",

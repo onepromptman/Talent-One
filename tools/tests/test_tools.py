@@ -4,7 +4,7 @@ geometry, script behaviour), never the worked example's wording, so a re-skinned
 example or a renamed token set keeps them green.
 
 Stdlib unittest, collected by pytest when the module's evals run. The rendered-run test
-shells out to skills/talent-one/scripts/render.py (beautifulsoup4).
+shells out to skills/talent-one/scripts/render.py (bundled beautifulsoup4).
 """
 
 from __future__ import annotations
@@ -221,6 +221,18 @@ class CheckKit(unittest.TestCase):
 
 
 class ExtractSlotSchema(unittest.TestCase):
+    def test_committed_schema_matches_template_inventory(self):
+        self.assertEqual(extract_slot_schema.check(REF / "SLOT_SCHEMA.json"), [])
+
+    def test_renderer_chrome_is_inventory_only(self):
+        inventory = json.loads((REF / "SLOT_SCHEMA.json").read_text(encoding="utf-8"))
+        for name in ("kit.mark", "footer.left"):
+            self.assertTrue(inventory["slots"][name]["renderer_owned"])
+            for path in SCHEMAS.glob("TK_*.content-schema.json"):
+                with self.subTest(path=path.name, slot=name):
+                    content = json.loads(path.read_text(encoding="utf-8"))
+                    self.assertNotIn(name, content["slots"])
+
     def test_check_is_clean_for_a_matching_schema_and_names_drift(self):
         slots, repeats = extract_slot_schema.infer()
         with tempfile.TemporaryDirectory() as d:

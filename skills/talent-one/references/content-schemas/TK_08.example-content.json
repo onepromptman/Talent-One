@@ -19,7 +19,7 @@
   "s3.body2": "Write down their actual phrases even when you don't follow them. Those phrases are what the battery interviewer uses to calibrate their own session, and they are the most valuable thing you produce on this call.",
   "score.rule.1": "Two at Good or better → advance. That is the bar; do not hold out for three strong answers.",
   "score.rule.2": "One Great or Exceptional, the other two mixed → hold for hiring-manager review instead of forcing the call.",
-  "score.rule.3": "Two Bad answers → decline, regardless of the résumé. This is the one place you can say no on technical grounds.",
+  "score.rule.3": "Two No signal or Weak answers, with no Great or Exceptional answer → decline, regardless of the résumé. This is the one place you can say no on technical grounds.",
   "s4.title": "Motivation and honest fit",
   "s4.body": "Four questions. Surface every deal-breaker now rather than at offer stage, and capture their own words for the hiring manager: paraphrasing loses the thing that makes it useful.",
   "s5.title": "Fields to capture, and how to ask",
@@ -33,7 +33,7 @@
   "caution.1": "Before you score, check your own read. The affinity trap (over-crediting someone who reminds you of a past hire) and the halo or horn effect (letting one strong or weak moment color the whole call) both hit hardest on a cold screen. Grade each spot-check against its key on its own, not against your gut feeling about the person.",
   "s7.title": "The call: advance, hold, or decline",
   "s7.body": "Write it up the same day. Anything past four lines is you dodging the call, and the hiring manager reads only the first two anyway.",
-  "insight.1": "Beyond the two-Bad-answers rule, you are not qualified to reject on battery depth from this call, and you should not try. Advance anyone who clears the spot-check bar and tells a real failure story; hold the genuinely ambiguous ones for the hiring manager. This talent pool is small, and a false negative here is invisible and expensive.",
+  "insight.1": "Beyond that explicit decline rule, you are not qualified to reject on battery depth from this call, and you should not try. Advance anyone who clears the spot-check bar and tells a real failure story; hold the genuinely ambiguous ones for the hiring manager. This talent pool is small, and a false negative here is invisible and expensive.",
   "footer.right": "Bold text is said out loud"
  },
  "repeats": {

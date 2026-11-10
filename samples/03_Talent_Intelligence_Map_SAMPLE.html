@@ -720,11 +720,11 @@ const __ds_scope = {};
 <div class="tk-toggles" style="border-bottom:1px solid var(--op-border);background:#FBF9F4;position:sticky;top:0;z-index:20">
 <div style="max-width:1120px;margin:0 auto;padding:12px 48px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
 <span style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-ink-300);margin-right:6px">Show</span>
-<button onclick="{{ toggleMethod }}" style="{{ btnMethod }}" style-hover="border-color:var(--op-primary)" type="button">Methodology</button>
-<button onclick="{{ toggleDives }}" style="{{ btnDives }}" style-hover="border-color:var(--op-primary)" type="button">Company dossiers</button>
-<button onclick="{{ togglePeripheral }}" style="{{ btnPeripheral }}" style-hover="border-color:var(--op-primary)" type="button">Peripheral pools</button>
-<button onclick="{{ togglePersonas }}" style="{{ btnPersonas }}" style-hover="border-color:var(--op-primary)" type="button">Personas</button>
-<button onclick="{{ toggleComp }}" style="{{ btnComp }}" style-hover="border-color:var(--op-primary)" type="button">Compensation</button>
+<button aria-controls="tk03-method" aria-pressed="true" data-toggle="method" style="font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid var(--op-primary);background:var(--op-primary);color:var(--op-surface)" type="button">Methodology</button>
+<button aria-controls="tk03-dives" aria-pressed="true" data-toggle="dives" style="font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid var(--op-primary);background:var(--op-primary);color:var(--op-surface)" type="button">Company dossiers</button>
+<button aria-controls="tk03-peripheral" aria-pressed="true" data-toggle="peripheral" style="font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid var(--op-primary);background:var(--op-primary);color:var(--op-surface)" type="button">Peripheral pools</button>
+<button aria-controls="tk03-personas" aria-pressed="true" data-toggle="personas" style="font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid var(--op-primary);background:var(--op-primary);color:var(--op-surface)" type="button">Personas</button>
+<button aria-controls="tk03-comp" aria-pressed="true" data-toggle="comp" style="font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid var(--op-primary);background:var(--op-primary);color:var(--op-surface)" type="button">Compensation</button>
 <span style="margin-left:auto;font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">Hidden sections are excluded from print</span>
 </div>
 </div>
@@ -811,7 +811,7 @@ const __ds_scope = {};
 <div data-slot="stage.filter" style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-ink-300)">× 50%</div>
 </div>
 </div>
-<sc-if hint-placeholder-val="{{ true }}" value="{{ showMethod }}">
+<div data-toggle-section="method" id="tk03-method">
 <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--op-border);overflow-x:auto">
 <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:14px">Methodology</div>
 <table style="width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px">
@@ -850,7 +850,7 @@ const __ds_scope = {};
 </tbody>
 </table>
 </div>
-</sc-if>
+</div>
 </div>
 </section>
 <!-- ==================== 03 · DEMAND ==================== -->
@@ -1071,7 +1071,7 @@ const __ds_scope = {};
 </div>
 </section>
 <!-- ==================== 06 · COMPANY DOSSIERS (toggle) ==================== -->
-<sc-if hint-placeholder-val="{{ true }}" value="{{ showDives }}">
+<div data-toggle-section="dives" id="tk03-dives">
 <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
 <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
 <div>
@@ -1133,9 +1133,9 @@ const __ds_scope = {};
 </div>
 </div>
 </section>
-</sc-if>
+</div>
 <!-- ==================== 07 · PERIPHERAL POOLS (toggle) ==================== -->
-<sc-if hint-placeholder-val="{{ true }}" value="{{ showPeripheral }}">
+<div data-toggle-section="peripheral" id="tk03-peripheral">
 <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
 <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
 <div>
@@ -1211,9 +1211,9 @@ const __ds_scope = {};
 </table>
 </div>
 </section>
-</sc-if>
+</div>
 <!-- ==================== 08 · COMPENSATION (toggle) ==================== -->
-<sc-if hint-placeholder-val="{{ true }}" value="{{ showComp }}">
+<div data-toggle-section="comp" id="tk03-comp">
 <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
 <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
 <div>
@@ -1267,9 +1267,9 @@ const __ds_scope = {};
 <p data-slot="comp.positioning" style="margin:0;font-size:15px;color:var(--op-ink-dim);max-width:86ch">A small hardware company wins on ownership, mission, and equity upside, not on cash. EV makers and large cell manufacturers pay competitive base with stability appeal; adjacent industries sometimes pay more in pure cash. Position at the modeled mid band above, and qualify comp expectations at the recruiter screen, not at offer.</p>
 </div>
 </section>
-</sc-if>
+</div>
 <!-- ==================== 09 · PERSONAS (toggle) ==================== -->
-<sc-if hint-placeholder-val="{{ true }}" value="{{ showPersonas }}">
+<div data-toggle-section="personas" id="tk03-personas">
 <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
 <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
 <div>
@@ -1319,7 +1319,7 @@ const __ds_scope = {};
 </div>
 </div>
 </section>
-</sc-if>
+</div>
 <!-- ==================== 10 · RECOMMENDATIONS ==================== -->
 <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
 <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
@@ -1370,29 +1370,23 @@ const __ds_scope = {};
 </main>
 </div>
 </x-dc>
-<script data-dc-script="" data-props='{"$preview":{"width":1180,"height":900}}' type="text/x-dc">
-class Component extends DCLogic {
-  state = { method: true, dives: true, peripheral: true, personas: true, comp: true };
-  btn(on) {
-    return "font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid " +
-      (on ? "var(--op-primary);background:var(--op-primary);color:var(--op-surface)"
-          : "var(--op-border);background:var(--op-surface);color:var(--op-muted)");
-  }
-  flip(k) { return () => this.setState(s => ({ [k]: !s[k] })); }
-  renderVals() {
-    const s = this.state;
-    return {
-      showMethod: s.method, showDives: s.dives, showPeripheral: s.peripheral,
-      showPersonas: s.personas, showComp: s.comp,
-      btnMethod: this.btn(s.method), btnDives: this.btn(s.dives),
-      btnPeripheral: this.btn(s.peripheral), btnPersonas: this.btn(s.personas),
-      btnComp: this.btn(s.comp),
-      toggleMethod: this.flip("method"), toggleDives: this.flip("dives"),
-      togglePeripheral: this.flip("peripheral"), togglePersonas: this.flip("personas"),
-      toggleComp: this.flip("comp")
+<script>
+(() => {
+  const state = { method: true, dives: true, peripheral: true, personas: true, comp: true };
+  for (const button of document.querySelectorAll("[data-toggle]")) {
+    const key = button.dataset.toggle;
+    const section = document.getElementById(button.getAttribute("aria-controls"));
+    if (!section || !Object.prototype.hasOwnProperty.call(state, key)) continue;
+    const update = () => {
+      section.hidden = !state[key];
+      button.setAttribute("aria-pressed", String(state[key]));
+      button.style.background = state[key] ? "var(--op-primary)" : "var(--op-surface)";
+      button.style.color = state[key] ? "var(--op-surface)" : "var(--op-muted)";
     };
+    button.addEventListener("click", () => { state[key] = !state[key]; update(); });
+    update();
   }
-}
+})();
 </script>
 </body>
 </html>

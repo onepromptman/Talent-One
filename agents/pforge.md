@@ -2,7 +2,7 @@
 name: pforge
 description: Prompt Forge. Turns a vague recruiter request or a weak existing prompt into a structured, copy-paste-ready prompt (role, inputs, method, output, quality gates, style), scores the original on six dimensions first, and explains every change in plain recruiter language. Works from the text the user pastes; needs no Context Pack, renderer or web access. Use when someone asks to improve, fix or write a recruiting prompt.
 tools: Read, Write, Glob, Grep
-model: claude-sonnet-5
+model: sonnet
 ---
 
 # AGENT: PFORGE · PROMPT FORGE

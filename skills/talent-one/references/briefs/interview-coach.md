@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 16a6849e8b80
+Source fingerprint: 7903dd585dc6
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_09.content-schema.json
 Regenerate: <python> skills/talent-one/scripts/build_briefs.py
 -->
@@ -272,23 +272,23 @@ Envelope (top-level keys of your content JSON, in this order; type and empty sta
 
 ### Top-level slots
 - doc.agent (prose_short 3-4)
-- doc.date (prose_short 2-8)
+- doc.date (prose_short 2-10)
 - doc.eyebrow (prose_short 5-6)
 - doc.title (label 2-3)
-- role.title (label 4-4)
-- role.org (prose_short 6-9)
-- doc.thesis (prose_long 24-48)
-- cover.note (prose_short 3-13)
-- s1.title (label 2-7)
-- s1.body (prose_long 18-85)
-- s2.title (label 2-7)
-- s2.body (prose_long 18-46)
-- caution.1 (prose_long 26-52)
-- s3.title (label 3-7)
-- s3.body (prose_long 14-44)
-- s4.title (label 3-8)
-- s4.body (prose_long 18-42)
-- legal.note (label ?-?)
+- role.title (label 3-6)
+- role.org (prose_short 8-12)
+- doc.thesis (prose_long 25-52)
+- cover.note (prose_short 4-20)
+- s1.title (label 4-9)
+- s1.body (prose_long 20-83)
+- s2.title (label 4-10)
+- s2.body (prose_long 21-48)
+- caution.1 (prose_long 36-59)
+- s3.title (label 4-7)
+- s3.body (prose_long 18-60)
+- s4.title (label 4-8)
+- s4.body (prose_long 20-53)
+- legal.note (label 36-36)
 - footer.right (prose_short 3-6) optional, omit or null when there is nothing to say
 
 ### Repeats
@@ -296,19 +296,19 @@ Envelope (top-level keys of your content JSON, in this order; type and empty sta
   - metric.label (label 2-3)
   - metric.value (chip 1-2)
 - prep.stages [rows n=3-6]
-  - prep.meta (label ?-?)
-  - prep.stage (label ?-?)
-  - prep.focus (label ?-?)
+  - prep.meta (label 4-4)
+  - prep.stage (label 2-2)
+  - prep.focus (label 13-13)
 - coaching.lines [rows n=3-6]
-  - coach.label (label ?-?)
-  - coach.body (label ?-?)
+  - coach.label (label 6-6)
+  - coach.body (label 20-20)
 - debrief.fields [rows n=3-6]
-  - field.type (label ?-?)
-  - field.label (label ?-?)
-  - field.prompt (label ?-?)
+  - field.type (label 4-4)
+  - field.label (label 2-2)
+  - field.prompt (label 15-15)
 - agenda.items [rows n=3-6]
-  - agenda.title (label ?-?)
-  - agenda.body (label ?-?)
+  - agenda.title (label 6-6)
+  - agenda.body (label 14-14)
 
 ### Synthetic slots: none in this template
 

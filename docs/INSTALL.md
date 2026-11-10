@@ -2,7 +2,8 @@
 
 Talent One runs in **Cowork** (the Claude desktop app) and **Claude Code** (the command line).
 
-It does **not** run in the regular Claude chat window. Chat cannot spawn the kit's thirteen sub-agents, so `set up talent one` silently does nothing there. If nothing happens, you are in the wrong surface.
+Use a writable folder and Python 3.10 or later in the plugin's working environment.
+Nothing else needs installing: the renderer's one package ships inside the plugin.
 
 ---
 
@@ -32,8 +33,6 @@ named `talent-one`. Remove the old one first, then add this one as above:
 ## Cowork (Claude desktop app)
 
 Open the plugin browser and add the marketplace `onepromptman/Talent-One`, then install **Talent One**.
-
-The plugin is plain text: prompts, templates, and small Python scripts. The renderer needs one Python package, beautifulsoup4; the first render installs it if it is missing (`python3 -m pip install beautifulsoup4`, adding `--break-system-packages` only where pip reports an externally-managed environment). Read the source in this repo before installing if you want to see every prompt.
 
 ---
 

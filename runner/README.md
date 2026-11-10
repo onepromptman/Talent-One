@@ -12,7 +12,7 @@ scripted or scheduled run, or to run one artifact cheaply.
 ## Prerequisites
 
 - The `claude` CLI, installed and signed in.
-- Python 3.10+, plus `beautifulsoup4` for the render step (the renderer's one dependency).
+- Python 3.10+. Nothing to install: the render step's one package ships inside the plugin.
 - A profile file (`onepromptman-profile.md`, the same one the plugin's setup skill writes).
   The company identity is a hard gate: the runner refuses to start without it.
 
@@ -124,14 +124,15 @@ category; agents read the folder that fits:
 Real KB content is sensitive (bands, candidate data, internal calibration): keep the
 folder outside any repository.
 
-`ats_fetch.py` fills `internal/` from Greenhouse Harvest with aggregate, PII-free house
-numbers (funnel pass-through with n, accepted-offer comp by level with a 3-offer floor,
-time to hire, prior posting language, scorecard structure). The spec is
-[`ATS_FETCH_CONTRACT.md`](ATS_FETCH_CONTRACT.md):
+`ats_fetch.py` is a legacy Greenhouse Harvest v1 fetcher. Greenhouse is retiring
+v1/v2 access, and new integrations require Harvest v3 OAuth. The fetcher supports
+the shipped offline fixtures and legacy accounts that still have access.
+See the [Harvest API overview](https://support.greenhouse.io/hc/en-us/articles/360029266032-Harvest-API-overview)
+and the [fetch contract](ATS_FETCH_CONTRACT.md).
 
 ```bash
-GREENHOUSE_HARVEST_KEY=... python3 ats_fetch.py --provider greenhouse \
-    --crosswalk crosswalk.csv --out <kb_root> [--role-family <rf>] [--dry-run]
+python3 ats_fetch.py --fixture tests/fixtures/greenhouse \
+    --crosswalk tests/fixtures/greenhouse/crosswalk.csv --out fixture-kb
 ```
 
 ## Not built yet

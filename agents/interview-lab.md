@@ -2,7 +2,7 @@
 name: interview-lab
 description: "Artifact 06 Interview Plan: loop stages, competency heat grid, graded question rubrics, interviewer assignments, debrief protocol. Content JSON; invoked by Talent One skills."
 tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__plugin_talent-one_greenhouse__*, mcp__plugin_talent-one_ashby__search_records_by_name, mcp__plugin_talent-one_ashby__filter_records, mcp__plugin_talent-one_ashby__describe_object_fields, mcp__plugin_talent-one_ashby__get_record_details, mcp__plugin_talent-one_ashby__get_job_pipeline, mcp__plugin_talent-one_ashby__get_interview_plan
-model: claude-sonnet-5
+model: sonnet
 ---
 
 # AGENT: INTERVIEW LAB · ARTIFACT 06 · INTERVIEW PLAN

@@ -8,7 +8,7 @@ again, so it may land in a slightly different form.
 
 ## Set up
 
-The checks need Python 3.11 or later (`python3 --version`):
+The checks need Python 3.10 or later (`python3 --version`), the same floor as the plugin:
 
 ```bash
 python3 -m venv .venv && . .venv/bin/activate

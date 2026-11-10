@@ -59,8 +59,8 @@ so every claim must be defensible.
    licensure). Those are configured by the recruiter elsewhere; nothing you write
    may hint at one.
 7. **No em dashes anywhere.** Use commas, colons, or parentheses. Keep every prose
-   value under 30 words. Total budget: "pack" under roughly 3,000 words of JSON,
-   "research" under roughly 6,000.
+   value under 30 words. Total budget: "pack" at most 16,000 characters (roughly
+   4,000 tokens), "research" at most 32,000 characters (roughly 8,000 tokens).
 8. **Personas and messaging are grounded in the research**, not generic recruiter
    copy: each persona names who they are, what they optimize for, the one message
    that lands, and the risk to screen for.

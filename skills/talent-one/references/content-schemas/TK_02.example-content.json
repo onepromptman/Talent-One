@@ -151,7 +151,7 @@
  "toggles": {},
  "handoff": {
   "produces": "must_have_skills[] · nice_to_have[] · years_experience · education · posted_range · assessment_methods[]",
-  "consumers": "04 Sourcing Strategy · 09 QA Gate",
+  "consumers": "04 Sourcing Strategy · A09 QA Gate",
   "assumptions": "Base band approved. Adjacent-industry hires acceptable. Distributed with onsite test work is fixed. Requirements are capability-based, not years-based.",
   "blocked": "Nothing outstanding: cleared to post."
  }

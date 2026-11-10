@@ -1,5 +1,5 @@
 {
-  "$comment": "Slot type schema for the Talent One kit. Generated from the nine templates' shipped worked examples by tools/extract_slot_schema.py, then hand-corrected (22 slots) where the inferred type from a single example was ambiguous. Consumed by tools/check_fill.py's --types pass: a filled artifact's slot value is checked against this file's `type`, not just checked for presence. Regenerating this file from a new example set will overwrite hand corrections; diff before committing a regeneration.",
+  "$comment": "Slot type schema for the Talent One kit. Generated from the templates' shipped worked examples by tools/extract_slot_schema.py, then hand-corrected (22 slots) where the inferred type from a single example was ambiguous. Consumed by tools/check_fill.py's --types pass: a filled artifact's slot value is checked against this file's `type`, not just checked for presence. Regenerating this file from a new example set will overwrite hand corrections; diff before committing a regeneration. Example and word-count metadata are refreshed from current templates; hand-corrected types and notes are preserved.",
   "version": "1.0",
   "types": {
     "label": "A short name, title, or tag. Free text, but stays inside the example's word-count band.",
@@ -20,16 +20,27 @@
     "metric": "A single large numeric headline stat. Core must be numeric; unit varies by context (%, x multiplier, K/M count) and is not fixed to one type. Example: \"0.4%\", \"5x\"."
   },
   "slots": {
+    "agenda.body": {
+      "type": "label",
+      "templates": [
+        "TK_09"
+      ],
+      "example": "No score, no vote. Whoever has not submitted a form does not speak first.",
+      "words": {
+        "min": 14,
+        "max": 14
+      }
+    },
     "agenda.objective": {
       "type": "prose_short",
       "templates": [
         "TK_07"
       ],
       "words": {
-        "min": 19,
-        "max": 19
+        "min": 23,
+        "max": 23
       },
-      "example": "Walk sections A–C. Set the frame: tight market, real cost of vacancy, real comp. Do not negotiate anything yet."
+      "example": "Walk sections A to C: a small occupation, scarcity at mid-career, and the real comp band. Set the frame, do not negotiate yet."
     },
     "agenda.segment": {
       "type": "label",
@@ -53,16 +64,27 @@
       },
       "example": "0–5"
     },
+    "agenda.title": {
+      "type": "label",
+      "templates": [
+        "TK_09"
+      ],
+      "example": "Scores in before the room opens",
+      "words": {
+        "min": 6,
+        "max": 6
+      }
+    },
     "analogy": {
       "type": "prose_long",
       "templates": [
         "TK_01"
       ],
       "words": {
-        "min": 37,
-        "max": 37
+        "min": 76,
+        "max": 76
       },
-      "example": "It's the brainstem. Nobody tells a brainstem to keep breathing: it just does, continuously, and it never gets to crash. This software does the same for power, t"
+      "example": "It is a fuel tank that can set itself on fire, packed into a box the size of a fridge. The whole craft is keeping a large amount of stored energy calm and usabl"
     },
     "audience.item": {
       "type": "prose_short",
@@ -70,8 +92,8 @@
         "TK_01"
       ],
       "words": {
-        "min": 6,
-        "max": 6
+        "min": 9,
+        "max": 9
       },
       "example": "You have never sourced battery or electrical engineers before"
     },
@@ -81,10 +103,10 @@
         "TK_08"
       ],
       "words": {
-        "min": 4,
-        "max": 4
+        "min": 8,
+        "max": 8
       },
-      "example": "No idea at all."
+      "example": "No idea, or confuses it with power output."
     },
     "band.label": {
       "type": "label",
@@ -95,7 +117,7 @@
         "min": 2,
         "max": 2
       },
-      "example": "Really bad"
+      "example": "No signal"
     },
     "banned.term": {
       "type": "label",
@@ -103,10 +125,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 6,
-        "max": 6
+        "min": 2,
+        "max": 2
       },
-      "example": "I hope this finds you well"
+      "example": "we're hiring"
     },
     "bar.label": {
       "type": "label",
@@ -114,10 +136,10 @@
         "TK_00"
       ],
       "words": {
-        "min": 2,
-        "max": 2
+        "min": 3,
+        "max": 3
       },
-      "example": "Defense primes"
+      "example": "Large EV makers"
     },
     "bar.value": {
       "type": "count",
@@ -136,10 +158,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 4,
-        "max": 4
+        "min": 5,
+        "max": 5
       },
-      "example": "\"Happy where I am\""
+      "example": "\"I'm happy where I am\""
     },
     "branch.then": {
       "type": "prose_long",
@@ -147,10 +169,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 29,
-        "max": 29
+        "min": 33,
+        "max": 33
       },
-      "example": "\"Completely fair. May I send one paragraph on the scope so future-you has it on file? And if anyone comes to mind who'd want this, I take referrals seriously.\""
+      "example": "\"Completely fair, and I appreciate you saying so plainly. Mind if I send one paragraph on the scope for future reference? And if anyone comes to mind who'd fit,"
     },
     "call.script": {
       "type": "prose_long",
@@ -174,10 +196,10 @@
         "TK_09"
       ],
       "words": {
-        "min": 26,
-        "max": 52
+        "min": 36,
+        "max": 59
       },
-      "example": "Naming the downside is what makes the upside credible. A pitch with no cost in it reads as a sales script, and this audience has heard hundreds of them. If it's"
+      "example": "Before you score, check your own read. The affinity trap (over-crediting someone who reminds you of a past hire) and the halo or horn effect (letting one strong"
     },
     "ch.effort": {
       "type": "prose_short",
@@ -196,10 +218,10 @@
         "TK_04"
       ],
       "words": {
-        "min": 6,
-        "max": 6
+        "min": 7,
+        "max": 7
       },
-      "example": "Referrals · internal team + adjacent"
+      "example": "Referrals · internal team + adjacent industries"
     },
     "ch.verdict": {
       "type": "prose_short",
@@ -207,10 +229,10 @@
         "TK_04"
       ],
       "words": {
-        "min": 16,
-        "max": 16
+        "min": 18,
+        "max": 18
       },
-      "example": "Highest conversion in every benchmark set. Run a monthly team mining session against the target list."
+      "example": "Highest conversion of any channel in this pool. Run a monthly team mining pass against the target archetypes."
     },
     "ch.yield": {
       "type": "count_range",
@@ -221,7 +243,7 @@
         "min": 3,
         "max": 3
       },
-      "example": "1–3 warm intros",
+      "example": "1-2 warm intros",
       "review": false,
       "note": "A count range with a trailing unit phrase, e.g. \"1-3 warm intros\". The numeric range at the front is checked; the trailing words are free.",
       "human_reviewed": true
@@ -232,10 +254,10 @@
         "TK_01"
       ],
       "words": {
-        "min": 15,
-        "max": 15
+        "min": 22,
+        "max": 22
       },
-      "example": "\"They use cutting-edge battery technology.\" Says you cannot describe the work, so the technical conversation ends here."
+      "example": "\"You'd be saving the planet!\" Maybe they build cooling plates, or harnesses. Overclaiming the mission reads as not having read the req."
     },
     "cheat.good": {
       "type": "prose_short",
@@ -243,10 +265,32 @@
         "TK_01"
       ],
       "words": {
-        "min": 13,
-        "max": 13
+        "min": 15,
+        "max": 15
       },
       "example": "\"You'd own a battery subsystem end to end, from analysis and design through abuse testing.\""
+    },
+    "coach.body": {
+      "type": "label",
+      "templates": [
+        "TK_09"
+      ],
+      "example": "A different communication style or a nontraditional path is not a competency gap. Write down the words, not the delivery.",
+      "words": {
+        "min": 20,
+        "max": 20
+      }
+    },
+    "coach.label": {
+      "type": "label",
+      "templates": [
+        "TK_09"
+      ],
+      "example": "Score the answer, not the accent",
+      "words": {
+        "min": 6,
+        "max": 6
+      }
     },
     "comp.anchor": {
       "type": "prose_long",
@@ -254,8 +298,8 @@
         "TK_07"
       ],
       "words": {
-        "min": 44,
-        "max": 44
+        "min": 58,
+        "max": 58
       },
       "example": "For a mid Battery Systems Engineer at a small hardware employer, plan around the BLS-OES P25–P75 base range, $104,740–$174,480, midpoint $134,830, and total com"
     },
@@ -268,18 +312,19 @@
         "min": 1,
         "max": 1
       },
-      "example": "$120–145K"
+      "example": "$95-115K"
     },
     "comp.high": {
       "type": "currency",
       "templates": [
+        "TK_00",
         "TK_02"
       ],
       "words": {
         "min": 1,
         "max": 1
       },
-      "example": "174k"
+      "example": "174k128k"
     },
     "comp.label": {
       "type": "label",
@@ -290,9 +335,9 @@
       ],
       "words": {
         "min": 2,
-        "max": 4
+        "max": 6
       },
-      "example": "National base · posting-derived"
+      "example": "What the market paysWhat we're posting"
     },
     "comp.level": {
       "type": "prose_short",
@@ -300,21 +345,22 @@
         "TK_03"
       ],
       "words": {
-        "min": 5,
-        "max": 5
+        "min": 4,
+        "max": 4
       },
-      "example": "Engineer I · 0–3 yrs"
+      "example": "Early-career · 0-3 yrs"
     },
     "comp.low": {
       "type": "currency",
       "templates": [
+        "TK_00",
         "TK_02"
       ],
       "words": {
         "min": 1,
         "max": 1
       },
-      "example": "105k"
+      "example": "105k115k"
     },
     "comp.n": {
       "type": "prose_short",
@@ -323,10 +369,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 6,
-        "max": 7
+        "min": 7,
+        "max": 15
       },
-      "example": "Skews national and junior: floor reference only"
+      "example": "Sourced · BLS-OES 2024 · 17-2199 national base, P25-P75Estimate · posted band, floor to ceiling"
     },
     "comp.note": {
       "type": "prose_short",
@@ -337,7 +383,7 @@
         "min": 7,
         "max": 7
       },
-      "example": "National medians run $112–130K; metro premium applied"
+      "example": "Around BLS-OES P25 $105K, below the anchor"
     },
     "comp.positioning": {
       "type": "prose_long",
@@ -345,10 +391,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 48,
-        "max": 48
+        "min": 52,
+        "max": 52
       },
-      "example": "Launch operators run modest base against a maturing equity story. Big-tech programs pay large backloaded equity: openness spikes before vest cliffs. Primes pay "
+      "example": "A small hardware company wins on ownership, mission, and equity upside, not on cash. EV makers and large cell manufacturers pay competitive base with stability "
     },
     "comp.premium": {
       "type": "prose_long",
@@ -356,10 +402,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 33,
-        "max": 33
+        "min": 35,
+        "max": 35
       },
-      "example": "One more thing worth naming: engineers combining this domain with AI exposure are commanding 20–30% premiums in competitive metros. If the requisition drifts in"
+      "example": "One thing worth naming: sodium-ion cells and fast-charge thermal design are the hot specialties, and specialty demand can push candidates toward the top of any "
     },
     "comp.range": {
       "type": "currency_range",
@@ -368,9 +414,9 @@
       ],
       "words": {
         "min": 1,
-        "max": 5
+        "max": 1
       },
-      "example": "$120–145K"
+      "example": "$66-83K"
     },
     "comp.readout": {
       "type": "prose_long",
@@ -379,10 +425,10 @@
         "TK_02"
       ],
       "words": {
-        "min": 23,
-        "max": 41
+        "min": 24,
+        "max": 65
       },
-      "example": "Read-out: competitive through the middle of the market, not at the top. Expect to lose the top decile on cash and win on scope, cadence, and equity upside. Say "
+      "example": "Read-out: the posted band sits inside the sourced band and reaches toward its upper half, fair for a small hardware employer. This is an Estimate, not a survey:"
     },
     "comp.total": {
       "type": "empty_cell",
@@ -401,10 +447,10 @@
         "TK_00"
       ],
       "words": {
-        "min": 55,
-        "max": 55
+        "min": 50,
+        "max": 50
       },
-      "example": "Saw your write-up on cutting bring-up time on the test rig. The part about faking sensor dropout instead of waiting for hardware is exactly the argument we keep"
+      "example": "Saw your write-up on shortening test-rig turnaround. The part about instrumenting for the worst run instead of the best one is exactly the argument we keep losi"
     },
     "copy.subject": {
       "type": "prose_short",
@@ -415,7 +461,7 @@
         "min": 6,
         "max": 6
       },
-      "example": "your HIL rig talk: one question"
+      "example": "your abuse-test campaign talk: one question"
     },
     "cover.compliance": {
       "type": "prose_short",
@@ -426,7 +472,7 @@
         "min": 6,
         "max": 6
       },
-      "example": "Reviewed for gendered + ableist language"
+      "example": "Reviewed for EEO + gendered/ableist language"
     },
     "cover.note": {
       "type": "prose_short",
@@ -439,10 +485,10 @@
         "TK_09"
       ],
       "words": {
-        "min": 3,
-        "max": 13
+        "min": 4,
+        "max": 20
       },
-      "example": "Behind at 15 min? Cut logistics, never the spot-checks"
+      "example": "Section 3 (the glossary) and Section 10 (the cheat sheet) are the two to keep open on a live call"
     },
     "cover.provenance": {
       "type": "prose_short",
@@ -450,10 +496,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 8,
-        "max": 8
+        "min": 9,
+        "max": 9
       },
-      "example": "Ratios reliable · absolute counts are planning numbers"
+      "example": "Ratios hold · treat absolute counts as planning figures"
     },
     "crit.item": {
       "type": "prose_short",
@@ -461,10 +507,10 @@
         "TK_08"
       ],
       "words": {
-        "min": 8,
-        "max": 8
+        "min": 9,
+        "max": 9
       },
-      "example": "Two of three spot-checks at Good or better"
+      "example": "Two of the three spot-checks graded Good or better"
     },
     "crit.level": {
       "type": "chip",
@@ -491,10 +537,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 6,
-        "max": 6
+        "min": 16,
+        "max": 16
       },
-      "example": "Is domain heritage required or preferred?"
+      "example": "Is a specific cell chemistry required, or is core pack design plus thermal and electrical enough?"
     },
     "demand.name": {
       "type": "label",
@@ -502,10 +548,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 8,
-        "max": 8
+        "min": 6,
+        "max": 6
       },
-      "example": "Autonomy & robotics AV programs, humanoids, drones, eVTOL"
+      "example": "EV makers startups and established automakers"
     },
     "demand.read": {
       "type": "prose_short",
@@ -513,10 +559,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 13,
-        "max": 13
+        "min": 12,
+        "max": 12
       },
-      "example": "Identical profile. Also your best source pool: they're competitor and supplier at once."
+      "example": "Identical profile and your toughest poach. Compete on ownership scope, not prestige."
     },
     "demand.reqs": {
       "type": "count_range",
@@ -527,7 +573,7 @@
         "min": 1,
         "max": 1
       },
-      "example": "700–1,000"
+      "example": "600-900"
     },
     "demand.velocity": {
       "type": "chip",
@@ -558,7 +604,7 @@
         "min": 3,
         "max": 4
       },
-      "example": "Agent · INTERVIEW LAB"
+      "example": "Agent · RECRUITER SCREEN"
     },
     "doc.date": {
       "type": "prose_short",
@@ -575,9 +621,9 @@
       ],
       "words": {
         "min": 2,
-        "max": 8
+        "max": 10
       },
-      "example": "30 min · schedule within 48h of sourcing"
+      "example": "30 min · run within 48 hours of first contact"
     },
     "doc.eyebrow": {
       "type": "prose_short",
@@ -596,7 +642,7 @@
         "min": 5,
         "max": 6
       },
-      "example": "Artifact 07 · Intake & calibration"
+      "example": "Artifact 09 · Interviewer readiness"
     },
     "doc.thesis": {
       "type": "prose_long",
@@ -612,10 +658,10 @@
         "TK_09"
       ],
       "words": {
-        "min": 24,
-        "max": 48
+        "min": 25,
+        "max": 52
       },
-      "example": "A search fails in the intake meeting long before it fails in the pipeline. This pack gives you a data-backed script for that first conversation: what the market"
+      "example": "A battery search fails in the intake meeting long before it fails on the test rig. This pack is a data-backed script for that first conversation: what the marke"
     },
     "doc.title": {
       "type": "label",
@@ -645,7 +691,7 @@
         "min": 12,
         "max": 12
       },
-      "example": "Equity with room left to run, one engineer per subsystem, sustainable intensity."
+      "example": "Own a full subsystem, not a slice, on a faster test loop."
     },
     "dossier.flag": {
       "type": "chip",
@@ -656,7 +702,7 @@
         "min": 2,
         "max": 2
       },
-      "example": "Trigger live",
+      "example": "None negative",
       "review": false,
       "note": "controlled vocabulary: Trigger live / None negative. Fixed vocabulary, case-insensitive match: Trigger live / None negative.",
       "human_reviewed": true,
@@ -682,8 +728,8 @@
         "TK_03"
       ],
       "words": {
-        "min": 19,
-        "max": 19
+        "min": 20,
+        "max": 20
       },
       "example": "The largest single concentration of field-proven battery talent. Pack design and validation orgs are the closest match to this role."
     },
@@ -693,10 +739,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 24,
-        "max": 24
+        "min": 22,
+        "max": 22
       },
-      "example": "Reported liquidity event in preparation. Vesting math makes some engineers immovable and pushes others to bank the win and chase the next early-equity story."
+      "example": "Post-liquidity and vest-cliff windows recur at scaled players. Some engineers bank the win and chase the next early-equity story; others turn immovable."
     },
     "e1.body": {
       "type": "prose_long",
@@ -704,10 +750,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 81,
-        "max": 81
+        "min": 99,
+        "max": 99
       },
-      "example": "[[FirstName]], Your [[SpecificProject]] work at [[CurrentCompany]] reads like someone who debugs at the hardware line rather than above it. Here's a problem you"
+      "example": "[[FirstName]], Your [[SpecificProject]] work at [[CurrentCompany]] reads like someone who trusts test data over intuition, which is rarer than it should be in b"
     },
     "e1.subjA": {
       "type": "prose_short",
@@ -715,10 +761,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 7,
-        "max": 7
+        "min": 6,
+        "max": 6
       },
-      "example": "the only wrench that reaches 22,000 miles"
+      "example": "the failure mode most reviews miss"
     },
     "e1.subjB": {
       "type": "prose_short",
@@ -726,8 +772,8 @@
         "TK_05"
       ],
       "words": {
-        "min": 7,
-        "max": 7
+        "min": 9,
+        "max": 9
       },
       "example": "for the engineer who already owns half the pack"
     },
@@ -737,10 +783,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 66,
-        "max": 66
+        "min": 92,
+        "max": 92
       },
-      "example": "[[FirstName]], Straight status, no games: we're making one hire on this team this cycle, the loop runs about two weeks start to finish, and the panel is made up"
+      "example": "[[FirstName]], Straight status: we're filling one battery seat this cycle, the loop runs about two weeks start to finish, and the panel is engineers who have ru"
     },
     "e4.note": {
       "type": "prose_short",
@@ -748,10 +794,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 22,
-        "max": 22
+        "min": 36,
+        "max": 36
       },
-      "example": "Only send if literally true. Manufactured urgency is detectable and permanently expensive with this audience. If there are two openings, say two."
+      "example": "Send this only if it is true. A fabricated deadline is easy to spot and costly to be caught in with an audience that reads specs for a living. If two seats are "
     },
     "e4.subj": {
       "type": "label",
@@ -759,10 +805,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 2,
-        "max": 2
+        "min": 5,
+        "max": 5
       },
-      "example": "timing, plainly",
+      "example": "where the search actually stands",
       "review": false,
       "note": "a short subject-line fragment, 2-4 words.",
       "human_reviewed": true
@@ -773,8 +819,8 @@
         "TK_01"
       ],
       "words": {
-        "min": 34,
-        "max": 34
+        "min": 47,
+        "max": 47
       },
       "example": "A bachelor's in electrical, mechanical, or chemical engineering is typical, and a master's is common for design roles. Coursework or project work in batteries o"
     },
@@ -784,8 +830,8 @@
         "TK_01"
       ],
       "words": {
-        "min": 26,
-        "max": 26
+        "min": 30,
+        "max": 30
       },
       "example": "Adjacent-industry engineers. EV powertrain, power-electronics, and consumer-electronics engineers bring cell, thermal, and safety fluency directly. Under-recrui"
     },
@@ -795,8 +841,8 @@
         "TK_01"
       ],
       "words": {
-        "min": 32,
-        "max": 32
+        "min": 36,
+        "max": 36
       },
       "example": "Builders and field-service crossovers. E-bike and home-battery builders, university solar-car or Formula Electric teams, and EV or solar field technicians. Some"
     },
@@ -820,7 +866,7 @@
         "min": 8,
         "max": 8
       },
-      "example": "E2 · day 3 · credibility + belonging"
+      "example": "E2 · day 3 · credibility and belonging"
     },
     "email.meta": {
       "type": "count",
@@ -831,7 +877,7 @@
         "min": 2,
         "max": 2
       },
-      "example": "92 words",
+      "example": "89 words",
       "review": false,
       "note": "a word count, e.g. \"92 words\"; always the pattern \"<n> words\".",
       "human_reviewed": true
@@ -842,10 +888,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 24,
-        "max": 24
+        "min": 23,
+        "max": 23
       },
-      "example": "Every claim is externally verifiable, which is the whole point. \"Not a recruiter pitch\" is a real promise: honour it or don't write it."
+      "example": "Every claim is independently checkable, which is the point. \"Not a recruiter pitch\" is a real promise: keep it or don't make it."
     },
     "email.subjA": {
       "type": "prose_short",
@@ -853,8 +899,8 @@
         "TK_05"
       ],
       "words": {
-        "min": 5,
-        "max": 5
+        "min": 6,
+        "max": 6
       },
       "example": "five abuse tests, zero anomalies logged"
     },
@@ -867,7 +913,7 @@
         "min": 4,
         "max": 4
       },
-      "example": "who you'd build with"
+      "example": "who you'd test with"
     },
     "ex.term": {
       "type": "label",
@@ -875,10 +921,64 @@
         "TK_01"
       ],
       "words": {
-        "min": 1,
-        "max": 1
+        "min": 2,
+        "max": 2
       },
-      "example": "intern"
+      "example": "sales role"
+    },
+    "field.label": {
+      "type": "label",
+      "templates": [
+        "TK_09"
+      ],
+      "example": "Technical depth",
+      "words": {
+        "min": 2,
+        "max": 2
+      }
+    },
+    "field.prompt": {
+      "type": "label",
+      "templates": [
+        "TK_09"
+      ],
+      "example": "Cite the exchange that earned this score. An adjective alone is not a valid entry.",
+      "words": {
+        "min": 15,
+        "max": 15
+      }
+    },
+    "field.type": {
+      "type": "label",
+      "templates": [
+        "TK_09"
+      ],
+      "example": "Rating 1 to 4",
+      "words": {
+        "min": 4,
+        "max": 4
+      }
+    },
+    "footer.left": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_07",
+        "TK_08",
+        "TK_09"
+      ],
+      "words": {
+        "min": 4,
+        "max": 5
+      },
+      "example": "TK-07 · Hiring Manager Calibration",
+      "renderer_owned": true,
+      "note": "Renderer-owned chrome. Included for template inventory only; excluded from agent content schemas."
     },
     "footer.right": {
       "type": "prose_short",
@@ -907,10 +1007,10 @@
         "TK_04"
       ],
       "words": {
-        "min": 35,
-        "max": 35
+        "min": 39,
+        "max": 39
       },
-      "example": "At 60 sequenced per week, benchmark math delivers a hire in roughly six weeks of pipeline plus loop time. That lands inside the industry average and is the basi"
+      "example": "Working backward from one hire: 2 offers at an 82% offer-to-accept rate, 8 onsites at 25% onsite-to-offer, 22 screens at 37% screen-to-onsite. Every rate comes "
     },
     "funnel.note.2": {
       "type": "prose_long",
@@ -918,10 +1018,10 @@
         "TK_04"
       ],
       "words": {
-        "min": 44,
-        "max": 44
+        "min": 39,
+        "max": 39
       },
-      "example": "Two levers beat the benchmark: personalisation discipline (artifact 05 targets above 30% reply on the high-touch tier) and loop speed. Panels now run substantia"
+      "example": "The volume cost of a concentrated pool: those 22 screens need 550 contacts at the realistic 4% drought rate for this search, not the 367 a general 6% software-r"
     },
     "gate.1": {
       "type": "prose_long",
@@ -934,9 +1034,9 @@
       ],
       "words": {
         "min": 16,
-        "max": 46
+        "max": 66
       },
-      "example": "If the feedback SLA is not agreed in this meeting, say plainly that the timeline target becomes 70+ days, and record that in the recap. Silent slippage is what "
+      "example": "If the feedback SLA is not agreed in this meeting, say plainly that the time-to-fill target moves out, and record that in the recap. A scarce, mid-career batter"
     },
     "gate.2": {
       "type": "prose_short",
@@ -944,10 +1044,10 @@
         "TK_06"
       ],
       "words": {
-        "min": 21,
-        "max": 21
+        "min": 28,
+        "max": 28
       },
-      "example": "Treats the hardware team as an obstacle rather than a peer. Unfixable on a four-person team that sits next to them."
+      "example": "Treats the cell partner as an obstacle rather than a peer, and cannot name a test result that once changed their mind. Unworkable on a team this small."
     },
     "gauge.note": {
       "type": "prose_short",
@@ -956,10 +1056,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 8,
-        "max": 14
+        "min": 10,
+        "max": 29
       },
-      "example": "Benchmarks to beat: 82% open, 26% reply, 14% interested. High-touch tier targets above 30%."
+      "example": "Benchmarks to beat: 68% open, 18% reply, 9% interested. Estimate: a public industry benchmark, name the report and year when you fill this, discounted for a sca"
     },
     "gauge.value": {
       "type": "percent",
@@ -981,13 +1081,14 @@
         "TK_02",
         "TK_06",
         "TK_07",
-        "TK_08"
+        "TK_08",
+        "TK_09"
       ],
       "words": {
-        "min": 8,
-        "max": 16
+        "min": 9,
+        "max": 32
       },
-      "example": "Recruiter is non-technical. No engineer present at the screen. Degree is a proxy, not a gate."
+      "example": "Recruiter is non-technical. No engineer at the recruiter screen. Degree is a proxy, not a gate. Most battery test work is onsite by nature (test rigs, hardware)"
     },
     "handoff.blocked": {
       "type": "prose_short",
@@ -999,13 +1100,15 @@
         "TK_04",
         "TK_05",
         "TK_06",
-        "TK_07"
+        "TK_07",
+        "TK_08",
+        "TK_09"
       ],
       "words": {
-        "min": 4,
-        "max": 14
+        "min": 1,
+        "max": 24
       },
-      "example": "Verifiable proof points from the client · one real open problem from the HM"
+      "example": "Real funding and milestone facts from Harborlight Energy, plus one real open technical problem from the hiring manager, to replace the bracketed tokens througho"
     },
     "handoff.calibration": {
       "type": "prose_long",
@@ -1013,8 +1116,8 @@
         "TK_03"
       ],
       "words": {
-        "min": 32,
-        "max": 32
+        "min": 38,
+        "max": 38
       },
       "example": "Keep battery pack design and thermal and electrical fundamentals as must-have; cell behaviour and abuse test stay calibrated; CAD/analysis and shipped-systems f"
     },
@@ -1024,10 +1127,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 20,
-        "max": 20
+        "min": 40,
+        "max": 40
       },
-      "example": "No banned phrases · single CTA per touch · every claim externally verifiable · SMS gated to candidate reply only"
+      "example": "No phrases outside the reference list · one call to action per touch · every number carries a Sourced or Estimate pill · SMS gated to candidate reply only · eve"
     },
     "handoff.consumers": {
       "type": "prose_short",
@@ -1039,35 +1142,15 @@
         "TK_04",
         "TK_05",
         "TK_06",
-        "TK_07"
+        "TK_07",
+        "TK_08",
+        "TK_09"
       ],
       "words": {
-        "min": 8,
-        "max": 17
+        "min": 6,
+        "max": 24
       },
-      "example": "02 Job Description · 04 Sourcing Strategy · 05 Outreach Campaign · 07 HM Calibration"
-    },
-    "handoff.flags": {
-      "type": "prose_short",
-      "templates": [
-        "TK_08"
-      ],
-      "words": {
-        "min": 22,
-        "max": 22
-      },
-      "example": "Great or Exceptional on any spot-check → raise starting difficulty · C-primary background accepted under the willing-to-learn flex → probe learning velocity"
-    },
-    "handoff.next": {
-      "type": "prose_short",
-      "templates": [
-        "TK_08"
-      ],
-      "words": {
-        "min": 9,
-        "max": 9
-      },
-      "example": "Technical 1 · live coding, within 5 business days"
+      "example": "01 Brief · 02 Job Description · 03 Talent Map · 04 Sourcing · 05 Outreach · 06 Interview Plan · 08 Recruiter Screen"
     },
     "handoff.produces": {
       "type": "prose_short",
@@ -1080,13 +1163,14 @@
         "TK_05",
         "TK_06",
         "TK_07",
-        "TK_08"
+        "TK_08",
+        "TK_09"
       ],
       "words": {
         "min": 7,
         "max": 23
       },
-      "example": "market_tight · supply_demand_3:1 · difficulty_7.5 · engageable_6-8K · comp_posture_P60-75 · geo_sequence · peripheral_pools[6] · personas[3]"
+      "example": "market · funnel · comp_guidance · tier1_targets[] · peripheral[] · geo_sequence[] · personas[] · market_urgency · comp_messaging · pain_point_angles[] · cross_i"
     },
     "handoff.tokens": {
       "type": "prose_short",
@@ -1094,10 +1178,10 @@
         "TK_04"
       ],
       "words": {
-        "min": 9,
-        "max": 9
+        "min": 7,
+        "max": 7
       },
-      "example": "[[FirstName]] · [[CurrentCompany]] · [[SpecificProject]] · [[TechSignal]] · [[MutualConnection]]"
+      "example": "[[FirstName]] · [[CurrentCompany]] · [[SpecificProject]] · [[TestSignal]]"
     },
     "heat.label": {
       "type": "label",
@@ -1158,7 +1242,7 @@
         "min": 8,
         "max": 8
       },
-      "example": "AV programs, consumer hardware, eVTOL, local alumni network"
+      "example": "EV makers, storage startups, component suppliers, power electronics"
     },
     "hub.count": {
       "type": "count",
@@ -1190,7 +1274,7 @@
       ],
       "words": {
         "min": 4,
-        "max": 5
+        "max": 6
       },
       "example": "San Francisco Bay Area primary cluster"
     },
@@ -1200,10 +1284,10 @@
         "TK_00"
       ],
       "words": {
-        "min": 8,
-        "max": 8
+        "min": 9,
+        "max": 9
       },
-      "example": "Primes plus three launch startups; densest single market."
+      "example": "EV makers plus three storage startups; densest single market."
     },
     "hub.ownership": {
       "type": "percent",
@@ -1214,7 +1298,7 @@
         "min": 1,
         "max": 1
       },
-      "example": "56%"
+      "example": "High"
     },
     "hub.pool": {
       "type": "count_range",
@@ -1225,7 +1309,7 @@
         "min": 1,
         "max": 1
       },
-      "example": "1,800–2,400"
+      "example": "2,000-2,800"
     },
     "hub.relo": {
       "type": "prose_short",
@@ -1233,10 +1317,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 4,
-        "max": 4
+        "min": 3,
+        "max": 3
       },
-      "example": "Local · no friction"
+      "example": "Anchor · in-cluster"
     },
     "hub.tax": {
       "type": "empty_cell",
@@ -1258,10 +1342,10 @@
         "TK_08"
       ],
       "words": {
-        "min": 27,
-        "max": 50
+        "min": 35,
+        "max": 58
       },
-      "example": "Beyond the two-Bad-answers rule, you are not qualified to reject on technical depth from this call, and you should not try. Advance anyone who clears the spot-c"
+      "example": "The disciplines one step away, EV battery validation, power electronics, consumer-electronics battery qualification, and grid-scale storage integration, often h"
     },
     "iq.extract": {
       "type": "prose_short",
@@ -1269,10 +1353,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 23,
-        "max": 23
+        "min": 30,
+        "max": 30
       },
-      "example": "Extracts Concrete scope for the posting and the interview scenarios. A vague answer here predicts a vague search: push twice before moving on."
+      "example": "Extracts Concrete scope for the posting and the interview scenarios: which hardware, which tests, which analysis. A vague answer here predicts a vague search, s"
     },
     "iq.text": {
       "type": "prose_short",
@@ -1280,10 +1364,21 @@
         "TK_07"
       ],
       "words": {
-        "min": 23,
-        "max": 23
+        "min": 26,
+        "max": 26
       },
-      "example": "\"What does success look like in the first 90 days, and what will this person have shipped by the end of year one?\""
+      "example": "\"What does success look like in the first 90 days, and what will this engineer have designed, analyzed, or tested by the end of year one?\""
+    },
+    "jd.benefits": {
+      "type": "prose_short",
+      "templates": [
+        "TK_02"
+      ],
+      "words": {
+        "min": 21,
+        "max": 21
+      },
+      "example": "Base range reflects the posted location. Compensation also includes equity, health coverage, retirement plan, and paid time off. Open until filled."
     },
     "jd.close": {
       "type": "prose_long",
@@ -1291,10 +1386,21 @@
         "TK_02"
       ],
       "words": {
-        "min": 31,
-        "max": 31
+        "min": 64,
+        "max": 64
       },
       "example": "Direct home-storage experience is not required and is not an edge in our screen. The same problem, a large amount of stored energy kept cool and safe in hardwar"
+    },
+    "jd.eeo": {
+      "type": "prose_long",
+      "templates": [
+        "TK_02"
+      ],
+      "words": {
+        "min": 33,
+        "max": 33
+      },
+      "example": "We are an equal opportunity employer. All qualified applicants will be considered without regard to any characteristic protected by applicable law. If you need "
     },
     "jd.intro": {
       "type": "prose_long",
@@ -1302,8 +1408,8 @@
         "TK_02"
       ],
       "words": {
-        "min": 80,
-        "max": 80
+        "min": 88,
+        "max": 88
       },
       "example": "We build home batteries, and the battery team is small: a handful of engineers and one cell partner. You would own a battery subsystem, not a slice of one. The "
     },
@@ -1313,10 +1419,10 @@
         "TK_02"
       ],
       "words": {
-        "min": 9,
-        "max": 9
+        "min": 11,
+        "max": 11
       },
-      "example": "Hybrid, distributed · $115,000-$155,000 base + equity"
+      "example": "Hybrid, distributed; test work onsite · $115,000-$155,000 base salary + equity"
     },
     "jd.title": {
       "type": "label",
@@ -1324,10 +1430,31 @@
         "TK_02"
       ],
       "words": {
-        "min": 2,
-        "max": 8
+        "min": 3,
+        "max": 3
       },
       "example": "Battery Systems Engineer"
+    },
+    "kit.mark": {
+      "type": "prose_short",
+      "templates": [
+        "TK_01",
+        "TK_02",
+        "TK_03",
+        "TK_04",
+        "TK_05",
+        "TK_06",
+        "TK_07",
+        "TK_08",
+        "TK_09"
+      ],
+      "words": {
+        "min": 4,
+        "max": 4
+      },
+      "example": "Talent One · TK-01",
+      "renderer_owned": true,
+      "note": "Renderer-owned chrome. Included for template inventory only; excluded from agent content schemas."
     },
     "kw.note": {
       "type": "prose_long",
@@ -1335,8 +1462,8 @@
         "TK_01"
       ],
       "words": {
-        "min": 39,
-        "max": 39
+        "min": 38,
+        "max": 38
       },
       "example": "Worth knowing: the market spreads this role across many titles (Battery Systems, Battery Pack, Energy Storage Systems, Battery Test, Cell Engineering). Search a"
     },
@@ -1357,8 +1484,8 @@
         "TK_01"
       ],
       "words": {
-        "min": 1,
-        "max": 1
+        "min": 2,
+        "max": 2
       },
       "example": "energy density"
     },
@@ -1368,8 +1495,8 @@
         "TK_01"
       ],
       "words": {
-        "min": 18,
-        "max": 18
+        "min": 22,
+        "max": 22
       },
       "example": "The whole home battery unit. A different team (systems, firmware) sets the energy, power, and safety requirements this role has to meet."
     },
@@ -1379,10 +1506,10 @@
         "TK_01"
       ],
       "words": {
-        "min": 3,
-        "max": 3
+        "min": 4,
+        "max": 4
       },
-      "example": "Ground / operations"
+      "example": "Product / system level"
     },
     "layer.owned": {
       "type": "prose_long",
@@ -1390,8 +1517,8 @@
         "TK_01"
       ],
       "words": {
-        "min": 30,
-        "max": 30
+        "min": 34,
+        "max": 34
       },
       "example": "Battery pack system ★ core of this role The pack plus its thermal and electrical systems as one integrated subsystem: architecture, requirements, budgets, integ"
     },
@@ -1401,8 +1528,8 @@
         "TK_02"
       ],
       "words": {
-        "min": 5,
-        "max": 5
+        "min": 6,
+        "max": 6
       },
       "example": "Pack design in one chemistry, capability-based"
     },
@@ -1423,13 +1550,24 @@
         "TK_02"
       ],
       "words": {
-        "min": 3,
-        "max": 3
+        "min": 4,
+        "max": 4
       },
-      "example": "120 → 640",
+      "example": "2,600 → 4,900 (est.)",
       "review": false,
       "note": "a before -> after transition, e.g. \"120 -> 640\"; the arrow is load-bearing, never omit either side.",
       "human_reviewed": true
+    },
+    "legal.note": {
+      "type": "label",
+      "templates": [
+        "TK_09"
+      ],
+      "example": "Every candidate for this role gets the same stages, the same questions, and the same rubric. A deviation made for one candidate and not another is the fact patt",
+      "words": {
+        "min": 36,
+        "max": 36
+      }
     },
     "li.body": {
       "type": "prose_long",
@@ -1437,8 +1575,8 @@
         "TK_05"
       ],
       "words": {
-        "min": 38,
-        "max": 38
+        "min": 35,
+        "max": 35
       },
       "example": "[[FirstName]], the [[SpecificProject]] work at [[CurrentCompany]] is the kind of battery depth that gets buried on a big pack team. We're building a small batte"
     },
@@ -1462,7 +1600,7 @@
         "min": 4,
         "max": 4
       },
-      "example": "274 / 300 chars"
+      "example": "234 / 300 chars"
     },
     "li.note": {
       "type": "prose_short",
@@ -1470,10 +1608,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 21,
-        "max": 21
+        "min": 24,
+        "max": 24
       },
-      "example": "\"No pitch attached\" is load-bearing. Send nothing else on this channel for at least two days, or it becomes a lie."
+      "example": "No pitch, no ask, no link. Send nothing else on this channel for at least two days, or the note reads as a setup."
     },
     "log.field": {
       "type": "label",
@@ -1495,10 +1633,10 @@
         "TK_08"
       ],
       "words": {
-        "min": 19,
-        "max": 19
+        "min": 23,
+        "max": 23
       },
-      "example": "\"Where are you based today, and if you're outside the metro, what would a move actually require for you?\""
+      "example": "\"Where are you based today, and if you're outside the metro, what would a move near the test hardware actually require for you?\""
     },
     "method.basis": {
       "type": "prose_short",
@@ -1506,10 +1644,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 5,
-        "max": 5
+        "min": 6,
+        "max": 6
       },
-      "example": "National occupational baseline, software developers"
+      "example": "National employment, engineers in SOC 17-2199"
     },
     "method.pill": {
       "type": "pill",
@@ -1520,7 +1658,7 @@
         "min": 4,
         "max": 4
       },
-      "example": "Sourced · BLS 2024"
+      "example": "Sourced · BLS-OES 2024"
     },
     "method.stage": {
       "type": "label",
@@ -1531,7 +1669,7 @@
         "min": 2,
         "max": 2
       },
-      "example": "~1.7M developers"
+      "example": "68,440 engineers"
     },
     "metric.label": {
       "type": "label",
@@ -1547,7 +1685,7 @@
         "min": 2,
         "max": 3
       },
-      "example": "Market classification"
+      "example": "Candidate profiles reviewed"
     },
     "metric.value": {
       "type": "chip",
@@ -1572,8 +1710,8 @@
         "TK_08"
       ],
       "words": {
-        "min": 27,
-        "max": 27
+        "min": 28,
+        "max": 28
       },
       "example": "Listen for Researched specifics: our hardware, the pack approach, a test they read about. \"Clean energy is cool\" is neutral, not negative. Specifics are a stron"
     },
@@ -1583,10 +1721,10 @@
         "TK_08"
       ],
       "words": {
-        "min": 6,
-        "max": 6
+        "min": 11,
+        "max": 11
       },
-      "example": "\"What drew you to us specifically?\""
+      "example": "\"What drew you to us, and to battery work here specifically?\""
     },
     "node.core": {
       "type": "label",
@@ -1608,10 +1746,10 @@
         "TK_01"
       ],
       "words": {
-        "min": 13,
-        "max": 13
+        "min": 17,
+        "max": 17
       },
-      "example": "Builds the boards this software runs on. Constant back-and-forth: drawings, bring-up, interface debugging."
+      "example": "Designs the enclosure, mounts, and structure the pack bolts into. Constant back-and-forth on loads, interfaces, and packaging."
     },
     "node.name": {
       "type": "label",
@@ -1630,7 +1768,7 @@
         "TK_01"
       ],
       "words": {
-        "min": 2,
+        "min": 3,
         "max": 3
       },
       "example": "Materials & manufacturing"
@@ -1641,8 +1779,8 @@
         "TK_06"
       ],
       "words": {
-        "min": 21,
-        "max": 21
+        "min": 27,
+        "max": 27
       },
       "example": "No big-automaker pedigree. No master's degree. No one specific analysis package. None of these predict battery judgment, and every one of them shrinks an alread"
     },
@@ -1652,10 +1790,10 @@
         "TK_01"
       ],
       "words": {
-        "min": 25,
-        "max": 25
+        "min": 36,
+        "max": 36
       },
-      "example": "Design and prove the battery pack, and the thermal and electrical systems behind it, that store energy and deliver it on demand, and keep it from over"
+      "example": "Design and prove the battery pack, and the thermal and electrical systems behind it, that store energy and deliver it on demand, and keep it from overheating on"
     },
     "note.body": {
       "type": "prose_short",
@@ -1667,9 +1805,9 @@
       ],
       "words": {
         "min": 11,
-        "max": 26
+        "max": 39
       },
-      "example": "Estimate directional, no single published source"
+      "example": "Home and grid storage added tens of thousands of jobs across EVs, utilities, and consumer hardware, and battery demand now outpaces the small qualified pool. As"
     },
     "note.tag": {
       "type": "label",
@@ -1693,8 +1831,8 @@
         "TK_01"
       ],
       "words": {
-        "min": 3,
-        "max": 3
+        "min": 5,
+        "max": 5
       },
       "example": "Demand is outrunning the pool"
     },
@@ -1704,8 +1842,8 @@
         "TK_03"
       ],
       "words": {
-        "min": 5,
-        "max": 5
+        "min": 3,
+        "max": 3
       },
       "example": "EV battery validation"
     },
@@ -1763,8 +1901,8 @@
         "TK_03"
       ],
       "words": {
-        "min": 14,
-        "max": 14
+        "min": 12,
+        "max": 12
       },
       "example": "\"Own a full battery subsystem here, not a slice of someone else's.\""
     },
@@ -1774,10 +1912,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 4,
-        "max": 4
+        "min": 3,
+        "max": 3
       },
-      "example": "The escape-velocity prime engineer"
+      "example": "The field-proven builder"
     },
     "persona.risk": {
       "type": "prose_short",
@@ -1785,10 +1923,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 10,
-        "max": 10
+        "min": 11,
+        "max": 11
       },
-      "example": "Pace shock. Probe for genuine startup appetite at the screen."
+      "example": "May expect big-team resources. Probe for scrappiness on a small team."
     },
     "persona.wants": {
       "type": "prose_short",
@@ -1799,7 +1937,7 @@
         "min": 11,
         "max": 11
       },
-      "example": "Speed, ownership, seeing hardware fly on a timeline measured in months"
+      "example": "Ownership and shipping hardware, a full subsystem rather than a slice"
     },
     "persona.who": {
       "type": "prose_short",
@@ -1810,7 +1948,7 @@
         "min": 11,
         "max": 11
       },
-      "example": "8–15 years at a prime. Deep fundamentals, starved of shipping velocity."
+      "example": "Mid engineer, 4 to 6 years on shipped or test-validated packs."
     },
     "phase.label": {
       "type": "label",
@@ -1820,9 +1958,9 @@
       ],
       "words": {
         "min": 1,
-        "max": 3
+        "max": 4
       },
-      "example": "Calibration & ledger"
+      "example": "Calibration & pool ledger"
     },
     "point.label": {
       "type": "label",
@@ -1831,10 +1969,43 @@
         "TK_03"
       ],
       "words": {
-        "min": 1,
-        "max": 2
+        "min": 2,
+        "max": 3
       },
-      "example": "Founder-mode hardtech"
+      "example": "Harborlight Energy ★"
+    },
+    "prep.focus": {
+      "type": "label",
+      "templates": [
+        "TK_09"
+      ],
+      "example": "Scope fit and ownership appetite. Read the tradeoff lock before the room opens.",
+      "words": {
+        "min": 13,
+        "max": 13
+      }
+    },
+    "prep.meta": {
+      "type": "label",
+      "templates": [
+        "TK_09"
+      ],
+      "example": "45 min · HM",
+      "words": {
+        "min": 4,
+        "max": 4
+      }
+    },
+    "prep.stage": {
+      "type": "label",
+      "templates": [
+        "TK_09"
+      ],
+      "example": "Hiring manager",
+      "words": {
+        "min": 2,
+        "max": 2
+      }
     },
     "prompt.flag": {
       "type": "prose_short",
@@ -1842,10 +2013,10 @@
         "TK_08"
       ],
       "words": {
-        "min": 17,
-        "max": 17
+        "min": 19,
+        "max": 19
       },
-      "example": "Red flagSupervisory-only exposure. Cannot name what they personally wrote. Describes the team's work in first-person plural throughout."
+      "example": "Red flagSupervisory-only exposure. Cannot name what they personally designed or tested. Describes the team's work in first-person plural throughout."
     },
     "prompt.listen": {
       "type": "prose_long",
@@ -1853,10 +2024,10 @@
         "TK_08"
       ],
       "words": {
-        "min": 26,
-        "max": 26
+        "min": 33,
+        "max": 33
       },
-      "example": "Listen forNamed products, fleet sizes, and their specific piece of it. \"I owned the bootloader on the second-generation board\" is what a good answer sounds like"
+      "example": "Listen forNamed programs, cell chemistries or pack types, test campaigns, and their specific piece of it. \"I owned the cooling-plate redesign on our second abus"
     },
     "prompt.text": {
       "type": "prose_short",
@@ -1864,10 +2035,10 @@
         "TK_08"
       ],
       "words": {
-        "min": 20,
-        "max": 20
+        "min": 24,
+        "max": 24
       },
-      "example": "\"Walk me through your path in about three minutes, with emphasis on the hardware your software has actually shipped on.\""
+      "example": "\"Walk me through your path in about three minutes, with emphasis on the battery hardware your work has actually shipped or been tested on.\""
     },
     "pullstat.claim": {
       "type": "prose_short",
@@ -1876,10 +2047,10 @@
         "TK_04"
       ],
       "words": {
-        "min": 21,
-        "max": 24
+        "min": 25,
+        "max": 26
       },
-      "example": "1.7 million becomes 6–8 thousand after five filters. Four of those five filters are choices someone made, and three of them are still negotiable."
+      "example": "Sourced candidates convert at about 2% application-to-hire versus roughly 0.4% for inbound applicants, and clear the initial screen far more often: about 44% ve"
     },
     "pullstat.label": {
       "type": "label",
@@ -1888,10 +2059,10 @@
         "TK_04"
       ],
       "words": {
-        "min": 9,
-        "max": 9
+        "min": 10,
+        "max": 10
       },
-      "example": "Of US software developers are engageable for this role"
+      "example": "Of the national engineering base are engageable for this search"
     },
     "pullstat.method": {
       "type": "prose_short",
@@ -1900,10 +2071,10 @@
         "TK_04"
       ],
       "words": {
-        "min": 4,
-        "max": 8
+        "min": 8,
+        "max": 16
       },
-      "example": "BLS baseline × documented filters · see methodology"
+      "example": "Recruiting funnel benchmark · public industry benchmark, name the report and year when you fill this"
     },
     "pullstat.value": {
       "type": "metric",
@@ -1915,7 +2086,7 @@
         "min": 1,
         "max": 1
       },
-      "example": "0.4%",
+      "example": "~2%",
       "note": "The single big pull-stat number. Unit varies genuinely by artifact: TK_03 uses a percent (\"0.4%\"), TK_04 a multiplier (\"5x\"). One slot name, two legitimate formats, so this is its own type: numeric core required, unit suffix open."
     },
     "q.owner": {
@@ -1927,7 +2098,7 @@
         "min": 6,
         "max": 6
       },
-      "example": "Tech 2 · debug under uncertainty"
+      "example": "Tech 2 · battery test anomaly"
     },
     "q.strong": {
       "type": "prose_short",
@@ -1935,10 +2106,10 @@
         "TK_06"
       ],
       "words": {
-        "min": 24,
-        "max": 24
+        "min": 28,
+        "max": 28
       },
-      "example": "Forms a hypothesis before touching anything. Asks what changed. Orders checks by cost, not by suspicion. Says out loud what would disprove each theory."
+      "example": "Separates measurement from physics: checks thermocouple placement and rig calibration before touching the design. Asks what changed since the last good run. Nam"
     },
     "q.text": {
       "type": "prose_short",
@@ -1946,10 +2117,10 @@
         "TK_06"
       ],
       "words": {
-        "min": 24,
-        "max": 24
+        "min": 27,
+        "max": 27
       },
-      "example": "\"Here is a trace from a system that reboots every forty minutes under load. Walk me through what you would rule out, in order.\""
+      "example": "\"A cycling run shows one module six degrees hotter than its neighbours, but the cell voltages look nominal. Walk me through what you rule out, in order.\""
     },
     "q.time": {
       "type": "duration",
@@ -1968,10 +2139,10 @@
         "TK_06"
       ],
       "words": {
-        "min": 22,
-        "max": 22
+        "min": 28,
+        "max": 28
       },
-      "example": "Names a likely culprit immediately and stays with it. Reaches for tools before questions. Cannot say what evidence would change their mind."
+      "example": "Blames the cooling plate at once and redesigns it. Trusts the temperature reading without checking the rig or the sensors. Cannot say what evidence would change"
     },
     "rec.action": {
       "type": "prose_short",
@@ -1979,10 +2150,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 9,
-        "max": 9
+        "min": 7,
+        "max": 7
       },
-      "example": "Stand up the local autonomy pipeline before anything else"
+      "example": "Open the local Bay Area pipeline first"
     },
     "rec.n": {
       "type": "count",
@@ -2029,8 +2200,8 @@
         "TK_03"
       ],
       "words": {
-        "min": 29,
-        "max": 29
+        "min": 31,
+        "max": 31
       },
       "example": "The largest renter-heavy pool with the deepest battery identity, so most hires need no move. Few small storage companies contest these people, so yield is high "
     },
@@ -2040,10 +2211,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 64,
-        "max": 64
+        "min": 58,
+        "max": 58
       },
-      "example": "The southern coastal hub is your relocation market. Lowest homeownership of the set (a majority-renter population can move on a lease cycle, not a sale) plus th"
+      "example": "The Bay Area is your anchor. It holds the largest renter-heavy pool, so many hires need no move at all, plus the deepest battery identity in the country. Seattl"
     },
     "relo.seq.1": {
       "type": "label",
@@ -2051,10 +2222,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 3,
-        "max": 3
+        "min": 4,
+        "max": 4
       },
-      "example": "1 · Local",
+      "example": "1 · Bay Area",
       "review": false,
       "note": "a ranked sequence entry: \"<n> . <metro name>\".",
       "human_reviewed": true
@@ -2065,10 +2236,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 4,
-        "max": 4
+        "min": 3,
+        "max": 3
       },
-      "example": "2 · Southern coastal"
+      "example": "2 · Seattle"
     },
     "relo.seq.3": {
       "type": "prose_short",
@@ -2076,10 +2247,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 4,
-        "max": 4
+        "min": 5,
+        "max": 5
       },
-      "example": "3 · Northwest, trigger-driven"
+      "example": "3 · Denver, Austin, Boston"
     },
     "relo.seq.skip": {
       "type": "prose_short",
@@ -2087,10 +2258,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 6,
-        "max": 6
+        "min": 4,
+        "max": 4
       },
-      "example": "Skip mountain / central / northeast"
+      "example": "Skip Detroit / Reno"
     },
     "req.item": {
       "type": "prose_short",
@@ -2098,8 +2269,8 @@
         "TK_02"
       ],
       "words": {
-        "min": 17,
-        "max": 17
+        "min": 24,
+        "max": 24
       },
       "example": "Battery pack design in at least one chemistry: LFP, NMC, or another lithium-ion family. You have taken a design from requirements to real hardware."
     },
@@ -2109,8 +2280,8 @@
         "TK_07"
       ],
       "words": {
-        "min": 8,
-        "max": 8
+        "min": 9,
+        "max": 9
       },
       "example": "Battery pack design (LFP, NMC, or another lithium-ion family)"
     },
@@ -2120,10 +2291,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 16,
-        "max": 16
+        "min": 28,
+        "max": 28
       },
-      "example": "Hold. This is the core signal and the interview loop is built to verify it precisely."
+      "example": "Hold. This is the core signal and the deep-dive is built to verify it. Defining the search around it, not one specific chemistry, keeps the small pool open."
     },
     "req.verdict": {
       "type": "chip",
@@ -2150,8 +2321,8 @@
         "TK_01"
       ],
       "words": {
-        "min": 15,
-        "max": 15
+        "min": 21,
+        "max": 21
       },
       "example": "Cells, modules, busbars, enclosure, and cooling. Turn product requirements into a pack that delivers the right energy and power without failing."
     },
@@ -2161,8 +2332,8 @@
         "TK_02"
       ],
       "words": {
-        "min": 18,
-        "max": 18
+        "min": 21,
+        "max": 21
       },
       "example": "Design and analyze a battery subsystem end to end: what it must do, how it is sized, how it is verified."
     },
@@ -2172,10 +2343,10 @@
         "TK_01"
       ],
       "words": {
-        "min": 4,
-        "max": 4
+        "min": 6,
+        "max": 6
       },
-      "example": "Write the onboard software"
+      "example": "Design the pack and its parts"
     },
     "role.org": {
       "type": "prose_short",
@@ -2191,10 +2362,10 @@
         "TK_09"
       ],
       "words": {
-        "min": 6,
-        "max": 9
+        "min": 8,
+        "max": 12
       },
-      "example": "Connected-hardware company · small battery team, one cell partner"
+      "example": "Harborlight Energy · Hybrid, distributed · Small battery team, one cell partner"
     },
     "role.title": {
       "type": "label",
@@ -2210,10 +2381,10 @@
         "TK_09"
       ],
       "words": {
-        "min": 4,
-        "max": 4
+        "min": 3,
+        "max": 6
       },
-      "example": "Battery Systems Engineer · Mid"
+      "example": "Battery Systems Engineer · Mid-Level"
     },
     "ros.objective": {
       "type": "prose_long",
@@ -2221,10 +2392,10 @@
         "TK_08"
       ],
       "words": {
-        "min": 26,
-        "max": 26
+        "min": 25,
+        "max": 25
       },
-      "example": "\"Thirty minutes. I'll cover the role and the team, ask you a few things about what you've built, and leave time for your questions. Sound right?\""
+      "example": "\"Thirty minutes. I'll cover the role and the team, ask you about battery work you've actually done, and leave time for your questions. Sound right?\""
     },
     "ros.segment": {
       "type": "label",
@@ -2272,10 +2443,10 @@
         "TK_09"
       ],
       "words": {
-        "min": 18,
-        "max": 85
+        "min": 20,
+        "max": 83
       },
-      "example": "They write the software that runs inside the machine rather than beside it. There is no operating system to fall back on, no way to reach in and patch it once i"
+      "example": "They design the battery pack, and the thermal and electrical systems around it, that store energy and hand it back on demand, then they prove it on a test rig b"
     },
     "s1.body2": {
       "type": "prose_long",
@@ -2283,10 +2454,10 @@
         "TK_01"
       ],
       "words": {
-        "min": 55,
-        "max": 55
+        "min": 46,
+        "max": 46
       },
-      "example": "Two things follow from that, and both matter for how you talk to candidates. First, these engineers are unusually specific. Vague enthusiasm reads as a lack of "
+      "example": "Two things follow, and both change how you talk to candidates. First, they are precise: vague enthusiasm reads as not-serious. Second, they respect failure as a"
     },
     "s1.title": {
       "type": "label",
@@ -2301,10 +2472,10 @@
         "TK_09"
       ],
       "words": {
-        "min": 2,
-        "max": 7
+        "min": 4,
+        "max": 9
       },
-      "example": "The constraint is overlap, not headcount"
+      "example": "What a battery systems engineer actually does all day"
     },
     "s10.body": {
       "type": "prose_long",
@@ -2313,10 +2484,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 16,
-        "max": 28
+        "min": 17,
+        "max": 26
       },
-      "example": "Left column is what to say. Right column is the version that costs you the candidate, and the reason why. Specificity is the entire game with this audience."
+      "example": "Left column is what to say. Right column is the version that costs you the candidate, and why. Specificity is the entire game with this audience."
     },
     "s10.title": {
       "type": "label",
@@ -2325,10 +2496,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 3,
+        "min": 4,
         "max": 4
       },
-      "example": "Credibility cheat sheet"
+      "example": "The credibility cheat sheet"
     },
     "s2.body": {
       "type": "prose_long",
@@ -2343,10 +2514,10 @@
         "TK_09"
       ],
       "words": {
-        "min": 18,
-        "max": 46
+        "min": 21,
+        "max": 48
       },
-      "example": "Use this to place any candidate in thirty seconds. Ask them: \"which of these layers have you lived in?\" The marked layers are this role. One layer away is an ad"
+      "example": "Copy-paste ready, filters and all. Each card states expected volume and the pool it deliberately misses, because naming the blind spot tells the recruiter which"
     },
     "s2.title": {
       "type": "label",
@@ -2361,10 +2532,10 @@
         "TK_09"
       ],
       "words": {
-        "min": 2,
-        "max": 7
+        "min": 4,
+        "max": 10
       },
-      "example": "Where the role sits, layer by layer"
+      "example": "Where the role sits in the product, layer by layer"
     },
     "s3.body": {
       "type": "prose_long",
@@ -2379,10 +2550,10 @@
         "TK_09"
       ],
       "words": {
-        "min": 14,
-        "max": 44
+        "min": 18,
+        "max": 60
       },
-      "example": "The middle column is what you say to a non-engineer. The right column is why the term matters, which is what lets you ask a follow-up question instead of noddin"
+      "example": "The middle column is what you say to a non-engineer. The right column is why the term matters, which is what lets you ask a real follow-up instead of nodding. U"
     },
     "s3.body2": {
       "type": "prose_long",
@@ -2393,7 +2564,7 @@
         "min": 36,
         "max": 36
       },
-      "example": "Write down their actual phrases even when you don't follow them. Those phrases are what the technical interviewer uses to calibrate their own session, and they "
+      "example": "Write down their actual phrases even when you don't follow them. Those phrases are what the battery interviewer uses to calibrate their own session, and they ar"
     },
     "s3.title": {
       "type": "label",
@@ -2408,10 +2579,10 @@
         "TK_09"
       ],
       "words": {
-        "min": 3,
+        "min": 4,
         "max": 7
       },
-      "example": "Technical spot-checks, with answer keys"
+      "example": "Battery spot-checks, with answer keys"
     },
     "s4.body": {
       "type": "prose_long",
@@ -2425,10 +2596,10 @@
         "TK_09"
       ],
       "words": {
-        "min": 18,
-        "max": 42
+        "min": 20,
+        "max": 53
       },
-      "example": "You are not assessing any of this yourself. Your job is to know which stage in the loop owns each skill, so you can tell a hiring manager where a concern will b"
+      "example": "You are not assessing any of this yourself. Your job is to know which stage in the loop owns each skill, so you can tell a hiring manager where a concern gets a"
     },
     "s4.title": {
       "type": "label",
@@ -2442,10 +2613,10 @@
         "TK_09"
       ],
       "words": {
-        "min": 3,
+        "min": 4,
         "max": 8
       },
-      "example": "The bar, and how each one gets checked"
+      "example": "The real bar, and who checks each skill"
     },
     "s5.body": {
       "type": "prose_long",
@@ -2457,10 +2628,10 @@
         "TK_08"
       ],
       "words": {
-        "min": 28,
-        "max": 38
+        "min": 27,
+        "max": 60
       },
-      "example": "Pool size tells you where talent sits. Propensity tells you whether it will move: homeownership rate, housing-cost delta, state tax delta, and industry identity"
+      "example": "Pool size tells you where talent sits. Response tells you whether it moves: historical relocation-acceptance for this role family, housing-cost delta, state-tax"
     },
     "s5.title": {
       "type": "label",
@@ -2472,10 +2643,10 @@
         "TK_08"
       ],
       "words": {
-        "min": 4,
+        "min": 5,
         "max": 8
       },
-      "example": "Fields to fill, and the script for each"
+      "example": "Where battery talent sits, and whether it moves"
     },
     "s6.body": {
       "type": "prose_long",
@@ -2487,10 +2658,10 @@
         "TK_08"
       ],
       "words": {
-        "min": 24,
-        "max": 34
+        "min": 28,
+        "max": 36
       },
-      "example": "A trigger is a dated event that changes someone's willingness to hear from you. Outreach inside 72 hours of a trigger converts several times better than the sam"
+      "example": "These are archetypes, not named employers. A trigger here is a structural condition that raises willingness to move: vest cliffs, roadmap resets, or ceilings on"
     },
     "s6.title": {
       "type": "label",
@@ -2503,9 +2674,9 @@
       ],
       "words": {
         "min": 3,
-        "max": 6
+        "max": 9
       },
-      "example": "Target companies and live triggers"
+      "example": "The phone script, and the texts that follow it"
     },
     "s7.body": {
       "type": "prose_long",
@@ -2518,9 +2689,9 @@
       ],
       "words": {
         "min": 25,
-        "max": 37
+        "max": 54
       },
-      "example": "Tier discipline is the difference between a 26% reply rate and an 8% one. The banned list is not stylistic preference: each phrase measurably reduces reply rate"
+      "example": "Run one test at a time, report weekly, keep the winner. This turns a scarce search into a repeatable capability instead of a one-off scramble, and it is the sec"
     },
     "s7.title": {
       "type": "label",
@@ -2532,10 +2703,10 @@
         "TK_08"
       ],
       "words": {
-        "min": 3,
-        "max": 8
+        "min": 5,
+        "max": 7
       },
-      "example": "Industries solving the same problem under another name"
+      "example": "Same engineering problem, different industry"
     },
     "s8.body": {
       "type": "prose_long",
@@ -2544,10 +2715,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 23,
-        "max": 34
+        "min": 31,
+        "max": 37
       },
-      "example": "The seed list the sourcing strings are built from. Note that the market's dominant title is not the one on your requisition. Search all the synonyms or you will"
+      "example": "Base working ranges modeled from BLS-OES 17-2199 (2024) percentiles, positioned market-mid for a small hardware employer. Modeled ranges are illustrative, not a"
     },
     "s8.title": {
       "type": "label",
@@ -2556,10 +2727,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 2,
+        "min": 5,
         "max": 6
       },
-      "example": "What the market pays, by level"
+      "example": "Battery engineering pay, by level"
     },
     "s9.body": {
       "type": "prose_short",
@@ -2568,10 +2739,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 21,
+        "min": 20,
         "max": 22
       },
-      "example": "Three shifts worth knowing before a hiring-manager conversation. Each one is a place where last year's assumptions are now slightly wrong."
+      "example": "Three shifts worth knowing before a hiring-manager conversation. Each is a place where last year's assumptions are now slightly wrong."
     },
     "s9.title": {
       "type": "label",
@@ -2580,10 +2751,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 3,
+        "min": 6,
         "max": 7
       },
-      "example": "Three people you will actually talk to"
+      "example": "Four people you will actually talk to"
     },
     "sA.body": {
       "type": "prose_long",
@@ -2591,10 +2762,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 29,
-        "max": 29
+        "min": 37,
+        "max": 37
       },
-      "example": "Lead the meeting with these. They reframe the conversation from \"find me a unicorn\" to \"let's make smart trade-offs\", which is the only frame in which this sear"
+      "example": "Lead the meeting with these. They reframe the conversation from \"find me a field-proven unicorn\" to \"let us make smart trade-offs on a small, concentrated pool\""
     },
     "sA.title": {
       "type": "label",
@@ -2602,10 +2773,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 5,
-        "max": 5
+        "min": 6,
+        "max": 6
       },
-      "example": "Market reality, in four numbers"
+      "example": "The battery market, in four numbers"
     },
     "sB.body": {
       "type": "prose_long",
@@ -2613,10 +2784,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 43,
-        "max": 43
+        "min": 45,
+        "max": 45
       },
-      "example": "Salary aggregators disagree because they measure different things: base only against total pay, national against metro, all-industry against sector. Show the hi"
+      "example": "Sources disagree because they measure different things: base only against total pay, entry-skewed postings against sector medians, government series against sel"
     },
     "sB.title": {
       "type": "label",
@@ -2635,10 +2806,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 30,
-        "max": 30
+        "min": 37,
+        "max": 37
       },
-      "example": "Two competitor situations are creating movement right now, and one internal fact makes the pitch unusually strong. All three expire, which is the argument for m"
+      "example": "These are structural, publicly disclosed forces, not a rumored competitor event. Demand for battery talent is climbing across three fronts while the qualified p"
     },
     "sC.title": {
       "type": "label",
@@ -2646,10 +2817,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 6,
-        "max": 6
+        "min": 7,
+        "max": 7
       },
-      "example": "Why this quarter is the window"
+      "example": "Why the demand curve favors moving now"
     },
     "sD.body": {
       "type": "prose_long",
@@ -2660,7 +2831,7 @@
         "min": 34,
         "max": 34
       },
-      "example": "Send this in advance. The order matters: market data first buys you the credibility to renegotiate requirements in the middle, and the SLA lands last because by"
+      "example": "Send this in advance. The order matters: market data first earns the credibility to recalibrate requirements in the middle, and the SLA lands last because by th"
     },
     "sD.title": {
       "type": "label",
@@ -2682,7 +2853,7 @@
         "min": 33,
         "max": 33
       },
-      "example": "Each question exists to extract one thing you cannot source without. The note says what it extracts and what a bad answer tells you: a vague answer here reliabl"
+      "example": "Each question extracts one thing you cannot source without. The note says what it pulls out and what a bad answer tells you: a vague answer here reliably predic"
     },
     "sE.title": {
       "type": "label",
@@ -2701,10 +2872,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 36,
-        "max": 36
+        "min": 38,
+        "max": 38
       },
-      "example": "Each documented requirement, checked against current market conditions. Bring this table to the meeting already filled in with your recommendation: it is much e"
+      "example": "Each documented requirement, checked against a small, concentrated battery pool. Bring this table to the meeting already filled in with your recommendation: it "
     },
     "sF.title": {
       "type": "label",
@@ -2723,10 +2894,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 39,
-        "max": 39
+        "min": 40,
+        "max": 40
       },
-      "example": "Every search optimises two of three. Make the choice explicit and record it, then commit both sides in writing. Send this as the meeting recap the same day: a s"
+      "example": "Every search optimizes two of three. Make the choice explicit and record it, then commit both sides in writing. Send this as the meeting recap the same day: a b"
     },
     "sG.title": {
       "type": "label",
@@ -2734,10 +2905,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 5,
-        "max": 5
+        "min": 7,
+        "max": 7
       },
-      "example": "Trade-off lock and mutual SLA"
+      "example": "The trade-off lock and a mutual SLA"
     },
     "sc.label": {
       "type": "label",
@@ -2745,10 +2916,10 @@
         "TK_08"
       ],
       "words": {
-        "min": 5,
-        "max": 5
+        "min": 7,
+        "max": 7
       },
-      "example": "Spot-check 1 · language fundamentals"
+      "example": "Spot-check 1 · thermal and electrical fundamentals"
     },
     "sc.question": {
       "type": "prose_short",
@@ -2756,8 +2927,8 @@
         "TK_08"
       ],
       "words": {
-        "min": 8,
-        "max": 8
+        "min": 10,
+        "max": 10
       },
       "example": "\"What is energy density, and what does it tell you?\""
     },
@@ -2767,10 +2938,10 @@
         "TK_08"
       ],
       "words": {
-        "min": 43,
-        "max": 43
+        "min": 56,
+        "max": 56
       },
-      "example": "What it actually tests Whether they know the language deeply or use it by pattern. The word means three different things depending on where it appears, so a pre"
+      "example": "What it actually tests Whether they understand the core efficiency metric or just recite a definition. Energy density is the field's most basic figure of merit,"
     },
     "sc.time": {
       "type": "duration",
@@ -2789,10 +2960,10 @@
         "TK_08"
       ],
       "words": {
-        "min": 17,
-        "max": 17
+        "min": 19,
+        "max": 19
       },
-      "example": "Two at Good or better → advance. That is the bar. Do not hold out for three."
+      "example": "Two at Good or better → advance. That is the bar; do not hold out for three strong answers."
     },
     "score.rule.2": {
       "type": "prose_short",
@@ -2803,7 +2974,7 @@
         "min": 18,
         "max": 18
       },
-      "example": "One Great or Exceptional anywhere → flag it as a strong-signal note so the technical interviewer starts harder."
+      "example": "One Great or Exceptional, the other two mixed → hold for hiring-manager review instead of forcing the call."
     },
     "score.rule.3": {
       "type": "prose_short",
@@ -2811,10 +2982,22 @@
         "TK_08"
       ],
       "words": {
-        "min": 24,
-        "max": 24
+        "min": 30,
+        "max": 30
       },
-      "example": "Two Bad answers → decline, regardless of how good the résumé is. This is the one place you can say no on technical grounds."
+      "example": "Two No signal or Weak answers, with no Great or Exceptional answer → decline, regardless of the résumé. This is the one place you can say no on technical ground"
+    },
+    "sell.date": {
+      "type": "label",
+      "templates": [
+        "TK_08"
+      ],
+      "words": {
+        "min": 1,
+        "max": 1
+      },
+      "example": "[Date]",
+      "note": "A follow-up date agreed with the candidate, written as a short label; the worked example uses a placeholder."
     },
     "sell.script": {
       "type": "prose_long",
@@ -2822,8 +3005,8 @@
         "TK_08"
       ],
       "words": {
-        "min": 127,
-        "max": 127
+        "min": 141,
+        "max": 141
       },
       "example": "\"Quick picture of what you'd be walking into. A small battery team designing, building, and abuse-testing our own hardware, iterating fast between tests instead"
     },
@@ -2847,7 +3030,7 @@
         "min": 9,
         "max": 9
       },
-      "example": "Open a loop only this domain's problem can close"
+      "example": "Open a loop only a battery engineer can close"
     },
     "seq.psych": {
       "type": "prose_short",
@@ -2858,7 +3041,7 @@
         "min": 4,
         "max": 4
       },
-      "example": "Curiosity gap + identity"
+      "example": "Curiosity plus identity hook"
     },
     "seq.touch": {
       "type": "prose_short",
@@ -2866,10 +3049,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 4,
-        "max": 4
+        "min": 5,
+        "max": 5
       },
-      "example": "Email 1 · Origin"
+      "example": "Email 1 · origin touch"
     },
     "skill.bar": {
       "type": "chip",
@@ -2896,8 +3079,8 @@
         "TK_01"
       ],
       "words": {
-        "min": 2,
-        "max": 2
+        "min": 3,
+        "max": 3
       },
       "example": "Battery pack design"
     },
@@ -2907,8 +3090,8 @@
         "TK_01"
       ],
       "words": {
-        "min": 16,
-        "max": 16
+        "min": 13,
+        "max": 13
       },
       "example": "Designing a pack from cells and modules up, from requirements to working hardware."
     },
@@ -2921,7 +3104,7 @@
         "min": 7,
         "max": 7
       },
-      "example": "Technical 1 · live coding, 60 min"
+      "example": "Technical deep-dive · design review + portfolio"
     },
     "sla.item": {
       "type": "prose_short",
@@ -2929,10 +3112,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 4,
-        "max": 4
+        "min": 5,
+        "max": 5
       },
-      "example": "Qualified submittals per week"
+      "example": "Qualified battery submittals per week"
     },
     "sla.when": {
       "type": "count_range",
@@ -2943,7 +3126,7 @@
         "min": 1,
         "max": 1
       },
-      "example": "3–5"
+      "example": "2-3"
     },
     "sms.1": {
       "type": "prose_long",
@@ -2951,10 +3134,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 29,
-        "max": 29
+        "min": 34,
+        "max": 34
       },
-      "example": "\"Hi [[FirstName]], [Name] here. Thanks for the reply. I can hold Thu 10am or Fri 2pm for twenty minutes with [HM first name]. Either work? I'll send the invite."
+      "example": "\"Hey [[FirstName]], it's [Name]. Glad you're open to a call. I can hold Wed 9am or Thu 3pm for twenty minutes with [HM first name], either work for you? I'll ge"
     },
     "sms.2": {
       "type": "prose_long",
@@ -2962,10 +3145,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 27,
-        "max": 27
+        "min": 28,
+        "max": 28
       },
-      "example": "\"[[FirstName]], looking forward to 2pm today with [HM first name]. Video link is in the invite. Anything you want covered, tell me now and I'll prime him.\""
+      "example": "\"[[FirstName]], see you at 3 today with [HM first name]. Video link is in the invite. Anything specific you want covered, tell me now and I'll brief them.\""
     },
     "soft.flag": {
       "type": "prose_short",
@@ -2973,10 +3156,10 @@
         "TK_01"
       ],
       "words": {
-        "min": 6,
-        "max": 6
+        "min": 8,
+        "max": 8
       },
-      "example": "Only describes tickets somebody else scoped."
+      "example": "Only describes analysis someone else turned into hardware."
     },
     "soft.listen": {
       "type": "prose_short",
@@ -2984,10 +3167,10 @@
         "TK_01"
       ],
       "words": {
-        "min": 13,
-        "max": 13
+        "min": 15,
+        "max": 15
       },
-      "example": "\"I owned X from bring-up through delivery.\" Names the failure they personally caught."
+      "example": "\"I owned that pack from analysis through abuse test.\" Names the failure they personally caught."
     },
     "soft.name": {
       "type": "label",
@@ -3006,10 +3189,10 @@
         "TK_01"
       ],
       "words": {
-        "min": 11,
-        "max": 11
+        "min": 13,
+        "max": 13
       },
-      "example": "Small team, wide blast radius. Requirements through design, test, and operations."
+      "example": "Small team, wide blast radius: requirements through design, test, and the field launch."
     },
     "src.high": {
       "type": "currency",
@@ -3020,7 +3203,7 @@
         "min": 1,
         "max": 1
       },
-      "example": "$231K"
+      "example": "$174,480"
     },
     "src.low": {
       "type": "currency",
@@ -3031,7 +3214,7 @@
         "min": 1,
         "max": 1
       },
-      "example": "$154K"
+      "example": "$104,740"
     },
     "src.mid": {
       "type": "currency",
@@ -3042,7 +3225,7 @@
         "min": 1,
         "max": 1
       },
-      "example": "$187K"
+      "example": "$134,830"
     },
     "src.name": {
       "type": "label",
@@ -3050,10 +3233,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 7,
-        "max": 7
+        "min": 6,
+        "max": 6
       },
-      "example": "Sector total pay · this title, n=90"
+      "example": "BLS-OES 17-2199 · national base 2024"
     },
     "src.read": {
       "type": "prose_short",
@@ -3061,10 +3244,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 6,
-        "max": 6
+        "min": 10,
+        "max": 10
       },
-      "example": "Best proxy for sector total-comp expectations"
+      "example": "Official base baseline; P90 reaches $205,850. Sourced · BLS-OES 2024."
     },
     "stage.basis": {
       "type": "label",
@@ -3075,7 +3258,7 @@
         "min": 2,
         "max": 2
       },
-      "example": "quality filter",
+      "example": "benchmark floor",
       "review": false,
       "note": "a short methodology tag, 1-3 words.",
       "human_reviewed": true
@@ -3100,10 +3283,10 @@
         "TK_06"
       ],
       "words": {
-        "min": 8,
-        "max": 8
+        "min": 9,
+        "max": 9
       },
-      "example": "Gate, motivation, logistics. Kill fast or advance fast."
+      "example": "Motivation, comp expectations, logistics. Advance fast or pass fast."
     },
     "stage.label": {
       "type": "label",
@@ -3114,9 +3297,9 @@
       ],
       "words": {
         "min": 1,
-        "max": 3
+        "max": 6
       },
-      "example": "US software developers"
+      "example": "Engineers in the base occupation, national"
     },
     "stage.meta": {
       "type": "prose_short",
@@ -3140,7 +3323,7 @@
         "min": 1,
         "max": 1
       },
-      "example": "~1.7M",
+      "example": "68,440",
       "bar_paired": true
     },
     "stage.name": {
@@ -3157,6 +3340,7 @@
     "stage.rate": {
       "type": "empty_cell",
       "templates": [
+        "TK_00",
         "TK_04"
       ],
       "words": {
@@ -3171,10 +3355,10 @@
         "TK_00"
       ],
       "words": {
-        "min": 16,
-        "max": 16
+        "min": 15,
+        "max": 15
       },
-      "example": "Nineteen days longer than the org's software average. Every week of scope debate costs a finalist."
+      "example": "Nineteen days longer than the org's software average. Scope debate is the largest single contributor."
     },
     "stat.detail": {
       "type": "prose_short",
@@ -3182,10 +3366,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 13,
-        "max": 13
+        "min": 21,
+        "max": 21
       },
-      "example": "Majority experience across the sector's largest employers. This is not a you problem."
+      "example": "The whole occupation. The field-proven battery subset is a fraction of it: read this as scarce, not just tight. BLS-OES 2024."
     },
     "stat.label": {
       "type": "label",
@@ -3196,7 +3380,7 @@
         "min": 5,
         "max": 5
       },
-      "example": "Companies struggling to hire engineers"
+      "example": "Engineers employed nationally, base occupation"
     },
     "stat.pill": {
       "type": "pill",
@@ -3219,7 +3403,7 @@
         "min": 1,
         "max": 1
       },
-      "example": "76%",
+      "example": "68,440",
       "note": "The single big pull-stat number, same device as pullstat.value. Unit varies genuinely by artifact: TK_00 carries a bare count (\"58\", median days to fill), TK_07 a percent (\"76%\"). One slot name, multiple legitimate formats, so it is type metric (numeric core required, unit suffix open), not percent. extract_slot_schema.py infers percent because it types the single longest sample (\"76%\") and never sees the count; corrected by hand per that script's docstring, and it cannot emit metric anyway."
     },
     "step.body": {
@@ -3228,10 +3412,10 @@
         "TK_06"
       ],
       "words": {
-        "min": 12,
-        "max": 12
+        "min": 14,
+        "max": 14
       },
-      "example": "No score, no vote. An interviewer who hasn't written cannot speak first."
+      "example": "No score, no vote. Whoever has not written their scorecard does not speak first."
     },
     "step.title": {
       "type": "label",
@@ -3242,7 +3426,7 @@
         "min": 5,
         "max": 5
       },
-      "example": "Scores submitted, written, in advance"
+      "example": "Scores written and submitted first"
     },
     "string.name": {
       "type": "label",
@@ -3253,7 +3437,7 @@
         "min": 5,
         "max": 5
       },
-      "example": "A · Market sizing (broad)"
+      "example": "A · BASIC (broad pool)"
     },
     "string.note": {
       "type": "prose_short",
@@ -3261,10 +3445,10 @@
         "TK_04"
       ],
       "words": {
-        "min": 14,
-        "max": 14
+        "min": 26,
+        "max": 26
       },
-      "example": "Use for: pool sizing and saved-search alerts. Not for outreach: precision is too low."
+      "example": "Use for: pool sizing and saved-search alerts, not outreach: precision is too low, and the OR-chain pulls in battery-hobbyist and installer noise that inflates t"
     },
     "string.query": {
       "type": "prose_long",
@@ -3272,8 +3456,8 @@
         "TK_04"
       ],
       "words": {
-        "min": 26,
-        "max": 26
+        "min": 35,
+        "max": 35
       },
       "example": "(\"Battery Systems Engineer\" OR \"Battery Pack Engineer\" OR \"Energy Storage Systems Engineer\" OR \"Battery Design Engineer\" OR \"Battery Integration Engineer\" OR \"B"
     },
@@ -3283,10 +3467,10 @@
         "TK_04"
       ],
       "words": {
-        "min": 5,
-        "max": 5
+        "min": 8,
+        "max": 8
       },
-      "example": "25–40K national · 3–5K in-state"
+      "example": "Est. ~2,500 national · ~450 in target metros"
     },
     "structural.1": {
       "type": "prose_long",
@@ -3294,8 +3478,8 @@
         "TK_03"
       ],
       "words": {
-        "min": 41,
-        "max": 41
+        "min": 54,
+        "max": 54
       },
       "example": "Engineering employment in this base is growing faster than average through 2034, and storage hiring has expanded across EVs, utilities, and consumer hardware. T"
     },
@@ -3305,8 +3489,8 @@
         "TK_01"
       ],
       "words": {
-        "min": 2,
-        "max": 2
+        "min": 3,
+        "max": 3
       },
       "example": "Energy density (Wh/kg)"
     },
@@ -3316,10 +3500,10 @@
         "TK_01"
       ],
       "words": {
-        "min": 12,
-        "max": 12
+        "min": 16,
+        "max": 16
       },
-      "example": "Software that lives inside a machine's body, not in a data centre."
+      "example": "The fuel economy of a pack: how much energy you store for each kilogram you carry."
     },
     "term.why": {
       "type": "prose_short",
@@ -3327,10 +3511,10 @@
         "TK_01"
       ],
       "words": {
-        "min": 20,
-        "max": 20
+        "min": 18,
+        "max": 18
       },
-      "example": "Tight memory, real hardware, real physics. A crash has physical consequences, which is why these engineers are cautious by temperament."
+      "example": "The headline efficiency number. Someone who talks energy-density trade-offs unprompted is thinking like a battery engineer, not reciting."
     },
     "test.a": {
       "type": "prose_short",
@@ -3338,10 +3522,10 @@
         "TK_04"
       ],
       "words": {
-        "min": 8,
-        "max": 8
+        "min": 6,
+        "max": 6
       },
-      "example": "Curiosity: \"the only wrench that reaches 22,000 miles\""
+      "example": "Curiosity frame: opens a technical loop"
     },
     "test.b": {
       "type": "prose_short",
@@ -3349,8 +3533,8 @@
         "TK_04"
       ],
       "words": {
-        "min": 8,
-        "max": 8
+        "min": 6,
+        "max": 6
       },
       "example": "Identity frame: speaks to professional identity"
     },
@@ -3377,7 +3561,7 @@
         "min": 3,
         "max": 3
       },
-      "example": "60 / arm",
+      "example": "50 / arm",
       "review": false,
       "note": "a per-arm sample size, e.g. \"60 / arm\".",
       "human_reviewed": true
@@ -3391,7 +3575,7 @@
         "min": 3,
         "max": 3
       },
-      "example": "First-touch subject line"
+      "example": "Opening subject line"
     },
     "tier.body": {
       "type": "prose_short",
@@ -3399,10 +3583,10 @@
         "TK_03"
       ],
       "words": {
-        "min": 17,
-        "max": 17
+        "min": 18,
+        "max": 18
       },
-      "example": "Highest culture match. Poach on ownership scope and equity stage. Never on pace, they already have pace."
+      "example": "Deep bench and comp-competitive. Poach only the individuals who want subsystem ownership a large org will not give."
     },
     "tier.elements": {
       "type": "prose_short",
@@ -3410,10 +3594,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 10,
-        "max": 10
+        "min": 15,
+        "max": 15
       },
-      "example": "[[FirstName]] + [[CurrentCompany]] only. Expect benchmark reply rates, no better."
+      "example": "Only [[FirstName]] and [[CurrentCompany]] filled in. Expect the benchmark reply rate and nothing above it."
     },
     "tier.name": {
       "type": "label",
@@ -3424,7 +3608,7 @@
         "min": 1,
         "max": 1
       },
-      "example": "Basic"
+      "example": "Baseline"
     },
     "tier.note": {
       "type": "prose_short",
@@ -3432,10 +3616,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 23,
-        "max": 23
+        "min": 30,
+        "max": 30
       },
-      "example": "One CTA per message. One question per message. Real name sign-off: never \"the talent team\". At least one verifiable proof point per email."
+      "example": "One call to action, one question, every single time. Sign with a real name, never a team inbox. Every email carries at least one fact a candidate could verify i"
     },
     "tier.target": {
       "type": "label",
@@ -3446,7 +3630,7 @@
         "min": 2,
         "max": 2
       },
-      "example": "volume strings",
+      "example": "high-volume strings",
       "review": false,
       "note": "a short strategy tag, 2-3 words.",
       "human_reviewed": true
@@ -3460,7 +3644,7 @@
         "min": 2,
         "max": 2
       },
-      "example": "Founder-mode hardtech"
+      "example": "EV makers"
     },
     "timing.label": {
       "type": "label",
@@ -3471,7 +3655,7 @@
         "min": 2,
         "max": 2
       },
-      "example": "Send windows"
+      "example": "Send-window rule"
     },
     "timing.rule": {
       "type": "prose_short",
@@ -3482,7 +3666,7 @@
         "min": 5,
         "max": 5
       },
-      "example": "Tuesday to Thursday, 7:00–9:30am candidate-local."
+      "example": "Tuesday to Thursday, 7:00-9:00am candidate-local."
     },
     "timing.why": {
       "type": "prose_short",
@@ -3490,10 +3674,10 @@
         "TK_04"
       ],
       "words": {
-        "min": 14,
-        "max": 14
+        "min": 21,
+        "max": 21
       },
-      "example": "Engineers clear personal email before standup. Avoid Friday afternoon entirely and Monday before 10."
+      "example": "Engineers check personal email before the test lab or shop floor gets loud. Avoid Friday afternoon entirely and Monday before 10."
     },
     "title.term": {
       "type": "label",
@@ -3526,10 +3710,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 18,
-        "max": 18
+        "min": 24,
+        "max": 24
       },
-      "example": "Comp lands at the 75th percentile or above. Budget approval has to happen up front, not at offer."
+      "example": "Comp lands at the top of the band. Approve the ceiling up front, not at offer, or the finalist walks to a better-funded program."
     },
     "to.selected": {
       "type": "prose_short",
@@ -3537,8 +3721,8 @@
         "TK_07"
       ],
       "words": {
-        "min": 12,
-        "max": 12
+        "min": 11,
+        "max": 11
       },
       "example": "Locked live in the intake meeting; recorded in the same-day recap"
     },
@@ -3548,10 +3732,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 7,
-        "max": 7
+        "min": 8,
+        "max": 8
       },
-      "example": "Voicemail · day 16+ · 20 seconds"
+      "example": "Voicemail · day 16 onward · ~20 seconds"
     },
     "voice.note": {
       "type": "prose_long",
@@ -3559,10 +3743,10 @@
         "TK_05"
       ],
       "words": {
-        "min": 30,
-        "max": 30
+        "min": 28,
+        "max": 28
       },
-      "example": "\"A two-word text saves us both the dance\" is the line that gets responses. It gives them a cheap exit, which paradoxically produces more calls than a hard ask d"
+      "example": "The two-word opt-out is what earns callbacks. A cheap, guilt-free exit produces more calls than a hard close does, since it removes the fear of an awkward yes."
     },
     "voice.script": {
       "type": "prose_long",
@@ -3570,8 +3754,8 @@
         "TK_05"
       ],
       "words": {
-        "min": 58,
-        "max": 58
+        "min": 55,
+        "max": 55
       },
       "example": "\"Hi [[FirstName]], this is [Name]. I've sent a couple of notes about our battery team. Short version: we're mid-[[ProgramPhase]] on [[ProgramName]], the seat is"
     },
@@ -3581,10 +3765,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 38,
-        "max": 38
+        "min": 42,
+        "max": 42
       },
-      "example": "A major competitor is reported to be preparing a liquidity event. Lockup psychology cuts both ways: some engineers hold for the payout, others bank the narrativ"
+      "example": "Home and grid storage have added tens of thousands of jobs across EVs, utilities, and consumer hardware. Demand for battery engineers is outpacing a pool that g"
     },
     "window.label": {
       "type": "label",
@@ -3592,10 +3776,10 @@
         "TK_07"
       ],
       "words": {
-        "min": 4,
-        "max": 4
+        "min": 7,
+        "max": 7
       },
-      "example": "Window · liquidity event"
+      "example": "Window · home and grid storage demand"
     },
     "wrap.item": {
       "type": "prose_short",
@@ -3606,84 +3790,7 @@
         "min": 14,
         "max": 14
       },
-      "example": "Spot-check grades recorded, with their actual phrases quoted even where you didn't follow them."
-    },
-    "legal.note": {
-      "type": "label",
-      "templates": [
-        "TK_09"
-      ],
-      "example": "Every candidate for this role gets the same stages, the same questions, and the same rubric. A deviation made for one candidate and not another is the fact patt"
-    },
-    "prep.meta": {
-      "type": "label",
-      "templates": [
-        "TK_09"
-      ],
-      "example": "45 min · HM"
-    },
-    "prep.stage": {
-      "type": "label",
-      "templates": [
-        "TK_09"
-      ],
-      "example": "Hiring manager"
-    },
-    "prep.focus": {
-      "type": "label",
-      "templates": [
-        "TK_09"
-      ],
-      "example": "Scope fit and ownership appetite. Read the tradeoff lock before the room opens."
-    },
-    "coach.label": {
-      "type": "label",
-      "templates": [
-        "TK_09"
-      ],
-      "example": "Score the answer, not the accent"
-    },
-    "coach.body": {
-      "type": "label",
-      "templates": [
-        "TK_09"
-      ],
-      "example": "A different communication style or a nontraditional path is not a competency gap. Write down the words, not the delivery."
-    },
-    "field.type": {
-      "type": "label",
-      "templates": [
-        "TK_09"
-      ],
-      "example": "Rating 1 to 4"
-    },
-    "field.label": {
-      "type": "label",
-      "templates": [
-        "TK_09"
-      ],
-      "example": "Technical depth"
-    },
-    "field.prompt": {
-      "type": "label",
-      "templates": [
-        "TK_09"
-      ],
-      "example": "Cite the exchange that earned this score. An adjective alone is not a valid entry."
-    },
-    "agenda.title": {
-      "type": "label",
-      "templates": [
-        "TK_09"
-      ],
-      "example": "Scores in before the room opens"
-    },
-    "agenda.body": {
-      "type": "label",
-      "templates": [
-        "TK_09"
-      ],
-      "example": "No score, no vote. Whoever has not submitted a form does not speak first."
+      "example": "Spot-check grades logged, with their exact phrases quoted even where you couldn't follow them."
     }
   },
   "repeats": {
@@ -3731,7 +3838,7 @@
       ]
     },
     "collab.nodes": {
-      "count": "4-6",
+      "count": "3-6",
       "templates": [
         "TK_01"
       ]
@@ -3777,7 +3884,8 @@
         "TK_06",
         "TK_08",
         "TK_09"
-      ]
+      ],
+      "note": "Counts vary by template. This is a legacy inventory range; each template data-count and its generated content schema govern that artifact."
     },
     "criteria": {
       "count": "4-8",

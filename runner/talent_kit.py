@@ -114,6 +114,23 @@ def resolve_kb_root(config_text: str, config_dir: Path) -> Path | None:
     return None
 
 
+def profile_field(text: str, key: str) -> str:
+    """The value of `key: value` in a profile section, or "" when absent or blank.
+
+    PROFILE-SPEC.md writes plain `key: value` lines, but a profile written or edited by
+    hand (or by an older setup) may put each field on a Markdown bullet (`- name: ...`)
+    or in bold (`**Name:** ...`). All of those forms are read the same way."""
+    for line in text.splitlines():
+        line = re.sub(r"^[-*+][ \t]+", "", line.strip())
+        line = line.replace("**", "").replace("__", "")
+        m = re.match(
+            rf"{re.escape(key)}[ \t]*:[ \t]*(\S.*)$", line, flags=re.IGNORECASE
+        )
+        if m:
+            return m.group(1).strip()
+    return ""
+
+
 # ------------------------------------------------------------------------- store
 class Store:
     """The SQLite state store, safe to use from the runner's worker threads.
@@ -370,6 +387,8 @@ def invoke(ctx: dict, agent: str, label: str, user_msg: str) -> dict:
         check=False,
     )
     out = proc.stdout.strip()
+    if proc.returncode != 0:
+        raise RuntimeError(f"{label}: claude exited {proc.returncode}")
     if not out:
         raise RuntimeError(
             f"{label}: claude exited {proc.returncode} with no stdout; "
@@ -396,11 +415,10 @@ def invoke(ctx: dict, agent: str, label: str, user_msg: str) -> dict:
 
 
 def last_verdict(text: str, allowed: tuple[str, ...]) -> str:
-    """The last `VERDICT: X` line whose X is allowed; UNKNOWN otherwise (fails the gate)."""
-    found = re.findall(r"VERDICT\s*:\s*([A-Z]+)", text or "", re.IGNORECASE)
-    for v in reversed(found):
-        if v.upper() in allowed:
-            return v.upper()
+    """Use the final verdict marker; an unknown final value fails the gate."""
+    found = re.findall(r"VERDICT[ \t]*:[ \t]*([^\r\n]*)", text or "", re.IGNORECASE)
+    if found and found[-1].strip().upper() in allowed:
+        return found[-1].strip().upper()
     return "UNKNOWN"
 
 
@@ -555,45 +573,52 @@ def phase_pack(ctx: dict, store: Store, reasons: list[str]):
         if not pack.is_file():
             reasons.append("scout wrote no pack.json")
             return
-        if ctx["constraints"] is not None:
-            data = json.loads(pack.read_text(encoding="utf-8"))
-            data["constraints"] = ctx["constraints"]
-            pack.write_text(
-                json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
-            )
-        cmd = [sys.executable, str(RENDER), "validate-pack", "--pack", str(pack)]
-        if research.is_file():
-            cmd += ["--research", str(research)]
-        proc = subprocess.run(cmd, capture_output=True, text=True, check=False)
-        if proc.returncode != 0:
-            try:
-                found = json.loads(proc.stdout).get("findings", [])
-                checks = sorted(
-                    {f.get("check", "?") for f in found if f.get("severity") == "HIGH"}
-                )
-                reasons.append(f"validate-pack: HIGH finding(s) {checks}")
-            except (json.JSONDecodeError, AttributeError):
-                reasons.append(
-                    "validate-pack failed: " + (proc.stdout + proc.stderr)[-200:]
-                )
-        res = invoke(ctx, "critic", "pack-critic", critic_message(ctx, None, ""))
-        verdict = last_verdict(res.get("result", ""), ("PASS", "RETURNED"))
-        store.save_session(
-            ctx["run_id"],
-            "critic",
-            "pack",
-            "",
-            res["_model"],
-            res.get("session_id"),
-            res.get("total_cost_usd"),
-            "ok",
-            verdict,
+    if ctx["dry_run"]:
+        return
+    if ctx["constraints"] is not None:
+        data = json.loads(pack.read_text(encoding="utf-8"))
+        data["constraints"] = ctx["constraints"]
+        pack.write_text(
+            json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
         )
-        if verdict != "PASS":
-            reasons.append(f"pack critic verdict {verdict}")
     for src in (pack, research):
+        destination = ctx["run_dir"] / src.name
         if src.is_file():
-            shutil.copy2(src, ctx["run_dir"] / src.name)
+            shutil.copy2(src, destination)
+        elif destination.is_file():
+            destination.unlink()
+    pack = ctx["run_dir"] / "pack.json"
+    research = ctx["run_dir"] / "pack-research.json"
+    cmd = [sys.executable, str(RENDER), "validate-pack", "--pack", str(pack)]
+    if research.is_file():
+        cmd += ["--research", str(research)]
+    proc = subprocess.run(cmd, capture_output=True, text=True, check=False)
+    if proc.returncode != 0:
+        try:
+            found = json.loads(proc.stdout).get("findings", [])
+            checks = sorted(
+                {f.get("check", "?") for f in found if f.get("severity") == "HIGH"}
+            )
+            reasons.append(f"validate-pack: HIGH finding(s) {checks}")
+        except (json.JSONDecodeError, AttributeError):
+            reasons.append(
+                "validate-pack failed: " + (proc.stdout + proc.stderr)[-200:]
+            )
+    res = invoke(ctx, "critic", "pack-critic", critic_message(ctx, None, ""))
+    verdict = last_verdict(res.get("result", ""), ("PASS", "RETURNED"))
+    store.save_session(
+        ctx["run_id"],
+        "critic",
+        "pack",
+        "",
+        res["_model"],
+        res.get("session_id"),
+        res.get("total_cost_usd"),
+        "ok",
+        verdict,
+    )
+    if verdict != "PASS":
+        reasons.append(f"pack critic verdict {verdict}")
 
 
 def run_content(ctx: dict, store: Store, nn: str) -> str:
@@ -725,8 +750,6 @@ def render_one(ctx: dict, store: Store, nn: str) -> int:
         str(schema),
         "--doc",
         str(html),
-        "--out",
-        str(verify),
     ]
     if ctx["dry_run"]:
         print(f"    [dry-run] render: {shlex.join(render_cmd)}")
@@ -742,12 +765,32 @@ def render_one(ctx: dict, store: Store, nn: str) -> int:
         )
         store.save_artifact(ctx["run_id"], nn, agent, "render-failed")
         return -1
-    verify.parent.mkdir(parents=True, exist_ok=True)
-    subprocess.run(verify_cmd, capture_output=True, text=True, check=False)
-    high = -1
-    if verify.is_file():
-        findings = json.loads(verify.read_text(encoding="utf-8")).get("findings", [])
-        high = sum(1 for f in findings if f.get("severity") == "HIGH")
+    try:
+        proc = subprocess.run(
+            verify_cmd,
+            capture_output=True,
+            encoding="utf-8",
+            env={**os.environ, "PYTHONIOENCODING": "utf-8"},
+            check=False,
+        )
+        report = json.loads(proc.stdout)
+        findings = report["findings"]
+        if not isinstance(findings, list) or any(
+            not isinstance(f, dict)
+            or f.get("severity") not in ("HIGH", "MEDIUM", "LOW")
+            for f in findings
+        ):
+            raise ValueError("invalid findings")
+        high = sum(1 for f in findings if f["severity"] == "HIGH")
+        expected = (1, "FAIL") if high else (0, "PASS")
+        if (proc.returncode, report.get("verdict")) != expected:
+            raise ValueError("verifier exit disagrees with report")
+        verify.parent.mkdir(parents=True, exist_ok=True)
+        verify.write_text(proc.stdout, encoding="utf-8")
+    except (ValueError, KeyError, TypeError, OSError):
+        print(f"     verify failed for {nn}: no valid report from this run")
+        store.save_artifact(ctx["run_id"], nn, agent, "verify-failed")
+        return -1
     store.save_artifact(
         ctx["run_id"],
         nn,
@@ -813,6 +856,22 @@ def build_context(args) -> dict:
         die(
             f"no profile at {profile}: pass --profile (the company identity is a hard gate)"
         )
+    profile_text = profile.read_text(encoding="utf-8")
+    sections = re.split(r"^##[ \t]+", profile_text, flags=re.MULTILINE)
+    organization = next(
+        (
+            section
+            for section in sections[1:]
+            if section.partition("\n")[0].strip() == "Organization"
+        ),
+        "",
+    )
+    if not (
+        profile_field(organization, "name") or profile_field(sections[0], "company")
+    ):
+        die(
+            "profile has no company name: complete Talent One setup or add Organization name"
+        )
     config_text = Path(args.config).read_text(encoding="utf-8") if args.config else ""
     kb_root = (
         Path(args.kb_root).resolve()
@@ -874,6 +933,10 @@ def run(args) -> int:
     store = Store(Path(args.db))
     store.init()
     store.ensure_run(ctx)
+    store.write(
+        "UPDATE runs SET gate=?, gate_reasons=? WHERE run_id=?",
+        ("NOT_EVALUATED", "[]", ctx["run_id"]),
+    )
     reasons: list[str] = []
     print(
         f"run '{ctx['run_id']}'  role='{ctx['role_title']}'  run folder={ctx['run_dir']}"

@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 03e24b79f55e
+Source fingerprint: 3a96f19c551c
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_07.content-schema.json
 Regenerate: <python> skills/talent-one/scripts/build_briefs.py
 -->
@@ -281,70 +281,70 @@ Envelope (top-level keys of your content JSON, in this order; type and empty sta
 
 ### Top-level slots
 - doc.agent (prose_short 3-4)
-- doc.date (prose_short 2-8)
+- doc.date (prose_short 2-10)
 - doc.eyebrow (prose_short 5-6)
 - doc.title (label 2-3)
-- role.title (label 4-4)
-- role.org (prose_short 6-9)
-- doc.thesis (prose_long 24-48)
-- cover.note (prose_short 3-13)
-- sA.title (label 5-5)
-- sA.body (prose_long 29-29)
+- role.title (label 3-6)
+- role.org (prose_short 8-12)
+- doc.thesis (prose_long 25-52)
+- cover.note (prose_short 4-20)
+- sA.title (label 6-6)
+- sA.body (prose_long 37-37)
 - sB.title (label 2-2)
-- sB.body (prose_long 43-43)
-- comp.anchor (prose_long 44-44)
-- comp.premium (prose_long 33-33)
-- sC.title (label 6-6)
-- sC.body (prose_long 30-30)
+- sB.body (prose_long 45-45)
+- comp.anchor (prose_long 58-58)
+- comp.premium (prose_long 35-35)
+- sC.title (label 7-7)
+- sC.body (prose_long 37-37)
 - sD.title (label 3-3)
 - sD.body (prose_long 34-34)
 - sE.title (label 5-5)
 - sE.body (prose_long 33-33)
 - sF.title (label 2-2)
-- sF.body (prose_long 36-36)
-- sG.title (label 5-5)
-- sG.body (prose_long 39-39)
-- to.selected (prose_short 12-12)
-- gate.1 (prose_long 16-46)
+- sF.body (prose_long 38-38)
+- sG.title (label 7-7)
+- sG.body (prose_long 40-40)
+- to.selected (prose_short 11-11)
+- gate.1 (prose_long 16-66)
 - footer.right (prose_short 3-6) optional, omit or null when there is nothing to say
 
 ### Repeats
 - cover.decisions [rows n=3-5]
-  - decision.item (prose_short 6-6)
+  - decision.item (prose_short 16-16)
 - market.stats [rows n=3-6]
   - stat.label (label 5-5)
   - stat.value (metric 1-1)
-  - stat.detail (prose_short 13-13)
+  - stat.detail (prose_short 21-21)
   - stat.pill (pill 1-1)
 - comp.rows [rows n=3-6 bars=1(range)]
-  - comp.label (label 2-4)
-  - comp.n (prose_short 6-7)
-  - comp.range (currency_range 1-5)
+  - comp.label (label 2-6)
+  - comp.n (prose_short 7-15)
+  - comp.range (currency_range 1-1)
 - comp.sources [rows n=3-6]
-  - src.name (label 7-7)
+  - src.name (label 6-6)
   - src.low (currency 1-1)
   - src.mid (currency 1-1)
   - src.high (currency 1-1)
-  - src.read (prose_short 6-6)
+  - src.read (prose_short 10-10)
 - timing.windows [rows n=2-4]
-  - window.label (label 4-4)
-  - window.body (prose_long 38-38)
+  - window.label (label 7-7)
+  - window.body (prose_long 42-42)
 - agenda [rows n=4-8]
   - agenda.time (count_range 1-1)
   - agenda.segment (label 3-3)
-  - agenda.objective (prose_short 19-19)
+  - agenda.objective (prose_short 23-23)
 - intake.questions [rows n=6-12]
-  - iq.text (prose_short 23-23)
-  - iq.extract (prose_short 23-23)
+  - iq.text (prose_short 26-26)
+  - iq.extract (prose_short 30-30)
 - requirements [rows n=4-10]
-  - req.name (label 8-8)
+  - req.name (label 9-9)
   - req.verdict (chip 1-1)
-  - req.rec (prose_short 16-16)
+  - req.rec (prose_short 28-28)
 - tradeoffs [rows n=3]
   - to.choice (chip 3-3)
-  - to.consequence (prose_short 18-18)
+  - to.consequence (prose_short 24-24)
 - sla.recruiter [rows n=3-6]
-  - sla.item (prose_short 4-4)
+  - sla.item (prose_short 5-5)
   - sla.when (count_range 1-1)
 - sla.hm [rows n=3-6]
   - hm.item (label 3-3)

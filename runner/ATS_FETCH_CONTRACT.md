@@ -1,5 +1,11 @@
 # ATS fetch contract: Greenhouse Harvest to a local KB folder
 
+Legacy Harvest v1 contract. This fetcher uses API-key authentication and
+requires an existing account with legacy access for network requests.
+Greenhouse is retiring v1/v2 access. For offline verification use the
+fixture command in the [runner guide](README.md). See the
+[Harvest API overview](https://support.greenhouse.io/hc/en-us/articles/360029266032-Harvest-API-overview).
+
 Version 1.1. The spec `ats_fetch.py` implements. Grounded in the module's
 `skills/talent-one/references/02_GROUNDING_MATRIX.md` (the `ATS` T0 slot, Part 2
 precedence, Part 5 sensitive-data routing) and `CONTEXT_PACK.md` (where house numbers
@@ -13,7 +19,7 @@ instead of the public layer alone:
 
 | Consumer (Talent One 2.x) | What ATS grounds |
 |---|---|
-| scout (builds `pack.json`) | accepted-offer comp actuals by level (`comp.by_level`); funnel pass-through (`market.funnel`); time-to-hire (`timing`) |
+| scout (builds `pack.json`) | accepted-offer comp actuals by level (`comp.by_level`), current stage counts and time-to-hire (`timing`) |
 | 02 jdbot | prior posting language for the role family |
 | 06 interview-lab, 08 recruiter-screen, 09 interview-coach | scorecard attributes and interview-kit structure |
 
@@ -47,7 +53,7 @@ the n counts.
 
 | Path | Content |
 |---|---|
-| `internal/funnel/<rf>.md` | pass-through % + **n per stage** |
+| `internal/funnel/<rf>.md` | Current application count per stage. Use cumulative counts for a conversion analysis. |
 | `internal/comp/offers-<rf>.md` | accepted-offer comp stats by level (aggregate) |
 | `internal/tth/<rf>.md` | time-to-hire, interviews-per-hire actuals |
 | `internal/postings/<rf>.md` | prior posting language (last N) |

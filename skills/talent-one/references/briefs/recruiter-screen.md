@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: ce9b50394cd2
+Source fingerprint: 035688955127
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_08.content-schema.json
 Regenerate: <python> skills/talent-one/scripts/build_briefs.py
 -->
@@ -268,35 +268,35 @@ Envelope (top-level keys of your content JSON, in this order; type and empty sta
 
 ### Top-level slots
 - doc.agent (prose_short 3-4)
-- doc.date (prose_short 2-8)
+- doc.date (prose_short 2-10)
 - doc.eyebrow (prose_short 5-6)
 - doc.title (label 2-3)
-- role.title (label 4-4)
-- role.org (prose_short 6-9)
-- doc.thesis (prose_long 24-48)
-- cover.note (prose_short 3-13)
-- s1.title (label 2-7)
-- s1.body (prose_long 18-85)
-- s2.title (label 2-7)
-- s2.body (prose_long 18-46)
-- s3.title (label 3-7)
-- s3.body (prose_long 14-44)
+- role.title (label 3-6)
+- role.org (prose_short 8-12)
+- doc.thesis (prose_long 25-52)
+- cover.note (prose_short 4-20)
+- s1.title (label 4-9)
+- s1.body (prose_long 20-83)
+- s2.title (label 4-10)
+- s2.body (prose_long 21-48)
+- s3.title (label 4-7)
+- s3.body (prose_long 18-60)
 - s3.body2 (prose_long 36-36)
-- score.rule.1 (prose_short 17-17)
+- score.rule.1 (prose_short 19-19)
 - score.rule.2 (prose_short 18-18)
-- score.rule.3 (prose_short 24-24)
-- s4.title (label 3-8)
-- s4.body (prose_long 18-42)
-- s5.title (label 4-8)
-- s5.body (prose_long 28-38)
-- s6.title (label 3-6)
-- s6.body (prose_long 24-34)
-- sell.script (prose_long 127-127)
-- sell.date (label ?-?)
-- caution.1 (prose_long 26-52)
-- s7.title (label 3-8)
-- s7.body (prose_long 25-37)
-- insight.1 (prose_long 27-50)
+- score.rule.3 (prose_short 30-30)
+- s4.title (label 4-8)
+- s4.body (prose_long 20-53)
+- s5.title (label 5-8)
+- s5.body (prose_long 27-60)
+- s6.title (label 3-9)
+- s6.body (prose_long 28-36)
+- sell.script (prose_long 141-141)
+- sell.date (label 1-1)
+- caution.1 (prose_long 36-59)
+- s7.title (label 5-7)
+- s7.body (prose_long 25-54)
+- insight.1 (prose_long 35-58)
 - footer.right (prose_short 3-6) optional, omit or null when there is nothing to say
 
 ### Repeats
@@ -306,27 +306,27 @@ Envelope (top-level keys of your content JSON, in this order; type and empty sta
 - runofshow [rows n=5-8]
   - ros.time (count_range 1-1)
   - ros.segment (label 3-3)
-  - ros.objective (prose_long 26-26)
+  - ros.objective (prose_long 25-25)
 - story.prompts [rows n=2-4]
-  - prompt.text (prose_short 20-20)
-  - prompt.listen (prose_long 26-26)
-  - prompt.flag (prose_short 17-17)
+  - prompt.text (prose_short 24-24)
+  - prompt.listen (prose_long 33-33)
+  - prompt.flag (prose_short 19-19)
 - spotchecks [rows n=2-5]
-  - sc.label (label 5-5)
+  - sc.label (label 7-7)
   - sc.time (duration 2-2)
-  - sc.question (prose_short 8-8)
-  - sc.tests (prose_long 43-43)
+  - sc.question (prose_short 10-10)
+  - sc.tests (prose_long 56-56)
   - nested sc.bands [n=4-5]
     - band.label (label ?-?)
     - band.answer (prose_short ?-?)
 - motivation [rows n=3-6]
-  - mq.text (prose_short 6-6)
-  - mq.listen (prose_long 27-27)
+  - mq.text (prose_short 11-11)
+  - mq.listen (prose_long 28-28)
 - logistics [rows n=3-7]
   - log.field (label 1-1)
-  - log.script (prose_short 19-19)
+  - log.script (prose_short 23-23)
 - criteria [rows n=4-8]
-  - crit.item (prose_short 8-8)
+  - crit.item (prose_short 9-9)
   - crit.level (chip 1-1)
 - wrapup [rows n=3-6]
   - wrap.item (prose_short 14-14)

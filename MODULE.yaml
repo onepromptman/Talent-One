@@ -1,5 +1,5 @@
 module: talent-one
-description: One role brief in, a full hiring package out. A per-role Context Pack, nine artifact specialists, a scout that builds the pack, a REFUTE critic and a QA gate on the verifier tier, and an orchestrator that runs the loop. Rendered deterministically as branded HTML with sourced market data. Also carries an Oracle funnel diagnosis with a scripted answer key, a Prompt Forge helper, and a headless runner. Built from the talent-one module of onepromptman/talentai; the paste-in and n8n swarm editions of the roster are published separately as onepromptman/dag-talent-agents.
+description: One role brief in, a full hiring package out. A per-role Context Pack, nine artifact specialists, a scout that builds the pack, a REFUTE critic, a QA gate and an orchestrator that runs the loop. Rendered as branded HTML with sourced market data. Also carries an Oracle funnel diagnosis, a Prompt Forge helper and a headless runner. Built from the talent-one module of onepromptman/talentai; the paste-in and n8n editions are published as onepromptman/dag-talent-agents.
 version: 2.1.0
 stages: [intake, calibrate, role-definition, sourcing, outreach, screen, interview, qa]
 

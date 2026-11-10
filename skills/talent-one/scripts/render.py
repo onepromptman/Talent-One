@@ -33,9 +33,8 @@ fills the bound template. Subcommands:
   validate-pack --pack pack.json [--research pack-research.json] [--out REPORT.json]
             Structural validation of a Context Pack.
 
-Dependency: beautifulsoup4 (html.parser backend only). If missing:
-  python3 -m pip install beautifulsoup4
-(add --break-system-packages only if pip reports an externally-managed environment)
+Dependency: beautifulsoup4 (html.parser backend only), bundled in _vendor/ beside this
+file (version and licence in _vendor/README.md). Nothing to install.
 """
 
 import argparse
@@ -43,20 +42,22 @@ import copy
 import json
 import re
 import sys
+import warnings
 from pathlib import Path
 
 import runlog
 
 log = runlog.get_logger("talent-one.render")
 
-try:
+# beautifulsoup4 ships inside the plugin (_vendor/), so a render never installs anything.
+# bs4's optional CSS-selector helper (soupsieve) is not bundled: the renderer uses no CSS
+# selectors, so bs4's warning about it is silenced here and nowhere else.
+VENDOR = Path(__file__).resolve().parent / "_vendor"
+if str(VENDOR) not in sys.path:
+    sys.path.insert(0, str(VENDOR))
+with warnings.catch_warnings():
+    warnings.filterwarnings("ignore", message="The soupsieve package is not installed")
     from bs4 import BeautifulSoup, Comment, Tag
-except ImportError:  # pragma: no cover
-    sys.stderr.write(
-        "render.py needs beautifulsoup4. Run: python3 -m pip install beautifulsoup4\n"
-        "(add --break-system-packages only if pip reports an externally-managed environment)\n"
-    )
-    sys.exit(2)
 
 # ---------------------------------------------------------------- constants
 
@@ -878,7 +879,7 @@ def slot_value_of(el, sname):
     """Extract a content value from a filled slot element."""
     ekids = kids(el)
     if len(ekids) > 1:
-        return {"html": "".join(str(k) for k in ekids)}
+        return {"html": el.decode_contents()}
     text = clean_text(el)
     if sname.endswith(".pill"):
         parsed = parse_pill_text(text)
@@ -2318,20 +2319,36 @@ def render(
             el.extract()
             report["deleted"].append(oid)
             continue
-        for sname, sval in (odata.get("slots") or {}).items():
-            targets = [el] if el.get("data-slot") == sname else []
-            targets += el.find_all(attrs={"data-slot": sname})
-            for t in targets:
+        optional_slots = odata.get("slots") or {}
+        candidates = ([el] if el.has_attr("data-slot") else []) + el.find_all(
+            attrs={"data-slot": True}
+        )
+        for t in candidates:
+            sname = t["data-slot"]
+            if sname.startswith("handoff.") or in_repeat(t):
+                continue
+            if sname in optional_slots:
                 fill_slot_value(
                     t,
-                    sval,
+                    optional_slots[sname],
                     report,
                     f"{oid}.{sname}",
                     nested_map.get(sname, frozenset()),
                 )
-        for rname, rdata in (odata.get("repeats") or {}).items():
-            cont = el.find(attrs={"data-repeat": rname})
-            if cont is not None:
+            else:
+                set_direct_text(t, "")
+                report["missing"].append(f"{oid}.{sname}")
+        optional_repeats = odata.get("repeats") or {}
+        for cont in list(el.find_all(attrs={"data-repeat": True})):
+            if cont.find_parent(attrs={"data-repeat": True}) is not None:
+                continue
+            rname = cont["data-repeat"]
+            if rname in content.get("repeats", {}) and rname not in optional_repeats:
+                continue  # already filled by the top-level repeat pass
+            rdata = optional_repeats.get(rname)
+            if not rdata:
+                remove_repeat_block(cont, report, f"{oid}.{rname}")
+            else:
                 render_rows(cont, rdata, {}, report, f"{oid}.{rname}", nested_map)
 
     apply_toggles(soup, _envelope_dict(content, "toggles", report), report)

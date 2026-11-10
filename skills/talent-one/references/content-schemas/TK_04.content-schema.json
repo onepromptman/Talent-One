@@ -14,7 +14,7 @@
    "type": "prose_short",
    "words": {
     "min": 2,
-    "max": 8
+    "max": 10
    },
    "example": "Inputs · 02 · 03 · 07"
   },
@@ -37,48 +37,48 @@
   "role.title": {
    "type": "label",
    "words": {
-    "min": 4,
-    "max": 4
+    "min": 3,
+    "max": 6
    },
    "example": "Battery Systems Engineer · Mid-Level"
   },
   "role.org": {
    "type": "prose_short",
    "words": {
-    "min": 6,
-    "max": 9
+    "min": 8,
+    "max": 12
    },
    "example": "Target: source ahead of a scarce, concentrated pool"
   },
   "doc.thesis": {
    "type": "prose_long",
    "words": {
-    "min": 24,
-    "max": 48
+    "min": 25,
+    "max": 52
    },
    "example": "Copy-paste boolean strings for a scarce, concentrated battery pool, channel mix ranked by yield, timing discipline, and the pipeline math behind a 4% outreach-t"
   },
   "cover.note": {
    "type": "prose_short",
    "words": {
-    "min": 3,
-    "max": 13
+    "min": 4,
+    "max": 20
    },
    "example": "Two slow weeks and the concentrated pool dries up"
   },
   "s1.title": {
    "type": "label",
    "words": {
-    "min": 2,
-    "max": 7
+    "min": 4,
+    "max": 9
    },
    "example": "Outbound carries a scarce specialist pool"
   },
   "s1.body": {
    "type": "prose_long",
    "words": {
-    "min": 18,
-    "max": 85
+    "min": 20,
+    "max": 83
    },
    "example": "This battery search is scarce and concentrated before any filtering happens. Inbound alone will not clear a mid-career hire out of a pool this small. Everything"
   },
@@ -93,47 +93,47 @@
   "pullstat.label": {
    "type": "label",
    "words": {
-    "min": 9,
-    "max": 9
+    "min": 10,
+    "max": 10
    },
    "example": "More likely to land the job than an inbound applicant"
   },
   "pullstat.claim": {
    "type": "prose_short",
    "words": {
-    "min": 21,
-    "max": 24
+    "min": 25,
+    "max": 26
    },
    "example": "Sourced candidates convert at about 2% application-to-hire versus roughly 0.4% for inbound applicants, and clear the initial screen far more often: about 44% ve"
   },
   "pullstat.method": {
    "type": "prose_short",
    "words": {
-    "min": 4,
-    "max": 8
+    "min": 8,
+    "max": 16
    },
    "example": "Recruiting funnel benchmark · public industry benchmark, name the report and year when you fill this"
   },
   "s2.title": {
    "type": "label",
    "words": {
-    "min": 2,
-    "max": 7
+    "min": 4,
+    "max": 10
    },
    "example": "Search strings for a concentrated pool"
   },
   "s2.body": {
    "type": "prose_long",
    "words": {
-    "min": 18,
-    "max": 46
+    "min": 21,
+    "max": 48
    },
    "example": "Copy-paste ready, filters and all. Each card states expected volume and the pool it deliberately misses, because naming the blind spot tells the recruiter which"
   },
   "s3.title": {
    "type": "label",
    "words": {
-    "min": 3,
+    "min": 4,
     "max": 7
    },
    "example": "Channel mix, ranked by yield"
@@ -141,15 +141,15 @@
   "s3.body": {
    "type": "prose_long",
    "words": {
-    "min": 14,
-    "max": 44
+    "min": 18,
+    "max": 60
    },
    "example": "Ranked by yield per hour, not by volume. Watch the trend column more than the count: a channel in decline gets maintained, never scaled, in a pool this concentr"
   },
   "s4.title": {
    "type": "label",
    "words": {
-    "min": 3,
+    "min": 4,
     "max": 8
    },
    "example": "Timing discipline for a scarce pool"
@@ -157,15 +157,15 @@
   "s4.body": {
    "type": "prose_long",
    "words": {
-    "min": 18,
-    "max": 42
+    "min": 20,
+    "max": 53
    },
    "example": "The same message sent at the right moment in someone's year performs several times better. In a pool this small, timing is the cheapest lever available and the "
   },
   "s5.title": {
    "type": "label",
    "words": {
-    "min": 4,
+    "min": 5,
     "max": 8
    },
    "example": "Six weeks, both sides committed"
@@ -173,8 +173,8 @@
   "s5.body": {
    "type": "prose_long",
    "words": {
-    "min": 28,
-    "max": 38
+    "min": 27,
+    "max": 60
    },
    "example": "The hiring manager's commitments live on this chart too, not just the recruiter's. A slipped debrief slips the whole search, and this document says so before it"
   },
@@ -182,47 +182,47 @@
    "type": "label",
    "words": {
     "min": 3,
-    "max": 6
+    "max": 9
    },
    "example": "What one hire costs in a thin pool"
   },
   "s6.body": {
    "type": "prose_long",
    "words": {
-    "min": 24,
-    "max": 34
+    "min": 28,
+    "max": 36
    },
    "example": "Built on the loaded benchmark file for a specialized, concentrated pool with no house data yet. Treat these as the floor, never below them: that is how a search"
   },
   "funnel.note.1": {
    "type": "prose_long",
    "words": {
-    "min": 35,
-    "max": 35
+    "min": 39,
+    "max": 39
    },
    "example": "Working backward from one hire: 2 offers at an 82% offer-to-accept rate, 8 onsites at 25% onsite-to-offer, 22 screens at 37% screen-to-onsite. Every rate comes "
   },
   "funnel.note.2": {
    "type": "prose_long",
    "words": {
-    "min": 44,
-    "max": 44
+    "min": 39,
+    "max": 39
    },
    "example": "The volume cost of a concentrated pool: those 22 screens need 550 contacts at the realistic 4% drought rate for this search, not the 367 a general 6% software-r"
   },
   "caution.1": {
    "type": "prose_long",
    "words": {
-    "min": 26,
-    "max": 52
+    "min": 36,
+    "max": 59
    },
    "example": "This pool is small and geographically concentrated: burning it with generic, mass-blasted outreach costs more than a slow start does. Personalize every touch to"
   },
   "s7.title": {
    "type": "label",
    "words": {
-    "min": 3,
-    "max": 8
+    "min": 5,
+    "max": 7
    },
    "example": "A/B tests for a thin, technical pool"
   },
@@ -230,15 +230,15 @@
    "type": "prose_long",
    "words": {
     "min": 25,
-    "max": 37
+    "max": 54
    },
    "example": "Run one test at a time, report weekly, keep the winner. This turns a scarce search into a repeatable capability instead of a one-off scramble, and it is the sec"
   },
   "insight.1": {
    "type": "prose_long",
    "words": {
-    "min": 27,
-    "max": 50
+    "min": 35,
+    "max": 58
    },
    "example": "Sample sizes here stay small: this pool does not support statistical elegance. Look for the difference between 10% and 25% reply, not a p-value. Kill any test t"
   },
@@ -291,22 +291,22 @@
     "string.yield": {
      "type": "prose_short",
      "words": {
-      "min": 5,
-      "max": 5
+      "min": 8,
+      "max": 8
      }
     },
     "string.query": {
      "type": "prose_long",
      "words": {
-      "min": 26,
-      "max": 26
+      "min": 35,
+      "max": 35
      }
     },
     "string.note": {
      "type": "prose_short",
      "words": {
-      "min": 14,
-      "max": 14
+      "min": 26,
+      "max": 26
      }
     },
     "strings.prose0": {
@@ -336,8 +336,8 @@
     "ch.name": {
      "type": "label",
      "words": {
-      "min": 6,
-      "max": 6
+      "min": 7,
+      "max": 7
      }
     },
     "ch.effort": {
@@ -357,8 +357,8 @@
     "ch.verdict": {
      "type": "prose_short",
      "words": {
-      "min": 16,
-      "max": 16
+      "min": 18,
+      "max": 18
      }
     }
    },
@@ -387,8 +387,8 @@
     "timing.why": {
      "type": "prose_short",
      "words": {
-      "min": 14,
-      "max": 14
+      "min": 21,
+      "max": 21
      }
     }
    },
@@ -404,7 +404,7 @@
      "type": "label",
      "words": {
       "min": 1,
-      "max": 3
+      "max": 4
      }
     }
    },
@@ -423,7 +423,7 @@
      "type": "label",
      "words": {
       "min": 1,
-      "max": 3
+      "max": 6
      }
     },
     "stage.n": {
@@ -469,15 +469,15 @@
     "test.a": {
      "type": "prose_short",
      "words": {
-      "min": 8,
-      "max": 8
+      "min": 6,
+      "max": 6
      }
     },
     "test.b": {
      "type": "prose_short",
      "words": {
-      "min": 8,
-      "max": 8
+      "min": 6,
+      "max": 6
      }
     },
     "test.n": {

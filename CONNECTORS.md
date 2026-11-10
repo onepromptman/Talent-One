@@ -1,6 +1,10 @@
 # Connectors
 
-Talent One runs with **no connections at all**: every agent has a public-data path (BLS, O*NET, Census, DOL disclosure data, levels.fyi, live web search) that is fully supported, not a degraded mode. Connecting tools upgrades specific agents.
+Talent One can use public research without an ATS or document-store connection.
+That route still needs web search and page-reading tools in the host. If the host
+cannot fetch a source, supply the material or keep the claim unresolved. Optional
+connectors add sources; their account permissions and live behavior need the
+checks in [ACCEPTANCE](docs/ACCEPTANCE.md).
 
 ## Bundled with the plugin
 
@@ -23,9 +27,13 @@ The kit's agents reach only the four bundled servers (each agent file lists the 
 |---|---|---|
 | ATS | Greenhouse, Ashby (bundled, read by agents); Workable, Teamtailor, Gem, Dover, Workday (your own, read at intake) | Historical postings, funnel actuals, scorecard fields (Scout, JD-Bot, Hunter, Interview Lab, Calibrate) |
 | Documents | Google Drive, Box, Notion, Confluence | Brand voice, EEO statement, benefits lines, past interview plans, calibration notes (JD-Bot, Shakespeare, Interview Lab) |
-| Web research | Exa (bundled), Bright Data (bundled), native WebSearch (always works) | Deeper market research: Exa for Scout, Atlas, Shakespeare, JD-Bot, Calibrate; Bright Data for Scout, Atlas, Hunter, JD-Bot |
+| Web research | Exa (bundled), Bright Data (bundled), native WebSearch when available | Deeper market research: Exa for Scout, Atlas, Shakespeare, JD-Bot, Calibrate; Bright Data for Scout, Atlas, Hunter, JD-Bot |
 
 ## Rules that hold regardless of what is connected
+
+These are tool declarations and agent instructions, not an operating-system
+sandbox. Hosts must enforce the declared permissions; shell-capable sessions and
+the main orchestrator still need appropriate account access and human review.
 
 - Agents read ATS candidate pipelines as counts and stage names only. No candidate name, resume, note, or feedback enters a pack, a document, or a web query.
 - No structured-data scraper, dataset, person-profile, or people-search tool is bundled: Bright Data is limited to search results and page reads. Exa's search tools can return public profile pages if asked with its people category; agents are instructed never to ask that way.

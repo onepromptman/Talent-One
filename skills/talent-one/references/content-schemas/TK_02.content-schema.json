@@ -14,7 +14,7 @@
    "type": "prose_short",
    "words": {
     "min": 2,
-    "max": 8
+    "max": 10
    },
    "example": "Generated 2026-07-29"
   },
@@ -37,24 +37,24 @@
   "role.title": {
    "type": "label",
    "words": {
-    "min": 4,
-    "max": 4
+    "min": 3,
+    "max": 6
    },
    "example": "Battery Systems Engineer (Mid)"
   },
   "role.org": {
    "type": "prose_short",
    "words": {
-    "min": 6,
-    "max": 9
+    "min": 8,
+    "max": 12
    },
    "example": "Harborlight Energy · Hybrid, distributed · Small battery team, one cell partner"
   },
   "doc.thesis": {
    "type": "prose_long",
    "words": {
-    "min": 24,
-    "max": 48
+    "min": 25,
+    "max": 52
    },
    "example": "The left column is paste-ready posting copy. The right column is why each line reads the way it does. Read the rail once, post the left side, and never look at "
   },
@@ -69,40 +69,40 @@
   "s1.title": {
    "type": "label",
    "words": {
-    "min": 2,
-    "max": 7
+    "min": 4,
+    "max": 9
    },
    "example": "The posting, with a why-rail"
   },
   "s1.body": {
    "type": "prose_long",
    "words": {
-    "min": 18,
-    "max": 85
+    "min": 20,
+    "max": 83
    },
    "example": "Copy the left column straight into the ATS. The right rail is internal reasoning and never ships to a candidate."
   },
   "jd.title": {
    "type": "label",
    "words": {
-    "min": 2,
-    "max": 8
+    "min": 3,
+    "max": 3
    },
    "example": "Battery Systems Engineer"
   },
   "jd.meta": {
    "type": "prose_short",
    "words": {
-    "min": 9,
-    "max": 9
+    "min": 11,
+    "max": 11
    },
    "example": "Hybrid, distributed; test work onsite · $115,000-$155,000 base salary + equity"
   },
   "jd.intro": {
    "type": "prose_long",
    "words": {
-    "min": 80,
-    "max": 80
+    "min": 88,
+    "max": 88
    },
    "html": true,
    "example": "We build home batteries, and the battery team is small: a handful of engineers and one cell partner. You would own a battery subsystem, not a slice of one. The "
@@ -110,40 +110,48 @@
   "jd.close": {
    "type": "prose_long",
    "words": {
-    "min": 31,
-    "max": 31
+    "min": 64,
+    "max": 64
    },
    "example": "Direct home-storage experience is not required and is not an edge in our screen. The same problem, a large amount of stored energy kept cool and safe in hardwar"
   },
   "jd.benefits": {
-   "type": "label",
+   "type": "prose_short",
+   "words": {
+    "min": 21,
+    "max": 21
+   },
    "example": "Base range reflects the posted location. Compensation also includes equity, health coverage, retirement plan, and paid time off. Open until filled."
   },
   "jd.eeo": {
-   "type": "label",
+   "type": "prose_long",
+   "words": {
+    "min": 33,
+    "max": 33
+   },
    "example": "We are an equal opportunity employer. All qualified applicants will be considered without regard to any characteristic protected by applicable law. If you need "
   },
   "s2.title": {
    "type": "label",
    "words": {
-    "min": 2,
-    "max": 7
+    "min": 4,
+    "max": 10
    },
    "example": "What we changed from intake"
   },
   "s2.body": {
    "type": "prose_long",
    "words": {
-    "min": 18,
-    "max": 46
+    "min": 21,
+    "max": 48
    },
    "example": "Every change from the hiring manager's first draft, with its pool consequence. Pool counts are Estimates off the BLS-OES 17-2199 base (BLS OEWS May 2024 nationa"
   },
   "caution.1": {
    "type": "prose_long",
    "words": {
-    "min": 26,
-    "max": 52
+    "min": 36,
+    "max": 59
    },
    "example": "If the field-heritage requirement is restored, the posted band no longer clears the experienced market where the shortage bites hardest, and the search reverts "
   },
@@ -151,14 +159,14 @@
    "type": "prose_long",
    "words": {
     "min": 16,
-    "max": 46
+    "max": 66
    },
    "example": "No eligibility or work-authorization line is posted. Adding one goes through counsel, not the hiring manager."
   },
   "s3.title": {
    "type": "label",
    "words": {
-    "min": 3,
+    "min": 4,
     "max": 7
    },
    "example": "Where the base band lands"
@@ -166,16 +174,16 @@
   "s3.body": {
    "type": "prose_long",
    "words": {
-    "min": 14,
-    "max": 44
+    "min": 18,
+    "max": 60
    },
    "example": "Published base band against the national market for the same title and a comparable stage of company. The role is distributed, so the benchmark is national, not"
   },
   "comp.readout": {
    "type": "prose_long",
    "words": {
-    "min": 23,
-    "max": 41
+    "min": 24,
+    "max": 65
    },
    "example": "Read-out: the posted band sits inside the sourced band and reaches toward its upper half, fair for a small hardware employer. This is an Estimate, not a survey:"
   },
@@ -221,8 +229,8 @@
     "resp.item": {
      "type": "prose_short",
      "words": {
-      "min": 18,
-      "max": 18
+      "min": 21,
+      "max": 21
      }
     }
    },
@@ -237,8 +245,8 @@
     "req.item": {
      "type": "prose_short",
      "words": {
-      "min": 17,
-      "max": 17
+      "min": 24,
+      "max": 24
      }
     }
    },
@@ -261,7 +269,7 @@
      "type": "prose_short",
      "words": {
       "min": 11,
-      "max": 26
+      "max": 39
      }
     }
    },
@@ -283,15 +291,15 @@
     "ledger.after": {
      "type": "prose_short",
      "words": {
-      "min": 5,
-      "max": 5
+      "min": 6,
+      "max": 6
      }
     },
     "ledger.effect": {
      "type": "delta",
      "words": {
-      "min": 3,
-      "max": 3
+      "min": 4,
+      "max": 4
      }
     }
    },
@@ -307,14 +315,14 @@
      "type": "label",
      "words": {
       "min": 2,
-      "max": 4
+      "max": 6
      }
     },
     "comp.n": {
      "type": "prose_short",
      "words": {
-      "min": 6,
-      "max": 7
+      "min": 7,
+      "max": 15
      }
     },
     "comp.low": {

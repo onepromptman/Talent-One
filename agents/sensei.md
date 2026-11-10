@@ -2,7 +2,7 @@
 name: sensei
 description: "Artifact 01 Educational Brief: one analogy, glossary, skills by loop stage, cheat sheet; a non-technical recruiter speaks credibly. Content JSON; invoked by Talent One skills."
 tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
-model: claude-sonnet-5
+model: sonnet
 ---
 
 ## RUNTIME

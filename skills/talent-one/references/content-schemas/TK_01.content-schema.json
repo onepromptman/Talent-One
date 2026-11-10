@@ -14,7 +14,7 @@
    "type": "prose_short",
    "words": {
     "min": 2,
-    "max": 8
+    "max": 10
    },
    "example": "Reads in ~12 min"
   },
@@ -37,103 +37,103 @@
   "role.title": {
    "type": "label",
    "words": {
-    "min": 4,
-    "max": 4
+    "min": 3,
+    "max": 6
    },
    "example": "Battery Systems Engineer · Mid"
   },
   "role.org": {
    "type": "prose_short",
    "words": {
-    "min": 6,
-    "max": 9
+    "min": 8,
+    "max": 12
    },
    "example": "Connected-hardware company · small battery team, one cell partner"
   },
   "doc.thesis": {
    "type": "prose_long",
    "words": {
-    "min": 24,
-    "max": 48
+    "min": 25,
+    "max": 52
    },
    "example": "Everything you need to talk credibly with a battery systems engineer or a hiring manager: what the role builds, where it sits in the product, how to translate t"
   },
   "cover.note": {
    "type": "prose_short",
    "words": {
-    "min": 3,
-    "max": 13
+    "min": 4,
+    "max": 20
    },
    "example": "Section 3 (the glossary) and Section 10 (the cheat sheet) are the two to keep open on a live call"
   },
   "s1.title": {
    "type": "label",
    "words": {
-    "min": 2,
-    "max": 7
+    "min": 4,
+    "max": 9
    },
    "example": "What a battery systems engineer actually does all day"
   },
   "s1.body": {
    "type": "prose_long",
    "words": {
-    "min": 18,
-    "max": 85
+    "min": 20,
+    "max": 83
    },
    "example": "They design the battery pack, and the thermal and electrical systems around it, that store energy and hand it back on demand, then they prove it on a test rig b"
   },
   "s1.body2": {
    "type": "prose_long",
    "words": {
-    "min": 55,
-    "max": 55
+    "min": 46,
+    "max": 46
    },
    "example": "Two things follow, and both change how you talk to candidates. First, they are precise: vague enthusiasm reads as not-serious. Second, they respect failure as a"
   },
   "northstar": {
    "type": "prose_short",
    "words": {
-    "min": 25,
-    "max": 25
+    "min": 36,
+    "max": 36
    },
    "example": "Design and prove the battery pack, and the thermal and electrical systems behind it, that store energy and deliver it on demand, and keep it from overheating on"
   },
   "analogy": {
    "type": "prose_long",
    "words": {
-    "min": 37,
-    "max": 37
+    "min": 76,
+    "max": 76
    },
-   "example": "It is a blowtorch the size of a car, run at the edge of blowing itself apart. The whole craft is keeping a deliberate, enormous fire stable and pointed the righ"
+   "example": "It is a fuel tank that can set itself on fire, packed into a box the size of a fridge. The whole craft is keeping a large amount of stored energy calm and usabl"
   },
   "s2.title": {
    "type": "label",
    "words": {
-    "min": 2,
-    "max": 7
+    "min": 4,
+    "max": 10
    },
    "example": "Where the role sits in the product, layer by layer"
   },
   "s2.body": {
    "type": "prose_long",
    "words": {
-    "min": 18,
-    "max": 46
+    "min": 21,
+    "max": 48
    },
    "example": "Use this to place any candidate in thirty seconds. Ask them which of these layers they have lived in. The marked layers are this role. One layer away is an adja"
   },
   "insight.1": {
    "type": "prose_long",
    "words": {
-    "min": 27,
-    "max": 50
+    "min": 35,
+    "max": 58
    },
    "example": "The disciplines one step away, EV battery validation, power electronics, consumer-electronics battery qualification, and grid-scale storage integration, often h"
   },
   "s3.title": {
    "type": "label",
    "words": {
-    "min": 3,
+    "min": 4,
     "max": 7
    },
    "example": "Every term, translated for you"
@@ -141,15 +141,15 @@
   "s3.body": {
    "type": "prose_long",
    "words": {
-    "min": 14,
-    "max": 44
+    "min": 18,
+    "max": 60
    },
    "example": "The middle column is what you say to a non-engineer. The right column is why the term matters, which is what lets you ask a real follow-up instead of nodding. U"
   },
   "s4.title": {
    "type": "label",
    "words": {
-    "min": 3,
+    "min": 4,
     "max": 8
    },
    "example": "The real bar, and who checks each skill"
@@ -157,15 +157,15 @@
   "s4.body": {
    "type": "prose_long",
    "words": {
-    "min": 18,
-    "max": 42
+    "min": 20,
+    "max": 53
    },
    "example": "You are not assessing any of this yourself. Your job is to know which stage in the loop owns each skill, so you can tell a hiring manager where a concern gets a"
   },
   "s5.title": {
    "type": "label",
    "words": {
-    "min": 4,
+    "min": 5,
     "max": 8
    },
    "example": "What you can read on a call"
@@ -173,8 +173,8 @@
   "s5.body": {
    "type": "prose_long",
    "words": {
-    "min": 28,
-    "max": 38
+    "min": 27,
+    "max": 60
    },
    "example": "You cannot judge their analysis. You can absolutely judge how they talk about failure, ownership, and the people who disagreed with them, which carries real pre"
   },
@@ -182,23 +182,23 @@
    "type": "label",
    "words": {
     "min": 3,
-    "max": 6
+    "max": 9
    },
    "example": "Where battery systems engineers come from"
   },
   "s6.body": {
    "type": "prose_long",
    "words": {
-    "min": 24,
-    "max": 34
+    "min": 28,
+    "max": 36
    },
    "example": "A degree is a proxy here, not a gate. The alternative pathways below are worth weighting alongside pedigree for hands-on battery work, and they are far less con"
   },
   "edu.academic": {
    "type": "prose_long",
    "words": {
-    "min": 34,
-    "max": 34
+    "min": 47,
+    "max": 47
    },
    "html": true,
    "example": "A bachelor's in electrical, mechanical, or chemical engineering is typical, and a master's is common for design roles. Coursework or project work in batteries o"
@@ -206,8 +206,8 @@
   "edu.alt": {
    "type": "prose_long",
    "words": {
-    "min": 26,
-    "max": 26
+    "min": 30,
+    "max": 30
    },
    "html": true,
    "example": "Adjacent-industry engineers. EV powertrain, power-electronics, and consumer-electronics engineers bring cell, thermal, and safety fluency directly. Under-recrui"
@@ -215,16 +215,16 @@
   "edu.hobby": {
    "type": "prose_long",
    "words": {
-    "min": 32,
-    "max": 32
+    "min": 36,
+    "max": 36
    },
    "example": "Builders and field-service crossovers. E-bike and home-battery builders, university solar-car or Formula Electric teams, and EV or solar field technicians. Some"
   },
   "s7.title": {
    "type": "label",
    "words": {
-    "min": 3,
-    "max": 8
+    "min": 5,
+    "max": 7
    },
    "example": "Who a battery systems engineer works with"
   },
@@ -232,14 +232,14 @@
    "type": "prose_long",
    "words": {
     "min": 25,
-    "max": 37
+    "max": 54
    },
    "example": "Use this to answer \"what's the team like?\" with specifics instead of adjectives. It doubles as a referral map: each of these functions knows people who could do"
   },
   "s8.title": {
    "type": "label",
    "words": {
-    "min": 2,
+    "min": 5,
     "max": 6
    },
    "example": "The words that find the pool"
@@ -247,23 +247,23 @@
   "s8.body": {
    "type": "prose_long",
    "words": {
-    "min": 23,
-    "max": 34
+    "min": 31,
+    "max": 37
    },
    "example": "The seed list the sourcing strings get built from. The market's dominant titles are not the one on your requisition, so search every synonym or you miss much of"
   },
   "kw.note": {
    "type": "prose_long",
    "words": {
-    "min": 39,
-    "max": 39
+    "min": 38,
+    "max": 38
    },
    "example": "Worth knowing: the market spreads this role across many titles (Battery Systems, Battery Pack, Energy Storage Systems, Battery Test, Cell Engineering). Search a"
   },
   "s9.title": {
    "type": "label",
    "words": {
-    "min": 3,
+    "min": 6,
     "max": 7
    },
    "example": "What shifted in this market lately"
@@ -271,7 +271,7 @@
   "s9.body": {
    "type": "prose_short",
    "words": {
-    "min": 21,
+    "min": 20,
     "max": 22
    },
    "example": "Three shifts worth knowing before a hiring-manager conversation. Each is a place where last year's assumptions are now slightly wrong."
@@ -279,7 +279,7 @@
   "s10.title": {
    "type": "label",
    "words": {
-    "min": 3,
+    "min": 4,
     "max": 4
    },
    "example": "The credibility cheat sheet"
@@ -287,8 +287,8 @@
   "s10.body": {
    "type": "prose_long",
    "words": {
-    "min": 16,
-    "max": 28
+    "min": 17,
+    "max": 26
    },
    "example": "Left column is what to say. Right column is the version that costs you the candidate, and why. Specificity is the entire game with this audience."
   },
@@ -401,8 +401,8 @@
     "audience.item": {
      "type": "prose_short",
      "words": {
-      "min": 6,
-      "max": 6
+      "min": 9,
+      "max": 9
      }
     }
    },
@@ -417,15 +417,15 @@
     "resp.name": {
      "type": "label",
      "words": {
-      "min": 4,
-      "max": 4
+      "min": 6,
+      "max": 6
      }
     },
     "resp.detail": {
      "type": "prose_short",
      "words": {
-      "min": 15,
-      "max": 15
+      "min": 21,
+      "max": 21
      }
     }
    },
@@ -440,15 +440,15 @@
     "layer.name": {
      "type": "label",
      "words": {
-      "min": 3,
-      "max": 3
+      "min": 4,
+      "max": 4
      }
     },
     "layer.desc": {
      "type": "prose_short",
      "words": {
-      "min": 18,
-      "max": 18
+      "min": 22,
+      "max": 22
      }
     }
    },
@@ -475,22 +475,22 @@
     "term.name": {
      "type": "label",
      "words": {
-      "min": 2,
-      "max": 2
+      "min": 3,
+      "max": 3
      }
     },
     "term.plain": {
      "type": "prose_short",
      "words": {
-      "min": 12,
-      "max": 12
+      "min": 16,
+      "max": 16
      }
     },
     "term.why": {
      "type": "prose_short",
      "words": {
-      "min": 20,
-      "max": 20
+      "min": 18,
+      "max": 18
      }
     }
    },
@@ -505,8 +505,8 @@
     "skill.name": {
      "type": "label",
      "words": {
-      "min": 2,
-      "max": 2
+      "min": 3,
+      "max": 3
      }
     },
     "skill.bar": {
@@ -519,8 +519,8 @@
     "skill.plain": {
      "type": "prose_short",
      "words": {
-      "min": 16,
-      "max": 16
+      "min": 13,
+      "max": 13
      }
     },
     "skill.verify": {
@@ -549,22 +549,22 @@
     "soft.why": {
      "type": "prose_short",
      "words": {
-      "min": 11,
-      "max": 11
+      "min": 13,
+      "max": 13
      }
     },
     "soft.listen": {
      "type": "prose_short",
      "words": {
-      "min": 13,
-      "max": 13
+      "min": 15,
+      "max": 15
      }
     },
     "soft.flag": {
      "type": "prose_short",
      "words": {
-      "min": 6,
-      "max": 6
+      "min": 8,
+      "max": 8
      }
     }
    },
@@ -586,14 +586,14 @@
     "node.desc": {
      "type": "prose_short",
      "words": {
-      "min": 13,
-      "max": 13
+      "min": 17,
+      "max": 17
      }
     },
     "node.name2": {
      "type": "label",
      "words": {
-      "min": 2,
+      "min": 3,
       "max": 3
      }
     },
@@ -666,8 +666,8 @@
     "kw2.term": {
      "type": "label",
      "words": {
-      "min": 1,
-      "max": 1
+      "min": 2,
+      "max": 2
      }
     }
    },
@@ -698,8 +698,8 @@
     "ex.term": {
      "type": "label",
      "words": {
-      "min": 1,
-      "max": 1
+      "min": 2,
+      "max": 2
      }
     }
    },
@@ -714,15 +714,15 @@
     "note.title": {
      "type": "label",
      "words": {
-      "min": 3,
-      "max": 3
+      "min": 5,
+      "max": 5
      }
     },
     "note.body": {
      "type": "prose_short",
      "words": {
       "min": 11,
-      "max": 26
+      "max": 39
      }
     }
    },
@@ -737,15 +737,15 @@
     "cheat.good": {
      "type": "prose_short",
      "words": {
-      "min": 13,
-      "max": 13
+      "min": 15,
+      "max": 15
      }
     },
     "cheat.bad": {
      "type": "prose_short",
      "words": {
-      "min": 15,
-      "max": 15
+      "min": 22,
+      "max": 22
      }
     }
    },

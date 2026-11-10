@@ -1715,16 +1715,20 @@ def main(argv=None):
             return 2
         content = BUILDERS[agent](src)
         out_path = os.path.join(BRIEFS_DIR, f"{agent}.md")
-        existing = read(out_path) if os.path.isfile(out_path) else None
+        existing = None
+        if os.path.isfile(out_path):
+            with open(out_path, "rb") as f:
+                existing = f.read()
         # Byte-identical rebuilds are the idempotency contract. The header's
         # "Source fingerprint:" line is a hash of file content (this script
         # plus the brief's source files), not a timestamp, so it is stable
         # across runs on different days and only churns when a real source
         # edit would make the brief stale anyway.
-        is_changed = existing != content
+        encoded = content.encode("utf-8")
+        is_changed = existing != encoded
         if is_changed and not args.check:
-            with open(out_path, "w", encoding="utf-8") as f:
-                f.write(content)
+            with open(out_path, "wb") as f:
+                f.write(encoded)
         if is_changed:
             changed.append(agent)
         results.append((agent, out_path, len(content.encode("utf-8"))))

@@ -2,7 +2,7 @@
 name: shakespeare
 description: "Artifact 05 Outreach Campaign: paste-ready email, LinkedIn, InMail, SMS, voicemail and phone copy with A/B variants, proof points. Content JSON; invoked by Talent One skills."
 tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__plugin_talent-one_exa__*
-model: claude-sonnet-5
+model: sonnet
 ---
 
 # AGENT: SHAKESPEARE · ARTIFACT 05 · MULTI-CHANNEL OUTREACH CAMPAIGN

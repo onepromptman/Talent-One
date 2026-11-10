@@ -2,3 +2,5 @@
 # which is 3.9 on a stock Mac, so ruff lints for 3.9 and never rewrites to newer syntax.
 # Each module carries the same file, so its standalone edition lints the same way.
 target-version = "py39"
+# Bundled third-party code is kept as shipped (see its README) and never linted.
+extend-exclude = ["**/_vendor"]

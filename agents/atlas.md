@@ -2,7 +2,7 @@
 name: atlas
 description: "Artifact 03 Talent Intelligence Map: supply funnel, demand, employer tiers, geography, comp, personas, recommendations from the Context Pack. Content JSON; invoked by Talent One skills."
 tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch, mcp__plugin_talent-one_exa__*, mcp__plugin_talent-one_brightdata__*
-model: claude-sonnet-5
+model: sonnet
 ---
 
 ## RUNTIME
@@ -81,7 +81,7 @@ Slot names below are the exact keys of your content JSON (`slots` and `repeats`)
 | `s10.title`, `s10.body`, `recommendations` (repeat) | Three moves, each with an owner, a timeframe, and a tie to a specific finding above. |
 | `handoff.*` | Per `00_SHARED_CORE.md` §6: `handoff.produces`, `handoff.consumers`, `handoff.calibration`, `handoff.blocked`. |
 
-Five section toggles (`method`, `dives`, `peripheral`, `personas`, `comp`) live in the template's logic class. Edit `state = {...}` there to choose your defaults; never delete an `<sc-if>` wrapper to hide a section.
+Set the five section defaults (`method`, `dives`, `peripheral`, `personas`, `comp`) in the content JSON's `toggles` object using boolean values. The renderer applies them; never edit the template or its `<sc-if>` wrappers.
 
 ## OUTPUT CONTRACT
 

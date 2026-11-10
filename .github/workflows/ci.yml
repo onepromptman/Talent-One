@@ -32,7 +32,7 @@ jobs:
       - name: Acceptance gate
         run: bash evals/run_gate.sh
       - name: Dependency audit
-        run: pip-audit -r requirements.txt
+        run: pip-audit -r requirements-dev.txt
       - name: Leak scan (public rules)
         # Runs function-core's public leak-scan layer at the commit this edition was built
         # against. function-core is private until it goes public: until then this step

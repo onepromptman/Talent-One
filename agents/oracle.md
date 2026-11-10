@@ -2,7 +2,7 @@
 name: oracle
 description: Funnel and benchmark analyst for the talent-one funnel-diagnosis skill. Given a funnel already verified and diagnosed by script (stage counts, computed transition rates, benchmark ranges, the weakest transition), writes the narrative a recruiter acts on - the bottleneck or "no single bottleneck", the survivor read, ranked likely causes, one operational fix, the hiring-manager message, and the counter-argument - using only numbers it was handed or can cite. Invoked by the talent-one-funnel skill, not directly by users.
 tools: Read, Write, Bash, Glob, Grep, WebSearch, WebFetch
-model: claude-sonnet-5
+model: sonnet
 ---
 
 # AGENT: ORACLE · FUNNEL DIAGNOSIS

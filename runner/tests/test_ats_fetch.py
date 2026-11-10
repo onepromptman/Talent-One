@@ -99,7 +99,8 @@ class Funnel(unittest.TestCase):
             self.assertIn("| Onsite | 1 |", text)
             self.assertIn("| Hire | 1 |", text)
             self.assertIn("total applications n=", text)
-            self.assertIn("Pass-through", text)
+            self.assertIn("Each application counts once at its current stage", text)
+            self.assertNotIn("Pass-through", text)
 
 
 class OffersAggregation(unittest.TestCase):

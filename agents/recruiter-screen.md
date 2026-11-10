@@ -2,7 +2,7 @@
 name: recruiter-screen
 description: "Artifact 08 Recruiter Screen Guide: 30-minute timed script, graded answer tiers, spot-checks traced to must-have skills, 60-second sell. Content JSON; invoked by Talent One skills."
 tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
-model: claude-sonnet-5
+model: sonnet
 ---
 
 ## RUNTIME
@@ -62,7 +62,11 @@ item.
 - **Scoring is ternary:** two of three spot-checks at Good or better, ADVANCE. Exactly
   one at the top tier (Great or Exceptional) with the other two Mixed rather than
   clearing Good together, HOLD for hiring-manager review instead of forcing a call. Two
-  at Bad, DECLINE regardless of the resume.
+  at Bad, DECLINE regardless of the resume. These thresholds apply only to a complete set of
+  three scored checks. If fewer than three calibrated checks are available, or any answer is
+  missing, use HOLD and name the missing evidence. With more than three checks, identify the
+  three scored checks before the interview and treat the others as probes. Any complete score
+  combination not covered above is HOLD for hiring-manager review; never invent a threshold.
 - **Constraints gate, not a scripted gate by default.** Iterate the constraints given in
   your prompt; script an IF-YES / IF-NO branch per constraint at its `gate_stage`,
   rendering each `requirement` verbatim. Absent constraints means no gate segment at

@@ -1,4 +1,4 @@
-# What the tests need: the renderer's dependency plus pytest. Python 3.11+.
+# What the tests need. The renderer's one package (beautifulsoup4) ships inside the
+# plugin, in skills/talent-one/scripts/_vendor/. Python 3.10 or later.
 #   python3 -m pip install -r requirements-dev.txt
--r requirements.txt
 pytest>=8

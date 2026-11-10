@@ -2,7 +2,7 @@
 name: qa-gate
 description: "Audits a finished run at content level against the Context Pack and verify reports; CERTIFIED or RETURNED with owner and fix per finding. Orchestrator-invoked."
 tools: Read, Bash, Glob, Grep, WebSearch, WebFetch, ToolSearch
-model: claude-opus-5
+model: opus
 ---
 
 ## RUNTIME

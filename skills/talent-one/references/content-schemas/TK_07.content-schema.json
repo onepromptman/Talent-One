@@ -14,7 +14,7 @@
    "type": "prose_short",
    "words": {
     "min": 2,
-    "max": 8
+    "max": 10
    },
    "example": "2026-07-29 · before sourcing starts"
   },
@@ -37,48 +37,48 @@
   "role.title": {
    "type": "label",
    "words": {
-    "min": 4,
-    "max": 4
+    "min": 3,
+    "max": 6
    },
    "example": "Battery Systems Engineer (mid)"
   },
   "role.org": {
    "type": "prose_short",
    "words": {
-    "min": 6,
-    "max": 9
+    "min": 8,
+    "max": 12
    },
    "example": "Harborlight Energy · 45-minute intake, both sides sign"
   },
   "doc.thesis": {
    "type": "prose_long",
    "words": {
-    "min": 24,
-    "max": 48
+    "min": 25,
+    "max": 52
    },
    "example": "A battery search fails in the intake meeting long before it fails on the test rig. This pack is a data-backed script for that first conversation: what the marke"
   },
   "cover.note": {
    "type": "prose_short",
    "words": {
-    "min": 3,
-    "max": 13
+    "min": 4,
+    "max": 20
    },
    "example": "Sourcing waits on these four decisions"
   },
   "sA.title": {
    "type": "label",
    "words": {
-    "min": 5,
-    "max": 5
+    "min": 6,
+    "max": 6
    },
    "example": "The battery market, in four numbers"
   },
   "sA.body": {
    "type": "prose_long",
    "words": {
-    "min": 29,
-    "max": 29
+    "min": 37,
+    "max": 37
    },
    "example": "Lead the meeting with these. They reframe the conversation from \"find me a field-proven unicorn\" to \"let us make smart trade-offs on a small, concentrated pool\""
   },
@@ -93,41 +93,41 @@
   "sB.body": {
    "type": "prose_long",
    "words": {
-    "min": 43,
-    "max": 43
+    "min": 45,
+    "max": 45
    },
    "example": "Sources disagree because they measure different things: base only against total pay, entry-skewed postings against sector medians, government series against sel"
   },
   "comp.anchor": {
    "type": "prose_long",
    "words": {
-    "min": 44,
-    "max": 44
+    "min": 58,
+    "max": 58
    },
    "html": true,
-   "example": "For a mid Battery Systems Engineer at a small hardware employer, plan around the BLS-OES P25–P75 base range, $104,740–$174,480, midpoint $134,830, and total com"
+   "example": "For a mid Battery Systems Engineer at a small hardware employer, plan around the BLS-OES P25-P75 base range, $104,740-$174,480, midpoint $134,830, and total com"
   },
   "comp.premium": {
    "type": "prose_long",
    "words": {
-    "min": 33,
-    "max": 33
+    "min": 35,
+    "max": 35
    },
    "example": "One thing worth naming: sodium-ion cells and fast-charge thermal design are the hot specialties, and specialty demand can push candidates toward the top of any "
   },
   "sC.title": {
    "type": "label",
    "words": {
-    "min": 6,
-    "max": 6
+    "min": 7,
+    "max": 7
    },
    "example": "Why the demand curve favors moving now"
   },
   "sC.body": {
    "type": "prose_long",
    "words": {
-    "min": 30,
-    "max": 30
+    "min": 37,
+    "max": 37
    },
    "example": "These are structural, publicly disclosed forces, not a rumored competitor event. Demand for battery talent is climbing across three fronts while the qualified p"
   },
@@ -174,32 +174,32 @@
   "sF.body": {
    "type": "prose_long",
    "words": {
-    "min": 36,
-    "max": 36
+    "min": 38,
+    "max": 38
    },
    "example": "Each documented requirement, checked against a small, concentrated battery pool. Bring this table to the meeting already filled in with your recommendation: it "
   },
   "sG.title": {
    "type": "label",
    "words": {
-    "min": 5,
-    "max": 5
+    "min": 7,
+    "max": 7
    },
    "example": "The trade-off lock and a mutual SLA"
   },
   "sG.body": {
    "type": "prose_long",
    "words": {
-    "min": 39,
-    "max": 39
+    "min": 40,
+    "max": 40
    },
    "example": "Every search optimizes two of three. Make the choice explicit and record it, then commit both sides in writing. Send this as the meeting recap the same day: a b"
   },
   "to.selected": {
    "type": "prose_short",
    "words": {
-    "min": 12,
-    "max": 12
+    "min": 11,
+    "max": 11
    },
    "example": "Locked live in the intake meeting; recorded in the same-day recap"
   },
@@ -207,7 +207,7 @@
    "type": "prose_long",
    "words": {
     "min": 16,
-    "max": 46
+    "max": 66
    },
    "example": "If the feedback SLA is not agreed in this meeting, say plainly that the time-to-fill target moves out, and record that in the recap. A scarce, mid-career batter"
   },
@@ -321,8 +321,8 @@
     "decision.item": {
      "type": "prose_short",
      "words": {
-      "min": 6,
-      "max": 6
+      "min": 16,
+      "max": 16
      }
     }
    },
@@ -351,8 +351,8 @@
     "stat.detail": {
      "type": "prose_short",
      "words": {
-      "min": 13,
-      "max": 13
+      "min": 21,
+      "max": 21
      }
     },
     "stat.pill": {
@@ -375,21 +375,21 @@
      "type": "label",
      "words": {
       "min": 2,
-      "max": 4
+      "max": 6
      }
     },
     "comp.n": {
      "type": "prose_short",
      "words": {
-      "min": 6,
-      "max": 7
+      "min": 7,
+      "max": 15
      }
     },
     "comp.range": {
      "type": "currency_range",
      "words": {
       "min": 1,
-      "max": 5
+      "max": 1
      }
     }
    },
@@ -407,8 +407,8 @@
     "src.name": {
      "type": "label",
      "words": {
-      "min": 7,
-      "max": 7
+      "min": 6,
+      "max": 6
      }
     },
     "src.low": {
@@ -435,8 +435,8 @@
     "src.read": {
      "type": "prose_short",
      "words": {
-      "min": 6,
-      "max": 6
+      "min": 10,
+      "max": 10
      }
     }
    },
@@ -451,15 +451,15 @@
     "window.label": {
      "type": "label",
      "words": {
-      "min": 4,
-      "max": 4
+      "min": 7,
+      "max": 7
      }
     },
     "window.body": {
      "type": "prose_long",
      "words": {
-      "min": 38,
-      "max": 38
+      "min": 42,
+      "max": 42
      }
     }
    },
@@ -488,8 +488,8 @@
     "agenda.objective": {
      "type": "prose_short",
      "words": {
-      "min": 19,
-      "max": 19
+      "min": 23,
+      "max": 23
      }
     }
    },
@@ -504,15 +504,15 @@
     "iq.text": {
      "type": "prose_short",
      "words": {
-      "min": 23,
-      "max": 23
+      "min": 26,
+      "max": 26
      }
     },
     "iq.extract": {
      "type": "prose_short",
      "words": {
-      "min": 23,
-      "max": 23
+      "min": 30,
+      "max": 30
      }
     }
    },
@@ -527,8 +527,8 @@
     "req.name": {
      "type": "label",
      "words": {
-      "min": 8,
-      "max": 8
+      "min": 9,
+      "max": 9
      }
     },
     "req.verdict": {
@@ -541,8 +541,8 @@
     "req.rec": {
      "type": "prose_short",
      "words": {
-      "min": 16,
-      "max": 16
+      "min": 28,
+      "max": 28
      }
     }
    },
@@ -564,8 +564,8 @@
     "to.consequence": {
      "type": "prose_short",
      "words": {
-      "min": 18,
-      "max": 18
+      "min": 24,
+      "max": 24
      }
     }
    },
@@ -580,8 +580,8 @@
     "sla.item": {
      "type": "prose_short",
      "words": {
-      "min": 4,
-      "max": 4
+      "min": 5,
+      "max": 5
      }
     },
     "sla.when": {

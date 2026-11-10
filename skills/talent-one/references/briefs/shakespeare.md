@@ -1,7 +1,7 @@
 <!--
 GENERATED FILE. Do not hand-edit.
 Generator: skills/talent-one/scripts/build_briefs.py
-Source fingerprint: 2320aa927dbf
+Source fingerprint: 836287a4d268
 Inputs: 00_SHARED_CORE.md, 02_GROUNDING_MATRIX.md, CONTEXT_PACK.md, content-schemas/TK_05.content-schema.json
 Regenerate: <python> skills/talent-one/scripts/build_briefs.py
 -->
@@ -281,70 +281,70 @@ Envelope (top-level keys of your content JSON, in this order; type and empty sta
 
 ### Top-level slots
 - doc.agent (prose_short 3-4)
-- doc.date (prose_short 2-8)
+- doc.date (prose_short 2-10)
 - doc.eyebrow (prose_short 5-6)
 - doc.title (label 2-3)
-- role.title (label 4-4)
-- role.org (prose_short 6-9)
-- doc.thesis (prose_long 24-48)
+- role.title (label 3-6)
+- role.org (prose_short 8-12)
+- doc.thesis (prose_long 25-52)
 - gauge.value (percent 1-1)
-- gauge.note (prose_short 8-14)
-- s1.title (label 2-7)
-- s1.body (prose_long 18-85)
-- gate.1 (prose_long 16-46)
-- s2.title (label 2-7)
-- s2.body (prose_long 18-46)
-- e1.subjA (prose_short 7-7)
-- e1.subjB (prose_short 7-7)
-- e1.body (prose_long 81-81)
-- s3.title (label 3-7)
-- s3.body (prose_long 14-44)
-- s4.title (label 3-8)
-- s4.body (prose_long 18-42)
-- s5.title (label 4-8)
-- s5.body (prose_long 28-38)
-- e4.subj (label 2-2)
-- e4.body (prose_long 66-66)
-- e4.note (prose_short 22-22)
-- s6.title (label 3-6)
-- s6.body (prose_long 24-34)
-- s7.title (label 3-8)
-- s7.body (prose_long 25-37)
-- tier.note (prose_short 23-23)
+- gauge.note (prose_short 10-29)
+- s1.title (label 4-9)
+- s1.body (prose_long 20-83)
+- gate.1 (prose_long 16-66)
+- s2.title (label 4-10)
+- s2.body (prose_long 21-48)
+- e1.subjA (prose_short 6-6)
+- e1.subjB (prose_short 9-9)
+- e1.body (prose_long 99-99)
+- s3.title (label 4-7)
+- s3.body (prose_long 18-60)
+- s4.title (label 4-8)
+- s4.body (prose_long 20-53)
+- s5.title (label 5-8)
+- s5.body (prose_long 27-60)
+- e4.subj (label 5-5)
+- e4.body (prose_long 92-92)
+- e4.note (prose_short 36-36)
+- s6.title (label 3-9)
+- s6.body (prose_long 28-36)
+- s7.title (label 5-7)
+- s7.body (prose_long 25-54)
+- tier.note (prose_short 30-30)
 - footer.right (prose_short 3-6) optional, omit or null when there is nothing to say
 
 ### Repeats
 - sequence [rows n=5-10]
   - seq.day (count 1-1)
-  - seq.touch (prose_short 4-4)
+  - seq.touch (prose_short 5-5)
   - seq.psych (prose_short 4-4)
   - seq.goal (prose_short 9-9)
 - e1.annotations [rows n=3-5]
   - note.tag (label 1-3)
-  - note.body (prose_short 11-26)
+  - note.body (prose_short 11-39)
 - emails [rows n=2-5]
   - email.label (label 8-8)
   - email.meta (count 2-2)
-  - email.subjA (prose_short 5-5)
+  - email.subjA (prose_short 6-6)
   - email.subjB (prose_short 4-4)
   - email.body (prose_long 73-73)
-  - email.note (prose_short 24-24)
+  - email.note (prose_short 23-23)
   - emails.prose0 (prose_long 13-29)*
 - linkedin [rows n=2]
   - li.label (label 5-5)
   - li.meta (prose_short 4-4)
-  - li.body (prose_long 38-38)
-  - li.note (prose_short 21-21)
+  - li.body (prose_long 35-35)
+  - li.note (prose_short 24-24)
 - voice.blocks [rows n=2-4]
-  - voice.label (label 7-7)
-  - voice.script (prose_long 58-58)
-  - voice.note (prose_long 30-30)
+  - voice.label (label 8-8)
+  - voice.script (prose_long 55-55)
+  - voice.note (prose_long 28-28)
 - tiers [rows n=2-4]
   - tier.name (label 1-1)
   - tier.target (label 2-2)
-  - tier.elements (prose_short 10-10)
+  - tier.elements (prose_short 15-15)
 - banned [rows n=6-16]
-  - banned.term (label 6-6)
+  - banned.term (label 2-2)
 
 ### Synthetic slots (required under --strict)
 Prose the template generator found in the worked example at this location, with no named slot; write your own text that fits the heading, never the example's. Numbered in document order; `--strict` fails on any you omit. Format: `name (MIN-MAX, role) where`; `in X rows` = a key in each row of repeat X, otherwise a key in `slots`.
