@@ -35,24 +35,12 @@ DEFAULT_SCHEMA = MODULE / "skills" / "talent-one" / "references" / "SLOT_SCHEMA.
 # encodes the strongest heat band through `var(--<prefix>-primary)`).
 PRIMARY_TOKEN = re.compile(r"VAR\(--[A-Z0-9]+-PRIMARY\)")
 
-# The only literals the contract allows in a body: the chart ramp tints.
-# Everything else must resolve through a design-system var(--*) token. Each template
-# declares its own ramp in a leading style comment, which is authoritative for
-# that file; this is the floor every file gets.
+# The only literals the contract allows in a body: pure white and black. Every other
+# color must resolve through a design-system var(--*) token (the chart ramp included:
+# var(--surface-2) track, var(--accent-tint) touch, var(--heat-secondary) secondary).
+# A template may still declare extra literals in a leading `derived ramp tints`
+# comment, which is authoritative for that file; this is the floor every file gets.
 BASE_HEX = {
-    "#F0EDE6",
-    "#DCE6F2",
-    "#7FA5CC",
-    "#FBF9F4",
-    "#EEF6F1",
-    "#BFDCCB",
-    "#F9EFEF",
-    "#F6E4E4",
-    "#EDE8DE",
-    "#FAF0E6",
-    "#E3CDB4",
-    "#C9D6E6",
-    "#E3C4C4",
     "#FFFFFF",
     "#FFF",
     "#000000",
@@ -241,11 +229,11 @@ def check_bars(root, rep):
             want = (
                 "var(--*-primary)"
                 if v >= 0.9
-                else "#7FA5CC"
+                else "VAR(--HEAT-SECONDARY)"
                 if v >= 0.5
-                else "#DCE6F2"
+                else "VAR(--ACCENT-TINT)"
                 if v >= 0.15
-                else "#F0EDE6"
+                else "VAR(--SURFACE-2)"
             )
             ok = (
                 PRIMARY_TOKEN.search(colour) is not None if v >= 0.9 else want in colour

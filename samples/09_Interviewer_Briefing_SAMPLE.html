@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>/* ============================================================================
+   OnePromptMan design system, token spine. Talent One palette, graded 1 Nov 2026.
+   ----------------------------------------------------------------------------
+   Three anchors (Onyx #01010D, Electric Indigo #6331FB, Tropical Mint #88F9C0)
+   graded in OKLCH into five families of twelve steps, one fixed lightness per
+   step, so a 700 of any hue reads as text on a light page and a 300 of any hue
+   reads as text on onyx.
+
+   Layers:
+     1  FAMILIES   --ink-* --indigo-* --mint-* --amber-* --coral-*   raw steps
+     2  ROLES      --bg --surface --text --accent --signal ... --tag-*  per surface
+     2b ALIASES    --op-*   the names the templates and renderer read; each one
+                   points at a role, never at a step, so a mode block that
+                   redefines the roles restyles everything under it
+     3  MODES      data-mode="light" (= :root) and data-mode="dark"
+
+   Rules: one accent (indigo) per surface; mint, amber and coral are semantic
+   (sourced, estimate, gap) and never decorate. Banned pairs: indigo-600 as text
+   on onyx (3.3:1), mint-200 as text on white (1.3:1). Body text is the smallest
+   size on any surface: 20px.
+   ============================================================================ */
+
+:root {
+  /* ==========================================================================
+     LAYER 1: FAMILIES (mode-independent; product code reads roles, not steps)
+     ========================================================================== */
+
+  /* ink, hue 275: page, surfaces, borders, body text */
+  --ink-50:   #F4F6FE;  --ink-100:  #EAECF4;  --ink-200:  #D8DAE2;  --ink-300:  #C2C4CB;
+  --ink-400:  #A4A7B3;  --ink-500:  #888C97;  --ink-600:  #71747F;  --ink-700:  #5A5D68;
+  --ink-800:  #474A54;  --ink-900:  #353742;  --ink-950:  #1C1F28;  --ink-1000: #01010D;
+  --onyx:     var(--ink-1000);
+
+  /* indigo, hue 283: the accent. 600 on light, 400 on dark */
+  --indigo-50:  #F5F6FF;  --indigo-100: #EAEBFF;  --indigo-200: #D5D7FF;  --indigo-300: #BBBDFE;
+  --indigo-400: #9C9BFC;  --indigo-500: #8075FC;  --indigo-600: #6331FB;  --indigo-700: #582BE1;
+  --indigo-800: #461ABB;  --indigo-900: #350E93;  --indigo-950: #1E005E;
+
+  /* mint, hue 160: the signal (sourced, verified, done). 700 as text on light, 200 on dark */
+  --mint-50:  #E6FEF0;  --mint-100: #C5FCDD;  --mint-200: #88F9C0;  --mint-300: #1DE79B;
+  --mint-400: #0FC684;  --mint-500: #00A66D;  --mint-600: #0F8A5B;  --mint-700: #007048;
+  --mint-800: #005939;  --mint-900: #01442A;  --mint-950: #002716;
+
+  /* amber, hue 80: estimates and warnings. 700 as text on light, 300 on dark */
+  --amber-50:  #FFF6E7;  --amber-100: #FEEACA;  --amber-200: #FAD596;  --amber-300: #F2B84B;
+  --amber-400: #D89B10;  --amber-500: #B58103;  --amber-600: #966C0E;  --amber-700: #7A5601;
+  --amber-800: #624401;  --amber-900: #4A3301;  --amber-950: #2C1C00;
+
+  /* coral, hue 23: gaps, halts, danger. 700 as text on light, 400 on dark */
+  --coral-50:  #FFF4F3;  --coral-100: #FFE6E4;  --coral-200: #FECDC9;  --coral-300: #FEABA6;
+  --coral-400: #FE7976;  --coral-500: #EA4D51;  --coral-600: #E5484D;  --coral-700: #AB1A29;
+  --coral-800: #8D0B1C;  --coral-900: #6E0212;  --coral-950: #430006;
+
+  /* ==========================================================================
+     LAYER 1b: TYPE / SPACE / STRUCTURE scales (mode-independent)
+     ========================================================================== */
+  --op-font-noto:  "Noto Serif KR", "Playfair Display", Georgia, serif;
+  --op-font-gowun: "Gowun Batang", "Nanum Myeongjo", Georgia, serif;
+  --op-font-body:  "IBM Plex Sans", "IBM Plex Sans KR", "Pretendard", system-ui, sans-serif;
+  --op-font-mono:  "IBM Plex Mono", "IBM Plex Sans KR", ui-monospace, monospace; /* KR fallback: Hangul has no mono glyph, avoids tofu */
+  --op-font-display: var(--op-font-noto);
+
+  /* Type floor: body (1.25rem = 20px) is the smallest size on any surface. */
+  --op-text-xs:    1.25rem;   --op-text-sm:   1.25rem;   --op-text-base: 1.25rem;
+  --op-text-lg:    1.375rem;  --op-text-xl:   1.5rem;    --op-text-2xl:  1.75rem;
+  --op-text-3xl:   1.875rem;  --op-text-4xl:  2.25rem;   --op-text-5xl:  3rem;
+  --op-text-6xl:   3.75rem;
+  --op-display:    clamp(3.5rem, 9vw, 9rem); /* @kind font */
+  --op-display-sm: clamp(2.25rem, 5vw, 4rem); /* @kind font */
+
+  --op-leading-tight: 1.25;  --op-leading-snug: 1.375;
+  --op-leading-normal: 1.6;  --op-leading-relaxed: 1.75;
+  --op-leading-display: 0.98;
+  --op-tracking-tight: -0.025em;  --op-tracking-normal: 0;  --op-tracking-wide: 0.05em;
+  --op-tracking-eyebrow: 0.18em;
+
+  --op-space-1: 0.25rem;  --op-space-2: 0.5rem;  --op-space-3: 0.75rem;
+  --op-space-4: 1rem;     --op-space-5: 1.5rem;  --op-space-6: 2rem;
+  --op-space-7: 3rem;     --op-space-8: 4rem;    --op-space-9: 6rem;
+  --op-space-10: 8rem;
+  --op-measure: 66ch;
+  --op-container: 1200px;
+  --op-hairline: 1px;
+  --op-bar: 3px;                       /* accent bar weight */
+  --op-seam: 2px;                      /* jogakbo structural seam */
+  --op-grid-jogakbo-5: 2fr 1fr 3fr 1fr 2fr; /* @kind other */
+  --op-grid-jogakbo-7: 1fr 2fr 1fr 3fr 1fr 2fr 1fr; /* @kind other */
+  --op-pattern-opacity: 0.08; /* @kind other */
+
+  /* Motion: one behavior, Y-translate on reveal. */
+  --op-ease:     cubic-bezier(0.2, 0, 0, 1); /* @kind other */
+  --op-dur-fast: 120ms; /* @kind other */
+  --op-dur-base: 200ms; /* @kind other */
+  --op-dur-slow: 320ms; /* @kind other */
+  --op-dur-reveal: 520ms; /* @kind other */
+  --op-dur-intro:  1200ms; /* @kind other */
+  --op-dur-bloom:   900ms; /* @kind other */
+  --op-dur-draw:   1400ms; /* @kind other */
+  --op-stagger-tight:  60ms; /* @kind other */
+  --op-stagger-base:   80ms; /* @kind other */
+  --op-stagger-loose: 140ms; /* @kind other */
+  --op-ease-draw: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --op-pattern-opacity-projection: 0.10; /* @kind other */
+  --op-pattern-opacity-quote:      0.12; /* @kind other */
+
+  --op-radius-none: 0;
+  --op-radius-sm:   2px;
+  --op-radius-md:   4px;
+  --op-radius-lg:   8px;
+  --op-radius-full: 9999px;
+  --op-radius-interactive: var(--op-radius-md);
+}
+
+/* ============================================================================
+   LAYER 2: ROLES. Light surface (the default). Contrast is against the page.
+   ============================================================================ */
+:root, [data-mode="light"] {
+  --bg:            var(--ink-50);      /* page                                  */
+  --surface:       #FFFFFF;            /* card, raised surface                  */
+  --surface-2:     var(--ink-100);     /* track, inset row, heat "none"         */
+  --border:        var(--ink-200);     /* hairline                              */
+  --border-soft:   var(--ink-100);     /* lighter hairline inside a card        */
+  --border-strong: var(--ink-400);     /* rail, emphasised rule                 */
+  --text:          var(--onyx);        /* body, 19.2:1                          */
+  --text-2:        var(--ink-700);     /* muted, 6.3:1                          */
+  --text-3:        var(--ink-700);     /* labels; ink-600 fails AA on tints, so it shares the step */
+  --text-faint:    var(--ink-500);     /* large decorative numerals only, 3.1:1 */
+  --accent:        var(--indigo-600);  /* THE accent, 5.9:1 as text             */
+  --accent-text:   var(--indigo-700);  /* accent text on a tint, 7.1:1          */
+  --accent-tint:   var(--indigo-100);  /* accent wash, heat "touch"             */
+  --accent-line:   var(--indigo-200);  /* link underline, tint hairline         */
+  --accent-2:      var(--indigo-400);  /* second chart series, fills only       */
+  --on-accent:     #FFFFFF;            /* text on an accent fill, 6.2:1         */
+  --heat-secondary: var(--indigo-300); /* heat grid: corroborates               */
+  --heat-touch:    var(--accent-tint); /* heat grid: notes only                 */
+  --heat-none:     var(--surface-2);   /* heat grid: no role                    */
+  --signal:        var(--mint-700);    /* sourced, verified, done; 5.9:1 text   */
+  --signal-fill:   var(--mint-200);    /* never text on a light page            */
+  --signal-tint:   var(--mint-50);
+  --warn:          var(--amber-700);   /* estimate, warning; 6.3:1 text         */
+  --warn-fill:     var(--amber-300);
+  --warn-tint:     var(--amber-50);
+  --danger:        var(--coral-700);   /* gap, halt, required; 6.9:1 text       */
+  --danger-fill:   var(--coral-500);
+  --danger-tint:   var(--coral-50);
+  /* Evidence tags, one per number */
+  --tag-sourced:     var(--mint-700);    --tag-sourced-bg:  var(--mint-50);
+  --tag-estimate:    var(--amber-700);   --tag-estimate-bg: var(--amber-50);
+  --tag-internal:    var(--indigo-700);  --tag-internal-bg: var(--indigo-100);
+  --tag-gap:         var(--coral-700);   --tag-gap-bg:      var(--coral-50);
+
+  --op-shadow-1: 0 1px 2px rgba(1,1,13,0.06);
+  --op-shadow-2: 0 2px 8px rgba(1,1,13,0.08);
+  --op-shadow-3: 0 8px 24px rgba(1,1,13,0.10);
+  --op-state-pressed:  rgba(1,1,13,0.10);
+  --op-overlay-scrim:  rgba(1,1,13,0.55);
+}
+
+/* ============================================================================
+   LAYER 3: DARK SURFACE. The same role names, the dark steps. A template's
+   dark panel (the handoff block) carries data-mode="dark" and inherits these.
+   ============================================================================ */
+[data-mode="dark"] {
+  --bg:            var(--onyx);
+  --surface:       var(--ink-950);
+  --surface-2:     var(--ink-900);
+  --border:        var(--ink-800);
+  --border-soft:   var(--ink-900);
+  --border-strong: var(--ink-600);
+  --text:          var(--ink-50);      /* 19.2:1 */
+  --text-2:        var(--ink-300);     /* 11.9:1 */
+  --text-3:        var(--ink-300);
+  --text-faint:    var(--ink-600);
+  --accent:        var(--indigo-400);  /* 8.4:1; indigo-600 is a fill here, never text */
+  --accent-text:   var(--indigo-300);
+  --accent-tint:   var(--indigo-950);
+  --accent-line:   var(--indigo-900);
+  --accent-2:      var(--indigo-600);
+  --on-accent:     var(--onyx);
+  --heat-secondary: var(--indigo-800);
+  --heat-touch:    var(--accent-tint);
+  --heat-none:     var(--surface-2);
+  --signal:        var(--mint-200);    /* 16.2:1 */
+  --signal-fill:   var(--mint-300);
+  --signal-tint:   var(--mint-950);
+  --warn:          var(--amber-300);   /* 11.6:1 */
+  --warn-fill:     var(--amber-400);
+  --warn-tint:     var(--amber-950);
+  --danger:        var(--coral-400);   /* 8.1:1 */
+  --danger-fill:   var(--coral-500);
+  --danger-tint:   var(--coral-950);
+  --tag-sourced:     var(--mint-200);    --tag-sourced-bg:  var(--mint-950);
+  --tag-estimate:    var(--amber-300);   --tag-estimate-bg: var(--amber-950);
+  --tag-internal:    var(--indigo-300);  --tag-internal-bg: var(--indigo-950);
+  --tag-gap:         var(--coral-400);   --tag-gap-bg:      var(--coral-950);
+
+  --op-shadow-1: 0 1px 2px rgba(0,0,0,0.40);
+  --op-shadow-2: 0 2px 8px rgba(0,0,0,0.45);
+  --op-shadow-3: 0 8px 24px rgba(0,0,0,0.55);
+  --op-state-pressed:  rgba(255,255,255,0.12);
+  --op-overlay-scrim:  rgba(0,0,0,0.66);
+}
+
+/* ============================================================================
+   LAYER 2b: ALIASES. The --op-* names templates and render.py read. Declared
+   on every mode root so each one resolves against that root's own roles
+   (a custom property inherits its computed value, so an alias declared only
+   on :root would freeze the light value inside a dark panel).
+   ============================================================================ */
+:root, [data-mode="light"], [data-mode="dark"] {
+  --op-bg:             var(--bg);
+  --op-surface:        var(--surface);
+  --op-ink:            var(--text);
+  --op-ink-dim:        var(--text-2);
+  --op-muted:          var(--text-3);
+  --op-ink-300:        var(--text-3);
+  --op-lattice-line:   var(--text-faint);
+  --op-border:         var(--border);
+  --op-line:           var(--border);
+  --op-primary:        var(--accent);
+  --op-primary-hover:  var(--accent-text);
+  --op-cheong-dark:    var(--accent-text);
+  --op-byeok:          var(--accent-2);
+  --op-accent:         var(--danger);     /* the old red flag: required, banned, gap */
+  --op-highlight:      var(--warn);       /* the old gold highlight: preferred, steady */
+  --op-hwang-light:    var(--warn);
+  --op-bisaek:         var(--signal);
+  --op-success:        var(--signal);
+  --op-warning:        var(--warn);
+  --op-danger:         var(--danger);
+  --op-state-selected: var(--accent-tint);
+  --op-seal-color-default: var(--accent);
+}
+
+/* ============================================================================
+   TYPOGRAPHY primitives (read semantic tokens)
+   ============================================================================ */
+.op-display {
+  font-family: var(--op-font-display);
+  font-size: var(--op-display);
+  line-height: var(--op-leading-display);
+  letter-spacing: var(--op-tracking-tight);
+  color: var(--op-ink);
+  font-weight: 700;
+}
+.op-eyebrow {
+  font-family: var(--op-font-mono);
+  font-size: var(--op-text-xs);
+  letter-spacing: var(--op-tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--op-primary);
+}
+.op-body {
+  font-family: var(--op-font-body);
+  font-size: var(--op-text-base);
+  line-height: var(--op-leading-normal);
+  color: var(--op-ink);
+  max-width: var(--op-measure);
+}
+.op-num { font-family: var(--op-font-mono); font-variant-numeric: tabular-nums; }
+
+/* Hangul: keep-all + zero negative tracking (load-bearing). */
+:lang(ko), [lang="ko"], .op-ko { word-break: keep-all; letter-spacing: 0; }
+
+/* ============================================================================
+   MOTIF: changsal lattice (structure; depth without shadow)
+   ============================================================================ */
+.op-lattice-bissal {
+  background-image:
+    repeating-linear-gradient( 45deg, var(--op-lattice-line) 0 var(--op-hairline), transparent var(--op-hairline) 14px),
+    repeating-linear-gradient(-45deg, var(--op-lattice-line) 0 var(--op-hairline), transparent var(--op-hairline) 14px);
+}
+.op-lattice-jeongja {
+  background-image:
+    repeating-linear-gradient(0deg, var(--op-lattice-line) 0 var(--op-hairline), transparent var(--op-hairline) 18px),
+    repeating-linear-gradient(90deg, var(--op-lattice-line) 0 var(--op-hairline), transparent var(--op-hairline) 18px);
+}
+.op-lattice-faint { opacity: 0.5; }
+
+/* ============================================================================
+   MOTIF: trigram bars (the mark / type-as-architecture)
+   ============================================================================ */
+.op-trigram { display: inline-flex; flex-direction: column; gap: 4px; width: 2.5rem; }
+.op-trigram .op-bar { height: var(--op-bar); background: var(--op-primary); }
+.op-trigram .op-bar--broken {
+  background: linear-gradient(90deg, var(--op-primary) 0 42%, transparent 42% 58%, var(--op-primary) 58% 100%);
+}
+.op-accent-bar { border-left: var(--op-bar) solid var(--op-primary); padding-left: var(--op-space-4); }
+
+/* ============================================================================
+   LAYOUT: jogakbo asymmetric grid (one dominant field + side panels)
+   ============================================================================ */
+.op-jogakbo {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(120px, auto);
+  gap: var(--op-seam);
+  background: var(--op-line);            /* seams read as stitching */
+}
+.op-jogakbo > * { background: var(--op-surface); padding: var(--op-space-5); }
+.op-jogakbo > .dominant  { grid-column: span 7; grid-row: span 2; }
+.op-jogakbo > .side      { grid-column: span 5; }
+.op-jogakbo > .wide      { grid-column: span 12; }
+
+/* ============================================================================
+   COMPONENTS (read semantic tokens; elevation + radius come from the mode)
+   ============================================================================ */
+.op-btn {
+  font-family: var(--op-font-body);
+  font-size: var(--op-text-sm);
+  font-weight: 500;
+  min-height: 44px;                       /* WCAG 2.5.5 */
+  padding: 0 var(--op-space-5);
+  display: inline-flex; align-items: center; gap: var(--op-space-2);
+  background: transparent;
+  color: var(--op-ink);
+  border: var(--op-hairline) solid var(--op-ink);
+  border-radius: var(--op-radius-interactive);
+  box-shadow: var(--op-shadow-1);
+  cursor: pointer;
+  transition: background var(--op-dur-fast) var(--op-ease),
+              color var(--op-dur-fast) var(--op-ease),
+              box-shadow var(--op-dur-fast) var(--op-ease);
+}
+.op-btn:hover { background: var(--op-ink); color: var(--op-bg); box-shadow: var(--op-shadow-2); }
+.op-btn--primary {
+  border-color: var(--op-primary);
+  background: var(--op-primary);
+  color: var(--on-accent);
+}
+.op-btn--primary:hover { filter: brightness(1.08); background: var(--op-primary); color: var(--on-accent); }
+
+.op-input {                               /* ttisal: a single bottom bar, not a box */
+  font-family: var(--op-font-body);
+  font-size: var(--op-text-base);
+  min-height: 44px;  width: 100%;
+  background: transparent;  color: var(--op-ink);
+  border: 0;  border-bottom: var(--op-bar) solid var(--op-line);
+  border-radius: 0;  padding: var(--op-space-1) 0;
+}
+.op-input:focus { outline: none; border-bottom-color: var(--op-primary); }
+
+.op-link {
+  color: var(--op-ink);
+  text-decoration: underline; text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px; text-decoration-color: var(--accent-line);
+}
+.op-link:hover { text-decoration-color: var(--op-primary); color: var(--op-primary); }
+
+/* Focus ring: visible, primary, never removed (WCAG 2.4.7). */
+:focus-visible { outline: var(--op-bar) solid var(--op-primary); outline-offset: 3px; }
+
+/* ============================================================================
+   RESPONSIVE: modes do not change on mobile; only layout collapses.
+   ============================================================================ */
+@media (max-width: 768px) {
+  :root { --op-display: clamp(2.75rem, 12vw, 4rem); /* @kind font */ }
+  .op-jogakbo > * { grid-column: 1 / -1; grid-row: auto; }
+  .op-body { max-width: 100%; }
+}
+
+/* Reduced motion: honor the OS setting. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --op-dur-fast: 0ms; /* @kind other */
+    --op-dur-base: 0ms; /* @kind other */
+    --op-dur-slow: 0ms; /* @kind other */
+    --op-dur-reveal: 0ms; /* @kind other */
+    --op-dur-intro: 0ms; /* @kind other */
+    --op-dur-bloom: 0ms; /* @kind other */
+    --op-dur-draw: 0ms; /* @kind other */
+    --op-stagger-tight: 0ms; /* @kind other */
+    --op-stagger-base: 0ms; /* @kind other */
+    --op-stagger-loose: 0ms; /* @kind other */
+  }
+  /* `animation: none` cancels the `both` fill, so any mark authored opacity:0
+     at rest stays invisible. Every animated card must author its completed
+     state as the static default. */
+}
+
+/*
+ * OnePromptMan design system: connect entry
+ *
+ * The single root stylesheet. Import it once in any surface to pull in the complete
+ * OnePromptMan token contract.
+ *
+ * What it provides (via tokens/tokens.css):
+ *   - Two modes on one `data-mode` axis, Onyx / Indigo / Mint palette:
+ *       data-mode="light"   light page, white surfaces, indigo accent
+ *       data-mode="dark"    onyx page, dark surfaces, light indigo accent
+ *   - Role tokens (--bg, --surface, --text, --accent, --signal, ...) with the --op-* names
+ *     as aliases; product code reads semantic tokens only
+ *   - Typography primitives: .op-display, .op-eyebrow, .op-body, .op-num
+ *   - Layout: .op-jogakbo asymmetric grid
+ *   - Component primitives: .op-btn, .op-input, .op-link
+ *   - Motion tokens: --op-dur-*, --op-stagger-*, --op-ease, --op-ease-draw
+ *   - Reduced-motion path: prefers-reduced-motion zeroes all durations
+ *   - Legacy motif classes (.op-lattice-*, .op-trigram, .op-dancheong-band, .op-roundel,
+ *     .op-pattern-yeonhwa, .op-seal-dragon) stay defined for compatibility; no template
+ *     uses them
+ *
+ * Do NOT hand-edit _ds_manifest.json or _ds_bundle.js: those are auto-generated.
+ * Do NOT inline raw hex values in component code; read semantic tokens only.
+ * Do NOT import the per-medium .html preview cards here (they are dsCard previews, not CSS).
+ */
+
+/* ============================================================================
+   PRINT (US Letter). Templates carry the @page fallback; this layer adds the
+   break discipline. Keep-together applies to leaf rows and cards only, never
+   to a whole section, grid or table, so a long block never leaves an empty
+   page behind it.
+   ============================================================================ */
+@media print {
+  html, body { background: var(--op-bg); }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; zoom: 0.8; }
+  h1, h2, h3 { break-after: avoid; page-break-after: avoid; break-inside: avoid; }
+  p, li { orphans: 3; widows: 3; }
+  /* A section head (number rail, title, intro) never ends a page: it stays with the first block below it. */
+  section > div[style*="grid-template-columns:180px 1fr"] { break-after: avoid; page-break-after: avoid; break-inside: avoid; page-break-inside: avoid; }
+  table { width: 100% !important; max-width: 100% !important; min-width: 0 !important; }
+  thead { display: table-header-group; }
+  tfoot { display: table-footer-group; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+  th, td { overflow-wrap: break-word; }
+  [style*="overflow-x:auto"], [style*="overflow-x: auto"] { overflow: visible !important; }
+  /* Cards keep whole. The tall script-and-rubric cards (over half a page) break only between their own
+     complete blocks: header bar, prompt, answer tiers, paragraphs; never inside one, and never right
+     after the header. Grids of tall cards run one or two columns so each card gets the full measure. */
+  [data-repeat] > div { break-inside: avoid; page-break-inside: avoid; }
+  [data-repeat="spotchecks"] > div, [data-repeat="questions"] > div, [data-repeat="emails"] > div,
+  [data-repeat="linkedin"] > div, [data-repeat="voice.blocks"] > div { break-inside: auto; page-break-inside: auto; }
+  [data-repeat="spotchecks"] > div > *, [data-repeat="questions"] > div > *, [data-repeat="emails"] > div > *,
+  [data-repeat="linkedin"] > div > *, [data-repeat="voice.blocks"] > div > * { break-inside: avoid; page-break-inside: avoid; }
+  [data-repeat="prep.stages"], [data-repeat="linkedin"] { grid-template-columns: minmax(0, 1fr) !important; }
+  [data-repeat="personas"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  [data-repeat] > div > :first-child, [style*="text-transform:uppercase"]:first-child:not(:last-child) { break-after: avoid; page-break-after: avoid; }
+  /* Callouts and accent-bar cards keep whole. */
+  [style*="border-left:3px solid"]:not(:has([data-repeat], table)), [style*="border-left:4px solid"]:not(:has([data-repeat], table)) { break-inside: avoid; page-break-inside: avoid; }
+  /* Any grid that paints its gutters with the border color (card grids, two-pane panels) must not paint
+     behind children that moved to the next page; each child keeps its own edge instead. */
+  [style*="display:grid"][style*="background:var(--op-border)"] { background: transparent !important; border-color: transparent !important; }
+  [style*="display:grid"][style*="background:var(--op-border)"] > div { outline: 1px solid var(--op-border); }
+  img, svg, figure { break-inside: avoid; }
+  /* The closing footer is screen chrome: on paper it spilled onto a page of its own in five of eight documents. */
+  body > footer, main > footer, footer[style*="justify-content:space-between"] { display: none !important; }
+  .tk-toggles, [data-print="hide"] { display: none !important; }
+}
+
+/* Talent One responsive layer (1.1.1).
+ * Templates lay out with inline styles, so these rules match on the inline
+ * style text and use !important, the only way a stylesheet outranks an inline
+ * declaration. Desktop and print are untouched: every rule sits inside a
+ * max-width screen query. Intentional horizontal scrollers (overflow-x:auto
+ * wrappers around wide heat grids and tables) keep scrolling inside their box.
+ */
+@media screen and (max-width: 760px) {
+
+  /* Header document code: one line on desktop, free to wrap on a phone */
+  [data-slot="kit.mark"] { white-space: normal !important; padding-right: 0 !important; flex-shrink: 1 !important; }
+
+  /* Page gutters: 48px desktop -> 16px phone */
+  [style*="padding:0 48px"] { padding-left: 16px !important; padding-right: 16px !important; }
+
+  /* Two-pane and label-rail grids collapse to one column */
+  [style*="grid-template-columns:1fr 330px"],
+  [style*="grid-template-columns:1fr 300px"],
+  [style*="grid-template-columns:1fr 280px"],
+  [style*="grid-template-columns:180px 1fr"],
+  [style*="grid-template-columns:190px 1fr"],
+  [style*="grid-template-columns:250px 1fr"],
+  [style*="grid-template-columns:140px 1fr"],
+  [style*="grid-template-columns:130px 1fr"],
+  [style*="grid-template-columns:1fr 1fr"],
+  [style*="grid-template-columns:1.5fr 1fr"],
+  [style*="grid-template-columns:1.4fr 1fr"],
+  [style*="grid-template-columns:1.1fr 1fr"],
+  [style*="grid-template-columns:1fr 1.15fr 1fr"],
+  [style*="grid-template-columns:repeat(2,1fr)"],
+  [style*="grid-template-columns:repeat(3,1fr)"],
+  [style*="grid-template-columns:86px 220px 1fr"],
+  [style*="grid-template-columns:86px 210px 1fr"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  /* Pull-stat callout (big number beside its claim) stacks */
+  [style*="grid-template-columns:auto 1fr;gap:36px"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px !important;
+    padding: 22px 20px !important;
+  }
+
+  /* Stat strips and four-column data rows go to two columns */
+  [style*="grid-template-columns:repeat(4,1fr)"],
+  [style*="grid-template-columns:repeat(5,1fr)"],
+  [style*="grid-template-columns:repeat(6,1fr)"],
+  [style*="grid-template-columns:220px 1fr 92px 96px"],
+  [style*="grid-template-columns:190px 1fr 84px 96px"],
+  [style*="grid-template-columns:44px 1fr 150px 130px"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* Stacked panes need tighter gaps */
+  [style*="display:grid"][style*="gap:60px"],
+  [style*="display:grid"][style*="gap:56px"],
+  [style*="display:grid"][style*="gap:48px"] { gap: 24px !important; }
+  [style*="display:grid"][style*="gap:40px"] { gap: 12px !important; }
+
+  /* Grid and flex children may shrink below their content width */
+  [style*="display:grid"] > *, [style*="display:flex"] > * { min-width: 0; }
+
+  /* Header strips and chip rows wrap instead of pushing off-screen */
+  [style*="display:flex"][style*="justify-content:space-between"],
+  [style*="display:flex"][style*="gap:"] { flex-wrap: wrap; row-gap: 8px; }
+
+  /* Fixed-width blocks never exceed the viewport */
+  [style*=";width:250px"], [style*=";width:200px"], [style*=";width:150px"] { max-width: 100% !important; }
+  img, svg, video, canvas { max-width: 100%; height: auto; }
+
+  /* Display type scales down */
+  [style*="font-size:88px"] { font-size: 52px !important; line-height: 1.05 !important; }
+  [style*="font-size:52px"] { font-size: 36px !important; line-height: 1.1 !important; }
+  [style*="font-size:44px"] { font-size: 32px !important; }
+
+  /* Vertical rhythm tightens */
+  [style*="padding:60px 0 44px"] { padding-top: 32px !important; padding-bottom: 28px !important; }
+  section[style*="padding:88px 0"], section[style*="padding:80px 0"] { padding-top: 44px !important; padding-bottom: 44px !important; }
+
+  /* Long tokens (boolean strings, URLs, mono IDs) wrap instead of overflowing */
+  pre, code { white-space: pre-wrap !important; word-break: break-word; }
+  p, li, td, th, span, div { overflow-wrap: break-word; }
+  td:first-child, th:first-child { white-space: nowrap; }
+
+  /* Tables: up to 4 columns fit the screen and wrap; 5+ columns keep their
+     template scroller (overflow-x:auto wrapper) at a narrower minimum. */
+  table[style*="min-width"]:not(:has(tr > :nth-child(5))) { min-width: 0 !important; }
+  table[style*="min-width"]:has(tr > :nth-child(5)) { min-width: 600px !important; }
+  td[style*="padding"], th[style*="padding"] { padding-left: 10px !important; padding-right: 10px !important; }
+  th { letter-spacing: .06em !important; }
+}
+
+/* Small phones: stat strips stack to one column so display numerals never break */
+@media screen and (max-width: 380px) {
+  [style*="grid-template-columns:repeat(4,1fr)"],
+  [style*="grid-template-columns:repeat(5,1fr)"],
+  [style*="grid-template-columns:repeat(6,1fr)"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+</style>
+
+
+
+
+<script>/* @ds-bundle: {"format":3,"namespace":"OPDS_4575df","components":[],"sourceHashes":{},"inlinedExternals":[],"unexposedExports":[]} */
+
+(() => {
+
+const __ds_ns = (window.OPDS_4575df = window.OPDS_4575df || {});
+
+const __ds_scope = {};
+
+(__ds_ns.__errors = __ds_ns.__errors || []);
+
+})();
+</script>
+<style>
+  /* colors: role tokens only (tokens.css). chart ramp = var(--surface-2) track, var(--accent-tint) touch, var(--heat-secondary) secondary, var(--op-primary) primary */
+  body{margin:0;background:var(--op-bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  a{color:var(--op-primary);text-decoration:underline;text-underline-offset:.18em;text-decoration-color:var(--accent-line)}
+  a:hover{color:var(--op-cheong-dark);text-decoration-color:var(--op-primary)}
+  @media print{@page{size:letter;margin:0.5in}}
+  [data-repeat="prep.stages"]>:nth-child(3n+1):last-child{grid-column:1/-1}
+</style>
+</helmet>
+<div data-mode="light" style="background:var(--op-bg);color:var(--op-ink);font-family:var(--op-font-body);font-size:20px;line-height:1.6">
+<header style="border-bottom:1px solid var(--op-border);background:var(--op-surface)">
+<div style="max-width:1120px;margin:0 auto;padding:0 48px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--op-border)">
+<div data-slot="kit.mark" style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.30em;text-transform:uppercase;white-space:nowrap;flex-shrink:0;padding-right:32px">Talent One <span style="color:var(--op-accent)">·</span> TK-09</div>
+<div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);text-align:right"><span data-slot="doc.agent">Agent · INTERVIEW COACH</span> <span style="color:var(--op-lattice-line)">/</span> <span data-slot="doc.date">Generated 2026-08-24</span></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 330px;gap:60px;padding:60px 0 44px;align-items:start">
+<div>
+<div data-slot="doc.eyebrow" style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-primary);margin-bottom:18px">Artifact 09 · Interviewer readiness</div>
+<h1 data-slot="doc.title" style="font-family:var(--op-font-display);font-weight:700;font-size:52px;line-height:1.08;letter-spacing:-0.02em;margin:0;text-wrap:balance">Interviewer Briefing</h1>
+<div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+<span data-slot="role.title" style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.06em;color:var(--op-surface);background:var(--op-ink);padding:7px 14px">Battery Systems Engineer</span>
+<span data-slot="role.org" style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)">Four stages briefed · one debrief form · one decision meeting</span>
+</div>
+<p data-slot="doc.thesis" style="margin:26px 0 0;font-size:22px;color:var(--op-ink-dim);text-wrap:pretty">A briefing that repeats the whole interview plan wastes the ten minutes an interviewer actually has. Give each one their own stage, the specific thing to probe, and the two lines they are not allowed to ask.</p>
+</div>
+<div style="border:1px solid var(--op-border);background:var(--bg)">
+<div style="padding:16px 20px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-muted)">Briefing budget</div>
+<div data-count="3-6" data-repeat="cover.metrics"><div style="display:flex;justify-content:space-between;gap:14px;padding:13px 20px;border-bottom:1px solid var(--border-soft)"><span data-slot="metric.label" style="font-size:20px;color:var(--op-muted)">Interviewers briefed</span><span data-slot="metric.value" style="font-family:var(--op-font-mono);font-size:20px;font-weight:600">4</span></div>
+<div style="display:flex;justify-content:space-between;gap:14px;padding:13px 20px;border-bottom:1px solid var(--border-soft)"><span data-slot="metric.label" style="font-size:20px;color:var(--op-muted)">Prep time each</span><span data-slot="metric.value" style="font-family:var(--op-font-mono);font-size:20px;font-weight:600">10 min</span></div>
+<div style="display:flex;justify-content:space-between;gap:14px;padding:13px 20px;border-bottom:1px solid var(--border-soft)"><span data-slot="metric.label" style="font-size:20px;color:var(--op-muted)">Debrief window</span><span data-slot="metric.value" style="font-family:var(--op-font-mono);font-size:20px;font-weight:600">24 hours</span></div>
+<div style="display:flex;justify-content:space-between;gap:14px;padding:13px 20px"><span data-slot="metric.label" style="font-size:20px;color:var(--op-muted)">Decision meeting</span><span data-slot="metric.value" style="font-family:var(--op-font-mono);font-size:20px;font-weight:600;color:var(--op-accent)">30 min</span></div>
+</div>
+<div data-slot="cover.note" style="padding:12px 20px;background:var(--surface-2);border-top:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;color:var(--op-muted);text-transform:uppercase">One page per interviewer. Nothing more to read.</div>
+</div>
+</div>
+<div style="display:flex;height:5px">
+<div style="flex:1;background:var(--op-primary)"></div>
+</div>
+</div>
+</header>
+<main style="max-width:1120px;margin:0 auto;padding:0 48px 88px">
+<!-- 01 · PREP PER STAGE -->
+<section style="padding:56px 0 0">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">01</div>
+<div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Prep</div>
+</div>
+<div>
+<h2 data-slot="s1.title" style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px">Your stage, not the whole plan</h2>
+<p data-slot="s1.body" style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty">Each interviewer gets the ten-minute version of the plan: what they own, what to probe, and what to review before the candidate joins.</p>
+</div>
+</div>
+<div data-count="3-6" data-repeat="prep.stages" style="margin-top:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--op-border);border:1px solid var(--op-border)"><div style="background:var(--op-surface);padding:22px 18px;border-top:3px solid var(--op-primary)">
+<div data-slot="prep.meta" style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:9px">45 min · HM</div>
+<div data-slot="prep.stage" style="font-size:20px;font-weight:600;margin-bottom:6px">Hiring manager</div>
+<div data-slot="prep.focus" style="font-size:20px;color:var(--op-ink-dim)">Scope fit and ownership appetite. Read the tradeoff lock before the room opens.</div>
+</div>
+<div style="background:var(--op-surface);padding:22px 18px;border-top:3px solid var(--op-byeok)">
+<div data-slot="prep.meta" style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:9px">60 min · battery eng</div>
+<div data-slot="prep.stage" style="font-size:20px;font-weight:600;margin-bottom:6px">Technical screen</div>
+<div data-slot="prep.focus" style="font-size:20px;color:var(--op-ink-dim)">The can-they-do-it filter. Bring the two backup questions, not just the primary.</div>
+</div>
+<div style="background:var(--op-surface);padding:22px 18px;border-top:3px solid var(--op-byeok)">
+<div data-slot="prep.meta" style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:9px">75 min · 2 eng</div>
+<div data-slot="prep.stage" style="font-size:20px;font-weight:600;margin-bottom:6px">Technical deep-dive</div>
+<div data-slot="prep.focus" style="font-size:20px;color:var(--op-ink-dim)">Design depth and a test-rig anomaly. Split ownership before the loop, not during it.</div>
+</div>
+<div style="background:var(--op-surface);padding:22px 18px;border-top:3px solid var(--op-muted)">
+<div data-slot="prep.meta" style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:9px">45 min · cross-team</div>
+<div data-slot="prep.stage" style="font-size:20px;font-weight:600;margin-bottom:6px">Systems &amp; values</div>
+<div data-slot="prep.focus" style="font-size:20px;color:var(--op-ink-dim)">Someone outside the reporting line. Score the scenario, not the resume.</div>
+</div>
+</div>
+</section>
+<!-- 02 · BIAS AND LEGAL COACHING -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">02</div>
+<div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Coaching</div>
+</div>
+<div>
+<h2 data-slot="s2.title" style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px">What every interviewer holds before the room</h2>
+<p data-slot="s2.body" style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty">Stated once here so it never has to be repeated per stage. Read it every time, not only the first time.</p>
+</div>
+</div>
+<div data-count="3-6" data-repeat="coaching.lines" style="margin-top:32px;background:var(--op-surface);border:1px solid var(--op-border);padding:26px 30px;display:grid;gap:16px"><div style="display:grid;grid-template-columns:220px 1fr;gap:20px;padding-bottom:14px;border-bottom:1px solid var(--op-border)">
+<div data-slot="coach.label" style="font-size:20px;font-weight:600">Score the answer, not the accent</div>
+<div data-slot="coach.body" style="font-size:20px;color:var(--op-ink-dim)">A different communication style or a nontraditional path is not a competency gap. Write down the words, not the delivery.</div>
+</div>
+<div style="display:grid;grid-template-columns:220px 1fr;gap:20px;padding-bottom:14px;border-bottom:1px solid var(--op-border)">
+<div data-slot="coach.label" style="font-size:20px;font-weight:600">One story is not a pattern</div>
+<div data-slot="coach.body" style="font-size:20px;color:var(--op-ink-dim)">A single strong or weak answer sets that competency's own score, never the rest of the loop. Halo and horn effects are real.</div>
+</div>
+<div style="display:grid;grid-template-columns:220px 1fr;gap:20px;padding-bottom:14px;border-bottom:1px solid var(--op-border)">
+<div data-slot="coach.label" style="font-size:20px;font-weight:600">Never ask about protected status</div>
+<div data-slot="coach.body" style="font-size:20px;color:var(--op-ink-dim)">Family plans, age, national origin, disability, and religion stay off the table, directly or by inference from a resume gap.</div>
+</div>
+<div style="display:grid;grid-template-columns:220px 1fr;gap:20px">
+<div data-slot="coach.label" style="font-size:20px;font-weight:600">Write the example, not the adjective</div>
+<div data-slot="coach.body" style="font-size:20px;color:var(--op-ink-dim)">"Strong" is not evidence a debrief can use. The specific thing they said or did is the only entry worth writing down.</div>
+</div>
+</div>
+<div style="margin-top:16px;background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-warning);padding:20px 24px">
+<div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-warning);margin-bottom:8px">Caution</div>
+<p data-slot="caution.1" style="margin:0;font-size:20px;color:var(--op-ink-dim);">An interviewer who skips the ten-minute prep window shows up reading the resume live, in front of the candidate. That reads as disorganized and it costs the loop a stage's worth of signal, so protect the window on the calendar.</p>
+</div>
+</section>
+<!-- 03 · STRUCTURED DEBRIEF FORM -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">03</div>
+<div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Debrief form</div>
+</div>
+<div>
+<h2 data-slot="s3.title" style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px">Four fields, the same form every time</h2>
+<p data-slot="s3.body" style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty">A rating with no cited evidence is a vibe with a number attached. Every field below asks for the specific thing, never the summary judgment.</p>
+</div>
+</div>
+<div data-count="3-6" data-repeat="debrief.fields" style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;background:var(--op-border);border:1px solid var(--op-border)"><div style="background:var(--op-surface);padding:22px 18px;border-top:3px solid var(--op-primary)">
+<div data-slot="field.type" style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:9px">Rating 1 to 4</div>
+<div data-slot="field.label" style="font-size:20px;font-weight:600;margin-bottom:6px">Technical depth</div>
+<div data-slot="field.prompt" style="font-size:20px;color:var(--op-ink-dim)">Cite the exchange that earned this score. An adjective alone is not a valid entry.</div>
+</div>
+<div style="background:var(--op-surface);padding:22px 18px;border-top:3px solid var(--op-primary)">
+<div data-slot="field.type" style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:9px">Rating 1 to 4</div>
+<div data-slot="field.label" style="font-size:20px;font-weight:600;margin-bottom:6px">Independence</div>
+<div data-slot="field.prompt" style="font-size:20px;color:var(--op-ink-dim)">Name the hint you had to give, or say they reached it alone.</div>
+</div>
+<div style="background:var(--op-surface);padding:22px 18px;border-top:3px solid var(--op-byeok)">
+<div data-slot="field.type" style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:9px">Yes or no</div>
+<div data-slot="field.label" style="font-size:20px;font-weight:600;margin-bottom:6px">Deal-breaker triggered</div>
+<div data-slot="field.prompt" style="font-size:20px;color:var(--op-ink-dim)">Cite the pattern the plan named, or leave this one blank.</div>
+</div>
+<div style="background:var(--op-surface);padding:22px 18px;border-top:3px solid var(--op-muted)">
+<div data-slot="field.type" style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:9px">Free text</div>
+<div data-slot="field.label" style="font-size:20px;font-weight:600;margin-bottom:6px">One line for the room</div>
+<div data-slot="field.prompt" style="font-size:20px;color:var(--op-ink-dim)">The sentence you would say out loud before anyone averages a score.</div>
+</div>
+</div>
+</section>
+<!-- 04 · DECISION MEETING AGENDA -->
+<section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
+<div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
+<div>
+<div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">04</div>
+<div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Decision</div>
+</div>
+<div>
+<h2 data-slot="s4.title" style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px">The decision meeting, in order</h2>
+<p data-slot="s4.body" style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty">Thirty minutes, same order every time, so the loudest voice in the room never sets the outcome by going first.</p>
+</div>
+</div>
+<div style="margin-top:32px;display:grid;grid-template-columns:1.4fr 1fr;gap:2px;background:var(--op-border);border:1px solid var(--op-border)">
+<div style="background:var(--op-surface);padding:26px 30px">
+<div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:18px">Run it in this order</div>
+<div data-count="3-6" data-repeat="agenda.items" style="display:grid;gap:16px"><div style="display:grid;grid-template-columns:26px 1fr;gap:14px">
+<div style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary)">1</div>
+<div><div data-slot="agenda.title" style="font-size:20px;font-weight:600;margin-bottom:3px">Scores in before the room opens</div><div data-slot="agenda.body" style="font-size:20px;color:var(--op-ink-dim)">No score, no vote. Whoever has not submitted a form does not speak first.</div></div>
+</div>
+<div style="display:grid;grid-template-columns:26px 1fr;gap:14px">
+<div style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary)">2</div>
+<div><div data-slot="agenda.title" style="font-size:20px;font-weight:600;margin-bottom:3px">Lowest scorer speaks first</div><div data-slot="agenda.body" style="font-size:20px;color:var(--op-ink-dim)">Seniority does not open the meeting. Concerns get air before enthusiasm anchors the room.</div></div>
+</div>
+<div style="display:grid;grid-template-columns:26px 1fr;gap:14px">
+<div style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary)">3</div>
+<div><div data-slot="agenda.title" style="font-size:20px;font-weight:600;margin-bottom:3px">Each owner reads their form</div><div data-slot="agenda.body" style="font-size:20px;color:var(--op-ink-dim)">Follow the stage order from the interview plan, not seniority or volume.</div></div>
+</div>
+<div style="display:grid;grid-template-columns:26px 1fr;gap:14px">
+<div style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary)">4</div>
+<div><div data-slot="agenda.title" style="font-size:20px;font-weight:600;margin-bottom:3px">Decide inside the thirty minutes</div><div data-slot="agenda.body" style="font-size:20px;color:var(--op-ink-dim)">Hire, no-hire, or one named missing check with an owner and a date.</div></div>
+</div>
+</div>
+</div>
+<div style="background:var(--op-surface);padding:26px 30px;display:grid;gap:16px;align-content:start">
+<div style="border-top:3px solid var(--op-accent);padding-top:14px">
+<div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-accent);margin-bottom:8px">Legal line</div>
+<p data-slot="legal.note" style="margin:0;font-size:20px;color:var(--op-ink-dim)">Every candidate for this role gets the same stages, the same questions, and the same rubric. A deviation made for one candidate and not another is the fact pattern that turns a rejection into a claim.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- HANDOFF -->
+<section data-print="hide" hidden="" style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border);display:none">
+<div data-mode="dark" data-optional="" style="background:var(--op-bg);color:var(--op-ink);padding:30px 34px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:18px">
+<div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-bisaek)">Handoff → next artifact</div>
+<div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">Internal · optional: delete before sharing outside the search team</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;font-family:var(--op-font-mono);font-size:20px;line-height:1.9">
+<div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Produces</div><div data-slot="handoff.produces">interviewer_prep · coaching_lines · debrief_form · decision_agenda</div></div>
+<div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Consumed by</div><div data-slot="handoff.consumers">A09 QA Gate · scorecard setup</div></div>
+<div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Assumptions</div><div data-slot="handoff.assumptions">Same panel already read the interview plan. No new interviewer added after this briefing goes out.</div></div>
+<div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Blocked on</div><div data-slot="handoff.blocked" style="color:var(--op-hwang-light)">Nothing</div></div>
+</div>
+</div>
+</section>
+<footer style="margin-top:56px;padding-top:20px;border-top:1px solid var(--op-border);display:flex;justify-content:space-between;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">
+<span data-slot="footer.left">TK-09 · Interviewer Briefing</span><span data-slot="footer.right">Same rubric for every candidate · Built with Talent One by OnePromptMan</span>
+</footer>
+</main>
+</div>
+</x-dc>
+<script data-dc-script="" data-props='{"$preview":{"width":1180,"height":900}}' type="text/x-dc"></script>
+</body>
+</html>

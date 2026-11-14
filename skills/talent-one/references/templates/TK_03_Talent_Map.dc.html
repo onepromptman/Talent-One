@@ -14,65 +14,66 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="_ds/onepromptman-ds/_ds_bundle.js"></script>
 <style>
-  /* derived ramp tints (no token exists for these): #F0EDE6 track, #FBF9F4 rail, #EDE8DE hairline, #DCE6F2/#7FA5CC cheong ramp, #F7FAFC quadrant wash, #EEF6F1/#BFDCCB nok pale, #FAF0E6/#E3CDB4 dan pale, #F9EFEF/#E3C4C4/#F6E4E4 jeok pale, #C9D6E6 link rule */
+  /* colors: role tokens only (tokens.css). chart ramp = var(--surface-2) track, var(--accent-tint) touch, var(--heat-secondary) secondary, var(--op-primary) primary */
   body{margin:0;background:var(--op-bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  a{color:var(--op-primary);text-decoration:underline;text-underline-offset:.18em;text-decoration-color:#C9D6E6}
+  a{color:var(--op-primary);text-decoration:underline;text-underline-offset:.18em;text-decoration-color:var(--accent-line)}
   a:hover{color:var(--op-cheong-dark);text-decoration-color:var(--op-primary)}
-  @media print{@page{size:letter;margin:0.5in} section{break-inside:avoid} .tk-toggles{display:none !important}}
+  button{font-family:var(--op-font-mono);font-size:20px}
+  @media print{@page{size:letter;margin:0.5in} .tk-toggles{display:none !important}}
 </style>
 </helmet>
 
-<div data-mode="light" style="background:var(--op-bg);color:var(--op-ink);font-family:var(--op-font-body);font-size:16px;line-height:1.6">
+<div data-mode="light" style="background:var(--op-bg);color:var(--op-ink);font-family:var(--op-font-body);font-size:20px;line-height:1.6">
 
 <!-- ==================== COVER ==================== -->
 <header style="border-bottom:1px solid var(--op-border);background:var(--op-surface)">
   <div style="max-width:1120px;margin:0 auto;padding:0 48px">
     <div style="display:flex;justify-content:space-between;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--op-border)">
-      <div style="font-family:var(--op-font-mono);font-size:12px;letter-spacing:.30em;text-transform:uppercase" data-slot="kit.mark">Talent One <span style="color:var(--op-accent)">·</span> TK-03</div>
-      <div style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted)"><span data-slot="doc.agent">Agent · ATLAS</span> <span style="color:var(--op-lattice-line)">/</span> <span data-slot="doc.date">Freshness Jul 2026 · 60-day refresh</span></div>
+      <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.30em;text-transform:uppercase;white-space:nowrap;flex-shrink:0;padding-right:32px" data-slot="kit.mark">Talent One <span style="color:var(--op-accent)">·</span> TK-03</div>
+      <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);text-align:right"><span data-slot="doc.agent">Agent · ATLAS</span> <span style="color:var(--op-lattice-line)">/</span> <span data-slot="doc.date">Freshness Jul 2026 · 60-day refresh</span></div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 330px;gap:60px;padding:60px 0 44px;align-items:start">
       <div>
-        <div style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-primary);margin-bottom:18px" data-slot="doc.eyebrow">Artifact 03 · Market intelligence</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-primary);margin-bottom:18px" data-slot="doc.eyebrow">Artifact 03 · Market intelligence</div>
         <h1 style="font-family:var(--op-font-display);font-weight:700;font-size:52px;line-height:1.08;letter-spacing:-0.02em;margin:0;text-wrap:balance" data-slot="doc.title">Battery Talent Map</h1>
         <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
-          <span style="font-family:var(--op-font-mono);font-size:13px;letter-spacing:.06em;color:var(--op-surface);background:var(--op-ink);padding:7px 14px" data-slot="role.title">Battery Systems Engineer, mid level</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-muted)" data-slot="role.org">Connected-hardware builder · distributed hybrid · small battery team</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.06em;color:var(--op-surface);background:var(--op-ink);padding:7px 14px" data-slot="role.title">Battery Systems Engineer, mid level</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)" data-slot="role.org">Connected-hardware builder · distributed hybrid · small battery team</span>
         </div>
-        <p style="margin:26px 0 0;max-width:62ch;font-size:18px;color:var(--op-ink-dim);text-wrap:pretty" data-slot="doc.thesis">Where mid-career battery talent actually sits, who is bidding for it, what moves it, which adjacent industries hide it, and whether it will relocate. The pool is small and clustered, so Section 05 decides your week.</p>
+        <p style="margin:26px 0 0;font-size:22px;color:var(--op-ink-dim);text-wrap:pretty" data-slot="doc.thesis">Where mid-career battery talent actually sits, who is bidding for it, what moves it, which adjacent industries hide it, and whether it will relocate. The pool is small and clustered, so Section 05 decides your week.</p>
       </div>
 
-      <div style="border:1px solid var(--op-border);background:#FBF9F4">
-        <div style="padding:16px 20px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-muted)">Search at a glance</div>
+      <div style="border:1px solid var(--op-border);background:var(--bg)">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-muted)">Search at a glance</div>
         <div data-repeat="cover.metrics" data-count="4-6">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 20px;border-bottom:1px solid #EDE8DE"><span style="font-size:13.5px;color:var(--op-muted)" data-slot="metric.label">Market classification</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600;color:var(--op-warning)" data-slot="metric.value">Tight</span></div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 20px;border-bottom:1px solid #EDE8DE"><span style="font-size:13.5px;color:var(--op-muted)">Field-proven band (5+ yr)</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600;color:var(--op-accent)">Scarce</span></div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 20px;border-bottom:1px solid #EDE8DE"><span style="font-size:13.5px;color:var(--op-muted)">Sourcing difficulty</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600;color:var(--op-accent)">8 / 10</span></div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 20px;border-bottom:1px solid #EDE8DE"><span style="font-size:13.5px;color:var(--op-muted)">Reachable supply : demand</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600">~1.5 : 1</span></div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 20px;border-bottom:1px solid #EDE8DE"><span style="font-size:13.5px;color:var(--op-muted)">Engageable pool</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600">~1,300</span></div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 20px"><span style="font-size:13.5px;color:var(--op-muted)">Comp posture</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600;color:var(--op-primary)">P50–P60</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 20px;border-bottom:1px solid var(--border-soft)"><span style="font-size:20px;color:var(--op-muted)" data-slot="metric.label">Market classification</span><span style="font-family:var(--op-font-mono);font-size:20px;font-weight:600;color:var(--op-warning)" data-slot="metric.value">Tight</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 20px;border-bottom:1px solid var(--border-soft)"><span style="font-size:20px;color:var(--op-muted)">Field-proven band (5+ yr)</span><span style="font-family:var(--op-font-mono);font-size:20px;font-weight:600;color:var(--op-accent)">Scarce</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 20px;border-bottom:1px solid var(--border-soft)"><span style="font-size:20px;color:var(--op-muted)">Sourcing difficulty</span><span style="font-family:var(--op-font-mono);font-size:20px;font-weight:600;color:var(--op-accent)">8 / 10</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 20px;border-bottom:1px solid var(--border-soft)"><span style="font-size:20px;color:var(--op-muted)">Reachable supply : demand</span><span style="font-family:var(--op-font-mono);font-size:20px;font-weight:600">~1.5 : 1</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 20px;border-bottom:1px solid var(--border-soft)"><span style="font-size:20px;color:var(--op-muted)">Engageable pool</span><span style="font-family:var(--op-font-mono);font-size:20px;font-weight:600">~1,300</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 20px"><span style="font-size:20px;color:var(--op-muted)">Comp posture</span><span style="font-family:var(--op-font-mono);font-size:20px;font-weight:600;color:var(--op-primary)">P50-P60</span></div>
         </div>
-        <div style="padding:12px 20px;background:#F0EDE6;border-top:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:10px;letter-spacing:.1em;color:var(--op-muted);text-transform:uppercase" data-slot="cover.provenance">Ratios hold · treat absolute counts as planning figures</div>
+        <div style="padding:12px 20px;background:var(--surface-2);border-top:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;color:var(--op-muted);text-transform:uppercase" data-slot="cover.provenance">Ratios hold · treat absolute counts as planning figures</div>
       </div>
     </div>
 
     <div style="display:flex;height:5px">
-      <div style="flex:5;background:var(--op-primary)"></div><div style="flex:1;background:var(--op-byeok)"></div><div style="flex:1;background:var(--op-success)"></div><div style="flex:1;background:var(--op-highlight)"></div><div style="flex:1;background:var(--op-warning)"></div><div style="flex:1;background:var(--op-accent)"></div>
+      <div style="flex:1;background:var(--op-primary)"></div>
     </div>
   </div>
 </header>
 
 <!-- ==================== TOGGLE BAR ==================== -->
-<div class="tk-toggles" style="border-bottom:1px solid var(--op-border);background:#FBF9F4;position:sticky;top:0;z-index:20">
+<div class="tk-toggles" style="border-bottom:1px solid var(--op-border);background:var(--bg);position:sticky;top:0;z-index:20">
   <div style="max-width:1120px;margin:0 auto;padding:12px 48px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
-    <span style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-ink-300);margin-right:6px">Show</span>
-    <button type="button" data-toggle="method" aria-controls="tk03-method" aria-pressed="true" style="font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid var(--op-primary);background:var(--op-primary);color:var(--op-surface)">Methodology</button>
-    <button type="button" data-toggle="dives" aria-controls="tk03-dives" aria-pressed="true" style="font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid var(--op-primary);background:var(--op-primary);color:var(--op-surface)">Company dossiers</button>
-    <button type="button" data-toggle="peripheral" aria-controls="tk03-peripheral" aria-pressed="true" style="font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid var(--op-primary);background:var(--op-primary);color:var(--op-surface)">Peripheral pools</button>
-    <button type="button" data-toggle="personas" aria-controls="tk03-personas" aria-pressed="true" style="font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid var(--op-primary);background:var(--op-primary);color:var(--op-surface)">Personas</button>
-    <button type="button" data-toggle="comp" aria-controls="tk03-comp" aria-pressed="true" style="font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid var(--op-primary);background:var(--op-primary);color:var(--op-surface)">Compensation</button>
-    <span style="margin-left:auto;font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">Hidden sections are excluded from print</span>
+    <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-ink-300);margin-right:6px">Show</span>
+    <button type="button" data-toggle="method" aria-controls="tk03-method" aria-pressed="true" style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid var(--op-primary);background:var(--op-primary);color:var(--op-surface)">Methodology</button>
+    <button type="button" data-toggle="dives" aria-controls="tk03-dives" aria-pressed="true" style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid var(--op-primary);background:var(--op-primary);color:var(--op-surface)">Company dossiers</button>
+    <button type="button" data-toggle="peripheral" aria-controls="tk03-peripheral" aria-pressed="true" style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid var(--op-primary);background:var(--op-primary);color:var(--op-surface)">Peripheral pools</button>
+    <button type="button" data-toggle="personas" aria-controls="tk03-personas" aria-pressed="true" style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid var(--op-primary);background:var(--op-primary);color:var(--op-surface)">Personas</button>
+    <button type="button" data-toggle="comp" aria-controls="tk03-comp" aria-pressed="true" style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid var(--op-primary);background:var(--op-primary);color:var(--op-surface)">Compensation</button>
+    <span style="margin-left:auto;font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)">Hidden sections are excluded from print</span>
   </div>
 </div>
 
@@ -83,38 +84,38 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">01</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">The read</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">The read</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s1.title">The constraint is mid-career reach, not headcount</h2>
-        <p style="margin:0;max-width:66ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s1.body">About 68,000 engineers work nationally in the base occupation, but the mid-career, field-proven battery subset is only a few thousand, and it clusters in a handful of metros. EV makers, funded storage startups, and large cell manufacturers all chase the same people. You will not win this on base salary. You win on ownership scope, test cadence, and adjacent pools nobody else is fishing.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s1.body">About 68,000 engineers work nationally in the base occupation, but the mid-career, field-proven battery subset is only a few thousand, and it clusters in a handful of metros. EV makers, funded storage startups, and large cell manufacturers all chase the same people. You will not win this on base salary. You win on ownership scope, test cadence, and adjacent pools nobody else is fishing.</p>
       </div>
     </div>
 
     <div style="margin-top:34px;background:var(--op-surface);border:1px solid var(--op-border);border-left:4px solid var(--op-primary);display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;padding:32px 36px">
       <div style="font-family:var(--op-font-display);font-size:88px;line-height:.86;color:var(--op-primary);font-variant-numeric:tabular-nums" data-slot="pullstat.value">~2%</div>
       <div>
-        <div style="font-family:var(--op-font-mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:8px" data-slot="pullstat.label">Of the national engineering base are engageable for this search</div>
-        <div style="font-size:19px;max-width:56ch;text-wrap:pretty" data-slot="pullstat.claim">68,440 engineers in the base occupation become roughly 1,300 after four filters. Three of those four are choices you can still reopen with the hiring manager.</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:8px" data-slot="pullstat.label">Of the national engineering base are engageable for this search</div>
+        <div style="font-size:22px;text-wrap:pretty" data-slot="pullstat.claim">68,440 engineers in the base occupation become roughly 1,300 after four filters. Three of those four are choices you can still reopen with the hiring manager.</div>
         <div style="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-          <span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:#FAF0E6;border:1px solid #E3CDB4">Modeled</span>
-          <span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted)" data-slot="pullstat.method">BLS-OES baseline × documented filters · see methodology</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:var(--warn-tint);border:1px solid var(--warn-fill)">Modeled</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)" data-slot="pullstat.method">BLS-OES baseline × documented filters · see methodology</span>
         </div>
       </div>
     </div>
 
     <div style="margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
       <div style="background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-primary);padding:20px 22px">
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-primary);margin-bottom:8px">Insight</div>
-        <p style="margin:0;font-size:14.5px;color:var(--op-ink-dim)" data-slot="insight.1">Adjacent-industry engineers, EV powertrain, power electronics, and consumer electronics, close the home-storage gap in months, not years. That reframe materially widens the reachable pool, and title-based searches rarely surface these people for a battery role.</p>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-primary);margin-bottom:8px">Insight</div>
+        <p style="margin:0;font-size:20px;color:var(--op-ink-dim)" data-slot="insight.1">Adjacent-industry engineers, EV powertrain, power electronics, and consumer electronics, close the home-storage gap in months, not years. That reframe materially widens the reachable pool, and title-based searches rarely surface these people for a battery role.</p>
       </div>
       <div style="background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-warning);padding:20px 22px">
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-warning);margin-bottom:8px">Caution</div>
-        <p style="margin:0;font-size:14.5px;color:var(--op-ink-dim)" data-slot="caution.1">Battery talent is concentrated in a few clusters, so most hires need relocation. A distributed posting will not change that: test-rig and abuse-test work is onsite by nature. Budget relocation now, or the search stalls on geography alone.</p>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-warning);margin-bottom:8px">Caution</div>
+        <p style="margin:0;font-size:20px;color:var(--op-ink-dim)" data-slot="caution.1">Battery talent is concentrated in a few clusters, so most hires need relocation. A distributed posting will not change that: test-rig and abuse-test work is onsite by nature. Budget relocation now, or the search stalls on geography alone.</p>
       </div>
       <div style="background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-accent);padding:20px 22px">
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-accent);margin-bottom:8px">Procedure</div>
-        <p style="margin:0;font-size:14.5px;color:var(--op-ink-dim)" data-slot="gate.1">Work-authorization requirements, where a role has them, are a role constraint, not a sourcing filter. Ask the identical question of every candidate, in writing, as procedure. Never infer eligibility from a profile, a name, or a school.</p>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-accent);margin-bottom:8px">Procedure</div>
+        <p style="margin:0;font-size:20px;color:var(--op-ink-dim)" data-slot="gate.1">Work-authorization requirements, where a role has them, are a role constraint, not a sourcing filter. Ask the identical question of every candidate, in writing, as procedure. Never infer eligibility from a profile, a name, or a school.</p>
       </div>
     </div>
   </section>
@@ -124,84 +125,84 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">02</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Supply</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Supply</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s2.title">From national supply to reachable target</h2>
-        <p style="margin:0;max-width:66ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s2.body">Each stage applies one documented filter to the stage above it. The baseline is Sourced from BLS; every stage below it is an Estimate with a stated filter. Read the ratios, not the absolute counts.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s2.body">Each stage applies one documented filter to the stage above it. The baseline is Sourced from BLS; every stage below it is an Estimate with a stated filter. Read the ratios, not the absolute counts.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;background:var(--op-surface);border:1px solid var(--op-border);padding:28px 32px">
       <div style="display:grid;gap:12px" data-repeat="funnel.stages" data-count="4-7">
         <div style="display:grid;grid-template-columns:220px 1fr 92px 96px;gap:14px;align-items:center">
-          <div style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-muted);text-align:right" data-slot="stage.label">Engineers in the base occupation, national</div>
-          <div style="height:24px;background:#F0EDE6;position:relative"><div data-bar="1.0" style="position:absolute;inset:0 auto 0 0;width:100%;background:var(--op-primary)"></div></div>
-          <div style="font-family:var(--op-font-mono);font-size:13px;font-variant-numeric:tabular-nums" data-slot="stage.n">68,440</div>
-          <div style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-ink-300)" data-slot="stage.filter">baseline</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-muted);text-align:right" data-slot="stage.label">Engineers in the base occupation, national</div>
+          <div style="height:24px;background:var(--surface-2);position:relative"><div data-bar="1.0" style="position:absolute;inset:0 auto 0 0;width:100%;background:var(--op-primary)"></div></div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;font-variant-numeric:tabular-nums" data-slot="stage.n">68,440</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink-300)" data-slot="stage.filter">baseline</div>
         </div>
         <div style="display:grid;grid-template-columns:220px 1fr 92px 96px;gap:14px;align-items:center">
-          <div style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-muted);text-align:right">Battery-focused</div>
-          <div style="height:24px;background:#F0EDE6;position:relative"><div data-bar="0.20" style="position:absolute;inset:0 auto 0 0;width:20%;background:var(--op-primary)"></div></div>
-          <div style="font-family:var(--op-font-mono);font-size:13px">~13,700</div>
-          <div style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-ink-300)">× 20%</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-muted);text-align:right">Battery-focused</div>
+          <div style="height:24px;background:var(--surface-2);position:relative"><div data-bar="0.20" style="position:absolute;inset:0 auto 0 0;width:20%;background:var(--op-primary)"></div></div>
+          <div style="font-family:var(--op-font-mono);font-size:20px">~13,700</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink-300)">× 20%</div>
         </div>
         <div style="display:grid;grid-template-columns:220px 1fr 92px 96px;gap:14px;align-items:center">
-          <div style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-muted);text-align:right">Field/test proven</div>
-          <div style="height:24px;background:#F0EDE6;position:relative"><div data-bar="0.07" style="position:absolute;inset:0 auto 0 0;width:7%;background:var(--op-byeok)"></div></div>
-          <div style="font-family:var(--op-font-mono);font-size:13px">~4,800</div>
-          <div style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-ink-300)">× 35%</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-muted);text-align:right">Field/test proven</div>
+          <div style="height:24px;background:var(--surface-2);position:relative"><div data-bar="0.07" style="position:absolute;inset:0 auto 0 0;width:7%;background:var(--op-byeok)"></div></div>
+          <div style="font-family:var(--op-font-mono);font-size:20px">~4,800</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink-300)">× 35%</div>
         </div>
         <div style="display:grid;grid-template-columns:220px 1fr 92px 96px;gap:14px;align-items:center">
-          <div style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-muted);text-align:right">In reachable hubs</div>
-          <div style="height:24px;background:#F0EDE6;position:relative"><div data-bar="0.038" style="position:absolute;inset:0 auto 0 0;width:3.8%;background:var(--op-highlight)"></div></div>
-          <div style="font-family:var(--op-font-mono);font-size:13px">~2,600</div>
-          <div style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-ink-300)">× 55%</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-muted);text-align:right">In reachable hubs</div>
+          <div style="height:24px;background:var(--surface-2);position:relative"><div data-bar="0.038" style="position:absolute;inset:0 auto 0 0;width:3.8%;background:var(--op-highlight)"></div></div>
+          <div style="font-family:var(--op-font-mono);font-size:20px">~2,600</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink-300)">× 55%</div>
         </div>
         <div style="display:grid;grid-template-columns:220px 1fr 92px 96px;gap:14px;align-items:center">
-          <div style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-accent);text-align:right">Engageable, small employer</div>
-          <div style="height:24px;background:#F0EDE6;position:relative"><div data-bar="0.019" style="position:absolute;inset:0 auto 0 0;width:1.9%;background:var(--op-accent)"></div></div>
-          <div style="font-family:var(--op-font-mono);font-size:13px;color:var(--op-accent)">~1,300</div>
-          <div style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-ink-300)">× 50%</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-accent);text-align:right">Engageable, small employer</div>
+          <div style="height:24px;background:var(--surface-2);position:relative"><div data-bar="0.019" style="position:absolute;inset:0 auto 0 0;width:1.9%;background:var(--op-accent)"></div></div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent)">~1,300</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink-300)">× 50%</div>
         </div>
       </div>
 
       <div id="tk03-method" data-toggle-section="method">
         <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--op-border);overflow-x:auto">
-          <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:14px">Methodology</div>
-          <table style="width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px">
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:14px">Methodology</div>
+          <table style="width:100%;border-collapse:collapse;font-size:20px;min-width:640px">
             <thead>
               <tr>
-                <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:10px 14px;border-bottom:1px solid var(--op-ink)">Stage</th>
-                <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:10px 14px;border-bottom:1px solid var(--op-ink)">Basis</th>
-                <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:10px 14px;border-bottom:1px solid var(--op-ink)">Provenance</th>
+                <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:10px 14px;border-bottom:1px solid var(--op-ink)">Stage</th>
+                <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:10px 14px;border-bottom:1px solid var(--op-ink)">Basis</th>
+                <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:10px 14px;border-bottom:1px solid var(--op-ink)">Provenance</th>
               </tr>
             </thead>
             <tbody data-repeat="method.rows" data-count="4-7">
               <tr>
                 <td style="padding:11px 14px;border-bottom:1px solid var(--op-border);font-weight:600" data-slot="method.stage">68,440 engineers</td>
                 <td style="padding:11px 14px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)" data-slot="method.basis">National employment, engineers in SOC 17-2199</td>
-                <td style="padding:11px 14px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB" data-slot="method.pill">Sourced · BLS-OES 2024</span></td>
+                <td style="padding:11px 14px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill)" data-slot="method.pill">Sourced · BLS-OES 2024</span></td>
               </tr>
               <tr>
                 <td style="padding:11px 14px;border-bottom:1px solid var(--op-border);font-weight:600">~13,700 battery</td>
                 <td style="padding:11px 14px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Filtered to battery, cell, thermal-management, or power-electronics skills</td>
-                <td style="padding:11px 14px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:#FAF0E6;border:1px solid #E3CDB4">Estimate</span></td>
+                <td style="padding:11px 14px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:var(--warn-tint);border:1px solid var(--warn-fill)">Estimate</span></td>
               </tr>
               <tr>
                 <td style="padding:11px 14px;border-bottom:1px solid var(--op-border);font-weight:600">~4,800 mid-career</td>
                 <td style="padding:11px 14px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">5+ yrs with shipped-pack or abuse-test experience</td>
-                <td style="padding:11px 14px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:#FAF0E6;border:1px solid #E3CDB4">Estimate</span></td>
+                <td style="padding:11px 14px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:var(--warn-tint);border:1px solid var(--warn-fill)">Estimate</span></td>
               </tr>
               <tr>
                 <td style="padding:11px 14px;border-bottom:1px solid var(--op-border);font-weight:600">~2,600 reachable</td>
                 <td style="padding:11px 14px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">In or reachable to concentrated battery clusters</td>
-                <td style="padding:11px 14px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:#FAF0E6;border:1px solid #E3CDB4">Estimate</span></td>
+                <td style="padding:11px 14px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:var(--warn-tint);border:1px solid var(--warn-fill)">Estimate</span></td>
               </tr>
               <tr>
                 <td style="padding:11px 14px;font-weight:600">~1,300 engageable</td>
                 <td style="padding:11px 14px;color:var(--op-ink-dim)">Open to a small hardware employer, minus the hard-passive segment</td>
-                <td style="padding:11px 14px"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:#FAF0E6;border:1px solid #E3CDB4">Estimate</span></td>
+                <td style="padding:11px 14px"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:var(--warn-tint);border:1px solid var(--warn-fill)">Estimate</span></td>
               </tr>
             </tbody>
           </table>
@@ -215,47 +216,47 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">03</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Demand</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Demand</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s3.title">Who is bidding on the same engineers</h2>
-        <p style="margin:0;max-width:66ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s3.body">Measured in competing open requisitions a qualified battery engineer would realistically weigh against yours, not total market headcount.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s3.body">Measured in competing open requisitions a qualified battery engineer would realistically weigh against yours, not total market headcount.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;background:var(--op-surface);border:1px solid var(--op-border);overflow-x:auto">
-      <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:700px">
+      <table style="width:100%;border-collapse:collapse;font-size:20px;min-width:700px">
         <thead>
           <tr>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--op-ink)">Demand bloc</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--op-ink)">Open reqs</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--op-ink)">Velocity</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--op-ink)">What it means for you</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--op-ink)">Demand bloc</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--op-ink)">Open reqs</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--op-ink)">Velocity</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--op-ink)">What it means for you</th>
           </tr>
         </thead>
         <tbody data-repeat="demand.rows" data-count="3-6">
           <tr>
-            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-accent);font-weight:600" data-slot="demand.name">EV makers <span style="display:block;font-weight:400;font-size:12.5px;color:var(--op-muted)">startups and established automakers</span></td>
-            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px" data-slot="demand.reqs">600–900</td>
-            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4" data-slot="demand.velocity">High</span></td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-accent);font-weight:600" data-slot="demand.name">EV makers <span style="display:block;font-weight:400;font-size:20px;color:var(--op-muted)">startups and established automakers</span></td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px" data-slot="demand.reqs">600-900</td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill)" data-slot="demand.velocity">High</span></td>
             <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)" data-slot="demand.read">Identical profile and your toughest poach. Compete on ownership scope, not prestige.</td>
           </tr>
           <tr>
-            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-accent);font-weight:600">Large cell manufacturers <span style="display:block;font-weight:400;font-size:12.5px;color:var(--op-muted)">cell plants and gigafactory programs</span></td>
-            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px">400–600</td>
-            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4">High</span></td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-accent);font-weight:600">Large cell manufacturers <span style="display:block;font-weight:400;font-size:20px;color:var(--op-muted)">cell plants and gigafactory programs</span></td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px">400-600</td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill)">High</span></td>
             <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Big programs, slower loops. They squeeze the same mid-career pool you need.</td>
           </tr>
           <tr>
-            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-highlight);font-weight:600">Battery component suppliers <span style="display:block;font-weight:400;font-size:12.5px;color:var(--op-muted)">BMS boards, thermal plates, enclosures</span></td>
-            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px">250–400</td>
-            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-highlight);background:#FAF0E6;border:1px solid #E3CDB4">Steady</span></td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-highlight);font-weight:600">Battery component suppliers <span style="display:block;font-weight:400;font-size:20px;color:var(--op-muted)">BMS boards, thermal plates, enclosures</span></td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px">250-400</td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-highlight);background:var(--warn-tint);border:1px solid var(--warn-fill)">Steady</span></td>
             <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Lower ceilings, deep component fluency. A realistic source pool, not a rival.</td>
           </tr>
           <tr>
-            <td style="padding:14px 18px;border-left:3px solid var(--op-success);font-weight:600">Adjacent electronics <span style="display:block;font-weight:400;font-size:12.5px;color:var(--op-muted)">power electronics, chargers, consumer devices</span></td>
-            <td style="padding:14px 18px;font-family:var(--op-font-mono);font-size:13px">500–800</td>
-            <td style="padding:14px 18px"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB">Net exporter</span></td>
+            <td style="padding:14px 18px;border-left:3px solid var(--op-success);font-weight:600">Adjacent electronics <span style="display:block;font-weight:400;font-size:20px;color:var(--op-muted)">power electronics, chargers, consumer devices</span></td>
+            <td style="padding:14px 18px;font-family:var(--op-font-mono);font-size:20px">500-800</td>
+            <td style="padding:14px 18px"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill)">Net exporter</span></td>
             <td style="padding:14px 18px;color:var(--op-ink-dim)">Not bidding on your offers. Your best uncontested source pool: fish here.</td>
           </tr>
         </tbody>
@@ -263,8 +264,8 @@
     </div>
 
     <div style="margin-top:16px;background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-warning);padding:20px 24px">
-      <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-warning);margin-bottom:8px">Structural context</div>
-      <p style="margin:0;font-size:15px;color:var(--op-ink-dim);max-width:84ch" data-slot="structural.1">Engineering employment in this base is growing faster than average through 2034, and storage hiring has expanded across EVs, utilities, and consumer hardware. The shortage bites hardest at the field-proven mid-career band, exactly the band you are hiring. Req counts are Estimates from aggregated public job-board queries; rerun at refresh. <span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB;white-space:nowrap">Sourced · BLS-OOH 2024-34</span></p>
+      <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-warning);margin-bottom:8px">Structural context</div>
+      <p style="margin:0;font-size:20px;color:var(--op-ink-dim);" data-slot="structural.1">Engineering employment in this base is growing faster than average through 2034, and storage hiring has expanded across EVs, utilities, and consumer hardware. The shortage bites hardest at the field-proven mid-career band, exactly the band you are hiring. Req counts are Estimates from aggregated public job-board queries; rerun at refresh. <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill);white-space:nowrap">Sourced · BLS-OOH 2024-34</span></p>
     </div>
   </section>
 
@@ -273,55 +274,55 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">04</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Where to fish</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Where to fish</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s4.title">Where cadence meets field heritage</h2>
-        <p style="margin:0;max-width:66ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s4.body">Test cadence against field heritage and battery-technology maturity. Source where your working style already exists: an engineer who has only known multi-year program cycles will read a fast-iterating team as chaos, not opportunity.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s4.body">Test cadence against field heritage and battery-technology maturity. Source where your working style already exists: an engineer who has only known multi-year program cycles will read a fast-iterating team as chaos, not opportunity.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;display:grid;grid-template-columns:1.5fr 1fr;gap:2px;background:var(--op-border);border:1px solid var(--op-border)">
       <div style="background:var(--op-surface);padding:28px 30px">
         <div style="display:grid;grid-template-columns:22px 1fr;gap:14px">
-          <div style="writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-ink-300);text-align:center">Field heritage &amp; tech maturity →</div>
+          <div style="writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-ink-300);text-align:center">Field heritage &amp; tech maturity →</div>
           <div>
-            <div style="position:relative;aspect-ratio:1.3/1;border-left:1px solid var(--op-lattice-line);border-bottom:1px solid var(--op-lattice-line);background-image:linear-gradient(90deg,#EDE8DE 0 1px,transparent 1px),linear-gradient(0deg,#EDE8DE 0 1px,transparent 1px);background-size:50% 50%;background-position:center">
-              <div style="position:absolute;left:50%;right:0;top:0;bottom:50%;background:#F7FAFC"></div>
+            <div style="position:relative;aspect-ratio:1.3/1;border-left:1px solid var(--op-lattice-line);border-bottom:1px solid var(--op-lattice-line);background-image:linear-gradient(90deg,var(--border-soft) 0 1px,transparent 1px),linear-gradient(0deg,var(--border-soft) 0 1px,transparent 1px);background-size:50% 50%;background-position:center">
+              <div style="position:absolute;left:50%;right:0;top:0;bottom:50%;background:var(--bg)"></div>
               <div data-repeat="quadrant.points" data-count="4-9" style="position:absolute;inset:0">
-                <div style="position:absolute;left:66%;top:46%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px"><span style="width:15px;height:15px;background:var(--op-accent);border-radius:50%;flex:none"></span><span style="font-size:12.5px;font-weight:600;white-space:nowrap" data-slot="point.label">Harborlight Energy ★</span></div>
-                <div style="position:absolute;left:74%;top:30%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px"><span style="width:13px;height:13px;background:var(--op-primary);border-radius:50%;flex:none"></span><span style="font-size:12.5px;font-weight:600;white-space:nowrap">Storage startups</span></div>
-                <div style="position:absolute;left:52%;top:18%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px"><span style="width:14px;height:14px;background:var(--op-primary);border-radius:50%;flex:none"></span><span style="font-size:12.5px;font-weight:600;white-space:nowrap">Established EV makers</span></div>
-                <div style="position:absolute;left:30%;top:22%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px"><span style="width:14px;height:14px;background:var(--op-byeok);border-radius:50%;flex:none"></span><span style="font-size:12.5px;font-weight:600;white-space:nowrap">Large cell makers</span></div>
-                <div style="position:absolute;left:44%;top:54%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px"><span style="width:11px;height:11px;background:var(--op-byeok);border-radius:50%;flex:none"></span><span style="font-size:12.5px;font-weight:600;white-space:nowrap">Component suppliers</span></div>
-                <div style="position:absolute;left:80%;top:76%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px"><span style="width:14px;height:14px;background:var(--op-muted);border-radius:50%;flex:none"></span><span style="font-size:12.5px;font-weight:600;white-space:nowrap">Adjacent electronics</span></div>
-                <div style="position:absolute;left:20%;top:66%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px"><span style="width:10px;height:10px;background:var(--op-muted);border-radius:50%;flex:none"></span><span style="font-size:12.5px;font-weight:600;white-space:nowrap">Legacy automotive</span></div>
+                <div style="position:absolute;left:66%;top:46%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px"><span style="width:15px;height:15px;background:var(--op-accent);border-radius:50%;flex:none"></span><span style="font-size:20px;font-weight:600;white-space:nowrap" data-slot="point.label">Harborlight Energy ★</span></div>
+                <div style="position:absolute;left:74%;top:30%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px"><span style="width:13px;height:13px;background:var(--op-primary);border-radius:50%;flex:none"></span><span style="font-size:20px;font-weight:600;white-space:nowrap">Storage startups</span></div>
+                <div style="position:absolute;left:52%;top:18%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px"><span style="width:14px;height:14px;background:var(--op-primary);border-radius:50%;flex:none"></span><span style="font-size:20px;font-weight:600;white-space:nowrap">Established EV makers</span></div>
+                <div style="position:absolute;left:30%;top:22%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px"><span style="width:14px;height:14px;background:var(--op-byeok);border-radius:50%;flex:none"></span><span style="font-size:20px;font-weight:600;white-space:nowrap">Large cell makers</span></div>
+                <div style="position:absolute;left:44%;top:54%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px"><span style="width:11px;height:11px;background:var(--op-byeok);border-radius:50%;flex:none"></span><span style="font-size:20px;font-weight:600;white-space:nowrap">Component suppliers</span></div>
+                <div style="position:absolute;left:80%;top:76%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px"><span style="width:14px;height:14px;background:var(--op-muted);border-radius:50%;flex:none"></span><span style="font-size:20px;font-weight:600;white-space:nowrap">Adjacent electronics</span></div>
+                <div style="position:absolute;left:20%;top:66%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px"><span style="width:10px;height:10px;background:var(--op-muted);border-radius:50%;flex:none"></span><span style="font-size:20px;font-weight:600;white-space:nowrap">Legacy automotive</span></div>
               </div>
-              <div style="position:absolute;right:10px;top:8px;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-primary)">Proven, fast-moving</div>
-              <div style="position:absolute;left:10px;bottom:8px;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-lattice-line)">Slow · experimental</div>
+              <div style="position:absolute;right:10px;top:8px;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-primary)">Proven, fast-moving</div>
+              <div style="position:absolute;left:10px;bottom:8px;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-lattice-line)">Slow · experimental</div>
             </div>
-            <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-ink-300);text-align:center;margin-top:10px">Test cadence → (iteration speed)</div>
+            <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-ink-300);text-align:center;margin-top:10px">Test cadence → (iteration speed)</div>
           </div>
         </div>
       </div>
       <div style="background:var(--op-surface);padding:28px 30px">
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:16px">Marker = target archetype · ★ = Harborlight Energy</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:16px">Marker = target archetype · ★ = Harborlight Energy</div>
         <div style="display:grid;gap:16px" data-repeat="tier.notes" data-count="3-5">
           <div style="border-left:2px solid var(--op-accent);padding-left:14px">
-            <div style="font-size:14px;font-weight:600;margin-bottom:3px"><span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-accent);margin-right:6px">S</span><span data-slot="tier.title">EV makers</span></div>
-            <div style="font-size:13.5px;color:var(--op-ink-dim)" data-slot="tier.body">Deep bench and comp-competitive. Poach only the individuals who want subsystem ownership a large org will not give.</div>
+            <div style="font-size:20px;font-weight:600;margin-bottom:3px"><span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);margin-right:6px">S</span><span data-slot="tier.title">EV makers</span></div>
+            <div style="font-size:20px;color:var(--op-ink-dim)" data-slot="tier.body">Deep bench and comp-competitive. Poach only the individuals who want subsystem ownership a large org will not give.</div>
           </div>
           <div style="border-left:2px solid var(--op-primary);padding-left:14px">
-            <div style="font-size:14px;font-weight:600;margin-bottom:3px"><span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-primary);margin-right:6px">A</span>Storage startups</div>
-            <div style="font-size:13.5px;color:var(--op-ink-dim)">Strongest match: mission-driven with an equity story. Sell smaller-team ownership and faster test cadence against big-company process.</div>
+            <div style="font-size:20px;font-weight:600;margin-bottom:3px"><span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);margin-right:6px">A</span>Storage startups</div>
+            <div style="font-size:20px;color:var(--op-ink-dim)">Strongest match: mission-driven with an equity story. Sell smaller-team ownership and faster test cadence against big-company process.</div>
           </div>
           <div style="border-left:2px solid var(--op-byeok);padding-left:14px">
-            <div style="font-size:14px;font-weight:600;margin-bottom:3px"><span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-byeok);margin-right:6px">B</span>Component suppliers</div>
-            <div style="font-size:13.5px;color:var(--op-ink-dim)">BMS, thermal-plate, and enclosure specialists. Deep component fluency; sell the step up to full-system ownership and field impact.</div>
+            <div style="font-size:20px;font-weight:600;margin-bottom:3px"><span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);margin-right:6px">B</span>Component suppliers</div>
+            <div style="font-size:20px;color:var(--op-ink-dim)">BMS, thermal-plate, and enclosure specialists. Deep component fluency; sell the step up to full-system ownership and field impact.</div>
           </div>
           <div style="border-left:2px solid var(--op-muted);padding-left:14px">
-            <div style="font-size:14px;font-weight:600;margin-bottom:3px"><span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted);margin-right:6px">C</span>Adjacent &amp; legacy</div>
-            <div style="font-size:13.5px;color:var(--op-ink-dim)">Power electronics, consumer electronics, legacy automotive. Real transfer, but screen for genuine startup-cadence appetite and ramp on home-storage safety standards.</div>
+            <div style="font-size:20px;font-weight:600;margin-bottom:3px"><span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted);margin-right:6px">C</span>Adjacent &amp; legacy</div>
+            <div style="font-size:20px;color:var(--op-ink-dim)">Power electronics, consumer electronics, legacy automotive. Real transfer, but screen for genuine startup-cadence appetite and ramp on home-storage safety standards.</div>
           </div>
         </div>
       </div>
@@ -333,108 +334,84 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-primary);line-height:1">05</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary);margin-top:6px">Read this one</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary);margin-top:6px">Read this one</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s5.title">Where battery talent sits, and whether it moves</h2>
-        <p style="margin:0;max-width:66ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s5.body">Pool size tells you where talent sits. Response tells you whether it moves: historical relocation-acceptance for this role family, housing-cost delta, state-tax delta, and industry identity. Battery talent is concentrated, so validate relocation response per metro before you spend a sourcing block. Pool figures are modeled from BLS-OES metro data; cost and tax deltas from public indices. Verify before quoting.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s5.body">Pool size tells you where talent sits. Response tells you whether it moves: historical relocation-acceptance for this role family, housing-cost delta, state-tax delta, and industry identity. Battery talent is concentrated, so validate relocation response per metro before you spend a sourcing block. Pool figures are modeled from BLS-OES metro data; cost and tax deltas from public indices. Verify before quoting.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;background:var(--op-surface);border:1px solid var(--op-border);overflow-x:auto">
-      <table style="width:100%;border-collapse:collapse;font-size:13.5px;min-width:920px">
-        <thead>
-          <tr>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Metro</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Est. pool (modeled)</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Anchor employers</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Relo response</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Housing vs&nbsp;base metro</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Tax delta</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Relo likelihood</th>
+      <table style="width:100%;border-collapse:collapse;font-size:20px;min-width:760px">
+<thead>
+<tr>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Metro · relo</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Pool · homeownership</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Anchor employers</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Housing · tax delta</th>
           </tr>
-        </thead>
-        <tbody data-repeat="hubs" data-count="4-8">
-          <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-success);font-weight:600" data-slot="hub.name">San Francisco Bay Area <span style="display:block;font-weight:400;font-size:12px;color:var(--op-muted)">primary cluster</span></td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px" data-slot="hub.pool">2,000–2,800</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13px" data-slot="hub.anchors">EV makers, storage startups, component suppliers, power electronics</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px;color:var(--op-success)" data-slot="hub.ownership">High</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px;color:var(--op-muted)" data-slot="hub.housing">-</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px;color:var(--op-muted)" data-slot="hub.tax">-</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB" data-slot="hub.relo">Anchor · in-cluster</span></td>
+</thead>
+<tbody data-count="4-8" data-repeat="hubs">
+<tr>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-success);font-weight:600"><span data-slot="hub.name" style="display:block;font-weight:600">San Francisco Bay Area <span style="display:block;font-weight:400;font-size:20px;color:var(--op-muted)">primary cluster</span></span><span style="display:block;margin-top:6px;"><span data-slot="hub.relo" style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill)">Anchor · in-cluster</span></span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px"><span data-slot="hub.pool" style="display:block;font-family:var(--op-font-mono);font-size:20px">2,000-2,800</span><span data-slot="hub.ownership" style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px;color:var(--op-success)">High</span></td>
+            <td data-slot="hub.anchors" style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">EV makers, storage startups, component suppliers, power electronics</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)"><span data-slot="hub.housing" style="display:block;font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)">-</span><span data-slot="hub.tax" style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)">-</span></td>
           </tr>
-          <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-success);font-weight:600">Seattle <span style="display:block;font-weight:400;font-size:12px;color:var(--op-muted)">renter-heavy, mobile</span></td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">1,000–1,500</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13px">Grid-storage integrators, EV startups, big-tech hardware, utilities</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px;color:var(--op-success)">Med-high</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">−10–15%</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px;color:var(--op-success)">−13% (no income tax)</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB">Med-high</span></td>
+<tr>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-success);font-weight:600">Seattle <span style="display:block;font-weight:400;font-size:20px;color:var(--op-muted)">renter-heavy, mobile</span><span style="display:block;margin-top:6px;"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill)">Med-high</span></span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px">1,000-1,500<span style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px;color:var(--op-success)">Med-high</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Grid-storage integrators, EV startups, big-tech hardware, utilities</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px">−10-15%<span style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px;color:var(--op-success)">−13% (no income tax)</span></td>
           </tr>
-          <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-highlight);font-weight:600">Denver / Boulder</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">900–1,300</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13px">Battery startups, solar and storage installers, research spinouts</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">Med</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">−25–30%</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">−9%</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-highlight);background:#FAF0E6;border:1px solid #E3CDB4">Med</span></td>
+<tr>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-highlight);font-weight:600">Denver / Boulder<span style="display:block;margin-top:6px;"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-highlight);background:var(--warn-tint);border:1px solid var(--warn-fill)">Med</span></span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px">900-1,300<span style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px">Med</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Battery startups, solar and storage installers, research spinouts</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px">−25-30%<span style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px">−9%</span></td>
           </tr>
-          <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-highlight);font-weight:600">Austin</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">800–1,200</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13px">EV and storage manufacturing, power electronics, energy</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">Med</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">−45–50%</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px;color:var(--op-success)">−13% (no income tax)</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-highlight);background:#FAF0E6;border:1px solid #E3CDB4">Med</span></td>
+<tr>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-highlight);font-weight:600">Austin<span style="display:block;margin-top:6px;"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-highlight);background:var(--warn-tint);border:1px solid var(--warn-fill)">Med</span></span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px">800-1,200<span style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px">Med</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">EV and storage manufacturing, power electronics, energy</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px">−45-50%<span style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px;color:var(--op-success)">−13% (no income tax)</span></td>
           </tr>
-          <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-highlight);font-weight:600">Boston / Cambridge</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">700–1,000</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13px">Battery startups, cell R&D, power electronics, universities</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">Med</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">−15–20%</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">−8%</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-highlight);background:#FAF0E6;border:1px solid #E3CDB4">Med · research-heavy</span></td>
+<tr>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-highlight);font-weight:600">Boston / Cambridge<span style="display:block;margin-top:6px;"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-highlight);background:var(--warn-tint);border:1px solid var(--warn-fill)">Med · research-heavy</span></span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px">700-1,000<span style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px">Med</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Battery startups, cell R&amp;D, power electronics, universities</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px">−15-20%<span style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px">−8%</span></td>
           </tr>
-          <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-accent);font-weight:600">Detroit / SE Michigan</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">800–1,200</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13px">Automaker battery programs, cell plants, tier-one suppliers</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px;color:var(--op-accent)">Low</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">−55–60%</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">−8%</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4">Med-low · skip</span></td>
+<tr>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-accent);font-weight:600">Detroit / SE Michigan<span style="display:block;margin-top:6px;"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill)">Med-low · skip</span></span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px">800-1,200<span style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent)">Low</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Automaker battery programs, cell plants, tier-one suppliers</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px">−55-60%<span style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px">−8%</span></td>
           </tr>
-          <tr>
-            <td style="padding:13px 16px;border-left:3px solid var(--op-accent);font-weight:600">Reno / Sparks, NV</td>
-            <td style="padding:13px 16px;font-family:var(--op-font-mono);font-size:12.5px">600–900</td>
-            <td style="padding:13px 16px;color:var(--op-ink-dim);font-size:13px">Cell and pack factories, recycling, storage manufacturing</td>
-            <td style="padding:13px 16px;font-family:var(--op-font-mono);font-size:12.5px;color:var(--op-accent)">Low</td>
-            <td style="padding:13px 16px;font-family:var(--op-font-mono);font-size:12.5px">−50–55%</td>
-            <td style="padding:13px 16px;font-family:var(--op-font-mono);font-size:12.5px;color:var(--op-success)">−13% (no income tax)</td>
-            <td style="padding:13px 16px"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4">Med-low · skip</span></td>
+<tr>
+            <td style="padding:13px 16px;border-left:3px solid var(--op-accent);font-weight:600">Reno / Sparks, NV<span style="display:block;margin-top:6px;"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill)">Med-low · skip</span></span></td>
+            <td style="padding:13px 16px;font-family:var(--op-font-mono);font-size:20px">600-900<span style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent)">Low</span></td>
+            <td style="padding:13px 16px;color:var(--op-ink-dim);font-size:20px">Cell and pack factories, recycling, storage manufacturing</td>
+            <td style="padding:13px 16px;font-family:var(--op-font-mono);font-size:20px">−50-55%<span style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px;color:var(--op-success)">−13% (no income tax)</span></td>
           </tr>
-        </tbody>
-      </table>
+</tbody>
+</table>
     </div>
 
     <div style="margin-top:16px;background:var(--op-surface);border:1px solid var(--op-border);border-left:4px solid var(--op-primary);padding:24px 28px">
-      <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-primary);margin-bottom:10px">How to read this, and what to do</div>
-      <p style="margin:0 0 12px;font-size:15.5px;color:var(--op-ink-dim);max-width:88ch;text-wrap:pretty" data-slot="relo.readout"><b>The Bay Area is your anchor.</b> It holds the largest renter-heavy pool, so many hires need no move at all, plus the deepest battery identity in the country. Seattle is the strongest relocation source next, a mobile, no-income-tax metro with an established clean-energy base. Both beat the rooted, high-ownership clusters on pool quality per dollar of relocation spend.</p>
-      <p style="margin:0 0 14px;font-size:15.5px;color:var(--op-ink-dim);max-width:88ch;text-wrap:pretty"><b>Detroit and Reno look strong on pool and cost, and fail on propensity.</b> Historical relocation-acceptance from these metros runs low for this role family, so package alone rarely closes them. Source them for exceptional inbound only, and do not spend a sourcing block chasing relocations there.</p>
+      <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-primary);margin-bottom:10px">How to read this, and what to do</div>
+      <p style="margin:0 0 12px;font-size:20px;color:var(--op-ink-dim);text-wrap:pretty" data-slot="relo.readout"><b>The Bay Area is your anchor.</b> It holds the largest renter-heavy pool, so many hires need no move at all, plus the deepest battery identity in the country. Seattle is the strongest relocation source next, a mobile, no-income-tax metro with an established clean-energy base. Both beat the rooted, high-ownership clusters on pool quality per dollar of relocation spend.</p>
+      <p style="margin:0 0 14px;font-size:20px;color:var(--op-ink-dim);text-wrap:pretty"><b>Detroit and Reno look strong on pool and cost, and fail on propensity.</b> Historical relocation-acceptance from these metros runs low for this role family, so package alone rarely closes them. Source them for exceptional inbound only, and do not spend a sourcing block chasing relocations there.</p>
       <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding-top:14px;border-top:1px solid var(--op-border)">
-        <span style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300)">Working sequence</span>
-        <span style="font-family:var(--op-font-mono);font-size:12.5px;color:var(--op-surface);background:var(--op-primary);padding:5px 11px" data-slot="relo.seq.1">1 · Bay Area</span>
+        <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300)">Working sequence</span>
+        <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-surface);background:var(--op-primary);padding:5px 11px" data-slot="relo.seq.1">1 · Bay Area</span>
         <span style="color:var(--op-lattice-line)">→</span>
-        <span style="font-family:var(--op-font-mono);font-size:12.5px;color:var(--op-surface);background:var(--op-primary);padding:5px 11px" data-slot="relo.seq.2">2 · Seattle</span>
+        <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-surface);background:var(--op-primary);padding:5px 11px" data-slot="relo.seq.2">2 · Seattle</span>
         <span style="color:var(--op-lattice-line)">→</span>
-        <span style="font-family:var(--op-font-mono);font-size:12.5px;color:var(--op-ink);background:#F0EDE6;border:1px solid var(--op-border);padding:5px 11px" data-slot="relo.seq.3">3 · Denver, Austin, Boston</span>
+        <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink);background:var(--surface-2);border:1px solid var(--op-border);padding:5px 11px" data-slot="relo.seq.3">3 · Denver, Austin, Boston</span>
         <span style="color:var(--op-lattice-line)">·</span>
-        <span style="font-family:var(--op-font-mono);font-size:12.5px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 11px;text-decoration:line-through" data-slot="relo.seq.skip">Skip Detroit / Reno</span>
+        <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 11px;text-decoration:line-through" data-slot="relo.seq.skip">Skip Detroit / Reno</span>
       </div>
     </div>
   </section>
@@ -445,64 +422,64 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">06</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Dossiers</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Dossiers</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s6.title">Target archetypes and where they open up</h2>
-        <p style="margin:0;max-width:66ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s6.body">These are archetypes, not named employers. A trigger here is a structural condition that raises willingness to move: vest cliffs, roadmap resets, or ceilings on scope. Watch the pattern, not a dated event.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s6.body">These are archetypes, not named employers. A trigger here is a structural condition that raises willingness to move: vest cliffs, roadmap resets, or ceilings on scope. Watch the pattern, not a dated event.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:16px" data-repeat="dossiers" data-count="3-6">
       <div style="background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-accent)">
         <div style="padding:18px 22px;border-bottom:1px solid var(--op-border);display:flex;justify-content:space-between;gap:12px;align-items:center">
-          <div style="font-size:16px;font-weight:600" data-slot="dossier.name">Large EV makers</div>
-          <span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB;white-space:nowrap" data-slot="dossier.flag">None negative</span>
+          <div style="font-size:20px;font-weight:600" data-slot="dossier.name">Large EV makers</div>
+          <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill);white-space:nowrap" data-slot="dossier.flag">None negative</span>
         </div>
-        <div style="padding:18px 22px;display:grid;gap:12px;font-size:14px">
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Trigger</div><div style="color:var(--op-ink-dim)" data-slot="dossier.trigger">Post-liquidity and vest-cliff windows recur at scaled players. Some engineers bank the win and chase the next early-equity story; others turn immovable.</div></div>
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Pool</div><div style="color:var(--op-ink-dim)" data-slot="dossier.pool">The largest single concentration of field-proven battery talent. Pack design and validation orgs are the closest match to this role.</div></div>
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Angle</div><div style="color:var(--op-ink-dim)" data-slot="dossier.angle">Own a full subsystem, not a slice, on a faster test loop.</div></div>
-          <div style="display:flex;gap:16px;padding-top:10px;border-top:1px solid #EDE8DE;font-family:var(--op-font-mono);font-size:11px"><span style="color:var(--op-muted)">Effort <b style="color:var(--op-accent)">High</b></span><span style="color:var(--op-muted)">Payoff <b style="color:var(--op-success)">High</b></span><span style="color:var(--op-muted)">Hardest poach</span></div>
+        <div style="padding:18px 22px;display:grid;gap:12px;font-size:20px">
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Trigger</div><div style="color:var(--op-ink-dim)" data-slot="dossier.trigger">Post-liquidity and vest-cliff windows recur at scaled players. Some engineers bank the win and chase the next early-equity story; others turn immovable.</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Pool</div><div style="color:var(--op-ink-dim)" data-slot="dossier.pool">The largest single concentration of field-proven battery talent. Pack design and validation orgs are the closest match to this role.</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Angle</div><div style="color:var(--op-ink-dim)" data-slot="dossier.angle">Own a full subsystem, not a slice, on a faster test loop.</div></div>
+          <div style="display:flex;gap:16px;padding-top:10px;border-top:1px solid var(--border-soft);font-family:var(--op-font-mono);font-size:20px"><span style="color:var(--op-muted)">Effort <b style="color:var(--op-accent)">High</b></span><span style="color:var(--op-muted)">Payoff <b style="color:var(--op-success)">High</b></span><span style="color:var(--op-muted)">Hardest poach</span></div>
         </div>
       </div>
 
       <div style="background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-accent)">
         <div style="padding:18px 22px;border-bottom:1px solid var(--op-border);display:flex;justify-content:space-between;gap:12px;align-items:center">
-          <div style="font-size:16px;font-weight:600">Funded storage startups</div>
-          <span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB;white-space:nowrap">None negative</span>
+          <div style="font-size:20px;font-weight:600">Funded storage startups</div>
+          <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill);white-space:nowrap">None negative</span>
         </div>
-        <div style="padding:18px 22px;display:grid;gap:12px;font-size:14px">
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Trigger</div><div style="color:var(--op-ink-dim)">Funding cycles and roadmap resets create openness 12 to 18 months post-raise. Mission-driven engineers will weigh a smaller-team ownership pitch.</div></div>
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Pool</div><div style="color:var(--op-ink-dim)">Mission-motivated mid-career battery engineers, already receptive to an equity story and more ownership than a large org gives.</div></div>
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Angle</div><div style="color:var(--op-ink-dim)">On a small team, the subsystem you design is the one that ships.</div></div>
-          <div style="display:flex;gap:16px;padding-top:10px;border-top:1px solid #EDE8DE;font-family:var(--op-font-mono);font-size:11px"><span style="color:var(--op-muted)">Effort <b style="color:var(--op-highlight)">Medium</b></span><span style="color:var(--op-muted)">Payoff <b style="color:var(--op-success)">High</b></span><span style="color:var(--op-muted)">Most receptive</span></div>
+        <div style="padding:18px 22px;display:grid;gap:12px;font-size:20px">
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Trigger</div><div style="color:var(--op-ink-dim)">Funding cycles and roadmap resets create openness 12 to 18 months post-raise. Mission-driven engineers will weigh a smaller-team ownership pitch.</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Pool</div><div style="color:var(--op-ink-dim)">Mission-motivated mid-career battery engineers, already receptive to an equity story and more ownership than a large org gives.</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Angle</div><div style="color:var(--op-ink-dim)">On a small team, the subsystem you design is the one that ships.</div></div>
+          <div style="display:flex;gap:16px;padding-top:10px;border-top:1px solid var(--border-soft);font-family:var(--op-font-mono);font-size:20px"><span style="color:var(--op-muted)">Effort <b style="color:var(--op-highlight)">Medium</b></span><span style="color:var(--op-muted)">Payoff <b style="color:var(--op-success)">High</b></span><span style="color:var(--op-muted)">Most receptive</span></div>
         </div>
       </div>
 
       <div style="background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-highlight)">
         <div style="padding:18px 22px;border-bottom:1px solid var(--op-border);display:flex;justify-content:space-between;gap:12px;align-items:center">
-          <div style="font-size:16px;font-weight:600">Component suppliers</div>
-          <span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB;white-space:nowrap">None negative</span>
+          <div style="font-size:20px;font-weight:600">Component suppliers</div>
+          <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill);white-space:nowrap">None negative</span>
         </div>
-        <div style="padding:18px 22px;display:grid;gap:12px;font-size:14px">
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Trigger</div><div style="color:var(--op-ink-dim)">Component and subsystem suppliers cap out on system-level scope. Strong engineers plateau and start looking for full-system ownership.</div></div>
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Pool</div><div style="color:var(--op-ink-dim)">Deep BMS, thermal-plate, and enclosure specialists. Component fluency that is ready for a system-level step up.</div></div>
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Angle</div><div style="color:var(--op-ink-dim)">Move from one component to owning a full battery subsystem.</div></div>
-          <div style="display:flex;gap:16px;padding-top:10px;border-top:1px solid #EDE8DE;font-family:var(--op-font-mono);font-size:11px"><span style="color:var(--op-muted)">Effort <b style="color:var(--op-highlight)">Medium</b></span><span style="color:var(--op-muted)">Payoff <b style="color:var(--op-highlight)">Steady</b></span><span style="color:var(--op-muted)">Realistic source</span></div>
+        <div style="padding:18px 22px;display:grid;gap:12px;font-size:20px">
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Trigger</div><div style="color:var(--op-ink-dim)">Component and subsystem suppliers cap out on system-level scope. Strong engineers plateau and start looking for full-system ownership.</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Pool</div><div style="color:var(--op-ink-dim)">Deep BMS, thermal-plate, and enclosure specialists. Component fluency that is ready for a system-level step up.</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Angle</div><div style="color:var(--op-ink-dim)">Move from one component to owning a full battery subsystem.</div></div>
+          <div style="display:flex;gap:16px;padding-top:10px;border-top:1px solid var(--border-soft);font-family:var(--op-font-mono);font-size:20px"><span style="color:var(--op-muted)">Effort <b style="color:var(--op-highlight)">Medium</b></span><span style="color:var(--op-muted)">Payoff <b style="color:var(--op-highlight)">Steady</b></span><span style="color:var(--op-muted)">Realistic source</span></div>
         </div>
       </div>
 
       <div style="background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-byeok)">
         <div style="padding:18px 22px;border-bottom:1px solid var(--op-border);display:flex;justify-content:space-between;gap:12px;align-items:center">
-          <div style="font-size:16px;font-weight:600">Adjacent electronics pools</div>
-          <span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB;white-space:nowrap">None negative</span>
+          <div style="font-size:20px;font-weight:600">Adjacent electronics pools</div>
+          <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill);white-space:nowrap">None negative</span>
         </div>
-        <div style="padding:18px 22px;display:grid;gap:12px;font-size:14px">
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Trigger</div><div style="color:var(--op-ink-dim)">Power-electronics, consumer-electronics, and automotive engineers hit ceilings on mission and impact. A step into home energy storage is the pull.</div></div>
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Pool</div><div style="color:var(--op-ink-dim)">Thermal, electrical, and safety depth from inverters, devices, and powertrain. Ramp is on pack-level safety standards.</div></div>
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Angle</div><div style="color:var(--op-ink-dim)">Your thermal and electrical skills transfer directly, plus a mission.</div></div>
-          <div style="display:flex;gap:16px;padding-top:10px;border-top:1px solid #EDE8DE;font-family:var(--op-font-mono);font-size:11px"><span style="color:var(--op-muted)">Effort <b style="color:var(--op-highlight)">Medium</b></span><span style="color:var(--op-muted)">Payoff <b style="color:var(--op-success)">High</b></span><span style="color:var(--op-muted)">Start here</span></div>
+        <div style="padding:18px 22px;display:grid;gap:12px;font-size:20px">
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Trigger</div><div style="color:var(--op-ink-dim)">Power-electronics, consumer-electronics, and automotive engineers hit ceilings on mission and impact. A step into home energy storage is the pull.</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Pool</div><div style="color:var(--op-ink-dim)">Thermal, electrical, and safety depth from inverters, devices, and powertrain. Ramp is on pack-level safety standards.</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Angle</div><div style="color:var(--op-ink-dim)">Your thermal and electrical skills transfer directly, plus a mission.</div></div>
+          <div style="display:flex;gap:16px;padding-top:10px;border-top:1px solid var(--border-soft);font-family:var(--op-font-mono);font-size:20px"><span style="color:var(--op-muted)">Effort <b style="color:var(--op-highlight)">Medium</b></span><span style="color:var(--op-muted)">Payoff <b style="color:var(--op-success)">High</b></span><span style="color:var(--op-muted)">Start here</span></div>
         </div>
       </div>
     </div>
@@ -515,77 +492,69 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">07</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Peripheral</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Peripheral</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s7.title">Same engineering problem, different industry</h2>
-        <p style="margin:0;max-width:66ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s7.body">The test is the engineering problem, not the title: a large amount of stored energy kept cool and safe in shipped hardware. Competitors search by title, so these pools stay under-fished. Quote each ramp gap honestly. Estimate · practitioner judgment.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s7.body">The test is the engineering problem, not the title: a large amount of stored energy kept cool and safe in shipped hardware. Competitors search by title, so these pools stay under-fished. Quote each ramp gap honestly. Estimate · practitioner judgment.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;background:var(--op-surface);border:1px solid var(--op-border);overflow-x:auto">
-      <table style="width:100%;border-collapse:collapse;font-size:13.5px;min-width:800px">
-        <thead>
-          <tr>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Pool</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Why it transfers</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Where to look</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Transfer</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Ramp gap</th>
+      <table style="width:100%;border-collapse:collapse;font-size:20px;min-width:760px">
+<thead>
+<tr>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Pool</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Why it transfers</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Where to look</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Transfer · ramp gap</th>
           </tr>
-        </thead>
-        <tbody data-repeat="peripheral" data-count="4-8">
-          <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-success);font-weight:600" data-slot="per.name">EV battery validation</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)" data-slot="per.why">Pack test, thermal, and safety work on shipped hardware. Missing only the home-storage standards.</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13px" data-slot="per.where">EV makers, battery validation labs, pack suppliers</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB" data-slot="per.transfer">High</span></td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px" data-slot="per.ramp">Weeks</td>
+</thead>
+<tbody data-count="4-8" data-repeat="peripheral">
+<tr>
+            <td data-slot="per.name" style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-success);font-weight:600">EV battery validation</td>
+            <td data-slot="per.why" style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Pack test, thermal, and safety work on shipped hardware. Missing only the home-storage standards.</td>
+            <td data-slot="per.where" style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">EV makers, battery validation labs, pack suppliers</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span data-slot="per.transfer" style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill)">High</span><span data-slot="per.ramp" style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px">Weeks</span></td>
           </tr>
-          <tr>
+<tr>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-success);font-weight:600">Power electronics</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Inverters, DC-DC conversion, and high-voltage design, plus a fast production cadence.</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13px">Inverter and charger makers, solar electronics, EV power electronics</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB">High</span></td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">1–2 months</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Inverter and charger makers, solar electronics, EV power electronics</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill)">High</span><span style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px">1-2 months</span></td>
           </tr>
-          <tr>
+<tr>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-success);font-weight:600">Consumer-electronics batteries</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Cell qualification and safety testing at extreme volume, with a rapid-iteration, test-driven mindset.</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13px">Phone, laptop, and wearables makers, battery test labs</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB">High</span></td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">Weeks</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Phone, laptop, and wearables makers, battery test labs</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill)">High</span><span style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px">Weeks</span></td>
           </tr>
-          <tr>
+<tr>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-success);font-weight:600">E-bike &amp; micromobility</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Direct pack and BMS experience on shipped hardware. Ramp is on larger packs and home-safety standards.</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13px">E-bike, scooter, and power-tool makers, pack integrators</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB">High</span></td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">1–2 months</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">E-bike, scooter, and power-tool makers, pack integrators</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill)">High</span><span style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px">1-2 months</span></td>
           </tr>
-          <tr>
+<tr>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-highlight);font-weight:600">Chemical &amp; process</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Electrochemistry, materials handling, and process safety. Medium transfer, strong on cell behaviour.</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13px">Chemical and materials firms, cell-material suppliers, process plants</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-highlight);background:#FAF0E6;border:1px solid #E3CDB4">Medium</span></td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">2–3 months</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Chemical and materials firms, cell-material suppliers, process plants</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-highlight);background:var(--warn-tint);border:1px solid var(--warn-fill)">Medium</span><span style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px">2-3 months</span></td>
           </tr>
-          <tr>
+<tr>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-highlight);font-weight:600">Utilities &amp; grid power</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Power systems and grid interconnection at scale. Medium transfer, learns the pack specifics.</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13px">Utilities, grid-equipment makers, substation engineering</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-highlight);background:#FAF0E6;border:1px solid #E3CDB4">Medium</span></td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:12.5px">2–3 months</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Utilities, grid-equipment makers, substation engineering</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-highlight);background:var(--warn-tint);border:1px solid var(--warn-fill)">Medium</span><span style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px">2-3 months</span></td>
           </tr>
-          <tr>
+<tr>
             <td style="padding:13px 16px;border-left:3px solid var(--op-highlight);font-weight:600">HVAC &amp; data-centre thermal</td>
             <td style="padding:13px 16px;color:var(--op-ink-dim)">Thermal management and cooling-loop design, directly relevant to pack thermal systems. Medium transfer.</td>
-            <td style="padding:13px 16px;color:var(--op-ink-dim);font-size:13px">HVAC and refrigeration makers, data-centre cooling, thermal-systems firms</td>
-            <td style="padding:13px 16px"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-highlight);background:#FAF0E6;border:1px solid #E3CDB4">Medium</span></td>
-            <td style="padding:13px 16px;font-family:var(--op-font-mono);font-size:12.5px">2–3 months</td>
+            <td style="padding:13px 16px;color:var(--op-ink-dim);font-size:20px">HVAC and refrigeration makers, data-centre cooling, thermal-systems firms</td>
+            <td style="padding:13px 16px"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-highlight);background:var(--warn-tint);border:1px solid var(--warn-fill)">Medium</span><span style="display:block;margin-top:6px;font-family:var(--op-font-mono);font-size:20px">2-3 months</span></td>
           </tr>
-        </tbody>
-      </table>
+</tbody>
+</table>
     </div>
   </section>
   </div>
@@ -596,56 +565,56 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">08</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Comp</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Comp</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s8.title">Battery engineering pay, by level</h2>
-        <p style="margin:0;max-width:66ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s8.body">Base working ranges modeled from BLS-OES 17-2199 (2024) percentiles, positioned market-mid for a small hardware employer. Modeled ranges are illustrative, not an approved band. Use these to qualify expectations at the screen, not to negotiate at offer.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s8.body">Base working ranges modeled from BLS-OES 17-2199 (2024) percentiles, positioned market-mid for a small hardware employer. Modeled ranges are illustrative, not an approved band. Use these to qualify expectations at the screen, not to negotiate at offer.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;background:var(--op-surface);border:1px solid var(--op-border);overflow-x:auto">
-      <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:720px">
+      <table style="width:100%;border-collapse:collapse;font-size:20px;min-width:720px">
         <thead>
           <tr>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Level</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Base (modeled)</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Total pay reference</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Notes</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Level</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Base (modeled)</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Total pay reference</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Notes</th>
           </tr>
         </thead>
         <tbody data-repeat="comp.levels" data-count="3-6">
           <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-weight:600" data-slot="comp.level">Early-career · 0–3 yrs</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px" data-slot="comp.base">$95–115K</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px;color:var(--op-muted)" data-slot="comp.total">-</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px" data-slot="comp.note">Around BLS-OES P25 $105K, below the anchor</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-weight:600" data-slot="comp.level">Early-career · 0-3 yrs</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px" data-slot="comp.base">$95-115K</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)" data-slot="comp.total">-</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px" data-slot="comp.note">Around BLS-OES P25 $105K, below the anchor</td>
           </tr>
           <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-weight:600">Mid tier · N–N yrs</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px">$X–YK</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px">~$XK mid</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Modeled mid-band reference, blended sources</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-weight:600">Mid tier · N-N yrs</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px">$X-YK</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px">~$XK mid</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Modeled mid-band reference, blended sources</td>
           </tr>
           <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-highlight);font-weight:600">Senior tier · N–N yrs</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px">$X–YK</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px">PNN ~$XK</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Modeled senior-band reference, blended sources</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-highlight);font-weight:600">Senior tier · N-N yrs</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px">$X-YK</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px">PNN ~$XK</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Modeled senior-band reference, blended sources</td>
           </tr>
           <tr>
             <td style="padding:13px 16px;border-left:3px solid var(--op-accent);font-weight:600">Staff+ tier · N+ yrs</td>
-            <td style="padding:13px 16px;font-family:var(--op-font-mono);font-size:13px">$X+K</td>
-            <td style="padding:13px 16px;font-family:var(--op-font-mono);font-size:13px">PNN ~$XK</td>
-            <td style="padding:13px 16px;color:var(--op-ink-dim);font-size:13.5px">Modeled top-band reference, blended sources</td>
+            <td style="padding:13px 16px;font-family:var(--op-font-mono);font-size:20px">$X+K</td>
+            <td style="padding:13px 16px;font-family:var(--op-font-mono);font-size:20px">PNN ~$XK</td>
+            <td style="padding:13px 16px;color:var(--op-ink-dim);font-size:20px">Modeled top-band reference, blended sources</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <div style="margin-top:16px;background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-primary);padding:20px 24px">
-      <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-primary);margin-bottom:8px">Competitor positioning</div>
-      <p style="margin:0;font-size:15px;color:var(--op-ink-dim);max-width:86ch" data-slot="comp.positioning">A small hardware company wins on ownership, mission, and equity upside, not on cash. EV makers and large cell manufacturers pay competitive base with stability appeal; adjacent industries sometimes pay more in pure cash. Position at the modeled mid band above, and qualify comp expectations at the recruiter screen, not at offer.</p>
+      <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-primary);margin-bottom:8px">Competitor positioning</div>
+      <p style="margin:0;font-size:20px;color:var(--op-ink-dim);" data-slot="comp.positioning">A small hardware company wins on ownership, mission, and equity upside, not on cash. EV makers and large cell manufacturers pay competitive base with stability appeal; adjacent industries sometimes pay more in pure cash. Position at the modeled mid band above, and qualify comp expectations at the recruiter screen, not at offer.</p>
     </div>
   </section>
   </div>
@@ -656,49 +625,49 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">09</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Personas</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Personas</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s9.title">Four people you will actually talk to</h2>
-        <p style="margin:0;max-width:66ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s9.body">Each persona needs a different opening line. The risk line is what to probe at the screen, not a reason to pass.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s9.body">Each persona needs a different opening line. The risk line is what to probe at the screen, not a reason to pass.</p>
       </div>
     </div>
 
-    <div style="margin-top:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--op-border);border:1px solid var(--op-border)" data-repeat="personas" data-count="2-4">
+    <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px;background:var(--op-border);border:1px solid var(--op-border)" data-repeat="personas" data-count="2-4">
       <div style="background:var(--op-surface);padding:24px 26px">
-        <div style="font-size:16.5px;font-weight:600;margin-bottom:8px" data-slot="persona.name">The field-proven builder</div>
-        <p style="margin:0 0 16px;font-size:14px;color:var(--op-ink-dim)" data-slot="persona.who">Mid engineer, 4 to 6 years on shipped or test-validated packs.</p>
+        <div style="font-size:20px;font-weight:600;margin-bottom:8px" data-slot="persona.name">The field-proven builder</div>
+        <p style="margin:0 0 16px;font-size:20px;color:var(--op-ink-dim)" data-slot="persona.who">Mid engineer, 4 to 6 years on shipped or test-validated packs.</p>
         <div style="display:grid;gap:12px">
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Optimizing for</div><div style="font-size:13.5px;color:var(--op-ink-dim)" data-slot="persona.wants">Ownership and shipping hardware, a full subsystem rather than a slice</div></div>
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:3px">Message key</div><div style="font-size:13.5px;color:var(--op-ink)" data-slot="persona.message">"Own a full battery subsystem here, not a slice of someone else's."</div></div>
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-warning);margin-bottom:3px">Risk</div><div style="font-size:13.5px;color:var(--op-ink-dim)" data-slot="persona.risk">May expect big-team resources. Probe for scrappiness on a small team.</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Optimizing for</div><div style="font-size:20px;color:var(--op-ink-dim)" data-slot="persona.wants">Ownership and shipping hardware, a full subsystem rather than a slice</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:3px">Message key</div><div style="font-size:20px;color:var(--op-ink)" data-slot="persona.message">"Own a full battery subsystem here, not a slice of someone else's."</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-warning);margin-bottom:3px">Risk</div><div style="font-size:20px;color:var(--op-ink-dim)" data-slot="persona.risk">May expect big-team resources. Probe for scrappiness on a small team.</div></div>
         </div>
       </div>
       <div style="background:var(--op-surface);padding:24px 26px">
-        <div style="font-size:16.5px;font-weight:600;margin-bottom:8px">The adjacent-industry crossover</div>
-        <p style="margin:0 0 16px;font-size:14px;color:var(--op-ink-dim)">EV, power-electronics, or consumer-electronics engineer eyeing a move into home storage.</p>
+        <div style="font-size:20px;font-weight:600;margin-bottom:8px">The adjacent-industry crossover</div>
+        <p style="margin:0 0 16px;font-size:20px;color:var(--op-ink-dim)">EV, power-electronics, or consumer-electronics engineer eyeing a move into home storage.</p>
         <div style="display:grid;gap:12px">
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Optimizing for</div><div style="font-size:13.5px;color:var(--op-ink-dim)">A mission and a real step up in impact over their current field</div></div>
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:3px">Message key</div><div style="font-size:13.5px;color:var(--op-ink)">"Your thermal and electrical skills transfer directly, and here they serve a mission."</div></div>
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-warning);margin-bottom:3px">Risk</div><div style="font-size:13.5px;color:var(--op-ink-dim)">Ramp on home-storage safety standards. Screen for adaptability.</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Optimizing for</div><div style="font-size:20px;color:var(--op-ink-dim)">A mission and a real step up in impact over their current field</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:3px">Message key</div><div style="font-size:20px;color:var(--op-ink)">"Your thermal and electrical skills transfer directly, and here they serve a mission."</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-warning);margin-bottom:3px">Risk</div><div style="font-size:20px;color:var(--op-ink-dim)">Ramp on home-storage safety standards. Screen for adaptability.</div></div>
         </div>
       </div>
       <div style="background:var(--op-surface);padding:24px 26px">
-        <div style="font-size:16.5px;font-weight:600;margin-bottom:8px">The test-and-analysis specialist</div>
-        <p style="margin:0 0 16px;font-size:14px;color:var(--op-ink-dim)">Battery test or thermal analyst who wants design ownership.</p>
+        <div style="font-size:20px;font-weight:600;margin-bottom:8px">The test-and-analysis specialist</div>
+        <p style="margin:0 0 16px;font-size:20px;color:var(--op-ink-dim)">Battery test or thermal analyst who wants design ownership.</p>
         <div style="display:grid;gap:12px">
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Optimizing for</div><div style="font-size:13.5px;color:var(--op-ink-dim)">Growth from analysis into hands-on design ownership</div></div>
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:3px">Message key</div><div style="font-size:13.5px;color:var(--op-ink)">"Design-and-test ownership here, not analysis handed off to someone else."</div></div>
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-warning);margin-bottom:3px">Risk</div><div style="font-size:13.5px;color:var(--op-ink-dim)">Unproven hands-on design depth. Probe for real build experience.</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Optimizing for</div><div style="font-size:20px;color:var(--op-ink-dim)">Growth from analysis into hands-on design ownership</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:3px">Message key</div><div style="font-size:20px;color:var(--op-ink)">"Design-and-test ownership here, not analysis handed off to someone else."</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-warning);margin-bottom:3px">Risk</div><div style="font-size:20px;color:var(--op-ink-dim)">Unproven hands-on design depth. Probe for real build experience.</div></div>
         </div>
       </div>
       <div style="background:var(--op-surface);padding:24px 26px">
-        <div style="font-size:16.5px;font-weight:600;margin-bottom:8px">The early-career high-slope</div>
-        <p style="margin:0 0 16px;font-size:14px;color:var(--op-ink-dim)">Two to three years, strong fundamentals, steep growth trajectory.</p>
+        <div style="font-size:20px;font-weight:600;margin-bottom:8px">The early-career high-slope</div>
+        <p style="margin:0 0 16px;font-size:20px;color:var(--op-ink-dim)">Two to three years, strong fundamentals, steep growth trajectory.</p>
         <div style="display:grid;gap:12px">
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Optimizing for</div><div style="font-size:13.5px;color:var(--op-ink-dim)">Learning speed and scope beyond the years of experience</div></div>
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:3px">Message key</div><div style="font-size:13.5px;color:var(--op-ink)">"Outsized responsibility early, on a team small enough to see everything."</div></div>
-          <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-warning);margin-bottom:3px">Risk</div><div style="font-size:13.5px;color:var(--op-ink-dim)">Mentorship load on a small team. Weigh the ramp cost honestly.</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Optimizing for</div><div style="font-size:20px;color:var(--op-ink-dim)">Learning speed and scope beyond the years of experience</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:3px">Message key</div><div style="font-size:20px;color:var(--op-ink)">"Outsized responsibility early, on a team small enough to see everything."</div></div>
+          <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-warning);margin-bottom:3px">Risk</div><div style="font-size:20px;color:var(--op-ink-dim)">Mentorship load on a small team. Weigh the ramp cost honestly.</div></div>
         </div>
       </div>
     </div>
@@ -710,50 +679,50 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">10</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Do this</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Do this</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s10.title">Three moves, in order</h2>
-        <p style="margin:0;max-width:66ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s10.body">Everything above exists to justify these three. If you read nothing else, run them in this order.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s10.body">Everything above exists to justify these three. If you read nothing else, run them in this order.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;display:grid;gap:2px;background:var(--op-border);border:1px solid var(--op-border)" data-repeat="recommendations" data-count="3-5">
       <div style="background:var(--op-surface);padding:22px 26px;display:grid;grid-template-columns:44px 1fr 150px 130px;gap:22px;align-items:start">
         <div style="font-family:var(--op-font-display);font-size:28px;color:var(--op-primary);line-height:1" data-slot="rec.n">1</div>
-        <div><div style="font-size:16px;font-weight:600;margin-bottom:5px" data-slot="rec.action">Open the local Bay Area pipeline first</div><div style="font-size:14px;color:var(--op-ink-dim)" data-slot="rec.why">The largest renter-heavy pool with the deepest battery identity, so most hires need no move. Few small storage companies contest these people, so yield is high for the least relocation spend.</div></div>
-        <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Owner</div><div style="font-size:13.5px" data-slot="rec.owner">Sourcer</div></div>
-        <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">When</div><div style="font-size:13.5px;color:var(--op-accent)" data-slot="rec.when">This week</div></div>
+        <div><div style="font-size:20px;font-weight:600;margin-bottom:5px" data-slot="rec.action">Open the local Bay Area pipeline first</div><div style="font-size:20px;color:var(--op-ink-dim)" data-slot="rec.why">The largest renter-heavy pool with the deepest battery identity, so most hires need no move. Few small storage companies contest these people, so yield is high for the least relocation spend.</div></div>
+        <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Owner</div><div style="font-size:20px" data-slot="rec.owner">Sourcer</div></div>
+        <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">When</div><div style="font-size:20px;color:var(--op-accent)" data-slot="rec.when">This week</div></div>
       </div>
       <div style="background:var(--op-surface);padding:22px 26px;display:grid;grid-template-columns:44px 1fr 150px 130px;gap:22px;align-items:start">
         <div style="font-family:var(--op-font-display);font-size:28px;color:var(--op-primary);line-height:1">2</div>
-        <div><div style="font-size:16px;font-weight:600;margin-bottom:5px">Build the adjacent-industry crossover pipeline in parallel</div><div style="font-size:14px;color:var(--op-ink-dim)">EV, power-electronics, and consumer-electronics engineers materially widen the reachable pool; title-based searches rarely surface them. Quote the ramp gap to the hiring manager up front, do not hide it.</div></div>
-        <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Owner</div><div style="font-size:13.5px">Sourcer</div></div>
-        <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">When</div><div style="font-size:13.5px">Week 1, ongoing</div></div>
+        <div><div style="font-size:20px;font-weight:600;margin-bottom:5px">Build the adjacent-industry crossover pipeline in parallel</div><div style="font-size:20px;color:var(--op-ink-dim)">EV, power-electronics, and consumer-electronics engineers materially widen the reachable pool; title-based searches rarely surface them. Quote the ramp gap to the hiring manager up front, do not hide it.</div></div>
+        <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Owner</div><div style="font-size:20px">Sourcer</div></div>
+        <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">When</div><div style="font-size:20px">Week 1, ongoing</div></div>
       </div>
       <div style="background:var(--op-surface);padding:22px 26px;display:grid;grid-template-columns:44px 1fr 150px 130px;gap:22px;align-items:start">
         <div style="font-family:var(--op-font-display);font-size:28px;color:var(--op-primary);line-height:1">3</div>
-        <div><div style="font-size:16px;font-weight:600;margin-bottom:5px">Confirm the mid band and relocation budget with the hiring manager</div><div style="font-size:14px;color:var(--op-ink-dim)">Battery talent is concentrated, so relocation is unavoidable outside the Bay Area. Lock the mid band and a relocation package now, or the search stalls on geography no matter how good sourcing is.</div></div>
-        <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Owner</div><div style="font-size:13.5px">Recruiter</div></div>
-        <div><div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">When</div><div style="font-size:13.5px">Before outreach</div></div>
+        <div><div style="font-size:20px;font-weight:600;margin-bottom:5px">Confirm the mid band and relocation budget with the hiring manager</div><div style="font-size:20px;color:var(--op-ink-dim)">Battery talent is concentrated, so relocation is unavoidable outside the Bay Area. Lock the mid band and a relocation package now, or the search stalls on geography no matter how good sourcing is.</div></div>
+        <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">Owner</div><div style="font-size:20px">Recruiter</div></div>
+        <div><div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:3px">When</div><div style="font-size:20px">Before outreach</div></div>
       </div>
     </div>
   </section>
 
   <!-- ==================== HANDOFF ==================== -->
-  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
-    <div style="background:var(--op-ink);color:var(--op-bg);padding:30px 34px">
-      <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-bisaek);margin-bottom:18px">Handoff → next artifact</div>
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;font-family:var(--op-font-mono);font-size:13px;line-height:1.9">
-        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Produces</div><div data-slot="handoff.produces">market · funnel · comp_guidance · tier1_targets[] · peripheral[] · geo_sequence[] · personas[] · market_urgency · comp_messaging · pain_point_angles[] · cross_industry_pools[] · skill_transfer_notes[]</div></div>
-        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Consumed by</div><div data-slot="handoff.consumers">02 Job Description · 04 Sourcing Strategy · 05 Outreach Campaign</div></div>
-        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Req calibration</div><div data-slot="handoff.calibration">Keep battery pack design and thermal and electrical fundamentals as must-have; cell behaviour and abuse test stay calibrated; CAD/analysis and shipped-systems flex. No eligibility gate: constraints are empty. Mirror the dominant title, Battery Systems Engineer, in body copy.</div></div>
-        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Blocked on</div><div style="color:var(--op-hwang-light)" data-slot="handoff.blocked">Nothing</div></div>
+  <section hidden data-print="hide" style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border);display:none">
+    <div data-mode="dark" style="background:var(--op-bg);color:var(--op-ink);padding:30px 34px">
+      <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-bisaek);margin-bottom:18px">Handoff → next artifact</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;font-family:var(--op-font-mono);font-size:20px;line-height:1.9">
+        <div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Produces</div><div data-slot="handoff.produces">market · funnel · comp_guidance · tier1_targets[] · peripheral[] · geo_sequence[] · personas[] · market_urgency · comp_messaging · pain_point_angles[] · cross_industry_pools[] · skill_transfer_notes[]</div></div>
+        <div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Consumed by</div><div data-slot="handoff.consumers">02 Job Description · 04 Sourcing Strategy · 05 Outreach Campaign</div></div>
+        <div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Req calibration</div><div data-slot="handoff.calibration">Keep battery pack design and thermal and electrical fundamentals as must-have; cell behaviour and abuse test stay calibrated; CAD/analysis and shipped-systems flex. No eligibility gate: constraints are empty. Mirror the dominant title, Battery Systems Engineer, in body copy.</div></div>
+        <div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Blocked on</div><div style="color:var(--op-hwang-light)" data-slot="handoff.blocked">Nothing</div></div>
       </div>
     </div>
   </section>
 
-  <footer style="margin-top:56px;padding-top:20px;border-top:1px solid var(--op-border);display:flex;justify-content:space-between;font-family:var(--op-font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">
+  <footer style="margin-top:56px;padding-top:20px;border-top:1px solid var(--op-border);display:flex;justify-content:space-between;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">
     <span data-slot="footer.left">TK-03 · Battery Talent Map</span><span data-slot="footer.right">Estimates flagged · verify before quoting</span>
   </footer>
 </main>

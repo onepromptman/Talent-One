@@ -16,7 +16,7 @@ by [OnePromptMan](https://github.com/onepromptman)
 
 <sub>Made from a fictional search. Your documents arrive as HTML files you open in any browser, offline.</sub>
 
-Agent pack (Claude plugin) · No coding · In prep · MIT
+Agent pack (Claude plugin) · No coding · Live · MIT
 
 ## What you get
 
@@ -82,21 +82,24 @@ folder, which the other OnePromptMan kits share.
 ## See it before you install
 
 Download this repository as a ZIP, unzip it, and open any file in `samples/` in your
-browser, for example `samples/02_Job_Description_SAMPLE.html`. They are eight of the nine
-documents from a fictional search and need no account.
+browser, for example `samples/02_Job_Description_SAMPLE.html`. They are all nine documents
+from a fictional search and need no account.
 
 <table>
 <tr>
-<td width="25%"><img src="assets/samples/01.png" alt="Role educational brief"><br><sub><b>Role brief</b> for the recruiter</sub></td>
-<td width="25%"><img src="assets/samples/02.png" alt="Job description"><br><sub><b>Job description</b>, with notes on each choice</sub></td>
-<td width="25%"><img src="assets/samples/03.png" alt="Talent map"><br><sub><b>Talent map</b>: where the people are</sub></td>
-<td width="25%"><img src="assets/samples/04.png" alt="Sourcing playbook"><br><sub><b>Sourcing playbook</b></sub></td>
+<td width="33%"><img src="assets/samples/01.png" alt="Role educational brief"><br><sub><b>Role brief</b> for the recruiter</sub></td>
+<td width="33%"><img src="assets/samples/02.png" alt="Job description"><br><sub><b>Job description</b>, with notes on each choice</sub></td>
+<td width="33%"><img src="assets/samples/03.png" alt="Talent map"><br><sub><b>Talent map</b>: where the people are</sub></td>
 </tr>
 <tr>
-<td width="25%"><img src="assets/samples/05.png" alt="Outreach campaign"><br><sub><b>Outreach</b>: email, LinkedIn, phone</sub></td>
-<td width="25%"><img src="assets/samples/06.png" alt="Interview plan"><br><sub><b>Interview plan</b> with scoring guides</sub></td>
-<td width="25%"><img src="assets/samples/07.png" alt="Hiring-manager calibration brief"><br><sub><b>Hiring-manager brief</b></sub></td>
-<td width="25%"><img src="assets/samples/08.png" alt="Recruiter screen script"><br><sub><b>Screen script</b> for the first call</sub></td>
+<td width="33%"><img src="assets/samples/04.png" alt="Sourcing playbook"><br><sub><b>Sourcing playbook</b></sub></td>
+<td width="33%"><img src="assets/samples/05.png" alt="Outreach campaign"><br><sub><b>Outreach</b>: email, LinkedIn, phone</sub></td>
+<td width="33%"><img src="assets/samples/06.png" alt="Interview plan"><br><sub><b>Interview plan</b> with scoring guides</sub></td>
+</tr>
+<tr>
+<td width="33%"><img src="assets/samples/07.png" alt="Hiring-manager calibration brief"><br><sub><b>Hiring-manager brief</b></sub></td>
+<td width="33%"><img src="assets/samples/08.png" alt="Recruiter screen script"><br><sub><b>Screen script</b> for the first call</sub></td>
+<td width="33%"><img src="assets/samples/09.png" alt="Interviewer briefing"><br><sub><b>Interviewer briefing</b> and debrief form</sub></td>
 </tr>
 </table>
 

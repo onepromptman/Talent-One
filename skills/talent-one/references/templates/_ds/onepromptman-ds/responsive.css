@@ -7,6 +7,9 @@
  */
 @media screen and (max-width: 760px) {
 
+  /* Header document code: one line on desktop, free to wrap on a phone */
+  [data-slot="kit.mark"] { white-space: normal !important; padding-right: 0 !important; flex-shrink: 1 !important; }
+
   /* Page gutters: 48px desktop -> 16px phone */
   [style*="padding:0 48px"] { padding-left: 16px !important; padding-right: 16px !important; }
 

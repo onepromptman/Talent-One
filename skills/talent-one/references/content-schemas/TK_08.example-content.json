@@ -65,32 +65,32 @@
   ],
   "runofshow": [
    {
-    "ros.time": "0–2",
+    "ros.time": "0-2",
     "ros.segment": "Open & agenda",
     "ros.objective": "\"Thirty minutes. I'll cover the role and the team, ask you about battery work you've actually done, and leave time for your questions. Sound right?\""
    },
    {
-    "ros.time": "2–8",
+    "ros.time": "2-8",
     "ros.segment": "Story walkthrough",
     "ros.objective": "Career arc, current scope, and the hardware their battery work has actually shipped or been tested on."
    },
    {
-    "ros.time": "8–17",
+    "ros.time": "8-17",
     "ros.segment": "Technical spot-checks",
     "ros.objective": "Three calibrated questions, graded against the keys in section 03. The highest-value nine minutes of the call."
    },
    {
-    "ros.time": "17–22",
+    "ros.time": "17-22",
     "ros.segment": "Motivation",
     "ros.objective": "Why this company, what's missing today, and what would make them decline."
    },
    {
-    "ros.time": "22–27",
+    "ros.time": "22-27",
     "ros.segment": "Logistics",
     "ros.objective": "Timeline, competing processes and their stages, comp expectations, location and relocation reality."
    },
    {
-    "ros.time": "27–30",
+    "ros.time": "27-30",
     "ros.segment": "Sell & next steps",
     "ros.objective": "Deliver the sixty-second pitch, explain the loop, commit to a response date. Never \"we'll be in touch.\""
    }
@@ -99,19 +99,19 @@
    {
     "prompt.text": "\"Walk me through your path in about three minutes, with emphasis on the battery hardware your work has actually shipped or been tested on.\"",
     "prompt.listen": {
-     "html": "<b style=\"font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-success)\">Listen for</b><br/>"
+     "html": "<b style=\"font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-success)\">Listen for</b><br/>"
     },
     "prompt.flag": {
-     "html": "<b style=\"font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-accent)\">Red flag</b><br/>"
+     "html": "<b style=\"font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-accent)\">Red flag</b><br/>"
     }
    },
    {
     "prompt.text": "\"What's the highest-consequence battery component or test you've personally owned, and how did it fit into the larger system?\"",
     "prompt.listen": {
-     "html": "<b style=\"font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-success)\">Listen for</b><br/>"
+     "html": "<b style=\"font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-success)\">Listen for</b><br/>"
     },
     "prompt.flag": {
-     "html": "<b style=\"font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-accent)\">Red flag</b><br/>"
+     "html": "<b style=\"font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-accent)\">Red flag</b><br/>"
     }
    }
   ],
@@ -191,7 +191,7 @@
    {
     "log.field": "Compensation",
     "log.script": {
-     "html": "<span style=\"font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:#FAF0E6;border:1px solid #E3CDB4\">Estimate</span><span style=\"font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted)\">Example range from the calibration brief: BLS-OES 17-2199 P25-P75 blended with battery-engineer aggregators 2026, small private employer</span><span style=\"display:block;margin-top:4px;color:var(--op-muted);font-size:13.5px\">If their number is above the ceiling, say so on this call. Never let it surface at offer.</span>"
+     "html": "<span style=\"font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:var(--warn-tint);border:1px solid var(--warn-fill)\">Estimate</span><span style=\"font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)\">Example range from the calibration brief: BLS-OES 17-2199 P25-P75 blended with battery-engineer aggregators 2026, small private employer</span><span style=\"display:block;margin-top:4px;color:var(--op-muted);font-size:20px\">If their number is above the ceiling, say so on this call. Never let it surface at offer.</span>"
     }
    },
    {

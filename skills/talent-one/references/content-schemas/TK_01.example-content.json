@@ -90,7 +90,7 @@
    },
    {
     "layer.owned": {
-     "html": "<div style=\"padding:20px 18px;font-family:var(--op-font-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-surface)\">Battery pack system <span style=\"display:block;font-size:9.5px;letter-spacing:.14em;opacity:.8;margin-top:4px\">★ core of this role</span></div><div style=\"padding:20px 18px;background:#DCE6F2;font-size:14.5px;color:var(--op-ink)\">The pack plus its thermal and electrical systems as one integrated subsystem: architecture, requirements, budgets, integration. This is where the hire spends most of their time.</div>"
+     "html": "<div style=\"padding:20px 18px;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-surface)\">Battery pack system <span style=\"display:block;font-size:20px;letter-spacing:.14em;opacity:.8;margin-top:4px\">★ core of this role</span></div><div style=\"padding:20px 18px;background:var(--accent-tint);font-size:20px;color:var(--op-ink)\">The pack plus its thermal and electrical systems as one integrated subsystem: architecture, requirements, budgets, integration. This is where the hire spends most of their time.</div>"
     }
    },
    {
@@ -400,19 +400,19 @@
    {
     "note.title": "Demand is outrunning the pool",
     "note.body": {
-     "html": "<span style=\"font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:#FAF0E6;border:1px solid #E3CDB4\">Estimate</span><span style=\"font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted)\">directional, no single published source</span>"
+     "html": "<span style=\"font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:var(--warn-tint);border:1px solid var(--warn-fill)\">Estimate</span><span style=\"font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)\">directional, no single published source</span>"
     }
    },
    {
     "note.title": "New specialties are heating up",
     "note.body": {
-     "html": "<span style=\"font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:#FAF0E6;border:1px solid #E3CDB4\">Estimate</span><span style=\"font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted)\">sub-field trend read, not measured</span>"
+     "html": "<span style=\"font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:var(--warn-tint);border:1px solid var(--warn-fill)\">Estimate</span><span style=\"font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)\">sub-field trend read, not measured</span>"
     }
    },
    {
     "note.title": "The scarcity is at mid level",
     "note.body": {
-     "html": "<span style=\"font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB\">Sourced</span><span style=\"font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted)\">BLS-OOH 2024-34</span>"
+     "html": "<span style=\"font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill)\">Sourced</span><span style=\"font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)\">BLS-OOH 2024-34</span>"
     }
    }
   ],

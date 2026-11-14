@@ -63,38 +63,42 @@ with warnings.catch_warnings():
 
 PILL_STYLES = {
     "Sourced": {
-        "color": "var(--op-success)",
-        "background": "#EEF6F1",
-        "border": "1px solid #BFDCCB",
+        "color": "var(--tag-sourced)",
+        "background": "var(--tag-sourced-bg)",
+        "border": "1px solid var(--signal-fill)",
     },
     "Estimate": {
-        "color": "var(--op-warning)",
-        "background": "#FAF0E6",
-        "border": "1px solid #E3CDB4",
+        "color": "var(--tag-estimate)",
+        "background": "var(--tag-estimate-bg)",
+        "border": "1px solid var(--warn-fill)",
     },
     "Internal": {
-        "color": "var(--op-primary)",
-        "background": "#DCE6F2",
-        "border": "1px solid #C9D6E6",
+        "color": "var(--tag-internal)",
+        "background": "var(--tag-internal-bg)",
+        "border": "1px solid var(--accent-line)",
     },
 }
 
 HEAT_STRENGTH = {
     "primary": {"bar": "1", "background": "var(--op-primary)", "outline": None},
-    "secondary": {"bar": "0.65", "background": "#7FA5CC", "outline": None},
-    "touch": {"bar": "0.3", "background": "#DCE6F2", "outline": None},
-    "none": {"bar": None, "background": "#F0EDE6", "outline": None},
+    "secondary": {
+        "bar": "0.65",
+        "background": "var(--heat-secondary)",
+        "outline": None,
+    },
+    "touch": {"bar": "0.3", "background": "var(--accent-tint)", "outline": None},
+    "none": {"bar": None, "background": "var(--surface-2)", "outline": None},
     "gap": {
         "bar": None,
-        "background": "#F0EDE6",
+        "background": "var(--surface-2)",
         "outline": "2px solid var(--op-accent)",
     },
 }
 HEAT_REVERSE = {
     "var(--op-primary)": "primary",
-    "#7FA5CC": "secondary",
-    "#DCE6F2": "touch",
-    "#F0EDE6": "none",
+    "var(--heat-secondary)": "secondary",
+    "var(--accent-tint)": "touch",
+    "var(--surface-2)": "none",
 }
 
 FORBIDDEN_PHRASES = [

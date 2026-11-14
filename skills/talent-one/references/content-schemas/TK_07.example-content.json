@@ -61,9 +61,9 @@
     }
    },
    {
-    "stat.label": "Projected employment growth, 2024–2034",
+    "stat.label": "Projected employment growth, 2024-2034",
     "stat.value": "+6%",
-    "stat.detail": "Faster than the all-occupation average. Demand rises while the qualified pool grows slowly. BLS-OOH 2024–34.",
+    "stat.detail": "Faster than the all-occupation average. Demand rises while the qualified pool grows slowly. BLS-OOH 2024-34.",
     "stat.pill": {
      "pill": "Sourced"
     }
@@ -78,7 +78,7 @@
    },
    {
     "stat.label": "Where the shortage bites hardest",
-    "stat.value": "5–15 yrs",
+    "stat.value": "5-15 yrs",
     "stat.detail": "Mid-career engineers with real shipped-pack experience. This is exactly the band this search targets. Directional; no public series.",
     "stat.pill": {
      "pill": "Estimate"
@@ -89,25 +89,25 @@
    {
     "comp.label": "Battery engineering · entry floor",
     "comp.n": "Entry-skewed self-report: floor reference only, never quote",
-    "comp.range": "$66–83K",
+    "comp.range": "$66-83K",
     "bar": [
      0.26,
      0.33
     ]
    },
    {
-    "comp.label": "National base · BLS-OES P25–P75",
+    "comp.label": "National base · BLS-OES P25-P75",
     "comp.n": "Official base band; P90 reaches $205,850",
-    "comp.range": "$105–174K",
+    "comp.range": "$105-174K",
     "bar": [
      0.42,
      0.7
     ]
    },
    {
-    "comp.label": "Battery engineer total pay · P25–P75",
+    "comp.label": "Battery engineer total pay · P25-P75",
     "comp.n": "Best proxy for what candidates expect",
-    "comp.range": "$112–172K",
+    "comp.range": "$112-172K",
     "bar": [
      0.45,
      0.69
@@ -116,7 +116,7 @@
    {
     "comp.label": "Working target · set at intake",
     "comp.n": "mid, small hardware employer, base + equity",
-    "comp.range": "Example: $115–155K + equity",
+    "comp.range": "Example: $115-155K + equity",
     "bar": [
      0.46,
      0.62
@@ -169,32 +169,32 @@
   ],
   "agenda": [
    {
-    "agenda.time": "0–5",
+    "agenda.time": "0-5",
     "agenda.segment": "Market reality briefing",
     "agenda.objective": "Walk sections A to C: a small occupation, scarcity at mid-career, and the real comp band. Set the frame, do not negotiate yet."
    },
    {
-    "agenda.time": "5–15",
+    "agenda.time": "5-15",
     "agenda.segment": "Success definition",
     "agenda.objective": "Extract what this hire must have delivered by day 90 and day 365: which hardware, which tests, which analysis. Write it verbatim; it becomes the posting and the interview scenarios."
    },
    {
-    "agenda.time": "15–25",
+    "agenda.time": "15-25",
     "agenda.segment": "Requirement calibration",
     "agenda.objective": "Run section F line by line. Each requirement gets a verdict: must-have day one, calibrated, flexible, or nice-to-have."
    },
    {
-    "agenda.time": "25–32",
+    "agenda.time": "25-32",
     "agenda.segment": "Trade-off lock",
     "agenda.objective": "Speed, bar, comp: pick two. Force the priority call now, not at offer stage when it costs a finalist."
    },
    {
-    "agenda.time": "32–40",
+    "agenda.time": "32-40",
     "agenda.segment": "Pitch extraction",
     "agenda.objective": "Capture the hiring manager's own words on the hardest battery problem and why the role matters. Outreach reuses this verbatim; it beats recruiter-written copy every time."
    },
    {
-    "agenda.time": "40–45",
+    "agenda.time": "40-45",
     "agenda.segment": "SLA sign-off",
     "agenda.objective": "Lock feedback turnaround, panel availability, and the approved band. Section G. Send the recap the same day."
    }
@@ -308,7 +308,7 @@
   "sla.recruiter": [
    {
     "sla.item": "Qualified battery submittals per week",
-    "sla.when": "2–3"
+    "sla.when": "2-3"
    },
    {
     "sla.item": "Calibrated slate",
@@ -324,7 +324,7 @@
    },
    {
     "sla.item": "New battery profiles sourced",
-    "sla.when": "40–60 weekly"
+    "sla.when": "40-60 weekly"
    }
   ],
   "sla.hm": [

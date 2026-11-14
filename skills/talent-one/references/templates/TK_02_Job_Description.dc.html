@@ -14,45 +14,45 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="_ds/onepromptman-ds/_ds_bundle.js"></script>
 <style>
-  /* derived ramp tints (no token exists for these): #F0EDE6 track, #FBF9F4 rail, #EDE8DE hairline, #DCE6F2 cheong pale, #EEF6F1/#BFDCCB nok pale, #F9EFEF/#E3C4C4/#F6E4E4 jeok pale, #C9D6E6 link rule */
+  /* colors: role tokens only (tokens.css). chart ramp = var(--surface-2) track, var(--accent-tint) touch, var(--heat-secondary) secondary, var(--op-primary) primary */
   body{margin:0;background:var(--op-bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  a{color:var(--op-primary);text-decoration:underline;text-underline-offset:.18em;text-decoration-color:#C9D6E6}
+  a{color:var(--op-primary);text-decoration:underline;text-underline-offset:.18em;text-decoration-color:var(--accent-line)}
   a:hover{color:var(--op-cheong-dark);text-decoration-color:var(--op-primary)}
-  @media print{@page{size:letter;margin:0.5in} section{break-inside:avoid}}
+  @media print{@page{size:letter;margin:0.5in}}
 </style>
 </helmet>
 
-<div data-mode="light" style="background:var(--op-bg);color:var(--op-ink);font-family:var(--op-font-body);font-size:16px;line-height:1.6">
+<div data-mode="light" style="background:var(--op-bg);color:var(--op-ink);font-family:var(--op-font-body);font-size:20px;line-height:1.6">
 
 <header style="border-bottom:1px solid var(--op-border);background:var(--op-surface)">
   <div style="max-width:1120px;margin:0 auto;padding:0 48px">
     <div style="display:flex;justify-content:space-between;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--op-border)">
-      <div style="font-family:var(--op-font-mono);font-size:12px;letter-spacing:.30em;text-transform:uppercase" data-slot="kit.mark">Talent One <span style="color:var(--op-accent)">·</span> TK-02</div>
-      <div style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted)"><span data-slot="doc.agent">Agent · JD-BOT</span> <span style="color:var(--op-lattice-line)">/</span> <span data-slot="doc.date">Generated 2026-07-29</span></div>
+      <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.30em;text-transform:uppercase;white-space:nowrap;flex-shrink:0;padding-right:32px" data-slot="kit.mark">Talent One <span style="color:var(--op-accent)">·</span> TK-02</div>
+      <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);text-align:right"><span data-slot="doc.agent">Agent · JD-BOT</span> <span style="color:var(--op-lattice-line)">/</span> <span data-slot="doc.date">Generated 2026-07-29</span></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 330px;gap:60px;padding:60px 0 44px;align-items:start">
       <div>
-        <div style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-primary);margin-bottom:18px" data-slot="doc.eyebrow">Artifact 02 · Posting copy</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-primary);margin-bottom:18px" data-slot="doc.eyebrow">Artifact 02 · Posting copy</div>
         <h1 style="font-family:var(--op-font-display);font-weight:700;font-size:52px;line-height:1.08;letter-spacing:-0.02em;margin:0;text-wrap:balance" data-slot="doc.title">Job Description</h1>
         <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
-          <span style="font-family:var(--op-font-mono);font-size:13px;letter-spacing:.06em;color:var(--op-surface);background:var(--op-ink);padding:7px 14px" data-slot="role.title">Battery Systems Engineer (Mid)</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-muted)" data-slot="role.org">Harborlight Energy · Hybrid, distributed · Small battery team, one cell partner</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.06em;color:var(--op-surface);background:var(--op-ink);padding:7px 14px" data-slot="role.title">Battery Systems Engineer (Mid)</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)" data-slot="role.org">Harborlight Energy · Hybrid, distributed · Small battery team, one cell partner</span>
         </div>
-        <p style="margin:26px 0 0;max-width:62ch;font-size:18px;color:var(--op-ink-dim);text-wrap:pretty" data-slot="doc.thesis">The left column is paste-ready posting copy. The right column is why each line reads the way it does. Read the rail once, post the left side, and never look at the rail again.</p>
+        <p style="margin:26px 0 0;font-size:22px;color:var(--op-ink-dim);text-wrap:pretty" data-slot="doc.thesis">The left column is paste-ready posting copy. The right column is why each line reads the way it does. Read the rail once, post the left side, and never look at the rail again.</p>
       </div>
-      <div style="border:1px solid var(--op-border);background:#FBF9F4">
-        <div style="padding:16px 20px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-muted)">Posting spec</div>
+      <div style="border:1px solid var(--op-border);background:var(--bg)">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-muted)">Posting spec</div>
         <div data-repeat="cover.metrics" data-count="4-6">
-          <div style="display:flex;justify-content:space-between;gap:14px;padding:13px 20px;border-bottom:1px solid #EDE8DE"><span style="font-size:13.5px;color:var(--op-muted)" data-slot="metric.label">Word count</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600" data-slot="metric.value">330</span></div>
-          <div style="display:flex;justify-content:space-between;gap:14px;padding:13px 20px;border-bottom:1px solid #EDE8DE"><span style="font-size:13.5px;color:var(--op-muted)">Requirements listed</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600">5</span></div>
-          <div style="display:flex;justify-content:space-between;gap:14px;padding:13px 20px;border-bottom:1px solid #EDE8DE"><span style="font-size:13.5px;color:var(--op-muted)">Reading level</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600">Grade 9</span></div>
-          <div style="display:flex;justify-content:space-between;gap:14px;padding:13px 20px"><span style="font-size:13.5px;color:var(--op-muted)">Pay transparency</span><span style="font-family:var(--op-font-mono);font-size:15px;font-weight:600;color:var(--op-success)">Included</span></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;padding:13px 20px;border-bottom:1px solid var(--border-soft)"><span style="font-size:20px;color:var(--op-muted)" data-slot="metric.label">Word count</span><span style="font-family:var(--op-font-mono);font-size:20px;font-weight:600" data-slot="metric.value">330</span></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;padding:13px 20px;border-bottom:1px solid var(--border-soft)"><span style="font-size:20px;color:var(--op-muted)">Requirements listed</span><span style="font-family:var(--op-font-mono);font-size:20px;font-weight:600">5</span></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;padding:13px 20px;border-bottom:1px solid var(--border-soft)"><span style="font-size:20px;color:var(--op-muted)">Reading level</span><span style="font-family:var(--op-font-mono);font-size:20px;font-weight:600">Grade 9</span></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;padding:13px 20px"><span style="font-size:20px;color:var(--op-muted)">Pay transparency</span><span style="font-family:var(--op-font-mono);font-size:20px;font-weight:600;color:var(--op-success)">Included</span></div>
         </div>
-        <div style="padding:12px 20px;background:#F0EDE6;border-top:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:10px;letter-spacing:.1em;color:var(--op-muted);text-transform:uppercase" data-slot="cover.compliance">Reviewed for EEO + gendered/ableist language</div>
+        <div style="padding:12px 20px;background:var(--surface-2);border-top:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;color:var(--op-muted);text-transform:uppercase" data-slot="cover.compliance">Reviewed for EEO + gendered/ableist language</div>
       </div>
     </div>
     <div style="display:flex;height:5px">
-      <div style="flex:5;background:var(--op-primary)"></div><div style="flex:1;background:var(--op-byeok)"></div><div style="flex:1;background:var(--op-success)"></div><div style="flex:1;background:var(--op-highlight)"></div><div style="flex:1;background:var(--op-warning)"></div><div style="flex:1;background:var(--op-accent)"></div>
+      <div style="flex:1;background:var(--op-primary)"></div>
     </div>
   </div>
 </header>
@@ -64,67 +64,67 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">01</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">The posting</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">The posting</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s1.title">The posting, with a why-rail</h2>
-        <p style="margin:0;max-width:66ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s1.body">Copy the left column straight into the ATS. The right rail is internal reasoning and never ships to a candidate.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s1.body">Copy the left column straight into the ATS. The right rail is internal reasoning and never ships to a candidate.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;display:grid;grid-template-columns:1fr 300px;background:var(--op-surface);border:1px solid var(--op-border)">
       <div style="padding:34px 38px;border-right:1px solid var(--op-border)">
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:16px">↓ ships as written</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:16px">↓ ships as written</div>
         <h3 style="font-family:var(--op-font-display);font-size:26px;font-weight:600;margin:0 0 6px" data-slot="jd.title">Battery Systems Engineer</h3>
-        <div style="font-family:var(--op-font-mono);font-size:12.5px;color:var(--op-muted);margin-bottom:26px" data-slot="jd.meta">Hybrid, distributed; test work onsite · $115,000-$155,000 base salary + equity</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted);margin-bottom:26px" data-slot="jd.meta">Hybrid, distributed; test work onsite · $115,000-$155,000 base salary + equity</div>
 
-        <div style="font-size:15.5px;color:var(--op-ink-dim);line-height:1.7" data-slot="jd.intro">
+        <div style="font-size:20px;color:var(--op-ink-dim);line-height:1.7" data-slot="jd.intro">
           <p style="margin:0 0 14px">We build home batteries, and the battery team is small: a handful of engineers and one cell partner. You would own a battery subsystem, not a slice of one.</p>
           <p style="margin:0 0 14px">The work is hands-on in the way battery work always is. You will spend more time on what the hardware does on the test rig than on a clean analysis deck. Abuse tests fail, sensors lie, and someone has to find out why before the next build. That is the job, and it is also why people here stay.</p>
         </div>
 
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary);margin:28px 0 12px">What you'll own</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary);margin:28px 0 12px">What you'll own</div>
         <ul style="margin:0;padding:0;list-style:none;display:grid;gap:10px" data-repeat="jd.responsibilities" data-count="3-6">
-          <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:15.5px;color:var(--op-ink-dim)"><span style="color:var(--op-primary)">·</span><span data-slot="resp.item">Design and analyze a battery subsystem end to end: what it must do, how it is sized, how it is verified.</span></li>
-          <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:15.5px;color:var(--op-ink-dim)"><span style="color:var(--op-primary)">·</span><span>Own cycling and abuse test: build the setup, instrument it, run it, and reduce the data into decisions.</span></li>
-          <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:15.5px;color:var(--op-ink-dim)"><span style="color:var(--op-primary)">·</span><span>Thermal and electrical analysis: thermal, FEA, and circuit models the hardware then confirms or refutes.</span></li>
-          <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:15.5px;color:var(--op-ink-dim)"><span style="color:var(--op-primary)">·</span><span>Work the interfaces: thermal management, enclosure, firmware, and the one external cell partner. A few weeks a year at the test lab through certification campaigns.</span></li>
+          <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:20px;color:var(--op-ink-dim)"><span style="color:var(--op-primary)">·</span><span data-slot="resp.item">Design and analyze a battery subsystem end to end: what it must do, how it is sized, how it is verified.</span></li>
+          <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:20px;color:var(--op-ink-dim)"><span style="color:var(--op-primary)">·</span><span>Own cycling and abuse test: build the setup, instrument it, run it, and reduce the data into decisions.</span></li>
+          <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:20px;color:var(--op-ink-dim)"><span style="color:var(--op-primary)">·</span><span>Thermal and electrical analysis: thermal, FEA, and circuit models the hardware then confirms or refutes.</span></li>
+          <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:20px;color:var(--op-ink-dim)"><span style="color:var(--op-primary)">·</span><span>Work the interfaces: thermal management, enclosure, firmware, and the one external cell partner. A few weeks a year at the test lab through certification campaigns.</span></li>
         </ul>
 
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary);margin:28px 0 12px">What we need</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary);margin:28px 0 12px">What we need</div>
         <ul style="margin:0;padding:0;list-style:none;display:grid;gap:10px" data-repeat="jd.requirements" data-count="3-6">
-          <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:15.5px;color:var(--op-ink-dim)"><span style="color:var(--op-primary)">·</span><span data-slot="req.item">Battery pack design in at least one chemistry: LFP, NMC, or another lithium-ion family. You have taken a design from requirements to real hardware.</span></li>
-          <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:15.5px;color:var(--op-ink-dim)"><span style="color:var(--op-primary)">·</span><span>Real command of thermal and electrical fundamentals: heat transfer, circuits, and cell behaviour applied to high-energy hardware in production or test settings.</span></li>
-          <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:15.5px;color:var(--op-ink-dim)"><span style="color:var(--op-primary)">·</span><span>Hands-on battery test: cycling or abuse-test work, test-rig instrumentation, and turning raw runs into clean data reduction.</span></li>
-          <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:15.5px;color:var(--op-ink-dim)"><span style="color:var(--op-primary)">·</span><span>CAD plus analysis fluency: thermal, FEA, or electrical modeling in a standard toolchain, for example ANSYS, MATLAB, or SolidWorks.</span></li>
-          <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:15.5px;color:var(--op-ink-dim)"><span style="color:var(--op-primary)">·</span><span>You have owned a subsystem end to end on shipped or test hardware, including the parts nobody scoped, from requirements through verification.</span></li>
+          <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:20px;color:var(--op-ink-dim)"><span style="color:var(--op-primary)">·</span><span data-slot="req.item">Battery pack design in at least one chemistry: LFP, NMC, or another lithium-ion family. You have taken a design from requirements to real hardware.</span></li>
+          <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:20px;color:var(--op-ink-dim)"><span style="color:var(--op-primary)">·</span><span>Real command of thermal and electrical fundamentals: heat transfer, circuits, and cell behaviour applied to high-energy hardware in production or test settings.</span></li>
+          <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:20px;color:var(--op-ink-dim)"><span style="color:var(--op-primary)">·</span><span>Hands-on battery test: cycling or abuse-test work, test-rig instrumentation, and turning raw runs into clean data reduction.</span></li>
+          <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:20px;color:var(--op-ink-dim)"><span style="color:var(--op-primary)">·</span><span>CAD plus analysis fluency: thermal, FEA, or electrical modeling in a standard toolchain, for example ANSYS, MATLAB, or SolidWorks.</span></li>
+          <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:20px;color:var(--op-ink-dim)"><span style="color:var(--op-primary)">·</span><span>You have owned a subsystem end to end on shipped or test hardware, including the parts nobody scoped, from requirements through verification.</span></li>
         </ul>
 
-        <div style="margin-top:26px;padding-top:20px;border-top:1px solid var(--op-border);font-size:14.5px;color:var(--op-muted)" data-slot="jd.close">Direct home-storage experience is not required and is not an edge in our screen. The same problem, a large amount of stored energy kept cool and safe in hardware people live with, shows up in EV battery and powertrain work, power electronics, and consumer-electronics battery qualification. We have hired from those fields, and those engineers are among our strongest. If that is you, apply.</div>
-        <p style="margin:14px 0 0;font-size:15.5px;color:var(--op-ink-dim);line-height:1.7" data-slot="jd.benefits">Base range reflects the posted location. Compensation also includes equity, health coverage, retirement plan, and paid time off. Open until filled.</p>
-        <p style="margin:14px 0 0;font-size:15.5px;color:var(--op-ink-dim);line-height:1.7" data-slot="jd.eeo">We are an equal opportunity employer. All qualified applicants will be considered without regard to any characteristic protected by applicable law. If you need an accommodation to apply or interview, tell your recruiter.</p>
+        <div style="margin-top:26px;padding-top:20px;border-top:1px solid var(--op-border);font-size:20px;color:var(--op-muted)" data-slot="jd.close">Direct home-storage experience is not required and is not an edge in our screen. The same problem, a large amount of stored energy kept cool and safe in hardware people live with, shows up in EV battery and powertrain work, power electronics, and consumer-electronics battery qualification. We have hired from those fields, and those engineers are among our strongest. If that is you, apply.</div>
+        <p style="margin:14px 0 0;font-size:20px;color:var(--op-ink-dim);line-height:1.7" data-slot="jd.benefits">Base range reflects the posted location. Compensation also includes equity, health coverage, retirement plan, and paid time off. Open until filled.</p>
+        <p style="margin:14px 0 0;font-size:20px;color:var(--op-ink-dim);line-height:1.7" data-slot="jd.eeo">We are an equal opportunity employer. All qualified applicants will be considered without regard to any characteristic protected by applicable law. If you need an accommodation to apply or interview, tell your recruiter.</p>
       </div>
 
-      <div style="padding:34px 26px;background:#FBF9F4;display:grid;gap:22px;align-content:start" data-repeat="annotations" data-count="3-6">
+      <div style="padding:34px 26px;background:var(--bg);display:grid;gap:22px;align-content:start" data-repeat="annotations" data-count="3-6">
         <div style="border-left:2px solid var(--op-primary);padding-left:14px">
-          <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px" data-slot="note.tag">Opening</div>
-          <div style="font-size:13.5px;color:var(--op-ink-dim)" data-slot="note.body">Team size and the cell partner are in the first two lines. For a small battery team, "own a subsystem, not a slice" is the strongest promise in the post.</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px" data-slot="note.tag">Opening</div>
+          <div style="font-size:20px;color:var(--op-ink-dim)" data-slot="note.body">Team size and the cell partner are in the first two lines. For a small battery team, "own a subsystem, not a slice" is the strongest promise in the post.</div>
         </div>
         <div style="border-left:2px solid var(--op-primary);padding-left:14px">
-          <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px">Honest cost</div>
-          <div style="font-size:13.5px;color:var(--op-ink-dim)">The test-rig line is deliberate. Naming that abuse-test and hardware work is hands-on and mostly onsite raises reply quality and kills a late-stage surprise.</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px">Honest cost</div>
+          <div style="font-size:20px;color:var(--op-ink-dim)">The test-rig line is deliberate. Naming that abuse-test and hardware work is hands-on and mostly onsite raises reply quality and kills a late-stage surprise.</div>
         </div>
         <div style="border-left:2px solid var(--op-warning);padding-left:14px">
-          <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-warning);margin-bottom:5px">Five, not twelve</div>
-          <div style="font-size:13.5px;color:var(--op-ink-dim)">Long requirement lists suppress applications, including from the adjacent-industry engineers we most want. Everything cuttable was cut to five.</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-warning);margin-bottom:5px">Five, not twelve</div>
+          <div style="font-size:20px;color:var(--op-ink-dim)">Long requirement lists suppress applications, including from the adjacent-industry engineers we most want. Everything cuttable was cut to five.</div>
         </div>
         <div style="border-left:2px solid var(--op-accent);padding-left:14px">
-          <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-accent);margin-bottom:5px">No eligibility gate</div>
-          <div style="font-size:13.5px;color:var(--op-ink-dim)">This search ships no work-authorization line. Some hardware postings carry one by habit; this role does not, so none was invented or implied.</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-accent);margin-bottom:5px">No eligibility gate</div>
+          <div style="font-size:20px;color:var(--op-ink-dim)">This search ships no work-authorization line. Some hardware postings carry one by habit; this role does not, so none was invented or implied.</div>
         </div>
         <div style="border-left:2px solid var(--op-muted);padding-left:14px">
-          <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);margin-bottom:5px">The closer</div>
-          <div style="font-size:13.5px;color:var(--op-ink-dim)">The last paragraph converts adjacent-industry engineers, EV powertrain, power electronics, consumer electronics, who would otherwise self-reject. It is the highest-yield sentence in the file.</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);margin-bottom:5px">The closer</div>
+          <div style="font-size:20px;color:var(--op-ink-dim)">The last paragraph converts adjacent-industry engineers, EV powertrain, power electronics, consumer electronics, who would otherwise self-reject. It is the highest-yield sentence in the file.</div>
         </div>
       </div>
     </div>
@@ -135,43 +135,43 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">02</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Ledger</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Ledger</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s2.title">What we changed from intake</h2>
-        <p style="margin:0;max-width:66ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s2.body">Every change from the hiring manager's first draft, with its pool consequence. Pool counts are Estimates off the BLS-OES 17-2199 base (BLS OEWS May 2024 national employment for SOC 17-2199), each filter applied to the reachable battery subset. Bring this if any line gets challenged.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s2.body">Every change from the hiring manager's first draft, with its pool consequence. Pool counts are Estimates off the BLS-OES 17-2199 base (BLS OEWS May 2024 national employment for SOC 17-2199), each filter applied to the reachable battery subset. Bring this if any line gets challenged.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;background:var(--op-surface);border:1px solid var(--op-border);overflow-x:auto">
-      <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:700px">
+      <table style="width:100%;border-collapse:collapse;font-size:20px;min-width:700px">
         <thead>
           <tr>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--op-ink)">As requested</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--op-ink)">As posted</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--op-ink)">Pool effect</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--op-ink)">As requested</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--op-ink)">As posted</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--op-ink)">Pool effect</th>
           </tr>
         </thead>
         <tbody data-repeat="ledger.rows" data-count="3-8">
           <tr>
             <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-success);color:var(--op-muted);text-decoration:line-through" data-slot="ledger.before">8+ years shipped home-battery packs</td>
             <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);font-weight:600" data-slot="ledger.after">Pack design in one chemistry, capability-based</td>
-            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px;color:var(--op-success)" data-slot="ledger.effect">2,600 → 4,900 (est.)</td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;color:var(--op-success)" data-slot="ledger.effect">2,600 → 4,900 (est.)</td>
           </tr>
           <tr>
             <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-success);color:var(--op-muted);text-decoration:line-through">Master's in electrical engineering required</td>
             <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);font-weight:600">Education requirement removed entirely</td>
-            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px;color:var(--op-success)">+22% pool (est.)</td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;color:var(--op-success)">+22% pool (est.)</td>
           </tr>
           <tr>
             <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-highlight);color:var(--op-muted);text-decoration:line-through">Twelve required bullets</td>
             <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);font-weight:600">Five, capability-based</td>
-            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px;color:var(--op-success)">Apply-rate lift</td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;color:var(--op-success)">Apply-rate lift</td>
           </tr>
           <tr>
             <td style="padding:14px 18px;border-left:3px solid var(--op-accent);color:var(--op-muted)">Onsite at one hub, relocation unspecified</td>
             <td style="padding:14px 18px;font-weight:600">Hybrid and distributed; most test work onsite</td>
-            <td style="padding:14px 18px;font-family:var(--op-font-mono);font-size:13px;color:var(--op-accent)">+12% reach (est.)</td>
+            <td style="padding:14px 18px;font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent)">+12% reach (est.)</td>
           </tr>
         </tbody>
       </table>
@@ -179,12 +179,12 @@
 
     <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
       <div style="background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-warning);padding:20px 22px">
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-warning);margin-bottom:8px">Caution</div>
-        <p style="margin:0;font-size:14.5px;color:var(--op-ink-dim)" data-slot="caution.1">If the field-heritage requirement is restored, the posted band no longer clears the experienced market where the shortage bites hardest, and the search reverts to a 90-day, relocation-dependent profile. Those two are one decision, not two.</p>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-warning);margin-bottom:8px">Caution</div>
+        <p style="margin:0;font-size:20px;color:var(--op-ink-dim)" data-slot="caution.1">If the field-heritage requirement is restored, the posted band no longer clears the experienced market where the shortage bites hardest, and the search reverts to a 90-day, relocation-dependent profile. Those two are one decision, not two.</p>
       </div>
       <div style="background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-accent);padding:20px 22px">
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-accent);margin-bottom:8px">Gate</div>
-        <p style="margin:0;font-size:14.5px;color:var(--op-ink-dim)" data-slot="gate.1">No eligibility or work-authorization line is posted. Adding one goes through counsel, not the hiring manager.</p>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-accent);margin-bottom:8px">Gate</div>
+        <p style="margin:0;font-size:20px;color:var(--op-ink-dim)" data-slot="gate.1">No eligibility or work-authorization line is posted. Adding one goes through counsel, not the hiring manager.</p>
       </div>
     </div>
   </section>
@@ -194,58 +194,58 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">03</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">The number</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">The number</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s3.title">Where the base band lands</h2>
-        <p style="margin:0;max-width:66ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s3.body">Published base band against the national market for the same title and a comparable stage of company. The role is distributed, so the benchmark is national, not one metro.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s3.body">Published base band against the national market for the same title and a comparable stage of company. The role is distributed, so the benchmark is national, not one metro.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;background:var(--op-surface);border:1px solid var(--op-border);padding:34px 36px 26px">
       <div style="display:grid;gap:28px" data-repeat="comp.rows" data-count="2-4">
         <div style="display:grid;grid-template-columns:140px 1fr;gap:20px;align-items:center">
-          <div><div style="font-size:14px;font-weight:600" data-slot="comp.label">What the market pays</div><div style="font-size:12px;color:var(--op-muted)" data-slot="comp.n">Sourced · BLS-OES 2024 · 17-2199 national base, P25-P75</div></div>
+          <div><div style="font-size:20px;font-weight:600" data-slot="comp.label">What the market pays</div><div style="font-size:20px;color:var(--op-muted)" data-slot="comp.n">Sourced · BLS-OES 2024 · 17-2199 national base, P25-P75</div></div>
           <div style="position:relative;height:44px">
             <div style="position:absolute;left:0;right:0;top:20px;height:1px;background:var(--op-border)"></div>
-            <div data-bar="0.12,0.70" style="position:absolute;left:12%;width:58%;top:12px;height:18px;background:#DCE6F2;border-left:2px solid var(--op-primary);border-right:2px solid var(--op-primary)">
-              <div style="position:absolute;left:0;top:22px;transform:translateX(-50%);font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted);white-space:nowrap"><span data-slot="comp.low">105k</span> <span style="font-family:var(--op-font-body);font-size:10.5px">low end</span></div>
-              <div style="position:absolute;right:0;top:22px;transform:translateX(50%);font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted);white-space:nowrap"><span data-slot="comp.high">174k</span> <span style="font-family:var(--op-font-body);font-size:10.5px">high end</span></div>
+            <div data-bar="0.12,0.70" style="position:absolute;left:12%;width:58%;top:12px;height:18px;background:var(--accent-tint);border-left:2px solid var(--op-primary);border-right:2px solid var(--op-primary)">
+              <div style="position:absolute;left:0;top:22px;transform:translateX(-50%);font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted);white-space:nowrap"><span data-slot="comp.low">105k</span> <span style="font-family:var(--op-font-body);font-size:20px">low end</span></div>
+              <div style="position:absolute;right:0;top:22px;transform:translateX(50%);font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted);white-space:nowrap"><span data-slot="comp.high">174k</span> <span style="font-family:var(--op-font-body);font-size:20px">high end</span></div>
             </div>
           </div>
         </div>
         <div style="display:grid;grid-template-columns:140px 1fr;gap:20px;align-items:center">
-          <div><div style="font-size:14px;font-weight:600" data-slot="comp.label">What we're posting</div><div style="font-size:12px;color:var(--op-accent)" data-slot="comp.n">Estimate · posted band, floor to ceiling</div></div>
+          <div><div style="font-size:20px;font-weight:600" data-slot="comp.label">What we're posting</div><div style="font-size:20px;color:var(--op-accent)" data-slot="comp.n">Estimate · posted band, floor to ceiling</div></div>
           <div style="position:relative;height:44px">
             <div style="position:absolute;left:0;right:0;top:20px;height:1px;background:var(--op-border)"></div>
-            <div data-bar="0.21,0.54" style="position:absolute;left:21%;width:33%;top:12px;height:18px;background:#F6E4E4;border-left:2px solid var(--op-accent);border-right:2px solid var(--op-accent)">
-              <div style="position:absolute;left:0;top:22px;transform:translateX(-50%);font-family:var(--op-font-mono);font-size:11px;color:var(--op-accent);white-space:nowrap"><span data-slot="comp.low">115k</span> <span style="font-family:var(--op-font-body);font-size:10.5px">low end</span></div>
-              <div style="position:absolute;right:0;top:22px;transform:translateX(50%);font-family:var(--op-font-mono);font-size:11px;color:var(--op-accent);white-space:nowrap"><span data-slot="comp.high">155k</span> <span style="font-family:var(--op-font-body);font-size:10.5px">high end</span></div>
+            <div data-bar="0.21,0.54" style="position:absolute;left:21%;width:33%;top:12px;height:18px;background:var(--danger-tint);border-left:2px solid var(--op-accent);border-right:2px solid var(--op-accent)">
+              <div style="position:absolute;left:0;top:22px;transform:translateX(-50%);font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);white-space:nowrap"><span data-slot="comp.low">115k</span> <span style="font-family:var(--op-font-body);font-size:20px">low end</span></div>
+              <div style="position:absolute;right:0;top:22px;transform:translateX(50%);font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);white-space:nowrap"><span data-slot="comp.high">155k</span> <span style="font-family:var(--op-font-body);font-size:20px">high end</span></div>
             </div>
           </div>
         </div>
       </div>
-      <p style="margin:24px 0 0;padding-top:18px;border-top:1px solid var(--op-border);font-size:14.5px;color:var(--op-ink-dim);max-width:76ch" data-slot="comp.readout"><b>Read-out:</b> the posted band sits inside the sourced band and reaches toward its upper half, fair for a small hardware employer. This is an Estimate, not a survey: BLS-OES 17-2199 P25-P75 ($105K-$174K) blended with a second published battery-industry source ($112K-$172K; name it when you fill this). Expect to win on scope, cadence, and equity, not top-of-market cash. Say that in the screen, not at offer.</p>
+      <p style="margin:24px 0 0;padding-top:18px;border-top:1px solid var(--op-border);font-size:20px;color:var(--op-ink-dim);" data-slot="comp.readout"><b>Read-out:</b> the posted band sits inside the sourced band and reaches toward its upper half, fair for a small hardware employer. This is an Estimate, not a survey: BLS-OES 17-2199 P25-P75 ($105K-$174K) blended with a second published battery-industry source ($112K-$172K; name it when you fill this). Expect to win on scope, cadence, and equity, not top-of-market cash. Say that in the screen, not at offer.</p>
     </div>
   </section>
 
   <!-- HANDOFF -->
-  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
-    <div style="background:var(--op-ink);color:var(--op-bg);padding:30px 34px" data-optional>
+  <section hidden data-print="hide" style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border);display:none">
+    <div data-mode="dark" style="background:var(--op-bg);color:var(--op-ink);padding:30px 34px" data-optional>
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:18px">
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-bisaek)">Handoff → next artifact</div>
-        <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">Internal · optional: delete before sharing outside the search team</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-bisaek)">Handoff → next artifact</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">Internal · optional: delete before sharing outside the search team</div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;font-family:var(--op-font-mono);font-size:13px;line-height:1.9">
-        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Produces</div><div data-slot="handoff.produces">must_have_skills[] · nice_to_have[] · years_experience · education · posted_range · assessment_methods[]</div></div>
-        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Consumed by</div><div data-slot="handoff.consumers">04 Sourcing Strategy · A09 QA Gate</div></div>
-        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Assumptions</div><div data-slot="handoff.assumptions">Base band approved. Adjacent-industry hires acceptable. Distributed with onsite test work is fixed. Requirements are capability-based, not years-based.</div></div>
-        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Blocked on</div><div style="color:var(--op-hwang-light)" data-slot="handoff.blocked">Nothing outstanding: cleared to post.</div></div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;font-family:var(--op-font-mono);font-size:20px;line-height:1.9">
+        <div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Produces</div><div data-slot="handoff.produces">must_have_skills[] · nice_to_have[] · years_experience · education · posted_range · assessment_methods[]</div></div>
+        <div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Consumed by</div><div data-slot="handoff.consumers">04 Sourcing Strategy · A09 QA Gate</div></div>
+        <div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Assumptions</div><div data-slot="handoff.assumptions">Base band approved. Adjacent-industry hires acceptable. Distributed with onsite test work is fixed. Requirements are capability-based, not years-based.</div></div>
+        <div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Blocked on</div><div style="color:var(--op-hwang-light)" data-slot="handoff.blocked">Nothing outstanding: cleared to post.</div></div>
       </div>
     </div>
   </section>
 
-  <footer style="margin-top:56px;padding-top:20px;border-top:1px solid var(--op-border);display:flex;justify-content:space-between;font-family:var(--op-font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">
+  <footer style="margin-top:56px;padding-top:20px;border-top:1px solid var(--op-border);display:flex;justify-content:space-between;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">
     <span data-slot="footer.left">TK-02 · Job Description</span><span data-slot="footer.right">Rail is internal, never ships</span>
   </footer>
 </main>

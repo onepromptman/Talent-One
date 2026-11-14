@@ -14,44 +14,44 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="_ds/onepromptman-ds/_ds_bundle.js"></script>
 <style>
-  /* derived ramp tints (no token exists for these): #F0EDE6 track, #FBF9F4 rail, #EDE8DE hairline, #F7F5F0 script ground, #DCE6F2 cheong pale, #EEF6F1/#BFDCCB nok pale, #FAF0E6/#E3CDB4 dan pale, #F9EFEF/#E3C4C4 jeok pale, #C9D6E6 link rule */
+  /* colors: role tokens only (tokens.css). chart ramp = var(--surface-2) track, var(--accent-tint) touch, var(--heat-secondary) secondary, var(--op-primary) primary */
   body{margin:0;background:var(--op-bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  a{color:var(--op-primary);text-decoration:underline;text-underline-offset:.18em;text-decoration-color:#C9D6E6}
+  a{color:var(--op-primary);text-decoration:underline;text-underline-offset:.18em;text-decoration-color:var(--accent-line)}
   a:hover{color:var(--op-cheong-dark);text-decoration-color:var(--op-primary)}
-  @media print{@page{size:letter;margin:0.5in} section{break-inside:avoid}}
+  @media print{@page{size:letter;margin:0.5in}}
 </style>
 </helmet>
 
-<div data-mode="light" style="background:var(--op-bg);color:var(--op-ink);font-family:var(--op-font-body);font-size:16px;line-height:1.6">
+<div data-mode="light" style="background:var(--op-bg);color:var(--op-ink);font-family:var(--op-font-body);font-size:20px;line-height:1.6">
 
 <header style="border-bottom:1px solid var(--op-border);background:var(--op-surface)">
   <div style="max-width:1120px;margin:0 auto;padding:0 48px">
     <div style="display:flex;justify-content:space-between;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--op-border)">
-      <div style="font-family:var(--op-font-mono);font-size:12px;letter-spacing:.30em;text-transform:uppercase" data-slot="kit.mark">Talent One <span style="color:var(--op-accent)">·</span> TK-05</div>
-      <div style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted)"><span data-slot="doc.agent">Agent · SHAKESPEARE</span> <span style="color:var(--op-lattice-line)">/</span> <span data-slot="doc.date">Written peer-to-peer, not pitched</span></div>
+      <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.30em;text-transform:uppercase;white-space:nowrap;flex-shrink:0;padding-right:32px" data-slot="kit.mark">Talent One <span style="color:var(--op-accent)">·</span> TK-05</div>
+      <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);text-align:right"><span data-slot="doc.agent">Agent · SHAKESPEARE</span> <span style="color:var(--op-lattice-line)">/</span> <span data-slot="doc.date">Written peer-to-peer, not pitched</span></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 330px;gap:60px;padding:60px 0 44px;align-items:start">
       <div>
-        <div style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-primary);margin-bottom:18px" data-slot="doc.eyebrow">Artifact 05 · Campaign copy</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-primary);margin-bottom:18px" data-slot="doc.eyebrow">Artifact 05 · Campaign copy</div>
         <h1 style="font-family:var(--op-font-display);font-weight:700;font-size:52px;line-height:1.08;letter-spacing:-0.02em;margin:0;text-wrap:balance" data-slot="doc.title">Multi-Channel Outreach</h1>
         <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
-          <span style="font-family:var(--op-font-mono);font-size:13px;letter-spacing:.06em;color:var(--op-surface);background:var(--op-ink);padding:7px 14px" data-slot="role.title">Battery Systems Engineer · Mid-Level</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-muted)" data-slot="role.org">Harborlight Energy · 8 touches across 21 days</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.06em;color:var(--op-surface);background:var(--op-ink);padding:7px 14px" data-slot="role.title">Battery Systems Engineer · Mid-Level</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)" data-slot="role.org">Harborlight Energy · 8 touches across 21 days</span>
         </div>
-        <p style="margin:26px 0 0;max-width:62ch;font-size:18px;color:var(--op-ink-dim);text-wrap:pretty" data-slot="doc.thesis">Every touch is ready to send: five emails, a LinkedIn connect note, an InMail, a voicemail script, a live-call opener with branches, and two texts, all written engineer to engineer. Nothing here works unedited: the bracketed tokens are the job, not decoration.</p>
+        <p style="margin:26px 0 0;font-size:22px;color:var(--op-ink-dim);text-wrap:pretty" data-slot="doc.thesis">Every touch is ready to send: five emails, a LinkedIn connect note, an InMail, a voicemail script, a live-call opener with branches, and two texts, all written engineer to engineer. Nothing here works unedited: the bracketed tokens are the job, not decoration.</p>
       </div>
-      <div style="border:1px solid var(--op-border);background:#FBF9F4;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 24px">
-        <div style="position:relative;width:150px;height:150px;border-radius:50%;background:conic-gradient(var(--op-primary) 0 18%,#F0EDE6 18% 100%)" data-bar="0.18">
-          <div style="position:absolute;inset:20px;background:#FBF9F4;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center">
+      <div style="border:1px solid var(--op-border);background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 24px">
+        <div style="position:relative;width:150px;height:150px;border-radius:50%;background:conic-gradient(var(--op-primary) 0 18%,var(--surface-2) 18% 100%)" data-bar="0.18">
+          <div style="position:absolute;inset:20px;background:var(--bg);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center">
             <div style="font-family:var(--op-font-display);font-size:36px;line-height:1" data-slot="gauge.value">18%</div>
-            <div style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-top:6px">Reply target</div>
+            <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-top:6px">Reply target</div>
           </div>
         </div>
-        <div style="margin-top:16px;font-size:13.5px;color:var(--op-ink-dim);text-align:center;max-width:28ch" data-slot="gauge.note">Benchmarks to beat: 68% open, 18% reply, 9% interested. Estimate: a public industry benchmark, name the report and year when you fill this, discounted for a scarce, specialized pool.</div>
+        <div style="margin-top:16px;font-size:20px;color:var(--op-ink-dim);text-align:center;" data-slot="gauge.note">Benchmarks to beat: 68% open, 18% reply, 9% interested. Estimate: a public industry benchmark, name the report and year when you fill this, discounted for a scarce, specialized pool.</div>
       </div>
     </div>
     <div style="display:flex;height:5px">
-      <div style="flex:5;background:var(--op-primary)"></div><div style="flex:1;background:var(--op-byeok)"></div><div style="flex:1;background:var(--op-success)"></div><div style="flex:1;background:var(--op-highlight)"></div><div style="flex:1;background:var(--op-warning)"></div><div style="flex:1;background:var(--op-accent)"></div>
+      <div style="flex:1;background:var(--op-primary)"></div>
     </div>
   </div>
 </header>
@@ -63,80 +63,80 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">01</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Architecture</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Architecture</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s1.title">Eight touches, twenty-one days</h2>
-        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s1.body">Each touch does one job and stops. None repeats the argument of the one before it. If touch four is just a louder touch one, cut it. The psychology column is why this specific order works on this specific pool.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s1.body">Each touch does one job and stops. None repeats the argument of the one before it. If touch four is just a louder touch one, cut it. The psychology column is why this specific order works on this specific pool.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;background:var(--op-surface);border:1px solid var(--op-border);overflow-x:auto">
-      <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:800px">
+      <table style="width:100%;border-collapse:collapse;font-size:20px;min-width:800px">
         <thead>
           <tr>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Day</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Touch</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Psychology</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Goal</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Day</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Touch</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Psychology</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Goal</th>
           </tr>
         </thead>
         <tbody data-repeat="sequence" data-count="5-10">
           <tr>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-family:var(--op-font-mono);font-size:13px" data-slot="seq.day">0</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-family:var(--op-font-mono);font-size:20px" data-slot="seq.day">0</td>
             <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);font-weight:600" data-slot="seq.touch">Email 1 · origin touch</td>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px" data-slot="seq.psych">Curiosity plus identity hook</td>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px" data-slot="seq.goal">Open a loop only a battery engineer can close</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px" data-slot="seq.psych">Curiosity plus identity hook</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px" data-slot="seq.goal">Open a loop only a battery engineer can close</td>
           </tr>
           <tr>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-family:var(--op-font-mono);font-size:13px">3</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-family:var(--op-font-mono);font-size:20px">3</td>
             <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);font-weight:600">Email 2 · social proof</td>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Credibility and belonging</td>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Show the team and the hardware track record</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Credibility and belonging</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Show the team and the hardware track record</td>
           </tr>
           <tr>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-family:var(--op-font-mono);font-size:13px">7</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-family:var(--op-font-mono);font-size:20px">7</td>
             <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);font-weight:600">Email 3 · vision</td>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Ownership and aspiration</td>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Name the subsystem they would own</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Ownership and aspiration</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Name the subsystem they would own</td>
           </tr>
           <tr>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-byeok);font-family:var(--op-font-mono);font-size:13px">10</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-byeok);font-family:var(--op-font-mono);font-size:20px">10</td>
             <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);font-weight:600">LinkedIn connect note</td>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Familiarity, low pressure</td>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Open a second channel with no ask attached</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Familiarity, low pressure</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Open a second channel with no ask attached</td>
           </tr>
           <tr>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-byeok);font-family:var(--op-font-mono);font-size:13px">12</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-byeok);font-family:var(--op-font-mono);font-size:20px">12</td>
             <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);font-weight:600">InMail · if connect unanswered</td>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Standalone value restatement</td>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Reach engineers who never check email</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Standalone value restatement</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Reach engineers who never check email</td>
           </tr>
           <tr>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-family:var(--op-font-mono);font-size:13px">14</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-family:var(--op-font-mono);font-size:20px">14</td>
             <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);font-weight:600">Email 4 · honest urgency</td>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Real scarcity, peer signal</td>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Put a truthful clock on the decision</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Real scarcity, peer signal</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Put a truthful clock on the decision</td>
           </tr>
           <tr>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-highlight);font-family:var(--op-font-mono);font-size:13px">16+</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-highlight);font-family:var(--op-font-mono);font-size:20px">16+</td>
             <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);font-weight:600">Voicemail or live call</td>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">Human effort signal</td>
-            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:13.5px">High-touch tier only. The effort is the message.</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">Human effort signal</td>
+            <td style="padding:12px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);font-size:20px">High-touch tier only. The effort is the message.</td>
           </tr>
           <tr>
-            <td style="padding:12px 16px;border-left:3px solid var(--op-muted);font-family:var(--op-font-mono);font-size:13px">21</td>
+            <td style="padding:12px 16px;border-left:3px solid var(--op-muted);font-family:var(--op-font-mono);font-size:20px">21</td>
             <td style="padding:12px 16px;font-weight:600">Email 5 · breakup</td>
-            <td style="padding:12px 16px;color:var(--op-ink-dim);font-size:13.5px">Closure and reciprocity</td>
-            <td style="padding:12px 16px;color:var(--op-ink-dim);font-size:13.5px">Close with dignity. Harvest a referral. Strongest-testing line of the eight.</td>
+            <td style="padding:12px 16px;color:var(--op-ink-dim);font-size:20px">Closure and reciprocity</td>
+            <td style="padding:12px 16px;color:var(--op-ink-dim);font-size:20px">Close with dignity. Harvest a referral. Strongest-testing line of the eight.</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <div style="margin-top:16px;background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-accent);padding:20px 24px">
-      <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-accent);margin-bottom:8px">Gate</div>
-      <p style="margin:0;font-size:15px;color:var(--op-ink-dim);max-width:84ch" data-slot="gate.1">Text only after the candidate has replied to you directly and given you the number themselves. A referral is not consent. A cold text to a battery candidate burns the relationship and carries real legal exposure in several states.</p>
+      <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-accent);margin-bottom:8px">Gate</div>
+      <p style="margin:0;font-size:20px;color:var(--op-ink-dim);" data-slot="gate.1">Text only after the candidate has replied to you directly and given you the number themselves. A referral is not consent. A cold text to a battery candidate burns the relationship and carries real legal exposure in several states.</p>
     </div>
   </section>
 
@@ -145,49 +145,49 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-primary);line-height:1">02</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary);margin-top:6px">The one that matters</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary);margin-top:6px">The one that matters</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s2.title">Email 1 · the origin touch</h2>
-        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s2.body">Seventy-five to ninety words, grade seven reading level or lower. Two sentences about them, two about us, one ask. If the highlighted token cannot be filled honestly, this profile is not ready to contact.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s2.body">Seventy-five to ninety words, grade seven reading level or lower. Two sentences about them, two about us, one ask. If the highlighted token cannot be filled honestly, this profile is not ready to contact.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;display:grid;grid-template-columns:1fr 300px;background:var(--op-surface);border:1px solid var(--op-border)">
       <div style="border-right:1px solid var(--op-border)">
-        <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
-          <span style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)">E1 · day 0 · curiosity plus identity</span>
-          <span style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">81 words · grade 7</span>
+        <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:var(--bg)">
+          <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)">E1 · day 0 · curiosity plus identity</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)">81 words · grade 7</span>
         </div>
-        <div style="padding:16px 20px;border-bottom:1px solid var(--op-border);display:grid;gap:8px;font-size:14.5px">
-          <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;flex:none">Subj A</span><span data-slot="e1.subjA">the failure mode most reviews miss</span></div>
-          <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-muted);background:#F0EDE6;border:1px solid var(--op-border);flex:none">Subj B</span><span data-slot="e1.subjB">for the engineer who already owns half the pack</span></div>
+        <div style="padding:16px 20px;border-bottom:1px solid var(--op-border);display:grid;gap:8px;font-size:20px">
+          <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-primary);background:var(--accent-tint);border:1px solid var(--accent-line);flex:none">Subj A</span><span data-slot="e1.subjA">the failure mode most reviews miss</span></div>
+          <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-muted);background:var(--surface-2);border:1px solid var(--op-border);flex:none">Subj B</span><span data-slot="e1.subjB">for the engineer who already owns half the pack</span></div>
         </div>
-        <div style="padding:26px 24px;font-size:15.5px;color:var(--op-ink-dim);line-height:1.75" data-slot="e1.body">
+        <div style="padding:26px 24px;font-size:20px;color:var(--op-ink-dim);line-height:1.75" data-slot="e1.body">
           <p style="margin:0 0 14px">[[FirstName]],</p>
-          <p style="margin:0 0 14px"><span style="background:#EEF6F1;border-bottom:1px solid #BFDCCB">Your [[SpecificProject]] work at [[CurrentCompany]]</span> reads like someone who trusts test data over intuition, which is rarer than it should be in battery work.</p>
+          <p style="margin:0 0 14px"><span style="background:var(--signal-tint);border-bottom:1px solid var(--signal-fill)">Your [[SpecificProject]] work at [[CurrentCompany]]</span> reads like someone who trusts test data over intuition, which is rarer than it should be in battery work.</p>
           <p style="margin:0 0 14px">Here's a problem worth your attention: most pack failures are decided on paper, months before a cell ever sees an abuse chamber, and margins shrink every generation.</p>
           <p style="margin:0 0 14px">We build [[SystemScope]] largely in-house, on a team small enough that one engineer owns a full subsystem.</p>
           <p style="margin:0 0 14px">Worth sixty seconds to see what the battery team owns here? If you'd rather not hear from me, reply once and I'll close the file for good.</p>
           <p style="margin:0">[Your first name]</p>
         </div>
       </div>
-      <div style="padding:26px 22px;background:#FBF9F4;display:grid;gap:20px;align-content:start" data-repeat="e1.annotations" data-count="3-5">
+      <div style="padding:26px 22px;background:var(--bg);display:grid;gap:20px;align-content:start" data-repeat="e1.annotations" data-count="3-5">
         <div style="border-left:2px solid var(--op-primary);padding-left:14px">
-          <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px" data-slot="note.tag">Why it works</div>
-          <div style="font-size:13.5px;color:var(--op-ink-dim)" data-slot="note.body" data-verify-exempt="phrase-scan">The first sentence carries no information about us at all. It is entirely a technical read on their public work, which lands as informed rather than flattering.</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px" data-slot="note.tag">Why it works</div>
+          <div style="font-size:20px;color:var(--op-ink-dim)" data-slot="note.body" data-verify-exempt="phrase-scan">The first sentence carries no information about us at all. It is entirely a technical read on their public work, which lands as informed rather than flattering.</div>
         </div>
         <div style="border-left:2px solid var(--op-primary);padding-left:14px">
-          <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px">The hook</div>
-          <div style="font-size:13.5px;color:var(--op-ink-dim)">"Decided on paper" is a claim, not a compliment. Battery engineers argue about design margin constantly, so a bold claim invites a rebuttal, and a rebuttal is a reply.</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px">The hook</div>
+          <div style="font-size:20px;color:var(--op-ink-dim)">"Decided on paper" is a claim, not a compliment. Battery engineers argue about design margin constantly, so a bold claim invites a rebuttal, and a rebuttal is a reply.</div>
         </div>
         <div style="border-left:2px solid var(--op-warning);padding-left:14px">
-          <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-warning);margin-bottom:5px">Must swap</div>
-          <div style="font-size:13.5px;color:var(--op-ink-dim)">The highlighted token. Source it from a conference talk, a paper, a patent, or their own post. If they've published nothing, fall back to the cell chemistry or test rig named on their profile. Never invent specificity.</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-warning);margin-bottom:5px">Must swap</div>
+          <div style="font-size:20px;color:var(--op-ink-dim)">The highlighted token. Source it from a conference talk, a paper, a patent, or their own post. If they've published nothing, fall back to the cell chemistry or test rig named on their profile. Never invent specificity.</div>
         </div>
         <div style="border-left:2px solid var(--op-accent);padding-left:14px">
-          <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-accent);margin-bottom:5px">Never</div>
-          <div style="font-size:13.5px;color:var(--op-ink-dim)">"Reaching out", "came across your profile", "exciting opportunity", or any pun on the word charge.</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-accent);margin-bottom:5px">Never</div>
+          <div style="font-size:20px;color:var(--op-ink-dim)">"Reaching out", "came across your profile", "exciting opportunity", or any pun on the word charge.</div>
         </div>
       </div>
     </div>
@@ -198,73 +198,73 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">03</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Emails 2–3</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Emails 2-3</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s3.title">Proof first, then scope</h2>
-        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s3.body">Two introduces the team and the checkable facts. Three describes the actual job. Every claim in both must survive scrutiny, because a battery engineer who has sat through a design review will check.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s3.body">Two introduces the team and the checkable facts. Three describes the actual job. Every claim in both must survive scrutiny, because a battery engineer who has sat through a design review will check.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;display:grid;gap:16px" data-repeat="emails" data-count="2-5">
       <div style="background:var(--op-surface);border:1px solid var(--op-border);display:grid;grid-template-columns:1fr 280px">
         <div style="border-right:1px solid var(--op-border)">
-          <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
-            <span style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)" data-slot="email.label">E2 · day 3 · credibility and belonging</span>
-            <span style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)" data-slot="email.meta">89 words</span>
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:var(--bg)">
+            <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)" data-slot="email.label">E2 · day 3 · credibility and belonging</span>
+            <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)" data-slot="email.meta">89 words</span>
           </div>
-          <div style="padding:14px 20px;border-bottom:1px solid var(--op-border);display:grid;gap:7px;font-size:14px">
-            <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;flex:none">Subj A</span><span data-slot="email.subjA">five abuse tests, zero anomalies logged</span></div>
-            <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-muted);background:#F0EDE6;border:1px solid var(--op-border);flex:none">Subj B</span><span data-slot="email.subjB">who you'd test with</span></div>
+          <div style="padding:14px 20px;border-bottom:1px solid var(--op-border);display:grid;gap:7px;font-size:20px">
+            <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-primary);background:var(--accent-tint);border:1px solid var(--accent-line);flex:none">Subj A</span><span data-slot="email.subjA">five abuse tests, zero anomalies logged</span></div>
+            <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-muted);background:var(--surface-2);border:1px solid var(--op-border);flex:none">Subj B</span><span data-slot="email.subjB">who you'd test with</span></div>
           </div>
-          <div style="padding:24px;font-size:15px;color:var(--op-ink-dim);line-height:1.75" data-slot="email.body">
+          <div style="padding:24px;font-size:20px;color:var(--op-ink-dim);line-height:1.75" data-slot="email.body">
             <p style="margin:0 0 12px">[[FirstName]],</p>
             <p style="margin:0 0 12px">Following up with the part most people ask about first: the team.</p>
-            <p style="margin:0 0 12px">This group has run battery hardware from first cell characterization through abuse-test certification, with [[SubsystemScope]] designed in-house alongside [[PartnerContext]], and [[TestCampaignFact]]. <span style="background:#EEF6F1;border-bottom:1px solid #BFDCCB">[[FundingFact]]</span>, and <span style="background:#EEF6F1;border-bottom:1px solid #BFDCCB">[[MilestoneFact]]</span>.</p>
+            <p style="margin:0 0 12px">This group has run battery hardware from first cell characterization through abuse-test certification, with [[SubsystemScope]] designed in-house alongside [[PartnerContext]], and [[TestCampaignFact]]. <span style="background:var(--signal-tint);border-bottom:1px solid var(--signal-fill)">[[FundingFact]]</span>, and <span style="background:var(--signal-tint);border-bottom:1px solid var(--signal-fill)">[[MilestoneFact]]</span>.</p>
             <p style="margin:0 0 12px">The battery team is small enough that you'd know every cell lot and every test anomaly personally.</p>
             <p style="margin:0 0 12px">Happy to set up twenty minutes with one of the engineers, not a recruiter pitch. Interested?</p>
             <p style="margin:0">[Your first name]</p>
           </div>
         </div>
-        <div style="padding:24px 22px;background:#FBF9F4;display:grid;gap:18px;align-content:start">
+        <div style="padding:24px 22px;background:var(--bg);display:grid;gap:18px;align-content:start">
           <div style="border-left:2px solid var(--op-primary);padding-left:14px">
-            <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px">Why it works</div>
-            <div style="font-size:13.5px;color:var(--op-ink-dim)" data-slot="email.note">Every claim is independently checkable, which is the point. "Not a recruiter pitch" is a real promise: keep it or don't make it.</div>
+            <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px">Why it works</div>
+            <div style="font-size:20px;color:var(--op-ink-dim)" data-slot="email.note">Every claim is independently checkable, which is the point. "Not a recruiter pitch" is a real promise: keep it or don't make it.</div>
           </div>
           <div style="border-left:2px solid var(--op-warning);padding-left:14px">
-            <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-warning);margin-bottom:5px">Must swap</div>
-            <div style="font-size:13.5px;color:var(--op-ink-dim)">Both highlighted tokens. Use facts a candidate can confirm in one search: funding stage, a named test campaign, a public milestone.</div>
+            <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-warning);margin-bottom:5px">Must swap</div>
+            <div style="font-size:20px;color:var(--op-ink-dim)">Both highlighted tokens. Use facts a candidate can confirm in one search: funding stage, a named test campaign, a public milestone.</div>
           </div>
         </div>
       </div>
 
       <div style="background:var(--op-surface);border:1px solid var(--op-border);display:grid;grid-template-columns:1fr 280px">
         <div style="border-right:1px solid var(--op-border)">
-          <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
-            <span style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)">E3 · day 7 · ownership and aspiration</span>
-            <span style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">104 words · A/B the lead</span>
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:var(--bg)">
+            <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)">E3 · day 7 · ownership and aspiration</span>
+            <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)">104 words · A/B the lead</span>
           </div>
-          <div style="padding:14px 20px;border-bottom:1px solid var(--op-border);display:grid;gap:7px;font-size:14px">
-            <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;flex:none">Subj A</span><span>what you'd own on this team</span></div>
-            <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-muted);background:#F0EDE6;border:1px solid var(--op-border);flex:none">Subj B</span><span>before the paperwork stage</span></div>
+          <div style="padding:14px 20px;border-bottom:1px solid var(--op-border);display:grid;gap:7px;font-size:20px">
+            <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-primary);background:var(--accent-tint);border:1px solid var(--accent-line);flex:none">Subj A</span><span>what you'd own on this team</span></div>
+            <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-muted);background:var(--surface-2);border:1px solid var(--op-border);flex:none">Subj B</span><span>before the paperwork stage</span></div>
           </div>
-          <div style="padding:24px;font-size:15px;color:var(--op-ink-dim);line-height:1.75">
+          <div style="padding:24px;font-size:20px;color:var(--op-ink-dim);line-height:1.75">
             <p style="margin:0 0 12px">[[FirstName]],</p>
             <p style="margin:0 0 12px">Last substantive note from me. Here's the actual scope:</p>
-            <p style="margin:0 0 12px">You would own battery subsystem hardware, from initial design through certification: design margin on the thermal system, abuse-test campaigns on the rig one floor away, and the failure investigations that decide whether a design ships. <span style="background:#EEF6F1;border-bottom:1px solid #BFDCCB">[[NextMilestone]]</span> is in [[MilestonePhase]], and its design decisions are being made now.</p>
+            <p style="margin:0 0 12px">You would own battery subsystem hardware, from initial design through certification: design margin on the thermal system, abuse-test campaigns on the rig one floor away, and the failure investigations that decide whether a design ships. <span style="background:var(--signal-tint);border-bottom:1px solid var(--signal-fill)">[[NextMilestone]]</span> is in [[MilestonePhase]], and its design decisions are being made now.</p>
             <p style="margin:0 0 12px">At this stage, the scope is the argument; the equity terms come with the offer. On a team this size, your test data is the record.</p>
             <p style="margin:0 0 12px">If any of that maps to what you want next, I can get you thirty minutes with the hiring manager this week.</p>
             <p style="margin:0">[Your first name]</p>
           </div>
         </div>
-        <div style="padding:24px 22px;background:#FBF9F4;display:grid;gap:18px;align-content:start">
+        <div style="padding:24px 22px;background:var(--bg);display:grid;gap:18px;align-content:start">
           <div style="border-left:2px solid var(--op-primary);padding-left:14px">
-            <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px">Why it works</div>
-            <div style="font-size:13.5px;color:var(--op-ink-dim)">"Your test data is the record" is the strongest-testing line in the sequence for experienced candidates. It promises scope without promising a title.</div>
+            <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px">Why it works</div>
+            <div style="font-size:20px;color:var(--op-ink-dim)">"Your test data is the record" is the strongest-testing line in the sequence for experienced candidates. It promises scope without promising a title.</div>
           </div>
           <div style="border-left:2px solid var(--op-primary);padding-left:14px">
-            <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px">A/B this one</div>
-            <div style="font-size:13.5px;color:var(--op-ink-dim)">Ownership-led against stage-and-equity-led. Different personas split hard on this. See the test matrix in artifact 04.</div>
+            <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-primary);margin-bottom:5px">A/B this one</div>
+            <div style="font-size:20px;color:var(--op-ink-dim)">Ownership-led against stage-and-equity-led. Different personas split hard on this. See the test matrix in artifact 04.</div>
           </div>
         </div>
       </div>
@@ -276,37 +276,37 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">04</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">LinkedIn</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">LinkedIn</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s4.title">The connect note and the InMail</h2>
-        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s4.body">The connect note is deliberately not a pitch: it buys familiarity for the emails that follow. The InMail assumes zero context, since it is the one touch that might get read on its own.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s4.body">The connect note is deliberately not a pitch: it buys familiarity for the emails that follow. The InMail assumes zero context, since it is the one touch that might get read on its own.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:16px" data-repeat="linkedin" data-count="2">
       <div style="background:var(--op-surface);border:1px solid var(--op-border)">
-        <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
-          <span style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)" data-slot="li.label">Connect note · day 10</span>
-          <span style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)" data-slot="li.meta">234 / 300 chars</span>
+        <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:var(--bg)">
+          <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)" data-slot="li.label">Connect note · day 10</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)" data-slot="li.meta">234 / 300 chars</span>
         </div>
-        <div style="padding:22px 24px;font-size:15px;color:var(--op-ink-dim);line-height:1.7" data-slot="li.body">[[FirstName]], the [[SpecificProject]] work at [[CurrentCompany]] is the kind of battery depth that gets buried on a big pack team. We're building a small battery group where one person owns a full subsystem. Worth connecting?</div>
-        <div style="padding:14px 20px;border-top:1px solid var(--op-border);font-size:13.5px;color:var(--op-ink-dim)" data-slot="li.note"><b>No pitch, no ask, no link.</b> Send nothing else on this channel for at least two days, or the note reads as a setup.</div>
+        <div style="padding:22px 24px;font-size:20px;color:var(--op-ink-dim);line-height:1.7" data-slot="li.body">[[FirstName]], the [[SpecificProject]] work at [[CurrentCompany]] is the kind of battery depth that gets buried on a big pack team. We're building a small battery group where one person owns a full subsystem. Worth connecting?</div>
+        <div style="padding:14px 20px;border-top:1px solid var(--op-border);font-size:20px;color:var(--op-ink-dim)" data-slot="li.note"><b>No pitch, no ask, no link.</b> Send nothing else on this channel for at least two days, or the note reads as a setup.</div>
       </div>
       <div style="background:var(--op-surface);border:1px solid var(--op-border)">
-        <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
-          <span style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)">InMail · day 12 · standalone</span>
-          <span style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">89 words</span>
+        <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:var(--bg)">
+          <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)">InMail · day 12 · standalone</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)">89 words</span>
         </div>
-        <div style="padding:14px 20px;border-bottom:1px solid var(--op-border);font-size:14px"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;margin-right:8px">Subj</span>the battery problem worth changing jobs for</div>
-        <div style="padding:22px 24px;font-size:15px;color:var(--op-ink-dim);line-height:1.7">
+        <div style="padding:14px 20px;border-bottom:1px solid var(--op-border);font-size:20px"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-primary);background:var(--accent-tint);border:1px solid var(--accent-line);margin-right:8px">Subj</span>the battery problem worth changing jobs for</div>
+        <div style="padding:22px 24px;font-size:20px;color:var(--op-ink-dim);line-height:1.7">
           <p style="margin:0 0 12px">[[FirstName]],</p>
           <p style="margin:0 0 12px">Short version, since InMail is nobody's favorite inbox:</p>
           <p style="margin:0 0 12px">We build [[SystemScope]] mostly in-house, on a small team where one engineer owns a whole subsystem, from thermal design through abuse test, instead of a slice of one.</p>
           <p style="margin:0 0 12px">Your background at [[CurrentCompany]] fits the shape of what this team needs: someone who has done the test-rig work, not just the analysis behind it. If a fifteen-minute intro is worth your time, name a day. If not, no follow-up beyond one more note.</p>
           <p style="margin:0">[Your first name]</p>
         </div>
-        <div style="padding:14px 20px;border-top:1px solid var(--op-border);font-size:13.5px;color:var(--op-ink-dim)"><b>Naming the ceiling on follow-ups</b> tends to raise reply rate. It also obliges you to stop at one.</div>
+        <div style="padding:14px 20px;border-top:1px solid var(--op-border);font-size:20px;color:var(--op-ink-dim)"><b>Naming the ceiling on follow-ups</b> tends to raise reply rate. It also obliges you to stop at one.</div>
       </div>
     </div>
   </section>
@@ -316,25 +316,25 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">05</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Emails 4–5</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Emails 4-5</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s5.title">Honest urgency, then the exit ramp</h2>
-        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s5.body">Email four ships only if every word in it is literally true. Email five drops the ask entirely, which is exactly why it outperforms the other four.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s5.body">Email four ships only if every word in it is literally true. Email five drops the ask entirely, which is exactly why it outperforms the other four.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
       <div style="background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-warning)">
-        <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
-          <span style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-warning)">E4 · day 14 · must be true</span>
-          <span style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">76 words</span>
+        <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:var(--bg)">
+          <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-warning)">E4 · day 14 · must be true</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)">76 words</span>
         </div>
-        <div style="padding:14px 20px;border-bottom:1px solid var(--op-border);display:grid;gap:7px;font-size:14px">
-          <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;flex:none">Subj A</span><span data-slot="e4.subj">where the search actually stands</span></div>
-          <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-muted);background:#F0EDE6;border:1px solid var(--op-border);flex:none">Subj B</span><span>timing, plainly stated</span></div>
+        <div style="padding:14px 20px;border-bottom:1px solid var(--op-border);display:grid;gap:7px;font-size:20px">
+          <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-primary);background:var(--accent-tint);border:1px solid var(--accent-line);flex:none">Subj A</span><span data-slot="e4.subj">where the search actually stands</span></div>
+          <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-muted);background:var(--surface-2);border:1px solid var(--op-border);flex:none">Subj B</span><span>timing, plainly stated</span></div>
         </div>
-        <div style="padding:22px 24px;font-size:15px;color:var(--op-ink-dim);line-height:1.75" data-slot="e4.body">
+        <div style="padding:22px 24px;font-size:20px;color:var(--op-ink-dim);line-height:1.75" data-slot="e4.body">
           <p style="margin:0 0 12px">[[FirstName]],</p>
           <p style="margin:0 0 12px">Straight status: we're filling one battery seat this cycle, the loop runs about two weeks start to finish, and the panel is engineers who have run hardware programs themselves.</p>
           <p style="margin:0 0 12px">We're moving candidates to scheduling this week, so the timing here is real, not a sales deadline.</p>
@@ -342,26 +342,26 @@
           <p style="margin:0 0 12px">Either way, this is my second-to-last note. If you'd rather not hear from me, reply once and I'll close the file for good.</p>
           <p style="margin:0">[Your first name]</p>
         </div>
-        <div style="padding:14px 20px;border-top:1px solid var(--op-border);background:#FAF0E6;font-size:13.5px;color:var(--op-ink-dim)" data-slot="e4.note"><b>Send this only if it is true.</b> A fabricated deadline is easy to spot and costly to be caught in with an audience that reads specs for a living. If two seats are open, say two.</div>
+        <div style="padding:14px 20px;border-top:1px solid var(--op-border);background:var(--warn-tint);font-size:20px;color:var(--op-ink-dim)" data-slot="e4.note"><b>Send this only if it is true.</b> A fabricated deadline is easy to spot and costly to be caught in with an audience that reads specs for a living. If two seats are open, say two.</div>
       </div>
 
       <div style="background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-success)">
-        <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
-          <span style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-success)">E5 · day 21 · highest reply rate</span>
-          <span style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">65 words</span>
+        <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:var(--bg)">
+          <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-success)">E5 · day 21 · highest reply rate</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)">65 words</span>
         </div>
-        <div style="padding:14px 20px;border-bottom:1px solid var(--op-border);display:grid;gap:7px;font-size:14px">
-          <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;flex:none">Subj A</span><span>closing the file</span></div>
-          <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-muted);background:#F0EDE6;border:1px solid var(--op-border);flex:none">Subj B</span><span>last one, promise</span></div>
+        <div style="padding:14px 20px;border-bottom:1px solid var(--op-border);display:grid;gap:7px;font-size:20px">
+          <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-primary);background:var(--accent-tint);border:1px solid var(--accent-line);flex:none">Subj A</span><span>closing the file</span></div>
+          <div style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;color:var(--op-muted);background:var(--surface-2);border:1px solid var(--op-border);flex:none">Subj B</span><span>last one, promise</span></div>
         </div>
-        <div style="padding:22px 24px;font-size:15px;color:var(--op-ink-dim);line-height:1.75">
+        <div style="padding:22px 24px;font-size:20px;color:var(--op-ink-dim);line-height:1.75">
           <p style="margin:0 0 12px">[[FirstName]],</p>
           <p style="margin:0 0 12px">Closing the file on my end: you clearly have good things going at [[CurrentCompany]].</p>
           <p style="margin:0 0 12px">One sentence for the archive: this is the team building the battery system for [[NextMilestone]], and the seat is still open.</p>
           <p style="margin:0 0 12px">If timing ever changes, my inbox doesn't. And if a former teammate comes to mind who'd want this, that introduction would genuinely mean something.</p>
           <p style="margin:0">Go build,<br>[Your first name]</p>
         </div>
-        <div style="padding:14px 20px;border-top:1px solid var(--op-border);background:#EEF6F1;font-size:13.5px;color:var(--op-ink-dim)"><b>Dropping the ask is what makes it land.</b> Do not add one back in. The referral line earns more replies than the direct question ever does.</div>
+        <div style="padding:14px 20px;border-top:1px solid var(--op-border);background:var(--signal-tint);font-size:20px;color:var(--op-ink-dim)"><b>Dropping the ask is what makes it land.</b> Do not add one back in. The referral line earns more replies than the direct question ever does.</div>
       </div>
     </div>
   </section>
@@ -371,59 +371,59 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">06</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Voice &amp; text</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Voice &amp; text</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s6.title">The phone script, and the texts that follow it</h2>
-        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s6.body">Reserved for the high-touch tier. A call is a costly signal for both sides, which is exactly why it moves a scarce battery candidate when another email will not.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s6.body">Reserved for the high-touch tier. A call is a costly signal for both sides, which is exactly why it moves a scarce battery candidate when another email will not.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;display:grid;gap:16px" data-repeat="voice.blocks" data-count="2-4">
       <div style="background:var(--op-surface);border:1px solid var(--op-border)">
-        <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
-          <span style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)" data-slot="voice.label">Voicemail · day 16 onward · ~20 seconds</span>
-          <span style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">High-touch tier</span>
+        <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:var(--bg)">
+          <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)" data-slot="voice.label">Voicemail · day 16 onward · ~20 seconds</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)">High-touch tier</span>
         </div>
-        <div style="padding:20px 24px;background:#F7F5F0;font-size:15px;color:var(--op-ink);line-height:1.75;white-space:pre-wrap" data-slot="voice.script">"Hi [[FirstName]], this is [Name]. I've sent a couple of notes about our battery team. Short version: we're mid-[[ProgramPhase]] on [[ProgramName]], the seat is still open, and your test-rig work at [[CurrentCompany]] is why I keep calling. My number is [number]. If it's a no, a two-word text saves us both the dance. Thanks, [[FirstName]]."</div>
-        <div style="padding:14px 20px;border-top:1px solid var(--op-border);font-size:13.5px;color:var(--op-ink-dim)" data-slot="voice.note"><b>The two-word opt-out is what earns callbacks.</b> A cheap, guilt-free exit produces more calls than a hard close does, since it removes the fear of an awkward yes.</div>
+        <div style="padding:20px 24px;background:var(--bg);font-size:20px;color:var(--op-ink);line-height:1.75;white-space:pre-wrap" data-slot="voice.script">"Hi [[FirstName]], this is [Name]. I've sent a couple of notes about our battery team. Short version: we're mid-[[ProgramPhase]] on [[ProgramName]], the seat is still open, and your test-rig work at [[CurrentCompany]] is why I keep calling. My number is [number]. If it's a no, a two-word text saves us both the dance. Thanks, [[FirstName]]."</div>
+        <div style="padding:14px 20px;border-top:1px solid var(--op-border);font-size:20px;color:var(--op-ink-dim)" data-slot="voice.note"><b>The two-word opt-out is what earns callbacks.</b> A cheap, guilt-free exit produces more calls than a hard close does, since it removes the fear of an awkward yes.</div>
       </div>
 
       <div style="background:var(--op-surface);border:1px solid var(--op-border)">
-        <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
-          <span style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)">Live call opener · 15 seconds + branches</span>
-          <span style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">Memorise the branches</span>
+        <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:var(--bg)">
+          <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary)">Live call opener · 15 seconds + branches</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)">Memorise the branches</span>
         </div>
-        <div style="padding:20px 24px;background:#F7F5F0;font-size:15px;color:var(--op-ink);line-height:1.75;white-space:pre-wrap" data-slot="call.script">"Hi [[FirstName]], [Name] here. I'll be brief: your test-rig and analysis work at [[CurrentCompany]] maps closely onto what our battery team owns, and I'd rather ask than assume. Is a fifteen-minute intro this week worth your time?"</div>
+        <div style="padding:20px 24px;background:var(--bg);font-size:20px;color:var(--op-ink);line-height:1.75;white-space:pre-wrap" data-slot="call.script">"Hi [[FirstName]], [Name] here. I'll be brief: your test-rig and analysis work at [[CurrentCompany]] maps closely onto what our battery team owns, and I'd rather ask than assume. Is a fifteen-minute intro this week worth your time?"</div>
         <div style="padding:20px 24px;border-top:1px solid var(--op-border);display:grid;gap:16px" data-repeat="call.branches" data-count="2-5">
           <div style="display:grid;grid-template-columns:190px 1fr;gap:18px;align-items:start">
-            <div style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-warning)" data-slot="branch.if">"I'm happy where I am"</div>
-            <div style="font-size:14.5px;color:var(--op-ink-dim)" data-slot="branch.then">"Completely fair, and I appreciate you saying so plainly. Mind if I send one paragraph on the scope for future reference? And if anyone comes to mind who'd fit, I take referrals seriously."</div>
+            <div style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-warning)" data-slot="branch.if">"I'm happy where I am"</div>
+            <div style="font-size:20px;color:var(--op-ink-dim)" data-slot="branch.then">"Completely fair, and I appreciate you saying so plainly. Mind if I send one paragraph on the scope for future reference? And if anyone comes to mind who'd fit, I take referrals seriously."</div>
           </div>
           <div style="display:grid;grid-template-columns:190px 1fr;gap:18px;align-items:start">
-            <div style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-warning)">"What does this pay?"</div>
-            <div style="font-size:14.5px;color:var(--op-ink-dim)">"Posted range is [[BandLow]] to [[BandHigh]] base, plus equity depending on level. Worth fifteen minutes to see if the scope earns it?"</div>
+            <div style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-warning)">"What does this pay?"</div>
+            <div style="font-size:20px;color:var(--op-ink-dim)">"Posted range is [[BandLow]] to [[BandHigh]] base, plus equity depending on level. Worth fifteen minutes to see if the scope earns it?"</div>
           </div>
           <div style="display:grid;grid-template-columns:190px 1fr;gap:18px;align-items:start">
-            <div style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-warning)">"This isn't a good time"</div>
-            <div style="font-size:14.5px;color:var(--op-ink-dim)">"Understood. Does Tuesday morning or Thursday afternoon work better, or should I just close the file?" <span style="display:block;margin-top:4px;color:var(--op-muted);font-size:13px">Offering to close the file turns this into a real choice instead of a nudge.</span></div>
+            <div style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-warning)">"This isn't a good time"</div>
+            <div style="font-size:20px;color:var(--op-ink-dim)">"Understood. Does Tuesday morning or Thursday afternoon work better, or should I just close the file?" <span style="display:block;margin-top:4px;color:var(--op-muted);font-size:20px">Offering to close the file turns this into a real choice instead of a nudge.</span></div>
           </div>
         </div>
       </div>
 
       <div style="background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-accent)">
-        <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:#FBF9F4">
-          <span style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-accent)">Text · after the candidate replies</span>
-          <span style="font-family:var(--op-font-mono);font-size:10px;color:var(--op-muted)">Never cold</span>
+        <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--op-border);background:var(--bg)">
+          <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-accent)">Text · after the candidate replies</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)">Never cold</span>
         </div>
         <div style="padding:20px 24px;display:grid;gap:14px">
           <div>
-            <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:6px">Scheduling</div>
-            <div style="background:#F7F5F0;padding:14px 16px;font-size:14.5px;color:var(--op-ink)" data-slot="sms.1">"Hey [[FirstName]], it's [Name]. Glad you're open to a call. I can hold Wed 9am or Thu 3pm for twenty minutes with [HM first name], either work for you? I'll get the invite out."</div>
+            <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:6px">Scheduling</div>
+            <div style="background:var(--bg);padding:14px 16px;font-size:20px;color:var(--op-ink)" data-slot="sms.1">"Hey [[FirstName]], it's [Name]. Glad you're open to a call. I can hold Wed 9am or Thu 3pm for twenty minutes with [HM first name], either work for you? I'll get the invite out."</div>
           </div>
           <div>
-            <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:6px">Day-of confirm</div>
-            <div style="background:#F7F5F0;padding:14px 16px;font-size:14.5px;color:var(--op-ink)" data-slot="sms.2">"[[FirstName]], see you at 3 today with [HM first name]. Video link is in the invite. Anything specific you want covered, tell me now and I'll brief them."</div>
+            <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-ink-300);margin-bottom:6px">Day-of confirm</div>
+            <div style="background:var(--bg);padding:14px 16px;font-size:20px;color:var(--op-ink)" data-slot="sms.2">"[[FirstName]], see you at 3 today with [HM first name]. Video link is in the invite. Anything specific you want covered, tell me now and I'll brief them."</div>
           </div>
         </div>
       </div>
@@ -435,74 +435,74 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">07</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Guardrails</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Guardrails</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s7.title">Tier discipline and the banned list</h2>
-        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s7.body">Tier discipline is the difference between an 18% reply rate and a 6% one. The banned list is not a style preference: each phrase measurably drags down replies, and several signal that the sender has never touched a test rig.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s7.body">Tier discipline is the difference between an 18% reply rate and a 6% one. The banned list is not a style preference: each phrase measurably drags down replies, and several signal that the sender has never touched a test rig.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;display:grid;grid-template-columns:1.1fr 1fr;gap:2px;background:var(--op-border);border:1px solid var(--op-border)">
       <div style="background:var(--op-surface);padding:26px 28px">
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-primary);margin-bottom:16px">Tiers</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-primary);margin-bottom:16px">Tiers</div>
         <div style="display:grid;gap:16px" data-repeat="tiers" data-count="2-4">
           <div style="border-left:2px solid var(--op-muted);padding-left:14px">
-            <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:4px"><span style="font-size:14.5px;font-weight:600" data-slot="tier.name">Baseline</span><span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted)" data-slot="tier.target">high-volume strings</span></div>
-            <div style="font-size:13.5px;color:var(--op-ink-dim)" data-slot="tier.elements">Only [[FirstName]] and [[CurrentCompany]] filled in. Expect the benchmark reply rate and nothing above it.</div>
+            <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:4px"><span style="font-size:20px;font-weight:600" data-slot="tier.name">Baseline</span><span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)" data-slot="tier.target">high-volume strings</span></div>
+            <div style="font-size:20px;color:var(--op-ink-dim)" data-slot="tier.elements">Only [[FirstName]] and [[CurrentCompany]] filled in. Expect the benchmark reply rate and nothing above it.</div>
           </div>
           <div style="border-left:2px solid var(--op-primary);padding-left:14px">
-            <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:4px"><span style="font-size:14.5px;font-weight:600">Targeted</span><span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted)">named target list</span></div>
-            <div style="font-size:13.5px;color:var(--op-ink-dim)">Adds [[TestSignal]]: the cell chemistry, pack architecture, or test campaign named on their own profile. Cheap to add, clearly better.</div>
+            <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:4px"><span style="font-size:20px;font-weight:600">Targeted</span><span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)">named target list</span></div>
+            <div style="font-size:20px;color:var(--op-ink-dim)">Adds [[TestSignal]]: the cell chemistry, pack architecture, or test campaign named on their own profile. Cheap to add, clearly better.</div>
           </div>
           <div style="border-left:2px solid var(--op-success);padding-left:14px">
-            <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:4px"><span style="font-size:14.5px;font-weight:600">Full-touch</span><span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-success)">target &gt;22% reply</span></div>
-            <div style="font-size:13.5px;color:var(--op-ink-dim)">Passives, referrals, and trigger-based sends. Adds [[SpecificProject]], a hand-written opener, plus the voicemail or live call. Fifteen minutes of research per name.</div>
+            <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:4px"><span style="font-size:20px;font-weight:600">Full-touch</span><span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-success)">target &gt;22% reply</span></div>
+            <div style="font-size:20px;color:var(--op-ink-dim)">Passives, referrals, and trigger-based sends. Adds [[SpecificProject]], a hand-written opener, plus the voicemail or live call. Fifteen minutes of research per name.</div>
           </div>
         </div>
-        <div style="margin-top:22px;padding-top:16px;border-top:1px solid var(--op-border);font-size:14px;color:var(--op-ink-dim)" data-slot="tier.note"><b>One call to action, one question, every single time.</b> Sign with a real name, never a team inbox. Every email carries at least one fact a candidate could verify independently.</div>
+        <div style="margin-top:22px;padding-top:16px;border-top:1px solid var(--op-border);font-size:20px;color:var(--op-ink-dim)" data-slot="tier.note"><b>One call to action, one question, every single time.</b> Sign with a real name, never a team inbox. Every email carries at least one fact a candidate could verify independently.</div>
       </div>
       <div style="background:var(--op-surface);padding:26px 28px">
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-accent);margin-bottom:16px">Banned: automatic QA fail</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-accent);margin-bottom:16px">Banned: automatic QA fail</div>
         <div style="display:flex;flex-wrap:wrap;gap:8px" data-repeat="banned" data-count="6-16">
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through" data-slot="banned.term">we're hiring</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">per my last email</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">circle back</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">just following up</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">synergy</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">end-to-end</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">crushing it</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">low-hanging fruit</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">move the needle</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">wear many hats</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">dynamic team</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">I hope this finds you well</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">came across your profile</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">exciting opportunity</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">rockstar</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">perfect fit</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through" data-slot="banned.term">we're hiring</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">per my last email</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">circle back</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">just following up</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">synergy</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">end-to-end</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">crushing it</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">low-hanging fruit</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">move the needle</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">wear many hats</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">dynamic team</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">I hope this finds you well</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">came across your profile</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">exciting opportunity</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">rockstar</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">perfect fit</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- HANDOFF -->
-  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
-    <div style="background:var(--op-ink);color:var(--op-bg);padding:30px 34px" data-optional>
+  <section hidden data-print="hide" style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border);display:none">
+    <div data-mode="dark" style="background:var(--op-bg);color:var(--op-ink);padding:30px 34px" data-optional>
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:18px">
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-bisaek)">Handoff → next artifact</div>
-        <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">Internal · optional: delete before sharing outside the search team</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-bisaek)">Handoff → next artifact</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">Internal · optional: delete before sharing outside the search team</div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;font-family:var(--op-font-mono);font-size:13px;line-height:1.9">
-        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Produces</div><div data-slot="handoff.produces">sequence · channels · ab_variants · banned_phrases_checked</div></div>
-        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Consumed by</div><div data-slot="handoff.consumers">A09 QA Gate · weekly pipeline standup</div></div>
-        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Compliance</div><div data-slot="handoff.compliance">No phrases outside the reference list · one call to action per touch · every number carries a Sourced or Estimate pill · SMS gated to candidate reply only · every automated send carries a working opt-out and postal address</div></div>
-        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Blocked on</div><div style="color:var(--op-hwang-light)" data-slot="handoff.blocked">Real funding and milestone facts from Harborlight Energy, plus one real open technical problem from the hiring manager, to replace the bracketed tokens throughout</div></div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;font-family:var(--op-font-mono);font-size:20px;line-height:1.9">
+        <div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Produces</div><div data-slot="handoff.produces">sequence · channels · ab_variants · banned_phrases_checked</div></div>
+        <div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Consumed by</div><div data-slot="handoff.consumers">A09 QA Gate · weekly pipeline standup</div></div>
+        <div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Compliance</div><div data-slot="handoff.compliance">No phrases outside the reference list · one call to action per touch · every number carries a Sourced or Estimate pill · SMS gated to candidate reply only · every automated send carries a working opt-out and postal address</div></div>
+        <div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Blocked on</div><div style="color:var(--op-hwang-light)" data-slot="handoff.blocked">Real funding and milestone facts from Harborlight Energy, plus one real open technical problem from the hiring manager, to replace the bracketed tokens throughout</div></div>
       </div>
     </div>
   </section>
 
-  <footer style="margin-top:56px;padding-top:20px;border-top:1px solid var(--op-border);display:flex;justify-content:space-between;font-family:var(--op-font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">
+  <footer style="margin-top:56px;padding-top:20px;border-top:1px solid var(--op-border);display:flex;justify-content:space-between;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">
     <span data-slot="footer.left">TK-05 · Multi-Channel Outreach</span><span data-slot="footer.right">Write nothing you would not forward</span>
   </footer>
 </main>

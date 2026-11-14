@@ -114,7 +114,7 @@ class CheckFill(unittest.TestCase):
             )
             self.assertEqual(code, 0, out)
         code, out = _lint(
-            f'<div data-bar="1" style="background:#DCE6F2;min-height:40px">'
+            f'<div data-bar="1" style="background:#ABCDEF;min-height:40px">'
             f"</div>{HANDOFF}"
         )
         self.assertEqual(code, 1, out)

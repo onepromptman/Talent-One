@@ -14,45 +14,45 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="_ds/onepromptman-ds/_ds_bundle.js"></script>
 <style>
-  /* derived ramp tints (no token exists for these): #F0EDE6 track, #FBF9F4 rail, #EDE8DE hairline, #DCE6F2 cheong pale, #EEF6F1/#BFDCCB nok pale, #FAF0E6/#E3CDB4 dan pale, #F9EFEF/#E3C4C4 jeok pale, #C9D6E6 link rule */
+  /* colors: role tokens only (tokens.css). chart ramp = var(--surface-2) track, var(--accent-tint) touch, var(--heat-secondary) secondary, var(--op-primary) primary */
   body{margin:0;background:var(--op-bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  a{color:var(--op-primary);text-decoration:underline;text-underline-offset:.18em;text-decoration-color:#C9D6E6}
+  a{color:var(--op-primary);text-decoration:underline;text-underline-offset:.18em;text-decoration-color:var(--accent-line)}
   a:hover{color:var(--op-cheong-dark);text-decoration-color:var(--op-primary)}
-  @media print{@page{size:letter;margin:0.5in} section{break-inside:avoid}}
+  @media print{@page{size:letter;margin:0.5in}}
 </style>
 </helmet>
 
-<div data-mode="light" style="background:var(--op-bg);color:var(--op-ink);font-family:var(--op-font-body);font-size:16px;line-height:1.6">
+<div data-mode="light" style="background:var(--op-bg);color:var(--op-ink);font-family:var(--op-font-body);font-size:20px;line-height:1.6">
 
 <header style="border-bottom:1px solid var(--op-border);background:var(--op-surface)">
   <div style="max-width:1120px;margin:0 auto;padding:0 48px">
     <div style="display:flex;justify-content:space-between;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--op-border)">
-      <div style="font-family:var(--op-font-mono);font-size:12px;letter-spacing:.30em;text-transform:uppercase" data-slot="kit.mark">Talent One <span style="color:var(--op-accent)">·</span> TK-01</div>
-      <div style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted)"><span data-slot="doc.agent">Agent · SENSEI</span> <span style="color:var(--op-lattice-line)">/</span> <span data-slot="doc.date">Reads in ~12 min</span></div>
+      <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.30em;text-transform:uppercase;white-space:nowrap;flex-shrink:0;padding-right:32px" data-slot="kit.mark">Talent One <span style="color:var(--op-accent)">·</span> TK-01</div>
+      <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);text-align:right"><span data-slot="doc.agent">Agent · SENSEI</span> <span style="color:var(--op-lattice-line)">/</span> <span data-slot="doc.date">Reads in ~12 min</span></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 330px;gap:60px;padding:60px 0 44px;align-items:start">
       <div>
-        <div style="font-family:var(--op-font-mono);font-size:11px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-primary);margin-bottom:18px" data-slot="doc.eyebrow">Artifact 01 · Role literacy</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-primary);margin-bottom:18px" data-slot="doc.eyebrow">Artifact 01 · Role literacy</div>
         <h1 style="font-family:var(--op-font-display);font-weight:700;font-size:52px;line-height:1.08;letter-spacing:-0.02em;margin:0;text-wrap:balance" data-slot="doc.title">Educational Brief</h1>
         <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
-          <span style="font-family:var(--op-font-mono);font-size:13px;letter-spacing:.06em;color:var(--op-surface);background:var(--op-ink);padding:7px 14px" data-slot="role.title">Battery Systems Engineer · Mid</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-muted)" data-slot="role.org">Connected-hardware company · small battery team, one cell partner</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.06em;color:var(--op-surface);background:var(--op-ink);padding:7px 14px" data-slot="role.title">Battery Systems Engineer · Mid</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)" data-slot="role.org">Connected-hardware company · small battery team, one cell partner</span>
         </div>
-        <p style="margin:26px 0 0;max-width:62ch;font-size:18px;color:var(--op-ink-dim);text-wrap:pretty" data-slot="doc.thesis">Everything you need to talk credibly with a battery systems engineer or a hiring manager: what the role builds, where it sits in the product, how to translate the jargon into plain English, and which words surface the right candidates. You will not have to look anything up mid-call.</p>
+        <p style="margin:26px 0 0;font-size:22px;color:var(--op-ink-dim);text-wrap:pretty" data-slot="doc.thesis">Everything you need to talk credibly with a battery systems engineer or a hiring manager: what the role builds, where it sits in the product, how to translate the jargon into plain English, and which words surface the right candidates. You will not have to look anything up mid-call.</p>
       </div>
-      <div style="border:1px solid var(--op-border);background:#FBF9F4">
-        <div style="padding:16px 20px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-muted)">Read this if</div>
+      <div style="border:1px solid var(--op-border);background:var(--bg)">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-muted)">Start here before</div>
         <div data-repeat="cover.audience" data-count="3-5">
-          <div style="padding:13px 20px;border-bottom:1px solid #EDE8DE;font-size:13.5px;color:var(--op-ink-dim)" data-slot="audience.item">You have never sourced battery or electrical engineers before</div>
-          <div style="padding:13px 20px;border-bottom:1px solid #EDE8DE;font-size:13.5px;color:var(--op-ink-dim)">You have to run the recruiter screen without an engineer in the room</div>
-          <div style="padding:13px 20px;border-bottom:1px solid #EDE8DE;font-size:13.5px;color:var(--op-ink-dim)">You are about to write outreach and do not know the vocabulary</div>
-          <div style="padding:13px 20px;font-size:13.5px;color:var(--op-ink-dim)">A hiring manager just used five terms you could not place</div>
+          <div style="padding:13px 20px;border-bottom:1px solid var(--border-soft);font-size:20px;color:var(--op-ink-dim)" data-slot="audience.item">You have never sourced battery or electrical engineers before</div>
+          <div style="padding:13px 20px;border-bottom:1px solid var(--border-soft);font-size:20px;color:var(--op-ink-dim)">You have to run the recruiter screen without an engineer in the room</div>
+          <div style="padding:13px 20px;border-bottom:1px solid var(--border-soft);font-size:20px;color:var(--op-ink-dim)">You are about to write outreach and do not know the vocabulary</div>
+          <div style="padding:13px 20px;font-size:20px;color:var(--op-ink-dim)">A hiring manager just used five terms you could not place</div>
         </div>
-        <div style="padding:12px 20px;background:#F0EDE6;border-top:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:10px;letter-spacing:.1em;color:var(--op-muted);text-transform:uppercase" data-slot="cover.note">Section 3 (the glossary) and Section 10 (the cheat sheet) are the two to keep open on a live call</div>
+        <div style="padding:12px 20px;background:var(--surface-2);border-top:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;color:var(--op-muted);text-transform:uppercase" data-slot="cover.note">Section 3 (the glossary) and Section 10 (the cheat sheet) are the two to keep open on a live call</div>
       </div>
     </div>
     <div style="display:flex;height:5px">
-      <div style="flex:5;background:var(--op-primary)"></div><div style="flex:1;background:var(--op-byeok)"></div><div style="flex:1;background:var(--op-success)"></div><div style="flex:1;background:var(--op-highlight)"></div><div style="flex:1;background:var(--op-warning)"></div><div style="flex:1;background:var(--op-accent)"></div>
+      <div style="flex:1;background:var(--op-primary)"></div>
     </div>
   </div>
 </header>
@@ -64,37 +64,37 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">01</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">The role</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">The role</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s1.title">What a battery systems engineer actually does all day</h2>
-        <p style="margin:0 0 14px;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s1.body">They design the battery pack, and the thermal and electrical systems around it, that store energy and hand it back on demand, then they prove it on a test rig before it ever ships. Most of the week goes on buying margin against the ways a pack destroys itself: thermal runaway, an internal short, a cooling loop that falls behind, an overcharge. The craft is judged on the worst cycle, not the best one, so caution here is a professional virtue, not timidity.</p>
-        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s1.body2">Two things follow, and both change how you talk to candidates. First, they are precise: vague enthusiasm reads as not-serious. Second, they respect failure as a subject, so the fastest way to earn credibility is to ask what failed in the abuse chamber, not what shipped.</p>
+        <p style="margin:0 0 14px;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s1.body">They design the battery pack, and the thermal and electrical systems around it, that store energy and hand it back on demand, then they prove it on a test rig before it ever ships. Most of the week goes on buying margin against the ways a pack destroys itself: thermal runaway, an internal short, a cooling loop that falls behind, an overcharge. The craft is judged on the worst cycle, not the best one, so caution here is a professional virtue, not timidity.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s1.body2">Two things follow, and both change how you talk to candidates. First, they are precise: vague enthusiasm reads as not-serious. Second, they respect failure as a subject, so the fastest way to earn credibility is to ask what failed in the abuse chamber, not what shipped.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--op-border);border:1px solid var(--op-border)">
       <div style="background:var(--op-surface);padding:26px 28px">
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-primary);margin-bottom:10px">The one-sentence version</div>
-        <p style="margin:0;font-size:16.5px;color:var(--op-ink);text-wrap:pretty" data-slot="northstar">Design and prove the battery pack, and the thermal and electrical systems behind it, that store energy and deliver it on demand, and keep it from overheating on the test rig or in a customer's garage.</p>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-primary);margin-bottom:10px">The one-sentence version</div>
+        <p style="margin:0;font-size:20px;color:var(--op-ink);text-wrap:pretty" data-slot="northstar">Design and prove the battery pack, and the thermal and electrical systems behind it, that store energy and deliver it on demand, and keep it from overheating on the test rig or in a customer's garage.</p>
       </div>
       <div style="background:var(--op-surface);padding:26px 28px;border-top:3px solid var(--op-success)">
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-success);margin-bottom:10px">The analogy that lands</div>
-        <p style="margin:0;font-size:16.5px;color:var(--op-ink);text-wrap:pretty" data-slot="analogy">It is a fuel tank that can set itself on fire, packed into a box the size of a fridge. The whole craft is keeping a large amount of stored energy calm and usable: charge it too fast and the cells wear out, let the heat build and one cell can push its neighbours into runaway, let the cells drift apart and the pack quits early. Every design choice buys margin against one of those failures.</p>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-success);margin-bottom:10px">The analogy that lands</div>
+        <p style="margin:0;font-size:20px;color:var(--op-ink);text-wrap:pretty" data-slot="analogy">It is a fuel tank that can set itself on fire, packed into a box the size of a fridge. The whole craft is keeping a large amount of stored energy calm and usable: charge it too fast and the cells wear out, let the heat build and one cell can push its neighbours into runaway, let the cells drift apart and the pack quits early. Every design choice buys margin against one of those failures.</p>
       </div>
     </div>
 
     <div style="margin-top:16px;background:var(--op-surface);border:1px solid var(--op-border);overflow-x:auto">
-      <table style="width:100%;border-collapse:collapse;font-size:14.5px;min-width:660px">
+      <table style="width:100%;border-collapse:collapse;font-size:20px;min-width:660px">
         <thead>
           <tr>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--op-ink)">Core responsibility</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--op-ink)">What that means day to day</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--op-ink)">Core responsibility</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:14px 18px;border-bottom:1px solid var(--op-ink)">What that means day to day</th>
           </tr>
         </thead>
         <tbody data-repeat="responsibilities" data-count="4-8">
           <tr>
-            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-weight:600;width:250px" data-slot="resp.name">Design the pack and its parts</td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-primary);font-weight:600;width:320px" data-slot="resp.name">Design the pack and its parts</td>
             <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)" data-slot="resp.detail">Cells, modules, busbars, enclosure, and cooling. Turn product requirements into a pack that delivers the right energy and power without failing.</td>
           </tr>
           <tr>
@@ -123,42 +123,42 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">02</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">The stack</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">The stack</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s2.title">Where the role sits in the product, layer by layer</h2>
-        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s2.body">Use this to place any candidate in thirty seconds. Ask them which of these layers they have lived in. The marked layers are this role. One layer away is an adjacent hire worth pursuing; two layers away is a neighbouring discipline that only shares vocabulary.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s2.body">Use this to place any candidate in thirty seconds. Ask them which of these layers they have lived in. The marked layers are this role. One layer away is an adjacent hire worth pursuing; two layers away is a neighbouring discipline that only shares vocabulary.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;background:var(--op-surface);border:1px solid var(--op-border);padding:28px 32px">
       <div style="display:grid;gap:2px" data-repeat="stack.layers" data-count="4-7">
-        <div style="display:grid;grid-template-columns:250px 1fr;background:#F0EDE6">
-          <div style="padding:16px 18px;font-family:var(--op-font-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-muted)" data-slot="layer.name">Product / system level</div>
-          <div style="padding:16px 18px;background:var(--op-surface);font-size:14px;color:var(--op-ink-dim)" data-slot="layer.desc">The whole home battery unit. A different team (systems, firmware) sets the energy, power, and safety requirements this role has to meet.</div>
+        <div style="display:grid;grid-template-columns:250px 1fr;background:var(--surface-2)">
+          <div style="padding:16px 18px;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-muted)" data-slot="layer.name">Product / system level</div>
+          <div style="padding:16px 18px;background:var(--op-surface);font-size:20px;color:var(--op-ink-dim)" data-slot="layer.desc">The whole home battery unit. A different team (systems, firmware) sets the energy, power, and safety requirements this role has to meet.</div>
         </div>
-        <div style="display:grid;grid-template-columns:250px 1fr;background:var(--op-primary);outline:2px solid var(--op-primary)" data-slot="layer.owned">
-          <div style="padding:20px 18px;font-family:var(--op-font-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-surface)">Battery pack system <span style="display:block;font-size:9.5px;letter-spacing:.14em;opacity:.8;margin-top:4px">★ core of this role</span></div>
-          <div style="padding:20px 18px;background:#DCE6F2;font-size:14.5px;color:var(--op-ink)">The pack plus its thermal and electrical systems as one integrated subsystem: architecture, requirements, budgets, integration. This is where the hire spends most of their time.</div>
+        <div style="padding:14px 18px;background:var(--accent-tint);border-left:3px solid var(--op-primary);font-size:20px;color:var(--accent-text);text-wrap:pretty" data-slot="layer.owned">
+          <div style="padding:20px 18px;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text)">Battery pack system <span style="display:block;font-size:20px;letter-spacing:.14em;opacity:.8;margin-top:4px">★ core of this role</span></div>
+          <div style="padding:20px 18px;background:var(--op-surface);font-size:20px;color:var(--op-ink)">The pack plus its thermal and electrical systems as one integrated subsystem: architecture, requirements, budgets, integration. This is where the hire spends most of their time.</div>
         </div>
-        <div style="display:grid;grid-template-columns:250px 1fr;background:var(--op-primary);outline:2px solid var(--op-primary)">
-          <div style="padding:18px;font-family:var(--op-font-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-surface)">Pack &amp; module design <span style="display:block;font-size:9.5px;letter-spacing:.14em;opacity:.8;margin-top:4px">★ must be at home here</span></div>
-          <div style="padding:18px;background:#DCE6F2;font-size:14.5px;color:var(--op-ink)">Cells, modules, busbars, and enclosure, plus the cooling and the battery management system that watches every cell.</div>
+        <div style="display:grid;grid-template-columns:250px 1fr;background:var(--accent-tint);outline:2px solid var(--accent-line)">
+          <div style="padding:18px;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text)">Pack &amp; module design <span style="display:block;font-size:20px;letter-spacing:.14em;opacity:.8;margin-top:4px">★ must be at home here</span></div>
+          <div style="padding:18px;background:var(--op-surface);font-size:20px;color:var(--op-ink)">Cells, modules, busbars, and enclosure, plus the cooling and the battery management system that watches every cell.</div>
         </div>
-        <div style="display:grid;grid-template-columns:250px 1fr;background:var(--op-primary);outline:2px solid var(--op-primary)">
-          <div style="padding:18px;font-family:var(--op-font-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-surface)">Test &amp; analysis <span style="display:block;font-size:9.5px;letter-spacing:.14em;opacity:.8;margin-top:4px">★ where hardware empathy shows</span></div>
-          <div style="padding:18px;background:#DCE6F2;font-size:14.5px;color:var(--op-ink)">Cycling, abuse, and environmental testing, plus thermal, electrical, and FEA models. Many of your strongest candidates come from a pure test or analysis title.</div>
+        <div style="display:grid;grid-template-columns:250px 1fr;background:var(--accent-tint);outline:2px solid var(--accent-line)">
+          <div style="padding:18px;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text)">Test &amp; analysis <span style="display:block;font-size:20px;letter-spacing:.14em;opacity:.8;margin-top:4px">★ where hardware empathy shows</span></div>
+          <div style="padding:18px;background:var(--op-surface);font-size:20px;color:var(--op-ink)">Cycling, abuse, and environmental testing, plus thermal, electrical, and FEA models. Many of your strongest candidates come from a pure test or analysis title.</div>
         </div>
-        <div style="display:grid;grid-template-columns:250px 1fr;background:#F0EDE6">
-          <div style="padding:16px 18px;font-family:var(--op-font-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-muted)">Materials &amp; manufacturing</div>
-          <div style="padding:16px 18px;background:var(--op-surface);font-size:14px;color:var(--op-ink-dim)">Cell materials, thermal interface materials, welding and assembly. Built by materials and manufacturing engineers. Shares vocabulary, different discipline: not a substitute for this role.</div>
+        <div style="display:grid;grid-template-columns:250px 1fr;background:var(--surface-2)">
+          <div style="padding:16px 18px;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--op-muted)">Materials &amp; manufacturing</div>
+          <div style="padding:16px 18px;background:var(--op-surface);font-size:20px;color:var(--op-ink-dim)">Cell materials, thermal interface materials, welding and assembly. Built by materials and manufacturing engineers. Shares vocabulary, different discipline: not a substitute for this role.</div>
         </div>
       </div>
     </div>
 
     <div style="margin-top:16px;background:var(--op-surface);border:1px solid var(--op-border);border-top:3px solid var(--op-primary);padding:20px 24px">
-      <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-primary);margin-bottom:8px">Insight</div>
-      <p style="margin:0;font-size:15px;color:var(--op-ink-dim);max-width:84ch" data-slot="insight.1">The disciplines one step away, EV battery validation, power electronics, consumer-electronics battery qualification, and grid-scale storage integration, often hold reachable battery talent the home-storage sector alone will not surface. Sourcing only people whose title already reads "battery" is the fastest way to stall a search where the qualified pool is small and geographically concentrated.</p>
+      <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-primary);margin-bottom:8px">Insight</div>
+      <p style="margin:0;font-size:20px;color:var(--op-ink-dim);" data-slot="insight.1">The disciplines one step away, EV battery validation, power electronics, consumer-electronics battery qualification, and grid-scale storage integration, often hold reachable battery talent the home-storage sector alone will not surface. Sourcing only people whose title already reads "battery" is the fastest way to stall a search where the qualified pool is small and geographically concentrated.</p>
     </div>
   </section>
 
@@ -167,81 +167,81 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-primary);line-height:1">03</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary);margin-top:6px">Keep this open</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary);margin-top:6px">Keep this open</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s3.title">Every term, translated for you</h2>
-        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s3.body">The middle column is what you say to a non-engineer. The right column is why the term matters, which is what lets you ask a real follow-up instead of nodding. Use one translation per call; do not lecture an engineer with their own vocabulary. Keep this glossary at definition level; never fill it with performance figures from your own program.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s3.body">The middle column is what you say to a non-engineer. The right column is why the term matters, which is what lets you ask a real follow-up instead of nodding. Use one translation per call; do not lecture an engineer with their own vocabulary. Keep this glossary at definition level; never fill it with performance figures from your own program.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;background:var(--op-surface);border:1px solid var(--op-border);overflow-x:auto">
-      <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:840px">
+      <table style="width:100%;border-collapse:collapse;font-size:20px;min-width:840px">
         <thead>
           <tr>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">The term</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">In plain English</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Why it matters to you</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">The term</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">In plain English</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Why it matters to you</th>
           </tr>
         </thead>
         <tbody data-repeat="glossary" data-count="8-16">
           <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary);vertical-align:top" data-slot="term.name">Energy density (Wh/kg)</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);vertical-align:top" data-slot="term.name">Energy density (Wh/kg)</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink);vertical-align:top" data-slot="term.plain">The fuel economy of a pack: how much energy you store for each kilogram you carry.</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);vertical-align:top" data-slot="term.why">The headline efficiency number. Someone who talks energy-density trade-offs unprompted is thinking like a battery engineer, not reciting.</td>
           </tr>
           <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary);vertical-align:top">Thermal runaway</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);vertical-align:top">Thermal runaway</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink);vertical-align:top">One cell overheats and vents, and can push its neighbours past their limits in seconds.</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);vertical-align:top">The nightmare failure mode. Anyone who has chased it in an abuse chamber has scarce, real experience. Ask what they saw.</td>
           </tr>
           <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary);vertical-align:top">Abuse test (crush, nail, overcharge)</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);vertical-align:top">Abuse test (crush, nail, overcharge)</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink);vertical-align:top">Deliberately mistreating a cell or pack to prove it fails safely, not dangerously.</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);vertical-align:top">Where theory meets reality. "How many abuse tests have you run or witnessed?" is a high-signal question.</td>
           </tr>
           <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary);vertical-align:top">Test rig / cycler</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);vertical-align:top">Test rig / cycler</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink);vertical-align:top">The instrumented equipment that charges and drains a pack and measures exactly what it does.</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);vertical-align:top">Test experience is scarce and prized. It separates people who have designed packs from people who have only designed them on paper.</td>
           </tr>
           <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary);vertical-align:top">Thermal management system</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);vertical-align:top">Thermal management system</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink);vertical-align:top">The cooling plates, fans, fluid loops, and sensors that keep every cell at a safe temperature.</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);vertical-align:top">A large share of battery failures are thermal failures. This fluency transfers straight from HVAC, data-centre, and EV work.</td>
           </tr>
           <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary);vertical-align:top">Battery management system (BMS)</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);vertical-align:top">Battery management system (BMS)</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink);vertical-align:top">The electronics that watch every cell's voltage and temperature and decide when to stop charging.</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);vertical-align:top">One of the hardest parts to get right. EV and power-electronics engineers transfer here directly.</td>
           </tr>
           <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary);vertical-align:top">Cell balancing</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);vertical-align:top">Cell balancing</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink);vertical-align:top">Evening out the charge across cells so no single cell works harder than the rest.</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);vertical-align:top">The classic answer to early pack failure. Knowing balancing schemes signals real pack-design depth, not just analysis.</td>
           </tr>
           <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary);vertical-align:top">State of charge &amp; state of health</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);vertical-align:top">State of charge &amp; state of health</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink);vertical-align:top">How full the pack is right now, and how much of its original capacity it still holds.</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);vertical-align:top">A place where candidates reveal design intuition and the trade-offs they actually understand.</td>
           </tr>
           <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary);vertical-align:top">Cell chemistry: LFP / NMC</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);vertical-align:top">Cell chemistry: LFP / NMC</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink);vertical-align:top">The materials inside each cell, which set its energy, lifetime, cost, and safety.</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);vertical-align:top">Tells you which sub-family a candidate lives in. Chemistry research and pack engineering are close to different careers.</td>
           </tr>
           <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary);vertical-align:top">Power electronics (inverter / DC-DC)</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);vertical-align:top">Power electronics (inverter / DC-DC)</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink);vertical-align:top">The converters that move energy between the pack, the house, the grid, and the solar panels.</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);vertical-align:top">A fast-growing specialty with different physics. Screen for which side, pack or power electronics, the requisition actually wants.</td>
           </tr>
           <tr>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary);vertical-align:top">Thermal / FEA analysis</td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);vertical-align:top">Thermal / FEA analysis</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink);vertical-align:top">Computer simulation of heat flow and structural stress before any hardware is built.</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim);vertical-align:top">The daily design tool. Fluency in ANSYS, MATLAB, or SolidWorks is table stakes for a design role.</td>
           </tr>
           <tr>
-            <td style="padding:13px 16px;font-family:var(--op-font-mono);font-size:13px;color:var(--op-primary);vertical-align:top">Field heritage &amp; certification</td>
+            <td style="padding:13px 16px;font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);vertical-align:top">Field heritage &amp; certification</td>
             <td style="padding:13px 16px;color:var(--op-ink);vertical-align:top">How proven a design is, from lab prototype to installed in homes, and the testing that certifies it.</td>
             <td style="padding:13px 16px;color:var(--op-ink-dim);vertical-align:top">"Field-proven" is the scarce, expensive kind of experience. It separates R&amp;D engineers from production ones.</td>
           </tr>
@@ -255,70 +255,70 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">04</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Hard skills</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Hard skills</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s4.title">The real bar, and who checks each skill</h2>
-        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s4.body">You are not assessing any of this yourself. Your job is to know which stage in the loop owns each skill, so you can tell a hiring manager where a concern gets answered instead of guessing at it on the phone. Loop stages below are a common default; map them to your own.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s4.body">You are not assessing any of this yourself. Your job is to know which stage in the loop owns each skill, so you can tell a hiring manager where a concern gets answered instead of guessing at it on the phone. Loop stages below are a common default; map them to your own.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;background:var(--op-surface);border:1px solid var(--op-border);overflow-x:auto">
-      <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:880px">
+      <table style="width:100%;border-collapse:collapse;font-size:20px;min-width:880px">
         <thead>
           <tr>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Skill</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Bar</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Plain English</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Who verifies it</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Skill</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Core</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Plain English</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Who verifies it</th>
           </tr>
         </thead>
         <tbody data-repeat="skills" data-count="5-10">
           <tr>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-accent);font-weight:600" data-slot="skill.name">Battery pack design</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4" data-slot="skill.bar">Required</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill)" data-slot="skill.bar">Required</span></td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)" data-slot="skill.plain">Designing a pack from cells and modules up, from requirements to working hardware.</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)" data-slot="skill.verify">Technical deep-dive · design review + portfolio</td>
           </tr>
           <tr>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-accent);font-weight:600">Thermal and electrical</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4">Required</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill)">Required</span></td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">The core physics: heat transfer, circuits, and electrochemistry basics. The foundation everything else rests on.</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Technical screen · fundamentals</td>
           </tr>
           <tr>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-accent);font-weight:600">Cell behaviour and safety</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4">Required</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill)">Required</span></td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">How cells age, heat, and fail, and the safety design that keeps one failure contained.</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Technical deep-dive · sub-family depth</td>
           </tr>
           <tr>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-accent);font-weight:600">Battery test</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4">Required</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill)">Required</span></td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Cycling and abuse-test work: instrumentation, running the test, and reducing the data afterward.</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Deep-dive + reference · test-rig experience</td>
           </tr>
           <tr>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-accent);font-weight:600">CAD + analysis (thermal/FEA)</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4">Required</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill)">Required</span></td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Modeling heat, current, and stress in ANSYS, MATLAB, or SolidWorks before committing to hardware.</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Analysis exercise · take-home or live</td>
           </tr>
           <tr>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-accent);font-weight:600">Systems engineering on shipped hardware</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4">Required</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill)">Required</span></td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Requirements, tolerances, and verification: making sure the built part meets the part on paper.</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Technical deep-dive · requirements walk-through</td>
           </tr>
           <tr>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-highlight);font-weight:600">Cell-to-pack / high-voltage safety</td>
-            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-highlight);background:#FAF0E6;border:1px solid #E3CDB4">Preferred</span></td>
+            <td style="padding:13px 16px;border-bottom:1px solid var(--op-border)"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-highlight);background:var(--warn-tint);border:1px solid var(--warn-fill)">Preferred</span></td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Cell-to-pack layouts and high-voltage safe working, increasingly common in storage hardware.</td>
             <td style="padding:13px 16px;border-bottom:1px solid var(--op-border);color:var(--op-ink-dim)">Resume + reference · not a screen-out</td>
           </tr>
           <tr>
             <td style="padding:13px 16px;border-left:3px solid var(--op-success);font-weight:600">BMS logic; MATLAB/Python</td>
-            <td style="padding:13px 16px"><span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB">Nice-to-have</span></td>
+            <td style="padding:13px 16px"><span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill)">Nice-to-have</span></td>
             <td style="padding:13px 16px;color:var(--op-ink-dim)">Battery management logic, plus scripting for analysis and data reduction.</td>
             <td style="padding:13px 16px;color:var(--op-ink-dim)"><b>You can ask this:</b> "which of these have you owned, and where?"</td>
           </tr>
@@ -332,22 +332,22 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">05</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Signal</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Signal</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s5.title">What you <em>can</em> read on a call</h2>
-        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s5.body">You cannot judge their analysis. You can absolutely judge how they talk about failure, ownership, and the people who disagreed with them, which carries real predictive signal and the part hiring managers most often skip.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s5.body">You cannot judge their analysis. You can absolutely judge how they talk about failure, ownership, and the people who disagreed with them, which carries real predictive signal and the part hiring managers most often skip.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;background:var(--op-surface);border:1px solid var(--op-border);overflow-x:auto">
-      <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:880px">
+      <table style="width:100%;border-collapse:collapse;font-size:20px;min-width:880px">
         <thead>
           <tr>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Trait</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Why it matters here</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Listen for</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Red flag</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Trait</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Why it matters here</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Listen for</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-muted);font-weight:500;padding:13px 16px;border-bottom:1px solid var(--op-ink)">Red flag</th>
           </tr>
         </thead>
         <tbody data-repeat="soft.skills" data-count="4-7">
@@ -391,24 +391,24 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">06</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Pathways</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Pathways</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s6.title">Where battery systems engineers come from</h2>
-        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s6.body">A degree is a proxy here, not a gate. The alternative pathways below are worth weighting alongside pedigree for hands-on battery work, and they are far less contested.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s6.body">A degree is a proxy here, not a gate. The alternative pathways below are worth weighting alongside pedigree for hands-on battery work, and they are far less contested.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--op-border);border:1px solid var(--op-border)">
       <div style="background:var(--op-surface);padding:26px 28px">
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-muted);margin-bottom:12px">Typical academic signal</div>
-        <p style="margin:0 0 12px;font-size:15px;color:var(--op-ink-dim)" data-slot="edu.academic">A bachelor's in electrical, mechanical, or chemical engineering is typical, and a master's is common for design roles. Coursework or project work in batteries or power electronics is a reasonable sourcing signal, but it is a shortcut, not a requirement. <span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB">Sourced</span> <span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted)">BLS-OOH / O*NET 2024, electrical engineers</span></p>
-        <p style="margin:0;font-size:15px;color:var(--op-ink-dim)">Equivalent hands-on depth is explicitly fine. If someone has shipped and tested real battery hardware for years, the degree question is closed.</p>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-muted);margin-bottom:12px">Typical academic signal</div>
+        <p style="margin:0 0 12px;font-size:20px;color:var(--op-ink-dim)" data-slot="edu.academic">A bachelor's in electrical, mechanical, or chemical engineering is typical, and a master's is common for design roles. Coursework or project work in batteries or power electronics is a reasonable sourcing signal, but it is a shortcut, not a requirement. <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill)">Sourced</span> <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)">BLS-OOH / O*NET 2024, electrical engineers</span></p>
+        <p style="margin:0;font-size:20px;color:var(--op-ink-dim)">Equivalent hands-on depth is explicitly fine. If someone has shipped and tested real battery hardware for years, the degree question is closed.</p>
       </div>
       <div style="background:var(--op-surface);padding:26px 28px;border-top:3px solid var(--op-success)">
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-success);margin-bottom:12px">Alternative pathways that convert</div>
-        <p style="margin:0 0 12px;font-size:15px;color:var(--op-ink-dim)" data-slot="edu.alt"><b>Adjacent-industry engineers.</b> EV powertrain, power-electronics, and consumer-electronics engineers bring cell, thermal, and safety fluency directly. Under-recruited because their titles do not say "battery systems." <span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:#FAF0E6;border:1px solid #E3CDB4">Estimate</span> <span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted)">O*NET adjacency + cross-industry pools</span></p>
-        <p style="margin:0;font-size:15px;color:var(--op-ink-dim)" data-slot="edu.hobby"><b>Builders and field-service crossovers.</b> E-bike and home-battery builders, university solar-car or Formula Electric teams, and EV or solar field technicians. Someone doing this on weekends is telling you exactly what they want to do all day.</p>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-success);margin-bottom:12px">Alternative pathways that convert</div>
+        <p style="margin:0 0 12px;font-size:20px;color:var(--op-ink-dim)" data-slot="edu.alt"><b>Adjacent-industry engineers.</b> EV powertrain, power-electronics, and consumer-electronics engineers bring cell, thermal, and safety fluency directly. Under-recruited because their titles do not say "battery systems." <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:var(--warn-tint);border:1px solid var(--warn-fill)">Estimate</span> <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)">O*NET adjacency + cross-industry pools</span></p>
+        <p style="margin:0;font-size:20px;color:var(--op-ink-dim)" data-slot="edu.hobby"><b>Builders and field-service crossovers.</b> E-bike and home-battery builders, university solar-car or Formula Electric teams, and EV or solar field technicians. Someone doing this on weekends is telling you exactly what they want to do all day.</p>
       </div>
     </div>
   </section>
@@ -418,37 +418,37 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">07</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">The team</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">The team</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s7.title">Who a battery systems engineer works with</h2>
-        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s7.body">Use this to answer "what's the team like?" with specifics instead of adjectives. It doubles as a referral map: each of these functions knows people who could do this job.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s7.body">Use this to answer "what's the team like?" with specifics instead of adjectives. It doubles as a referral map: each of these functions knows people who could do this job.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:16px;align-items:stretch" data-repeat="collab.nodes" data-count="3-6">
       <div style="display:grid;gap:16px">
         <div style="background:var(--op-surface);border:1px solid var(--op-border);padding:18px 20px">
-          <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-primary);margin-bottom:6px" data-slot="node.name">Mechanical &amp; enclosure</div>
-          <div style="font-size:14px;color:var(--op-ink-dim)" data-slot="node.desc">Designs the enclosure, mounts, and structure the pack bolts into. Constant back-and-forth on loads, interfaces, and packaging.</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-primary);margin-bottom:6px" data-slot="node.name">Mechanical &amp; enclosure</div>
+          <div style="font-size:20px;color:var(--op-ink-dim)" data-slot="node.desc">Designs the enclosure, mounts, and structure the pack bolts into. Constant back-and-forth on loads, interfaces, and packaging.</div>
         </div>
         <div style="background:var(--op-surface);border:1px solid var(--op-border);padding:18px 20px">
-          <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-primary);margin-bottom:6px" data-slot="node.name2">Materials &amp; manufacturing</div>
-          <div style="font-size:14px;color:var(--op-ink-dim)">Owns cells, thermal materials, welded joints, and how the hardware actually gets built. Drives what the design can and cannot do.</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-primary);margin-bottom:6px" data-slot="node.name2">Materials &amp; manufacturing</div>
+          <div style="font-size:20px;color:var(--op-ink-dim)">Owns cells, thermal materials, welded joints, and how the hardware actually gets built. Drives what the design can and cannot do.</div>
         </div>
       </div>
       <div style="background:var(--op-primary);color:var(--op-surface);padding:26px 24px;display:flex;flex-direction:column;justify-content:center;text-align:center">
         <div style="font-family:var(--op-font-display);font-size:22px;margin-bottom:8px" data-slot="node.core">Battery systems</div>
-        <div style="font-size:14px;opacity:.9">The integration point for anything that stores or moves energy. Touches nearly every discipline, which is why communication weight is as high as technical weight in this hire.</div>
+        <div style="font-size:20px;opacity:.9">The integration point for anything that stores or moves energy. Touches nearly every discipline, which is why communication weight is as high as technical weight in this hire.</div>
       </div>
       <div style="display:grid;gap:16px">
         <div style="background:var(--op-surface);border:1px solid var(--op-border);padding:18px 20px">
-          <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-primary);margin-bottom:6px">Firmware &amp; power electronics</div>
-          <div style="font-size:14px;color:var(--op-ink-dim)">Runs the battery management system and reads its sensors. Sets the power and timing the pack has to deliver.</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-primary);margin-bottom:6px">Firmware &amp; power electronics</div>
+          <div style="font-size:20px;color:var(--op-ink-dim)">Runs the battery management system and reads its sensors. Sets the power and timing the pack has to deliver.</div>
         </div>
         <div style="background:var(--op-surface);border:1px solid var(--op-border);padding:18px 20px">
-          <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-primary);margin-bottom:6px">Node label</div>
-          <div style="font-size:14px;color:var(--op-ink-dim)">Runs the rigs, the instrumentation, and the certification campaign with this engineer at the bench.</div>
+          <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:var(--op-primary);margin-bottom:6px">Node label</div>
+          <div style="font-size:20px;color:var(--op-ink-dim)">Runs the rigs, the instrumentation, and the certification campaign with this engineer at the bench.</div>
         </div>
       </div>
     </div>
@@ -459,71 +459,71 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">08</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Vocabulary</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Vocabulary</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s8.title">The words that find the pool</h2>
-        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s8.body">The seed list the sourcing strings get built from. The market's dominant titles are not the one on your requisition, so search every synonym or you miss much of the pool.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s8.body">The seed list the sourcing strings get built from. The market's dominant titles are not the one on your requisition, so search every synonym or you miss much of the pool.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--op-border);border:1px solid var(--op-border)">
       <div style="background:var(--op-surface);padding:26px 28px">
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-success);margin-bottom:12px">Primary: must match one</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-success);margin-bottom:12px">Primary: must match one</div>
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px" data-repeat="kw.primary" data-count="5-12">
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px" data-slot="kw.term">battery systems</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">battery pack</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">energy storage</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">lithium-ion</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">thermal management</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">battery management system</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">abuse testing</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">cycle testing</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">cell balancing</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB;padding:5px 10px">thermal analysis</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill);padding:5px 10px" data-slot="kw.term">battery systems</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill);padding:5px 10px">battery pack</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill);padding:5px 10px">energy storage</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill);padding:5px 10px">lithium-ion</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill);padding:5px 10px">thermal management</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill);padding:5px 10px">battery management system</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill);padding:5px 10px">abuse testing</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill);padding:5px 10px">cycle testing</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill);padding:5px 10px">cell balancing</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill);padding:5px 10px">thermal analysis</span>
         </div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-muted);margin-bottom:12px">Depth signals</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-muted);margin-bottom:12px">Depth signals</div>
         <div style="display:flex;flex-wrap:wrap;gap:8px" data-repeat="kw.secondary" data-count="5-16">
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-ink);background:#F0EDE6;border:1px solid var(--op-border);padding:5px 10px" data-slot="kw2.term">energy density</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-ink);background:#F0EDE6;border:1px solid var(--op-border);padding:5px 10px">BMS</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-ink);background:#F0EDE6;border:1px solid var(--op-border);padding:5px 10px">LFP</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-ink);background:#F0EDE6;border:1px solid var(--op-border);padding:5px 10px">NMC</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-ink);background:#F0EDE6;border:1px solid var(--op-border);padding:5px 10px">thermal runaway</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-ink);background:#F0EDE6;border:1px solid var(--op-border);padding:5px 10px">ANSYS</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-ink);background:#F0EDE6;border:1px solid var(--op-border);padding:5px 10px">MATLAB</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-ink);background:#F0EDE6;border:1px solid var(--op-border);padding:5px 10px">SolidWorks</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-ink);background:#F0EDE6;border:1px solid var(--op-border);padding:5px 10px">FEA</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-ink);background:#F0EDE6;border:1px solid var(--op-border);padding:5px 10px">high voltage</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-ink);background:#F0EDE6;border:1px solid var(--op-border);padding:5px 10px">cell chemistry</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-ink);background:#F0EDE6;border:1px solid var(--op-border);padding:5px 10px">DC-DC converter</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-ink);background:#F0EDE6;border:1px solid var(--op-border);padding:5px 10px">busbar design</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-ink);background:#F0EDE6;border:1px solid var(--op-border);padding:5px 10px">UL 9540</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink);background:var(--surface-2);border:1px solid var(--op-border);padding:5px 10px" data-slot="kw2.term">energy density</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink);background:var(--surface-2);border:1px solid var(--op-border);padding:5px 10px">BMS</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink);background:var(--surface-2);border:1px solid var(--op-border);padding:5px 10px">LFP</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink);background:var(--surface-2);border:1px solid var(--op-border);padding:5px 10px">NMC</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink);background:var(--surface-2);border:1px solid var(--op-border);padding:5px 10px">thermal runaway</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink);background:var(--surface-2);border:1px solid var(--op-border);padding:5px 10px">ANSYS</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink);background:var(--surface-2);border:1px solid var(--op-border);padding:5px 10px">MATLAB</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink);background:var(--surface-2);border:1px solid var(--op-border);padding:5px 10px">SolidWorks</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink);background:var(--surface-2);border:1px solid var(--op-border);padding:5px 10px">FEA</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink);background:var(--surface-2);border:1px solid var(--op-border);padding:5px 10px">high voltage</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink);background:var(--surface-2);border:1px solid var(--op-border);padding:5px 10px">cell chemistry</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink);background:var(--surface-2);border:1px solid var(--op-border);padding:5px 10px">DC-DC converter</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink);background:var(--surface-2);border:1px solid var(--op-border);padding:5px 10px">busbar design</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-ink);background:var(--surface-2);border:1px solid var(--op-border);padding:5px 10px">UL 9540</span>
         </div>
       </div>
       <div style="background:var(--op-surface);padding:26px 28px">
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-primary);margin-bottom:12px">Title synonyms: search all of these</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-primary);margin-bottom:12px">Title synonyms: search all of these</div>
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px" data-repeat="kw.titles" data-count="4-12">
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;padding:5px 10px" data-slot="title.term">Battery Systems Engineer</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;padding:5px 10px">Battery Pack Engineer</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;padding:5px 10px">Energy Storage Systems Engineer</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;padding:5px 10px">Battery Design Engineer</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;padding:5px 10px">Cell Engineer</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;padding:5px 10px">Battery Integration Engineer</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;padding:5px 10px">Battery Test Engineer</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;padding:5px 10px">Battery Validation Engineer</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-primary);background:#DCE6F2;border:1px solid #C9D6E6;padding:5px 10px">Battery Development Engineer</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);background:var(--accent-tint);border:1px solid var(--accent-line);padding:5px 10px" data-slot="title.term">Battery Systems Engineer</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);background:var(--accent-tint);border:1px solid var(--accent-line);padding:5px 10px">Battery Pack Engineer</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);background:var(--accent-tint);border:1px solid var(--accent-line);padding:5px 10px">Energy Storage Systems Engineer</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);background:var(--accent-tint);border:1px solid var(--accent-line);padding:5px 10px">Battery Design Engineer</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);background:var(--accent-tint);border:1px solid var(--accent-line);padding:5px 10px">Cell Engineer</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);background:var(--accent-tint);border:1px solid var(--accent-line);padding:5px 10px">Battery Integration Engineer</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);background:var(--accent-tint);border:1px solid var(--accent-line);padding:5px 10px">Battery Test Engineer</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);background:var(--accent-tint);border:1px solid var(--accent-line);padding:5px 10px">Battery Validation Engineer</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-primary);background:var(--accent-tint);border:1px solid var(--accent-line);padding:5px 10px">Battery Development Engineer</span>
         </div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-accent);margin-bottom:12px">Exclude</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--op-accent);margin-bottom:12px">Exclude</div>
         <div style="display:flex;flex-wrap:wrap;gap:8px" data-repeat="kw.exclude" data-count="4-10">
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through" data-slot="ex.term">sales role</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">technician only</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">cell chemistry research</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">battery recycling ops</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">intern-only history</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">coursework only</span>
-          <span style="font-family:var(--op-font-mono);font-size:12px;color:var(--op-accent);background:#F9EFEF;border:1px solid #E3C4C4;padding:5px 10px;text-decoration:line-through">recruiter</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through" data-slot="ex.term">sales role</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">technician only</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">cell chemistry research</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">battery recycling ops</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">intern-only history</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">coursework only</span>
+          <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-accent);background:var(--danger-tint);border:1px solid var(--danger-fill);padding:5px 10px;text-decoration:line-through">recruiter</span>
         </div>
-        <div style="margin-top:22px;padding-top:16px;border-top:1px solid var(--op-border);font-size:14px;color:var(--op-ink-dim)" data-slot="kw.note"><b>Worth knowing:</b> the market spreads this role across many titles (Battery Systems, Battery Pack, Energy Storage Systems, Battery Test, Cell Engineering). Search all of them. Exclude pure cell-chemistry research roles unless the pack and test skills clearly transfer.</div>
+        <div style="margin-top:22px;padding-top:16px;border-top:1px solid var(--op-border);font-size:20px;color:var(--op-ink-dim)" data-slot="kw.note"><b>Worth knowing:</b> the market spreads this role across many titles (Battery Systems, Battery Pack, Energy Storage Systems, Battery Test, Cell Engineering). Search all of them. Exclude pure cell-chemistry research roles unless the pack and test skills clearly transfer.</div>
       </div>
     </div>
   </section>
@@ -533,25 +533,25 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-lattice-line);line-height:1">09</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Field notes</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-muted);margin-top:6px">Field notes</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s9.title">What shifted in this market lately</h2>
-        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s9.body">Three shifts worth knowing before a hiring-manager conversation. Each is a place where last year's assumptions are now slightly wrong.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s9.body">Three shifts worth knowing before a hiring-manager conversation. Each is a place where last year's assumptions are now slightly wrong.</p>
       </div>
     </div>
-    <div style="margin-top:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--op-border);border:1px solid var(--op-border)" data-repeat="fieldnotes" data-count="2-4">
+    <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px;background:var(--op-border);border:1px solid var(--op-border)" data-repeat="fieldnotes" data-count="2-4">
       <div style="background:var(--op-surface);padding:24px 26px">
-        <div style="font-size:16px;font-weight:600;margin-bottom:8px" data-slot="note.title">Demand is outrunning the pool</div>
-        <p style="margin:0;font-size:14px;color:var(--op-ink-dim)" data-slot="note.body">Home and grid storage added tens of thousands of jobs across EVs, utilities, and consumer hardware, and battery demand now outpaces the small qualified pool. Assume every strong candidate is already being courted. <span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:#FAF0E6;border:1px solid #E3CDB4">Estimate</span> <span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted)">directional, no single published source</span></p>
+        <div style="font-size:20px;font-weight:600;margin-bottom:8px" data-slot="note.title">Demand is outrunning the pool</div>
+        <p style="margin:0;font-size:20px;color:var(--op-ink-dim)" data-slot="note.body">Home and grid storage added tens of thousands of jobs across EVs, utilities, and consumer hardware, and battery demand now outpaces the small qualified pool. Assume every strong candidate is already being courted. <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:var(--warn-tint);border:1px solid var(--warn-fill)">Estimate</span> <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)">directional, no single published source</span></p>
       </div>
       <div style="background:var(--op-surface);padding:24px 26px">
-        <div style="font-size:16px;font-weight:600;margin-bottom:8px">New specialties are heating up</div>
-        <p style="margin:0;font-size:14px;color:var(--op-ink-dim)">Sodium-ion cells and bidirectional charging are among the fastest-rising sub-fields, with second-life packs, solid-state cells, and fast-charge thermal design also growing. The req's exact sub-family now matters more than the title. <span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:#FAF0E6;border:1px solid #E3CDB4">Estimate</span> <span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted)">sub-field trend read, not measured</span></p>
+        <div style="font-size:20px;font-weight:600;margin-bottom:8px">New specialties are heating up</div>
+        <p style="margin:0;font-size:20px;color:var(--op-ink-dim)">Sodium-ion cells and bidirectional charging are among the fastest-rising sub-fields, with second-life packs, solid-state cells, and fast-charge thermal design also growing. The req's exact sub-family now matters more than the title. <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-warning);background:var(--warn-tint);border:1px solid var(--warn-fill)">Estimate</span> <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)">sub-field trend read, not measured</span></p>
       </div>
       <div style="background:var(--op-surface);padding:24px 26px">
-        <div style="font-size:16px;font-weight:600;margin-bottom:8px">The scarcity is at mid level</div>
-        <p style="margin:0;font-size:14px;color:var(--op-ink-dim)">Electrical-engineering employment is projected to grow faster than average through 2034. The shortage is read to bite hardest at mid-level engineers with real shipped-pack experience: exactly the band being hired. <span style="font-family:var(--op-font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:#EEF6F1;border:1px solid #BFDCCB">Sourced</span> <span style="font-family:var(--op-font-mono);font-size:11px;color:var(--op-muted)">BLS-OOH 2024-34</span></p>
+        <div style="font-size:20px;font-weight:600;margin-bottom:8px">The scarcity is at mid level</div>
+        <p style="margin:0;font-size:20px;color:var(--op-ink-dim)">Electrical-engineering employment is projected to grow faster than average through 2034. The shortage is read to bite hardest at mid-level engineers with real shipped-pack experience: exactly the band being hired. <span style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;color:var(--op-success);background:var(--signal-tint);border:1px solid var(--signal-fill)">Sourced</span> <span style="font-family:var(--op-font-mono);font-size:20px;color:var(--op-muted)">BLS-OOH 2024-34</span></p>
       </div>
     </div>
   </section>
@@ -561,42 +561,42 @@
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start">
       <div>
         <div style="font-family:var(--op-font-display);font-size:38px;color:var(--op-primary);line-height:1">10</div>
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary);margin-top:6px">Keep this open</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--op-primary);margin-top:6px">Keep this open</div>
       </div>
       <div>
         <h2 style="font-family:var(--op-font-display);font-size:30px;font-weight:600;margin:0 0 12px" data-slot="s10.title">The credibility cheat sheet</h2>
-        <p style="margin:0;max-width:70ch;color:var(--op-ink-dim);font-size:16.5px;text-wrap:pretty" data-slot="s10.body">Left column is what to say. Right column is the version that costs you the candidate, and why. Specificity is the entire game with this audience.</p>
+        <p style="margin:0;color:var(--op-ink-dim);font-size:20px;text-wrap:pretty" data-slot="s10.body">Left column is what to say. Right column is the version that costs you the candidate, and why. Specificity is the entire game with this audience.</p>
       </div>
     </div>
 
     <div style="margin-top:32px;background:var(--op-surface);border:1px solid var(--op-border);overflow-x:auto">
-      <table style="width:100%;border-collapse:collapse;font-size:14.5px;min-width:720px">
+      <table style="width:100%;border-collapse:collapse;font-size:20px;min-width:720px">
         <thead>
           <tr>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-success);font-weight:500;padding:13px 18px;border-bottom:1px solid var(--op-ink);width:50%">Say this</th>
-            <th style="text-align:left;font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-accent);font-weight:500;padding:13px 18px;border-bottom:1px solid var(--op-ink)">Not this</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-success);font-weight:500;padding:13px 18px;border-bottom:1px solid var(--op-ink);width:50%">Say this</th>
+            <th style="text-align:left;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--op-accent);font-weight:500;padding:13px 18px;border-bottom:1px solid var(--op-ink)">Not this</th>
           </tr>
         </thead>
         <tbody data-repeat="cheatsheet" data-count="3-8">
           <tr>
             <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-success);color:var(--op-ink)" data-slot="cheat.good">"You'd own a battery subsystem end to end, from analysis and design through abuse testing."</td>
-            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);color:var(--op-muted)" data-slot="cheat.bad">"You'd be saving the planet!" <span style="display:block;font-size:13px;margin-top:4px">Maybe they build cooling plates, or harnesses. Overclaiming the mission reads as not having read the req.</span></td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);color:var(--op-muted)" data-slot="cheat.bad">"You'd be saving the planet!" <span style="display:block;font-size:20px;margin-top:4px">Maybe they build cooling plates, or harnesses. Overclaiming the mission reads as not having read the req.</span></td>
           </tr>
           <tr>
             <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-success);color:var(--op-ink)">"The work is pack design in ANSYS and SolidWorks, plus cycling and abuse testing on real hardware."</td>
-            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);color:var(--op-muted)">"They use cutting-edge battery technology." <span style="display:block;font-size:13px;margin-top:4px">Says you cannot describe the work, so the technical conversation ends here.</span></td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);color:var(--op-muted)">"They use cutting-edge battery technology." <span style="display:block;font-size:20px;margin-top:4px">Says you cannot describe the work, so the technical conversation ends here.</span></td>
           </tr>
           <tr>
             <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-success);color:var(--op-ink)">"You'd run your own test campaigns, not hand a model to someone else to validate."</td>
-            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);color:var(--op-muted)">"It's a high-impact role with lots of ownership." <span style="display:block;font-size:13px;margin-top:4px">Abstract impact claims are the most ignored sentence in recruiting.</span></td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);color:var(--op-muted)">"It's a high-impact role with lots of ownership." <span style="display:block;font-size:20px;margin-top:4px">Abstract impact claims are the most ignored sentence in recruiting.</span></td>
           </tr>
           <tr>
             <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);border-left:3px solid var(--op-success);color:var(--op-ink)">"Small battery team with one cell partner, so you see a part from analysis to tested hardware."</td>
-            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);color:var(--op-muted)">"It's a lean team where you do a bit of everything." <span style="display:block;font-size:13px;margin-top:4px">Reads as understaffed and disorganised. The specifics do the work instead.</span></td>
+            <td style="padding:14px 18px;border-bottom:1px solid var(--op-border);color:var(--op-muted)">"It's a lean team where you do a bit of everything." <span style="display:block;font-size:20px;margin-top:4px">Reads as understaffed and disorganised. The specifics do the work instead.</span></td>
           </tr>
           <tr>
             <td style="padding:14px 18px;border-left:3px solid var(--op-success);color:var(--op-ink)">"Your EV or power-electronics background transfers directly; the home-storage standards are what you'd ramp on."</td>
-            <td style="padding:14px 18px;color:var(--op-muted)">"Great pay at a fast-growing startup." <span style="display:block;font-size:13px;margin-top:4px">Every company says this, so it reads as concealment. Give the band and a real proof point.</span></td>
+            <td style="padding:14px 18px;color:var(--op-muted)">"Great pay at a fast-growing startup." <span style="display:block;font-size:20px;margin-top:4px">Every company says this, so it reads as concealment. Give the band and a real proof point.</span></td>
           </tr>
         </tbody>
       </table>
@@ -604,22 +604,22 @@
   </section>
 
   <!-- HANDOFF -->
-  <section style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border)">
-    <div style="background:var(--op-ink);color:var(--op-bg);padding:30px 34px" data-optional>
+  <section hidden data-print="hide" style="padding:60px 0 0;margin-top:56px;border-top:1px solid var(--op-border);display:none">
+    <div data-mode="dark" style="background:var(--op-bg);color:var(--op-ink);padding:30px 34px" data-optional>
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:18px">
-        <div style="font-family:var(--op-font-mono);font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-bisaek)">Handoff → next artifact</div>
-        <div style="font-family:var(--op-font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">Internal · optional: delete before sharing outside the search team</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.20em;text-transform:uppercase;color:var(--op-bisaek)">Handoff → next artifact</div>
+        <div style="font-family:var(--op-font-mono);font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">Internal · optional: delete before sharing outside the search team</div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;font-family:var(--op-font-mono);font-size:13px;line-height:1.9">
-        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Produces</div><div data-slot="handoff.produces">primary_keywords · title_synonyms · cross_industry_pools · skill_transfer_notes · seniority_ladder · must_have_skills</div></div>
-        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Consumed by</div><div data-slot="handoff.consumers">02 Job Description · 03 Talent Map · 06 Interview Plan · 08 Recruiter Screen</div></div>
-        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Assumptions</div><div data-slot="handoff.assumptions">Recruiter is non-technical. No engineer at the recruiter screen. Degree is a proxy, not a gate. Most battery test work is onsite by nature (test rigs, hardware), even on a hybrid req.</div></div>
-        <div><div style="color:var(--op-ink-300);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Blocked on</div><div style="color:var(--op-hwang-light)" data-slot="handoff.blocked">Nothing. Runs from the CALIBRATE handoff plus public data.</div></div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;font-family:var(--op-font-mono);font-size:20px;line-height:1.9">
+        <div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Produces</div><div data-slot="handoff.produces">primary_keywords · title_synonyms · cross_industry_pools · skill_transfer_notes · seniority_ladder · must_have_skills</div></div>
+        <div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Consumed by</div><div data-slot="handoff.consumers">02 Job Description · 03 Talent Map · 06 Interview Plan · 08 Recruiter Screen</div></div>
+        <div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Assumptions</div><div data-slot="handoff.assumptions">Recruiter is non-technical. No engineer at the recruiter screen. Degree is a proxy, not a gate. Most battery test work is onsite by nature (test rigs, hardware), even on a hybrid req.</div></div>
+        <div><div style="color:var(--op-ink-300);font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px">Blocked on</div><div style="color:var(--op-hwang-light)" data-slot="handoff.blocked">Nothing. Runs from the CALIBRATE handoff plus public data.</div></div>
       </div>
     </div>
   </section>
 
-  <footer style="margin-top:56px;padding-top:20px;border-top:1px solid var(--op-border);display:flex;justify-content:space-between;font-family:var(--op-font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">
+  <footer style="margin-top:56px;padding-top:20px;border-top:1px solid var(--op-border);display:flex;justify-content:space-between;font-family:var(--op-font-mono);font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:var(--op-ink-300)">
     <span data-slot="footer.left">TK-01 · Educational Brief</span><span data-slot="footer.right">Plain-language by design</span>
   </footer>
 </main>

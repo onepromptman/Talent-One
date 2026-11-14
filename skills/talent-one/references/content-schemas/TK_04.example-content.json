@@ -19,7 +19,7 @@
   "s2.title": "Search strings for a concentrated pool",
   "s2.body": "Copy-paste ready, filters and all. Each card states expected volume and the pool it deliberately misses, because naming the blind spot tells the recruiter which string to run next and which one only sizes the market. Volume estimates are order-of-magnitude reads from platform result counts, not a census.",
   "s3.title": "Channel mix, ranked by yield",
-  "s3.body": "Ranked by yield per hour, not by volume. Watch the trend column more than the count: a channel in decline gets maintained, never scaled, in a pool this concentrated.",
+  "s3.body": "Ranked by yield per hour, not by volume. Watch the direction of each channel more than its count: a channel in decline gets maintained, never scaled, in a pool this concentrated.",
   "s4.title": "Timing discipline for a scarce pool",
   "s4.body": "The same message sent at the right moment in someone's year performs several times better. In a pool this small, timing is the cheapest lever available and the easiest one to waste.",
   "s5.title": "Six weeks, both sides committed",
@@ -46,11 +46,11 @@
    },
    {
     "metric.label": "Screens booked",
-    "metric.value": "2–3"
+    "metric.value": "2-3"
    },
    {
     "metric.label": "Sourcing hours protected",
-    "metric.value": "8–10"
+    "metric.value": "8-10"
    },
    {
     "metric.label": "Trigger response SLA",

@@ -15,7 +15,7 @@ which model does what and what it costs, the data it can use, and the layout.
 | 06 | Interview plan with graded rubrics | Interview Lab | [view](../samples/06_Interview_Plan_SAMPLE.html) |
 | 07 | Hiring-manager calibration brief | Calibrate | [view](../samples/07_HM_Calibration_Brief_SAMPLE.html) |
 | 08 | 30-minute recruiter screen script | Recruiter Screen | [view](../samples/08_Recruiter_Screen_Script_SAMPLE.html) |
-| 09 | Interviewer briefing and debrief | Interview Coach | not yet in the gallery |
+| 09 | Interviewer briefing and debrief | Interview Coach | [view](../samples/09_Interviewer_Briefing_SAMPLE.html) |
 | - | QA audit of the whole package | QA Gate | - |
 
 Every artifact is a self-contained HTML document: no network requests, opens anywhere,
@@ -51,6 +51,10 @@ preview to open the full HTML.
 <tr>
 <td width="50%"><a href="../samples/07_HM_Calibration_Brief_SAMPLE.html"><img src="../assets/samples/07.png" alt="Hiring-manager calibration brief"></a><br><sub><b>07 · Hiring-manager calibration brief</b> · Calibrate</sub></td>
 <td width="50%"><a href="../samples/08_Recruiter_Screen_Script_SAMPLE.html"><img src="../assets/samples/08.png" alt="Recruiter screen script"></a><br><sub><b>08 · Recruiter screen script</b> · Recruiter Screen</sub></td>
+</tr>
+<tr>
+<td width="50%"><a href="../samples/09_Interviewer_Briefing_SAMPLE.html"><img src="../assets/samples/09.png" alt="Interviewer briefing and debrief"></a><br><sub><b>09 · Interviewer briefing + debrief</b> · Interview Coach</sub></td>
+<td width="50%"></td>
 </tr>
 </table>
 

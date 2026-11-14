@@ -77,7 +77,7 @@
    },
    {
     "metric.label": "Comp posture",
-    "metric.value": "P50–P60"
+    "metric.value": "P50-P60"
    }
   ],
   "funnel.stages": [
@@ -153,25 +153,25 @@
   "demand.rows": [
    {
     "demand.name": "EV makers startups and established automakers",
-    "demand.reqs": "600–900",
+    "demand.reqs": "600-900",
     "demand.velocity": "High",
     "demand.read": "Identical profile and your toughest poach. Compete on ownership scope, not prestige."
    },
    {
     "demand.name": "Large cell manufacturers cell plants and gigafactory programs",
-    "demand.reqs": "400–600",
+    "demand.reqs": "400-600",
     "demand.velocity": "High",
     "demand.read": "Big programs, slower loops. They squeeze the same mid-career pool you need."
    },
    {
     "demand.name": "Battery component suppliers BMS boards, thermal plates, enclosures",
-    "demand.reqs": "250–400",
+    "demand.reqs": "250-400",
     "demand.velocity": "Steady",
     "demand.read": "Lower ceilings, deep component fluency. A realistic source pool, not a rival."
    },
    {
     "demand.name": "Adjacent electronics power electronics, chargers, consumer devices",
-    "demand.reqs": "500–800",
+    "demand.reqs": "500-800",
     "demand.velocity": "Net exporter",
     "demand.read": "Not bidding on your offers. Your best uncontested source pool: fish here."
    }
@@ -242,7 +242,7 @@
   "hubs": [
    {
     "hub.name": "San Francisco Bay Area primary cluster",
-    "hub.pool": "2,000–2,800",
+    "hub.pool": "2,000-2,800",
     "hub.anchors": "EV makers, storage startups, component suppliers, power electronics",
     "hub.ownership": "High",
     "hub.housing": "-",
@@ -251,55 +251,55 @@
    },
    {
     "hub.name": "Seattle renter-heavy, mobile",
-    "hub.pool": "1,000–1,500",
+    "hub.pool": "1,000-1,500",
     "hub.anchors": "Grid-storage integrators, EV startups, big-tech hardware, utilities",
     "hub.ownership": "Med-high",
-    "hub.housing": "−10–15%",
+    "hub.housing": "−10-15%",
     "hub.tax": "−13% (no income tax)",
     "hub.relo": "Med-high"
    },
    {
     "hub.name": "Denver / Boulder",
-    "hub.pool": "900–1,300",
+    "hub.pool": "900-1,300",
     "hub.anchors": "Battery startups, solar and storage installers, research spinouts",
     "hub.ownership": "Med",
-    "hub.housing": "−25–30%",
+    "hub.housing": "−25-30%",
     "hub.tax": "−9%",
     "hub.relo": "Med"
    },
    {
     "hub.name": "Austin",
-    "hub.pool": "800–1,200",
+    "hub.pool": "800-1,200",
     "hub.anchors": "EV and storage manufacturing, power electronics, energy",
     "hub.ownership": "Med",
-    "hub.housing": "−45–50%",
+    "hub.housing": "−45-50%",
     "hub.tax": "−13% (no income tax)",
     "hub.relo": "Med"
    },
    {
     "hub.name": "Boston / Cambridge",
-    "hub.pool": "700–1,000",
+    "hub.pool": "700-1,000",
     "hub.anchors": "Battery startups, cell R&D, power electronics, universities",
     "hub.ownership": "Med",
-    "hub.housing": "−15–20%",
+    "hub.housing": "−15-20%",
     "hub.tax": "−8%",
     "hub.relo": "Med · research-heavy"
    },
    {
     "hub.name": "Detroit / SE Michigan",
-    "hub.pool": "800–1,200",
+    "hub.pool": "800-1,200",
     "hub.anchors": "Automaker battery programs, cell plants, tier-one suppliers",
     "hub.ownership": "Low",
-    "hub.housing": "−55–60%",
+    "hub.housing": "−55-60%",
     "hub.tax": "−8%",
     "hub.relo": "Med-low · skip"
    },
    {
     "hub.name": "Reno / Sparks, NV",
-    "hub.pool": "600–900",
+    "hub.pool": "600-900",
     "hub.anchors": "Cell and pack factories, recycling, storage manufacturing",
     "hub.ownership": "Low",
-    "hub.housing": "−50–55%",
+    "hub.housing": "−50-55%",
     "hub.tax": "−13% (no income tax)",
     "hub.relo": "Med-low · skip"
    }
@@ -347,7 +347,7 @@
     "per.why": "Inverters, DC-DC conversion, and high-voltage design, plus a fast production cadence.",
     "per.where": "Inverter and charger makers, solar electronics, EV power electronics",
     "per.transfer": "High",
-    "per.ramp": "1–2 months"
+    "per.ramp": "1-2 months"
    },
    {
     "per.name": "Consumer-electronics batteries",
@@ -361,46 +361,46 @@
     "per.why": "Direct pack and BMS experience on shipped hardware. Ramp is on larger packs and home-safety standards.",
     "per.where": "E-bike, scooter, and power-tool makers, pack integrators",
     "per.transfer": "High",
-    "per.ramp": "1–2 months"
+    "per.ramp": "1-2 months"
    },
    {
     "per.name": "Chemical & process",
     "per.why": "Electrochemistry, materials handling, and process safety. Medium transfer, strong on cell behaviour.",
     "per.where": "Chemical and materials firms, cell-material suppliers, process plants",
     "per.transfer": "Medium",
-    "per.ramp": "2–3 months"
+    "per.ramp": "2-3 months"
    },
    {
     "per.name": "Utilities & grid power",
     "per.why": "Power systems and grid interconnection at scale. Medium transfer, learns the pack specifics.",
     "per.where": "Utilities, grid-equipment makers, substation engineering",
     "per.transfer": "Medium",
-    "per.ramp": "2–3 months"
+    "per.ramp": "2-3 months"
    },
    {
     "per.name": "HVAC & data-centre thermal",
     "per.why": "Thermal management and cooling-loop design, directly relevant to pack thermal systems. Medium transfer.",
     "per.where": "HVAC and refrigeration makers, data-centre cooling, thermal-systems firms",
     "per.transfer": "Medium",
-    "per.ramp": "2–3 months"
+    "per.ramp": "2-3 months"
    }
   ],
   "comp.levels": [
    {
-    "comp.level": "Early-career · 0–3 yrs",
-    "comp.base": "$95–115K",
+    "comp.level": "Early-career · 0-3 yrs",
+    "comp.base": "$95-115K",
     "comp.total": "-",
     "comp.note": "Around BLS-OES P25 $105K, below the anchor"
    },
    {
-    "comp.level": "Mid · 4–8 yrs",
-    "comp.base": "$115–155K",
+    "comp.level": "Mid · 4-8 yrs",
+    "comp.base": "$115-155K",
     "comp.total": "~$135K mid",
-    "comp.note": "The anchor: BLS-OES P25–P75, aggregator blend"
+    "comp.note": "The anchor: BLS-OES P25-P75, aggregator blend"
    },
    {
-    "comp.level": "Senior · 8–12 yrs",
-    "comp.base": "$150–190K",
+    "comp.level": "Senior · 8-12 yrs",
+    "comp.base": "$150-190K",
     "comp.total": "P75 ~$174K",
     "comp.note": "Toward BLS-OES P75 $174K; equity carries the delta"
    },

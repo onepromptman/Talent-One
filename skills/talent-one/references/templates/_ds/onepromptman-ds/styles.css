@@ -1,29 +1,70 @@
 /*
- * OnePromptMan — Design System Connect Entry
+ * OnePromptMan design system: connect entry
  *
- * This file is the single root stylesheet for Claude Design binding.
- * Import it once in any surface to pull in the complete OnePromptMan token contract.
+ * The single root stylesheet. Import it once in any surface to pull in the complete
+ * OnePromptMan token contract.
  *
  * What it provides (via tokens/tokens.css):
- *   - Three-mode system on a single `data-mode` axis:
- *       data-mode="light"      editorial, hanji ground, cheong-blue primary
- *       data-mode="dark"       editorial dark, heuk ground, cheong-light primary
- *       data-mode="dancheong"  colorful heritage, green temple-eave ground, orange primary
- *   - Full --op-* custom property namespace (semantic tokens only in product code)
+ *   - Two modes on one `data-mode` axis, Onyx / Indigo / Mint palette:
+ *       data-mode="light"   light page, white surfaces, indigo accent
+ *       data-mode="dark"    onyx page, dark surfaces, light indigo accent
+ *   - Role tokens (--bg, --surface, --text, --accent, --signal, ...) with the --op-* names
+ *     as aliases; product code reads semantic tokens only
  *   - Typography primitives: .op-display, .op-eyebrow, .op-body, .op-num
- *   - Motif classes: .op-lattice-bissal, .op-lattice-jeongja, .op-dancheong-band, .op-trigram
- *   - Watermark lattices: .op-lattice-chilbo/asa/cloud/su/maedeup/bosanghwa (ink-tinted, low opacity)
- *   - Feature florals: .op-roundel (연화문), .op-pattern-yeonhwa — polychrome, per-mode via --r-*
- *   - Royal seal: .op-seal-dragon (+ --ink/--green/--red) — 용보 corner stamp / feature mark
  *   - Layout: .op-jogakbo asymmetric grid
  *   - Component primitives: .op-btn, .op-input, .op-link
  *   - Motion tokens: --op-dur-*, --op-stagger-*, --op-ease, --op-ease-draw
  *   - Reduced-motion path: prefers-reduced-motion zeroes all durations
+ *   - Legacy motif classes (.op-lattice-*, .op-trigram, .op-dancheong-band, .op-roundel,
+ *     .op-pattern-yeonhwa, .op-seal-dragon) stay defined for compatibility; no template
+ *     uses them
  *
- * Do NOT hand-edit _ds_manifest.json or _ds_bundle.js — those are auto-generated.
- * Do NOT inline raw hex values in component code; read --op-* semantic tokens only.
+ * Do NOT hand-edit _ds_manifest.json or _ds_bundle.js: those are auto-generated.
+ * Do NOT inline raw hex values in component code; read semantic tokens only.
  * Do NOT import the per-medium .html preview cards here (they are dsCard previews, not CSS).
  */
 
 @import "tokens/fonts.css";
 @import "tokens/tokens.css";
+
+/* ============================================================================
+   PRINT (US Letter). Templates carry the @page fallback; this layer adds the
+   break discipline. Keep-together applies to leaf rows and cards only, never
+   to a whole section, grid or table, so a long block never leaves an empty
+   page behind it.
+   ============================================================================ */
+@media print {
+  html, body { background: var(--op-bg); }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; zoom: 0.8; }
+  h1, h2, h3 { break-after: avoid; page-break-after: avoid; break-inside: avoid; }
+  p, li { orphans: 3; widows: 3; }
+  /* A section head (number rail, title, intro) never ends a page: it stays with the first block below it. */
+  section > div[style*="grid-template-columns:180px 1fr"] { break-after: avoid; page-break-after: avoid; break-inside: avoid; page-break-inside: avoid; }
+  table { width: 100% !important; max-width: 100% !important; min-width: 0 !important; }
+  thead { display: table-header-group; }
+  tfoot { display: table-footer-group; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+  th, td { overflow-wrap: break-word; }
+  [style*="overflow-x:auto"], [style*="overflow-x: auto"] { overflow: visible !important; }
+  /* Cards keep whole. The tall script-and-rubric cards (over half a page) break only between their own
+     complete blocks: header bar, prompt, answer tiers, paragraphs; never inside one, and never right
+     after the header. Grids of tall cards run one or two columns so each card gets the full measure. */
+  [data-repeat] > div { break-inside: avoid; page-break-inside: avoid; }
+  [data-repeat="spotchecks"] > div, [data-repeat="questions"] > div, [data-repeat="emails"] > div,
+  [data-repeat="linkedin"] > div, [data-repeat="voice.blocks"] > div { break-inside: auto; page-break-inside: auto; }
+  [data-repeat="spotchecks"] > div > *, [data-repeat="questions"] > div > *, [data-repeat="emails"] > div > *,
+  [data-repeat="linkedin"] > div > *, [data-repeat="voice.blocks"] > div > * { break-inside: avoid; page-break-inside: avoid; }
+  [data-repeat="prep.stages"], [data-repeat="linkedin"] { grid-template-columns: minmax(0, 1fr) !important; }
+  [data-repeat="personas"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  [data-repeat] > div > :first-child, [style*="text-transform:uppercase"]:first-child:not(:last-child) { break-after: avoid; page-break-after: avoid; }
+  /* Callouts and accent-bar cards keep whole. */
+  [style*="border-left:3px solid"]:not(:has([data-repeat], table)), [style*="border-left:4px solid"]:not(:has([data-repeat], table)) { break-inside: avoid; page-break-inside: avoid; }
+  /* Any grid that paints its gutters with the border color (card grids, two-pane panels) must not paint
+     behind children that moved to the next page; each child keeps its own edge instead. */
+  [style*="display:grid"][style*="background:var(--op-border)"] { background: transparent !important; border-color: transparent !important; }
+  [style*="display:grid"][style*="background:var(--op-border)"] > div { outline: 1px solid var(--op-border); }
+  img, svg, figure { break-inside: avoid; }
+  /* The closing footer is screen chrome: on paper it spilled onto a page of its own in five of eight documents. */
+  body > footer, main > footer, footer[style*="justify-content:space-between"] { display: none !important; }
+  .tk-toggles, [data-print="hide"] { display: none !important; }
+}

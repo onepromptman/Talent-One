@@ -8,7 +8,7 @@ published separately as onepromptman/dag-talent-agents.
 
 ---
 
-## [2.1.0] - unreleased
+## [2.1.0] - 2026-11-14
 
 ### Release fixes
 
@@ -109,6 +109,43 @@ replaces the worked example, and renames the design system for the public
 
 ### Changed
 
+- **Palette.** The documents, the README hero and the design-system tokens move to the
+  Talent One palette graded 1 Nov 2026: Onyx, Electric Indigo and Tropical Mint in five
+  OKLCH families of twelve steps, with amber for estimates and coral for gaps. `tokens.css`
+  carries the families, the role tokens for a light and a dark surface, and the `--op-*`
+  names as aliases of those roles; templates, `render.py` pills and heat cells, and
+  `check_fill.py` read role tokens only. The handoff block is a dark surface
+  (`data-mode="dark"`). The dancheong mode and the roundel and seal motifs, which
+  cannot be expressed in this palette, are gone.
+- **Type floor.** Body text (20px) is the smallest size in every template, sample and the
+  hero; labels, captions, pills and footers that sat below it were raised, never shrunk.
+- **Formatting pass from the canvas review (2 Nov 2026).** The six-color cover stripe is
+  one accent rule. The internal handoff block stays in the document for the pipeline but
+  is hidden on screen and in print. Prose inside callouts, cards and cover theses fills
+  its block (the `max-width` measure caps are gone). Card grids on `market.stats`,
+  `timing.windows`, `timing.cards`, `tradeoffs`, `personas`, `fieldnotes` and
+  `debrief.fields` size to the cards present instead of leaving empty cells;
+  `prep.stages` runs three across with a lone last card spanning the row. The 07 question
+  bank is a fill-in table (question, what it extracts, hiring manager answer). The 01
+  stack diagram marks owned layers with the accent tint and a tinted caption row instead
+  of solid primary; its cover rail reads "Start here before" and the skills column "Core".
+  The 03 geography header over `hub.ownership` reads "Homeownership". The design system
+  gains a US Letter print layer (break discipline on rows and leaf cards, repeated table
+  headers, a 0.8 print scale, hidden print-only chrome) and the templates' print
+  fallback no longer keeps whole sections together.
+- **Print fit pass (3 Nov 2026).** No table in the kit is wider than four columns: 03
+  `hubs` (was seven) and `peripheral`, 04 `channels` and `tests`, 07 `comp.sources` (all
+  five) stack their secondary slots inside the lead cells; every slot name, repeat and
+  contract is unchanged, and the unslotted trend sparkline in 04 is gone. On paper, a
+  section head never ends a page, cards and callouts keep whole, the tall script and rubric
+  cards break only between their own complete blocks, `prep.stages` and `linkedin` run one
+  column and `personas` two, grids that paint their gutters stop painting behind children
+  that moved to the next page, and the closing footer is screen-only (it had printed as a
+  page of its own in five of eight documents). A full nine-document test run prints with
+  nothing cut off horizontally.
+- **All nine samples.** The interviewer briefing (09) ships as a sample and joins the
+  README and how-it-works galleries. The document code in each header (`TK-01` to `TK-09`)
+  stays on one line, and the two README setup pictures use the palette.
 - The README follows the house shape in about 600 words: who it is for, the tags, where
   it runs and what each path needs, a diagram, a first run, your data, settings, what to
   do when something goes wrong, and a short section for engineers. The detail it carried
