@@ -8,6 +8,30 @@ published separately as onepromptman/dag-talent-agents.
 
 ---
 
+## [2.1.2] - 2026-11-15
+
+### Setup walks you through customizing the documents
+
+- **Every document is a first draft, and the kit now says so and helps.** After a run, or
+  on request ("help me customize my JD"), `talent-one-setup` step 8 walks a recruiter who
+  is not technical through each document in plain words: what it is for, what to check,
+  which lines come from their company, and which figures are Estimates. It confirms the
+  shared facts once (company description and proof points, pay range, interview stages,
+  names), then goes document by document, the job description, interview plan, outreach
+  and interviewer briefing first.
+- **One change path.** Each correction goes through update mode, so a fact fixed once is
+  fixed in every document that repeats it, then re-rendered. A user's "looks right" never
+  upgrades an Estimate, a figure they state follows the pack's seed floor (Estimate,
+  `recruiter-stated`), and eligibility and equal
+  opportunity text stay word for word. Reviewed documents are logged in the role's
+  `ROLE.md`.
+- The guide is an on-demand reference, `skills/talent-one/references/CUSTOMIZE_WALKTHROUGH.md`,
+  so it costs nothing until it is used. The main skill, the nine single-document skills
+  and relay's completion report point to it; the README has a short "Make each document
+  your own" section.
+
+---
+
 ## [2.1.1] - 2026-11-15
 
 ### Fixes from the first full run of the public 2.1.0 install

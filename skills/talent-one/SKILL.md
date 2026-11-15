@@ -111,7 +111,9 @@ deliver via update_artifact. Never edit rendered HTML.
 Show the user relay's completion report as-is: artifact paths, critic + verify + QA
 verdict per artifact, every Estimate-pilled figure listed for human review, every
 Caution raised, every pack caveat, and open gaps an agent flagged rather than filled,
-including any finding still open after two repair laps.
+including any finding still open after two repair laps. Then say every document is a
+first draft and offer the customization walkthrough (`talent-one-setup` step 8); a
+review or customize request goes there, a single value change to §5.
 
 Then append one line to `talent-one-roles/<role_slug>/ROLE.md`: date, artifacts
 built, pack state (built / refreshed sections / reused, with `built_from`), QA

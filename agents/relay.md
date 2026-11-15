@@ -213,7 +213,9 @@ Return, as compact markdown:
 - Every artifact's file path (content JSON, rendered HTML, verify report).
 - Per artifact: critic verdict (PASS or RETURNED-then-resolved-or-carried), verify
   verdict, and its QA GATE finding status once qa-gate ran.
-- Every Estimate-pilled figure across every artifact, flagged for human review.
+- Every Estimate-pilled figure across every artifact, flagged for human review and
+  grouped under its artifact, so the customization walkthrough
+  (`skills/talent-one/references/CUSTOMIZE_WALKTHROUGH.md`) can start from this list.
 - Every Caution callout any agent raised.
 - Every pack caveat (`pack.caveats`).
 - Open gaps: anything an agent flagged rather than filled, and any finding still open

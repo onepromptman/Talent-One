@@ -4,7 +4,7 @@
 
 **For recruiters and talent teams opening a role:** describe the role once and get nine ready-to-use hiring documents, from the job description to the interview plan.
 
-[![Version](https://img.shields.io/badge/version-2.1.1-black)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.1.2-black)](CHANGELOG.md)
 [![Runs in](https://img.shields.io/badge/runs%20in-Claude%20Code%20%7C%20Cowork-orange)](#get-started)
 [![License](https://img.shields.io/badge/license-MIT-blue)](#license)
 
@@ -67,6 +67,20 @@ chat window, because only Claude Code and Cowork can start its helper agents.
 
 3. In the Claude desktop app open Customize, then Plugins, then Add, then Upload plugin,
    and choose the zip.
+
+## Make each document your own
+
+Every document is a complete first draft, not a finished one. Before you post, send or
+share one, check what only your company knows: your company description and proof points,
+the pay range you are approved to post, your real interview stages and who runs them,
+your benefits and equal opportunity wording, and every figure marked **Estimate**. The job
+description, interview plan, outreach campaign and interviewer briefing need the most work.
+
+You do not have to do this alone. After a run, or any time, ask
+`Help me customize my JD` (or "my documents"). Talent One goes through each document in
+plain words: what it is for, what to check, which lines came from your company, and which
+figures are estimates. Tell it what to change and it updates and re-renders every document that
+repeats that fact. You never edit a file.
 
 ## Setup is a conversation
 

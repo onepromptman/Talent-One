@@ -7,12 +7,14 @@ description: >
   profile and the user opts into setup. Researches the user's company
   automatically, then captures roles, constraints, tools, and branding in a
   short guided conversation and writes the shared profile plus this kit's own
-  block. No files for the user to edit, every step skippable.
+  block. No files for the user to edit, every step skippable. Also use after a
+  run, or when the user wants help reviewing or customizing the documents:
+  "help me customize my JD", "make these ready to use".
 ---
 
 # Talent One: guided setup
 
-Produce `onepromptman-profile.md` in the working folder through a guided conversation, per `PROFILE-SPEC.md`'s shared-profile convention. The user should never see YAML, file paths, or jargon. Every question has a safe default and can be skipped. If a partial profile exists (a `setup_incomplete` marker in the file), resume from the first missing section instead of restarting.
+Produce `onepromptman-profile.md` in the working folder through a guided conversation, per `PROFILE-SPEC.md`'s shared-profile convention. The user should never see YAML, file paths, or jargon. Every question has a safe default and can be skipped. If a partial profile exists (a `setup_incomplete` marker in the file), resume from the first missing section instead of restarting. If the user came to review or customize documents a run already produced, go straight to step 8.
 
 ## 0. Read before asking
 
@@ -88,4 +90,12 @@ Write `onepromptman-profile.md`. Shared sections (write only what is missing; ne
 
 Close with the menu: the nine artifacts and the full kit, one line each, "ask for any of these in plain words." Add one line on how quality scales: the kit runs on public data alone, and anything they already hold for a role (an existing JD, an intake doc, comp data, a prior posting) makes the output sharper and skips work; hand it over when starting that role and the kit consumes it instead of regenerating it. Do not collect any of it now: setup is company-level, materials are per-role. Mention once, in one line, how 1.0 runs work: the first run for each role builds a Context Pack (one research pass, 5-10 minutes) and every artifact renders from it in parallel; later runs and updates on that role reuse the pack and are fast. Fastest path, entirely optional: pasting `references/PACK_RESEARCH_PROMPT.md` (in the talent-one skill) into any Claude chat, claude.ai, the app, or a second Cowork tab, and dropping the returned JSON into that role's `inputs/` when they start it, means scout may not need to run at all. Never a prerequisite: the role spec alone is still the minimum input.
 
+Add one more line to the close: every document is a complete first draft, not a finished one, and after the first run this setup walks them through making each one their own; "help me customize my JD" starts it at any time.
+
 Branding is applied by the renderer, not the agents: relay passes the shared `## Brand` `credit` flag as `--credit on|off` and this kit's artifact prefix as `--prefix` on every render, which stamps the kit mark, the artifact id `<prefix>-NN`, and the footer credit on every document. Agents never write those.
+
+## 8. Customize the documents (after a run, or on request)
+
+Run this step, not steps 0-7, when a run has just finished and the user accepts the offer, or when they ask for help reviewing or customizing a document ("help me customize my JD", "is my outreach ready to send", "make these ready to use"). It needs at least one role with rendered documents; with none, say so in one line and offer a run. A request to change one known value ("update the comp band to $180k-$220k") is not this step: that goes straight to the `talent-one` skill's update mode.
+
+Read `../talent-one/references/CUSTOMIZE_WALKTHROUGH.md` and follow it. In short, all in plain words: say once that every document is a first draft; confirm the shared facts once (company description and proof points, the pay range, the interview stages, names); then go document by document, job description, interview plan, outreach and interviewer briefing first, saying for each what it is for, what to check, which lines come from their company, and which figures are estimates. Each change goes through update mode and the document re-renders in place. The user never sees a file path, a field name or JSON, and never edits a file.
