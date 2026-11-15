@@ -8,6 +8,24 @@ published separately as onepromptman/dag-talent-agents.
 
 ---
 
+## [2.1.1] - 2026-11-15
+
+### Fixes from the first full run of the public 2.1.0 install
+
+- **The hidden handoff block prints assumptions as text.** Agents write
+  `handoff.assumptions` as a list, and the renderer printed it as a Python list in seven of
+  nine documents. It now joins the items with semicolons. A test covers it.
+- **`validate-pack` flags two gaps that stop the run later.** An empty `comp.by_level`
+  while a canonical range is set, and a missing research quadrant while tier 1 employers
+  are named, are now HIGH findings, so scout fills them before it returns. Scout's
+  instructions say so: one by-level row for the searched level, one quadrant point per
+  tier 1 employer plus the client.
+- **The interviewer briefing names its handoff key exactly.** `interviewer_prep[]` entries
+  are `{stage, owner_role, focus}`; the instructions said "owner role" in prose and one run
+  wrote `owner`.
+
+---
+
 ## [2.1.0] - 2026-11-14
 
 ### Release fixes

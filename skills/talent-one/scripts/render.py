@@ -1867,6 +1867,11 @@ def fill_handoff(soup, content, artifact, report, schema=None):
         "handoff.blocked": h.get("blocked", "Nothing"),
         "handoff.assumptions": h.get("assumptions"),
     }
+    if isinstance(values["handoff.assumptions"], list):
+        # Agents write assumptions as a list; str() would print a Python repr.
+        values["handoff.assumptions"] = (
+            "; ".join(map(str, values["handoff.assumptions"])) or None
+        )
     for k, v in h.items():
         if k not in ("keys", "produces", "consumers", "blocked", "assumptions"):
             values.setdefault(f"handoff.{k}", v)
@@ -3213,8 +3218,26 @@ def validate_pack(pack_path, research_path=None):
     _walk_pv(pack, "pack", findings)
     _check_pack_budget(pack, "pack.json", PACK_TOKEN_BUDGET, findings)
     _check_pack_consistency(pack, findings)
+    # 03 and 05 halt on these two gaps, so catch them while scout can still fix them.
+    comp = pack.get("comp") or {}
+    if comp.get("canonical_range") and not comp.get("by_level"):
+        findings.append(
+            {
+                "severity": "HIGH",
+                "check": "by_level empty",
+                "evidence": "comp.canonical_range is set; add the searched level's row",
+            }
+        )
     if research_path:
         research = json.loads(read(research_path))
+        if (pack.get("targets") or {}).get("tier1") and not research.get("quadrant"):
+            findings.append(
+                {
+                    "severity": "HIGH",
+                    "check": "quadrant missing",
+                    "evidence": "targets.tier1 is set; place each tier1 employer",
+                }
+            )
         _walk_pv(research, "research", findings)
         _check_pack_budget(
             research, "pack-research.json", RESEARCH_TOKEN_BUDGET, findings

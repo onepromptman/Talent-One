@@ -145,7 +145,8 @@ Inside your content JSON `handoff.keys`, exactly as defined in `02_GROUNDING_MAT
 
 `interviewer_prep[]` · `coaching_lines[]` · `debrief_form[]` · `decision_agenda[]`
 
-- `interviewer_prep[]`: stage, owner role, focus; one entry per prep card.
+- `interviewer_prep[]`: each `{stage, owner_role, focus}` (the key is `owner_role`, not
+  `owner`); one entry per prep card, stage names and order exactly as 06 lists them.
 - `coaching_lines[]`: the seven dimension labels, so A09 can confirm none was dropped.
 - `debrief_form[]`: field type, label; mirrors the Debrief form fields above.
 - `decision_agenda[]`: the run-order steps, machine-readable.

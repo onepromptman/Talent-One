@@ -4,7 +4,7 @@
 
 **For recruiters and talent teams opening a role:** describe the role once and get nine ready-to-use hiring documents, from the job description to the interview plan.
 
-[![Version](https://img.shields.io/badge/version-2.1.0-black)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.1.1-black)](CHANGELOG.md)
 [![Runs in](https://img.shields.io/badge/runs%20in-Claude%20Code%20%7C%20Cowork-orange)](#get-started)
 [![License](https://img.shields.io/badge/license-MIT-blue)](#license)
 
